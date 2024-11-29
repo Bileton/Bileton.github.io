@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="常见检测方式进程名检测使用如下命令查看进程 1ps -ef | gerp xxx 这里我去官网下载一份frida-server启动frida后，查看进程，会发现有frida-sever字样绕过方式修改文件名，把frida-server文件名字改掉进程名字就会变成修改后的名字 端口检测frida默认使用的端口是27042，有些app会检测是否开放了27042端口可以通过如下命令查看端口 1netst">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Frida检测">
+<meta property="og:url" content="http://example.com/2024/11/01/Frida%E6%A3%80%E6%B5%8B/index.html">
+<meta property="og:site_name" content="白乐天">
+<meta property="og:description" content="常见检测方式进程名检测使用如下命令查看进程 1ps -ef | gerp xxx 这里我去官网下载一份frida-server启动frida后，查看进程，会发现有frida-sever字样绕过方式修改文件名，把frida-server文件名字改掉进程名字就会变成修改后的名字 端口检测frida默认使用的端口是27042，有些app会检测是否开放了27042端口可以通过如下命令查看端口 1netst">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-10-31T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-11-29T12:46:20.702Z">
+<meta property="article:author" content="Bileton">
+<meta property="article:tag" content="Frida检测">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2024/11/01/Frida%E6%A3%80%E6%B5%8B/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Frida检测 | 白乐天</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">白乐天</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">5</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">3</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">8</span></a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/love.js"></script>
+</div>
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/11/01/Frida%E6%A3%80%E6%B5%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/android.svg">
+      <meta itemprop="name" content="Bileton">
+      <meta itemprop="description" content="在安卓逆向和爬虫的道路上渐行渐远！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="白乐天">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Frida检测
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2024-11-01 00:00:00" itemprop="dateCreated datePublished" datetime="2024-11-01T00:00:00+08:00">2024-11-01</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-11-29 20:46:20" itemprop="dateModified" datetime="2024-11-29T20:46:20+08:00">2024-11-29</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Frida/" itemprop="url" rel="index"><span itemprop="name">Frida</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>3.6k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>3 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="常见检测方式"><a href="#常见检测方式" class="headerlink" title="常见检测方式"></a>常见检测方式</h1><h2 id="进程名检测"><a href="#进程名检测" class="headerlink" title="进程名检测"></a>进程名检测</h2><p>使用如下命令查看进程</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -ef | gerp xxx</span><br></pre></td></tr></table></figure>
+<p>这里我去官网下载一份frida-server<br>启动frida后，查看进程，会发现有frida-sever字样<br><strong>绕过方式</strong><br>修改文件名，把frida-server文件名字改掉<br>进程名字就会变成修改后的名字</p>
+<h2 id="端口检测"><a href="#端口检测" class="headerlink" title="端口检测"></a>端口检测</h2><p>frida默认使用的端口是27042，有些app会检测是否开放了27042端口<br>可以通过如下命令查看端口</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -anp | grep 27042</span><br></pre></td></tr></table></figure>
+<p>注意：以下方式需要手机和电脑互相能Ping通<br><strong>绕过方式</strong><br>更改端口</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./frida-server -l 0.0.0.0:7777</span><br></pre></td></tr></table></figure>
+<p>在电脑上进行端口转发</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb forward tcp:7777 tcp:7777</span><br></pre></td></tr></table></figure>
+<p>脚本运行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">frida -H 127.0.0.1:7777 -F -l xxx.js</span><br></pre></td></tr></table></figure>
+<p><strong>另一种不需要端口转发的方式</strong><br>在更改端口前查看本机IP地址，然后更改端口</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./frida-server -l 192.168.xx.xx:7777</span><br></pre></td></tr></table></figure>
+<p>脚本运行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">frida -H 192.168.xx.xx:7777 -F -l xxx.js</span><br></pre></td></tr></table></figure>
+<p><strong>对于Python脚本</strong><br>端口转发后</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">str_host = <span class="string">&quot;127.0.0.1:7777&quot;</span></span><br><span class="line">manager = firda.get_device_manager()</span><br><span class="line">rdev = manager.add_remote_device(str_host)</span><br></pre></td></tr></table></figure>
+<h2 id="D-Bus网络通信协议"><a href="#D-Bus网络通信协议" class="headerlink" title="D-Bus网络通信协议"></a>D-Bus网络通信协议</h2><p>frida-server使用D-Bus网络通信协议，有些app会遍历内部所有端口，向端口发送信息，如果回复了REJECT则表示此端口是frida-server，检测到正在使用frida进行调试。<br><strong>绕过方式</strong><br>hook系统中的 strstr &#x2F; strcmp 函数，如果出现”REJECT”字样，返回false。  </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">replace_str</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="keyword">var</span> pt_strstr = <span class="title class_">Module</span>.<span class="title function_">findExportByName</span>(<span class="string">&quot;libc.so&quot;</span>,<span class="string">&quot;strstr&quot;</span>);</span><br><span class="line">    <span class="keyword">var</span> pt_strcmp = <span class="title class_">Module</span>.<span class="title function_">findExportByName</span>(<span class="string">&quot;libc.so&quot;</span>,<span class="string">&quot;strcmp&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="title class_">Interceptor</span>.<span class="title function_">attach</span>(pt_strstr,&#123;</span><br><span class="line">        <span class="attr">onEnter</span>:<span class="keyword">function</span>(<span class="params">args</span>)&#123;</span><br><span class="line">            <span class="keyword">var</span> str1 = args[<span class="number">0</span>].<span class="title function_">readCString</span>();</span><br><span class="line">            <span class="keyword">var</span> str2 = args[<span class="number">1</span>].<span class="title function_">readCString</span>();</span><br><span class="line">            <span class="keyword">if</span> (str2.<span class="title function_">indexOf</span>(<span class="string">&quot;REGECT&quot;</span>) !== -<span class="number">1</span>)&#123;</span><br><span class="line">                <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;strcmp--&gt;&quot;</span>,str1,str2);</span><br><span class="line">                <span class="variable language_">this</span>.<span class="property">hook</span> = <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">onLeave</span>:<span class="keyword">function</span>(<span class="params">retval</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(<span class="variable language_">this</span>.<span class="property">hook</span>)&#123;</span><br><span class="line">                retval.<span class="title function_">replace</span>(<span class="number">0</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="title class_">Interceptor</span>.<span class="title function_">attach</span>(pt_strcmp,&#123;</span><br><span class="line">        <span class="attr">onEnter</span>:<span class="keyword">function</span>(<span class="params">args</span>)&#123;                                                                              </span><br><span class="line">            <span class="keyword">var</span> str1 = args[<span class="number">0</span>].<span class="title function_">readCString</span>();</span><br><span class="line">            <span class="keyword">var</span> str2 = args[<span class="number">1</span>].<span class="title function_">readCString</span>();</span><br><span class="line">            <span class="keyword">if</span> (str2.<span class="title function_">indexOf</span>(<span class="string">&quot;REGECT&quot;</span>) !== -<span class="number">1</span>)&#123;</span><br><span class="line">                <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;strcmp--&gt;&quot;</span>,str1,str2);</span><br><span class="line">                <span class="variable language_">this</span>.<span class="property">hook</span> = <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">onLeave</span>:<span class="keyword">function</span>(<span class="params">retval</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(<span class="variable language_">this</span>.<span class="property">hook</span>)&#123;</span><br><span class="line">                retval.<span class="title function_">replace</span>(<span class="number">0</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">replace_str</span>();</span><br></pre></td></tr></table></figure>
+<h2 id="maps文件"><a href="#maps文件" class="headerlink" title="maps文件"></a>maps文件</h2><p><code>maps</code> 文件通常与进程的内存映射有关。<br>它位于&#x2F;proc&#x2F;pid&#x2F;maps，其中pid是正在运行的进程的PID。<br>通如下命令查看</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /proc/pid/maps | grep frida</span><br></pre></td></tr></table></figure>
+<p>会发现有frida-agent-64.so字样<br><strong>绕过方式</strong><br>hook系统中的 strstr &#x2F; strcmp 函数，如果出现”frida”，”frida-agent”，”tmp”等字样，返回false。</p>
+<h2 id="task目录"><a href="#task目录" class="headerlink" title="task目录"></a>task目录</h2><p>&#x2F;proc&#x2F;pid&#x2F;task目录包含了有关进程中所有线程的信息。<br>task目录下的第一个tid是主线程，其他的是子线程。<br>子线程目录里有一个status文件，里面提供了详细的线程信息。<br>frida-server启动且frida附加到一个app后，在task目录下会生成frida的相关线程文件，包含相关线程信息。<br>查看status文件后发现，存在与frida有关的线程名，可能会被检测。  </p>
+<ul>
+<li>gmain</li>
+<li>gdbus</li>
+<li>gum-js-loop</li>
+<li>pool-frida</li>
+</ul>
+<p><strong>绕过方式</strong><br>hook系统中的 strstr &#x2F; strcmp 函数，如果出现”gmain”，”gdbus”，”gum-js-loop”等字样，返回false。</p>
+<h2 id="fd目录（旧版frida特征）"><a href="#fd目录（旧版frida特征）" class="headerlink" title="fd目录（旧版frida特征）"></a>fd目录（旧版frida特征）</h2><p><code>/proc/&lt;pid&gt;/fd</code> 目录是进程的文件描述符目录，存储了与进程相关的所有文件描述符（file descriptors）的符号链接。提供系统中运行进程的实时信息。<br>frida-server启动且frida附加到一个app后，在fd目录下可能会生成”linjector-1”这个文件，也可能会被检测。<br><strong>绕过方式</strong><br>hook系统中的 strstr &#x2F; strcmp 函数，如果出现”linjector”字样，返回false。</p>
+<h2 id="frida目录（旧版frida特征）"><a href="#frida目录（旧版frida特征）" class="headerlink" title="frida目录（旧版frida特征）"></a>frida目录（旧版frida特征）</h2><p>frida-server运行起来之后，会自动在&#x2F;data&#x2F;local&#x2F;tmp（frida-server放在&#x2F;data&#x2F;local&#x2F;tmp目录下）目录下生成一个re.frida.server目录，在re.frida.server这个目录里就会有包含frida的特征的文件名如frida-agent-64.so、frida-agent-32.so、frida-helper-32、linjector-1<br><strong>绕过方式</strong><br>hook系统中的 strstr &#x2F; strcmp 函数，如果出现”tmp”字样，返回false。</p>
+<h1 id="线程检测"><a href="#线程检测" class="headerlink" title="线程检测"></a>线程检测</h1><p>检测frida的线程通常不会是主线程，主线程与业务相关，通过创建子线程来检测frida，在此线程中循环检测。<br><strong>检测方式</strong><br>在C语言中有一个pthread_create函数，这个函数的作用是创建线程<br><strong>定位so</strong><br>首先定位检测frida的线程的是在哪个so里通过pthread_create函数创建的。（通过hook dlopen进行判断）<br><strong>替换线程中的函数实现绕过</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">hook_pthread_create</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="keyword">var</span> pt_create_func = <span class="title class_">Module</span>.<span class="title function_">findExportByName</span>(<span class="string">&quot;libc.so&quot;</span>,<span class="string">&quot;pthread_create&quot;</span>);</span><br><span class="line">    <span class="title class_">Interceptor</span>.<span class="title function_">attach</span>(pt_create_func,&#123;</span><br><span class="line">        <span class="attr">onEnter</span>:<span class="keyword">function</span>(<span class="params">args</span>)&#123;</span><br><span class="line">            <span class="keyword">var</span> so_name = <span class="title class_">Process</span>.<span class="title function_">findModuleByAddress</span>(args[<span class="number">2</span>]).<span class="property">name</span>;</span><br><span class="line">            <span class="keyword">if</span>(so_name.<span class="title function_">indexOf</span>(<span class="string">&quot;libxxx.so&quot;</span>)!= -<span class="number">1</span>)&#123;</span><br><span class="line">                <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;arg2&quot;</span>,args[<span class="number">2</span>].<span class="title function_">sub</span>(<span class="title class_">Module</span>.<span class="title function_">findBaseAddress</span>(<span class="string">&quot;libgeiri.so&quot;</span>)));</span><br><span class="line">                <span class="keyword">try</span>&#123;</span><br><span class="line">                    <span class="title class_">Interceptor</span>.<span class="title function_">replace</span>(args[<span class="number">2</span>],<span class="keyword">new</span> <span class="title class_">NativeCallback</span>(<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">                        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;replace success&quot;</span>);</span><br><span class="line">                        <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">                    &#125;,<span class="string">&#x27;void&#x27;</span>,[<span class="string">&quot;void&quot;</span>]));</span><br><span class="line">                &#125;<span class="keyword">catch</span>(e)&#123;</span><br><span class="line"></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">onLeave</span>:<span class="keyword">function</span>(<span class="params">retval</span>)&#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">hook_pthread_create</span>();</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Frida%E6%A3%80%E6%B5%8B/" rel="tag"><svg t="1732789072752" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4858" width="15" height="15"><path d="M229.443715 343.118259l565.172804 0 0 410.010794c0 37.525595-30.237317 67.762912-67.040108 67.762912l-46.319715 0 0 139.742183c0 35.116247-28.249605 63.365852-63.305618 63.365852-35.116247 0-63.546553-28.309839-63.546553-63.365852l0-139.742183-84.809049 0 0 139.742183c0 35.056013-28.430306 63.365852-63.546553 63.365852-34.393443 0-62.763515-28.309839-62.763515-63.365852l-0.542103-139.742183-45.596911 0c-37.465361 0-67.702678-30.177084-67.702678-67.762912l0-410.010794zM141.984383 331.432921c-35.056013 0-63.426086 28.370073-63.426086 62.763515l0 264.787344c0 35.116247 28.370073 63.365852 63.426086 63.365852s62.763515-28.309839 62.763515-63.365852l0-264.787344c0-34.393443-28.189371-62.763515-62.763515-62.763515zM796.42353 320.952257l-569.449397 0c0-97.879762 58.547156-182.869512 145.343917-227.141282l-43.7899-80.59269c-2.469582-4.336826-1.264908-9.878327 3.071919-12.347908 4.276593-1.867245 9.878327-0.662571 12.347908 3.734489l44.271769 81.255261c37.646062-16.684735 79.508484-25.900491 123.780253-25.900491s86.134191 9.215756 123.780253 25.840257l44.271769-81.255261c2.469582-4.336826 8.071316-5.5415 12.347908-3.734489 4.336826 2.469582 5.5415 8.011082 3.071919 12.347908l-43.7899 80.59269c86.254658 44.332003 144.74158 129.321753 144.74158 227.201515zM406.048922 194.160319c0-12.950245-10.42043-24.033246-23.912779-24.033246-13.010479 0-23.430909 11.083001-23.430909 24.033246 0 12.890012 10.42043 23.973012 23.430909 23.973012 13.492349 0.060234 23.912779-11.022767 23.912779-23.973012zM665.294766 194.160319c0-12.950245-10.42043-24.033246-23.430909-24.033246-13.552582 0-23.912779 11.083001-23.912779 24.033246 0 12.890012 10.42043 23.973012 23.912779 23.973012 13.010479 0.060234 23.430909-11.022767 23.430909-23.973012zM882.015617 331.432921c-34.51391 0-62.763515 27.707502-62.763515 62.763515l0 264.787344c0 35.116247 28.249605 63.365852 62.763515 63.365852 35.056013 0 63.426086-28.309839 63.426086-63.365852l0-264.787344c-0.060234-35.056013-28.370073-62.763515-63.426086-62.763515z" fill="#000000" p-id="4859"></path></svg> Frida检测</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2024/02/01/C/" rel="prev" title="C++">
+      <i class="fa fa-chevron-left"></i> C++
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2024/11/28/hello-world/" rel="next" title="Hello World">
+      Hello World <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E6%A3%80%E6%B5%8B%E6%96%B9%E5%BC%8F"><span class="nav-number">1.</span> <span class="nav-text">常见检测方式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9B%E7%A8%8B%E5%90%8D%E6%A3%80%E6%B5%8B"><span class="nav-number">1.1.</span> <span class="nav-text">进程名检测</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AB%AF%E5%8F%A3%E6%A3%80%E6%B5%8B"><span class="nav-number">1.2.</span> <span class="nav-text">端口检测</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#D-Bus%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE"><span class="nav-number">1.3.</span> <span class="nav-text">D-Bus网络通信协议</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#maps%E6%96%87%E4%BB%B6"><span class="nav-number">1.4.</span> <span class="nav-text">maps文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#task%E7%9B%AE%E5%BD%95"><span class="nav-number">1.5.</span> <span class="nav-text">task目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#fd%E7%9B%AE%E5%BD%95%EF%BC%88%E6%97%A7%E7%89%88frida%E7%89%B9%E5%BE%81%EF%BC%89"><span class="nav-number">1.6.</span> <span class="nav-text">fd目录（旧版frida特征）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#frida%E7%9B%AE%E5%BD%95%EF%BC%88%E6%97%A7%E7%89%88frida%E7%89%B9%E5%BE%81%EF%BC%89"><span class="nav-number">1.7.</span> <span class="nav-text">frida目录（旧版frida特征）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BA%BF%E7%A8%8B%E6%A3%80%E6%B5%8B"><span class="nav-number">2.</span> <span class="nav-text">线程检测</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Bileton"
+      src="/images/android.svg">
+  <p class="site-author-name" itemprop="name">Bileton</p>
+  <div class="site-description" itemprop="description">在安卓逆向和爬虫的道路上渐行渐远！</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Bileton</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">18k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">16 分钟</span>
+</div><div>
+    <!--添加总阅读次数-->
+    <div>
+        <span>本站总访问量</span>
+        <span id="site_total_read_count">Loading...</span>
+    </div>
+    <script>
+        async function sleep(ms = 1000) {
+            return await new Promise(resolve => {
+                const timer = setTimeout(() => {
+                    clearTimeout(timer)
+                    return resolve()
+                }, ms)
+            })
+        }
+        async function site_read_count() {
+            const className = 'Counter',
+                query = new AV.Query(className)
+            return query.find()
+                .then(_ => _.map(i => i.attributes.time))
+                .then(_ => _.reduce((a, b) => a + b))
+        }
+        new Promise(resolve => {
+            const timer = setInterval(() => {
+                if (typeof AV !== "undefined") {
+                    clearInterval(timer)
+                    return resolve()
+                }
+            }, 250)
+        })
+            .then(() => site_read_count())
+            .then(_ => {
+                const s = ` ${_} 次`
+                document.getElementById("site_total_read_count").innerHTML = s
+            })
+            .catch(e => console.error(e.message))
+    </script>
+</div>
+
+
+<span id="timeDate">载入天数...</span>
+<span id="times">载入时分秒...</span>
+<script>
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("01/01/2024 00:00:00"); //修改为你的网站开始运行的时间
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+        document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 ";
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒.";
+    }
+setInterval("createtime()",250);
+</script>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
