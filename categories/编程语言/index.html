@@ -132,7 +132,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">8</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">9</span></a>
 
   </li>
   </ul>
@@ -185,6 +185,26 @@
       </div>
 
       <div class="post-title">
+          <a class="post-title-link" href="/2024/02/01/C/" itemprop="url">
+            <span itemprop="name">C++</span>
+          </a>
+      </div>
+
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <div class="post-meta">
+        <time itemprop="dateCreated"
+              datetime="2024-02-01T00:00:00+08:00"
+              content="2024-02-01">
+          02-01
+        </time>
+      </div>
+
+      <div class="post-title">
           <a class="post-title-link" href="/2024/02/01/C%E8%AF%AD%E8%A8%80/" itemprop="url">
             <span itemprop="name">C语言</span>
           </a>
@@ -207,26 +227,6 @@
       <div class="post-title">
           <a class="post-title-link" href="/2024/02/01/Python%E8%AF%AD%E8%A8%80/" itemprop="url">
             <span itemprop="name">Python语言</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2024-02-01T00:00:00+08:00"
-              content="2024-02-01">
-          02-01
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2024/02/01/C/" itemprop="url">
-            <span itemprop="name">C++</span>
           </a>
       </div>
 
@@ -306,7 +306,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-count">9</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -360,50 +360,28 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">18k</span>
+    <span title="站点总字数">19k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">16 分钟</span>
-</div><div>
-    <!--添加总阅读次数-->
-    <div>
-        <span>本站总访问量</span>
-        <span id="site_total_read_count">Loading...</span>
-    </div>
-    <script>
-        async function sleep(ms = 1000) {
-            return await new Promise(resolve => {
-                const timer = setTimeout(() => {
-                    clearTimeout(timer)
-                    return resolve()
-                }, ms)
-            })
-        }
-        async function site_read_count() {
-            const className = 'Counter',
-                query = new AV.Query(className)
-            return query.find()
-                .then(_ => _.map(i => i.attributes.time))
-                .then(_ => _.reduce((a, b) => a + b))
-        }
-        new Promise(resolve => {
-            const timer = setInterval(() => {
-                if (typeof AV !== "undefined") {
-                    clearInterval(timer)
-                    return resolve()
-                }
-            }, 250)
-        })
-            .then(() => site_read_count())
-            .then(_ => {
-                const s = ` ${_} 次`
-                document.getElementById("site_total_read_count").innerHTML = s
-            })
-            .catch(e => console.error(e.message))
-    </script>
+    <span title="站点阅读时长">17 分钟</span>
+</div><div class="busuanzi-count">
+  <script async="" src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  <span class="site-uv">
+  <i class="fa fa-user"> 本站访客数</i>
+  <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+  人
+  </span>
+
+  <span class="site-pv">
+  <i class="fa fa-eye"> 本站总访问量</i>
+  <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+  次
+  </span>
+
 </div>
 
 
