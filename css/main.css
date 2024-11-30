@@ -1219,7 +1219,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #b6acff;
+  background: #71ffeb;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2588,7 +2588,7 @@ ul.breadcrumb li + li:last-child {
   -moz-box-shadow: 0 0 5px rgba(202,203,204,0.5);
 }
 body {
-  background: url("/images/62.jpg");
+  background: url("/images/51.jpg");
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: 50% 50%;
