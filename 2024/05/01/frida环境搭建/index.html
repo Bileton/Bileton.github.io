@@ -20,20 +20,20 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="HTTP抓包对于HTTP的包是可以通过抓包工具+配置手机代理直接抓取的。 HTTPS抓包HTTPS是有系统证书校验的，需要安装证书之后通过抓包工具+配置手机代理来进行抓包。在安卓上，Android8.0之后，浏览器默认信任用户目录下的证书，而APP默认不再信任用户目录下的证书了，所以需要手动把用户目录下的证书移动到系统目录下（通过面具移动或者手动移动）。 检测代理 APP在发起网络请求前会检测系统">
+  <meta name="description" content="安装frida安装使用如下命令安装frida，默认安装最新版的frida 1pip install frida  卸载1pip uninstall frida 指定版本安装指定版本的frida 1pip install frida&#x3D;&#x3D;xx.xx.xx frida-tools（安装frida-tools会自动安装frida）安装frida-tools使用如下命令安装frida-tools，默认安装最">
 <meta property="og:type" content="article">
-<meta property="og:title" content="抓包">
-<meta property="og:url" content="http://example.com/2024/12/02/%E6%8A%93%E5%8C%85/index.html">
+<meta property="og:title" content="frida环境搭建">
+<meta property="og:url" content="http://example.com/2024/05/01/frida%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/index.html">
 <meta property="og:site_name" content="白乐天">
-<meta property="og:description" content="HTTP抓包对于HTTP的包是可以通过抓包工具+配置手机代理直接抓取的。 HTTPS抓包HTTPS是有系统证书校验的，需要安装证书之后通过抓包工具+配置手机代理来进行抓包。在安卓上，Android8.0之后，浏览器默认信任用户目录下的证书，而APP默认不再信任用户目录下的证书了，所以需要手动把用户目录下的证书移动到系统目录下（通过面具移动或者手动移动）。 检测代理 APP在发起网络请求前会检测系统">
+<meta property="og:description" content="安装frida安装使用如下命令安装frida，默认安装最新版的frida 1pip install frida  卸载1pip uninstall frida 指定版本安装指定版本的frida 1pip install frida&#x3D;&#x3D;xx.xx.xx frida-tools（安装frida-tools会自动安装frida）安装frida-tools使用如下命令安装frida-tools，默认安装最">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-12-01T16:00:00.000Z">
-<meta property="article:modified_time" content="2024-12-05T13:40:00.055Z">
+<meta property="article:published_time" content="2024-04-30T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-12-09T17:18:59.569Z">
 <meta property="article:author" content="Bileton">
-<meta property="article:tag" content="抓包">
+<meta property="article:tag" content="frida环境搭建">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/2024/12/02/%E6%8A%93%E5%8C%85/">
+<link rel="canonical" href="http://example.com/2024/05/01/frida%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">
 
 
 <script id="page-configurations">
@@ -46,7 +46,7 @@
   };
 </script>
 
-  <title>抓包 | 白乐天</title>
+  <title>frida环境搭建 | 白乐天</title>
   
 
 
@@ -192,7 +192,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/12/02/%E6%8A%93%E5%8C%85/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/05/01/frida%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/android.svg">
@@ -205,7 +205,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          抓包
+          frida环境搭建
         </h1>
 
         <div class="post-meta">
@@ -215,14 +215,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2024-12-02 00:00:00" itemprop="dateCreated datePublished" datetime="2024-12-02T00:00:00+08:00">2024-12-02</time>
+              <time title="创建时间：2024-05-01 00:00:00" itemprop="dateCreated datePublished" datetime="2024-05-01T00:00:00+08:00">2024-05-01</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-12-05 21:40:00" itemprop="dateModified" datetime="2024-12-05T21:40:00+08:00">2024-12-05</time>
+                <time title="修改时间：2024-12-10 01:18:59" itemprop="dateModified" datetime="2024-12-10T01:18:59+08:00">2024-12-10</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -230,7 +230,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%8A%93%E5%8C%85/" itemprop="url" rel="index"><span itemprop="name">抓包</span></a>
+                  <a href="/categories/Frida/" itemprop="url" rel="index"><span itemprop="name">Frida</span></a>
                 </span>
             </span>
 
@@ -240,7 +240,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>1.3k</span>
+              <span>619</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -259,32 +259,21 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="HTTP抓包"><a href="#HTTP抓包" class="headerlink" title="HTTP抓包"></a>HTTP抓包</h1><p>对于HTTP的包是可以通过抓包工具+配置手机代理直接抓取的。</p>
-<h1 id="HTTPS抓包"><a href="#HTTPS抓包" class="headerlink" title="HTTPS抓包"></a>HTTPS抓包</h1><p>HTTPS是有系统证书校验的，需要安装证书之后通过抓包工具+配置手机代理来进行抓包。<br>在安卓上，Android8.0之后，浏览器默认信任用户目录下的证书，而APP默认不再信任用户目录下的证书了，所以需要手动把用户目录下的证书移动到系统目录下（通过面具移动或者手动移动）。</p>
-<h1 id="检测代理"><a href="#检测代理" class="headerlink" title="检测代理"></a>检测代理</h1><ul>
-<li>APP在发起网络请求前会检测系统是否设置了代理，如果发现有代理，就不发起请求。  </li>
-<li>APP 用了No Proxy参数发起网络请求，即使系统设置了代理，也会被直接绕过，APP依然能正常获取网络数据，但抓包工具无法抓到该APP的数据包。</li>
-</ul>
-<h1 id="单向证书校验"><a href="#单向证书校验" class="headerlink" title="单向证书校验"></a>单向证书校验</h1><p>单向证书校验是指在客户端与服务器之间的通信中，只有服务器需要提供证书，客户端通过验证服务器的证书来确认服务器的身份。<br><strong>原理</strong>  </p>
-<ul>
-<li>客户端发起连接请求（如通过HTTPS）。  </li>
-<li>服务器将其数字证书发送给客户端，数字证书中包含了服务器的公钥和其他信息（如证书的有效期、签发者等）。  </li>
-<li>客户端收到证书后，通过信任的证书颁发机构（CA）的公钥来验证证书的有效性。如果证书有效，客户端就信任这个服务器，继续进行后续的加密通信。  </li>
-<li>客户端不需要提供任何证书或身份验证。</li>
-</ul>
-<h1 id="双向证书校验"><a href="#双向证书校验" class="headerlink" title="双向证书校验"></a>双向证书校验</h1><p>双向证书校验则要求客户端和服务器都提供证书，并且相互验证对方的身份。这样不仅服务器要验证客户端的身份，客户端也要验证服务器的身份。<br><strong>原理</strong>  </p>
-<ul>
-<li>客户端发起连接请求。  </li>
-<li>服务器发送其数字证书给客户端，客户端用CA公钥验证服务器证书的合法性。  </li>
-<li>服务器要求客户端也提供数字证书。客户端向服务器提供自己的证书，服务器同样使用CA公钥验证客户端证书的合法性。  </li>
-<li>双方都确认对方的身份后，开始建立加密通道进行安全通信。</li>
-</ul>
-<h1 id="SSL-pinning"><a href="#SSL-pinning" class="headerlink" title="SSL pinning"></a>SSL pinning</h1><p>SSL Pinning（SSL证书绑定）是为了增强应用程序对中间人攻击（MITM攻击）的防御的一种技术。它将特定的证书或公钥绑定到客户端应用程序中，使得客户端在建立SSL连接时，仅信任与该证书或公钥匹配的服务器证书，从而确保通信的安全性。</p>
-<h2 id="Certificate-Pinning"><a href="#Certificate-Pinning" class="headerlink" title="Certificate Pinning"></a>Certificate Pinning</h2><p>证书绑定是指将服务器的证书（通常是公钥）内置到客户端应用中。客户端在建立SSL连接时，会验证服务器的证书与客户端预定义的证书是否匹配。如果不匹配，连接会被拒绝，防止攻击者使用伪造的证书进行中间人攻击。  </p>
-<h2 id="Public-Key-Pinning"><a href="#Public-Key-Pinning" class="headerlink" title="Public Key Pinning"></a>Public Key Pinning</h2><p>公钥绑定是SSL Pinning的一种形式，客户端不直接绑定证书，而是绑定服务器证书中的公钥。这种方式可以避免证书过期或更新时造成的连接问题，因为即便证书发生变化，只要公钥保持不变，客户端仍然可以信任新的证书。  </p>
-<h2 id="绕过方式"><a href="#绕过方式" class="headerlink" title="绕过方式"></a>绕过方式</h2><h3 id="使用frida进行hook"><a href="#使用frida进行hook" class="headerlink" title="使用frida进行hook"></a>使用frida进行hook</h3><p>frida官方提供的客户端校验绕过脚本如下<br><a target="_blank" rel="noopener" href="https://codeshare.frida.re/@akabe1/frida-multiple-unpinning/">https:&#x2F;&#x2F;codeshare.frida.re&#x2F;@akabe1&#x2F;frida-multiple-unpinning&#x2F;</a></p>
-<h3 id="JustTrustMe"><a href="#JustTrustMe" class="headerlink" title="JustTrustMe"></a>JustTrustMe</h3><p>利用面具刷入LSPosed框架，然后安装JustTrustMe插件。<br>在LSPosed的模块里打开JustTrustMe，在要选择绕过的App后面方框勾选上即可。</p>
-
+        <h1 id="安装frida"><a href="#安装frida" class="headerlink" title="安装frida"></a>安装frida</h1><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>使用如下命令安装frida，默认安装最新版的frida</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install frida </span><br></pre></td></tr></table></figure>
+<h2 id="卸载"><a href="#卸载" class="headerlink" title="卸载"></a>卸载</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip uninstall frida</span><br></pre></td></tr></table></figure>
+<h2 id="指定版本"><a href="#指定版本" class="headerlink" title="指定版本"></a>指定版本</h2><p>安装指定版本的frida</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install frida==xx.xx.xx</span><br></pre></td></tr></table></figure>
+<h2 id="frida-tools（安装frida-tools会自动安装frida）"><a href="#frida-tools（安装frida-tools会自动安装frida）" class="headerlink" title="frida-tools（安装frida-tools会自动安装frida）"></a>frida-tools（安装frida-tools会自动安装frida）</h2><h3 id="安装frida-tools"><a href="#安装frida-tools" class="headerlink" title="安装frida-tools"></a>安装frida-tools</h3><p>使用如下命令安装frida-tools，默认安装最新版的frida-tools</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install frida-tools</span><br></pre></td></tr></table></figure>
+<h3 id="安装指定版本的frida-tools"><a href="#安装指定版本的frida-tools" class="headerlink" title="安装指定版本的frida-tools"></a>安装指定版本的frida-tools</h3><p>frida 与 frida-tools 版本的对应关系可在github项目处查看或者直接baidu搜索</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install frida-tools==xx.xx.xx</span><br></pre></td></tr></table></figure>
+<h3 id="卸载frida-tools"><a href="#卸载frida-tools" class="headerlink" title="卸载frida-tools"></a>卸载frida-tools</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip uninstall frida-tools</span><br></pre></td></tr></table></figure>
+<h1 id="配置frida-server"><a href="#配置frida-server" class="headerlink" title="配置frida-server"></a>配置frida-server</h1><p>frida-server的版本需要与frida的版本相匹配，同时frida-server的运行平台要与自己的设备和架构相匹配。</p>
+<h2 id="下载frida-server"><a href="#下载frida-server" class="headerlink" title="下载frida-server"></a>下载frida-server</h2><p>在github上下载frida-server。<br>将下载的压缩包解压后通过<code>adb push</code>推送到测试机的&#x2F;data&#x2F;local&#x2F;tmp目录下（需要通过USB连接手机）。  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb push frida-server /data/local/tmp</span><br></pre></td></tr></table></figure>
+<p>通过chmod命令为其赋予可执行权限</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod 777 frida-sever</span><br></pre></td></tr></table></figure>
     </div>
 
     
@@ -293,7 +282,7 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/%E6%8A%93%E5%8C%85/" rel="tag"><svg t="1732789072752" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4858" width="15" height="15"><path d="M229.443715 343.118259l565.172804 0 0 410.010794c0 37.525595-30.237317 67.762912-67.040108 67.762912l-46.319715 0 0 139.742183c0 35.116247-28.249605 63.365852-63.305618 63.365852-35.116247 0-63.546553-28.309839-63.546553-63.365852l0-139.742183-84.809049 0 0 139.742183c0 35.056013-28.430306 63.365852-63.546553 63.365852-34.393443 0-62.763515-28.309839-62.763515-63.365852l-0.542103-139.742183-45.596911 0c-37.465361 0-67.702678-30.177084-67.702678-67.762912l0-410.010794zM141.984383 331.432921c-35.056013 0-63.426086 28.370073-63.426086 62.763515l0 264.787344c0 35.116247 28.370073 63.365852 63.426086 63.365852s62.763515-28.309839 62.763515-63.365852l0-264.787344c0-34.393443-28.189371-62.763515-62.763515-62.763515zM796.42353 320.952257l-569.449397 0c0-97.879762 58.547156-182.869512 145.343917-227.141282l-43.7899-80.59269c-2.469582-4.336826-1.264908-9.878327 3.071919-12.347908 4.276593-1.867245 9.878327-0.662571 12.347908 3.734489l44.271769 81.255261c37.646062-16.684735 79.508484-25.900491 123.780253-25.900491s86.134191 9.215756 123.780253 25.840257l44.271769-81.255261c2.469582-4.336826 8.071316-5.5415 12.347908-3.734489 4.336826 2.469582 5.5415 8.011082 3.071919 12.347908l-43.7899 80.59269c86.254658 44.332003 144.74158 129.321753 144.74158 227.201515zM406.048922 194.160319c0-12.950245-10.42043-24.033246-23.912779-24.033246-13.010479 0-23.430909 11.083001-23.430909 24.033246 0 12.890012 10.42043 23.973012 23.430909 23.973012 13.492349 0.060234 23.912779-11.022767 23.912779-23.973012zM665.294766 194.160319c0-12.950245-10.42043-24.033246-23.430909-24.033246-13.552582 0-23.912779 11.083001-23.912779 24.033246 0 12.890012 10.42043 23.973012 23.912779 23.973012 13.010479 0.060234 23.430909-11.022767 23.430909-23.973012zM882.015617 331.432921c-34.51391 0-62.763515 27.707502-62.763515 62.763515l0 264.787344c0 35.116247 28.249605 63.365852 62.763515 63.365852 35.056013 0 63.426086-28.309839 63.426086-63.365852l0-264.787344c-0.060234-35.056013-28.370073-62.763515-63.426086-62.763515z" fill="#000000" p-id="4859"></path></svg> 抓包</a>
+              <a href="/tags/frida%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" rel="tag"><svg t="1732789072752" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4858" width="15" height="15"><path d="M229.443715 343.118259l565.172804 0 0 410.010794c0 37.525595-30.237317 67.762912-67.040108 67.762912l-46.319715 0 0 139.742183c0 35.116247-28.249605 63.365852-63.305618 63.365852-35.116247 0-63.546553-28.309839-63.546553-63.365852l0-139.742183-84.809049 0 0 139.742183c0 35.056013-28.430306 63.365852-63.546553 63.365852-34.393443 0-62.763515-28.309839-62.763515-63.365852l-0.542103-139.742183-45.596911 0c-37.465361 0-67.702678-30.177084-67.702678-67.762912l0-410.010794zM141.984383 331.432921c-35.056013 0-63.426086 28.370073-63.426086 62.763515l0 264.787344c0 35.116247 28.370073 63.365852 63.426086 63.365852s62.763515-28.309839 62.763515-63.365852l0-264.787344c0-34.393443-28.189371-62.763515-62.763515-62.763515zM796.42353 320.952257l-569.449397 0c0-97.879762 58.547156-182.869512 145.343917-227.141282l-43.7899-80.59269c-2.469582-4.336826-1.264908-9.878327 3.071919-12.347908 4.276593-1.867245 9.878327-0.662571 12.347908 3.734489l44.271769 81.255261c37.646062-16.684735 79.508484-25.900491 123.780253-25.900491s86.134191 9.215756 123.780253 25.840257l44.271769-81.255261c2.469582-4.336826 8.071316-5.5415 12.347908-3.734489 4.336826 2.469582 5.5415 8.011082 3.071919 12.347908l-43.7899 80.59269c86.254658 44.332003 144.74158 129.321753 144.74158 227.201515zM406.048922 194.160319c0-12.950245-10.42043-24.033246-23.912779-24.033246-13.010479 0-23.430909 11.083001-23.430909 24.033246 0 12.890012 10.42043 23.973012 23.430909 23.973012 13.492349 0.060234 23.912779-11.022767 23.912779-23.973012zM665.294766 194.160319c0-12.950245-10.42043-24.033246-23.430909-24.033246-13.552582 0-23.912779 11.083001-23.912779 24.033246 0 12.890012 10.42043 23.973012 23.912779 23.973012 13.010479 0.060234 23.430909-11.022767 23.430909-23.973012zM882.015617 331.432921c-34.51391 0-62.763515 27.707502-62.763515 62.763515l0 264.787344c0 35.116247 28.249605 63.365852 62.763515 63.365852 35.056013 0 63.426086-28.309839 63.426086-63.365852l0-264.787344c-0.060234-35.056013-28.370073-62.763515-63.426086-62.763515z" fill="#000000" p-id="4859"></path></svg> frida环境搭建</a>
           </div>
 
         
@@ -302,12 +291,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2024/12/01/IDA%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/" rel="prev" title="IDA使用指南">
-      <i class="fa fa-chevron-left"></i> IDA使用指南
+    <a href="/2024/02/01/C/" rel="prev" title="C++">
+      <i class="fa fa-chevron-left"></i> C++
     </a></div>
       <div class="post-nav-item">
-    <a href="/2024/12/04/JavaScript/" rel="next" title="JavaScript">
-      JavaScript <i class="fa fa-chevron-right"></i>
+    <a href="/2024/05/01/Java/" rel="next" title="Java">
+      Java <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -367,7 +356,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#HTTP%E6%8A%93%E5%8C%85"><span class="nav-number">1.</span> <span class="nav-text">HTTP抓包</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HTTPS%E6%8A%93%E5%8C%85"><span class="nav-number">2.</span> <span class="nav-text">HTTPS抓包</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A3%80%E6%B5%8B%E4%BB%A3%E7%90%86"><span class="nav-number">3.</span> <span class="nav-text">检测代理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8D%95%E5%90%91%E8%AF%81%E4%B9%A6%E6%A0%A1%E9%AA%8C"><span class="nav-number">4.</span> <span class="nav-text">单向证书校验</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%8C%E5%90%91%E8%AF%81%E4%B9%A6%E6%A0%A1%E9%AA%8C"><span class="nav-number">5.</span> <span class="nav-text">双向证书校验</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SSL-pinning"><span class="nav-number">6.</span> <span class="nav-text">SSL pinning</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Certificate-Pinning"><span class="nav-number">6.1.</span> <span class="nav-text">Certificate Pinning</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Public-Key-Pinning"><span class="nav-number">6.2.</span> <span class="nav-text">Public Key Pinning</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%95%E8%BF%87%E6%96%B9%E5%BC%8F"><span class="nav-number">6.3.</span> <span class="nav-text">绕过方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8frida%E8%BF%9B%E8%A1%8Chook"><span class="nav-number">6.3.1.</span> <span class="nav-text">使用frida进行hook</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JustTrustMe"><span class="nav-number">6.3.2.</span> <span class="nav-text">JustTrustMe</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%85frida"><span class="nav-number">1.</span> <span class="nav-text">安装frida</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-number">1.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%B8%E8%BD%BD"><span class="nav-number">1.2.</span> <span class="nav-text">卸载</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%87%E5%AE%9A%E7%89%88%E6%9C%AC"><span class="nav-number">1.3.</span> <span class="nav-text">指定版本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#frida-tools%EF%BC%88%E5%AE%89%E8%A3%85frida-tools%E4%BC%9A%E8%87%AA%E5%8A%A8%E5%AE%89%E8%A3%85frida%EF%BC%89"><span class="nav-number">1.4.</span> <span class="nav-text">frida-tools（安装frida-tools会自动安装frida）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85frida-tools"><span class="nav-number">1.4.1.</span> <span class="nav-text">安装frida-tools</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E6%8C%87%E5%AE%9A%E7%89%88%E6%9C%AC%E7%9A%84frida-tools"><span class="nav-number">1.4.2.</span> <span class="nav-text">安装指定版本的frida-tools</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%B8%E8%BD%BDfrida-tools"><span class="nav-number">1.4.3.</span> <span class="nav-text">卸载frida-tools</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%85%8D%E7%BD%AEfrida-server"><span class="nav-number">2.</span> <span class="nav-text">配置frida-server</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BDfrida-server"><span class="nav-number">2.1.</span> <span class="nav-text">下载frida-server</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
