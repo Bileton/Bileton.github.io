@@ -27,11 +27,13 @@
 <meta property="og:site_name" content="白乐天">
 <meta property="og:description" content="安装frida安装使用如下命令安装frida，默认安装最新版的frida 1pip install frida  卸载1pip uninstall frida 指定版本安装指定版本的frida 1pip install frida&#x3D;&#x3D;xx.xx.xx frida-tools（安装frida-tools会自动安装frida）安装frida-tools使用如下命令安装frida-tools，默认安装最">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2024/05/01/frida%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/1.jpg">
 <meta property="article:published_time" content="2024-04-30T16:00:00.000Z">
-<meta property="article:modified_time" content="2024-12-09T17:18:59.569Z">
+<meta property="article:modified_time" content="2024-12-10T16:54:59.676Z">
 <meta property="article:author" content="Bileton">
 <meta property="article:tag" content="frida环境搭建">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2024/05/01/frida%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/1.jpg">
 
 <link rel="canonical" href="http://example.com/2024/05/01/frida%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">
 
@@ -100,6 +102,7 @@
       <h1 class="site-title">白乐天</h1>
       <span class="logo-line-after"><i></i></span>
     </a>
+      <p class="site-subtitle" itemprop="description">道阻且长，行则将至。</p>
   </div>
 
   <div class="site-nav-right">
@@ -126,17 +129,17 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">14</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">17</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">10</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">11</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">19</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">20</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -222,7 +225,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-12-10 01:18:59" itemprop="dateModified" datetime="2024-12-10T01:18:59+08:00">2024-12-10</time>
+                <time title="修改时间：2024-12-11 00:54:59" itemprop="dateModified" datetime="2024-12-11T00:54:59+08:00">2024-12-11</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -240,14 +243,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>619</span>
+              <span>2.6k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
+              <span>2 分钟</span>
             </span>
 
         </div>
@@ -274,6 +277,29 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb push frida-server /data/local/tmp</span><br></pre></td></tr></table></figure>
 <p>通过chmod命令为其赋予可执行权限</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod 777 frida-sever</span><br></pre></td></tr></table></figure>
+<h1 id="frider-server"><a href="#frider-server" class="headerlink" title="frider-server"></a>frider-server</h1><p><strong>frida-server的使用</strong></p>
+<p><img src="/2024/05/01/frida%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/1.jpg"></p>
+<ul>
+<li><code>-l</code>：指定监听地址，设置主机IP和端口。</li>
+<li><code>--version</code>：输出frida-server的版本信息。</li>
+</ul>
+<h1 id="frida"><a href="#frida" class="headerlink" title="frida"></a>frida</h1><p><strong>frida的使用</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">Usage: frida [options] target</span><br><span class="line"></span><br><span class="line">Options:</span><br><span class="line">  --version             show program&#x27;s version number and exit</span><br><span class="line">  -h, --help            show this help message and exit</span><br><span class="line">  -D ID, --device=ID    connect to device with the given ID</span><br><span class="line">  -U, --usb             connect to USB device</span><br><span class="line">  -R, --remote          connect to remote frida-server</span><br><span class="line">  -H HOST, --host=HOST  connect to remote frida-server on HOST</span><br><span class="line">  -f FILE, --file=FILE  spawn FILE</span><br><span class="line">  -F, --attach-frontmost</span><br><span class="line">                        attach to frontmost application</span><br><span class="line">  -n NAME, --attach-name=NAME</span><br><span class="line">                        attach to NAME</span><br><span class="line">  -p PID, --attach-pid=PID</span><br><span class="line">                        attach to PID</span><br><span class="line">  --stdio=inherit|pipe  stdio behavior when spawning (defaults to “inherit”)</span><br><span class="line">  --aux=option          set aux option when spawning, such as “uid=(int)42”</span><br><span class="line">                        (supported types are: string, bool, int)</span><br><span class="line">  --realm=native|emulated</span><br><span class="line">                        realm to attach in</span><br><span class="line">  --runtime=qjs|v8      script runtime to use</span><br><span class="line">  --debug               enable the Node.js compatible script debugger</span><br><span class="line">  --squelch-crash       if enabled, will not dump crash report to console</span><br><span class="line">  -O FILE, --options-file=FILE</span><br><span class="line">                        text file containing additional command line options</span><br><span class="line">  -l SCRIPT, --load=SCRIPT</span><br><span class="line">                        load SCRIPT</span><br><span class="line">  -P PARAMETERS_JSON, --parameters=PARAMETERS_JSON</span><br><span class="line">                        parameters as JSON, same as Gadget</span><br><span class="line">  -C CMODULE, --cmodule=CMODULE</span><br><span class="line">                        load CMODULE</span><br><span class="line">  --toolchain=any|internal|external</span><br><span class="line">                        CModule toolchain to use when compiling from source</span><br><span class="line">                        code</span><br><span class="line">  -c CODESHARE_URI, --codeshare=CODESHARE_URI</span><br><span class="line">                        load CODESHARE_URI</span><br><span class="line">  -e CODE, --eval=CODE  evaluate CODE</span><br><span class="line">  -q                    quiet mode (no prompt) and quit after -l and -e</span><br><span class="line">  --no-pause            automatically start main thread after startup</span><br><span class="line">  -o LOGFILE, --output=LOGFILE</span><br><span class="line">                        output to log file</span><br><span class="line">  --eternalize          eternalize the script before exit</span><br><span class="line">  --exit-on-error       exit with code 1 after encountering any exception in</span><br><span class="line">                        the SCRIPT</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>--version</code><br>显示 frida 的版本号并退出。</li>
+<li><code>-h,--help</code><br>显示帮助信息，列出所有可用选项并退出。</li>
+<li><code>-U, --usb</code><br>通过 USB 连接到设备。</li>
+<li><code>-H HOST, --host=HOST</code><br>连接到指定 HOST 上的远程 frida-server。</li>
+<li><code>-D ID, --device=ID</code><br>连接到指定 ID 的设备。</li>
+<li><code>-f FILE, --file=FILE</code><br>spawn模式，启动指定的文件（启动一个新的进程并挂起）。</li>
+<li><code>-F, --attach-frontmost</code><br>attach模式，附加到前台运行的应用程序。</li>
+<li><code>-n NAME, --attach-name=NAME</code><br>附加到指定名称的应用程序。</li>
+<li><code>-p PID, --attach-pid=PID</code><br>附加到指定进程 ID 的应用程序。</li>
+<li><code>-l SCRIPT, --load=SCRIPT</code><br>加载指定的脚本文件。</li>
+<li><code>--no-pause</code><br>启动后自动启动主线程，通常配合-f选项使用。</li>
+<li><code>-o LOGFILE, --output=LOGFILE</code><br>将输出记录到指定的日志文件中。</li>
+</ul>
+
     </div>
 
     
@@ -356,7 +382,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%85frida"><span class="nav-number">1.</span> <span class="nav-text">安装frida</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-number">1.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%B8%E8%BD%BD"><span class="nav-number">1.2.</span> <span class="nav-text">卸载</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%87%E5%AE%9A%E7%89%88%E6%9C%AC"><span class="nav-number">1.3.</span> <span class="nav-text">指定版本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#frida-tools%EF%BC%88%E5%AE%89%E8%A3%85frida-tools%E4%BC%9A%E8%87%AA%E5%8A%A8%E5%AE%89%E8%A3%85frida%EF%BC%89"><span class="nav-number">1.4.</span> <span class="nav-text">frida-tools（安装frida-tools会自动安装frida）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85frida-tools"><span class="nav-number">1.4.1.</span> <span class="nav-text">安装frida-tools</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E6%8C%87%E5%AE%9A%E7%89%88%E6%9C%AC%E7%9A%84frida-tools"><span class="nav-number">1.4.2.</span> <span class="nav-text">安装指定版本的frida-tools</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%B8%E8%BD%BDfrida-tools"><span class="nav-number">1.4.3.</span> <span class="nav-text">卸载frida-tools</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%85%8D%E7%BD%AEfrida-server"><span class="nav-number">2.</span> <span class="nav-text">配置frida-server</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BDfrida-server"><span class="nav-number">2.1.</span> <span class="nav-text">下载frida-server</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%85frida"><span class="nav-number">1.</span> <span class="nav-text">安装frida</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-number">1.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%B8%E8%BD%BD"><span class="nav-number">1.2.</span> <span class="nav-text">卸载</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%87%E5%AE%9A%E7%89%88%E6%9C%AC"><span class="nav-number">1.3.</span> <span class="nav-text">指定版本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#frida-tools%EF%BC%88%E5%AE%89%E8%A3%85frida-tools%E4%BC%9A%E8%87%AA%E5%8A%A8%E5%AE%89%E8%A3%85frida%EF%BC%89"><span class="nav-number">1.4.</span> <span class="nav-text">frida-tools（安装frida-tools会自动安装frida）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85frida-tools"><span class="nav-number">1.4.1.</span> <span class="nav-text">安装frida-tools</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E6%8C%87%E5%AE%9A%E7%89%88%E6%9C%AC%E7%9A%84frida-tools"><span class="nav-number">1.4.2.</span> <span class="nav-text">安装指定版本的frida-tools</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%B8%E8%BD%BDfrida-tools"><span class="nav-number">1.4.3.</span> <span class="nav-text">卸载frida-tools</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%85%8D%E7%BD%AEfrida-server"><span class="nav-number">2.</span> <span class="nav-text">配置frida-server</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BDfrida-server"><span class="nav-number">2.1.</span> <span class="nav-text">下载frida-server</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#frider-server"><span class="nav-number">3.</span> <span class="nav-text">frider-server</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#frida"><span class="nav-number">4.</span> <span class="nav-text">frida</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -372,20 +398,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">19</span>
+          <span class="site-state-item-count">20</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-count">11</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-count">17</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -426,13 +452,13 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">56k</span>
+    <span title="站点总字数">58k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">51 分钟</span>
+    <span title="站点阅读时长">53 分钟</span>
 </div>
 
 
