@@ -12,17 +12,6 @@
       </tags>
   </entry>
   <entry>
-    <title>C++</title>
-    <url>/2024/02/01/C/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>编程语言</category>
-      </categories>
-      <tags>
-        <tag>C++</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>C语言</title>
     <url>/2024/02/01/C%E8%AF%AD%E8%A8%80/</url>
     <content><![CDATA[<h1 id="stdio-h"><a href="#stdio-h" class="headerlink" title="stdio.h"></a>stdio.h</h1><h2 id="库变量"><a href="#库变量" class="headerlink" title="库变量"></a>库变量</h2><h3 id="size-t"><a href="#size-t" class="headerlink" title="size_t"></a>size_t</h3><p>无符号整数类型，它是 sizeof 关键字的结果。</p>
@@ -71,6 +60,17 @@
       </tags>
   </entry>
   <entry>
+    <title>C++</title>
+    <url>/2024/02/01/C/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>编程语言</category>
+      </categories>
+      <tags>
+        <tag>C++</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Frida检测</title>
     <url>/2024/11/01/Frida%E6%A3%80%E6%B5%8B/</url>
     <content><![CDATA[<h1 id="常见检测方式"><a href="#常见检测方式" class="headerlink" title="常见检测方式"></a>常见检测方式</h1><h2 id="进程名检测"><a href="#进程名检测" class="headerlink" title="进程名检测"></a>进程名检测</h2><p>使用如下命令查看进程</p>
@@ -116,6 +116,142 @@
       </tags>
   </entry>
   <entry>
+    <title>IDA使用指南</title>
+    <url>/2024/12/01/IDA%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/</url>
+    <content><![CDATA[<h1 id="界面"><a href="#界面" class="headerlink" title="界面"></a>界面</h1><h2 id="工具栏（Toolbars）"><a href="#工具栏（Toolbars）" class="headerlink" title="工具栏（Toolbars）"></a>工具栏（Toolbars）</h2><p>工具栏包含常用操作工具。<br>可在<code>View-&gt;Toobars</code>里显示或隐藏工具栏。</p>
+<h2 id="导航栏"><a href="#导航栏" class="headerlink" title="导航栏"></a>导航栏</h2><p>导航栏是被加载⽂件地址空间的线性视图。</p>
+<h1 id="窗口"><a href="#窗口" class="headerlink" title="窗口"></a>窗口</h1><h2 id="反汇编窗口（IDA-View）"><a href="#反汇编窗口（IDA-View）" class="headerlink" title="反汇编窗口（IDA-View）"></a>反汇编窗口（IDA-View）</h2><p>反汇编窗口有两种显示模式，文本模式和图形模式，通过空格键来切换。  </p>
+<ul>
+<li><strong>文本模式</strong><br>显示指令地址、机器码。  </li>
+<li><strong>图形模式</strong><br>观察控制流。<br>可通过<code>Ctrl+鼠标滚轮</code>进行缩放。</li>
+</ul>
+<h2 id="伪代码窗口（Pseudocode）"><a href="#伪代码窗口（Pseudocode）" class="headerlink" title="伪代码窗口（Pseudocode）"></a>伪代码窗口（Pseudocode）</h2><ul>
+<li>将反汇编代码转换为伪代码，按下<code>Tab键</code>或<code>F5</code>。</li>
+<li>将伪代码转换为反汇编代码，按下<code>Tab键</code>。</li>
+<li>在伪代码中根据光标位置按下<code>Tab键</code>可以快速定位到对应语句的汇编代码。</li>
+</ul>
+<h2 id="函数窗口（Functions）"><a href="#函数窗口（Functions）" class="headerlink" title="函数窗口（Functions）"></a>函数窗口（Functions）</h2><p>显示了当前分析的二进制文件中被识别的所有函数。</p>
+<h2 id="输出窗口（Output）"><a href="#输出窗口（Output）" class="headerlink" title="输出窗口（Output）"></a>输出窗口（Output）</h2><p>显⽰的是 IDA 输出的信息。</p>
+<h2 id="字符串表（Strings）"><a href="#字符串表（Strings）" class="headerlink" title="字符串表（Strings）"></a>字符串表（Strings）</h2><p>字符串表会显示IDA所识别出的字符串。</p>
+<ul>
+<li>打开字符串表窗口的快捷键<code>Shift+F12</code>。</li>
+<li>在菜单中打开 <code>View</code>-&gt;<code>Open Subviews</code>-&gt;<code>Strings</code>。</li>
+<li>双击字符串会跳转到字符串所在的数据窗口的位置或反汇编窗口的位置（取决于上一步打开的窗口）。</li>
+</ul>
+<h2 id="数据窗口（Hex-View）"><a href="#数据窗口（Hex-View）" class="headerlink" title="数据窗口（Hex View）"></a>数据窗口（Hex View）</h2><p>以hexdump形式显示程序的数据。</p>
+<ul>
+<li>菜单中的位置 <code>View</code>-&gt;<code>Open subviews</code>-&gt;<code>Hex dump</code>。</li>
+<li>通过<code>F2</code>可以进入编辑模式修改数据，再次按下<code>F2</code>退出编辑模式。</li>
+</ul>
+<h2 id="交叉引用（XREF）"><a href="#交叉引用（XREF）" class="headerlink" title="交叉引用（XREF）"></a>交叉引用（XREF）</h2><p>交叉引用（XREF，Cross Reference）是一个非常重要的工具，用于追踪某个地址、变量或函数在程序中的使用情况。它可以帮助我们快速找到某个符号、数据或函数是如何以及在何处被引用的。</p>
+<ul>
+<li>将光标定位到要进行交叉引用的符号，按下<code>x</code>键打开交叉引用的窗口。</li>
+</ul>
+<p><strong>交叉引用分类</strong></p>
+<ul>
+<li>代码交叉引用  </li>
+<li>数据交叉引用</li>
+</ul>
+<h2 id="Xref-Graph"><a href="#Xref-Graph" class="headerlink" title="Xref Graph"></a>Xref Graph</h2><p>函数调用关系及引用流向</p>
+<h3 id="Xref-graph-to"><a href="#Xref-graph-to" class="headerlink" title="Xref graph to"></a>Xref graph to</h3><ul>
+<li>显示当前函数或地址 “被哪些位置调用或引用” 的关系图。</li>
+<li>用于追踪调用者（Callers），即谁调用了当前函数或谁引用了该地址。</li>
+</ul>
+<p><strong>使用方式</strong><br>选中一个函数或地址后，右键在菜单中选择<code>Xrefs graph to...</code>。</p>
+<h3 id="Xref-graph-from"><a href="#Xref-graph-from" class="headerlink" title="Xref graph from"></a>Xref graph from</h3><ul>
+<li>显示当前函数或地址 “调用或引用了哪些目标” 的关系图。</li>
+<li>用于追踪被调用者（Callees），即当前函数或代码引用了哪些其他函数或地址。</li>
+</ul>
+<h1 id="常用快捷键"><a href="#常用快捷键" class="headerlink" title="常用快捷键"></a>常用快捷键</h1><h2 id="常用操作"><a href="#常用操作" class="headerlink" title="常用操作"></a>常用操作</h2><ul>
+<li><code>F5</code>：生成伪代码，刷新伪代码</li>
+<li><code>ESC</code>：后退，回到上一步操作的视图</li>
+</ul>
+<h2 id="窗口打开"><a href="#窗口打开" class="headerlink" title="窗口打开"></a>窗口打开</h2><ul>
+<li><code>x</code>：交叉引用窗口</li>
+<li><code>Shift + f12</code>：字符串窗口</li>
+<li><code>alt + T</code>：文本搜索窗口（速度慢）</li>
+<li><code>G</code>：地址跳转窗口</li>
+<li><code>Alt + I</code>：快速查找二进制文件中与某个特定值相关的指令或数据</li>
+<li><code>Alt + B</code>：直接在二进制文件中查找特定的字节序列</li>
+</ul>
+<h2 id="代码转换"><a href="#代码转换" class="headerlink" title="代码转换"></a>代码转换</h2><ul>
+<li><code>N</code>：修改变量名</li>
+<li><code>Y</code>：修改变量的类型</li>
+<li><code>Shift + Del</code>： 删除返回值</li>
+<li><code>\</code> ：隐藏与显示casts（类型）</li>
+<li><code>-</code> ：代码折叠（Collapse declarations）</li>
+<li><code>+</code> ：代码展开（Collapse declarations）</li>
+<li><code>/</code> ：行注释</li>
+</ul>
+<h2 id="数据转换"><a href="#数据转换" class="headerlink" title="数据转换"></a>数据转换</h2><ul>
+<li><code>U</code>：取消定义（Undefine）<br>可取消函数、代码或数据的定义。取消定义后，其基础字节将作为原始字节值重新格式化。</li>
+<li><code>C</code>：反汇编一组未定义的字节</li>
+<li><code>D</code>：将代码转换为数据  </li>
+<li><code>P</code>：在代码数据起始位置，按下<code>P</code>键，识别函数（注意光标需要位于起始位置）。<br><strong>整数的数据类型</strong><br>通过<code>D</code>键进行切换  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">db // 1字节</span><br><span class="line">dw // 2字节</span><br><span class="line">dd // 4字节</span><br><span class="line">dq // 8字节</span><br></pre></td></tr></table></figure></li>
+<li><code>H</code>：在十进制数据和十六进制数据之间切换</li>
+<li><code>R</code>：将数据切换为char类型</li>
+</ul>
+<h1 id="工具栏"><a href="#工具栏" class="headerlink" title="工具栏"></a>工具栏</h1><h2 id="锁定功能"><a href="#锁定功能" class="headerlink" title="锁定功能"></a>锁定功能</h2><p><strong>使用方式</strong><br>选中一个函数或地址后，右键在菜单中选择 <code>Xrefs graph from...</code>。</p>
+<h1 id="IDA插件"><a href="#IDA插件" class="headerlink" title="IDA插件"></a>IDA插件</h1><h2 id="LazyIDA-py"><a href="#LazyIDA-py" class="headerlink" title="LazyIDA.py"></a>LazyIDA.py</h2><p><a href="https://github.com/P4nda0s/LazyIDA">https://github.com/P4nda0s/LazyIDA</a>  </p>
+<h3 id="提取数据"><a href="#提取数据" class="headerlink" title="提取数据"></a>提取数据</h3><ul>
+<li>将数据转换为python&#x2F;C的数组形式</li>
+<li>选中数据后，右键，选择Convert，然后选择相应的格式。（注意：这里选中的地址要包含所需地址范围的下一地址）</li>
+</ul>
+<p><img src="/2024/12/01/IDA%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/1.jpg"></p>
+<h3 id="Paste-Data"><a href="#Paste-Data" class="headerlink" title="Paste Data"></a>Paste Data</h3><p>插件修改数据，光标定位到要修改的位置，右键，选择<code>Paste Data</code>，然后输入要修改的内容。</p>
+]]></content>
+      <categories>
+        <category>逆向工具集</category>
+      </categories>
+      <tags>
+        <tag>IDA</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JSON</title>
+    <url>/2024/12/15/JSON/</url>
+    <content><![CDATA[<p>JSON（JavaScript Object Notation）是一种轻量级的数据交换格式，易于人和机器阅读和解析。它基于JavaScript的对象表示法，但被广泛用于多种编程语言。</p>
+<h2 id="JSON中的数据类型"><a href="#JSON中的数据类型" class="headerlink" title="JSON中的数据类型"></a>JSON中的数据类型</h2><ul>
+<li>字符串（String）：用双引号包围，如 “Hello, World!”。</li>
+<li>数字（Number）：如 123、3.14，无引号。</li>
+<li>布尔值（Boolean）：true 或 false。</li>
+<li>数组（Array）：如 [1, 2, “abc”, true]。</li>
+<li>对象（Object）：如 {“name”: “Alice”, “age”: 30}。</li>
+<li>空值（Null）：表示空，如 null。</li>
+</ul>
+<h2 id="JSON的基本语法"><a href="#JSON的基本语法" class="headerlink" title="JSON的基本语法"></a>JSON的基本语法</h2><ul>
+<li>数据在键值对中：每个键值对由键和值组成，格式为 “key”: value。</li>
+<li>数据由逗号分隔：多个键值对之间使用逗号分隔。</li>
+<li>对象由花括号 {} 包围：表示一个无序的键值对集合。</li>
+<li>数组由方括号 [] 包围：表示一个有序的值的集合。</li>
+<li>键 必须是字符串（用双引号包裹），值 可以是字符串、数字、布尔值、数组、对象或 null。</li>
+</ul>
+<h2 id="JSON示例"><a href="#JSON示例" class="headerlink" title="JSON示例"></a>JSON示例</h2><figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;args&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;headers&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;Accept&quot;</span><span class="punctuation">:</span> <span class="string">&quot;text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;Accept-Encoding&quot;</span><span class="punctuation">:</span> <span class="string">&quot;gzip, deflate, br, zstd&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;Accept-Language&quot;</span><span class="punctuation">:</span> <span class="string">&quot;zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;Host&quot;</span><span class="punctuation">:</span> <span class="string">&quot;www.httpbin.org&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;Priority&quot;</span><span class="punctuation">:</span> <span class="string">&quot;u=0, i&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;Sec-Ch-Ua&quot;</span><span class="punctuation">:</span> <span class="string">&quot;\&quot;Chromium\&quot;;v=\&quot;130\&quot;, \&quot;Microsoft Edge\&quot;;v=\&quot;130\&quot;, \&quot;Not?A_Brand\&quot;;v=\&quot;99\&quot;&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;Sec-Ch-Ua-Mobile&quot;</span><span class="punctuation">:</span> <span class="string">&quot;?0&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;Sec-Ch-Ua-Platform&quot;</span><span class="punctuation">:</span> <span class="string">&quot;\&quot;Windows\&quot;&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;Sec-Fetch-Dest&quot;</span><span class="punctuation">:</span> <span class="string">&quot;document&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;Sec-Fetch-Mode&quot;</span><span class="punctuation">:</span> <span class="string">&quot;navigate&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;Sec-Fetch-Site&quot;</span><span class="punctuation">:</span> <span class="string">&quot;none&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;Sec-Fetch-User&quot;</span><span class="punctuation">:</span> <span class="string">&quot;?1&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;Upgrade-Insecure-Requests&quot;</span><span class="punctuation">:</span> <span class="string">&quot;1&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;User-Agent&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36 Edg/130.0.0.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;X-Amzn-Trace-Id&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Root=1-672db183-55e0183d3ee3822d699e15c5&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;origin&quot;</span><span class="punctuation">:</span> <span class="string">&quot;45.32.145.117&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;url&quot;</span><span class="punctuation">:</span> <span class="string">&quot;https://www.httpbin.org/get&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<h2 id="load"><a href="#load" class="headerlink" title="load()"></a>load()</h2><ul>
+<li>从文件对象读取 JSON 格式的数据并将其解析为 Python 对象。</li>
+<li>用于直接从文件中加载 JSON 数据。<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;data.json&#x27;</span>, <span class="string">&#x27;r&#x27;</span>) <span class="keyword">as</span> file:</span><br><span class="line">    data = json.load(file)</span><br><span class="line"><span class="built_in">print</span>(data)</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="loads"><a href="#loads" class="headerlink" title="loads()"></a>loads()</h2><ul>
+<li>从字符串中解析 JSON 格式的数据并将其转换为 Python 对象。</li>
+<li>用于从 JSON 字符串中加载数据。<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br><span class="line">json_string = <span class="string">&#x27;&#123;&quot;name&quot;: &quot;Alice&quot;, &quot;age&quot;: 25&#125;&#x27;</span></span><br><span class="line">data = json.loads(json_string)</span><br><span class="line"><span class="built_in">print</span>(data)</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="dump"><a href="#dump" class="headerlink" title="dump()"></a>dump()</h2><ul>
+<li>将 Python 对象转换为 JSON 格式，并将其写入到文件中。</li>
+<li>用于将 JSON 数据保存到文件。<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br><span class="line">data = &#123;</span><br><span class="line">    <span class="string">&quot;name&quot;</span>: <span class="string">&quot;Bob&quot;</span>,</span><br><span class="line">    <span class="string">&quot;age&quot;</span>: <span class="number">30</span>,</span><br><span class="line">    <span class="string">&quot;isStudent&quot;</span>: <span class="literal">True</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;output.json&#x27;</span>, <span class="string">&#x27;w&#x27;</span>) <span class="keyword">as</span> file:</span><br><span class="line">    json.dump(data, file, indent=<span class="number">4</span>)  <span class="comment"># 使用 indent 参数使输出美观</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="dumps"><a href="#dumps" class="headerlink" title="dumps()"></a>dumps()</h2><ul>
+<li>将 Python 对象转换为 JSON 格式的字符串。</li>
+<li>用于在程序中将 Python 对象转换为 JSON 字符串以便于传输或输出。<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br><span class="line">data = &#123;</span><br><span class="line">    <span class="string">&quot;name&quot;</span>: <span class="string">&quot;Charlie&quot;</span>,</span><br><span class="line">    <span class="string">&quot;age&quot;</span>: <span class="number">22</span>,</span><br><span class="line">    <span class="string">&quot;isStudent&quot;</span>: <span class="literal">False</span></span><br><span class="line">&#125;</span><br><span class="line">json_string = json.dumps(data, indent=<span class="number">4</span>)  <span class="comment"># 使用 indent 参数格式化输出</span></span><br><span class="line"><span class="built_in">print</span>(json_string)</span><br></pre></td></tr></table></figure></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>JSON</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Java</title>
     <url>/2024/05/01/Java/</url>
     <content><![CDATA[]]></content>
@@ -127,44 +263,14 @@
       </tags>
   </entry>
   <entry>
-    <title>IDA使用指南</title>
-    <url>/2024/12/01/IDA%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/</url>
-    <content><![CDATA[<h1 id="视图"><a href="#视图" class="headerlink" title="视图"></a>视图</h1><ul>
-<li>Functions：函数符号窗口，程序中已识别的函数都在这里</li>
-<li>IDA View：反汇编窗口</li>
-<li>Pseudocode：伪代码窗口</li>
-<li>Hex View：十六进制窗口</li>
-<li>Strings：字符串窗口</li>
-<li>Imports：导入符号窗口</li>
-<li>Exports：导出函数符号窗口</li>
-<li>Output：输出窗口</li>
-</ul>
-<h1 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h1><ul>
-<li>x：交叉引用</li>
-<li>f5：反编译，刷新</li>
-<li>shift + f12：打开字符串窗口</li>
-<li>alt + t：搜索字符串</li>
-<li>空格：在IDA View窗口可在图视图和文本视图之间切换</li>
-<li>Tab：在IDA View窗口和Pseudocode窗口之间切换</li>
-<li>N：修改变量名</li>
-<li>Y：修改变量的类型</li>
-<li>G：地址跳转</li>
-<li>\ ：隐藏与显示casts（类型）</li>
-<li>- ：代码折叠（Collapse declarations）</li>
-<li>+ ：代码展开（Collapse declarations）</li>
-<li>ESC ：后退，回到上一步操作的视图</li>
-<li>Shift + Del： 删除返回值</li>
-<li>H ：在十进制数据和十六进制数据之间切换</li>
-<li>R：将数据切换为chat类型</li>
-<li>D：</li>
-<li>&#x2F; ：行注释</li>
-</ul>
-]]></content>
+    <title>Python基础</title>
+    <url>/2024/12/15/Python%E5%9F%BA%E7%A1%80/</url>
+    <content><![CDATA[]]></content>
       <categories>
-        <category>逆向工具集</category>
+        <category>Python</category>
       </categories>
       <tags>
-        <tag>IDA</tag>
+        <tag>Python基础</tag>
       </tags>
   </entry>
   <entry>
@@ -293,42 +399,57 @@
       </tags>
   </entry>
   <entry>
+    <title>frida环境搭建</title>
+    <url>/2024/05/01/frida%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</url>
+    <content><![CDATA[<h1 id="安装frida"><a href="#安装frida" class="headerlink" title="安装frida"></a>安装frida</h1><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>使用如下命令安装frida，默认安装最新版的frida</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pip install frida </span><br></pre></td></tr></table></figure>
+<h2 id="卸载"><a href="#卸载" class="headerlink" title="卸载"></a>卸载</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pip uninstall frida</span><br></pre></td></tr></table></figure>
+<h2 id="指定版本"><a href="#指定版本" class="headerlink" title="指定版本"></a>指定版本</h2><p>安装指定版本的frida</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pip install frida==xx.xx.xx</span><br></pre></td></tr></table></figure>
+<h2 id="frida-tools（安装frida-tools会自动安装frida）"><a href="#frida-tools（安装frida-tools会自动安装frida）" class="headerlink" title="frida-tools（安装frida-tools会自动安装frida）"></a>frida-tools（安装frida-tools会自动安装frida）</h2><h3 id="安装frida-tools"><a href="#安装frida-tools" class="headerlink" title="安装frida-tools"></a>安装frida-tools</h3><p>使用如下命令安装frida-tools，默认安装最新版的frida-tools</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pip install frida-tools</span><br></pre></td></tr></table></figure>
+<h3 id="安装指定版本的frida-tools"><a href="#安装指定版本的frida-tools" class="headerlink" title="安装指定版本的frida-tools"></a>安装指定版本的frida-tools</h3><p>frida 与 frida-tools 版本的对应关系可在github项目处查看或者直接baidu搜索</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pip install frida-tools==xx.xx.xx</span><br></pre></td></tr></table></figure>
+<h3 id="卸载frida-tools"><a href="#卸载frida-tools" class="headerlink" title="卸载frida-tools"></a>卸载frida-tools</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pip uninstall frida-tools</span><br></pre></td></tr></table></figure>
+<h1 id="配置frida-server"><a href="#配置frida-server" class="headerlink" title="配置frida-server"></a>配置frida-server</h1><p>frida-server的版本需要与frida的版本相匹配，同时frida-server的运行平台要与自己的设备和架构相匹配。</p>
+<h2 id="下载frida-server"><a href="#下载frida-server" class="headerlink" title="下载frida-server"></a>下载frida-server</h2><p>在github上下载frida-server。<br>将下载的压缩包解压后通过<code>adb push</code>推送到测试机的&#x2F;data&#x2F;local&#x2F;tmp目录下（需要通过USB连接手机）。  </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">adb push frida-server /data/local/tmp</span><br></pre></td></tr></table></figure>
+<p>通过chmod命令为其赋予可执行权限</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">chmod 777 frida-sever</span><br></pre></td></tr></table></figure>
+<h1 id="frider-server"><a href="#frider-server" class="headerlink" title="frider-server"></a>frider-server</h1><p><strong>frida-server的使用</strong></p>
+<p><img src="/2024/05/01/frida%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/1.jpg"></p>
+<ul>
+<li><code>-l</code>：指定监听地址，设置主机IP和端口。</li>
+<li><code>--version</code>：输出frida-server的版本信息。</li>
+</ul>
+<h1 id="frida"><a href="#frida" class="headerlink" title="frida"></a>frida</h1><p><strong>frida的使用</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Usage: frida [options] target</span><br><span class="line"></span><br><span class="line">Options:</span><br><span class="line">  --version             show program&#x27;s version number and exit</span><br><span class="line">  -h, --help            show this help message and exit</span><br><span class="line">  -D ID, --device=ID    connect to device with the given ID</span><br><span class="line">  -U, --usb             connect to USB device</span><br><span class="line">  -R, --remote          connect to remote frida-server</span><br><span class="line">  -H HOST, --host=HOST  connect to remote frida-server on HOST</span><br><span class="line">  -f FILE, --file=FILE  spawn FILE</span><br><span class="line">  -F, --attach-frontmost</span><br><span class="line">                        attach to frontmost application</span><br><span class="line">  -n NAME, --attach-name=NAME</span><br><span class="line">                        attach to NAME</span><br><span class="line">  -p PID, --attach-pid=PID</span><br><span class="line">                        attach to PID</span><br><span class="line">  --stdio=inherit|pipe  stdio behavior when spawning (defaults to “inherit”)</span><br><span class="line">  --aux=option          set aux option when spawning, such as “uid=(int)42”</span><br><span class="line">                        (supported types are: string, bool, int)</span><br><span class="line">  --realm=native|emulated</span><br><span class="line">                        realm to attach in</span><br><span class="line">  --runtime=qjs|v8      script runtime to use</span><br><span class="line">  --debug               enable the Node.js compatible script debugger</span><br><span class="line">  --squelch-crash       if enabled, will not dump crash report to console</span><br><span class="line">  -O FILE, --options-file=FILE</span><br><span class="line">                        text file containing additional command line options</span><br><span class="line">  -l SCRIPT, --load=SCRIPT</span><br><span class="line">                        load SCRIPT</span><br><span class="line">  -P PARAMETERS_JSON, --parameters=PARAMETERS_JSON</span><br><span class="line">                        parameters as JSON, same as Gadget</span><br><span class="line">  -C CMODULE, --cmodule=CMODULE</span><br><span class="line">                        load CMODULE</span><br><span class="line">  --toolchain=any|internal|external</span><br><span class="line">                        CModule toolchain to use when compiling from source</span><br><span class="line">                        code</span><br><span class="line">  -c CODESHARE_URI, --codeshare=CODESHARE_URI</span><br><span class="line">                        load CODESHARE_URI</span><br><span class="line">  -e CODE, --eval=CODE  evaluate CODE</span><br><span class="line">  -q                    quiet mode (no prompt) and quit after -l and -e</span><br><span class="line">  --no-pause            automatically start main thread after startup</span><br><span class="line">  -o LOGFILE, --output=LOGFILE</span><br><span class="line">                        output to log file</span><br><span class="line">  --eternalize          eternalize the script before exit</span><br><span class="line">  --exit-on-error       exit with code 1 after encountering any exception in</span><br><span class="line">                        the SCRIPT</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>--version</code><br>显示 frida 的版本号并退出。</li>
+<li><code>-h,--help</code><br>显示帮助信息，列出所有可用选项并退出。</li>
+<li><code>-U, --usb</code><br>通过 USB 连接到设备。</li>
+<li><code>-H HOST, --host=HOST</code><br>连接到指定 HOST 上的远程 frida-server。</li>
+<li><code>-D ID, --device=ID</code><br>连接到指定 ID 的设备。</li>
+<li><code>-f FILE, --file=FILE</code><br>spawn模式，启动指定的文件（启动一个新的进程并挂起）。</li>
+<li><code>-F, --attach-frontmost</code><br>attach模式，附加到前台运行的应用程序。</li>
+<li><code>-n NAME, --attach-name=NAME</code><br>附加到指定名称的应用程序。</li>
+<li><code>-p PID, --attach-pid=PID</code><br>附加到指定进程 ID 的应用程序。</li>
+<li><code>-l SCRIPT, --load=SCRIPT</code><br>加载指定的脚本文件。</li>
+<li><code>--no-pause</code><br>启动后自动启动主线程，通常配合-f选项使用。</li>
+<li><code>-o LOGFILE, --output=LOGFILE</code><br>将输出记录到指定的日志文件中。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Frida</category>
+      </categories>
+      <tags>
+        <tag>frida环境搭建</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Python语言</title>
     <url>/2024/02/01/Python%E8%AF%AD%E8%A8%80/</url>
-    <content><![CDATA[<h1 id="json"><a href="#json" class="headerlink" title="json"></a>json</h1><p>JSON（JavaScript Object Notation）是一种轻量级的数据交换格式，易于人和机器阅读和解析。它基于JavaScript的对象表示法，但被广泛用于多种编程语言。</p>
-<h2 id="JSON中的数据类型"><a href="#JSON中的数据类型" class="headerlink" title="JSON中的数据类型"></a>JSON中的数据类型</h2><ul>
-<li>字符串（String）：用双引号包围，如 “Hello, World!”。</li>
-<li>数字（Number）：如 123、3.14，无引号。</li>
-<li>布尔值（Boolean）：true 或 false。</li>
-<li>数组（Array）：如 [1, 2, “abc”, true]。</li>
-<li>对象（Object）：如 {“name”: “Alice”, “age”: 30}。</li>
-<li>空值（Null）：表示空，如 null。</li>
-</ul>
-<h2 id="JSON的基本语法"><a href="#JSON的基本语法" class="headerlink" title="JSON的基本语法"></a>JSON的基本语法</h2><ul>
-<li>数据在键值对中：每个键值对由键和值组成，格式为 “key”: value。</li>
-<li>数据由逗号分隔：多个键值对之间使用逗号分隔。</li>
-<li>对象由花括号 {} 包围：表示一个无序的键值对集合。</li>
-<li>数组由方括号 [] 包围：表示一个有序的值的集合。</li>
-<li>键 必须是字符串（用双引号包裹），值 可以是字符串、数字、布尔值、数组、对象或 null。</li>
-</ul>
-<h2 id="JSON示例"><a href="#JSON示例" class="headerlink" title="JSON示例"></a>JSON示例</h2><figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;args&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;headers&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;Accept&quot;</span><span class="punctuation">:</span> <span class="string">&quot;text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;Accept-Encoding&quot;</span><span class="punctuation">:</span> <span class="string">&quot;gzip, deflate, br, zstd&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;Accept-Language&quot;</span><span class="punctuation">:</span> <span class="string">&quot;zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;Host&quot;</span><span class="punctuation">:</span> <span class="string">&quot;www.httpbin.org&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;Priority&quot;</span><span class="punctuation">:</span> <span class="string">&quot;u=0, i&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;Sec-Ch-Ua&quot;</span><span class="punctuation">:</span> <span class="string">&quot;\&quot;Chromium\&quot;;v=\&quot;130\&quot;, \&quot;Microsoft Edge\&quot;;v=\&quot;130\&quot;, \&quot;Not?A_Brand\&quot;;v=\&quot;99\&quot;&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;Sec-Ch-Ua-Mobile&quot;</span><span class="punctuation">:</span> <span class="string">&quot;?0&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;Sec-Ch-Ua-Platform&quot;</span><span class="punctuation">:</span> <span class="string">&quot;\&quot;Windows\&quot;&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;Sec-Fetch-Dest&quot;</span><span class="punctuation">:</span> <span class="string">&quot;document&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;Sec-Fetch-Mode&quot;</span><span class="punctuation">:</span> <span class="string">&quot;navigate&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;Sec-Fetch-Site&quot;</span><span class="punctuation">:</span> <span class="string">&quot;none&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;Sec-Fetch-User&quot;</span><span class="punctuation">:</span> <span class="string">&quot;?1&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;Upgrade-Insecure-Requests&quot;</span><span class="punctuation">:</span> <span class="string">&quot;1&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;User-Agent&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36 Edg/130.0.0.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;X-Amzn-Trace-Id&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Root=1-672db183-55e0183d3ee3822d699e15c5&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;origin&quot;</span><span class="punctuation">:</span> <span class="string">&quot;45.32.145.117&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;url&quot;</span><span class="punctuation">:</span> <span class="string">&quot;https://www.httpbin.org/get&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
-<h2 id="load"><a href="#load" class="headerlink" title="load()"></a>load()</h2><ul>
-<li>从文件对象读取 JSON 格式的数据并将其解析为 Python 对象。</li>
-<li>用于直接从文件中加载 JSON 数据。<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;data.json&#x27;</span>, <span class="string">&#x27;r&#x27;</span>) <span class="keyword">as</span> file:</span><br><span class="line">    data = json.load(file)</span><br><span class="line"><span class="built_in">print</span>(data)</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="loads"><a href="#loads" class="headerlink" title="loads()"></a>loads()</h2><ul>
-<li>从字符串中解析 JSON 格式的数据并将其转换为 Python 对象。</li>
-<li>用于从 JSON 字符串中加载数据。<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br><span class="line">json_string = <span class="string">&#x27;&#123;&quot;name&quot;: &quot;Alice&quot;, &quot;age&quot;: 25&#125;&#x27;</span></span><br><span class="line">data = json.loads(json_string)</span><br><span class="line"><span class="built_in">print</span>(data)</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="dump"><a href="#dump" class="headerlink" title="dump()"></a>dump()</h2><ul>
-<li>将 Python 对象转换为 JSON 格式，并将其写入到文件中。</li>
-<li>用于将 JSON 数据保存到文件。<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br><span class="line">data = &#123;</span><br><span class="line">    <span class="string">&quot;name&quot;</span>: <span class="string">&quot;Bob&quot;</span>,</span><br><span class="line">    <span class="string">&quot;age&quot;</span>: <span class="number">30</span>,</span><br><span class="line">    <span class="string">&quot;isStudent&quot;</span>: <span class="literal">True</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;output.json&#x27;</span>, <span class="string">&#x27;w&#x27;</span>) <span class="keyword">as</span> file:</span><br><span class="line">    json.dump(data, file, indent=<span class="number">4</span>)  <span class="comment"># 使用 indent 参数使输出美观</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="dumps"><a href="#dumps" class="headerlink" title="dumps()"></a>dumps()</h2><ul>
-<li>将 Python 对象转换为 JSON 格式的字符串。</li>
-<li>用于在程序中将 Python 对象转换为 JSON 字符串以便于传输或输出。<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br><span class="line">data = &#123;</span><br><span class="line">    <span class="string">&quot;name&quot;</span>: <span class="string">&quot;Charlie&quot;</span>,</span><br><span class="line">    <span class="string">&quot;age&quot;</span>: <span class="number">22</span>,</span><br><span class="line">    <span class="string">&quot;isStudent&quot;</span>: <span class="literal">False</span></span><br><span class="line">&#125;</span><br><span class="line">json_string = json.dumps(data, indent=<span class="number">4</span>)  <span class="comment"># 使用 indent 参数格式化输出</span></span><br><span class="line"><span class="built_in">print</span>(json_string)</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h1 id="requests"><a href="#requests" class="headerlink" title="requests"></a>requests</h1><h2 id="request"><a href="#request" class="headerlink" title="request()"></a>request()</h2><p>requests.request() 是一个通用的函数，它接受 HTTP 方法（如 “get”、”post”、”put” 等）和各种可选参数来构造请求，并返回 Response 对象。</p>
+    <content><![CDATA[<h1 id="requests"><a href="#requests" class="headerlink" title="requests"></a>requests</h1><h2 id="request"><a href="#request" class="headerlink" title="request()"></a>request()</h2><p>requests.request() 是一个通用的函数，它接受 HTTP 方法（如 “get”、”post”、”put” 等）和各种可选参数来构造请求，并返回 Response 对象。</p>
 <figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">request</span>(<span class="params">method, url, **kwargs</span>):</span><br></pre></td></tr></table></figure>
 <h2 id="get"><a href="#get" class="headerlink" title="get()"></a>get()</h2><p>get请求</p>
 <figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">get</span>(<span class="params">url, params=<span class="literal">None</span>, **kwargs</span>):</span><br><span class="line">    <span class="keyword">return</span> request(<span class="string">&quot;get&quot;</span>, url, params=params, **kwargs)</span><br><span class="line"></span><br><span class="line"><span class="comment"># url：请求的目标 URL。这个是必需的参数。</span></span><br><span class="line"><span class="comment"># params：可选参数，表示要发送的查询字符串数据。可以是字典、元组列表或字节流。默认值为 None，表示没有查询参数。</span></span><br><span class="line"><span class="comment"># kwargs：其他可选的关键字参数，传递给 requests 库的 request 函数。这些参数可以包括 headers、cookies、timeout 等。</span></span><br><span class="line"><span class="comment"># 返回值：返回一个Response对象。</span></span><br></pre></td></tr></table></figure>
@@ -341,7 +462,7 @@
 <h4 id="status-code"><a href="#status-code" class="headerlink" title="status_code"></a>status_code</h4><p>返回状态码</p>
 <h4 id="text"><a href="#text" class="headerlink" title="text"></a>text</h4><p>以unicode形式返回响应的内容</p>
 <h4 id="url"><a href="#url" class="headerlink" title="url"></a>url</h4><p>返回响应的URL</p>
-<h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><h4 id="json-1"><a href="#json-1" class="headerlink" title="json()"></a>json()</h4><p>返回JSON对象结果。</p>
+<h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><h4 id="json"><a href="#json" class="headerlink" title="json()"></a>json()</h4><p>返回JSON对象结果。</p>
 <h4 id="close"><a href="#close" class="headerlink" title="close()"></a>close()</h4><p>关闭与服务器的连接</p>
 <h1 id="re"><a href="#re" class="headerlink" title="re"></a>re</h1><p><strong>正则表达式</strong></p>
 <h2 id="常用匹配规则"><a href="#常用匹配规则" class="headerlink" title="常用匹配规则"></a>常用匹配规则</h2><h3 id="元字符"><a href="#元字符" class="headerlink" title="元字符"></a>元字符</h3><table>
@@ -608,6 +729,24 @@
       </tags>
   </entry>
   <entry>
+    <title>Hello World</title>
+    <url>/2024/11/28/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
+  </entry>
+  <entry>
     <title>adb: Android调试桥</title>
     <url>/2024/12/07/adb-Android%E8%B0%83%E8%AF%95%E6%A1%A5/</url>
     <content><![CDATA[<p>Android 调试桥 (adb) 是一种功能多样的命令行工具，可以通过命令行与设备进行通信。</p>
@@ -653,72 +792,6 @@
       <tags>
         <tag>adb</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>frida环境搭建</title>
-    <url>/2024/05/01/frida%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</url>
-    <content><![CDATA[<h1 id="安装frida"><a href="#安装frida" class="headerlink" title="安装frida"></a>安装frida</h1><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>使用如下命令安装frida，默认安装最新版的frida</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pip install frida </span><br></pre></td></tr></table></figure>
-<h2 id="卸载"><a href="#卸载" class="headerlink" title="卸载"></a>卸载</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pip uninstall frida</span><br></pre></td></tr></table></figure>
-<h2 id="指定版本"><a href="#指定版本" class="headerlink" title="指定版本"></a>指定版本</h2><p>安装指定版本的frida</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pip install frida==xx.xx.xx</span><br></pre></td></tr></table></figure>
-<h2 id="frida-tools（安装frida-tools会自动安装frida）"><a href="#frida-tools（安装frida-tools会自动安装frida）" class="headerlink" title="frida-tools（安装frida-tools会自动安装frida）"></a>frida-tools（安装frida-tools会自动安装frida）</h2><h3 id="安装frida-tools"><a href="#安装frida-tools" class="headerlink" title="安装frida-tools"></a>安装frida-tools</h3><p>使用如下命令安装frida-tools，默认安装最新版的frida-tools</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pip install frida-tools</span><br></pre></td></tr></table></figure>
-<h3 id="安装指定版本的frida-tools"><a href="#安装指定版本的frida-tools" class="headerlink" title="安装指定版本的frida-tools"></a>安装指定版本的frida-tools</h3><p>frida 与 frida-tools 版本的对应关系可在github项目处查看或者直接baidu搜索</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pip install frida-tools==xx.xx.xx</span><br></pre></td></tr></table></figure>
-<h3 id="卸载frida-tools"><a href="#卸载frida-tools" class="headerlink" title="卸载frida-tools"></a>卸载frida-tools</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pip uninstall frida-tools</span><br></pre></td></tr></table></figure>
-<h1 id="配置frida-server"><a href="#配置frida-server" class="headerlink" title="配置frida-server"></a>配置frida-server</h1><p>frida-server的版本需要与frida的版本相匹配，同时frida-server的运行平台要与自己的设备和架构相匹配。</p>
-<h2 id="下载frida-server"><a href="#下载frida-server" class="headerlink" title="下载frida-server"></a>下载frida-server</h2><p>在github上下载frida-server。<br>将下载的压缩包解压后通过<code>adb push</code>推送到测试机的&#x2F;data&#x2F;local&#x2F;tmp目录下（需要通过USB连接手机）。  </p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">adb push frida-server /data/local/tmp</span><br></pre></td></tr></table></figure>
-<p>通过chmod命令为其赋予可执行权限</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">chmod 777 frida-sever</span><br></pre></td></tr></table></figure>
-<h1 id="frider-server"><a href="#frider-server" class="headerlink" title="frider-server"></a>frider-server</h1><p><strong>frida-server的使用</strong></p>
-<p><img src="/2024/05/01/frida%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/1.jpg"></p>
-<ul>
-<li><code>-l</code>：指定监听地址，设置主机IP和端口。</li>
-<li><code>--version</code>：输出frida-server的版本信息。</li>
-</ul>
-<h1 id="frida"><a href="#frida" class="headerlink" title="frida"></a>frida</h1><p><strong>frida的使用</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Usage: frida [options] target</span><br><span class="line"></span><br><span class="line">Options:</span><br><span class="line">  --version             show program&#x27;s version number and exit</span><br><span class="line">  -h, --help            show this help message and exit</span><br><span class="line">  -D ID, --device=ID    connect to device with the given ID</span><br><span class="line">  -U, --usb             connect to USB device</span><br><span class="line">  -R, --remote          connect to remote frida-server</span><br><span class="line">  -H HOST, --host=HOST  connect to remote frida-server on HOST</span><br><span class="line">  -f FILE, --file=FILE  spawn FILE</span><br><span class="line">  -F, --attach-frontmost</span><br><span class="line">                        attach to frontmost application</span><br><span class="line">  -n NAME, --attach-name=NAME</span><br><span class="line">                        attach to NAME</span><br><span class="line">  -p PID, --attach-pid=PID</span><br><span class="line">                        attach to PID</span><br><span class="line">  --stdio=inherit|pipe  stdio behavior when spawning (defaults to “inherit”)</span><br><span class="line">  --aux=option          set aux option when spawning, such as “uid=(int)42”</span><br><span class="line">                        (supported types are: string, bool, int)</span><br><span class="line">  --realm=native|emulated</span><br><span class="line">                        realm to attach in</span><br><span class="line">  --runtime=qjs|v8      script runtime to use</span><br><span class="line">  --debug               enable the Node.js compatible script debugger</span><br><span class="line">  --squelch-crash       if enabled, will not dump crash report to console</span><br><span class="line">  -O FILE, --options-file=FILE</span><br><span class="line">                        text file containing additional command line options</span><br><span class="line">  -l SCRIPT, --load=SCRIPT</span><br><span class="line">                        load SCRIPT</span><br><span class="line">  -P PARAMETERS_JSON, --parameters=PARAMETERS_JSON</span><br><span class="line">                        parameters as JSON, same as Gadget</span><br><span class="line">  -C CMODULE, --cmodule=CMODULE</span><br><span class="line">                        load CMODULE</span><br><span class="line">  --toolchain=any|internal|external</span><br><span class="line">                        CModule toolchain to use when compiling from source</span><br><span class="line">                        code</span><br><span class="line">  -c CODESHARE_URI, --codeshare=CODESHARE_URI</span><br><span class="line">                        load CODESHARE_URI</span><br><span class="line">  -e CODE, --eval=CODE  evaluate CODE</span><br><span class="line">  -q                    quiet mode (no prompt) and quit after -l and -e</span><br><span class="line">  --no-pause            automatically start main thread after startup</span><br><span class="line">  -o LOGFILE, --output=LOGFILE</span><br><span class="line">                        output to log file</span><br><span class="line">  --eternalize          eternalize the script before exit</span><br><span class="line">  --exit-on-error       exit with code 1 after encountering any exception in</span><br><span class="line">                        the SCRIPT</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<ul>
-<li><code>--version</code><br>显示 frida 的版本号并退出。</li>
-<li><code>-h,--help</code><br>显示帮助信息，列出所有可用选项并退出。</li>
-<li><code>-U, --usb</code><br>通过 USB 连接到设备。</li>
-<li><code>-H HOST, --host=HOST</code><br>连接到指定 HOST 上的远程 frida-server。</li>
-<li><code>-D ID, --device=ID</code><br>连接到指定 ID 的设备。</li>
-<li><code>-f FILE, --file=FILE</code><br>spawn模式，启动指定的文件（启动一个新的进程并挂起）。</li>
-<li><code>-F, --attach-frontmost</code><br>attach模式，附加到前台运行的应用程序。</li>
-<li><code>-n NAME, --attach-name=NAME</code><br>附加到指定名称的应用程序。</li>
-<li><code>-p PID, --attach-pid=PID</code><br>附加到指定进程 ID 的应用程序。</li>
-<li><code>-l SCRIPT, --load=SCRIPT</code><br>加载指定的脚本文件。</li>
-<li><code>--no-pause</code><br>启动后自动启动主线程，通常配合-f选项使用。</li>
-<li><code>-o LOGFILE, --output=LOGFILE</code><br>将输出记录到指定的日志文件中。</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Frida</category>
-      </categories>
-      <tags>
-        <tag>frida环境搭建</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hello World</title>
-    <url>/2024/11/28/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-]]></content>
   </entry>
   <entry>
     <title>hexo+github从0到1博客环境搭建</title>
@@ -877,6 +950,32 @@
       </tags>
   </entry>
   <entry>
+    <title>selenium</title>
+    <url>/2024/12/05/selenium/</url>
+    <content><![CDATA[<p>Selenium 是一个自动化测试工具，利用它我们可以驱动浏览器执行特定的动作。</p>
+<h1 id="安装ChromeDriver"><a href="#安装ChromeDriver" class="headerlink" title="安装ChromeDriver"></a>安装ChromeDriver</h1><p>Selenium的使用需要配合Chrome浏览器，需要额外安装ChromeDriver 和 Chrome 浏览器。<br>安装好Chrome 浏览器并可以正常运行之后，点击 Chrome 的菜单，帮助 -&gt; 关于 Chrome，查看 Chrome 的版本号，然后到ChromeDriver 的官方网站<a href="https://sites.google.com/chromium.org/driver/downloads">https://sites.google.com/chromium.org/driver/downloads</a>下载对应的ChromeDriver 版本。</p>
+<h2 id="环境变量配置"><a href="#环境变量配置" class="headerlink" title="环境变量配置"></a>环境变量配置</h2><p>Windows建议直接将 chromedriver.exe 文件拖到 Python 的 Scripts 目录下。<br>也可以单独将其所在路径配置到环境变量。<br>配置完成之后，就可以在命令行下直接执行 chromedriver 命令了。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">chromedriver</span><br></pre></td></tr></table></figure>
+<h1 id="安装Selenium"><a href="#安装Selenium" class="headerlink" title="安装Selenium"></a>安装Selenium</h1><p>使用pip直接安装</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pip install selenium</span><br></pre></td></tr></table></figure>
+<p><strong>可以运行一个脚本测试</strong><br>弹出一个 Chrome 浏览器并加载了百度页面，10 秒之后就关闭。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"><span class="keyword">from</span> time <span class="keyword">import</span> sleep</span><br><span class="line"></span><br><span class="line">browser = webdriver.Chrome()</span><br><span class="line">browser.get(<span class="string">&#x27;https://www.baidu.com&#x27;</span>)</span><br><span class="line">sleep(<span class="number">10</span>)</span><br><span class="line">browser.close() </span><br></pre></td></tr></table></figure>
+<h1 id="常用浏览器操作"><a href="#常用浏览器操作" class="headerlink" title="常用浏览器操作"></a>常用浏览器操作</h1><h2 id="打开页面"><a href="#打开页面" class="headerlink" title="打开页面"></a>打开页面</h2><figure class="highlight py"><table><tr><td class="code"><pre><span class="line">driver.get(<span class="string">&quot;https://xxx.com&quot;</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="获取URL"><a href="#获取URL" class="headerlink" title="获取URL"></a>获取URL</h2><figure class="highlight py"><table><tr><td class="code"><pre><span class="line">url = driver.current_url</span><br></pre></td></tr></table></figure>
+<h2 id="获取标题"><a href="#获取标题" class="headerlink" title="获取标题"></a>获取标题</h2><figure class="highlight py"><table><tr><td class="code"><pre><span class="line">title = driver.title</span><br></pre></td></tr></table></figure>
+
+<h2 id="页面元素定位"><a href="#页面元素定位" class="headerlink" title="页面元素定位"></a>页面元素定位</h2><p>使用By类型（需要导入By）  </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">from selenium.webdriver.common.by import By</span><br></pre></td></tr></table></figure>
+<h3 id="通过ID定位"><a href="#通过ID定位" class="headerlink" title="通过ID定位"></a>通过ID定位</h3><figure class="highlight py"><table><tr><td class="code"><pre><span class="line">element = driver.find_element(By.ID, <span class="string">&quot;xxx&quot;</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="通过"><a href="#通过" class="headerlink" title="通过"></a>通过</h3>]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>selenium</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>抓包</title>
     <url>/2024/12/02/%E6%8A%93%E5%8C%85/</url>
     <content><![CDATA[<h1 id="HTTP抓包"><a href="#HTTP抓包" class="headerlink" title="HTTP抓包"></a>HTTP抓包</h1><p>对于HTTP的包是可以通过抓包工具+配置手机代理直接抓取的。</p>
@@ -913,29 +1012,26 @@
       </tags>
   </entry>
   <entry>
-    <title>selenium</title>
-    <url>/2024/12/05/selenium/</url>
-    <content><![CDATA[<p>Selenium 是一个自动化测试工具，利用它我们可以驱动浏览器执行特定的动作。</p>
-<h1 id="安装ChromeDriver"><a href="#安装ChromeDriver" class="headerlink" title="安装ChromeDriver"></a>安装ChromeDriver</h1><p>Selenium的使用需要配合Chrome浏览器，需要额外安装ChromeDriver 和 Chrome 浏览器。<br>安装好Chrome 浏览器并可以正常运行之后，点击 Chrome 的菜单，帮助 -&gt; 关于 Chrome，查看 Chrome 的版本号，然后到ChromeDriver 的官方网站<a href="https://sites.google.com/chromium.org/driver/downloads">https://sites.google.com/chromium.org/driver/downloads</a>下载对应的ChromeDriver 版本。</p>
-<h2 id="环境变量配置"><a href="#环境变量配置" class="headerlink" title="环境变量配置"></a>环境变量配置</h2><p>Windows建议直接将 chromedriver.exe 文件拖到 Python 的 Scripts 目录下。<br>也可以单独将其所在路径配置到环境变量。<br>配置完成之后，就可以在命令行下直接执行 chromedriver 命令了。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">chromedriver</span><br></pre></td></tr></table></figure>
-<h1 id="安装Selenium"><a href="#安装Selenium" class="headerlink" title="安装Selenium"></a>安装Selenium</h1><p>使用pip直接安装</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pip install selenium</span><br></pre></td></tr></table></figure>
-<p><strong>可以运行一个脚本测试</strong><br>弹出一个 Chrome 浏览器并加载了百度页面，10 秒之后就关闭。</p>
-<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"><span class="keyword">from</span> time <span class="keyword">import</span> sleep</span><br><span class="line"></span><br><span class="line">browser = webdriver.Chrome()</span><br><span class="line">browser.get(<span class="string">&#x27;https://www.baidu.com&#x27;</span>)</span><br><span class="line">sleep(<span class="number">10</span>)</span><br><span class="line">browser.close() </span><br></pre></td></tr></table></figure>
-<h1 id="常用浏览器操作"><a href="#常用浏览器操作" class="headerlink" title="常用浏览器操作"></a>常用浏览器操作</h1><h2 id="打开页面"><a href="#打开页面" class="headerlink" title="打开页面"></a>打开页面</h2><figure class="highlight py"><table><tr><td class="code"><pre><span class="line">driver.get(<span class="string">&quot;https://xxx.com&quot;</span>)</span><br></pre></td></tr></table></figure>
-<h2 id="获取URL"><a href="#获取URL" class="headerlink" title="获取URL"></a>获取URL</h2><figure class="highlight py"><table><tr><td class="code"><pre><span class="line">url = driver.current_url</span><br></pre></td></tr></table></figure>
-<h2 id="获取标题"><a href="#获取标题" class="headerlink" title="获取标题"></a>获取标题</h2><figure class="highlight py"><table><tr><td class="code"><pre><span class="line">title = driver.title</span><br></pre></td></tr></table></figure>
-
-<h2 id="页面元素定位"><a href="#页面元素定位" class="headerlink" title="页面元素定位"></a>页面元素定位</h2><p>使用By类型（需要导入By）  </p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">from selenium.webdriver.common.by import By</span><br></pre></td></tr></table></figure>
-<h3 id="通过ID定位"><a href="#通过ID定位" class="headerlink" title="通过ID定位"></a>通过ID定位</h3><figure class="highlight py"><table><tr><td class="code"><pre><span class="line">element = driver.find_element(By.ID, <span class="string">&quot;xxx&quot;</span>)</span><br></pre></td></tr></table></figure>
-<h3 id="通过"><a href="#通过" class="headerlink" title="通过"></a>通过</h3>]]></content>
+    <title>数据结构</title>
+    <url>/2024/02/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</url>
+    <content><![CDATA[<h1 id="线性表"><a href="#线性表" class="headerlink" title="线性表"></a>线性表</h1><p>线性表（Linear List）是由一组数据元素按一定的顺序排列组成的集合。<br><strong>线性表的基本操作</strong>  </p>
+<ul>
+<li>初始化：初始化线性表为空。</li>
+<li>插入：在指定位置插入元素。</li>
+<li>删除：删除指定位置的元素。</li>
+<li>查找：查找某个元素的位置。</li>
+<li>访问：通过索引访问指定位置的元素。</li>
+<li>遍历：从头到尾依次访问线性表中的每个元素。</li>
+<li>长度：获取线性表中的元素个数。</li>
+</ul>
+<h2 id="顺序表"><a href="#顺序表" class="headerlink" title="顺序表"></a>顺序表</h2><p>顺序表是一种线性表的实现方式，其核心思想是将线性表中的元素存储在一块连续的内存空间中。<br>顺序表通常是使用数组来实现的，元素可以通过索引直接访问。</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MAX_SIZE 100  <span class="comment">// 假设顺序表最大容量为100</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义顺序表结构体</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> &#123;</span></span><br><span class="line">    <span class="type">int</span> data[MAX_SIZE];  <span class="comment">// 存储数据的数组</span></span><br><span class="line">    <span class="type">int</span> length;          <span class="comment">// 顺序表当前长度</span></span><br><span class="line">&#125; SeqList;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 初始化顺序表</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">initSeqList</span><span class="params">(SeqList* <span class="built_in">list</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">list</span>-&gt;length = <span class="number">0</span>;  <span class="comment">// 初始化为空表</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 判断顺序表是否为空</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">isEmpty</span><span class="params">(SeqList* <span class="built_in">list</span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">list</span>-&gt;length == <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 判断顺序表是否已满</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">isFull</span><span class="params">(SeqList* <span class="built_in">list</span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">list</span>-&gt;length == MAX_SIZE;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 插入元素到顺序表</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">insert</span><span class="params">(SeqList* <span class="built_in">list</span>, <span class="type">int</span> index, <span class="type">int</span> value)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (index &lt; <span class="number">0</span> || index &gt; <span class="built_in">list</span>-&gt;length || isFull(<span class="built_in">list</span>)) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;  <span class="comment">// 插入位置不合法或顺序表已满</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 将index及其后面的元素右移一位</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="built_in">list</span>-&gt;length; i &gt; index; --i) &#123;</span><br><span class="line">        <span class="built_in">list</span>-&gt;data[i] = <span class="built_in">list</span>-&gt;data[i - <span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">list</span>-&gt;data[index] = value;</span><br><span class="line">    <span class="built_in">list</span>-&gt;length++;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 删除顺序表中指定位置的元素</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">delete</span><span class="params">(SeqList* <span class="built_in">list</span>, <span class="type">int</span> index)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (index &lt; <span class="number">0</span> || index &gt;= <span class="built_in">list</span>-&gt;length) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;  <span class="comment">// 删除位置不合法</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 将index后面的元素左移一位</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = index; i &lt; <span class="built_in">list</span>-&gt;length - <span class="number">1</span>; ++i) &#123;</span><br><span class="line">        <span class="built_in">list</span>-&gt;data[i] = <span class="built_in">list</span>-&gt;data[i + <span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">list</span>-&gt;length--;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 查找元素在顺序表中的位置</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">find</span><span class="params">(SeqList* <span class="built_in">list</span>, <span class="type">int</span> value)</span> &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="built_in">list</span>-&gt;length; ++i) &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">list</span>-&gt;data[i] == value) &#123;</span><br><span class="line">            <span class="keyword">return</span> i;  <span class="comment">// 找到元素，返回其位置</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;  <span class="comment">// 未找到元素</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 访问顺序表中的指定元素</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">get</span><span class="params">(SeqList* <span class="built_in">list</span>, <span class="type">int</span> index)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (index &lt; <span class="number">0</span> || index &gt;= <span class="built_in">list</span>-&gt;length) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;  <span class="comment">// 索引越界</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">list</span>-&gt;data[index];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 打印顺序表中的所有元素</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">printSeqList</span><span class="params">(SeqList* <span class="built_in">list</span>)</span> &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="built_in">list</span>-&gt;length; ++i) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, <span class="built_in">list</span>-&gt;data[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取顺序表的长度</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">getLength</span><span class="params">(SeqList* <span class="built_in">list</span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">list</span>-&gt;length;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    SeqList <span class="built_in">list</span>;</span><br><span class="line">    initSeqList(&amp;<span class="built_in">list</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 插入元素</span></span><br><span class="line">    insert(&amp;<span class="built_in">list</span>, <span class="number">0</span>, <span class="number">10</span>);  <span class="comment">// 插入10到位置0</span></span><br><span class="line">    insert(&amp;<span class="built_in">list</span>, <span class="number">1</span>, <span class="number">20</span>);  <span class="comment">// 插入20到位置1</span></span><br><span class="line">    insert(&amp;<span class="built_in">list</span>, <span class="number">2</span>, <span class="number">30</span>);  <span class="comment">// 插入30到位置2</span></span><br><span class="line">    insert(&amp;<span class="built_in">list</span>, <span class="number">1</span>, <span class="number">15</span>);  <span class="comment">// 插入15到位置1</span></span><br><span class="line">    printSeqList(&amp;<span class="built_in">list</span>);    <span class="comment">// 输出：10 15 20 30</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 查找元素</span></span><br><span class="line">    <span class="type">int</span> index = find(&amp;<span class="built_in">list</span>, <span class="number">20</span>);</span><br><span class="line">    <span class="keyword">if</span> (index != <span class="number">-1</span>) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;元素20在顺序表中的位置：%d\n&quot;</span>, index);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;未找到元素20\n&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 访问元素</span></span><br><span class="line">    <span class="type">int</span> value = get(&amp;<span class="built_in">list</span>, <span class="number">2</span>);</span><br><span class="line">    <span class="keyword">if</span> (value != <span class="number">-1</span>) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;顺序表中索引2的元素是：%d\n&quot;</span>, value);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 删除元素</span></span><br><span class="line">    delete(&amp;<span class="built_in">list</span>, <span class="number">1</span>);      <span class="comment">// 删除位置1的元素</span></span><br><span class="line">    printSeqList(&amp;<span class="built_in">list</span>);    <span class="comment">// 输出：10 20 30</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
       <categories>
-        <category>Python</category>
+        <category>数据结构</category>
       </categories>
       <tags>
-        <tag>selenium</tag>
+        <tag>数据结构</tag>
       </tags>
   </entry>
   <entry>
@@ -957,29 +1053,6 @@
       </categories>
       <tags>
         <tag>玩转Python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>数据结构</title>
-    <url>/2024/02/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</url>
-    <content><![CDATA[<h1 id="线性表"><a href="#线性表" class="headerlink" title="线性表"></a>线性表</h1><p>线性表（Linear List）是由一组数据元素按一定的顺序排列组成的集合。<br><strong>线性表的基本操作</strong>  </p>
-<ul>
-<li>初始化：初始化线性表为空。</li>
-<li>插入：在指定位置插入元素。</li>
-<li>删除：删除指定位置的元素。</li>
-<li>查找：查找某个元素的位置。</li>
-<li>访问：通过索引访问指定位置的元素。</li>
-<li>遍历：从头到尾依次访问线性表中的每个元素。</li>
-<li>长度：获取线性表中的元素个数。</li>
-</ul>
-<h2 id="顺序表"><a href="#顺序表" class="headerlink" title="顺序表"></a>顺序表</h2><p>顺序表是一种线性表的实现方式，其核心思想是将线性表中的元素存储在一块连续的内存空间中。<br>顺序表通常是使用数组来实现的，元素可以通过索引直接访问。</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MAX_SIZE 100  <span class="comment">// 假设顺序表最大容量为100</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义顺序表结构体</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> &#123;</span></span><br><span class="line">    <span class="type">int</span> data[MAX_SIZE];  <span class="comment">// 存储数据的数组</span></span><br><span class="line">    <span class="type">int</span> length;          <span class="comment">// 顺序表当前长度</span></span><br><span class="line">&#125; SeqList;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 初始化顺序表</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">initSeqList</span><span class="params">(SeqList* <span class="built_in">list</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">list</span>-&gt;length = <span class="number">0</span>;  <span class="comment">// 初始化为空表</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 判断顺序表是否为空</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">isEmpty</span><span class="params">(SeqList* <span class="built_in">list</span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">list</span>-&gt;length == <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 判断顺序表是否已满</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">isFull</span><span class="params">(SeqList* <span class="built_in">list</span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">list</span>-&gt;length == MAX_SIZE;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 插入元素到顺序表</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">insert</span><span class="params">(SeqList* <span class="built_in">list</span>, <span class="type">int</span> index, <span class="type">int</span> value)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (index &lt; <span class="number">0</span> || index &gt; <span class="built_in">list</span>-&gt;length || isFull(<span class="built_in">list</span>)) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;  <span class="comment">// 插入位置不合法或顺序表已满</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 将index及其后面的元素右移一位</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="built_in">list</span>-&gt;length; i &gt; index; --i) &#123;</span><br><span class="line">        <span class="built_in">list</span>-&gt;data[i] = <span class="built_in">list</span>-&gt;data[i - <span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">list</span>-&gt;data[index] = value;</span><br><span class="line">    <span class="built_in">list</span>-&gt;length++;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 删除顺序表中指定位置的元素</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">delete</span><span class="params">(SeqList* <span class="built_in">list</span>, <span class="type">int</span> index)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (index &lt; <span class="number">0</span> || index &gt;= <span class="built_in">list</span>-&gt;length) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;  <span class="comment">// 删除位置不合法</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 将index后面的元素左移一位</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = index; i &lt; <span class="built_in">list</span>-&gt;length - <span class="number">1</span>; ++i) &#123;</span><br><span class="line">        <span class="built_in">list</span>-&gt;data[i] = <span class="built_in">list</span>-&gt;data[i + <span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">list</span>-&gt;length--;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 查找元素在顺序表中的位置</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">find</span><span class="params">(SeqList* <span class="built_in">list</span>, <span class="type">int</span> value)</span> &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="built_in">list</span>-&gt;length; ++i) &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">list</span>-&gt;data[i] == value) &#123;</span><br><span class="line">            <span class="keyword">return</span> i;  <span class="comment">// 找到元素，返回其位置</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;  <span class="comment">// 未找到元素</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 访问顺序表中的指定元素</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">get</span><span class="params">(SeqList* <span class="built_in">list</span>, <span class="type">int</span> index)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (index &lt; <span class="number">0</span> || index &gt;= <span class="built_in">list</span>-&gt;length) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;  <span class="comment">// 索引越界</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">list</span>-&gt;data[index];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 打印顺序表中的所有元素</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">printSeqList</span><span class="params">(SeqList* <span class="built_in">list</span>)</span> &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="built_in">list</span>-&gt;length; ++i) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, <span class="built_in">list</span>-&gt;data[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取顺序表的长度</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">getLength</span><span class="params">(SeqList* <span class="built_in">list</span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">list</span>-&gt;length;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    SeqList <span class="built_in">list</span>;</span><br><span class="line">    initSeqList(&amp;<span class="built_in">list</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 插入元素</span></span><br><span class="line">    insert(&amp;<span class="built_in">list</span>, <span class="number">0</span>, <span class="number">10</span>);  <span class="comment">// 插入10到位置0</span></span><br><span class="line">    insert(&amp;<span class="built_in">list</span>, <span class="number">1</span>, <span class="number">20</span>);  <span class="comment">// 插入20到位置1</span></span><br><span class="line">    insert(&amp;<span class="built_in">list</span>, <span class="number">2</span>, <span class="number">30</span>);  <span class="comment">// 插入30到位置2</span></span><br><span class="line">    insert(&amp;<span class="built_in">list</span>, <span class="number">1</span>, <span class="number">15</span>);  <span class="comment">// 插入15到位置1</span></span><br><span class="line">    printSeqList(&amp;<span class="built_in">list</span>);    <span class="comment">// 输出：10 15 20 30</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 查找元素</span></span><br><span class="line">    <span class="type">int</span> index = find(&amp;<span class="built_in">list</span>, <span class="number">20</span>);</span><br><span class="line">    <span class="keyword">if</span> (index != <span class="number">-1</span>) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;元素20在顺序表中的位置：%d\n&quot;</span>, index);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;未找到元素20\n&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 访问元素</span></span><br><span class="line">    <span class="type">int</span> value = get(&amp;<span class="built_in">list</span>, <span class="number">2</span>);</span><br><span class="line">    <span class="keyword">if</span> (value != <span class="number">-1</span>) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;顺序表中索引2的元素是：%d\n&quot;</span>, value);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 删除元素</span></span><br><span class="line">    delete(&amp;<span class="built_in">list</span>, <span class="number">1</span>);      <span class="comment">// 删除位置1的元素</span></span><br><span class="line">    printSeqList(&amp;<span class="built_in">list</span>);    <span class="comment">// 输出：10 20 30</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>数据结构</category>
-      </categories>
-      <tags>
-        <tag>数据结构</tag>
       </tags>
   </entry>
   <entry>

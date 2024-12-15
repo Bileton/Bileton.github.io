@@ -124,7 +124,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">17</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">19</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -134,7 +134,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">20</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">22</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -185,6 +185,201 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/12/15/JSON/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/android.svg">
+      <meta itemprop="name" content="Bileton">
+      <meta itemprop="description" content="路漫漫其修远夕！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="白乐天">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2024/12/15/JSON/" class="post-title-link" itemprop="url">JSON</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2024-12-15 20:01:57 / 修改时间：20:03:40" itemprop="dateCreated datePublished" datetime="2024-12-15T20:01:57+08:00">2024-12-15</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>2.6k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>JSON（JavaScript Object Notation）是一种轻量级的数据交换格式，易于人和机器阅读和解析。它基于JavaScript的对象表示法，但被广泛用于多种编程语言。</p>
+<h2 id="JSON中的数据类型"><a href="#JSON中的数据类型" class="headerlink" title="JSON中的数据类型"></a>JSON中的数据类型</h2><ul>
+<li>字符串（String）：用双引号包围，如 “Hello, World!”。</li>
+<li>数字（Number）：如 123、3.14，无引号。</li>
+<li>布尔值（Boolean）：true 或 false。</li>
+<li>数组（Array）：如 [1, 2, “abc”, true]。</li>
+<li>对象（Object）：如 {“name”: “Alice”, “age”: 30}。</li>
+<li>空值（Null）：表示空，如 null。</li>
+</ul>
+<h2 id="JSON的基本语法"><a href="#JSON的基本语法" class="headerlink" title="JSON的基本语法"></a>JSON的基本语法</h2><ul>
+<li>数据在键值对中：每个键值对由键和值组成，格式为 “key”: value。</li>
+<li>数据由逗号分隔：多个键值对之间使用逗号分隔。</li>
+<li>对象由花括号 {} 包围：表示一个无序的键值对集合。</li>
+<li>数组由方括号 [] 包围：表示一个有序的值的集合。</li>
+<li>键 必须是字符串（用双引号包裹），值 可以是字符串、数字、布尔值、数组、对象或 null。</li>
+</ul>
+<h2 id="JSON示例"><a href="#JSON示例" class="headerlink" title="JSON示例"></a>JSON示例</h2><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;args&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;headers&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;Accept&quot;</span><span class="punctuation">:</span> <span class="string">&quot;text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;Accept-Encoding&quot;</span><span class="punctuation">:</span> <span class="string">&quot;gzip, deflate, br, zstd&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;Accept-Language&quot;</span><span class="punctuation">:</span> <span class="string">&quot;zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;Host&quot;</span><span class="punctuation">:</span> <span class="string">&quot;www.httpbin.org&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;Priority&quot;</span><span class="punctuation">:</span> <span class="string">&quot;u=0, i&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;Sec-Ch-Ua&quot;</span><span class="punctuation">:</span> <span class="string">&quot;\&quot;Chromium\&quot;;v=\&quot;130\&quot;, \&quot;Microsoft Edge\&quot;;v=\&quot;130\&quot;, \&quot;Not?A_Brand\&quot;;v=\&quot;99\&quot;&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;Sec-Ch-Ua-Mobile&quot;</span><span class="punctuation">:</span> <span class="string">&quot;?0&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;Sec-Ch-Ua-Platform&quot;</span><span class="punctuation">:</span> <span class="string">&quot;\&quot;Windows\&quot;&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;Sec-Fetch-Dest&quot;</span><span class="punctuation">:</span> <span class="string">&quot;document&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;Sec-Fetch-Mode&quot;</span><span class="punctuation">:</span> <span class="string">&quot;navigate&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;Sec-Fetch-Site&quot;</span><span class="punctuation">:</span> <span class="string">&quot;none&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;Sec-Fetch-User&quot;</span><span class="punctuation">:</span> <span class="string">&quot;?1&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;Upgrade-Insecure-Requests&quot;</span><span class="punctuation">:</span> <span class="string">&quot;1&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;User-Agent&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36 Edg/130.0.0.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;X-Amzn-Trace-Id&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Root=1-672db183-55e0183d3ee3822d699e15c5&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;origin&quot;</span><span class="punctuation">:</span> <span class="string">&quot;45.32.145.117&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;url&quot;</span><span class="punctuation">:</span> <span class="string">&quot;https://www.httpbin.org/get&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<h2 id="load"><a href="#load" class="headerlink" title="load()"></a>load()</h2><ul>
+<li>从文件对象读取 JSON 格式的数据并将其解析为 Python 对象。</li>
+<li>用于直接从文件中加载 JSON 数据。<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;data.json&#x27;</span>, <span class="string">&#x27;r&#x27;</span>) <span class="keyword">as</span> file:</span><br><span class="line">    data = json.load(file)</span><br><span class="line"><span class="built_in">print</span>(data)</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="loads"><a href="#loads" class="headerlink" title="loads()"></a>loads()</h2><ul>
+<li>从字符串中解析 JSON 格式的数据并将其转换为 Python 对象。</li>
+<li>用于从 JSON 字符串中加载数据。<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br><span class="line">json_string = <span class="string">&#x27;&#123;&quot;name&quot;: &quot;Alice&quot;, &quot;age&quot;: 25&#125;&#x27;</span></span><br><span class="line">data = json.loads(json_string)</span><br><span class="line"><span class="built_in">print</span>(data)</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="dump"><a href="#dump" class="headerlink" title="dump()"></a>dump()</h2><ul>
+<li>将 Python 对象转换为 JSON 格式，并将其写入到文件中。</li>
+<li>用于将 JSON 数据保存到文件。<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br><span class="line">data = &#123;</span><br><span class="line">    <span class="string">&quot;name&quot;</span>: <span class="string">&quot;Bob&quot;</span>,</span><br><span class="line">    <span class="string">&quot;age&quot;</span>: <span class="number">30</span>,</span><br><span class="line">    <span class="string">&quot;isStudent&quot;</span>: <span class="literal">True</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;output.json&#x27;</span>, <span class="string">&#x27;w&#x27;</span>) <span class="keyword">as</span> file:</span><br><span class="line">    json.dump(data, file, indent=<span class="number">4</span>)  <span class="comment"># 使用 indent 参数使输出美观</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="dumps"><a href="#dumps" class="headerlink" title="dumps()"></a>dumps()</h2><ul>
+<li>将 Python 对象转换为 JSON 格式的字符串。</li>
+<li>用于在程序中将 Python 对象转换为 JSON 字符串以便于传输或输出。<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br><span class="line">data = &#123;</span><br><span class="line">    <span class="string">&quot;name&quot;</span>: <span class="string">&quot;Charlie&quot;</span>,</span><br><span class="line">    <span class="string">&quot;age&quot;</span>: <span class="number">22</span>,</span><br><span class="line">    <span class="string">&quot;isStudent&quot;</span>: <span class="literal">False</span></span><br><span class="line">&#125;</span><br><span class="line">json_string = json.dumps(data, indent=<span class="number">4</span>)  <span class="comment"># 使用 indent 参数格式化输出</span></span><br><span class="line"><span class="built_in">print</span>(json_string)</span><br></pre></td></tr></table></figure></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/12/15/Python%E5%9F%BA%E7%A1%80/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/android.svg">
+      <meta itemprop="name" content="Bileton">
+      <meta itemprop="description" content="路漫漫其修远夕！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="白乐天">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2024/12/15/Python%E5%9F%BA%E7%A1%80/" class="post-title-link" itemprop="url">Python基础</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2024-12-15 10:32:15 / 修改时间：19:59:12" itemprop="dateCreated datePublished" datetime="2024-12-15T10:32:15+08:00">2024-12-15</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>0</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -816,7 +1011,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-12-09 00:56:48" itemprop="dateModified" datetime="2024-12-09T00:56:48+08:00">2024-12-09</time>
+                <time title="修改时间：2024-12-16 02:10:29" itemprop="dateModified" datetime="2024-12-16T02:10:29+08:00">2024-12-16</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -834,7 +1029,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>404</span>
+              <span>1.6k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -853,36 +1048,87 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="视图"><a href="#视图" class="headerlink" title="视图"></a>视图</h1><ul>
-<li>Functions：函数符号窗口，程序中已识别的函数都在这里</li>
-<li>IDA View：反汇编窗口</li>
-<li>Pseudocode：伪代码窗口</li>
-<li>Hex View：十六进制窗口</li>
-<li>Strings：字符串窗口</li>
-<li>Imports：导入符号窗口</li>
-<li>Exports：导出函数符号窗口</li>
-<li>Output：输出窗口</li>
+          <h1 id="界面"><a href="#界面" class="headerlink" title="界面"></a>界面</h1><h2 id="工具栏（Toolbars）"><a href="#工具栏（Toolbars）" class="headerlink" title="工具栏（Toolbars）"></a>工具栏（Toolbars）</h2><p>工具栏包含常用操作工具。<br>可在<code>View-&gt;Toobars</code>里显示或隐藏工具栏。</p>
+<h2 id="导航栏"><a href="#导航栏" class="headerlink" title="导航栏"></a>导航栏</h2><p>导航栏是被加载⽂件地址空间的线性视图。</p>
+<h1 id="窗口"><a href="#窗口" class="headerlink" title="窗口"></a>窗口</h1><h2 id="反汇编窗口（IDA-View）"><a href="#反汇编窗口（IDA-View）" class="headerlink" title="反汇编窗口（IDA-View）"></a>反汇编窗口（IDA-View）</h2><p>反汇编窗口有两种显示模式，文本模式和图形模式，通过空格键来切换。  </p>
+<ul>
+<li><strong>文本模式</strong><br>显示指令地址、机器码。  </li>
+<li><strong>图形模式</strong><br>观察控制流。<br>可通过<code>Ctrl+鼠标滚轮</code>进行缩放。</li>
 </ul>
-<h1 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h1><ul>
-<li>x：交叉引用</li>
-<li>f5：反编译，刷新</li>
-<li>shift + f12：打开字符串窗口</li>
-<li>alt + t：搜索字符串</li>
-<li>空格：在IDA View窗口可在图视图和文本视图之间切换</li>
-<li>Tab：在IDA View窗口和Pseudocode窗口之间切换</li>
-<li>N：修改变量名</li>
-<li>Y：修改变量的类型</li>
-<li>G：地址跳转</li>
-<li>\ ：隐藏与显示casts（类型）</li>
-<li>- ：代码折叠（Collapse declarations）</li>
-<li>+ ：代码展开（Collapse declarations）</li>
-<li>ESC ：后退，回到上一步操作的视图</li>
-<li>Shift + Del： 删除返回值</li>
-<li>H ：在十进制数据和十六进制数据之间切换</li>
-<li>R：将数据切换为chat类型</li>
-<li>D：</li>
-<li>&#x2F; ：行注释</li>
+<h2 id="伪代码窗口（Pseudocode）"><a href="#伪代码窗口（Pseudocode）" class="headerlink" title="伪代码窗口（Pseudocode）"></a>伪代码窗口（Pseudocode）</h2><ul>
+<li>将反汇编代码转换为伪代码，按下<code>Tab键</code>或<code>F5</code>。</li>
+<li>将伪代码转换为反汇编代码，按下<code>Tab键</code>。</li>
+<li>在伪代码中根据光标位置按下<code>Tab键</code>可以快速定位到对应语句的汇编代码。</li>
 </ul>
+<h2 id="函数窗口（Functions）"><a href="#函数窗口（Functions）" class="headerlink" title="函数窗口（Functions）"></a>函数窗口（Functions）</h2><p>显示了当前分析的二进制文件中被识别的所有函数。</p>
+<h2 id="输出窗口（Output）"><a href="#输出窗口（Output）" class="headerlink" title="输出窗口（Output）"></a>输出窗口（Output）</h2><p>显⽰的是 IDA 输出的信息。</p>
+<h2 id="字符串表（Strings）"><a href="#字符串表（Strings）" class="headerlink" title="字符串表（Strings）"></a>字符串表（Strings）</h2><p>字符串表会显示IDA所识别出的字符串。</p>
+<ul>
+<li>打开字符串表窗口的快捷键<code>Shift+F12</code>。</li>
+<li>在菜单中打开 <code>View</code>-&gt;<code>Open Subviews</code>-&gt;<code>Strings</code>。</li>
+<li>双击字符串会跳转到字符串所在的数据窗口的位置或反汇编窗口的位置（取决于上一步打开的窗口）。</li>
+</ul>
+<h2 id="数据窗口（Hex-View）"><a href="#数据窗口（Hex-View）" class="headerlink" title="数据窗口（Hex View）"></a>数据窗口（Hex View）</h2><p>以hexdump形式显示程序的数据。</p>
+<ul>
+<li>菜单中的位置 <code>View</code>-&gt;<code>Open subviews</code>-&gt;<code>Hex dump</code>。</li>
+<li>通过<code>F2</code>可以进入编辑模式修改数据，再次按下<code>F2</code>退出编辑模式。</li>
+</ul>
+<h2 id="交叉引用（XREF）"><a href="#交叉引用（XREF）" class="headerlink" title="交叉引用（XREF）"></a>交叉引用（XREF）</h2><p>交叉引用（XREF，Cross Reference）是一个非常重要的工具，用于追踪某个地址、变量或函数在程序中的使用情况。它可以帮助我们快速找到某个符号、数据或函数是如何以及在何处被引用的。</p>
+<ul>
+<li>将光标定位到要进行交叉引用的符号，按下<code>x</code>键打开交叉引用的窗口。</li>
+</ul>
+<p><strong>交叉引用分类</strong></p>
+<ul>
+<li>代码交叉引用  </li>
+<li>数据交叉引用</li>
+</ul>
+<h2 id="Xref-Graph"><a href="#Xref-Graph" class="headerlink" title="Xref Graph"></a>Xref Graph</h2><p>函数调用关系及引用流向</p>
+<h3 id="Xref-graph-to"><a href="#Xref-graph-to" class="headerlink" title="Xref graph to"></a>Xref graph to</h3><ul>
+<li>显示当前函数或地址 “被哪些位置调用或引用” 的关系图。</li>
+<li>用于追踪调用者（Callers），即谁调用了当前函数或谁引用了该地址。</li>
+</ul>
+<p><strong>使用方式</strong><br>选中一个函数或地址后，右键在菜单中选择<code>Xrefs graph to...</code>。</p>
+<h3 id="Xref-graph-from"><a href="#Xref-graph-from" class="headerlink" title="Xref graph from"></a>Xref graph from</h3><ul>
+<li>显示当前函数或地址 “调用或引用了哪些目标” 的关系图。</li>
+<li>用于追踪被调用者（Callees），即当前函数或代码引用了哪些其他函数或地址。</li>
+</ul>
+<h1 id="常用快捷键"><a href="#常用快捷键" class="headerlink" title="常用快捷键"></a>常用快捷键</h1><h2 id="常用操作"><a href="#常用操作" class="headerlink" title="常用操作"></a>常用操作</h2><ul>
+<li><code>F5</code>：生成伪代码，刷新伪代码</li>
+<li><code>ESC</code>：后退，回到上一步操作的视图</li>
+</ul>
+<h2 id="窗口打开"><a href="#窗口打开" class="headerlink" title="窗口打开"></a>窗口打开</h2><ul>
+<li><code>x</code>：交叉引用窗口</li>
+<li><code>Shift + f12</code>：字符串窗口</li>
+<li><code>alt + T</code>：文本搜索窗口（速度慢）</li>
+<li><code>G</code>：地址跳转窗口</li>
+<li><code>Alt + I</code>：快速查找二进制文件中与某个特定值相关的指令或数据</li>
+<li><code>Alt + B</code>：直接在二进制文件中查找特定的字节序列</li>
+</ul>
+<h2 id="代码转换"><a href="#代码转换" class="headerlink" title="代码转换"></a>代码转换</h2><ul>
+<li><code>N</code>：修改变量名</li>
+<li><code>Y</code>：修改变量的类型</li>
+<li><code>Shift + Del</code>： 删除返回值</li>
+<li><code>\</code> ：隐藏与显示casts（类型）</li>
+<li><code>-</code> ：代码折叠（Collapse declarations）</li>
+<li><code>+</code> ：代码展开（Collapse declarations）</li>
+<li><code>/</code> ：行注释</li>
+</ul>
+<h2 id="数据转换"><a href="#数据转换" class="headerlink" title="数据转换"></a>数据转换</h2><ul>
+<li><code>U</code>：取消定义（Undefine）<br>可取消函数、代码或数据的定义。取消定义后，其基础字节将作为原始字节值重新格式化。</li>
+<li><code>C</code>：反汇编一组未定义的字节</li>
+<li><code>D</code>：将代码转换为数据  </li>
+<li><code>P</code>：在代码数据起始位置，按下<code>P</code>键，识别函数（注意光标需要位于起始位置）。<br><strong>整数的数据类型</strong><br>通过<code>D</code>键进行切换  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">db // 1字节</span><br><span class="line">dw // 2字节</span><br><span class="line">dd // 4字节</span><br><span class="line">dq // 8字节</span><br></pre></td></tr></table></figure></li>
+<li><code>H</code>：在十进制数据和十六进制数据之间切换</li>
+<li><code>R</code>：将数据切换为char类型</li>
+</ul>
+<h1 id="工具栏"><a href="#工具栏" class="headerlink" title="工具栏"></a>工具栏</h1><h2 id="锁定功能"><a href="#锁定功能" class="headerlink" title="锁定功能"></a>锁定功能</h2><p><strong>使用方式</strong><br>选中一个函数或地址后，右键在菜单中选择 <code>Xrefs graph from...</code>。</p>
+<h1 id="IDA插件"><a href="#IDA插件" class="headerlink" title="IDA插件"></a>IDA插件</h1><h2 id="LazyIDA-py"><a href="#LazyIDA-py" class="headerlink" title="LazyIDA.py"></a>LazyIDA.py</h2><p><a target="_blank" rel="noopener" href="https://github.com/P4nda0s/LazyIDA">https://github.com/P4nda0s/LazyIDA</a>  </p>
+<h3 id="提取数据"><a href="#提取数据" class="headerlink" title="提取数据"></a>提取数据</h3><ul>
+<li>将数据转换为python&#x2F;C的数组形式</li>
+<li>选中数据后，右键，选择Convert，然后选择相应的格式。（注意：这里选中的地址要包含所需地址范围的下一地址）</li>
+</ul>
+<p><img src="/2024/12/01/IDA%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/1.jpg"></p>
+<h3 id="Paste-Data"><a href="#Paste-Data" class="headerlink" title="Paste Data"></a>Paste Data</h3><p>插件修改数据，光标定位到要修改的位置，右键，选择<code>Paste Data</code>，然后输入要修改的内容。</p>
 
       
     </div>
@@ -994,184 +1240,10 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/11/29/hook%E8%84%9A%E6%9C%AC%E5%A4%A7%E5%85%A8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/android.svg">
-      <meta itemprop="name" content="Bileton">
-      <meta itemprop="description" content="路漫漫其修远夕！">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="白乐天">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2024/11/29/hook%E8%84%9A%E6%9C%AC%E5%A4%A7%E5%85%A8/" class="post-title-link" itemprop="url">hook脚本大全</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2024-11-29 00:00:00" itemprop="dateCreated datePublished" datetime="2024-11-29T00:00:00+08:00">2024-11-29</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-12-05 18:44:55" itemprop="dateModified" datetime="2024-12-05T18:44:55+08:00">2024-12-05</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Frida/" itemprop="url" rel="index"><span itemprop="name">Frida</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>3.9k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>4 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="so层hook"><a href="#so层hook" class="headerlink" title="so层hook"></a>so层hook</h1><h2 id="hook-dlopen"><a href="#hook-dlopen" class="headerlink" title="hook_dlopen"></a>hook_dlopen</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">hook_dlopen</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="comment">// 在Android8.0之前加载so通过dlopen函数</span></span><br><span class="line">    <span class="keyword">var</span> dlopen = <span class="title class_">Module</span>.<span class="title function_">findExportByName</span>(<span class="literal">null</span>,<span class="string">&quot;dlopen&quot;</span>);</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;addr_dlopen&quot;</span>,dlopen);</span><br><span class="line">    <span class="title class_">Interceptor</span>.<span class="title function_">attach</span>(dlopen,&#123;</span><br><span class="line">        <span class="attr">onEnter</span>:<span class="keyword">function</span>(<span class="params">args</span>)&#123;</span><br><span class="line">            <span class="keyword">var</span> pathptr = args[<span class="number">0</span>];</span><br><span class="line">            <span class="keyword">if</span>(pathptr)&#123;</span><br><span class="line">                <span class="keyword">var</span> path = <span class="title function_">ptr</span>(pathptr).<span class="title function_">readCString</span>();</span><br><span class="line">                <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;dlopen:&quot;</span>,path);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">onLeave</span>:<span class="keyword">function</span>(<span class="params">retvel</span>)&#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;leave!&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//Android8.0之后加载so通过android_dlopen_ext函数</span></span><br><span class="line">    <span class="keyword">var</span> android_dlopen_ext = <span class="title class_">Module</span>.<span class="title function_">findExportByName</span>(<span class="literal">null</span>,<span class="string">&quot;android_dlopen_ext&quot;</span>);</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;addr_android_dlopen_ext&quot;</span>,android_dlopen_ext);</span><br><span class="line">    <span class="title class_">Interceptor</span>.<span class="title function_">attach</span>(android_dlopen_ext,&#123;</span><br><span class="line">        <span class="attr">onEnter</span>:<span class="keyword">function</span>(<span class="params">args</span>)&#123;</span><br><span class="line">            <span class="keyword">var</span> pathptr = args[<span class="number">0</span>];</span><br><span class="line">            <span class="keyword">if</span>(pathptr!=<span class="literal">null</span> &amp;&amp; pathptr != <span class="literal">undefined</span>)&#123;</span><br><span class="line">                <span class="keyword">var</span> path = <span class="title function_">ptr</span>(pathptr).<span class="title function_">readCString</span>();</span><br><span class="line">                <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;android_dlopen_ext:&quot;</span>,path);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">onLeave</span>:<span class="keyword">function</span>(<span class="params">retvel</span>)&#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;leave!&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">hook_dlopen</span>()</span><br></pre></td></tr></table></figure>
-<h2 id="hook-pthread"><a href="#hook-pthread" class="headerlink" title="hook_pthread"></a>hook_pthread</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">hook_pthread_create</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="keyword">var</span> pt_create_func = <span class="title class_">Module</span>.<span class="title function_">findExportByName</span>(<span class="string">&quot;libc.so&quot;</span>,<span class="string">&quot;pthread_create&quot;</span>);</span><br><span class="line">    <span class="title class_">Interceptor</span>.<span class="title function_">attach</span>(pt_create_func,&#123;</span><br><span class="line">        <span class="attr">onEnter</span>:<span class="keyword">function</span>(<span class="params">args</span>)&#123;</span><br><span class="line">            <span class="keyword">var</span> so_name = <span class="title class_">Process</span>.<span class="title function_">findModuleByAddress</span>(args[<span class="number">2</span>]).<span class="property">name</span>;</span><br><span class="line">            <span class="comment">// if(so_name.indexOf(&quot;libxxx.so&quot;)!= -1)&#123;</span></span><br><span class="line">            <span class="comment">//     //console.log(&quot;arg2&quot;,args[2].sub(Module.findBaseAddress(&quot;libxxx.so&quot;)))</span></span><br><span class="line">            <span class="comment">//     try&#123;</span></span><br><span class="line">            <span class="comment">//         Interceptor.replace(args[2],new NativeCallback(function()&#123;</span></span><br><span class="line">            <span class="comment">//             console.log(&quot;replace success&quot;);</span></span><br><span class="line">            <span class="comment">//             return null;</span></span><br><span class="line">            <span class="comment">//         &#125;,&#x27;void&#x27;,[&quot;void&quot;]));</span></span><br><span class="line">            <span class="comment">//     &#125;catch(e)&#123;</span></span><br><span class="line"></span><br><span class="line">            <span class="comment">//     &#125;</span></span><br><span class="line">            <span class="comment">// &#125;</span></span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;arg2&quot;</span>,args[<span class="number">2</span>]);</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">onLeave</span>:<span class="keyword">function</span>(<span class="params">retval</span>)&#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">hook_pthread_create</span>();</span><br></pre></td></tr></table></figure>
-<h2 id="hook-RegisterNatives"><a href="#hook-RegisterNatives" class="headerlink" title="hook_RegisterNatives"></a>hook_RegisterNatives</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">hook_RegisterNatives</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> <span class="title class_">RegisterNatives</span>_addr = <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">var</span> symbols = <span class="title class_">Process</span>.<span class="title function_">findModuleByName</span>(<span class="string">&quot;libart.so&quot;</span>).<span class="title function_">enumerateSymbols</span>();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; symbols.<span class="property">length</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">var</span> symbol = symbols[i].<span class="property">name</span>;</span><br><span class="line">        <span class="keyword">if</span> ((symbol.<span class="title function_">indexOf</span>(<span class="string">&quot;CheckJNI&quot;</span>) == -<span class="number">1</span>) &amp;&amp; (symbol.<span class="title function_">indexOf</span>(<span class="string">&quot;JNI&quot;</span>) &gt;= <span class="number">0</span>)) &#123;</span><br><span class="line">            <span class="keyword">if</span> (symbol.<span class="title function_">indexOf</span>(<span class="string">&quot;RegisterNatives&quot;</span>) &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="title class_">RegisterNatives</span>_addr = symbols[i].<span class="property">address</span>;</span><br><span class="line">                <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;RegisterNatives_addr: &quot;</span>, <span class="title class_">RegisterNatives</span>_addr);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="title class_">Interceptor</span>.<span class="title function_">attach</span>(<span class="title class_">RegisterNatives</span>_addr, &#123;</span><br><span class="line">        <span class="attr">onEnter</span>: <span class="keyword">function</span> (<span class="params">args</span>) &#123;</span><br><span class="line">            <span class="keyword">var</span> env = args[<span class="number">0</span>];</span><br><span class="line">            <span class="keyword">var</span> jclass = args[<span class="number">1</span>];</span><br><span class="line">            <span class="keyword">var</span> class_name = <span class="title class_">Java</span>.<span class="property">vm</span>.<span class="title function_">tryGetEnv</span>().<span class="title function_">getClassName</span>(jclass);</span><br><span class="line">            <span class="keyword">var</span> methods_ptr = <span class="title function_">ptr</span>(args[<span class="number">2</span>]);</span><br><span class="line">            <span class="keyword">var</span> method_count = args[<span class="number">3</span>].<span class="title function_">toInt32</span>();</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;RegisterNatives method counts: &quot;</span>, method_count);</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; method_count; i++) &#123;</span><br><span class="line">                <span class="keyword">var</span> name = methods_ptr.<span class="title function_">add</span>(i * <span class="title class_">Process</span>.<span class="property">pointerSize</span> * <span class="number">3</span>).<span class="title function_">readPointer</span>().<span class="title function_">readCString</span>();</span><br><span class="line">                <span class="keyword">var</span> sig = methods_ptr.<span class="title function_">add</span>(i * <span class="title class_">Process</span>.<span class="property">pointerSize</span> * <span class="number">3</span> + <span class="title class_">Process</span>.<span class="property">pointerSize</span>).<span class="title function_">readPointer</span>().<span class="title function_">readCString</span>();</span><br><span class="line">                <span class="keyword">var</span> fnPtr_ptr = methods_ptr.<span class="title function_">add</span>(i * <span class="title class_">Process</span>.<span class="property">pointerSize</span> * <span class="number">3</span> + <span class="title class_">Process</span>.<span class="property">pointerSize</span> * <span class="number">2</span>).<span class="title function_">readPointer</span>();</span><br><span class="line">                <span class="keyword">var</span> find_module = <span class="title class_">Process</span>.<span class="title function_">findModuleByAddress</span>(fnPtr_ptr);</span><br><span class="line">                <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;ClasssName: &quot;</span>, class_name, <span class="string">&quot;MethodName: &quot;</span>, name, <span class="string">&quot;Sig: &quot;</span>, sig, <span class="string">&quot;Function_addr: &quot;</span>, fnPtr_ptr, <span class="string">&quot;ModuleName: &quot;</span>, find_module.<span class="property">name</span>, <span class="string">&quot;Fun_Offset: &quot;</span>, <span class="title function_">ptr</span>(fnPtr_ptr).<span class="title function_">sub</span>(find_module.<span class="property">base</span>));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">onLeave</span>: <span class="keyword">function</span> (<span class="params">retval</span>) &#123;&#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">hook_RegisterNatives</span>()</span><br></pre></td></tr></table></figure>
-<h2 id="hook-dlsym"><a href="#hook-dlsym" class="headerlink" title="hook_dlsym"></a>hook_dlsym</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">hook_dlsym</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="comment">// 获取dlsym函数的地址</span></span><br><span class="line">    <span class="keyword">let</span> dlsymAddr = <span class="title class_">Module</span>.<span class="title function_">findExportByName</span>(<span class="string">&quot;libdl.so&quot;</span>,<span class="string">&quot;dlsym&quot;</span>);</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(dlsymAddr);</span><br><span class="line">    <span class="comment">// hook dlsym</span></span><br><span class="line">    <span class="title class_">Interceptor</span>.<span class="title function_">attach</span>(dlsymAddr,&#123;</span><br><span class="line">        <span class="attr">onEnter</span>:<span class="keyword">function</span>(<span class="params">args</span>)&#123;</span><br><span class="line">            <span class="variable language_">this</span>.<span class="property">args1</span> = args[<span class="number">1</span>];</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">onLeave</span>:<span class="keyword">function</span>(<span class="params">retval</span>)&#123;</span><br><span class="line">            <span class="keyword">let</span> <span class="variable language_">module</span>= <span class="title class_">Process</span>.<span class="title function_">findModuleByAddress</span>(retval);</span><br><span class="line">            <span class="keyword">if</span>(<span class="variable language_">module</span>==<span class="literal">null</span>)<span class="keyword">return</span>;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;函数：&quot;</span>+<span class="variable language_">this</span>.<span class="property">args1</span>.<span class="title function_">readCString</span>(),<span class="string">&quot;模块：&quot;</span>+<span class="variable language_">module</span>.<span class="property">name</span>,<span class="string">&quot;地址：&quot;</span>+retval,<span class="string">&quot;偏移：&quot;</span>+retval.<span class="title function_">sub</span>(<span class="variable language_">module</span>.<span class="property">base</span>));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">hook_dlsym</span>()</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/11/28/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/android.svg">
-      <meta itemprop="name" content="Bileton">
-      <meta itemprop="description" content="路漫漫其修远夕！">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="白乐天">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2024/11/28/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2024-11-28 00:47:48" itemprop="dateCreated datePublished" datetime="2024-11-28T00:47:48+08:00">2024-11-28</time>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>367</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/default-index/page/2/">2</a><a class="extend next" rel="next" href="/default-index/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/default-index/page/2/">2</a><a class="page-number" href="/default-index/page/3/">3</a><a class="extend next" rel="next" href="/default-index/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1239,7 +1311,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-count">22</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1252,7 +1324,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-count">19</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -1293,13 +1365,13 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">58k</span>
+    <span title="站点总字数">59k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">53 分钟</span>
+    <span title="站点阅读时长">54 分钟</span>
 </div>
 
 
