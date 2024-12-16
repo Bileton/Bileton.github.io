@@ -1,6 +1,202 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>ARM汇编</title>
+    <url>/2024/12/16/ARM%E6%B1%87%E7%BC%96/</url>
+    <content><![CDATA[<h1 id="ARM架构"><a href="#ARM架构" class="headerlink" title="ARM架构"></a>ARM架构</h1><p>ARM是一种精简指令集计算机架构（处理器架构）。</p>
+<h2 id="ARMv8-A"><a href="#ARMv8-A" class="headerlink" title="ARMv8-A"></a>ARMv8-A</h2><p>Armv8-A架构支持处理器同时运行64位和32位程序，处理器在AArch64执行状态下运行64位程序，在AArch32执行状态下运行32位程序。</p>
+<h2 id="指令集架构"><a href="#指令集架构" class="headerlink" title="指令集架构"></a>指令集架构</h2><h3 id="AArch64（64位模式）"><a href="#AArch64（64位模式）" class="headerlink" title="AArch64（64位模式）"></a>AArch64（64位模式）</h3><p>引入了新的指令集，<strong>A64指令集</strong>，由32位宽的指令组成。</p>
+<h3 id="AArch32（32位模式）"><a href="#AArch32（32位模式）" class="headerlink" title="AArch32（32位模式）"></a>AArch32（32位模式）</h3><p>向后兼容32位的ARMv7-A指令集。</p>
+<p>支持<strong>ARM指令集</strong>（固定32位指令长度）和<strong>Thumb指令集</strong>（16位和32位混合指令长度），称为<strong>A32</strong>和<strong>T32</strong>指令集	。</p>
+<p>ARMv8-A的双模式设计实现了从32位到64位的过渡。</p>
+<h2 id="AArch64执行状态"><a href="#AArch64执行状态" class="headerlink" title="AArch64执行状态"></a>AArch64执行状态</h2><h3 id="寄存器"><a href="#寄存器" class="headerlink" title="寄存器"></a>寄存器</h3><ul>
+<li><p>A64共有32个64位寄存器（X0到X30）。</p>
+</li>
+<li><p>每个寄存器均支持 64 位和 32 位访问（例如 <code>X0</code> 和 <code>W0</code> 分别表示寄存器的高 64 位和低 32 位部分）。</p>
+</li>
+</ul>
+<p><strong>Arm架构程序调用标准</strong></p>
+<ul>
+<li>X0~X7是参数寄存器，传递参数并返回结果。</li>
+<li>X8用于传递间接结果的地址位置。</li>
+<li>X9~X15是调用者保存的临时寄存器。</li>
+<li>X16~X18是子程序内调用临时寄存器。</li>
+<li>X19~X28是被调用者保存的寄存器。</li>
+<li>X29用作栈帧寄存器（FP），跟踪栈帧。</li>
+<li>X30用作链接寄存器（LR），保存函数返回地址。</li>
+</ul>
+<h2 id><a href="#" class="headerlink" title></a></h2><table>
+<thead>
+<tr>
+<th>寄存器</th>
+<th>名称</th>
+<th>寄存器宽度</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>PC</td>
+<td>程序计数器</td>
+<td>64位</td>
+</tr>
+<tr>
+<td>SP</td>
+<td>栈指针寄存器</td>
+<td>64位</td>
+</tr>
+<tr>
+<td>WSP</td>
+<td>栈指针寄存器</td>
+<td>32位</td>
+</tr>
+<tr>
+<td>XZR</td>
+<td>零寄存器</td>
+<td>64位</td>
+</tr>
+<tr>
+<td>WZR</td>
+<td>零寄存器</td>
+<td>32位</td>
+</tr>
+<tr>
+<td>LR（X30）</td>
+<td>链接寄存器</td>
+<td>64位</td>
+</tr>
+<tr>
+<td>ELR</td>
+<td>异常链接寄存器</td>
+<td>64位</td>
+</tr>
+<tr>
+<td>PSTATE</td>
+<td>程序状态寄存器</td>
+<td>64位</td>
+</tr>
+<tr>
+<td>SPSR_ELx</td>
+<td>保存进程状态寄存器</td>
+<td>32位</td>
+</tr>
+</tbody></table>
+<ul>
+<li><strong>程序计数器</strong></li>
+</ul>
+<p>​	PC保存当前指令的地址。所有指令在加载之前都必须从PC引用的内存位置加载。</p>
+<ul>
+<li><strong>栈指针</strong></li>
+</ul>
+<p>​	SP用于跟踪当前线程的栈位置，通常指向该线程栈的逻辑“顶部”。</p>
+<ul>
+<li><strong>零寄存器</strong></li>
+</ul>
+<p>​	它被定义为始终保存0值。</p>
+<ul>
+<li><strong>链接寄存器</strong></li>
+</ul>
+<p>​	它主要用于存储调用函数时的返回地址。</p>
+<ul>
+<li><strong>栈帧指针</strong></li>
+</ul>
+<p>​	跟踪栈帧。</p>
+<h2 id="AArch32执行状态"><a href="#AArch32执行状态" class="headerlink" title="AArch32执行状态"></a>AArch32执行状态</h2><h3 id="寄存器-1"><a href="#寄存器-1" class="headerlink" title="寄存器"></a>寄存器</h3><ul>
+<li><p>16 个 32 位通用寄存器（<code>R0</code> 到 <code>R15</code>）。</p>
+</li>
+<li><p>PC（程序计数器）占用 <code>R15</code>，<code>R14</code> 通常作为链接寄存器（LR），<code>R13</code> 通常作为栈指针（SP）。</p>
+</li>
+</ul>
+<h1 id="数据处理指令"><a href="#数据处理指令" class="headerlink" title="数据处理指令"></a>数据处理指令</h1><p><strong>指令的基本语法</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;操作码&gt; &lt;目标寄存器&gt;, &lt;操作数1&gt;, &lt;操作数2&gt;</span><br><span class="line"></span><br><span class="line">&lt;操作码&gt;：指令的操作代码，决定了具体的功能（如加法、减法、逻辑操作等）。</span><br><span class="line">&lt;目标寄存器&gt;：结果存储的目标寄存器。</span><br><span class="line">&lt;操作数1&gt; 和 &lt;操作数2&gt;：参与运算的两个操作数，可以是寄存器或立即数。</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>在A32&#x2F;T32指令中目标寄存器表示为Rd</li>
+<li>在A64指令中目标寄存器表示为Xd或Wd</li>
+<li>在A32&#x2F;T32指令中输入寄存器表示为Rm、Rn或Ra</li>
+<li>在A64指令中输入寄存器表示为Xn或Xm</li>
+</ul>
+<h2 id="条件标志位"><a href="#条件标志位" class="headerlink" title="条件标志位"></a>条件标志位</h2><ul>
+<li><p>**N (Negative)**：</p>
+<p>结果为负数，则值为1；</p>
+<p>结果是正数或零，则值为0。</p>
+</li>
+<li><p>**Z (Zero)**：</p>
+<p>结果为 0，则值为1。</p>
+<p>否则，值为0。</p>
+</li>
+<li><p>**C (Carry)**：</p>
+<p>如果结果产生了进位条件，则值为1；</p>
+<p>否则，值为0。</p>
+</li>
+<li><p>**V (Overflow)**：</p>
+<p>如果指令结果导致溢出条件，则值为1。</p>
+</li>
+</ul>
+<h2 id="算术指令"><a href="#算术指令" class="headerlink" title="算术指令"></a>算术指令</h2><h3 id="add"><a href="#add" class="headerlink" title="add"></a>add</h3><p>加法</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">add x0,x1,x2  ;x0=x1+x2</span><br></pre></td></tr></table></figure>
+
+<h3 id="adds"><a href="#adds" class="headerlink" title="adds"></a>adds</h3><p>加法运算并更新条件标志</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">adds x0,x1,x2  ;x0=x1+x2 and set flags</span><br></pre></td></tr></table></figure>
+
+<h3 id="sub"><a href="#sub" class="headerlink" title="sub"></a>sub</h3><p>减法</p>
+<h3 id="mul"><a href="#mul" class="headerlink" title="mul"></a>mul</h3><p>乘法</p>
+<h3 id="sdiv-udiv"><a href="#sdiv-udiv" class="headerlink" title="sdiv&#x2F;udiv"></a>sdiv&#x2F;udiv</h3><p>除法</p>
+<h2 id="移位和循环移位"><a href="#移位和循环移位" class="headerlink" title="移位和循环移位"></a>移位和循环移位</h2><h3 id="lsl（Logical-Shift-Left）"><a href="#lsl（Logical-Shift-Left）" class="headerlink" title="lsl（Logical Shift Left）"></a>lsl（Logical Shift Left）</h3><p>逻辑左移，左移后相当于乘以 2 的若干次方。</p>
+<p>将一个值的二进制位整体向左移动，用 <strong>0</strong> 填充右边空出的位，丢弃左边溢出的位。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">lsl r0,r1,#2  ;r0 = r1 &lt;&lt; 2</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">add r0,r1,r2,lsl #2  ;r0 = r1 + (r2&lt;&lt;2)</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="lsr（Logical-Shift-Right）"><a href="#lsr（Logical-Shift-Right）" class="headerlink" title="lsr（Logical Shift Right）"></a>lsr（Logical Shift Right）</h3><p>逻辑右移，逻辑右移后，每位的值变成原来数值的 <strong>1&#x2F;2</strong>。</p>
+<p>左侧空出的位用 0 填充，右侧移出的位被丢弃。</p>
+<h3 id="asr（Arithmetic-Shift-Left）"><a href="#asr（Arithmetic-Shift-Left）" class="headerlink" title="asr（Arithmetic Shift Left）"></a>asr（Arithmetic Shift Left）</h3><p>算术右移</p>
+<p>将一个值的二进制位整体向右移动。它与逻辑右移的主要区别在于，左侧空出的位用符号位填充（最高位的值，0 或 1），以保持数值的符号不变。</p>
+<h3 id="ror（ROtate-Right）"><a href="#ror（ROtate-Right）" class="headerlink" title="ror（ROtate Right）"></a>ror（ROtate Right）</h3><p>循环右移</p>
+<p>将一个二进制数的位向右移动指定的位数，并将被“移出”的位重新填充到左侧。</p>
+<h3 id="rrx"><a href="#rrx" class="headerlink" title="rrx"></a>rrx</h3><p>带扩展的循环右移</p>
+<p>在普通 <code>ROR</code> 的基础上，利用 <strong>进位标志位（C）</strong> 的值作为循环右移的高位，右移后最右侧的位会填入进位标志位（<code>C</code>）</p>
+<ul>
+<li>始终右移 1 位</li>
+<li>进位标志位参与操作</li>
+</ul>
+<h2 id="逻辑运算"><a href="#逻辑运算" class="headerlink" title="逻辑运算"></a>逻辑运算</h2><h3 id="and"><a href="#and" class="headerlink" title="and"></a>and</h3><p>位与</p>
+<h3 id="orr"><a href="#orr" class="headerlink" title="orr"></a>orr</h3><p>位或</p>
+<h3 id="eor-xor"><a href="#eor-xor" class="headerlink" title="eor&#x2F;xor"></a>eor&#x2F;xor</h3><p>位异或</p>
+<h2 id="条件指令"><a href="#条件指令" class="headerlink" title="条件指令"></a>条件指令</h2><h3 id="cmp"><a href="#cmp" class="headerlink" title="cmp"></a>cmp</h3><p>比较</p>
+<h3 id="tst"><a href="#tst" class="headerlink" title="tst"></a>tst</h3><p>测试位</p>
+<h2 id="移动指令"><a href="#移动指令" class="headerlink" title="移动指令"></a>移动指令</h2><h3 id="mov"><a href="#mov" class="headerlink" title="mov"></a>mov</h3><p>用于将值从一个寄存器传递到另一个寄存器，或者将一个立即数加载到目标寄存器。</p>
+<h3 id="movz"><a href="#movz" class="headerlink" title="movz"></a>movz</h3><p>将一个 16 位立即数 加载到目标寄存器的指定位置，并将其他位清零。</p>
+<h3 id="movk"><a href="#movk" class="headerlink" title="movk"></a>movk</h3><p>将一个 16 位立即数 加载到目标寄存器的指定位置，但保持寄存器中其他位的原值不变。</p>
+<h3 id="movn"><a href="#movn" class="headerlink" title="movn"></a>movn</h3><p>将一个 16 位立即数的按位取反值 加载到目标寄存器的指定位置，并将其他位清零。</p>
+<h1 id="内存访问指令"><a href="#内存访问指令" class="headerlink" title="内存访问指令"></a>内存访问指令</h1><h2 id="加载和存储指令"><a href="#加载和存储指令" class="headerlink" title="加载和存储指令"></a>加载和存储指令</h2><h3 id="LDR"><a href="#LDR" class="headerlink" title="LDR"></a>LDR</h3><p>从内存地址加载一个字（通常是32位）到指定的寄存器中。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">LDR R0, [R1]      ; 将内存地址R1中的值加载到寄存器R0</span><br><span class="line">LDR R2, [R3, #4]  ; 将R3 + 4地址中的值加载到寄存器R2</span><br></pre></td></tr></table></figure>
+
+<h3 id="STR"><a href="#STR" class="headerlink" title="STR"></a>STR</h3><p>将寄存器中的数据存储到内存地址中。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">STR R0, [R1]      ; 将寄存器R0的值存储到R1指向的内存地址</span><br><span class="line">STR R2, [R3, #8]  ; 将R2的值存储到R3 + 8的内存地址</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>汇编</category>
+      </categories>
+      <tags>
+        <tag>ARM汇编</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>C++</title>
+    <url>/2024/02/01/C/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>编程语言</category>
+      </categories>
+      <tags>
+        <tag>C++</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Android系统</title>
     <url>/2024/12/05/Android%E7%B3%BB%E7%BB%9F/</url>
     <content><![CDATA[]]></content>
@@ -60,17 +256,6 @@
       </tags>
   </entry>
   <entry>
-    <title>C++</title>
-    <url>/2024/02/01/C/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>编程语言</category>
-      </categories>
-      <tags>
-        <tag>C++</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Frida检测</title>
     <url>/2024/11/01/Frida%E6%A3%80%E6%B5%8B/</url>
     <content><![CDATA[<h1 id="常见检测方式"><a href="#常见检测方式" class="headerlink" title="常见检测方式"></a>常见检测方式</h1><h2 id="进程名检测"><a href="#进程名检测" class="headerlink" title="进程名检测"></a>进程名检测</h2><p>使用如下命令查看进程</p>
@@ -120,7 +305,7 @@
     <url>/2024/12/01/IDA%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/</url>
     <content><![CDATA[<h1 id="界面"><a href="#界面" class="headerlink" title="界面"></a>界面</h1><h2 id="工具栏（Toolbars）"><a href="#工具栏（Toolbars）" class="headerlink" title="工具栏（Toolbars）"></a>工具栏（Toolbars）</h2><p>工具栏包含常用操作工具。<br>可在<code>View-&gt;Toobars</code>里显示或隐藏工具栏。</p>
 <h2 id="导航栏"><a href="#导航栏" class="headerlink" title="导航栏"></a>导航栏</h2><p>导航栏是被加载⽂件地址空间的线性视图。</p>
-<h1 id="窗口"><a href="#窗口" class="headerlink" title="窗口"></a>窗口</h1><h2 id="反汇编窗口（IDA-View）"><a href="#反汇编窗口（IDA-View）" class="headerlink" title="反汇编窗口（IDA-View）"></a>反汇编窗口（IDA-View）</h2><p>反汇编窗口有两种显示模式，文本模式和图形模式，通过空格键来切换。  </p>
+<h1 id="窗口"><a href="#窗口" class="headerlink" title="窗口"></a>窗口</h1><h2 id="反汇编窗口（IDA-View）"><a href="#反汇编窗口（IDA-View）" class="headerlink" title="反汇编窗口（IDA-View）"></a>反汇编窗口（IDA-View）</h2><p>反汇编窗口有两种显示模式，文本模式和图形模式，通过<code>空格键</code>来切换。  </p>
 <ul>
 <li><strong>文本模式</strong><br>显示指令地址、机器码。  </li>
 <li><strong>图形模式</strong><br>观察控制流。<br>可通过<code>Ctrl+鼠标滚轮</code>进行缩放。</li>
@@ -162,6 +347,7 @@
 <li>显示当前函数或地址 “调用或引用了哪些目标” 的关系图。</li>
 <li>用于追踪被调用者（Callees），即当前函数或代码引用了哪些其他函数或地址。</li>
 </ul>
+<p><strong>使用方式</strong><br>选中一个函数或地址后，右键在菜单中选择 <code>Xrefs graph from...</code>。</p>
 <h1 id="常用快捷键"><a href="#常用快捷键" class="headerlink" title="常用快捷键"></a>常用快捷键</h1><h2 id="常用操作"><a href="#常用操作" class="headerlink" title="常用操作"></a>常用操作</h2><ul>
 <li><code>F5</code>：生成伪代码，刷新伪代码</li>
 <li><code>ESC</code>：后退，回到上一步操作的视图</li>
@@ -182,6 +368,7 @@
 <li><code>-</code> ：代码折叠（Collapse declarations）</li>
 <li><code>+</code> ：代码展开（Collapse declarations）</li>
 <li><code>/</code> ：行注释</li>
+<li><code>Ctrl+Alt+num</code>：Lock highlight，添加高亮标记（注意：<code>num</code>是一个数字）</li>
 </ul>
 <h2 id="数据转换"><a href="#数据转换" class="headerlink" title="数据转换"></a>数据转换</h2><ul>
 <li><code>U</code>：取消定义（Undefine）<br>可取消函数、代码或数据的定义。取消定义后，其基础字节将作为原始字节值重新格式化。</li>
@@ -191,14 +378,83 @@
 <li><code>H</code>：在十进制数据和十六进制数据之间切换</li>
 <li><code>R</code>：将数据切换为char类型</li>
 </ul>
-<h1 id="工具栏"><a href="#工具栏" class="headerlink" title="工具栏"></a>工具栏</h1><h2 id="锁定功能"><a href="#锁定功能" class="headerlink" title="锁定功能"></a>锁定功能</h2><p><strong>使用方式</strong><br>选中一个函数或地址后，右键在菜单中选择 <code>Xrefs graph from...</code>。</p>
+<h1 id="动态调试"><a href="#动态调试" class="headerlink" title="动态调试"></a>动态调试</h1><h2 id="调试器"><a href="#调试器" class="headerlink" title="调试器"></a>调试器</h2><h3 id="配置调试信息"><a href="#配置调试信息" class="headerlink" title="配置调试信息"></a>配置调试信息</h3><p>调试器选择完毕，打开Debugger菜单，选择<code>Process options</code><br>配置调试器在加载目标程序时的运行参数和环境  </p>
+<ul>
+<li><code>Application</code>：指定要调试的目标程序路径</li>
+<li><code>Input file</code>：指定程序运行时需要的输入文件路径</li>
+<li><code>Parameters</code>：为目标程序提供运行时的命令行参数。</li>
+<li><code>Hostname</code>和<code>Port</code>：填写主机名和端口</li>
+</ul>
+<p><img src="/2024/12/01/IDA%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/5.jpg"></p>
+<h3 id="Win本地调试"><a href="#Win本地调试" class="headerlink" title="Win本地调试"></a>Win本地调试</h3><p>本地调试无需配置server文件。</p>
+<h3 id="远程调试"><a href="#远程调试" class="headerlink" title="远程调试"></a>远程调试</h3><p>在IDA的安装目录下，有一个dbgsrv文件夹，里面是各个系统架构的远程调试server文件。</p>
+<p><img src="/2024/12/01/IDA%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/3.jpg"></p>
+<h4 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h4><p>把linux_server拷贝到Linux主机上，添加可执行权限，然后启动</p>
+<p><img src="/2024/12/01/IDA%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/4.jpg"></p>
+<h4 id="Android"><a href="#Android" class="headerlink" title="Android"></a>Android</h4><p>把android_server远程调试文件push到手机上的&#x2F;data&#x2F;local&#x2F;tmp目录下，改名字为as  </p>
+<ul>
+<li><p>添加可执行权限</p>
+  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">chmod +x as</span><br></pre></td></tr></table></figure></li>
+<li><p>启动as</p>
+  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">./as -p 1234  //-p选项用于设置端口</span><br></pre></td></tr></table></figure>
+<p>  <img src="/2024/12/01/IDA%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/6.jpg"></p>
+</li>
+<li><p>端口转发</p>
+  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">adb forward tcp:1234 tcp:1234</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="调试模式"><a href="#调试模式" class="headerlink" title="调试模式"></a>调试模式</h2><h3 id="Start-Process"><a href="#Start-Process" class="headerlink" title="Start Process"></a>Start Process</h3><p>Start Process 是指直接从 IDA 中启动一个可执行文件（如 .exe 程序）进行调试。IDA 会加载目标文件，并启动一个新的调试会话。</p>
+<h3 id="Attach-to-Process"><a href="#Attach-to-Process" class="headerlink" title="Attach to Process"></a>Attach to Process</h3><p>Attach to Process 是指将调试器附加到一个已经运行的进程。IDA 不会启动新的程序，而是连接到当前运行中的目标进程，实时分析其运行状态。</p>
+<h2 id="调试窗口"><a href="#调试窗口" class="headerlink" title="调试窗口"></a>调试窗口</h2><h3 id="General-registers窗口（寄存器）"><a href="#General-registers窗口（寄存器）" class="headerlink" title="General registers窗口（寄存器）"></a>General registers窗口（寄存器）</h3><p>&emsp;&emsp;寄存器内容在相关寄存器右边显示，后面显示对每个寄存器的说明，最右边的列中显示CPU标志位。  </p>
+<ul>
+<li>鼠标右键单击一个寄存器或标志位，会出现一个modify选项，可以更改寄存器或CPU标志位的值。  </li>
+<li>如果一个寄存器指向一个有效的地址，那么该寄存器值右侧会出现一个直角箭头并有突出显示，单击箭头，会跳转到相应的内存位置。<br><img src="/2024/12/01/IDA%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/2.jpg"></li>
+</ul>
+<h3 id="Modules窗口（模块）"><a href="#Modules窗口（模块）" class="headerlink" title="Modules窗口（模块）"></a>Modules窗口（模块）</h3><p>Modules窗⼝显⽰所有加载到进程内存空间中的可执⾏⽂件和动态链接库。  </p>
+<ul>
+<li>双击任何模块名称，将打开该模块导出的符号列表，双击符号，进行跳转。</li>
+</ul>
+<h3 id="Threads窗口（线程）"><a href="#Threads窗口（线程）" class="headerlink" title="Threads窗口（线程）"></a>Threads窗口（线程）</h3><p>Threads 窗口会列出当前进程中所有活动的线程，并显示每个线程的详细信息。</p>
+<h3 id="Stack-view窗口（堆栈）"><a href="#Stack-view窗口（堆栈）" class="headerlink" title="Stack view窗口（堆栈）"></a>Stack view窗口（堆栈）</h3><p>显示当前线程调用堆栈的内容，用于观察函数调用之间的堆栈数据变化。</p>
+<h2 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h2><ul>
+<li><code>F2</code>：设置断点</li>
+<li><code>F7</code>：步入</li>
+<li><code>F8</code>：步过</li>
+<li><code>F9</code>：启动调试，及运行至下一断点</li>
+<li><code>Ctrl+F7</code>：指定到当前函数的返回后位置</li>
+<li><code>F4</code>：运行至光标处</li>
+<li><code>Ctrl+N</code>：set IP，可以直接修改程序的执行路径。强制代码从光标位置开始执行</li>
+</ul>
+<h2 id="硬件断点"><a href="#硬件断点" class="headerlink" title="硬件断点"></a>硬件断点</h2><p>&emsp;&emsp;硬件断点用于在调试过程中实时监控内存区域的访问，硬件断点不会修改目标程序的代码，而是通过硬件的调试功能直接监控特定的内存地址或代码区域。</p>
+<h3 id="设置硬件断点"><a href="#设置硬件断点" class="headerlink" title="设置硬件断点"></a>设置硬件断点</h3><p>先设置普通断点，右键选择<code>Breakpoint settints</code>，勾选<code>Hardware</code>，选择硬件断点模式，勾选<code>Execute</code></p>
+<p>硬件断点模式</p>
+<ul>
+<li><code>Read</code>：断点地址被读取时命中</li>
+<li><code>Write</code>：断点地址被写入时命中</li>
+<li><code>Execute</code>：断点地址被执行时命中</li>
+<li><code>Size</code>：地址范围的大小</li>
+</ul>
+<p><img src="/2024/12/01/IDA%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/7.jpg"></p>
+<h2 id="内存断点"><a href="#内存断点" class="headerlink" title="内存断点"></a>内存断点</h2><p>&emsp;&emsp;内存断点（也称为 <strong>memory breakpoint</strong> 或数据断点）是用于监控特定内存区域访问的工具。它可以捕获对目标内存地址的 <strong>读取</strong>、<strong>写入</strong> 或 <strong>执行</strong> 操作。</p>
+<h3 id="设置内存断点"><a href="#设置内存断点" class="headerlink" title="设置内存断点"></a>设置内存断点</h3><p>设置普通断点，右键选择<code>Breakpoint settints</code>，勾选<code>Hardware</code>，选择硬件断点模式，勾选<code>Read</code>和<code>Write</code></p>
+<h2 id="API-断点"><a href="#API-断点" class="headerlink" title="API 断点"></a>API 断点</h2><p>&emsp;&emsp;API 断点是设置在目标程序调用的 API 函数入口或关键位置的断点，目的是拦截程序调用该函数时的执行流程。</p>
+<h3 id="设置API断点"><a href="#设置API断点" class="headerlink" title="设置API断点"></a>设置API断点</h3><p>设置方式与设置普通断点一致。</p>
+<h2 id="Trace"><a href="#Trace" class="headerlink" title="Trace"></a>Trace</h2><p>用于记录程序在运行过程中执行的指令、访问的内存、调用的函数或其他关键事件。</p>
+<h3 id="启用trace"><a href="#启用trace" class="headerlink" title="启用trace"></a>启用trace</h3><p>打开<code>Debugger-&gt;Tracing-&gt;Tracing Options</code>，配置trace选项。</p>
+<p><img src="/2024/12/01/IDA%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/9.jpg"></p>
+<h3 id="trace内容"><a href="#trace内容" class="headerlink" title="trace内容"></a>trace内容</h3><ul>
+<li><strong>Instruction tracing</strong>：跟踪指令执行。</li>
+<li><strong>Function tracing</strong>：跟踪函数调用。</li>
+<li><strong>Basic block tracing</strong>：跟踪基本块。</li>
+</ul>
 <h1 id="IDA插件"><a href="#IDA插件" class="headerlink" title="IDA插件"></a>IDA插件</h1><h2 id="LazyIDA-py"><a href="#LazyIDA-py" class="headerlink" title="LazyIDA.py"></a>LazyIDA.py</h2><p><a href="https://github.com/P4nda0s/LazyIDA">https://github.com/P4nda0s/LazyIDA</a>  </p>
 <h3 id="提取数据"><a href="#提取数据" class="headerlink" title="提取数据"></a>提取数据</h3><ul>
 <li>将数据转换为python&#x2F;C的数组形式</li>
 <li>选中数据后，右键，选择Convert，然后选择相应的格式。（注意：这里选中的地址要包含所需地址范围的下一地址）</li>
 </ul>
 <p><img src="/2024/12/01/IDA%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/1.jpg"></p>
-<h3 id="Paste-Data"><a href="#Paste-Data" class="headerlink" title="Paste Data"></a>Paste Data</h3><p>插件修改数据，光标定位到要修改的位置，右键，选择<code>Paste Data</code>，然后输入要修改的内容。</p>
+<h3 id="Paste-Data"><a href="#Paste-Data" class="headerlink" title="Paste Data"></a>Paste Data</h3><p>插件修改数据，光标定位到数据窗口中要修改的数据的位置，右键，选择<code>Paste Data</code>，然后输入要修改的内容。</p>
+<h3 id="dump内存"><a href="#dump内存" class="headerlink" title="dump内存"></a>dump内存</h3><p>将光标定位到需要dump的数据的起始地址，右键，选择<code>Lazy Dumper</code></p>
+<p><img src="/2024/12/01/IDA%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/8.jpg"></p>
 ]]></content>
       <categories>
         <category>逆向工具集</category>
@@ -252,28 +508,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Java</title>
-    <url>/2024/05/01/Java/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>编程语言</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Python基础</title>
-    <url>/2024/12/15/Python%E5%9F%BA%E7%A1%80/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>Python</category>
-      </categories>
-      <tags>
-        <tag>Python基础</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>JavaScript</title>
     <url>/2024/12/04/JavaScript/</url>
     <content><![CDATA[]]></content>
@@ -282,6 +516,17 @@
       </categories>
       <tags>
         <tag>JS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java</title>
+    <url>/2024/05/01/Java/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>编程语言</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
       </tags>
   </entry>
   <entry>
@@ -399,51 +644,14 @@
       </tags>
   </entry>
   <entry>
-    <title>frida环境搭建</title>
-    <url>/2024/05/01/frida%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</url>
-    <content><![CDATA[<h1 id="安装frida"><a href="#安装frida" class="headerlink" title="安装frida"></a>安装frida</h1><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>使用如下命令安装frida，默认安装最新版的frida</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pip install frida </span><br></pre></td></tr></table></figure>
-<h2 id="卸载"><a href="#卸载" class="headerlink" title="卸载"></a>卸载</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pip uninstall frida</span><br></pre></td></tr></table></figure>
-<h2 id="指定版本"><a href="#指定版本" class="headerlink" title="指定版本"></a>指定版本</h2><p>安装指定版本的frida</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pip install frida==xx.xx.xx</span><br></pre></td></tr></table></figure>
-<h2 id="frida-tools（安装frida-tools会自动安装frida）"><a href="#frida-tools（安装frida-tools会自动安装frida）" class="headerlink" title="frida-tools（安装frida-tools会自动安装frida）"></a>frida-tools（安装frida-tools会自动安装frida）</h2><h3 id="安装frida-tools"><a href="#安装frida-tools" class="headerlink" title="安装frida-tools"></a>安装frida-tools</h3><p>使用如下命令安装frida-tools，默认安装最新版的frida-tools</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pip install frida-tools</span><br></pre></td></tr></table></figure>
-<h3 id="安装指定版本的frida-tools"><a href="#安装指定版本的frida-tools" class="headerlink" title="安装指定版本的frida-tools"></a>安装指定版本的frida-tools</h3><p>frida 与 frida-tools 版本的对应关系可在github项目处查看或者直接baidu搜索</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pip install frida-tools==xx.xx.xx</span><br></pre></td></tr></table></figure>
-<h3 id="卸载frida-tools"><a href="#卸载frida-tools" class="headerlink" title="卸载frida-tools"></a>卸载frida-tools</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pip uninstall frida-tools</span><br></pre></td></tr></table></figure>
-<h1 id="配置frida-server"><a href="#配置frida-server" class="headerlink" title="配置frida-server"></a>配置frida-server</h1><p>frida-server的版本需要与frida的版本相匹配，同时frida-server的运行平台要与自己的设备和架构相匹配。</p>
-<h2 id="下载frida-server"><a href="#下载frida-server" class="headerlink" title="下载frida-server"></a>下载frida-server</h2><p>在github上下载frida-server。<br>将下载的压缩包解压后通过<code>adb push</code>推送到测试机的&#x2F;data&#x2F;local&#x2F;tmp目录下（需要通过USB连接手机）。  </p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">adb push frida-server /data/local/tmp</span><br></pre></td></tr></table></figure>
-<p>通过chmod命令为其赋予可执行权限</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">chmod 777 frida-sever</span><br></pre></td></tr></table></figure>
-<h1 id="frider-server"><a href="#frider-server" class="headerlink" title="frider-server"></a>frider-server</h1><p><strong>frida-server的使用</strong></p>
-<p><img src="/2024/05/01/frida%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/1.jpg"></p>
-<ul>
-<li><code>-l</code>：指定监听地址，设置主机IP和端口。</li>
-<li><code>--version</code>：输出frida-server的版本信息。</li>
-</ul>
-<h1 id="frida"><a href="#frida" class="headerlink" title="frida"></a>frida</h1><p><strong>frida的使用</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Usage: frida [options] target</span><br><span class="line"></span><br><span class="line">Options:</span><br><span class="line">  --version             show program&#x27;s version number and exit</span><br><span class="line">  -h, --help            show this help message and exit</span><br><span class="line">  -D ID, --device=ID    connect to device with the given ID</span><br><span class="line">  -U, --usb             connect to USB device</span><br><span class="line">  -R, --remote          connect to remote frida-server</span><br><span class="line">  -H HOST, --host=HOST  connect to remote frida-server on HOST</span><br><span class="line">  -f FILE, --file=FILE  spawn FILE</span><br><span class="line">  -F, --attach-frontmost</span><br><span class="line">                        attach to frontmost application</span><br><span class="line">  -n NAME, --attach-name=NAME</span><br><span class="line">                        attach to NAME</span><br><span class="line">  -p PID, --attach-pid=PID</span><br><span class="line">                        attach to PID</span><br><span class="line">  --stdio=inherit|pipe  stdio behavior when spawning (defaults to “inherit”)</span><br><span class="line">  --aux=option          set aux option when spawning, such as “uid=(int)42”</span><br><span class="line">                        (supported types are: string, bool, int)</span><br><span class="line">  --realm=native|emulated</span><br><span class="line">                        realm to attach in</span><br><span class="line">  --runtime=qjs|v8      script runtime to use</span><br><span class="line">  --debug               enable the Node.js compatible script debugger</span><br><span class="line">  --squelch-crash       if enabled, will not dump crash report to console</span><br><span class="line">  -O FILE, --options-file=FILE</span><br><span class="line">                        text file containing additional command line options</span><br><span class="line">  -l SCRIPT, --load=SCRIPT</span><br><span class="line">                        load SCRIPT</span><br><span class="line">  -P PARAMETERS_JSON, --parameters=PARAMETERS_JSON</span><br><span class="line">                        parameters as JSON, same as Gadget</span><br><span class="line">  -C CMODULE, --cmodule=CMODULE</span><br><span class="line">                        load CMODULE</span><br><span class="line">  --toolchain=any|internal|external</span><br><span class="line">                        CModule toolchain to use when compiling from source</span><br><span class="line">                        code</span><br><span class="line">  -c CODESHARE_URI, --codeshare=CODESHARE_URI</span><br><span class="line">                        load CODESHARE_URI</span><br><span class="line">  -e CODE, --eval=CODE  evaluate CODE</span><br><span class="line">  -q                    quiet mode (no prompt) and quit after -l and -e</span><br><span class="line">  --no-pause            automatically start main thread after startup</span><br><span class="line">  -o LOGFILE, --output=LOGFILE</span><br><span class="line">                        output to log file</span><br><span class="line">  --eternalize          eternalize the script before exit</span><br><span class="line">  --exit-on-error       exit with code 1 after encountering any exception in</span><br><span class="line">                        the SCRIPT</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<ul>
-<li><code>--version</code><br>显示 frida 的版本号并退出。</li>
-<li><code>-h,--help</code><br>显示帮助信息，列出所有可用选项并退出。</li>
-<li><code>-U, --usb</code><br>通过 USB 连接到设备。</li>
-<li><code>-H HOST, --host=HOST</code><br>连接到指定 HOST 上的远程 frida-server。</li>
-<li><code>-D ID, --device=ID</code><br>连接到指定 ID 的设备。</li>
-<li><code>-f FILE, --file=FILE</code><br>spawn模式，启动指定的文件（启动一个新的进程并挂起）。</li>
-<li><code>-F, --attach-frontmost</code><br>attach模式，附加到前台运行的应用程序。</li>
-<li><code>-n NAME, --attach-name=NAME</code><br>附加到指定名称的应用程序。</li>
-<li><code>-p PID, --attach-pid=PID</code><br>附加到指定进程 ID 的应用程序。</li>
-<li><code>-l SCRIPT, --load=SCRIPT</code><br>加载指定的脚本文件。</li>
-<li><code>--no-pause</code><br>启动后自动启动主线程，通常配合-f选项使用。</li>
-<li><code>-o LOGFILE, --output=LOGFILE</code><br>将输出记录到指定的日志文件中。</li>
-</ul>
-]]></content>
+    <title>Python基础</title>
+    <url>/2024/12/15/Python%E5%9F%BA%E7%A1%80/</url>
+    <content><![CDATA[]]></content>
       <categories>
-        <category>Frida</category>
+        <category>Python</category>
       </categories>
       <tags>
-        <tag>frida环境搭建</tag>
+        <tag>Python基础</tag>
       </tags>
   </entry>
   <entry>
@@ -729,24 +937,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Hello World</title>
-    <url>/2024/11/28/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-]]></content>
-  </entry>
-  <entry>
     <title>adb: Android调试桥</title>
     <url>/2024/12/07/adb-Android%E8%B0%83%E8%AF%95%E6%A1%A5/</url>
     <content><![CDATA[<p>Android 调试桥 (adb) 是一种功能多样的命令行工具，可以通过命令行与设备进行通信。</p>
@@ -792,6 +982,72 @@
       <tags>
         <tag>adb</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>frida环境搭建</title>
+    <url>/2024/05/01/frida%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</url>
+    <content><![CDATA[<h1 id="安装frida"><a href="#安装frida" class="headerlink" title="安装frida"></a>安装frida</h1><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>使用如下命令安装frida，默认安装最新版的frida</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pip install frida </span><br></pre></td></tr></table></figure>
+<h2 id="卸载"><a href="#卸载" class="headerlink" title="卸载"></a>卸载</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pip uninstall frida</span><br></pre></td></tr></table></figure>
+<h2 id="指定版本"><a href="#指定版本" class="headerlink" title="指定版本"></a>指定版本</h2><p>安装指定版本的frida</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pip install frida==xx.xx.xx</span><br></pre></td></tr></table></figure>
+<h2 id="frida-tools（安装frida-tools会自动安装frida）"><a href="#frida-tools（安装frida-tools会自动安装frida）" class="headerlink" title="frida-tools（安装frida-tools会自动安装frida）"></a>frida-tools（安装frida-tools会自动安装frida）</h2><h3 id="安装frida-tools"><a href="#安装frida-tools" class="headerlink" title="安装frida-tools"></a>安装frida-tools</h3><p>使用如下命令安装frida-tools，默认安装最新版的frida-tools</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pip install frida-tools</span><br></pre></td></tr></table></figure>
+<h3 id="安装指定版本的frida-tools"><a href="#安装指定版本的frida-tools" class="headerlink" title="安装指定版本的frida-tools"></a>安装指定版本的frida-tools</h3><p>frida 与 frida-tools 版本的对应关系可在github项目处查看或者直接baidu搜索</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pip install frida-tools==xx.xx.xx</span><br></pre></td></tr></table></figure>
+<h3 id="卸载frida-tools"><a href="#卸载frida-tools" class="headerlink" title="卸载frida-tools"></a>卸载frida-tools</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pip uninstall frida-tools</span><br></pre></td></tr></table></figure>
+<h1 id="配置frida-server"><a href="#配置frida-server" class="headerlink" title="配置frida-server"></a>配置frida-server</h1><p>frida-server的版本需要与frida的版本相匹配，同时frida-server的运行平台要与自己的设备和架构相匹配。</p>
+<h2 id="下载frida-server"><a href="#下载frida-server" class="headerlink" title="下载frida-server"></a>下载frida-server</h2><p>在github上下载frida-server。<br>将下载的压缩包解压后通过<code>adb push</code>推送到测试机的&#x2F;data&#x2F;local&#x2F;tmp目录下（需要通过USB连接手机）。  </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">adb push frida-server /data/local/tmp</span><br></pre></td></tr></table></figure>
+<p>通过chmod命令为其赋予可执行权限</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">chmod 777 frida-sever</span><br></pre></td></tr></table></figure>
+<h1 id="frider-server"><a href="#frider-server" class="headerlink" title="frider-server"></a>frider-server</h1><p><strong>frida-server的使用</strong></p>
+<p><img src="/2024/05/01/frida%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/1.jpg"></p>
+<ul>
+<li><code>-l</code>：指定监听地址，设置主机IP和端口。</li>
+<li><code>--version</code>：输出frida-server的版本信息。</li>
+</ul>
+<h1 id="frida"><a href="#frida" class="headerlink" title="frida"></a>frida</h1><p><strong>frida的使用</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Usage: frida [options] target</span><br><span class="line"></span><br><span class="line">Options:</span><br><span class="line">  --version             show program&#x27;s version number and exit</span><br><span class="line">  -h, --help            show this help message and exit</span><br><span class="line">  -D ID, --device=ID    connect to device with the given ID</span><br><span class="line">  -U, --usb             connect to USB device</span><br><span class="line">  -R, --remote          connect to remote frida-server</span><br><span class="line">  -H HOST, --host=HOST  connect to remote frida-server on HOST</span><br><span class="line">  -f FILE, --file=FILE  spawn FILE</span><br><span class="line">  -F, --attach-frontmost</span><br><span class="line">                        attach to frontmost application</span><br><span class="line">  -n NAME, --attach-name=NAME</span><br><span class="line">                        attach to NAME</span><br><span class="line">  -p PID, --attach-pid=PID</span><br><span class="line">                        attach to PID</span><br><span class="line">  --stdio=inherit|pipe  stdio behavior when spawning (defaults to “inherit”)</span><br><span class="line">  --aux=option          set aux option when spawning, such as “uid=(int)42”</span><br><span class="line">                        (supported types are: string, bool, int)</span><br><span class="line">  --realm=native|emulated</span><br><span class="line">                        realm to attach in</span><br><span class="line">  --runtime=qjs|v8      script runtime to use</span><br><span class="line">  --debug               enable the Node.js compatible script debugger</span><br><span class="line">  --squelch-crash       if enabled, will not dump crash report to console</span><br><span class="line">  -O FILE, --options-file=FILE</span><br><span class="line">                        text file containing additional command line options</span><br><span class="line">  -l SCRIPT, --load=SCRIPT</span><br><span class="line">                        load SCRIPT</span><br><span class="line">  -P PARAMETERS_JSON, --parameters=PARAMETERS_JSON</span><br><span class="line">                        parameters as JSON, same as Gadget</span><br><span class="line">  -C CMODULE, --cmodule=CMODULE</span><br><span class="line">                        load CMODULE</span><br><span class="line">  --toolchain=any|internal|external</span><br><span class="line">                        CModule toolchain to use when compiling from source</span><br><span class="line">                        code</span><br><span class="line">  -c CODESHARE_URI, --codeshare=CODESHARE_URI</span><br><span class="line">                        load CODESHARE_URI</span><br><span class="line">  -e CODE, --eval=CODE  evaluate CODE</span><br><span class="line">  -q                    quiet mode (no prompt) and quit after -l and -e</span><br><span class="line">  --no-pause            automatically start main thread after startup</span><br><span class="line">  -o LOGFILE, --output=LOGFILE</span><br><span class="line">                        output to log file</span><br><span class="line">  --eternalize          eternalize the script before exit</span><br><span class="line">  --exit-on-error       exit with code 1 after encountering any exception in</span><br><span class="line">                        the SCRIPT</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>--version</code><br>显示 frida 的版本号并退出。</li>
+<li><code>-h,--help</code><br>显示帮助信息，列出所有可用选项并退出。</li>
+<li><code>-U, --usb</code><br>通过 USB 连接到设备。</li>
+<li><code>-H HOST, --host=HOST</code><br>连接到指定 HOST 上的远程 frida-server。</li>
+<li><code>-D ID, --device=ID</code><br>连接到指定 ID 的设备。</li>
+<li><code>-f FILE, --file=FILE</code><br>spawn模式，启动指定的文件（启动一个新的进程并挂起）。</li>
+<li><code>-F, --attach-frontmost</code><br>attach模式，附加到前台运行的应用程序。</li>
+<li><code>-n NAME, --attach-name=NAME</code><br>附加到指定名称的应用程序。</li>
+<li><code>-p PID, --attach-pid=PID</code><br>附加到指定进程 ID 的应用程序。</li>
+<li><code>-l SCRIPT, --load=SCRIPT</code><br>加载指定的脚本文件。</li>
+<li><code>--no-pause</code><br>启动后自动启动主线程，通常配合-f选项使用。</li>
+<li><code>-o LOGFILE, --output=LOGFILE</code><br>将输出记录到指定的日志文件中。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Frida</category>
+      </categories>
+      <tags>
+        <tag>frida环境搭建</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/2024/11/28/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
   </entry>
   <entry>
     <title>hexo+github从0到1博客环境搭建</title>
@@ -869,6 +1125,68 @@
       </categories>
       <tags>
         <tag>Frida</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>selenium</title>
+    <url>/2024/12/05/selenium/</url>
+    <content><![CDATA[<p>Selenium 是一个自动化测试工具，利用它我们可以驱动浏览器执行特定的动作。</p>
+<h1 id="安装ChromeDriver"><a href="#安装ChromeDriver" class="headerlink" title="安装ChromeDriver"></a>安装ChromeDriver</h1><p>Selenium的使用需要配合Chrome浏览器，需要额外安装ChromeDriver 和 Chrome 浏览器。<br>安装好Chrome 浏览器并可以正常运行之后，点击 Chrome 的菜单，帮助 -&gt; 关于 Chrome，查看 Chrome 的版本号，然后到ChromeDriver 的官方网站<a href="https://sites.google.com/chromium.org/driver/downloads">https://sites.google.com/chromium.org/driver/downloads</a>下载对应的ChromeDriver 版本。</p>
+<h2 id="环境变量配置"><a href="#环境变量配置" class="headerlink" title="环境变量配置"></a>环境变量配置</h2><p>Windows建议直接将 chromedriver.exe 文件拖到 Python 的 Scripts 目录下。<br>也可以单独将其所在路径配置到环境变量。<br>配置完成之后，就可以在命令行下直接执行 chromedriver 命令了。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">chromedriver</span><br></pre></td></tr></table></figure>
+<h1 id="安装Selenium"><a href="#安装Selenium" class="headerlink" title="安装Selenium"></a>安装Selenium</h1><p>使用pip直接安装</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pip install selenium</span><br></pre></td></tr></table></figure>
+<p><strong>可以运行一个脚本测试</strong><br>弹出一个 Chrome 浏览器并加载了百度页面，10 秒之后就关闭。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"><span class="keyword">from</span> time <span class="keyword">import</span> sleep</span><br><span class="line"></span><br><span class="line">browser = webdriver.Chrome()</span><br><span class="line">browser.get(<span class="string">&#x27;https://www.baidu.com&#x27;</span>)</span><br><span class="line">sleep(<span class="number">10</span>)</span><br><span class="line">browser.close() </span><br></pre></td></tr></table></figure>
+<h1 id="常用浏览器操作"><a href="#常用浏览器操作" class="headerlink" title="常用浏览器操作"></a>常用浏览器操作</h1><h2 id="打开页面"><a href="#打开页面" class="headerlink" title="打开页面"></a>打开页面</h2><figure class="highlight py"><table><tr><td class="code"><pre><span class="line">driver.get(<span class="string">&quot;https://xxx.com&quot;</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="获取URL"><a href="#获取URL" class="headerlink" title="获取URL"></a>获取URL</h2><figure class="highlight py"><table><tr><td class="code"><pre><span class="line">url = driver.current_url</span><br></pre></td></tr></table></figure>
+<h2 id="获取标题"><a href="#获取标题" class="headerlink" title="获取标题"></a>获取标题</h2><figure class="highlight py"><table><tr><td class="code"><pre><span class="line">title = driver.title</span><br></pre></td></tr></table></figure>
+
+<h2 id="页面元素定位"><a href="#页面元素定位" class="headerlink" title="页面元素定位"></a>页面元素定位</h2><p>使用By类型（需要导入By）  </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">from selenium.webdriver.common.by import By</span><br></pre></td></tr></table></figure>
+<h3 id="通过ID定位"><a href="#通过ID定位" class="headerlink" title="通过ID定位"></a>通过ID定位</h3><figure class="highlight py"><table><tr><td class="code"><pre><span class="line">element = driver.find_element(By.ID, <span class="string">&quot;xxx&quot;</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="通过"><a href="#通过" class="headerlink" title="通过"></a>通过</h3>]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>selenium</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>抓包</title>
+    <url>/2024/12/02/%E6%8A%93%E5%8C%85/</url>
+    <content><![CDATA[<h1 id="HTTP抓包"><a href="#HTTP抓包" class="headerlink" title="HTTP抓包"></a>HTTP抓包</h1><p>对于HTTP的包是可以通过抓包工具+配置手机代理直接抓取的。</p>
+<h1 id="HTTPS抓包"><a href="#HTTPS抓包" class="headerlink" title="HTTPS抓包"></a>HTTPS抓包</h1><p>HTTPS是有系统证书校验的，需要安装证书之后通过抓包工具+配置手机代理来进行抓包。<br>在安卓上，Android8.0之后，浏览器默认信任用户目录下的证书，而APP默认不再信任用户目录下的证书了，所以需要手动把用户目录下的证书移动到系统目录下（通过面具移动或者手动移动）。</p>
+<h1 id="检测代理"><a href="#检测代理" class="headerlink" title="检测代理"></a>检测代理</h1><ul>
+<li>APP在发起网络请求前会检测系统是否设置了代理，如果发现有代理，就不发起请求。  </li>
+<li>APP 用了No Proxy参数发起网络请求，即使系统设置了代理，也会被直接绕过，APP依然能正常获取网络数据，但抓包工具无法抓到该APP的数据包。</li>
+</ul>
+<h1 id="单向证书校验"><a href="#单向证书校验" class="headerlink" title="单向证书校验"></a>单向证书校验</h1><p>单向证书校验是指在客户端与服务器之间的通信中，只有服务器需要提供证书，客户端通过验证服务器的证书来确认服务器的身份。<br><strong>原理</strong>  </p>
+<ul>
+<li>客户端发起连接请求（如通过HTTPS）。  </li>
+<li>服务器将其数字证书发送给客户端，数字证书中包含了服务器的公钥和其他信息（如证书的有效期、签发者等）。  </li>
+<li>客户端收到证书后，通过信任的证书颁发机构（CA）的公钥来验证证书的有效性。如果证书有效，客户端就信任这个服务器，继续进行后续的加密通信。  </li>
+<li>客户端不需要提供任何证书或身份验证。</li>
+</ul>
+<h1 id="双向证书校验"><a href="#双向证书校验" class="headerlink" title="双向证书校验"></a>双向证书校验</h1><p>双向证书校验则要求客户端和服务器都提供证书，并且相互验证对方的身份。这样不仅服务器要验证客户端的身份，客户端也要验证服务器的身份。<br><strong>原理</strong>  </p>
+<ul>
+<li>客户端发起连接请求。  </li>
+<li>服务器发送其数字证书给客户端，客户端用CA公钥验证服务器证书的合法性。  </li>
+<li>服务器要求客户端也提供数字证书。客户端向服务器提供自己的证书，服务器同样使用CA公钥验证客户端证书的合法性。  </li>
+<li>双方都确认对方的身份后，开始建立加密通道进行安全通信。</li>
+</ul>
+<h1 id="SSL-pinning"><a href="#SSL-pinning" class="headerlink" title="SSL pinning"></a>SSL pinning</h1><p>SSL Pinning（SSL证书绑定）是为了增强应用程序对中间人攻击（MITM攻击）的防御的一种技术。它将特定的证书或公钥绑定到客户端应用程序中，使得客户端在建立SSL连接时，仅信任与该证书或公钥匹配的服务器证书，从而确保通信的安全性。</p>
+<h2 id="Certificate-Pinning"><a href="#Certificate-Pinning" class="headerlink" title="Certificate Pinning"></a>Certificate Pinning</h2><p>证书绑定是指将服务器的证书（通常是公钥）内置到客户端应用中。客户端在建立SSL连接时，会验证服务器的证书与客户端预定义的证书是否匹配。如果不匹配，连接会被拒绝，防止攻击者使用伪造的证书进行中间人攻击。  </p>
+<h2 id="Public-Key-Pinning"><a href="#Public-Key-Pinning" class="headerlink" title="Public Key Pinning"></a>Public Key Pinning</h2><p>公钥绑定是SSL Pinning的一种形式，客户端不直接绑定证书，而是绑定服务器证书中的公钥。这种方式可以避免证书过期或更新时造成的连接问题，因为即便证书发生变化，只要公钥保持不变，客户端仍然可以信任新的证书。  </p>
+<h2 id="绕过方式"><a href="#绕过方式" class="headerlink" title="绕过方式"></a>绕过方式</h2><h3 id="使用frida进行hook"><a href="#使用frida进行hook" class="headerlink" title="使用frida进行hook"></a>使用frida进行hook</h3><p>frida官方提供的客户端校验绕过脚本如下<br><a href="https://codeshare.frida.re/@akabe1/frida-multiple-unpinning/">https:&#x2F;&#x2F;codeshare.frida.re&#x2F;@akabe1&#x2F;frida-multiple-unpinning&#x2F;</a></p>
+<h3 id="JustTrustMe"><a href="#JustTrustMe" class="headerlink" title="JustTrustMe"></a>JustTrustMe</h3><p>利用面具刷入LSPosed框架，然后安装JustTrustMe插件。<br>在LSPosed的模块里打开JustTrustMe，在要选择绕过的App后面方框勾选上即可。</p>
+]]></content>
+      <categories>
+        <category>抓包</category>
+      </categories>
+      <tags>
+        <tag>抓包</tag>
       </tags>
   </entry>
   <entry>
@@ -950,68 +1268,6 @@
       </tags>
   </entry>
   <entry>
-    <title>selenium</title>
-    <url>/2024/12/05/selenium/</url>
-    <content><![CDATA[<p>Selenium 是一个自动化测试工具，利用它我们可以驱动浏览器执行特定的动作。</p>
-<h1 id="安装ChromeDriver"><a href="#安装ChromeDriver" class="headerlink" title="安装ChromeDriver"></a>安装ChromeDriver</h1><p>Selenium的使用需要配合Chrome浏览器，需要额外安装ChromeDriver 和 Chrome 浏览器。<br>安装好Chrome 浏览器并可以正常运行之后，点击 Chrome 的菜单，帮助 -&gt; 关于 Chrome，查看 Chrome 的版本号，然后到ChromeDriver 的官方网站<a href="https://sites.google.com/chromium.org/driver/downloads">https://sites.google.com/chromium.org/driver/downloads</a>下载对应的ChromeDriver 版本。</p>
-<h2 id="环境变量配置"><a href="#环境变量配置" class="headerlink" title="环境变量配置"></a>环境变量配置</h2><p>Windows建议直接将 chromedriver.exe 文件拖到 Python 的 Scripts 目录下。<br>也可以单独将其所在路径配置到环境变量。<br>配置完成之后，就可以在命令行下直接执行 chromedriver 命令了。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">chromedriver</span><br></pre></td></tr></table></figure>
-<h1 id="安装Selenium"><a href="#安装Selenium" class="headerlink" title="安装Selenium"></a>安装Selenium</h1><p>使用pip直接安装</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pip install selenium</span><br></pre></td></tr></table></figure>
-<p><strong>可以运行一个脚本测试</strong><br>弹出一个 Chrome 浏览器并加载了百度页面，10 秒之后就关闭。</p>
-<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"><span class="keyword">from</span> time <span class="keyword">import</span> sleep</span><br><span class="line"></span><br><span class="line">browser = webdriver.Chrome()</span><br><span class="line">browser.get(<span class="string">&#x27;https://www.baidu.com&#x27;</span>)</span><br><span class="line">sleep(<span class="number">10</span>)</span><br><span class="line">browser.close() </span><br></pre></td></tr></table></figure>
-<h1 id="常用浏览器操作"><a href="#常用浏览器操作" class="headerlink" title="常用浏览器操作"></a>常用浏览器操作</h1><h2 id="打开页面"><a href="#打开页面" class="headerlink" title="打开页面"></a>打开页面</h2><figure class="highlight py"><table><tr><td class="code"><pre><span class="line">driver.get(<span class="string">&quot;https://xxx.com&quot;</span>)</span><br></pre></td></tr></table></figure>
-<h2 id="获取URL"><a href="#获取URL" class="headerlink" title="获取URL"></a>获取URL</h2><figure class="highlight py"><table><tr><td class="code"><pre><span class="line">url = driver.current_url</span><br></pre></td></tr></table></figure>
-<h2 id="获取标题"><a href="#获取标题" class="headerlink" title="获取标题"></a>获取标题</h2><figure class="highlight py"><table><tr><td class="code"><pre><span class="line">title = driver.title</span><br></pre></td></tr></table></figure>
-
-<h2 id="页面元素定位"><a href="#页面元素定位" class="headerlink" title="页面元素定位"></a>页面元素定位</h2><p>使用By类型（需要导入By）  </p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">from selenium.webdriver.common.by import By</span><br></pre></td></tr></table></figure>
-<h3 id="通过ID定位"><a href="#通过ID定位" class="headerlink" title="通过ID定位"></a>通过ID定位</h3><figure class="highlight py"><table><tr><td class="code"><pre><span class="line">element = driver.find_element(By.ID, <span class="string">&quot;xxx&quot;</span>)</span><br></pre></td></tr></table></figure>
-<h3 id="通过"><a href="#通过" class="headerlink" title="通过"></a>通过</h3>]]></content>
-      <categories>
-        <category>Python</category>
-      </categories>
-      <tags>
-        <tag>selenium</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>抓包</title>
-    <url>/2024/12/02/%E6%8A%93%E5%8C%85/</url>
-    <content><![CDATA[<h1 id="HTTP抓包"><a href="#HTTP抓包" class="headerlink" title="HTTP抓包"></a>HTTP抓包</h1><p>对于HTTP的包是可以通过抓包工具+配置手机代理直接抓取的。</p>
-<h1 id="HTTPS抓包"><a href="#HTTPS抓包" class="headerlink" title="HTTPS抓包"></a>HTTPS抓包</h1><p>HTTPS是有系统证书校验的，需要安装证书之后通过抓包工具+配置手机代理来进行抓包。<br>在安卓上，Android8.0之后，浏览器默认信任用户目录下的证书，而APP默认不再信任用户目录下的证书了，所以需要手动把用户目录下的证书移动到系统目录下（通过面具移动或者手动移动）。</p>
-<h1 id="检测代理"><a href="#检测代理" class="headerlink" title="检测代理"></a>检测代理</h1><ul>
-<li>APP在发起网络请求前会检测系统是否设置了代理，如果发现有代理，就不发起请求。  </li>
-<li>APP 用了No Proxy参数发起网络请求，即使系统设置了代理，也会被直接绕过，APP依然能正常获取网络数据，但抓包工具无法抓到该APP的数据包。</li>
-</ul>
-<h1 id="单向证书校验"><a href="#单向证书校验" class="headerlink" title="单向证书校验"></a>单向证书校验</h1><p>单向证书校验是指在客户端与服务器之间的通信中，只有服务器需要提供证书，客户端通过验证服务器的证书来确认服务器的身份。<br><strong>原理</strong>  </p>
-<ul>
-<li>客户端发起连接请求（如通过HTTPS）。  </li>
-<li>服务器将其数字证书发送给客户端，数字证书中包含了服务器的公钥和其他信息（如证书的有效期、签发者等）。  </li>
-<li>客户端收到证书后，通过信任的证书颁发机构（CA）的公钥来验证证书的有效性。如果证书有效，客户端就信任这个服务器，继续进行后续的加密通信。  </li>
-<li>客户端不需要提供任何证书或身份验证。</li>
-</ul>
-<h1 id="双向证书校验"><a href="#双向证书校验" class="headerlink" title="双向证书校验"></a>双向证书校验</h1><p>双向证书校验则要求客户端和服务器都提供证书，并且相互验证对方的身份。这样不仅服务器要验证客户端的身份，客户端也要验证服务器的身份。<br><strong>原理</strong>  </p>
-<ul>
-<li>客户端发起连接请求。  </li>
-<li>服务器发送其数字证书给客户端，客户端用CA公钥验证服务器证书的合法性。  </li>
-<li>服务器要求客户端也提供数字证书。客户端向服务器提供自己的证书，服务器同样使用CA公钥验证客户端证书的合法性。  </li>
-<li>双方都确认对方的身份后，开始建立加密通道进行安全通信。</li>
-</ul>
-<h1 id="SSL-pinning"><a href="#SSL-pinning" class="headerlink" title="SSL pinning"></a>SSL pinning</h1><p>SSL Pinning（SSL证书绑定）是为了增强应用程序对中间人攻击（MITM攻击）的防御的一种技术。它将特定的证书或公钥绑定到客户端应用程序中，使得客户端在建立SSL连接时，仅信任与该证书或公钥匹配的服务器证书，从而确保通信的安全性。</p>
-<h2 id="Certificate-Pinning"><a href="#Certificate-Pinning" class="headerlink" title="Certificate Pinning"></a>Certificate Pinning</h2><p>证书绑定是指将服务器的证书（通常是公钥）内置到客户端应用中。客户端在建立SSL连接时，会验证服务器的证书与客户端预定义的证书是否匹配。如果不匹配，连接会被拒绝，防止攻击者使用伪造的证书进行中间人攻击。  </p>
-<h2 id="Public-Key-Pinning"><a href="#Public-Key-Pinning" class="headerlink" title="Public Key Pinning"></a>Public Key Pinning</h2><p>公钥绑定是SSL Pinning的一种形式，客户端不直接绑定证书，而是绑定服务器证书中的公钥。这种方式可以避免证书过期或更新时造成的连接问题，因为即便证书发生变化，只要公钥保持不变，客户端仍然可以信任新的证书。  </p>
-<h2 id="绕过方式"><a href="#绕过方式" class="headerlink" title="绕过方式"></a>绕过方式</h2><h3 id="使用frida进行hook"><a href="#使用frida进行hook" class="headerlink" title="使用frida进行hook"></a>使用frida进行hook</h3><p>frida官方提供的客户端校验绕过脚本如下<br><a href="https://codeshare.frida.re/@akabe1/frida-multiple-unpinning/">https:&#x2F;&#x2F;codeshare.frida.re&#x2F;@akabe1&#x2F;frida-multiple-unpinning&#x2F;</a></p>
-<h3 id="JustTrustMe"><a href="#JustTrustMe" class="headerlink" title="JustTrustMe"></a>JustTrustMe</h3><p>利用面具刷入LSPosed框架，然后安装JustTrustMe插件。<br>在LSPosed的模块里打开JustTrustMe，在要选择绕过的App后面方框勾选上即可。</p>
-]]></content>
-      <categories>
-        <category>抓包</category>
-      </categories>
-      <tags>
-        <tag>抓包</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>数据结构</title>
     <url>/2024/02/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</url>
     <content><![CDATA[<h1 id="线性表"><a href="#线性表" class="headerlink" title="线性表"></a>线性表</h1><p>线性表（Linear List）是由一组数据元素按一定的顺序排列组成的集合。<br><strong>线性表的基本操作</strong>  </p>
@@ -1026,6 +1282,22 @@
 </ul>
 <h2 id="顺序表"><a href="#顺序表" class="headerlink" title="顺序表"></a>顺序表</h2><p>顺序表是一种线性表的实现方式，其核心思想是将线性表中的元素存储在一块连续的内存空间中。<br>顺序表通常是使用数组来实现的，元素可以通过索引直接访问。</p>
 <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MAX_SIZE 100  <span class="comment">// 假设顺序表最大容量为100</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义顺序表结构体</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> &#123;</span></span><br><span class="line">    <span class="type">int</span> data[MAX_SIZE];  <span class="comment">// 存储数据的数组</span></span><br><span class="line">    <span class="type">int</span> length;          <span class="comment">// 顺序表当前长度</span></span><br><span class="line">&#125; SeqList;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 初始化顺序表</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">initSeqList</span><span class="params">(SeqList* <span class="built_in">list</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">list</span>-&gt;length = <span class="number">0</span>;  <span class="comment">// 初始化为空表</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 判断顺序表是否为空</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">isEmpty</span><span class="params">(SeqList* <span class="built_in">list</span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">list</span>-&gt;length == <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 判断顺序表是否已满</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">isFull</span><span class="params">(SeqList* <span class="built_in">list</span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">list</span>-&gt;length == MAX_SIZE;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 插入元素到顺序表</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">insert</span><span class="params">(SeqList* <span class="built_in">list</span>, <span class="type">int</span> index, <span class="type">int</span> value)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (index &lt; <span class="number">0</span> || index &gt; <span class="built_in">list</span>-&gt;length || isFull(<span class="built_in">list</span>)) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;  <span class="comment">// 插入位置不合法或顺序表已满</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 将index及其后面的元素右移一位</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="built_in">list</span>-&gt;length; i &gt; index; --i) &#123;</span><br><span class="line">        <span class="built_in">list</span>-&gt;data[i] = <span class="built_in">list</span>-&gt;data[i - <span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">list</span>-&gt;data[index] = value;</span><br><span class="line">    <span class="built_in">list</span>-&gt;length++;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 删除顺序表中指定位置的元素</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">delete</span><span class="params">(SeqList* <span class="built_in">list</span>, <span class="type">int</span> index)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (index &lt; <span class="number">0</span> || index &gt;= <span class="built_in">list</span>-&gt;length) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;  <span class="comment">// 删除位置不合法</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 将index后面的元素左移一位</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = index; i &lt; <span class="built_in">list</span>-&gt;length - <span class="number">1</span>; ++i) &#123;</span><br><span class="line">        <span class="built_in">list</span>-&gt;data[i] = <span class="built_in">list</span>-&gt;data[i + <span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">list</span>-&gt;length--;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 查找元素在顺序表中的位置</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">find</span><span class="params">(SeqList* <span class="built_in">list</span>, <span class="type">int</span> value)</span> &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="built_in">list</span>-&gt;length; ++i) &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">list</span>-&gt;data[i] == value) &#123;</span><br><span class="line">            <span class="keyword">return</span> i;  <span class="comment">// 找到元素，返回其位置</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;  <span class="comment">// 未找到元素</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 访问顺序表中的指定元素</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">get</span><span class="params">(SeqList* <span class="built_in">list</span>, <span class="type">int</span> index)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (index &lt; <span class="number">0</span> || index &gt;= <span class="built_in">list</span>-&gt;length) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;  <span class="comment">// 索引越界</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">list</span>-&gt;data[index];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 打印顺序表中的所有元素</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">printSeqList</span><span class="params">(SeqList* <span class="built_in">list</span>)</span> &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="built_in">list</span>-&gt;length; ++i) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, <span class="built_in">list</span>-&gt;data[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取顺序表的长度</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">getLength</span><span class="params">(SeqList* <span class="built_in">list</span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">list</span>-&gt;length;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    SeqList <span class="built_in">list</span>;</span><br><span class="line">    initSeqList(&amp;<span class="built_in">list</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 插入元素</span></span><br><span class="line">    insert(&amp;<span class="built_in">list</span>, <span class="number">0</span>, <span class="number">10</span>);  <span class="comment">// 插入10到位置0</span></span><br><span class="line">    insert(&amp;<span class="built_in">list</span>, <span class="number">1</span>, <span class="number">20</span>);  <span class="comment">// 插入20到位置1</span></span><br><span class="line">    insert(&amp;<span class="built_in">list</span>, <span class="number">2</span>, <span class="number">30</span>);  <span class="comment">// 插入30到位置2</span></span><br><span class="line">    insert(&amp;<span class="built_in">list</span>, <span class="number">1</span>, <span class="number">15</span>);  <span class="comment">// 插入15到位置1</span></span><br><span class="line">    printSeqList(&amp;<span class="built_in">list</span>);    <span class="comment">// 输出：10 15 20 30</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 查找元素</span></span><br><span class="line">    <span class="type">int</span> index = find(&amp;<span class="built_in">list</span>, <span class="number">20</span>);</span><br><span class="line">    <span class="keyword">if</span> (index != <span class="number">-1</span>) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;元素20在顺序表中的位置：%d\n&quot;</span>, index);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;未找到元素20\n&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 访问元素</span></span><br><span class="line">    <span class="type">int</span> value = get(&amp;<span class="built_in">list</span>, <span class="number">2</span>);</span><br><span class="line">    <span class="keyword">if</span> (value != <span class="number">-1</span>) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;顺序表中索引2的元素是：%d\n&quot;</span>, value);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 删除元素</span></span><br><span class="line">    delete(&amp;<span class="built_in">list</span>, <span class="number">1</span>);      <span class="comment">// 删除位置1的元素</span></span><br><span class="line">    printSeqList(&amp;<span class="built_in">list</span>);    <span class="comment">// 输出：10 20 30</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="链表"><a href="#链表" class="headerlink" title="链表"></a>链表</h2><h3 id="单链表"><a href="#单链表" class="headerlink" title="单链表"></a>单链表</h3><p>每个节点包含两个部分：</p>
+<ul>
+<li>数据域 (Data)：存储节点的数据。</li>
+<li>指针域 (Next)：指向下一个节点的地址。</li>
+</ul>
+<p>最后一个节点的 Next 指针通常为 NULL，表示链表的终点。</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义节点结构体</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">Node</span> &#123;</span></span><br><span class="line">    <span class="type">int</span> data;              <span class="comment">// 数据域</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Node</span>* <span class="title">next</span>;</span>     <span class="comment">// 指针域，指向下一个节点</span></span><br><span class="line">&#125; Node;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建一个新节点</span></span><br><span class="line">Node* <span class="title function_">createNode</span><span class="params">(<span class="type">int</span> data)</span> &#123;</span><br><span class="line">    Node* newNode = (Node*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(Node)); <span class="comment">// 动态分配内存</span></span><br><span class="line">    <span class="keyword">if</span> (!newNode) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;内存分配失败！\n&quot;</span>);</span><br><span class="line">        <span class="built_in">exit</span>(EXIT_FAILURE);</span><br><span class="line">    &#125;</span><br><span class="line">    newNode-&gt;data = data;  <span class="comment">// 设置节点数据</span></span><br><span class="line">    newNode-&gt;next = <span class="literal">NULL</span>;  <span class="comment">// 初始化指针为空</span></span><br><span class="line">    <span class="keyword">return</span> newNode;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在链表尾部插入节点</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">appendNode</span><span class="params">(Node** head, <span class="type">int</span> data)</span> &#123;</span><br><span class="line">    Node* newNode = createNode(data);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (*head == <span class="literal">NULL</span>) &#123; <span class="comment">// 如果链表为空</span></span><br><span class="line">        *head = newNode;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    Node* temp = *head;</span><br><span class="line">    <span class="keyword">while</span> (temp-&gt;next != <span class="literal">NULL</span>) &#123; <span class="comment">// 遍历到链表的末尾</span></span><br><span class="line">        temp = temp-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">    temp-&gt;next = newNode; <span class="comment">// 插入节点</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在链表头部插入节点</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">insertAtHead</span><span class="params">(Node** head, <span class="type">int</span> data)</span> &#123;</span><br><span class="line">    Node* newNode = createNode(data);</span><br><span class="line">    newNode-&gt;next = *head; <span class="comment">// 将新节点的 next 指向原头节点</span></span><br><span class="line">    *head = newNode;       <span class="comment">// 更新头节点</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 删除链表中值为 key 的节点</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">deleteNode</span><span class="params">(Node** head, <span class="type">int</span> key)</span> &#123;</span><br><span class="line">    Node* temp = *head;</span><br><span class="line">    Node* prev = <span class="literal">NULL</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 如果要删除的是头节点</span></span><br><span class="line">    <span class="keyword">if</span> (temp != <span class="literal">NULL</span> &amp;&amp; temp-&gt;data == key) &#123;</span><br><span class="line">        *head = temp-&gt;next; <span class="comment">// 更新头节点</span></span><br><span class="line">        <span class="built_in">free</span>(temp);         <span class="comment">// 释放原头节点</span></span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 搜索要删除的节点，并记录前驱节点</span></span><br><span class="line">    <span class="keyword">while</span> (temp != <span class="literal">NULL</span> &amp;&amp; temp-&gt;data != key) &#123;</span><br><span class="line">        prev = temp;</span><br><span class="line">        temp = temp-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 如果链表中没有找到该值</span></span><br><span class="line">    <span class="keyword">if</span> (temp == <span class="literal">NULL</span>) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;未找到值为 %d 的节点。\n&quot;</span>, key);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    prev-&gt;next = temp-&gt;next; <span class="comment">// 删除节点</span></span><br><span class="line">    <span class="built_in">free</span>(temp);              <span class="comment">// 释放内存</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 遍历并打印链表中的所有节点</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">traverseList</span><span class="params">(Node* head)</span> &#123;</span><br><span class="line">    Node* temp = head;</span><br><span class="line">    <span class="keyword">while</span> (temp != <span class="literal">NULL</span>) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d -&gt; &quot;</span>, temp-&gt;data);</span><br><span class="line">        temp = temp-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;NULL\n&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 搜索链表中是否包含某个值</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">searchNode</span><span class="params">(Node* head, <span class="type">int</span> key)</span> &#123;</span><br><span class="line">    Node* temp = head;</span><br><span class="line">    <span class="keyword">while</span> (temp != <span class="literal">NULL</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (temp-&gt;data == key) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>; <span class="comment">// 找到，返回 1</span></span><br><span class="line">        &#125;</span><br><span class="line">        temp = temp-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>; <span class="comment">// 未找到，返回 0</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 释放链表占用的内存</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">freeList</span><span class="params">(Node** head)</span> &#123;</span><br><span class="line">    Node* temp = *head;</span><br><span class="line">    Node* next;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (temp != <span class="literal">NULL</span>) &#123;</span><br><span class="line">        next = temp-&gt;next; <span class="comment">// 保存下一个节点</span></span><br><span class="line">        <span class="built_in">free</span>(temp);        <span class="comment">// 释放当前节点</span></span><br><span class="line">        temp = next;       <span class="comment">// 移动到下一个节点</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    *head = <span class="literal">NULL</span>; <span class="comment">// 置空头指针</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    Node* head = <span class="literal">NULL</span>; <span class="comment">// 初始化空链表</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 插入节点</span></span><br><span class="line">    appendNode(&amp;head, <span class="number">10</span>);</span><br><span class="line">    appendNode(&amp;head, <span class="number">20</span>);</span><br><span class="line">    appendNode(&amp;head, <span class="number">30</span>);</span><br><span class="line">    insertAtHead(&amp;head, <span class="number">5</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 遍历链表</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;链表内容：\n&quot;</span>);</span><br><span class="line">    traverseList(head);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 搜索节点</span></span><br><span class="line">    <span class="type">int</span> key = <span class="number">20</span>;</span><br><span class="line">    <span class="keyword">if</span> (searchNode(head, key)) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;链表中找到值为 %d 的节点。\n&quot;</span>, key);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;链表中未找到值为 %d 的节点。\n&quot;</span>, key);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 删除节点</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;删除值为 20 的节点：\n&quot;</span>);</span><br><span class="line">    deleteNode(&amp;head, <span class="number">20</span>);</span><br><span class="line">    traverseList(head);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 释放链表</span></span><br><span class="line">    freeList(&amp;head);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line">链表内容：</span><br><span class="line"><span class="number">5</span> -&gt; <span class="number">10</span> -&gt; <span class="number">20</span> -&gt; <span class="number">30</span> -&gt; <span class="literal">NULL</span></span><br><span class="line">链表中找到值为 <span class="number">20</span> 的节点。</span><br><span class="line">删除值为 <span class="number">20</span> 的节点：</span><br><span class="line"><span class="number">5</span> -&gt; <span class="number">10</span> -&gt; <span class="number">30</span> -&gt; <span class="literal">NULL</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="双向链表"><a href="#双向链表" class="headerlink" title="双向链表"></a>双向链表</h3><p>双向链表的每个节点包含两个指针：</p>
+<ul>
+<li><strong>一个指向前驱节点（prev）</strong>。</li>
+<li><strong>一个指向后继节点（next）</strong>。</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">Node</span> &#123;</span></span><br><span class="line">    <span class="type">int</span> data;               <span class="comment">// 数据域</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Node</span>* <span class="title">prev</span>;</span>      <span class="comment">// 指向前驱节点的指针</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Node</span>* <span class="title">next</span>;</span>      <span class="comment">// 指向后继节点的指针</span></span><br><span class="line">&#125; Node;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建一个新节点</span></span><br><span class="line">Node* <span class="title function_">createNode</span><span class="params">(<span class="type">int</span> data)</span> &#123;</span><br><span class="line">    Node* newNode = (Node*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(Node)); <span class="comment">// 动态分配内存</span></span><br><span class="line">    <span class="keyword">if</span> (!newNode) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;内存分配失败！\n&quot;</span>);</span><br><span class="line">        <span class="built_in">exit</span>(EXIT_FAILURE);</span><br><span class="line">    &#125;</span><br><span class="line">    newNode-&gt;data = data;  <span class="comment">// 设置数据</span></span><br><span class="line">    newNode-&gt;prev = <span class="literal">NULL</span>;  <span class="comment">// 初始化前驱指针为空</span></span><br><span class="line">    newNode-&gt;next = <span class="literal">NULL</span>;  <span class="comment">// 初始化后继指针为空</span></span><br><span class="line">    <span class="keyword">return</span> newNode;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在双向链表尾部插入节点</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">appendNode</span><span class="params">(Node** head, <span class="type">int</span> data)</span> &#123;</span><br><span class="line">    Node* newNode = createNode(data);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (*head == <span class="literal">NULL</span>) &#123; <span class="comment">// 如果链表为空</span></span><br><span class="line">        *head = newNode;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    Node* temp = *head;</span><br><span class="line">    <span class="keyword">while</span> (temp-&gt;next != <span class="literal">NULL</span>) &#123; <span class="comment">// 遍历到链表末尾</span></span><br><span class="line">        temp = temp-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">    temp-&gt;next = newNode; <span class="comment">// 将新节点连接到链表末尾</span></span><br><span class="line">    newNode-&gt;prev = temp; <span class="comment">// 设置新节点的前驱为当前节点</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在链表头部插入节点</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">insertAtHead</span><span class="params">(Node** head, <span class="type">int</span> data)</span> &#123;</span><br><span class="line">    Node* newNode = createNode(data);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (*head == <span class="literal">NULL</span>) &#123; <span class="comment">// 如果链表为空</span></span><br><span class="line">        *head = newNode;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    newNode-&gt;next = *head; <span class="comment">// 新节点指向原头节点</span></span><br><span class="line">    (*head)-&gt;prev = newNode; <span class="comment">// 原头节点的前驱指向新节点</span></span><br><span class="line">    *head = newNode; <span class="comment">// 更新头节点</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 删除链表中值为 key 的节点</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">deleteNode</span><span class="params">(Node** head, <span class="type">int</span> key)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (*head == <span class="literal">NULL</span>) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;链表为空，无法删除节点。\n&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    Node* temp = *head;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 查找要删除的节点</span></span><br><span class="line">    <span class="keyword">while</span> (temp != <span class="literal">NULL</span> &amp;&amp; temp-&gt;data != key) &#123;</span><br><span class="line">        temp = temp-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 如果未找到节点</span></span><br><span class="line">    <span class="keyword">if</span> (temp == <span class="literal">NULL</span>) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;未找到值为 %d 的节点。\n&quot;</span>, key);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 如果是头节点</span></span><br><span class="line">    <span class="keyword">if</span> (temp == *head) &#123;</span><br><span class="line">        *head = temp-&gt;next; <span class="comment">// 更新头节点</span></span><br><span class="line">        <span class="keyword">if</span> (*head != <span class="literal">NULL</span>) &#123;</span><br><span class="line">            (*head)-&gt;prev = <span class="literal">NULL</span>; <span class="comment">// 更新新头节点的前驱</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">// 如果是中间或尾节点</span></span><br><span class="line">        <span class="keyword">if</span> (temp-&gt;next != <span class="literal">NULL</span>) &#123;</span><br><span class="line">            temp-&gt;next-&gt;prev = temp-&gt;prev; <span class="comment">// 更新后继节点的前驱</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (temp-&gt;prev != <span class="literal">NULL</span>) &#123;</span><br><span class="line">            temp-&gt;prev-&gt;next = temp-&gt;next; <span class="comment">// 更新前驱节点的后继</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">free</span>(temp); <span class="comment">// 释放内存</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 从头到尾遍历链表</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">traverseFromHead</span><span class="params">(Node* head)</span> &#123;</span><br><span class="line">    Node* temp = head;</span><br><span class="line">    <span class="keyword">while</span> (temp != <span class="literal">NULL</span>) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d -&gt; &quot;</span>, temp-&gt;data);</span><br><span class="line">        temp = temp-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;NULL\n&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 释放链表占用的内存</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">freeList</span><span class="params">(Node** head)</span> &#123;</span><br><span class="line">    Node* temp = *head;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (temp != <span class="literal">NULL</span>) &#123;</span><br><span class="line">        Node* next = temp-&gt;next; <span class="comment">// 保存下一个节点</span></span><br><span class="line">        <span class="built_in">free</span>(temp);             <span class="comment">// 释放当前节点</span></span><br><span class="line">        temp = next;            <span class="comment">// 移动到下一个节点</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    *head = <span class="literal">NULL</span>; <span class="comment">// 置空头指针</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    Node* head = <span class="literal">NULL</span>; <span class="comment">// 初始化空链表</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 插入节点</span></span><br><span class="line">    appendNode(&amp;head, <span class="number">10</span>);</span><br><span class="line">    appendNode(&amp;head, <span class="number">20</span>);</span><br><span class="line">    appendNode(&amp;head, <span class="number">30</span>);</span><br><span class="line">    insertAtHead(&amp;head, <span class="number">5</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 从头到尾遍历链表</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;从头到尾遍历链表：\n&quot;</span>);</span><br><span class="line">    traverseFromHead(head);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 删除节点</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;删除值为 20 的节点：\n&quot;</span>);</span><br><span class="line">    deleteNode(&amp;head, <span class="number">20</span>);</span><br><span class="line">    traverseFromHead(head);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 释放链表</span></span><br><span class="line">    freeList(&amp;head);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line">从头到尾遍历链表：</span><br><span class="line"><span class="number">5</span> -&gt; <span class="number">10</span> -&gt; <span class="number">20</span> -&gt; <span class="number">30</span> -&gt; <span class="literal">NULL</span></span><br><span class="line">删除值为 <span class="number">20</span> 的节点：</span><br><span class="line"><span class="number">5</span> -&gt; <span class="number">10</span> -&gt; <span class="number">30</span> -&gt; <span class="literal">NULL</span></span><br></pre></td></tr></table></figure>
+
 ]]></content>
       <categories>
         <category>数据结构</category>

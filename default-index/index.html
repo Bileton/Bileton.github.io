@@ -124,17 +124,17 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">19</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">20</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">11</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">12</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">22</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">23</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -185,6 +185,261 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/12/16/ARM%E6%B1%87%E7%BC%96/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/android.svg">
+      <meta itemprop="name" content="Bileton">
+      <meta itemprop="description" content="路漫漫其修远夕！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="白乐天">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2024/12/16/ARM%E6%B1%87%E7%BC%96/" class="post-title-link" itemprop="url">ARM汇编</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2024-12-16 14:14:08 / 修改时间：18:05:03" itemprop="dateCreated datePublished" datetime="2024-12-16T14:14:08+08:00">2024-12-16</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%B1%87%E7%BC%96/" itemprop="url" rel="index"><span itemprop="name">汇编</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>2.2k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="ARM架构"><a href="#ARM架构" class="headerlink" title="ARM架构"></a>ARM架构</h1><p>ARM是一种精简指令集计算机架构（处理器架构）。</p>
+<h2 id="ARMv8-A"><a href="#ARMv8-A" class="headerlink" title="ARMv8-A"></a>ARMv8-A</h2><p>Armv8-A架构支持处理器同时运行64位和32位程序，处理器在AArch64执行状态下运行64位程序，在AArch32执行状态下运行32位程序。</p>
+<h2 id="指令集架构"><a href="#指令集架构" class="headerlink" title="指令集架构"></a>指令集架构</h2><h3 id="AArch64（64位模式）"><a href="#AArch64（64位模式）" class="headerlink" title="AArch64（64位模式）"></a>AArch64（64位模式）</h3><p>引入了新的指令集，<strong>A64指令集</strong>，由32位宽的指令组成。</p>
+<h3 id="AArch32（32位模式）"><a href="#AArch32（32位模式）" class="headerlink" title="AArch32（32位模式）"></a>AArch32（32位模式）</h3><p>向后兼容32位的ARMv7-A指令集。</p>
+<p>支持<strong>ARM指令集</strong>（固定32位指令长度）和<strong>Thumb指令集</strong>（16位和32位混合指令长度），称为<strong>A32</strong>和<strong>T32</strong>指令集	。</p>
+<p>ARMv8-A的双模式设计实现了从32位到64位的过渡。</p>
+<h2 id="AArch64执行状态"><a href="#AArch64执行状态" class="headerlink" title="AArch64执行状态"></a>AArch64执行状态</h2><h3 id="寄存器"><a href="#寄存器" class="headerlink" title="寄存器"></a>寄存器</h3><ul>
+<li><p>A64共有32个64位寄存器（X0到X30）。</p>
+</li>
+<li><p>每个寄存器均支持 64 位和 32 位访问（例如 <code>X0</code> 和 <code>W0</code> 分别表示寄存器的高 64 位和低 32 位部分）。</p>
+</li>
+</ul>
+<p><strong>Arm架构程序调用标准</strong></p>
+<ul>
+<li>X0~X7是参数寄存器，传递参数并返回结果。</li>
+<li>X8用于传递间接结果的地址位置。</li>
+<li>X9~X15是调用者保存的临时寄存器。</li>
+<li>X16~X18是子程序内调用临时寄存器。</li>
+<li>X19~X28是被调用者保存的寄存器。</li>
+<li>X29用作栈帧寄存器（FP），跟踪栈帧。</li>
+<li>X30用作链接寄存器（LR），保存函数返回地址。</li>
+</ul>
+<h2 id><a href="#" class="headerlink" title></a></h2><table>
+<thead>
+<tr>
+<th>寄存器</th>
+<th>名称</th>
+<th>寄存器宽度</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>PC</td>
+<td>程序计数器</td>
+<td>64位</td>
+</tr>
+<tr>
+<td>SP</td>
+<td>栈指针寄存器</td>
+<td>64位</td>
+</tr>
+<tr>
+<td>WSP</td>
+<td>栈指针寄存器</td>
+<td>32位</td>
+</tr>
+<tr>
+<td>XZR</td>
+<td>零寄存器</td>
+<td>64位</td>
+</tr>
+<tr>
+<td>WZR</td>
+<td>零寄存器</td>
+<td>32位</td>
+</tr>
+<tr>
+<td>LR（X30）</td>
+<td>链接寄存器</td>
+<td>64位</td>
+</tr>
+<tr>
+<td>ELR</td>
+<td>异常链接寄存器</td>
+<td>64位</td>
+</tr>
+<tr>
+<td>PSTATE</td>
+<td>程序状态寄存器</td>
+<td>64位</td>
+</tr>
+<tr>
+<td>SPSR_ELx</td>
+<td>保存进程状态寄存器</td>
+<td>32位</td>
+</tr>
+</tbody></table>
+<ul>
+<li><strong>程序计数器</strong></li>
+</ul>
+<p>​	PC保存当前指令的地址。所有指令在加载之前都必须从PC引用的内存位置加载。</p>
+<ul>
+<li><strong>栈指针</strong></li>
+</ul>
+<p>​	SP用于跟踪当前线程的栈位置，通常指向该线程栈的逻辑“顶部”。</p>
+<ul>
+<li><strong>零寄存器</strong></li>
+</ul>
+<p>​	它被定义为始终保存0值。</p>
+<ul>
+<li><strong>链接寄存器</strong></li>
+</ul>
+<p>​	它主要用于存储调用函数时的返回地址。</p>
+<ul>
+<li><strong>栈帧指针</strong></li>
+</ul>
+<p>​	跟踪栈帧。</p>
+<h2 id="AArch32执行状态"><a href="#AArch32执行状态" class="headerlink" title="AArch32执行状态"></a>AArch32执行状态</h2><h3 id="寄存器-1"><a href="#寄存器-1" class="headerlink" title="寄存器"></a>寄存器</h3><ul>
+<li><p>16 个 32 位通用寄存器（<code>R0</code> 到 <code>R15</code>）。</p>
+</li>
+<li><p>PC（程序计数器）占用 <code>R15</code>，<code>R14</code> 通常作为链接寄存器（LR），<code>R13</code> 通常作为栈指针（SP）。</p>
+</li>
+</ul>
+<h1 id="数据处理指令"><a href="#数据处理指令" class="headerlink" title="数据处理指令"></a>数据处理指令</h1><p><strong>指令的基本语法</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;操作码&gt; &lt;目标寄存器&gt;, &lt;操作数1&gt;, &lt;操作数2&gt;</span><br><span class="line"></span><br><span class="line">&lt;操作码&gt;：指令的操作代码，决定了具体的功能（如加法、减法、逻辑操作等）。</span><br><span class="line">&lt;目标寄存器&gt;：结果存储的目标寄存器。</span><br><span class="line">&lt;操作数1&gt; 和 &lt;操作数2&gt;：参与运算的两个操作数，可以是寄存器或立即数。</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>在A32&#x2F;T32指令中目标寄存器表示为Rd</li>
+<li>在A64指令中目标寄存器表示为Xd或Wd</li>
+<li>在A32&#x2F;T32指令中输入寄存器表示为Rm、Rn或Ra</li>
+<li>在A64指令中输入寄存器表示为Xn或Xm</li>
+</ul>
+<h2 id="条件标志位"><a href="#条件标志位" class="headerlink" title="条件标志位"></a>条件标志位</h2><ul>
+<li><p>**N (Negative)**：</p>
+<p>结果为负数，则值为1；</p>
+<p>结果是正数或零，则值为0。</p>
+</li>
+<li><p>**Z (Zero)**：</p>
+<p>结果为 0，则值为1。</p>
+<p>否则，值为0。</p>
+</li>
+<li><p>**C (Carry)**：</p>
+<p>如果结果产生了进位条件，则值为1；</p>
+<p>否则，值为0。</p>
+</li>
+<li><p>**V (Overflow)**：</p>
+<p>如果指令结果导致溢出条件，则值为1。</p>
+</li>
+</ul>
+<h2 id="算术指令"><a href="#算术指令" class="headerlink" title="算术指令"></a>算术指令</h2><h3 id="add"><a href="#add" class="headerlink" title="add"></a>add</h3><p>加法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">add x0,x1,x2  ;x0=x1+x2</span><br></pre></td></tr></table></figure>
+
+<h3 id="adds"><a href="#adds" class="headerlink" title="adds"></a>adds</h3><p>加法运算并更新条件标志</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adds x0,x1,x2  ;x0=x1+x2 and set flags</span><br></pre></td></tr></table></figure>
+
+<h3 id="sub"><a href="#sub" class="headerlink" title="sub"></a>sub</h3><p>减法</p>
+<h3 id="mul"><a href="#mul" class="headerlink" title="mul"></a>mul</h3><p>乘法</p>
+<h3 id="sdiv-udiv"><a href="#sdiv-udiv" class="headerlink" title="sdiv&#x2F;udiv"></a>sdiv&#x2F;udiv</h3><p>除法</p>
+<h2 id="移位和循环移位"><a href="#移位和循环移位" class="headerlink" title="移位和循环移位"></a>移位和循环移位</h2><h3 id="lsl（Logical-Shift-Left）"><a href="#lsl（Logical-Shift-Left）" class="headerlink" title="lsl（Logical Shift Left）"></a>lsl（Logical Shift Left）</h3><p>逻辑左移，左移后相当于乘以 2 的若干次方。</p>
+<p>将一个值的二进制位整体向左移动，用 <strong>0</strong> 填充右边空出的位，丢弃左边溢出的位。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lsl r0,r1,#2  ;r0 = r1 &lt;&lt; 2</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">add r0,r1,r2,lsl #2  ;r0 = r1 + (r2&lt;&lt;2)</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="lsr（Logical-Shift-Right）"><a href="#lsr（Logical-Shift-Right）" class="headerlink" title="lsr（Logical Shift Right）"></a>lsr（Logical Shift Right）</h3><p>逻辑右移，逻辑右移后，每位的值变成原来数值的 <strong>1&#x2F;2</strong>。</p>
+<p>左侧空出的位用 0 填充，右侧移出的位被丢弃。</p>
+<h3 id="asr（Arithmetic-Shift-Left）"><a href="#asr（Arithmetic-Shift-Left）" class="headerlink" title="asr（Arithmetic Shift Left）"></a>asr（Arithmetic Shift Left）</h3><p>算术右移</p>
+<p>将一个值的二进制位整体向右移动。它与逻辑右移的主要区别在于，左侧空出的位用符号位填充（最高位的值，0 或 1），以保持数值的符号不变。</p>
+<h3 id="ror（ROtate-Right）"><a href="#ror（ROtate-Right）" class="headerlink" title="ror（ROtate Right）"></a>ror（ROtate Right）</h3><p>循环右移</p>
+<p>将一个二进制数的位向右移动指定的位数，并将被“移出”的位重新填充到左侧。</p>
+<h3 id="rrx"><a href="#rrx" class="headerlink" title="rrx"></a>rrx</h3><p>带扩展的循环右移</p>
+<p>在普通 <code>ROR</code> 的基础上，利用 <strong>进位标志位（C）</strong> 的值作为循环右移的高位，右移后最右侧的位会填入进位标志位（<code>C</code>）</p>
+<ul>
+<li>始终右移 1 位</li>
+<li>进位标志位参与操作</li>
+</ul>
+<h2 id="逻辑运算"><a href="#逻辑运算" class="headerlink" title="逻辑运算"></a>逻辑运算</h2><h3 id="and"><a href="#and" class="headerlink" title="and"></a>and</h3><p>位与</p>
+<h3 id="orr"><a href="#orr" class="headerlink" title="orr"></a>orr</h3><p>位或</p>
+<h3 id="eor-xor"><a href="#eor-xor" class="headerlink" title="eor&#x2F;xor"></a>eor&#x2F;xor</h3><p>位异或</p>
+<h2 id="条件指令"><a href="#条件指令" class="headerlink" title="条件指令"></a>条件指令</h2><h3 id="cmp"><a href="#cmp" class="headerlink" title="cmp"></a>cmp</h3><p>比较</p>
+<h3 id="tst"><a href="#tst" class="headerlink" title="tst"></a>tst</h3><p>测试位</p>
+<h2 id="移动指令"><a href="#移动指令" class="headerlink" title="移动指令"></a>移动指令</h2><h3 id="mov"><a href="#mov" class="headerlink" title="mov"></a>mov</h3><p>用于将值从一个寄存器传递到另一个寄存器，或者将一个立即数加载到目标寄存器。</p>
+<h3 id="movz"><a href="#movz" class="headerlink" title="movz"></a>movz</h3><p>将一个 16 位立即数 加载到目标寄存器的指定位置，并将其他位清零。</p>
+<h3 id="movk"><a href="#movk" class="headerlink" title="movk"></a>movk</h3><p>将一个 16 位立即数 加载到目标寄存器的指定位置，但保持寄存器中其他位的原值不变。</p>
+<h3 id="movn"><a href="#movn" class="headerlink" title="movn"></a>movn</h3><p>将一个 16 位立即数的按位取反值 加载到目标寄存器的指定位置，并将其他位清零。</p>
+<h1 id="内存访问指令"><a href="#内存访问指令" class="headerlink" title="内存访问指令"></a>内存访问指令</h1><h2 id="加载和存储指令"><a href="#加载和存储指令" class="headerlink" title="加载和存储指令"></a>加载和存储指令</h2><h3 id="LDR"><a href="#LDR" class="headerlink" title="LDR"></a>LDR</h3><p>从内存地址加载一个字（通常是32位）到指定的寄存器中。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">LDR R0, [R1]      ; 将内存地址R1中的值加载到寄存器R0</span><br><span class="line">LDR R2, [R3, #4]  ; 将R3 + 4地址中的值加载到寄存器R2</span><br></pre></td></tr></table></figure>
+
+<h3 id="STR"><a href="#STR" class="headerlink" title="STR"></a>STR</h3><p>将寄存器中的数据存储到内存地址中。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">STR R0, [R1]      ; 将寄存器R0的值存储到R1指向的内存地址</span><br><span class="line">STR R2, [R3, #8]  ; 将R2的值存储到R3 + 8的内存地址</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -713,10 +968,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2024-12-05 00:00:00 / 修改时间：18:45:37" itemprop="dateCreated datePublished" datetime="2024-12-05T00:00:00+08:00">2024-12-05</time>
+              <time title="创建时间：2024-12-05 00:00:00" itemprop="dateCreated datePublished" datetime="2024-12-05T00:00:00+08:00">2024-12-05</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-12-16 11:47:34" itemprop="dateModified" datetime="2024-12-16T11:47:34+08:00">2024-12-16</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -1011,7 +1272,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-12-16 02:10:29" itemprop="dateModified" datetime="2024-12-16T02:10:29+08:00">2024-12-16</time>
+                <time title="修改时间：2024-12-17 02:19:25" itemprop="dateModified" datetime="2024-12-17T02:19:25+08:00">2024-12-17</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1029,14 +1290,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>1.6k</span>
+              <span>3.4k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
+              <span>3 分钟</span>
             </span>
 
         </div>
@@ -1050,7 +1311,7 @@
       
           <h1 id="界面"><a href="#界面" class="headerlink" title="界面"></a>界面</h1><h2 id="工具栏（Toolbars）"><a href="#工具栏（Toolbars）" class="headerlink" title="工具栏（Toolbars）"></a>工具栏（Toolbars）</h2><p>工具栏包含常用操作工具。<br>可在<code>View-&gt;Toobars</code>里显示或隐藏工具栏。</p>
 <h2 id="导航栏"><a href="#导航栏" class="headerlink" title="导航栏"></a>导航栏</h2><p>导航栏是被加载⽂件地址空间的线性视图。</p>
-<h1 id="窗口"><a href="#窗口" class="headerlink" title="窗口"></a>窗口</h1><h2 id="反汇编窗口（IDA-View）"><a href="#反汇编窗口（IDA-View）" class="headerlink" title="反汇编窗口（IDA-View）"></a>反汇编窗口（IDA-View）</h2><p>反汇编窗口有两种显示模式，文本模式和图形模式，通过空格键来切换。  </p>
+<h1 id="窗口"><a href="#窗口" class="headerlink" title="窗口"></a>窗口</h1><h2 id="反汇编窗口（IDA-View）"><a href="#反汇编窗口（IDA-View）" class="headerlink" title="反汇编窗口（IDA-View）"></a>反汇编窗口（IDA-View）</h2><p>反汇编窗口有两种显示模式，文本模式和图形模式，通过<code>空格键</code>来切换。  </p>
 <ul>
 <li><strong>文本模式</strong><br>显示指令地址、机器码。  </li>
 <li><strong>图形模式</strong><br>观察控制流。<br>可通过<code>Ctrl+鼠标滚轮</code>进行缩放。</li>
@@ -1092,6 +1353,7 @@
 <li>显示当前函数或地址 “调用或引用了哪些目标” 的关系图。</li>
 <li>用于追踪被调用者（Callees），即当前函数或代码引用了哪些其他函数或地址。</li>
 </ul>
+<p><strong>使用方式</strong><br>选中一个函数或地址后，右键在菜单中选择 <code>Xrefs graph from...</code>。</p>
 <h1 id="常用快捷键"><a href="#常用快捷键" class="headerlink" title="常用快捷键"></a>常用快捷键</h1><h2 id="常用操作"><a href="#常用操作" class="headerlink" title="常用操作"></a>常用操作</h2><ul>
 <li><code>F5</code>：生成伪代码，刷新伪代码</li>
 <li><code>ESC</code>：后退，回到上一步操作的视图</li>
@@ -1112,6 +1374,7 @@
 <li><code>-</code> ：代码折叠（Collapse declarations）</li>
 <li><code>+</code> ：代码展开（Collapse declarations）</li>
 <li><code>/</code> ：行注释</li>
+<li><code>Ctrl+Alt+num</code>：Lock highlight，添加高亮标记（注意：<code>num</code>是一个数字）</li>
 </ul>
 <h2 id="数据转换"><a href="#数据转换" class="headerlink" title="数据转换"></a>数据转换</h2><ul>
 <li><code>U</code>：取消定义（Undefine）<br>可取消函数、代码或数据的定义。取消定义后，其基础字节将作为原始字节值重新格式化。</li>
@@ -1121,110 +1384,83 @@
 <li><code>H</code>：在十进制数据和十六进制数据之间切换</li>
 <li><code>R</code>：将数据切换为char类型</li>
 </ul>
-<h1 id="工具栏"><a href="#工具栏" class="headerlink" title="工具栏"></a>工具栏</h1><h2 id="锁定功能"><a href="#锁定功能" class="headerlink" title="锁定功能"></a>锁定功能</h2><p><strong>使用方式</strong><br>选中一个函数或地址后，右键在菜单中选择 <code>Xrefs graph from...</code>。</p>
+<h1 id="动态调试"><a href="#动态调试" class="headerlink" title="动态调试"></a>动态调试</h1><h2 id="调试器"><a href="#调试器" class="headerlink" title="调试器"></a>调试器</h2><h3 id="配置调试信息"><a href="#配置调试信息" class="headerlink" title="配置调试信息"></a>配置调试信息</h3><p>调试器选择完毕，打开Debugger菜单，选择<code>Process options</code><br>配置调试器在加载目标程序时的运行参数和环境  </p>
+<ul>
+<li><code>Application</code>：指定要调试的目标程序路径</li>
+<li><code>Input file</code>：指定程序运行时需要的输入文件路径</li>
+<li><code>Parameters</code>：为目标程序提供运行时的命令行参数。</li>
+<li><code>Hostname</code>和<code>Port</code>：填写主机名和端口</li>
+</ul>
+<p><img src="/2024/12/01/IDA%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/5.jpg"></p>
+<h3 id="Win本地调试"><a href="#Win本地调试" class="headerlink" title="Win本地调试"></a>Win本地调试</h3><p>本地调试无需配置server文件。</p>
+<h3 id="远程调试"><a href="#远程调试" class="headerlink" title="远程调试"></a>远程调试</h3><p>在IDA的安装目录下，有一个dbgsrv文件夹，里面是各个系统架构的远程调试server文件。</p>
+<p><img src="/2024/12/01/IDA%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/3.jpg"></p>
+<h4 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h4><p>把linux_server拷贝到Linux主机上，添加可执行权限，然后启动</p>
+<p><img src="/2024/12/01/IDA%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/4.jpg"></p>
+<h4 id="Android"><a href="#Android" class="headerlink" title="Android"></a>Android</h4><p>把android_server远程调试文件push到手机上的&#x2F;data&#x2F;local&#x2F;tmp目录下，改名字为as  </p>
+<ul>
+<li><p>添加可执行权限</p>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod +x as</span><br></pre></td></tr></table></figure></li>
+<li><p>启动as</p>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./as -p 1234  //-p选项用于设置端口</span><br></pre></td></tr></table></figure>
+<p>  <img src="/2024/12/01/IDA%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/6.jpg"></p>
+</li>
+<li><p>端口转发</p>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb forward tcp:1234 tcp:1234</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="调试模式"><a href="#调试模式" class="headerlink" title="调试模式"></a>调试模式</h2><h3 id="Start-Process"><a href="#Start-Process" class="headerlink" title="Start Process"></a>Start Process</h3><p>Start Process 是指直接从 IDA 中启动一个可执行文件（如 .exe 程序）进行调试。IDA 会加载目标文件，并启动一个新的调试会话。</p>
+<h3 id="Attach-to-Process"><a href="#Attach-to-Process" class="headerlink" title="Attach to Process"></a>Attach to Process</h3><p>Attach to Process 是指将调试器附加到一个已经运行的进程。IDA 不会启动新的程序，而是连接到当前运行中的目标进程，实时分析其运行状态。</p>
+<h2 id="调试窗口"><a href="#调试窗口" class="headerlink" title="调试窗口"></a>调试窗口</h2><h3 id="General-registers窗口（寄存器）"><a href="#General-registers窗口（寄存器）" class="headerlink" title="General registers窗口（寄存器）"></a>General registers窗口（寄存器）</h3><p>&emsp;&emsp;寄存器内容在相关寄存器右边显示，后面显示对每个寄存器的说明，最右边的列中显示CPU标志位。  </p>
+<ul>
+<li>鼠标右键单击一个寄存器或标志位，会出现一个modify选项，可以更改寄存器或CPU标志位的值。  </li>
+<li>如果一个寄存器指向一个有效的地址，那么该寄存器值右侧会出现一个直角箭头并有突出显示，单击箭头，会跳转到相应的内存位置。<br><img src="/2024/12/01/IDA%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/2.jpg"></li>
+</ul>
+<h3 id="Modules窗口（模块）"><a href="#Modules窗口（模块）" class="headerlink" title="Modules窗口（模块）"></a>Modules窗口（模块）</h3><p>Modules窗⼝显⽰所有加载到进程内存空间中的可执⾏⽂件和动态链接库。  </p>
+<ul>
+<li>双击任何模块名称，将打开该模块导出的符号列表，双击符号，进行跳转。</li>
+</ul>
+<h3 id="Threads窗口（线程）"><a href="#Threads窗口（线程）" class="headerlink" title="Threads窗口（线程）"></a>Threads窗口（线程）</h3><p>Threads 窗口会列出当前进程中所有活动的线程，并显示每个线程的详细信息。</p>
+<h3 id="Stack-view窗口（堆栈）"><a href="#Stack-view窗口（堆栈）" class="headerlink" title="Stack view窗口（堆栈）"></a>Stack view窗口（堆栈）</h3><p>显示当前线程调用堆栈的内容，用于观察函数调用之间的堆栈数据变化。</p>
+<h2 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h2><ul>
+<li><code>F2</code>：设置断点</li>
+<li><code>F7</code>：步入</li>
+<li><code>F8</code>：步过</li>
+<li><code>F9</code>：启动调试，及运行至下一断点</li>
+<li><code>Ctrl+F7</code>：指定到当前函数的返回后位置</li>
+<li><code>F4</code>：运行至光标处</li>
+<li><code>Ctrl+N</code>：set IP，可以直接修改程序的执行路径。强制代码从光标位置开始执行</li>
+</ul>
+<h2 id="硬件断点"><a href="#硬件断点" class="headerlink" title="硬件断点"></a>硬件断点</h2><p>&emsp;&emsp;硬件断点用于在调试过程中实时监控内存区域的访问，硬件断点不会修改目标程序的代码，而是通过硬件的调试功能直接监控特定的内存地址或代码区域。</p>
+<h3 id="设置硬件断点"><a href="#设置硬件断点" class="headerlink" title="设置硬件断点"></a>设置硬件断点</h3><p>先设置普通断点，右键选择<code>Breakpoint settints</code>，勾选<code>Hardware</code>，选择硬件断点模式，勾选<code>Execute</code></p>
+<p>硬件断点模式</p>
+<ul>
+<li><code>Read</code>：断点地址被读取时命中</li>
+<li><code>Write</code>：断点地址被写入时命中</li>
+<li><code>Execute</code>：断点地址被执行时命中</li>
+<li><code>Size</code>：地址范围的大小</li>
+</ul>
+<p><img src="/2024/12/01/IDA%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/7.jpg"></p>
+<h2 id="内存断点"><a href="#内存断点" class="headerlink" title="内存断点"></a>内存断点</h2><p>&emsp;&emsp;内存断点（也称为 <strong>memory breakpoint</strong> 或数据断点）是用于监控特定内存区域访问的工具。它可以捕获对目标内存地址的 <strong>读取</strong>、<strong>写入</strong> 或 <strong>执行</strong> 操作。</p>
+<h3 id="设置内存断点"><a href="#设置内存断点" class="headerlink" title="设置内存断点"></a>设置内存断点</h3><p>设置普通断点，右键选择<code>Breakpoint settints</code>，勾选<code>Hardware</code>，选择硬件断点模式，勾选<code>Read</code>和<code>Write</code></p>
+<h2 id="API-断点"><a href="#API-断点" class="headerlink" title="API 断点"></a>API 断点</h2><p>&emsp;&emsp;API 断点是设置在目标程序调用的 API 函数入口或关键位置的断点，目的是拦截程序调用该函数时的执行流程。</p>
+<h3 id="设置API断点"><a href="#设置API断点" class="headerlink" title="设置API断点"></a>设置API断点</h3><p>设置方式与设置普通断点一致。</p>
+<h2 id="Trace"><a href="#Trace" class="headerlink" title="Trace"></a>Trace</h2><p>用于记录程序在运行过程中执行的指令、访问的内存、调用的函数或其他关键事件。</p>
+<h3 id="启用trace"><a href="#启用trace" class="headerlink" title="启用trace"></a>启用trace</h3><p>打开<code>Debugger-&gt;Tracing-&gt;Tracing Options</code>，配置trace选项。</p>
+<p><img src="/2024/12/01/IDA%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/9.jpg"></p>
+<h3 id="trace内容"><a href="#trace内容" class="headerlink" title="trace内容"></a>trace内容</h3><ul>
+<li><strong>Instruction tracing</strong>：跟踪指令执行。</li>
+<li><strong>Function tracing</strong>：跟踪函数调用。</li>
+<li><strong>Basic block tracing</strong>：跟踪基本块。</li>
+</ul>
 <h1 id="IDA插件"><a href="#IDA插件" class="headerlink" title="IDA插件"></a>IDA插件</h1><h2 id="LazyIDA-py"><a href="#LazyIDA-py" class="headerlink" title="LazyIDA.py"></a>LazyIDA.py</h2><p><a target="_blank" rel="noopener" href="https://github.com/P4nda0s/LazyIDA">https://github.com/P4nda0s/LazyIDA</a>  </p>
 <h3 id="提取数据"><a href="#提取数据" class="headerlink" title="提取数据"></a>提取数据</h3><ul>
 <li>将数据转换为python&#x2F;C的数组形式</li>
 <li>选中数据后，右键，选择Convert，然后选择相应的格式。（注意：这里选中的地址要包含所需地址范围的下一地址）</li>
 </ul>
 <p><img src="/2024/12/01/IDA%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/1.jpg"></p>
-<h3 id="Paste-Data"><a href="#Paste-Data" class="headerlink" title="Paste Data"></a>Paste Data</h3><p>插件修改数据，光标定位到要修改的位置，右键，选择<code>Paste Data</code>，然后输入要修改的内容。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/12/01/%E7%8E%A9%E8%BD%ACWindows/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/android.svg">
-      <meta itemprop="name" content="Bileton">
-      <meta itemprop="description" content="路漫漫其修远夕！">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="白乐天">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2024/12/01/%E7%8E%A9%E8%BD%ACWindows/" class="post-title-link" itemprop="url">玩转Windows</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2024-12-01 00:00:00" itemprop="dateCreated datePublished" datetime="2024-12-01T00:00:00+08:00">2024-12-01</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-12-11 01:07:17" itemprop="dateModified" datetime="2024-12-11T01:07:17+08:00">2024-12-11</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Windows/" itemprop="url" rel="index"><span itemprop="name">Windows</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>212</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="新机跳过联网"><a href="#新机跳过联网" class="headerlink" title="新机跳过联网"></a>新机跳过联网</h1><p>在连接网络的界面输入<code>Shift+F10</code>打开命令行，然后输入<code>oobe\bypassnro</code>然后会重启，重启后，在联网的界面会出现跳过的选项。</p>
-<h1 id="关于编码"><a href="#关于编码" class="headerlink" title="关于编码"></a>关于编码</h1><p>在中国大陆Windows使用的编码是GBK编码。</p>
-<h1 id="“运行”对话框"><a href="#“运行”对话框" class="headerlink" title="“运行”对话框"></a>“运行”对话框</h1><p>通过按下Win（Windows徽标键）和R键的组合来快速打开运行对话框，然后输入特定的命令或程序路径来运行程序或打开文件。</p>
-<ul>
-<li><code>cmd</code><br>打开控制台</li>
-<li><code>winver</code><br>查看系统版本</li>
-<li><code>control</code><br>打开控制面板</li>
-<li><code>calc</code><br>打开计算器</li>
-</ul>
+<h3 id="Paste-Data"><a href="#Paste-Data" class="headerlink" title="Paste Data"></a>Paste Data</h3><p>插件修改数据，光标定位到数据窗口中要修改的数据的位置，右键，选择<code>Paste Data</code>，然后输入要修改的内容。</p>
+<h3 id="dump内存"><a href="#dump内存" class="headerlink" title="dump内存"></a>dump内存</h3><p>将光标定位到需要dump的数据的起始地址，右键，选择<code>Lazy Dumper</code></p>
+<p><img src="/2024/12/01/IDA%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/8.jpg"></p>
 
       
     </div>
@@ -1311,20 +1547,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">22</span>
+          <span class="site-state-item-count">23</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-count">12</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-count">20</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -1365,13 +1601,13 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">59k</span>
+    <span title="站点总字数">69k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">54 分钟</span>
+    <span title="站点阅读时长">1:03</span>
 </div>
 
 
