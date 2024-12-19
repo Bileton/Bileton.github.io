@@ -124,17 +124,17 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">20</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">21</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">12</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">13</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">23</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">24</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -185,6 +185,218 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/12/19/Android%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B%E5%88%86%E6%9E%90/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/android.svg">
+      <meta itemprop="name" content="Bileton">
+      <meta itemprop="description" content="路漫漫其修远夕！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="白乐天">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2024/12/19/Android%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B%E5%88%86%E6%9E%90/" class="post-title-link" itemprop="url">Android启动流程分析</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2024-12-19 00:00:00 / 修改时间：21:03:33" itemprop="dateCreated datePublished" datetime="2024-12-19T00:00:00+08:00">2024-12-19</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index"><span itemprop="name">Android系统</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.3k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>本篇以从按下开机键开始至设备桌面图标出现进行分析。</p>
+<h1 id="Bootloader"><a href="#Bootloader" class="headerlink" title="Bootloader"></a>Bootloader</h1><p>​&emsp;​&emsp;长按开机键，设备通电，从Boot ROM开始，Boot ROM是芯片上的一段只读存储器，存储设备的启动代码，一般是固定的，用于检测基本硬件的存在，验证 Bootloader 的完整性和安全性，并加载BootLoader到RAM，将控制权移交给BootLoader。</p>
+<p>​&emsp;​&emsp;​BootLoader对硬件进行基本初始化，从存储设备中读取Android系统Linux内核镜像，通常是boot.img文件，将内核加载到内存中，并将控制权移交给内核。</p>
+<h1 id="Linux内核启动"><a href="#Linux内核启动" class="headerlink" title="Linux内核启动"></a>Linux内核启动</h1><p>​&emsp;​&emsp;内核启动后会完成复杂的硬件初始化并挂载根文件系统，然后执行第一个用户空间进程<code>init</code>，将控制权移交给<code>init</code>。</p>
+<h1 id="init进程"><a href="#init进程" class="headerlink" title="init进程"></a>init进程</h1><p>​&emsp;​&emsp;<code>init</code>是Android的第一个用户空间进程，它的PID为1。<code>init</code>解析<code>init.rc</code>脚本文件，定义系统初始化的行为等。</p>
+<p>​&emsp;​&emsp;挂载文件系统，虚拟文件系统如<code>/proc</code>，真实文件系统如<code>/data</code>和<code>/system</code>，初始化文件权限。</p>
+<p>​&emsp;​&emsp;启动Zygote进程，<code>Zygote</code>在<code>init.rc</code>文件中定义并通过<code>init</code>启动。</p>
+<p>​&emsp;​&emsp;<code>init</code>调用<code>/system/bin/app_process</code>可执行文件启动 ART（Android Runtime）或 Dalvik 虚拟机，并执行 <code>ZygoteInit.main()</code>来启动<code>Zygote</code>。</p>
+<p>​&emsp;​&emsp;<code>init</code>把控制权移交给了<code>Zygote</code>。</p>
+<h1 id="Zygote进程"><a href="#Zygote进程" class="headerlink" title="Zygote进程"></a>Zygote进程</h1><p>​&emsp;​&emsp;Zygote 是 Android 应用运行时环境的核心，加载虚拟机、类、系统资源，启动SystemServer进程。SystemServer进程是Zygote进程孵化的第一个进程。</p>
+<p><strong>Zygote的任务</strong></p>
+<p>​&emsp;​&emsp;等待应用启动请求，接收请求后，fork() 创建子进程，所有的App进程都是由Zygote孵化而来的。</p>
+<h1 id="SystemServer"><a href="#SystemServer" class="headerlink" title="SystemServer"></a>SystemServer</h1><p>​&emsp;​&emsp;SystemServer是一个很重要的进程，系统里面重要的服务都是在这个进程里面开启的，比如ActivityManagerService、PackageManagerService、WindowManagerService，负责管理应用程序和系统资源。</p>
+<h1 id="Launcher"><a href="#Launcher" class="headerlink" title="Launcher"></a>Launcher</h1><p>​&emsp;​&emsp;当 <code>SystemServer</code> 启动完成后，Android 系统会启动第一个前台进程：Launcher。</p>
+<p>​&emsp;​&emsp;<code>ActivityManagerService</code> 会根据 <code>AndroidManifest.xml</code> 中的配置，启动标记为 <code>MAIN</code> 和 <code>LAUNCHER</code> 的应用，Launcher 加载桌面布局和图标资源。</p>
+<p>​&emsp;​&emsp;Launcher进程是Zygote孵化出来的第一个App进程。</p>
+<p>​	</p>
+<p>​	</p>
+<p>​	</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/12/19/LSPosed%E5%BC%80%E5%8F%91/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/android.svg">
+      <meta itemprop="name" content="Bileton">
+      <meta itemprop="description" content="路漫漫其修远夕！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="白乐天">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2024/12/19/LSPosed%E5%BC%80%E5%8F%91/" class="post-title-link" itemprop="url">LSPosed开发</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2024-12-19 00:00:00 / 修改时间：22:03:02" itemprop="dateCreated datePublished" datetime="2024-12-19T00:00:00+08:00">2024-12-19</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/LSPosed/" itemprop="url" rel="index"><span itemprop="name">LSPosed</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>2.5k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="LSP前传Xposed介绍"><a href="#LSP前传Xposed介绍" class="headerlink" title="LSP前传Xposed介绍"></a>LSP前传Xposed介绍</h1><p>&emsp;&emsp;Xposed 框架是一个强大的 Android 逆向工程工具，它允许开发者在不修改应用程序源代码的情况下，动态地注入和修改Android 应用程序的行为。</p>
+<h2 id="Xposed原理"><a href="#Xposed原理" class="headerlink" title="Xposed原理"></a>Xposed原理</h2><p>&emsp;&emsp;Android 系统运行的核心和起点是 Zygote 进程，所有应用都是通过它 fork 子进程产生的，当系统开始运行时由 <code>init.rc</code> 脚本调用<code>/system/bin/app_process</code> 程序启动Zygote，加载所需的类并调用初始化方法。</p>
+<p>&emsp;&emsp;Xposed 使用 <strong>zygote</strong> 进程来注入代码，它会替换<code>/system/bin/app_process</code>，使其加载Xposed的核心模块<code>XposedBridge.jar</code>，导致所有从 Zygote fork 出来的子进程（包括应用进程和系统服务进程）都会继承 Xposed 的 Hook 环境。</p>
+<h2 id="图解分析"><a href="#图解分析" class="headerlink" title="图解分析"></a>图解分析</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">[init 进程]</span><br><span class="line">   |</span><br><span class="line">   v</span><br><span class="line">[/system/bin/app_process] -- 启动 Zygote</span><br><span class="line">   |</span><br><span class="line">   v</span><br><span class="line">[ZygoteInit.main()] -- 加载核心类和资源</span><br><span class="line">   |</span><br><span class="line">   v</span><br><span class="line">[fork 子进程]</span><br><span class="line">   |</span><br><span class="line">   +--&gt; [系统服务] (如 system_server)</span><br><span class="line">   |</span><br><span class="line">   +--&gt; [应用进程] (如 com.example.app)</span><br><span class="line"></span><br><span class="line">[Xposed 框架]</span><br><span class="line">   |</span><br><span class="line">   +--&gt; 替换 app_process</span><br><span class="line">   |</span><br><span class="line">   +--&gt; 劫持 ZygoteInit，加载 XposedBridge</span><br><span class="line">   |</span><br><span class="line">   +--&gt; 影响所有子进程，进行 Hook</span><br></pre></td></tr></table></figure>
+
+<h2 id="局限性"><a href="#局限性" class="headerlink" title="局限性"></a>局限性</h2><p>在 Android 9 及更高版本中，安全限制增加，Xposed 原框架不支持。</p>
+<h1 id="LSPosed"><a href="#LSPosed" class="headerlink" title="LSPosed"></a>LSPosed</h1><p>&emsp;&emsp;LSPosed 是一个基于 <strong>Xposed</strong> 框架的增强工具，专注于模块化的安卓应用定制。</p>
+<ul>
+<li>基于Riru框架，使用 Riru 技术直接注入到 <code>zygote</code> 进程，避免直接修改系统文件。</li>
+</ul>
+<h2 id="开发准备"><a href="#开发准备" class="headerlink" title="开发准备"></a>开发准备</h2><ul>
+<li>面具安装LSPosed模块</li>
+<li>Xposed API（XposedBridgeAPI-82.jar，XposedBridgeAPI-89.jar）</li>
+</ul>
+<h2 id="开发一个简单模块"><a href="#开发一个简单模块" class="headerlink" title="开发一个简单模块"></a>开发一个简单模块</h2><h3 id="Android-Studio新建空项目"><a href="#Android-Studio新建空项目" class="headerlink" title="Android Studio新建空项目"></a>Android Studio新建空项目</h3><p>&emsp;&emsp;在app目录下新建一个libs目录（若已有该目录则无需新建），把XposedBridgeAPI.jar放到libs目录下，右击jar包，选择add as library，这一步会在build.gradle里新增一个依赖<code>implementation(files(&quot;libs/XposedBridgeAPI-89.jar&quot;))</code>，我们需要把<code>implementation</code>改为<code>compileOnly</code>。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">implementation 使用该方式依赖的库将会参与编译和打包</span><br><span class="line">compileOnly 只在编译时有效，不会参与打包</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;修改AndroidManifest.xml文件配置，在<code>&lt;application&gt;</code>标签内添加如下内容：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 是否是xposed模块，xposed根据这个来判断是否是模块 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta-data</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:name</span>=<span class="string">&quot;xposedmodule&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:value</span>=<span class="string">&quot;true&quot;</span> /&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 模块描述，显示在xposed模块列表那里第二行 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta-data</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:name</span>=<span class="string">&quot;xposeddescription&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:value</span>=<span class="string">&quot;这是一个Xposed模块&quot;</span> /&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 最低xposed版本号(lib文件名可知) --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta-data</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:name</span>=<span class="string">&quot;xposedminversion&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:value</span>=<span class="string">&quot;82&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;在main目录下新建一个assets Folder目录，右击main，<code>new-&gt;Folder-&gt;Assets Folder</code>。在assets目录下新建一个xposed_init文件（无后缀），用来说明入口类。</p>
+<p>&emsp;&emsp;在项目包名目录下新建一个模块类lsptest1，然后向xposed_init文件里添加一行代码，lsptest1类的全类名<code>com.example.lsposedtest.lsptest1</code>。</p>
+<h3 id="实现IXposedHookLoadPackage接口"><a href="#实现IXposedHookLoadPackage接口" class="headerlink" title="实现IXposedHookLoadPackage接口"></a>实现<code>IXposedHookLoadPackage</code>接口</h3><p>&emsp;&emsp;在lsptest1类中实现<code>IXposedHookLoadPackage</code>接口。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">lsptest1</span> <span class="keyword">implements</span> <span class="title class_">IXposedHookLoadPackage</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">handleLoadPackage</span><span class="params">(XC_LoadPackage.LoadPackageParam loadPackageParam)</span> <span class="keyword">throws</span> Throwable &#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="添加Hook逻辑"><a href="#添加Hook逻辑" class="headerlink" title="添加Hook逻辑"></a>添加Hook逻辑</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">lsptest1</span> <span class="keyword">implements</span> <span class="title class_">IXposedHookLoadPackage</span> &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">handleLoadPackage</span><span class="params">(XC_LoadPackage.LoadPackageParam loadPackageParam)</span> <span class="keyword">throws</span> Throwable &#123;</span><br><span class="line">        XposedBridge.log(<span class="string">&quot;Bileton-&gt;package&quot;</span>+loadPackageParam.packageName);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h3><p>&emsp;&emsp;安装成功后，打开LSPosed，点击模块</p>
+<p><img src="/2024/12/19/LSPosed%E5%BC%80%E5%8F%91/1.jpg"></p>
+<p>&emsp;&emsp;点击我们开发的模块，然后勾选要Hook的app，勾选完成之后，不要直接退出，通过返回键，返回到桌面，然后启动勾选的app，可以在Android Studio里面的日志里看到打印出来的App的包名。</p>
+<p><img src="/2024/12/19/LSPosed%E5%BC%80%E5%8F%91/2.jpg"></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -762,7 +974,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/12/05/Android%E7%B3%BB%E7%BB%9F/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/12/05/%E7%8E%A9%E8%BD%ACPython/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/android.svg">
@@ -776,7 +988,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2024/12/05/Android%E7%B3%BB%E7%BB%9F/" class="post-title-link" itemprop="url">Android系统</a>
+            <a href="/2024/12/05/%E7%8E%A9%E8%BD%ACPython/" class="post-title-link" itemprop="url">玩转Python</a>
         </h2>
 
         <div class="post-meta">
@@ -785,17 +997,23 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2024-12-05 00:00:00 / 修改时间：18:47:11" itemprop="dateCreated datePublished" datetime="2024-12-05T00:00:00+08:00">2024-12-05</time>
+              <time title="创建时间：2024-12-05 00:00:00" itemprop="dateCreated datePublished" datetime="2024-12-05T00:00:00+08:00">2024-12-05</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-12-16 11:47:34" itemprop="dateModified" datetime="2024-12-16T11:47:34+08:00">2024-12-16</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
+                  <a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
                 </span>
             </span>
 
@@ -805,7 +1023,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>0</span>
+              <span>450</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -824,7 +1042,17 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          
+          <h1 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h1><p>需要配置的环境变量是python的安装路径和它的Scripts目录。<br><img src="/2024/12/05/%E7%8E%A9%E8%BD%ACPython/1.jpg"><br>python的安装路径下有python.exe。<br>Scripts目录下有pip.exe和我们安装的第三方库。</p>
+<h1 id="python-exe"><a href="#python-exe" class="headerlink" title="python.exe"></a>python.exe</h1><h1 id="虚拟环境"><a href="#虚拟环境" class="headerlink" title="虚拟环境"></a>虚拟环境</h1><p>使用<code>virtualenv</code>来创建虚拟环境。  </p>
+<h2 id="安装virtualenv"><a href="#安装virtualenv" class="headerlink" title="安装virtualenv"></a>安装virtualenv</h2><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install virtualenv</span><br></pre></td></tr></table></figure>
+<h2 id="创建虚拟环境"><a href="#创建虚拟环境" class="headerlink" title="创建虚拟环境"></a>创建虚拟环境</h2><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">virtualenv &lt;envName&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># &lt;envName&gt;是我们给虚拟环境起的名字</span></span><br></pre></td></tr></table></figure>
+<p>会在当前目录下创建一个文件夹，里面包含了Python解释器的副本和一套标准库。  </p>
+<h2 id="激活虚拟机环境"><a href="#激活虚拟机环境" class="headerlink" title="激活虚拟机环境"></a>激活虚拟机环境</h2><p>在虚拟环境目录下的Scripts目录里，有一个activate.exe，运行它，虚拟环境就生效了。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">activate</span><br></pre></td></tr></table></figure>
+<p>激活虚拟环境后，你会看到命令行提示符前出现环境名称，表明当前是在该虚拟环境中操作。</p>
+<h2 id="退出虚拟环境"><a href="#退出虚拟环境" class="headerlink" title="退出虚拟环境"></a>退出虚拟环境</h2><p>执行<code>deactivate</code>退出虚拟环境。</p>
+<h1 id="HTTP服务器"><a href="#HTTP服务器" class="headerlink" title="HTTP服务器"></a>HTTP服务器</h1><p>命令行运行<code>python -m http.server [port]</code>，创建http服务器，默认端口是8000。</p>
+
       
     </div>
 
@@ -927,103 +1155,6 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">from selenium.webdriver.common.by import By</span><br></pre></td></tr></table></figure>
 <h3 id="通过ID定位"><a href="#通过ID定位" class="headerlink" title="通过ID定位"></a>通过ID定位</h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">element = driver.find_element(By.ID, <span class="string">&quot;xxx&quot;</span>)</span><br></pre></td></tr></table></figure>
 <h3 id="通过"><a href="#通过" class="headerlink" title="通过"></a>通过</h3>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/12/05/%E7%8E%A9%E8%BD%ACPython/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/android.svg">
-      <meta itemprop="name" content="Bileton">
-      <meta itemprop="description" content="路漫漫其修远夕！">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="白乐天">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2024/12/05/%E7%8E%A9%E8%BD%ACPython/" class="post-title-link" itemprop="url">玩转Python</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2024-12-05 00:00:00" itemprop="dateCreated datePublished" datetime="2024-12-05T00:00:00+08:00">2024-12-05</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-12-16 11:47:34" itemprop="dateModified" datetime="2024-12-16T11:47:34+08:00">2024-12-16</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>450</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h1><p>需要配置的环境变量是python的安装路径和它的Scripts目录。<br><img src="/2024/12/05/%E7%8E%A9%E8%BD%ACPython/1.jpg"><br>python的安装路径下有python.exe。<br>Scripts目录下有pip.exe和我们安装的第三方库。</p>
-<h1 id="python-exe"><a href="#python-exe" class="headerlink" title="python.exe"></a>python.exe</h1><h1 id="虚拟环境"><a href="#虚拟环境" class="headerlink" title="虚拟环境"></a>虚拟环境</h1><p>使用<code>virtualenv</code>来创建虚拟环境。  </p>
-<h2 id="安装virtualenv"><a href="#安装virtualenv" class="headerlink" title="安装virtualenv"></a>安装virtualenv</h2><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install virtualenv</span><br></pre></td></tr></table></figure>
-<h2 id="创建虚拟环境"><a href="#创建虚拟环境" class="headerlink" title="创建虚拟环境"></a>创建虚拟环境</h2><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">virtualenv &lt;envName&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># &lt;envName&gt;是我们给虚拟环境起的名字</span></span><br></pre></td></tr></table></figure>
-<p>会在当前目录下创建一个文件夹，里面包含了Python解释器的副本和一套标准库。  </p>
-<h2 id="激活虚拟机环境"><a href="#激活虚拟机环境" class="headerlink" title="激活虚拟机环境"></a>激活虚拟机环境</h2><p>在虚拟环境目录下的Scripts目录里，有一个activate.exe，运行它，虚拟环境就生效了。</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">activate</span><br></pre></td></tr></table></figure>
-<p>激活虚拟环境后，你会看到命令行提示符前出现环境名称，表明当前是在该虚拟环境中操作。</p>
-<h2 id="退出虚拟环境"><a href="#退出虚拟环境" class="headerlink" title="退出虚拟环境"></a>退出虚拟环境</h2><p>执行<code>deactivate</code>退出虚拟环境。</p>
-<h1 id="HTTP服务器"><a href="#HTTP服务器" class="headerlink" title="HTTP服务器"></a>HTTP服务器</h1><p>命令行运行<code>python -m http.server [port]</code>，创建http服务器，默认端口是8000。</p>
-
       
     </div>
 
@@ -1237,245 +1368,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/12/01/IDA%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/android.svg">
-      <meta itemprop="name" content="Bileton">
-      <meta itemprop="description" content="路漫漫其修远夕！">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="白乐天">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2024/12/01/IDA%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/" class="post-title-link" itemprop="url">IDA使用指南</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2024-12-01 23:25:02" itemprop="dateCreated datePublished" datetime="2024-12-01T23:25:02+08:00">2024-12-01</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-12-17 02:19:25" itemprop="dateModified" datetime="2024-12-17T02:19:25+08:00">2024-12-17</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E9%80%86%E5%90%91%E5%B7%A5%E5%85%B7%E9%9B%86/" itemprop="url" rel="index"><span itemprop="name">逆向工具集</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>3.4k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>3 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="界面"><a href="#界面" class="headerlink" title="界面"></a>界面</h1><h2 id="工具栏（Toolbars）"><a href="#工具栏（Toolbars）" class="headerlink" title="工具栏（Toolbars）"></a>工具栏（Toolbars）</h2><p>工具栏包含常用操作工具。<br>可在<code>View-&gt;Toobars</code>里显示或隐藏工具栏。</p>
-<h2 id="导航栏"><a href="#导航栏" class="headerlink" title="导航栏"></a>导航栏</h2><p>导航栏是被加载⽂件地址空间的线性视图。</p>
-<h1 id="窗口"><a href="#窗口" class="headerlink" title="窗口"></a>窗口</h1><h2 id="反汇编窗口（IDA-View）"><a href="#反汇编窗口（IDA-View）" class="headerlink" title="反汇编窗口（IDA-View）"></a>反汇编窗口（IDA-View）</h2><p>反汇编窗口有两种显示模式，文本模式和图形模式，通过<code>空格键</code>来切换。  </p>
-<ul>
-<li><strong>文本模式</strong><br>显示指令地址、机器码。  </li>
-<li><strong>图形模式</strong><br>观察控制流。<br>可通过<code>Ctrl+鼠标滚轮</code>进行缩放。</li>
-</ul>
-<h2 id="伪代码窗口（Pseudocode）"><a href="#伪代码窗口（Pseudocode）" class="headerlink" title="伪代码窗口（Pseudocode）"></a>伪代码窗口（Pseudocode）</h2><ul>
-<li>将反汇编代码转换为伪代码，按下<code>Tab键</code>或<code>F5</code>。</li>
-<li>将伪代码转换为反汇编代码，按下<code>Tab键</code>。</li>
-<li>在伪代码中根据光标位置按下<code>Tab键</code>可以快速定位到对应语句的汇编代码。</li>
-</ul>
-<h2 id="函数窗口（Functions）"><a href="#函数窗口（Functions）" class="headerlink" title="函数窗口（Functions）"></a>函数窗口（Functions）</h2><p>显示了当前分析的二进制文件中被识别的所有函数。</p>
-<h2 id="输出窗口（Output）"><a href="#输出窗口（Output）" class="headerlink" title="输出窗口（Output）"></a>输出窗口（Output）</h2><p>显⽰的是 IDA 输出的信息。</p>
-<h2 id="字符串表（Strings）"><a href="#字符串表（Strings）" class="headerlink" title="字符串表（Strings）"></a>字符串表（Strings）</h2><p>字符串表会显示IDA所识别出的字符串。</p>
-<ul>
-<li>打开字符串表窗口的快捷键<code>Shift+F12</code>。</li>
-<li>在菜单中打开 <code>View</code>-&gt;<code>Open Subviews</code>-&gt;<code>Strings</code>。</li>
-<li>双击字符串会跳转到字符串所在的数据窗口的位置或反汇编窗口的位置（取决于上一步打开的窗口）。</li>
-</ul>
-<h2 id="数据窗口（Hex-View）"><a href="#数据窗口（Hex-View）" class="headerlink" title="数据窗口（Hex View）"></a>数据窗口（Hex View）</h2><p>以hexdump形式显示程序的数据。</p>
-<ul>
-<li>菜单中的位置 <code>View</code>-&gt;<code>Open subviews</code>-&gt;<code>Hex dump</code>。</li>
-<li>通过<code>F2</code>可以进入编辑模式修改数据，再次按下<code>F2</code>退出编辑模式。</li>
-</ul>
-<h2 id="交叉引用（XREF）"><a href="#交叉引用（XREF）" class="headerlink" title="交叉引用（XREF）"></a>交叉引用（XREF）</h2><p>交叉引用（XREF，Cross Reference）是一个非常重要的工具，用于追踪某个地址、变量或函数在程序中的使用情况。它可以帮助我们快速找到某个符号、数据或函数是如何以及在何处被引用的。</p>
-<ul>
-<li>将光标定位到要进行交叉引用的符号，按下<code>x</code>键打开交叉引用的窗口。</li>
-</ul>
-<p><strong>交叉引用分类</strong></p>
-<ul>
-<li>代码交叉引用  </li>
-<li>数据交叉引用</li>
-</ul>
-<h2 id="Xref-Graph"><a href="#Xref-Graph" class="headerlink" title="Xref Graph"></a>Xref Graph</h2><p>函数调用关系及引用流向</p>
-<h3 id="Xref-graph-to"><a href="#Xref-graph-to" class="headerlink" title="Xref graph to"></a>Xref graph to</h3><ul>
-<li>显示当前函数或地址 “被哪些位置调用或引用” 的关系图。</li>
-<li>用于追踪调用者（Callers），即谁调用了当前函数或谁引用了该地址。</li>
-</ul>
-<p><strong>使用方式</strong><br>选中一个函数或地址后，右键在菜单中选择<code>Xrefs graph to...</code>。</p>
-<h3 id="Xref-graph-from"><a href="#Xref-graph-from" class="headerlink" title="Xref graph from"></a>Xref graph from</h3><ul>
-<li>显示当前函数或地址 “调用或引用了哪些目标” 的关系图。</li>
-<li>用于追踪被调用者（Callees），即当前函数或代码引用了哪些其他函数或地址。</li>
-</ul>
-<p><strong>使用方式</strong><br>选中一个函数或地址后，右键在菜单中选择 <code>Xrefs graph from...</code>。</p>
-<h1 id="常用快捷键"><a href="#常用快捷键" class="headerlink" title="常用快捷键"></a>常用快捷键</h1><h2 id="常用操作"><a href="#常用操作" class="headerlink" title="常用操作"></a>常用操作</h2><ul>
-<li><code>F5</code>：生成伪代码，刷新伪代码</li>
-<li><code>ESC</code>：后退，回到上一步操作的视图</li>
-</ul>
-<h2 id="窗口打开"><a href="#窗口打开" class="headerlink" title="窗口打开"></a>窗口打开</h2><ul>
-<li><code>x</code>：交叉引用窗口</li>
-<li><code>Shift + f12</code>：字符串窗口</li>
-<li><code>alt + T</code>：文本搜索窗口（速度慢）</li>
-<li><code>G</code>：地址跳转窗口</li>
-<li><code>Alt + I</code>：快速查找二进制文件中与某个特定值相关的指令或数据</li>
-<li><code>Alt + B</code>：直接在二进制文件中查找特定的字节序列</li>
-</ul>
-<h2 id="代码转换"><a href="#代码转换" class="headerlink" title="代码转换"></a>代码转换</h2><ul>
-<li><code>N</code>：修改变量名</li>
-<li><code>Y</code>：修改变量的类型</li>
-<li><code>Shift + Del</code>： 删除返回值</li>
-<li><code>\</code> ：隐藏与显示casts（类型）</li>
-<li><code>-</code> ：代码折叠（Collapse declarations）</li>
-<li><code>+</code> ：代码展开（Collapse declarations）</li>
-<li><code>/</code> ：行注释</li>
-<li><code>Ctrl+Alt+num</code>：Lock highlight，添加高亮标记（注意：<code>num</code>是一个数字）</li>
-</ul>
-<h2 id="数据转换"><a href="#数据转换" class="headerlink" title="数据转换"></a>数据转换</h2><ul>
-<li><code>U</code>：取消定义（Undefine）<br>可取消函数、代码或数据的定义。取消定义后，其基础字节将作为原始字节值重新格式化。</li>
-<li><code>C</code>：反汇编一组未定义的字节</li>
-<li><code>D</code>：将代码转换为数据  </li>
-<li><code>P</code>：在代码数据起始位置，按下<code>P</code>键，识别函数（注意光标需要位于起始位置）。<br><strong>整数的数据类型</strong><br>通过<code>D</code>键进行切换  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">db // 1字节</span><br><span class="line">dw // 2字节</span><br><span class="line">dd // 4字节</span><br><span class="line">dq // 8字节</span><br></pre></td></tr></table></figure></li>
-<li><code>H</code>：在十进制数据和十六进制数据之间切换</li>
-<li><code>R</code>：将数据切换为char类型</li>
-</ul>
-<h1 id="动态调试"><a href="#动态调试" class="headerlink" title="动态调试"></a>动态调试</h1><h2 id="调试器"><a href="#调试器" class="headerlink" title="调试器"></a>调试器</h2><h3 id="配置调试信息"><a href="#配置调试信息" class="headerlink" title="配置调试信息"></a>配置调试信息</h3><p>调试器选择完毕，打开Debugger菜单，选择<code>Process options</code><br>配置调试器在加载目标程序时的运行参数和环境  </p>
-<ul>
-<li><code>Application</code>：指定要调试的目标程序路径</li>
-<li><code>Input file</code>：指定程序运行时需要的输入文件路径</li>
-<li><code>Parameters</code>：为目标程序提供运行时的命令行参数。</li>
-<li><code>Hostname</code>和<code>Port</code>：填写主机名和端口</li>
-</ul>
-<p><img src="/2024/12/01/IDA%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/5.jpg"></p>
-<h3 id="Win本地调试"><a href="#Win本地调试" class="headerlink" title="Win本地调试"></a>Win本地调试</h3><p>本地调试无需配置server文件。</p>
-<h3 id="远程调试"><a href="#远程调试" class="headerlink" title="远程调试"></a>远程调试</h3><p>在IDA的安装目录下，有一个dbgsrv文件夹，里面是各个系统架构的远程调试server文件。</p>
-<p><img src="/2024/12/01/IDA%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/3.jpg"></p>
-<h4 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h4><p>把linux_server拷贝到Linux主机上，添加可执行权限，然后启动</p>
-<p><img src="/2024/12/01/IDA%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/4.jpg"></p>
-<h4 id="Android"><a href="#Android" class="headerlink" title="Android"></a>Android</h4><p>把android_server远程调试文件push到手机上的&#x2F;data&#x2F;local&#x2F;tmp目录下，改名字为as  </p>
-<ul>
-<li><p>添加可执行权限</p>
-  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod +x as</span><br></pre></td></tr></table></figure></li>
-<li><p>启动as</p>
-  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./as -p 1234  //-p选项用于设置端口</span><br></pre></td></tr></table></figure>
-<p>  <img src="/2024/12/01/IDA%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/6.jpg"></p>
-</li>
-<li><p>端口转发</p>
-  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb forward tcp:1234 tcp:1234</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="调试模式"><a href="#调试模式" class="headerlink" title="调试模式"></a>调试模式</h2><h3 id="Start-Process"><a href="#Start-Process" class="headerlink" title="Start Process"></a>Start Process</h3><p>Start Process 是指直接从 IDA 中启动一个可执行文件（如 .exe 程序）进行调试。IDA 会加载目标文件，并启动一个新的调试会话。</p>
-<h3 id="Attach-to-Process"><a href="#Attach-to-Process" class="headerlink" title="Attach to Process"></a>Attach to Process</h3><p>Attach to Process 是指将调试器附加到一个已经运行的进程。IDA 不会启动新的程序，而是连接到当前运行中的目标进程，实时分析其运行状态。</p>
-<h2 id="调试窗口"><a href="#调试窗口" class="headerlink" title="调试窗口"></a>调试窗口</h2><h3 id="General-registers窗口（寄存器）"><a href="#General-registers窗口（寄存器）" class="headerlink" title="General registers窗口（寄存器）"></a>General registers窗口（寄存器）</h3><p>&emsp;&emsp;寄存器内容在相关寄存器右边显示，后面显示对每个寄存器的说明，最右边的列中显示CPU标志位。  </p>
-<ul>
-<li>鼠标右键单击一个寄存器或标志位，会出现一个modify选项，可以更改寄存器或CPU标志位的值。  </li>
-<li>如果一个寄存器指向一个有效的地址，那么该寄存器值右侧会出现一个直角箭头并有突出显示，单击箭头，会跳转到相应的内存位置。<br><img src="/2024/12/01/IDA%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/2.jpg"></li>
-</ul>
-<h3 id="Modules窗口（模块）"><a href="#Modules窗口（模块）" class="headerlink" title="Modules窗口（模块）"></a>Modules窗口（模块）</h3><p>Modules窗⼝显⽰所有加载到进程内存空间中的可执⾏⽂件和动态链接库。  </p>
-<ul>
-<li>双击任何模块名称，将打开该模块导出的符号列表，双击符号，进行跳转。</li>
-</ul>
-<h3 id="Threads窗口（线程）"><a href="#Threads窗口（线程）" class="headerlink" title="Threads窗口（线程）"></a>Threads窗口（线程）</h3><p>Threads 窗口会列出当前进程中所有活动的线程，并显示每个线程的详细信息。</p>
-<h3 id="Stack-view窗口（堆栈）"><a href="#Stack-view窗口（堆栈）" class="headerlink" title="Stack view窗口（堆栈）"></a>Stack view窗口（堆栈）</h3><p>显示当前线程调用堆栈的内容，用于观察函数调用之间的堆栈数据变化。</p>
-<h2 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h2><ul>
-<li><code>F2</code>：设置断点</li>
-<li><code>F7</code>：步入</li>
-<li><code>F8</code>：步过</li>
-<li><code>F9</code>：启动调试，及运行至下一断点</li>
-<li><code>Ctrl+F7</code>：指定到当前函数的返回后位置</li>
-<li><code>F4</code>：运行至光标处</li>
-<li><code>Ctrl+N</code>：set IP，可以直接修改程序的执行路径。强制代码从光标位置开始执行</li>
-</ul>
-<h2 id="硬件断点"><a href="#硬件断点" class="headerlink" title="硬件断点"></a>硬件断点</h2><p>&emsp;&emsp;硬件断点用于在调试过程中实时监控内存区域的访问，硬件断点不会修改目标程序的代码，而是通过硬件的调试功能直接监控特定的内存地址或代码区域。</p>
-<h3 id="设置硬件断点"><a href="#设置硬件断点" class="headerlink" title="设置硬件断点"></a>设置硬件断点</h3><p>先设置普通断点，右键选择<code>Breakpoint settints</code>，勾选<code>Hardware</code>，选择硬件断点模式，勾选<code>Execute</code></p>
-<p>硬件断点模式</p>
-<ul>
-<li><code>Read</code>：断点地址被读取时命中</li>
-<li><code>Write</code>：断点地址被写入时命中</li>
-<li><code>Execute</code>：断点地址被执行时命中</li>
-<li><code>Size</code>：地址范围的大小</li>
-</ul>
-<p><img src="/2024/12/01/IDA%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/7.jpg"></p>
-<h2 id="内存断点"><a href="#内存断点" class="headerlink" title="内存断点"></a>内存断点</h2><p>&emsp;&emsp;内存断点（也称为 <strong>memory breakpoint</strong> 或数据断点）是用于监控特定内存区域访问的工具。它可以捕获对目标内存地址的 <strong>读取</strong>、<strong>写入</strong> 或 <strong>执行</strong> 操作。</p>
-<h3 id="设置内存断点"><a href="#设置内存断点" class="headerlink" title="设置内存断点"></a>设置内存断点</h3><p>设置普通断点，右键选择<code>Breakpoint settints</code>，勾选<code>Hardware</code>，选择硬件断点模式，勾选<code>Read</code>和<code>Write</code></p>
-<h2 id="API-断点"><a href="#API-断点" class="headerlink" title="API 断点"></a>API 断点</h2><p>&emsp;&emsp;API 断点是设置在目标程序调用的 API 函数入口或关键位置的断点，目的是拦截程序调用该函数时的执行流程。</p>
-<h3 id="设置API断点"><a href="#设置API断点" class="headerlink" title="设置API断点"></a>设置API断点</h3><p>设置方式与设置普通断点一致。</p>
-<h2 id="Trace"><a href="#Trace" class="headerlink" title="Trace"></a>Trace</h2><p>用于记录程序在运行过程中执行的指令、访问的内存、调用的函数或其他关键事件。</p>
-<h3 id="启用trace"><a href="#启用trace" class="headerlink" title="启用trace"></a>启用trace</h3><p>打开<code>Debugger-&gt;Tracing-&gt;Tracing Options</code>，配置trace选项。</p>
-<p><img src="/2024/12/01/IDA%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/9.jpg"></p>
-<h3 id="trace内容"><a href="#trace内容" class="headerlink" title="trace内容"></a>trace内容</h3><ul>
-<li><strong>Instruction tracing</strong>：跟踪指令执行。</li>
-<li><strong>Function tracing</strong>：跟踪函数调用。</li>
-<li><strong>Basic block tracing</strong>：跟踪基本块。</li>
-</ul>
-<h1 id="IDA插件"><a href="#IDA插件" class="headerlink" title="IDA插件"></a>IDA插件</h1><h2 id="LazyIDA-py"><a href="#LazyIDA-py" class="headerlink" title="LazyIDA.py"></a>LazyIDA.py</h2><p><a target="_blank" rel="noopener" href="https://github.com/P4nda0s/LazyIDA">https://github.com/P4nda0s/LazyIDA</a>  </p>
-<h3 id="提取数据"><a href="#提取数据" class="headerlink" title="提取数据"></a>提取数据</h3><ul>
-<li>将数据转换为python&#x2F;C的数组形式</li>
-<li>选中数据后，右键，选择Convert，然后选择相应的格式。（注意：这里选中的地址要包含所需地址范围的下一地址）</li>
-</ul>
-<p><img src="/2024/12/01/IDA%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/1.jpg"></p>
-<h3 id="Paste-Data"><a href="#Paste-Data" class="headerlink" title="Paste Data"></a>Paste Data</h3><p>插件修改数据，光标定位到数据窗口中要修改的数据的位置，右键，选择<code>Paste Data</code>，然后输入要修改的内容。</p>
-<h3 id="dump内存"><a href="#dump内存" class="headerlink" title="dump内存"></a>dump内存</h3><p>将光标定位到需要dump的数据的起始地址，右键，选择<code>Lazy Dumper</code></p>
-<p><img src="/2024/12/01/IDA%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/8.jpg"></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1547,20 +1439,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">23</span>
+          <span class="site-state-item-count">24</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-count">13</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-count">21</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -1601,13 +1493,13 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">69k</span>
+    <span title="站点总字数">74k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">1:03</span>
+    <span title="站点阅读时长">1:08</span>
 </div>
 
 
