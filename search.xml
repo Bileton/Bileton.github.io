@@ -1,17 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>C++</title>
-    <url>/2024/02/01/C/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>编程语言</category>
-      </categories>
-      <tags>
-        <tag>C++</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>ARM汇编</title>
     <url>/2024/12/16/ARM%E6%B1%87%E7%BC%96/</url>
     <content><![CDATA[<h1 id="ARM架构"><a href="#ARM架构" class="headerlink" title="ARM架构"></a>ARM架构</h1><p>ARM是一种精简指令集计算机架构（处理器架构）。</p>
@@ -197,6 +186,17 @@
       </tags>
   </entry>
   <entry>
+    <title>C++</title>
+    <url>/2024/02/01/C/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>编程语言</category>
+      </categories>
+      <tags>
+        <tag>C++</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Android启动流程分析</title>
     <url>/2024/12/19/Android%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B%E5%88%86%E6%9E%90/</url>
     <content><![CDATA[<p>本篇以从按下开机键开始至设备桌面图标出现进行分析。</p>
@@ -224,54 +224,6 @@
       </categories>
       <tags>
         <tag>Android启动流程</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>C语言</title>
-    <url>/2024/02/01/C%E8%AF%AD%E8%A8%80/</url>
-    <content><![CDATA[<h1 id="stdio-h"><a href="#stdio-h" class="headerlink" title="stdio.h"></a>stdio.h</h1><h2 id="库变量"><a href="#库变量" class="headerlink" title="库变量"></a>库变量</h2><h3 id="size-t"><a href="#size-t" class="headerlink" title="size_t"></a>size_t</h3><p>无符号整数类型，它是 sizeof 关键字的结果。</p>
-<h3 id="FILE"><a href="#FILE" class="headerlink" title="FILE"></a>FILE</h3><p>文件流类型，适合存储文件流信息的对象类型。</p>
-<h3 id="fpos-t"><a href="#fpos-t" class="headerlink" title="fpos_t"></a>fpos_t</h3><p>文件位置类型，适合存储文件中任何位置的对象类型。</p>
-<h2 id="库函数"><a href="#库函数" class="headerlink" title="库函数"></a>库函数</h2><h3 id="sprintf"><a href="#sprintf" class="headerlink" title="sprintf()"></a>sprintf()</h3><p>用于将格式化的数据写入字符串。</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">sprintf</span><span class="params">(<span class="type">char</span> *str, <span class="type">const</span> <span class="type">char</span> *format, ...)</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// str: 一个字符数组，用于存储格式化后的输出结果。</span></span><br><span class="line"><span class="comment">// format: 一个格式字符串，指定输出的格式。</span></span><br><span class="line"><span class="comment">// ...: 根据格式字符串提供的其他参数，用于格式化输出。</span></span><br><span class="line"><span class="comment">// 返回值：返回写入 str 中的字符数，不包括结尾的 \0 字符。如果发生错误，返回一个负值。</span></span><br></pre></td></tr></table></figure>
-<p><strong>示例</strong></p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">char</span> buffer[<span class="number">100</span>];</span><br><span class="line">    <span class="type">int</span> n = <span class="number">42</span>;</span><br><span class="line">    <span class="type">float</span> pi = <span class="number">3.14159</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 使用 sprintf 格式化数据并写入 buffer</span></span><br><span class="line">    <span class="type">int</span> written = <span class="built_in">sprintf</span>(buffer, <span class="string">&quot;The answer is %d and pi is approximately %.2f.&quot;</span>, n, pi);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 打印结果</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Formatted string: %s\n&quot;</span>, buffer);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Number of characters written: %d\n&quot;</span>, written);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line">Formatted <span class="built_in">string</span>: The answer is <span class="number">42</span> and pi is approximately <span class="number">3.14</span>.</span><br><span class="line">Number of characters written: <span class="number">46</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="snprintf"><a href="#snprintf" class="headerlink" title="snprintf()"></a>snprintf()</h3><p>用于将格式化的数据写入字符串。</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">snprintf</span><span class="params">(<span class="type">char</span> *str, <span class="type">size_t</span> size, <span class="type">const</span> <span class="type">char</span> *format, ...)</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// str: 一个字符数组，用于存储格式化后的输出。</span></span><br><span class="line"><span class="comment">// size: 字符数组的大小，即 str 能容纳的最大字符数（包括终止的 \0 字符）。</span></span><br><span class="line"><span class="comment">// format: 一个格式字符串，指定输出的格式。</span></span><br><span class="line"><span class="comment">// ...: 依据格式字符串提供的其他参数。</span></span><br><span class="line"><span class="comment">// 返回值：返回写入 str 中的字符数，不包括结尾的 \0 字符。如果返回值大于或等于 size，说明输出被截断了。</span></span><br></pre></td></tr></table></figure>
-<p><strong>示例</strong></p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">char</span> buffer[<span class="number">50</span>];</span><br><span class="line">    <span class="type">int</span> n = <span class="number">42</span>;</span><br><span class="line">    <span class="type">float</span> pi = <span class="number">3.14159</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 使用 snprintf 格式化数据并写入 buffer</span></span><br><span class="line">    <span class="type">int</span> written = <span class="built_in">snprintf</span>(buffer, <span class="keyword">sizeof</span>(buffer), <span class="string">&quot;The answer is %d and pi is approximately %.2f.&quot;</span>, n, pi);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 打印结果</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Formatted string: %s\n&quot;</span>, buffer);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Number of characters written: %d\n&quot;</span>, written);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line">Formatted <span class="built_in">string</span>: The answer is <span class="number">42</span> and pi is approximately <span class="number">3.14</span>.</span><br><span class="line">Number of characters written: <span class="number">46</span></span><br></pre></td></tr></table></figure>
-<h3 id><a href="#" class="headerlink" title></a></h3><h1 id="time-h"><a href="#time-h" class="headerlink" title="time.h"></a>time.h</h1><h2 id="库变量-1"><a href="#库变量-1" class="headerlink" title="库变量"></a>库变量</h2><h3 id="size-t-1"><a href="#size-t-1" class="headerlink" title="size_t"></a>size_t</h3><p>无符号整型，sizeof运算符的结果。 </p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">unsigned</span> <span class="type">int</span></span><br></pre></td></tr></table></figure>
-<h3 id="clock-t"><a href="#clock-t" class="headerlink" title="clock_t"></a>clock_t</h3><p>表示处理器的时钟周期数。</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="type">long</span> <span class="type">clock_t</span>; <span class="comment">// 或者</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="type">int</span> <span class="type">clock_t</span>;</span><br></pre></td></tr></table></figure>
-
-<h3 id="time-t"><a href="#time-t" class="headerlink" title="time_t"></a>time_t</h3><p>用于存储时间戳</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="type">long</span> <span class="type">time_t</span>; <span class="comment">//或者</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="type">int</span> <span class="type">time_t</span>;</span><br></pre></td></tr></table></figure>
-
-<h3 id="struct-tm"><a href="#struct-tm" class="headerlink" title="struct tm"></a>struct tm</h3><p>tm 是一个结构体类型，用于表示具体的时间信息，通常是通过将时间戳（time_t）转换成更易于理解和操作的日期和时间格式。</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">tm</span> &#123;</span></span><br><span class="line">    <span class="type">int</span> tm_sec;   <span class="comment">// 秒 (0-59)</span></span><br><span class="line">    <span class="type">int</span> tm_min;   <span class="comment">// 分 (0-59)</span></span><br><span class="line">    <span class="type">int</span> tm_hour;  <span class="comment">// 小时 (0-23)</span></span><br><span class="line">    <span class="type">int</span> tm_mday;  <span class="comment">// 一个月中的日期 (1-31)</span></span><br><span class="line">    <span class="type">int</span> tm_mon;   <span class="comment">// 月份 (0-11) -&gt; 0 表示 1 月，11 表示 12 月</span></span><br><span class="line">    <span class="type">int</span> tm_year;  <span class="comment">// 从 1900 年开始的年数 (例如，2024 年就是 124)</span></span><br><span class="line">    <span class="type">int</span> tm_wday;  <span class="comment">// 星期几 (0-6)，0 表示星期天</span></span><br><span class="line">    <span class="type">int</span> tm_yday;  <span class="comment">// 一年中的第几天 (0-365)，0 表示 1 月 1 日</span></span><br><span class="line">    <span class="type">int</span> tm_isdst; <span class="comment">// 夏令时标志，正值表示夏令时，0 表示非夏令时，负值表示信息不可用</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h2 id="库函数-1"><a href="#库函数-1" class="headerlink" title="库函数"></a>库函数</h2><h3 id="time"><a href="#time" class="headerlink" title="time()"></a>time()</h3><p><code>time()</code>函数用于获取当前时间戳。</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;time.h&gt;</span></span></span><br><span class="line"><span class="type">time_t</span> <span class="title function_">time</span><span class="params">(<span class="type">time_t</span> *timer)</span>;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>如果参数为NULL或0，返回当前时间的time_t值。</li>
-<li>如果传递一个有效指针，函数会将当前时间保存到指针所指向的变量中，并返回相同的值。</li>
-</ul>
-<h3 id="localtime"><a href="#localtime" class="headerlink" title="localtime()"></a>localtime()</h3><p>用于将 time_t 类型的时间值转换为结构化的本地时间格式（struct tm）。</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">struct</span> tm* <span class="title function_">localtime</span><span class="params">(<span class="type">const</span> <span class="type">time_t</span>* timer)</span>;</span><br></pre></td></tr></table></figure>
-<p>将 time_t 类型的时间转换为本地时间，返回一个 struct tm 结构，表示本地时间的各个组成部分（年、月、日、小时、分钟、秒等）。</p>
-<h3 id="localtime-r"><a href="#localtime-r" class="headerlink" title="localtime_r()"></a>localtime_r()</h3><p>用于将 time_t 类型的时间值转换为结构化的本地时间格式（struct tm）。<br>由于它将结果存储在用户提供的缓冲区中，多个线程可以同时调用 localtime_r 而不会发生冲突，因此它是线程安全的。</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">struct</span> tm* <span class="title function_">localtime_r</span><span class="params">(<span class="type">const</span> <span class="type">time_t</span>* timer, <span class="keyword">struct</span> tm* buf)</span>;</span><br></pre></td></tr></table></figure>
-<h3 id="localtime-s"><a href="#localtime-s" class="headerlink" title="localtime_s()"></a>localtime_s()</h3><p>localtime_s 是 C11 标准引入的函数，功能和 localtime_r 类似。它将 time_t 转换为本地时间，并将结果存储在用户提供的缓冲区中。</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">struct</span> tm* <span class="title function_">localtime_s</span><span class="params">(<span class="type">const</span> <span class="type">time_t</span>* <span class="keyword">restrict</span> timer, <span class="keyword">struct</span> tm* <span class="keyword">restrict</span> buf)</span>;</span><br></pre></td></tr></table></figure>
-<p>localtime_s 在 C11 标准中引入时，具有更严格的错误检查。如果出现错误（例如无效的时间值），通常会返回一个错误码，而不是直接返回 NULL。这增加了函数的安全性和可靠性。</p>
-]]></content>
-      <categories>
-        <category>编程语言</category>
-      </categories>
-      <tags>
-        <tag>C语言</tag>
       </tags>
   </entry>
   <entry>
@@ -585,6 +537,17 @@
       </tags>
   </entry>
   <entry>
+    <title>JavaScript</title>
+    <url>/2024/12/04/JavaScript/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JS</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>LSPosed开发</title>
     <url>/2024/12/19/LSPosed%E5%BC%80%E5%8F%91/</url>
     <content><![CDATA[<h1 id="LSP前传Xposed介绍"><a href="#LSP前传Xposed介绍" class="headerlink" title="LSP前传Xposed介绍"></a>LSP前传Xposed介绍</h1><p>&emsp;&emsp;Xposed 框架是一个强大的 Android 逆向工程工具，它允许开发者在不修改应用程序源代码的情况下，动态地注入和修改Android 应用程序的行为。</p>
@@ -627,17 +590,6 @@
       </tags>
   </entry>
   <entry>
-    <title>JavaScript</title>
-    <url>/2024/12/04/JavaScript/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>JavaScript</category>
-      </categories>
-      <tags>
-        <tag>JS</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Python基础</title>
     <url>/2024/12/15/Python%E5%9F%BA%E7%A1%80/</url>
     <content><![CDATA[]]></content>
@@ -646,167 +598,6 @@
       </categories>
       <tags>
         <tag>Python基础</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Linux命令</title>
-    <url>/2024/08/09/Linux%E5%91%BD%E4%BB%A4/</url>
-    <content><![CDATA[<h1 id="基础命令"><a href="#基础命令" class="headerlink" title="基础命令"></a>基础命令</h1><p>命令基础格式<br><code>command [-options] [parameter]</code></p>
-<ul>
-<li><code>command</code> : 命令本身。  </li>
-<li><code>[]</code> : 可选，非必填。  </li>
-<li><code>options</code> : 命令的一些选项。  </li>
-<li><code>parameter</code> : 命令的参数。</li>
-</ul>
-<h2 id="ls"><a href="#ls" class="headerlink" title="ls"></a>ls</h2><p><code>ls [-a -l -h] [Linux路径]</code></p>
-<ul>
-<li><code>[-a -l -h]</code> 是可选的选项。</li>
-<li><code>Linux路径</code>是此命令的可选参数。</li>
-<li><code>-a</code>表示<code>all</code>的意思，即列出全部文件（包含隐藏的文件&#x2F;文件夹），以<code>.</code>开头的文件夹就是Linux系统中隐藏的文件&#x2F;文件夹。</li>
-<li><code>-l</code>表示以列表（竖向排列）的形式展示内容，并展示更多信息。</li>
-<li><code>-h</code>表示以易于阅读的形式，列出文件大小，需要和-l搭配使用。</li>
-</ul>
-<h2 id="cd"><a href="#cd" class="headerlink" title="cd"></a>cd</h2><p>cd来自英文：Change Directory  </p>
-<p><code>cd [Linux路径]</code></p>
-<ul>
-<li><code>cd</code>命令无需选项，只有参数，切换目录。</li>
-<li><code>cd</code>命令直接执行，不写参数，表示回到用户的HOME目录&#x2F;系统的根目录。</li>
-</ul>
-<h2 id="pwd"><a href="#pwd" class="headerlink" title="pwd"></a>pwd</h2><p>查看当前所在的工作目录（Print Work Directory）。  </p>
-<p><code>pwd</code>命令，无选项，无参数，直接输入<code>pwd</code>即可。</p>
-<h2 id="特殊路径符"><a href="#特殊路径符" class="headerlink" title="特殊路径符"></a>特殊路径符</h2><p><code>.</code>：表示当前目录<br><code>.</code>.：表示上一级目录<br><code>~</code>：表示HOME目录<br><code>/</code>:根目录  </p>
-<h2 id="文件操作命令"><a href="#文件操作命令" class="headerlink" title="文件操作命令"></a>文件操作命令</h2><h3 id="mkdir"><a href="#mkdir" class="headerlink" title="mkdir"></a>mkdir</h3><p>可以创建新的目录文件夹<br>mkdir来自英文：Make Directory<br><code>mkdir [-p] Linux路径</code>  </p>
-<ul>
-<li>参数必填，表示Linux路径，就是要创建的文件夹的路径。</li>
-<li><code>-p</code>选项可选，表示自动创建不存在的父目录，适用于创建连续多层级的目录，如<code>mkdir -p dir1/dir2/dir3</code>。</li>
-</ul>
-<h3 id="touch"><a href="#touch" class="headerlink" title="touch"></a>touch</h3><p>创建文件<br><code>touch Linux路径</code></p>
-<ul>
-<li>touch命令无选项，参数必填</li>
-</ul>
-<h3 id="cat"><a href="#cat" class="headerlink" title="cat"></a>cat</h3><p>查看文件的内容<br><code>cat Linux路径</code></p>
-<ul>
-<li>cat同样没有选项，只有必填参数</li>
-</ul>
-<h3 id="more"><a href="#more" class="headerlink" title="more"></a>more</h3><p>也可以查看文件内容，不同的是：</p>
-<ul>
-<li>cat直接将内容全部显示出来  </li>
-<li>more支持翻页，如果文件内容过多，可以一页一页显示</li>
-</ul>
-<p><code>more Linux路径</code>  </p>
-<ul>
-<li>没有选项，只有必填参数</li>
-<li>在查看的过程中，通过空格翻页</li>
-<li>通过q退出查看</li>
-</ul>
-<h3 id="cp"><a href="#cp" class="headerlink" title="cp"></a>cp</h3><p>复制文件&#x2F;文件夹<br><code>cp [-r] 源文件 目标文件</code></p>
-<ul>
-<li><code>-r</code>：选项，可选，用于复制文件夹使用</li>
-<li><code>源文件</code>：Linux路径，表示被复制的文件或文件夹</li>
-<li><code>目标文件</code>：Linux路径，表示要复制去的地方</li>
-</ul>
-<h3 id="mv"><a href="#mv" class="headerlink" title="mv"></a>mv</h3><p>用于移动文件&#x2F;文件夹<br><code>mv 源文件 目标文件</code></p>
-<ul>
-<li><code>源文件</code>：Linux路径，表示被移动的文件或文件夹</li>
-<li><code>目标文件</code>：Linux路径，表示要移动去的地方，如果目标不存在，则进行改名，确保目标存在</li>
-</ul>
-<h3 id="rm"><a href="#rm" class="headerlink" title="rm"></a>rm</h3><p>删除文件、文件夹<br><code>rm [-r -f] 参数1 参数2 ... 参数n</code></p>
-<ul>
-<li><code>-r</code>：选项用于删除文件夹</li>
-<li><code>-f</code>表示force，强制删除（不会弹出提示确认信息）<br>普通用户删除内容不会弹出提示，只有root管理员用户删除内容会有提示<br>所以一般普通用户用不到-f选项</li>
-<li><code>参数1、参数2…参数n</code>：表示要删除的文件或文件夹路径，按照空格隔开</li>
-</ul>
-<p>rm命令支持通配符<code>*</code>，用来做模糊匹配</p>
-<ul>
-<li>符号<code>*</code>表示通配符，即匹配任意内容（包含空）  </li>
-<li><code>test*</code>，表示匹配任何以test开头的内容  </li>
-<li><code>*test</code>，表示匹配任何以test结尾的内容  </li>
-<li><code>*test*</code>，表示匹配任何包含test的内容</li>
-</ul>
-<p>以下命令慎用</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">rm -f *</span><br><span class="line">rm -rf *</span><br><span class="line">rm -rf /*</span><br></pre></td></tr></table></figure>
-<h2 id="which"><a href="#which" class="headerlink" title="which"></a>which</h2><p>搜索系统的环境变量 $PATH 中列出的目录，以找到对应的可执行文件。<br><code>which xxx</code></p>
-<ul>
-<li>which 命令只能查找在 $PATH 环境变量中列出的目录里的可执行文件。</li>
-</ul>
-<h2 id="grep"><a href="#grep" class="headerlink" title="grep"></a>grep</h2><p>从文件中通过关键字过滤文件的行<br><code>grep [-n] &quot;关键字&quot; 文件路径</code></p>
-<ul>
-<li><code>-n</code>：表示在结果中显示匹配的行的行号</li>
-<li><code>&quot;关键字&quot;</code>：必填，表示过滤的关键字。</li>
-<li><code>参数文件路径</code>：必填，表示要过滤的文件的文件路径，可作为内容输入端口。</li>
-</ul>
-<h2 id><a href="#" class="headerlink" title="|"></a>|</h2><p>管道符，将管道符左边命令的结果作为右边命令的输入</p>
-<h2 id="echo"><a href="#echo" class="headerlink" title="echo"></a>echo</h2><p>在命令行内输出指定内容<br><code>echo &quot;输出的内容&quot;</code></p>
-<ul>
-<li>无需选项，只有一个参数，表示要输出的内容</li>
-</ul>
-<h2 id="反引号"><a href="#反引号" class="headerlink" title="反引号 &#96;"></a>反引号 &#96;</h2><p>被&#96;包围的内容，会被当做命令执行，而非普通字符</p>
-<p><img src="/2024/08/09/Linux%E5%91%BD%E4%BB%A4/1.png"></p>
-<h2 id="重定向符-和"><a href="#重定向符-和" class="headerlink" title="重定向符&gt;和&gt;&gt;"></a>重定向符<code>&gt;</code>和<code>&gt;&gt;</code></h2><p><code>&gt;</code>将左侧命令的结果，覆盖 写入到符号右侧指定的的文件中<br><code>&gt;&gt;</code>将左侧命令的结果，追加 写入到符号右侧指定的文件中</p>
-<p><img src="/2024/08/09/Linux%E5%91%BD%E4%BB%A4/2.png"></p>
-<h2 id="tail"><a href="#tail" class="headerlink" title="tail"></a>tail</h2><p>查看文件尾部内容，跟踪文件的最新更改<br><code>tail [-f -num] Linux路径</code></p>
-<ul>
-<li><code>Linux路径</code>：表示被跟踪的文件路径</li>
-<li><code>-f</code>：表示持续跟踪</li>
-<li><code>-num</code>：表示查看尾部多少行，不填默认10行</li>
-</ul>
-<h2 id="tree"><a href="#tree" class="headerlink" title="tree"></a>tree</h2><p>以树状图的形式列出目录的内容。</p>
-<h2 id="whoami"><a href="#whoami" class="headerlink" title="whoami"></a>whoami</h2><p>显示当前用户名的命令。</p>
-<h2 id="file"><a href="#file" class="headerlink" title="file"></a>file</h2><p>查看一个文件的类型<br><code>file filename</code></p>
-<h2 id="关机命令"><a href="#关机命令" class="headerlink" title="关机命令"></a>关机命令</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">shutdown -h now # 关闭系统</span><br><span class="line">reboot # 重启</span><br><span class="line">logout # 注销</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Linux命令</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>adb: Android调试桥</title>
-    <url>/2024/12/07/adb-Android%E8%B0%83%E8%AF%95%E6%A1%A5/</url>
-    <content><![CDATA[<p>Android 调试桥 (adb) 是一种功能多样的命令行工具，可以通过命令行与设备进行通信。</p>
-<h1 id="查询设备"><a href="#查询设备" class="headerlink" title="查询设备"></a>查询设备</h1><ul>
-<li><code>adb devices</code><br>adb 会创建一个字符串，用于通过端口号唯一标识设备。</li>
-<li><code>adb devices -l</code><br>加入 -l 选项，devices 命令会告知设备是什么。当连接了多个设备时，此信息会很有用，方便区分这些设备。</li>
-</ul>
-<h2 id="设备状态"><a href="#设备状态" class="headerlink" title="设备状态"></a>设备状态</h2><ul>
-<li><code>offline</code>：设备未连接到 adb 或没有响应。</li>
-<li><code>device</code>：设备已连接到 adb 服务器。<br>请注意，此状态并不表示 Android 系统已完全启动并可正常运行，因为在设备连接到 adb 时系统仍在启动。系统完成启动后，设备通常处于此运行状态。</li>
-<li><code>no device</code>：未连接任何设备。</li>
-<li><code>unauthorized</code>：电脑与安卓设备之间的调试授权未完成。</li>
-</ul>
-<h2 id="指定目标设备（-s选项）"><a href="#指定目标设备（-s选项）" class="headerlink" title="指定目标设备（-s选项）"></a>指定目标设备（-s选项）</h2><ul>
-<li>如果有多个设备在运行，必须指定目标设备 。  </li>
-<li>使用 devices 命令获取目标设备的序列号。  </li>
-<li>获得序列号后，结合使用-s选项与 adb 命令来指定序列号。</li>
-</ul>
-<h1 id="安装应用"><a href="#安装应用" class="headerlink" title="安装应用"></a>安装应用</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">adb install path_to_apk</span><br></pre></td></tr></table></figure>
-
-<h1 id="卸载应用"><a href="#卸载应用" class="headerlink" title="卸载应用"></a>卸载应用</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">adb uninstall &lt;package_name&gt;</span><br></pre></td></tr></table></figure>
-
-<h1 id="端口转发（forward）"><a href="#端口转发（forward）" class="headerlink" title="端口转发（forward）"></a>端口转发（forward）</h1><p>可以使用 forward 命令设置任意端口转发，将特定主机端口上的请求转发到设备上的其他端口。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">adb forward tcp:6100 tcp:7100</span><br></pre></td></tr></table></figure>
-<h1 id="push与pull"><a href="#push与pull" class="headerlink" title="push与pull"></a>push与pull</h1><h2 id="push"><a href="#push" class="headerlink" title="push"></a>push</h2><p>如需将某个文件或目录（及其子目录）从PC端复制到Android端</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">adb push local remote</span><br></pre></td></tr></table></figure>
-<h2 id="pull"><a href="#pull" class="headerlink" title="pull"></a>pull</h2><p>从Android端复制某个文件或目录（及其子目录）到PC端</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">adb pull remote local</span><br></pre></td></tr></table></figure>
-<h1 id="停止-adb-服务器"><a href="#停止-adb-服务器" class="headerlink" title="停止 adb 服务器"></a>停止 adb 服务器</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">adb kill-server</span><br></pre></td></tr></table></figure>
-
-<p>停止 adb 服务器候，可以通过发出其他任何 adb 命令来重启服务器。</p>
-<h1 id="shell-命令"><a href="#shell-命令" class="headerlink" title="shell 命令"></a>shell 命令</h1><p>可以使用 shell 命令通过 adb 发出设备命令，也可以使用该命令启动交互式 shell。</p>
-<h1 id="软件包管理器"><a href="#软件包管理器" class="headerlink" title="软件包管理器"></a>软件包管理器</h1><ul>
-<li>列出所有已安装应用  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">adb shell pm list packages</span><br></pre></td></tr></table></figure></li>
-<li>列出安卓设备上的所有系统应用  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">adb shell pm list packages -s</span><br></pre></td></tr></table></figure></li>
-<li>列出所有用户应用（非系统应用）  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">adb shell pm list packages -3</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h1 id="屏幕截图"><a href="#屏幕截图" class="headerlink" title="屏幕截图"></a>屏幕截图</h1><p>在shell中，进入<code>/sdcard</code>目录下，使用命令<code>screencap filename</code><br>在PC端，从命令行使用 screencap，使用命令<code>adb shell screencap /sdcard/filename</code></p>
-]]></content>
-      <categories>
-        <category>逆向工具集</category>
-      </categories>
-      <tags>
-        <tag>adb</tag>
       </tags>
   </entry>
   <entry>
@@ -1092,22 +883,51 @@
       </tags>
   </entry>
   <entry>
-    <title>Hello World</title>
-    <url>/2024/11/28/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+    <title>adb: Android调试桥</title>
+    <url>/2024/12/07/adb-Android%E8%B0%83%E8%AF%95%E6%A1%A5/</url>
+    <content><![CDATA[<p>Android 调试桥 (adb) 是一种功能多样的命令行工具，可以通过命令行与设备进行通信。</p>
+<h1 id="查询设备"><a href="#查询设备" class="headerlink" title="查询设备"></a>查询设备</h1><ul>
+<li><code>adb devices</code><br>adb 会创建一个字符串，用于通过端口号唯一标识设备。</li>
+<li><code>adb devices -l</code><br>加入 -l 选项，devices 命令会告知设备是什么。当连接了多个设备时，此信息会很有用，方便区分这些设备。</li>
+</ul>
+<h2 id="设备状态"><a href="#设备状态" class="headerlink" title="设备状态"></a>设备状态</h2><ul>
+<li><code>offline</code>：设备未连接到 adb 或没有响应。</li>
+<li><code>device</code>：设备已连接到 adb 服务器。<br>请注意，此状态并不表示 Android 系统已完全启动并可正常运行，因为在设备连接到 adb 时系统仍在启动。系统完成启动后，设备通常处于此运行状态。</li>
+<li><code>no device</code>：未连接任何设备。</li>
+<li><code>unauthorized</code>：电脑与安卓设备之间的调试授权未完成。</li>
+</ul>
+<h2 id="指定目标设备（-s选项）"><a href="#指定目标设备（-s选项）" class="headerlink" title="指定目标设备（-s选项）"></a>指定目标设备（-s选项）</h2><ul>
+<li>如果有多个设备在运行，必须指定目标设备 。  </li>
+<li>使用 devices 命令获取目标设备的序列号。  </li>
+<li>获得序列号后，结合使用-s选项与 adb 命令来指定序列号。</li>
+</ul>
+<h1 id="安装应用"><a href="#安装应用" class="headerlink" title="安装应用"></a>安装应用</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">adb install path_to_apk</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<h1 id="卸载应用"><a href="#卸载应用" class="headerlink" title="卸载应用"></a>卸载应用</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">adb uninstall &lt;package_name&gt;</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<h1 id="端口转发（forward）"><a href="#端口转发（forward）" class="headerlink" title="端口转发（forward）"></a>端口转发（forward）</h1><p>可以使用 forward 命令设置任意端口转发，将特定主机端口上的请求转发到设备上的其他端口。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">adb forward tcp:6100 tcp:7100</span><br></pre></td></tr></table></figure>
+<h1 id="push与pull"><a href="#push与pull" class="headerlink" title="push与pull"></a>push与pull</h1><h2 id="push"><a href="#push" class="headerlink" title="push"></a>push</h2><p>如需将某个文件或目录（及其子目录）从PC端复制到Android端</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">adb push local remote</span><br></pre></td></tr></table></figure>
+<h2 id="pull"><a href="#pull" class="headerlink" title="pull"></a>pull</h2><p>从Android端复制某个文件或目录（及其子目录）到PC端</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">adb pull remote local</span><br></pre></td></tr></table></figure>
+<h1 id="停止-adb-服务器"><a href="#停止-adb-服务器" class="headerlink" title="停止 adb 服务器"></a>停止 adb 服务器</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">adb kill-server</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+<p>停止 adb 服务器候，可以通过发出其他任何 adb 命令来重启服务器。</p>
+<h1 id="shell-命令"><a href="#shell-命令" class="headerlink" title="shell 命令"></a>shell 命令</h1><p>可以使用 shell 命令通过 adb 发出设备命令，也可以使用该命令启动交互式 shell。</p>
+<h1 id="软件包管理器"><a href="#软件包管理器" class="headerlink" title="软件包管理器"></a>软件包管理器</h1><ul>
+<li>列出所有已安装应用  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">adb shell pm list packages</span><br></pre></td></tr></table></figure></li>
+<li>列出安卓设备上的所有系统应用  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">adb shell pm list packages -s</span><br></pre></td></tr></table></figure></li>
+<li>列出所有用户应用（非系统应用）  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">adb shell pm list packages -3</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h1 id="屏幕截图"><a href="#屏幕截图" class="headerlink" title="屏幕截图"></a>屏幕截图</h1><p>在shell中，进入<code>/sdcard</code>目录下，使用命令<code>screencap filename</code><br>在PC端，从命令行使用 screencap，使用命令<code>adb shell screencap /sdcard/filename</code></p>
 ]]></content>
+      <categories>
+        <category>逆向工具集</category>
+      </categories>
+      <tags>
+        <tag>adb</tag>
+      </tags>
   </entry>
   <entry>
     <title>frida环境搭建</title>
@@ -1155,6 +975,186 @@
       </categories>
       <tags>
         <tag>frida环境搭建</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/2024/11/28/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Linux命令</title>
+    <url>/2024/08/09/Linux%E5%91%BD%E4%BB%A4/</url>
+    <content><![CDATA[<h1 id="基础命令"><a href="#基础命令" class="headerlink" title="基础命令"></a>基础命令</h1><p>命令基础格式<br><code>command [-options] [parameter]</code></p>
+<ul>
+<li><code>command</code> : 命令本身。  </li>
+<li><code>[]</code> : 可选，非必填。  </li>
+<li><code>options</code> : 命令的一些选项。  </li>
+<li><code>parameter</code> : 命令的参数。</li>
+</ul>
+<h2 id="ls"><a href="#ls" class="headerlink" title="ls"></a>ls</h2><p><code>ls [-a -l -h] [Linux路径]</code></p>
+<ul>
+<li><code>[-a -l -h]</code> 是可选的选项。</li>
+<li><code>Linux路径</code>是此命令的可选参数。</li>
+<li><code>-a</code>表示<code>all</code>的意思，即列出全部文件（包含隐藏的文件&#x2F;文件夹），以<code>.</code>开头的文件夹就是Linux系统中隐藏的文件&#x2F;文件夹。</li>
+<li><code>-l</code>表示以列表（竖向排列）的形式展示内容，并展示更多信息。</li>
+<li><code>-h</code>表示以易于阅读的形式，列出文件大小，需要和-l搭配使用。</li>
+</ul>
+<h2 id="cd"><a href="#cd" class="headerlink" title="cd"></a>cd</h2><p>cd来自英文：Change Directory  </p>
+<p><code>cd [Linux路径]</code></p>
+<ul>
+<li><code>cd</code>命令无需选项，只有参数，切换目录。</li>
+<li><code>cd</code>命令直接执行，不写参数，表示回到用户的HOME目录&#x2F;系统的根目录。</li>
+</ul>
+<h2 id="pwd"><a href="#pwd" class="headerlink" title="pwd"></a>pwd</h2><p>查看当前所在的工作目录（Print Work Directory）。  </p>
+<p><code>pwd</code>命令，无选项，无参数，直接输入<code>pwd</code>即可。</p>
+<h2 id="特殊路径符"><a href="#特殊路径符" class="headerlink" title="特殊路径符"></a>特殊路径符</h2><p><code>.</code>：表示当前目录<br><code>.</code>.：表示上一级目录<br><code>~</code>：表示HOME目录<br><code>/</code>:根目录  </p>
+<h2 id="文件操作命令"><a href="#文件操作命令" class="headerlink" title="文件操作命令"></a>文件操作命令</h2><h3 id="mkdir"><a href="#mkdir" class="headerlink" title="mkdir"></a>mkdir</h3><p>可以创建新的目录文件夹<br>mkdir来自英文：Make Directory<br><code>mkdir [-p] Linux路径</code>  </p>
+<ul>
+<li>参数必填，表示Linux路径，就是要创建的文件夹的路径。</li>
+<li><code>-p</code>选项可选，表示自动创建不存在的父目录，适用于创建连续多层级的目录，如<code>mkdir -p dir1/dir2/dir3</code>。</li>
+</ul>
+<h3 id="touch"><a href="#touch" class="headerlink" title="touch"></a>touch</h3><p>创建文件<br><code>touch Linux路径</code></p>
+<ul>
+<li>touch命令无选项，参数必填</li>
+</ul>
+<h3 id="cat"><a href="#cat" class="headerlink" title="cat"></a>cat</h3><p>查看文件的内容<br><code>cat Linux路径</code></p>
+<ul>
+<li>cat同样没有选项，只有必填参数</li>
+</ul>
+<h3 id="more"><a href="#more" class="headerlink" title="more"></a>more</h3><p>也可以查看文件内容，不同的是：</p>
+<ul>
+<li>cat直接将内容全部显示出来  </li>
+<li>more支持翻页，如果文件内容过多，可以一页一页显示</li>
+</ul>
+<p><code>more Linux路径</code>  </p>
+<ul>
+<li>没有选项，只有必填参数</li>
+<li>在查看的过程中，通过空格翻页</li>
+<li>通过q退出查看</li>
+</ul>
+<h3 id="cp"><a href="#cp" class="headerlink" title="cp"></a>cp</h3><p>复制文件&#x2F;文件夹<br><code>cp [-r] 源文件 目标文件</code></p>
+<ul>
+<li><code>-r</code>：选项，可选，用于复制文件夹使用</li>
+<li><code>源文件</code>：Linux路径，表示被复制的文件或文件夹</li>
+<li><code>目标文件</code>：Linux路径，表示要复制去的地方</li>
+</ul>
+<h3 id="mv"><a href="#mv" class="headerlink" title="mv"></a>mv</h3><p>用于移动文件&#x2F;文件夹<br><code>mv 源文件 目标文件</code></p>
+<ul>
+<li><code>源文件</code>：Linux路径，表示被移动的文件或文件夹</li>
+<li><code>目标文件</code>：Linux路径，表示要移动去的地方，如果目标不存在，则进行改名，确保目标存在</li>
+</ul>
+<h3 id="rm"><a href="#rm" class="headerlink" title="rm"></a>rm</h3><p>删除文件、文件夹<br><code>rm [-r -f] 参数1 参数2 ... 参数n</code></p>
+<ul>
+<li><code>-r</code>：选项用于删除文件夹</li>
+<li><code>-f</code>表示force，强制删除（不会弹出提示确认信息）<br>普通用户删除内容不会弹出提示，只有root管理员用户删除内容会有提示<br>所以一般普通用户用不到-f选项</li>
+<li><code>参数1、参数2…参数n</code>：表示要删除的文件或文件夹路径，按照空格隔开</li>
+</ul>
+<p>rm命令支持通配符<code>*</code>，用来做模糊匹配</p>
+<ul>
+<li>符号<code>*</code>表示通配符，即匹配任意内容（包含空）  </li>
+<li><code>test*</code>，表示匹配任何以test开头的内容  </li>
+<li><code>*test</code>，表示匹配任何以test结尾的内容  </li>
+<li><code>*test*</code>，表示匹配任何包含test的内容</li>
+</ul>
+<p>以下命令慎用</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">rm -f *</span><br><span class="line">rm -rf *</span><br><span class="line">rm -rf /*</span><br></pre></td></tr></table></figure>
+<h2 id="which"><a href="#which" class="headerlink" title="which"></a>which</h2><p>搜索系统的环境变量 $PATH 中列出的目录，以找到对应的可执行文件。<br><code>which xxx</code></p>
+<ul>
+<li>which 命令只能查找在 $PATH 环境变量中列出的目录里的可执行文件。</li>
+</ul>
+<h2 id="grep"><a href="#grep" class="headerlink" title="grep"></a>grep</h2><p>从文件中通过关键字过滤文件的行<br><code>grep [-n] &quot;关键字&quot; 文件路径</code></p>
+<ul>
+<li><code>-n</code>：表示在结果中显示匹配的行的行号</li>
+<li><code>&quot;关键字&quot;</code>：必填，表示过滤的关键字。</li>
+<li><code>参数文件路径</code>：必填，表示要过滤的文件的文件路径，可作为内容输入端口。</li>
+</ul>
+<h2 id><a href="#" class="headerlink" title="|"></a>|</h2><p>管道符，将管道符左边命令的结果作为右边命令的输入</p>
+<h2 id="echo"><a href="#echo" class="headerlink" title="echo"></a>echo</h2><p>在命令行内输出指定内容<br><code>echo &quot;输出的内容&quot;</code></p>
+<ul>
+<li>无需选项，只有一个参数，表示要输出的内容</li>
+</ul>
+<h2 id="反引号"><a href="#反引号" class="headerlink" title="反引号 &#96;"></a>反引号 &#96;</h2><p>被&#96;包围的内容，会被当做命令执行，而非普通字符</p>
+<p><img src="/2024/08/09/Linux%E5%91%BD%E4%BB%A4/1.png"></p>
+<h2 id="重定向符-和"><a href="#重定向符-和" class="headerlink" title="重定向符&gt;和&gt;&gt;"></a>重定向符<code>&gt;</code>和<code>&gt;&gt;</code></h2><p><code>&gt;</code>将左侧命令的结果，覆盖 写入到符号右侧指定的的文件中<br><code>&gt;&gt;</code>将左侧命令的结果，追加 写入到符号右侧指定的文件中</p>
+<p><img src="/2024/08/09/Linux%E5%91%BD%E4%BB%A4/2.png"></p>
+<h2 id="tail"><a href="#tail" class="headerlink" title="tail"></a>tail</h2><p>查看文件尾部内容，跟踪文件的最新更改<br><code>tail [-f -num] Linux路径</code></p>
+<ul>
+<li><code>Linux路径</code>：表示被跟踪的文件路径</li>
+<li><code>-f</code>：表示持续跟踪</li>
+<li><code>-num</code>：表示查看尾部多少行，不填默认10行</li>
+</ul>
+<h2 id="tree"><a href="#tree" class="headerlink" title="tree"></a>tree</h2><p>以树状图的形式列出目录的内容。</p>
+<h2 id="whoami"><a href="#whoami" class="headerlink" title="whoami"></a>whoami</h2><p>显示当前用户名的命令。</p>
+<h2 id="file"><a href="#file" class="headerlink" title="file"></a>file</h2><p>查看一个文件的类型<br><code>file filename</code></p>
+<h2 id="关机命令"><a href="#关机命令" class="headerlink" title="关机命令"></a>关机命令</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">shutdown -h now # 关闭系统</span><br><span class="line">reboot # 重启</span><br><span class="line">logout # 注销</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux命令</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>C语言</title>
+    <url>/2024/02/01/C%E8%AF%AD%E8%A8%80/</url>
+    <content><![CDATA[<h1 id="stdio-h"><a href="#stdio-h" class="headerlink" title="stdio.h"></a>stdio.h</h1><h2 id="库变量"><a href="#库变量" class="headerlink" title="库变量"></a>库变量</h2><h3 id="size-t"><a href="#size-t" class="headerlink" title="size_t"></a>size_t</h3><p>无符号整数类型，它是 sizeof 关键字的结果。</p>
+<h3 id="FILE"><a href="#FILE" class="headerlink" title="FILE"></a>FILE</h3><p>文件流类型，适合存储文件流信息的对象类型。</p>
+<h3 id="fpos-t"><a href="#fpos-t" class="headerlink" title="fpos_t"></a>fpos_t</h3><p>文件位置类型，适合存储文件中任何位置的对象类型。</p>
+<h2 id="库函数"><a href="#库函数" class="headerlink" title="库函数"></a>库函数</h2><h3 id="sprintf"><a href="#sprintf" class="headerlink" title="sprintf()"></a>sprintf()</h3><p>用于将格式化的数据写入字符串。</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">sprintf</span><span class="params">(<span class="type">char</span> *str, <span class="type">const</span> <span class="type">char</span> *format, ...)</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// str: 一个字符数组，用于存储格式化后的输出结果。</span></span><br><span class="line"><span class="comment">// format: 一个格式字符串，指定输出的格式。</span></span><br><span class="line"><span class="comment">// ...: 根据格式字符串提供的其他参数，用于格式化输出。</span></span><br><span class="line"><span class="comment">// 返回值：返回写入 str 中的字符数，不包括结尾的 \0 字符。如果发生错误，返回一个负值。</span></span><br></pre></td></tr></table></figure>
+<p><strong>示例</strong></p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">char</span> buffer[<span class="number">100</span>];</span><br><span class="line">    <span class="type">int</span> n = <span class="number">42</span>;</span><br><span class="line">    <span class="type">float</span> pi = <span class="number">3.14159</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 使用 sprintf 格式化数据并写入 buffer</span></span><br><span class="line">    <span class="type">int</span> written = <span class="built_in">sprintf</span>(buffer, <span class="string">&quot;The answer is %d and pi is approximately %.2f.&quot;</span>, n, pi);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 打印结果</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Formatted string: %s\n&quot;</span>, buffer);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Number of characters written: %d\n&quot;</span>, written);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line">Formatted <span class="built_in">string</span>: The answer is <span class="number">42</span> and pi is approximately <span class="number">3.14</span>.</span><br><span class="line">Number of characters written: <span class="number">46</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="snprintf"><a href="#snprintf" class="headerlink" title="snprintf()"></a>snprintf()</h3><p>用于将格式化的数据写入字符串。</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">snprintf</span><span class="params">(<span class="type">char</span> *str, <span class="type">size_t</span> size, <span class="type">const</span> <span class="type">char</span> *format, ...)</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// str: 一个字符数组，用于存储格式化后的输出。</span></span><br><span class="line"><span class="comment">// size: 字符数组的大小，即 str 能容纳的最大字符数（包括终止的 \0 字符）。</span></span><br><span class="line"><span class="comment">// format: 一个格式字符串，指定输出的格式。</span></span><br><span class="line"><span class="comment">// ...: 依据格式字符串提供的其他参数。</span></span><br><span class="line"><span class="comment">// 返回值：返回写入 str 中的字符数，不包括结尾的 \0 字符。如果返回值大于或等于 size，说明输出被截断了。</span></span><br></pre></td></tr></table></figure>
+<p><strong>示例</strong></p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">char</span> buffer[<span class="number">50</span>];</span><br><span class="line">    <span class="type">int</span> n = <span class="number">42</span>;</span><br><span class="line">    <span class="type">float</span> pi = <span class="number">3.14159</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 使用 snprintf 格式化数据并写入 buffer</span></span><br><span class="line">    <span class="type">int</span> written = <span class="built_in">snprintf</span>(buffer, <span class="keyword">sizeof</span>(buffer), <span class="string">&quot;The answer is %d and pi is approximately %.2f.&quot;</span>, n, pi);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 打印结果</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Formatted string: %s\n&quot;</span>, buffer);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Number of characters written: %d\n&quot;</span>, written);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line">Formatted <span class="built_in">string</span>: The answer is <span class="number">42</span> and pi is approximately <span class="number">3.14</span>.</span><br><span class="line">Number of characters written: <span class="number">46</span></span><br></pre></td></tr></table></figure>
+<h3 id><a href="#" class="headerlink" title></a></h3><h1 id="time-h"><a href="#time-h" class="headerlink" title="time.h"></a>time.h</h1><h2 id="库变量-1"><a href="#库变量-1" class="headerlink" title="库变量"></a>库变量</h2><h3 id="size-t-1"><a href="#size-t-1" class="headerlink" title="size_t"></a>size_t</h3><p>无符号整型，sizeof运算符的结果。 </p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">unsigned</span> <span class="type">int</span></span><br></pre></td></tr></table></figure>
+<h3 id="clock-t"><a href="#clock-t" class="headerlink" title="clock_t"></a>clock_t</h3><p>表示处理器的时钟周期数。</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="type">long</span> <span class="type">clock_t</span>; <span class="comment">// 或者</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="type">int</span> <span class="type">clock_t</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="time-t"><a href="#time-t" class="headerlink" title="time_t"></a>time_t</h3><p>用于存储时间戳</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="type">long</span> <span class="type">time_t</span>; <span class="comment">//或者</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="type">int</span> <span class="type">time_t</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="struct-tm"><a href="#struct-tm" class="headerlink" title="struct tm"></a>struct tm</h3><p>tm 是一个结构体类型，用于表示具体的时间信息，通常是通过将时间戳（time_t）转换成更易于理解和操作的日期和时间格式。</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">tm</span> &#123;</span></span><br><span class="line">    <span class="type">int</span> tm_sec;   <span class="comment">// 秒 (0-59)</span></span><br><span class="line">    <span class="type">int</span> tm_min;   <span class="comment">// 分 (0-59)</span></span><br><span class="line">    <span class="type">int</span> tm_hour;  <span class="comment">// 小时 (0-23)</span></span><br><span class="line">    <span class="type">int</span> tm_mday;  <span class="comment">// 一个月中的日期 (1-31)</span></span><br><span class="line">    <span class="type">int</span> tm_mon;   <span class="comment">// 月份 (0-11) -&gt; 0 表示 1 月，11 表示 12 月</span></span><br><span class="line">    <span class="type">int</span> tm_year;  <span class="comment">// 从 1900 年开始的年数 (例如，2024 年就是 124)</span></span><br><span class="line">    <span class="type">int</span> tm_wday;  <span class="comment">// 星期几 (0-6)，0 表示星期天</span></span><br><span class="line">    <span class="type">int</span> tm_yday;  <span class="comment">// 一年中的第几天 (0-365)，0 表示 1 月 1 日</span></span><br><span class="line">    <span class="type">int</span> tm_isdst; <span class="comment">// 夏令时标志，正值表示夏令时，0 表示非夏令时，负值表示信息不可用</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="库函数-1"><a href="#库函数-1" class="headerlink" title="库函数"></a>库函数</h2><h3 id="time"><a href="#time" class="headerlink" title="time()"></a>time()</h3><p><code>time()</code>函数用于获取当前时间戳。</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;time.h&gt;</span></span></span><br><span class="line"><span class="type">time_t</span> <span class="title function_">time</span><span class="params">(<span class="type">time_t</span> *timer)</span>;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>如果参数为NULL或0，返回当前时间的time_t值。</li>
+<li>如果传递一个有效指针，函数会将当前时间保存到指针所指向的变量中，并返回相同的值。</li>
+</ul>
+<h3 id="localtime"><a href="#localtime" class="headerlink" title="localtime()"></a>localtime()</h3><p>用于将 time_t 类型的时间值转换为结构化的本地时间格式（struct tm）。</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">struct</span> tm* <span class="title function_">localtime</span><span class="params">(<span class="type">const</span> <span class="type">time_t</span>* timer)</span>;</span><br></pre></td></tr></table></figure>
+<p>将 time_t 类型的时间转换为本地时间，返回一个 struct tm 结构，表示本地时间的各个组成部分（年、月、日、小时、分钟、秒等）。</p>
+<h3 id="localtime-r"><a href="#localtime-r" class="headerlink" title="localtime_r()"></a>localtime_r()</h3><p>用于将 time_t 类型的时间值转换为结构化的本地时间格式（struct tm）。<br>由于它将结果存储在用户提供的缓冲区中，多个线程可以同时调用 localtime_r 而不会发生冲突，因此它是线程安全的。</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">struct</span> tm* <span class="title function_">localtime_r</span><span class="params">(<span class="type">const</span> <span class="type">time_t</span>* timer, <span class="keyword">struct</span> tm* buf)</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="localtime-s"><a href="#localtime-s" class="headerlink" title="localtime_s()"></a>localtime_s()</h3><p>localtime_s 是 C11 标准引入的函数，功能和 localtime_r 类似。它将 time_t 转换为本地时间，并将结果存储在用户提供的缓冲区中。</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">struct</span> tm* <span class="title function_">localtime_s</span><span class="params">(<span class="type">const</span> <span class="type">time_t</span>* <span class="keyword">restrict</span> timer, <span class="keyword">struct</span> tm* <span class="keyword">restrict</span> buf)</span>;</span><br></pre></td></tr></table></figure>
+<p>localtime_s 在 C11 标准中引入时，具有更严格的错误检查。如果出现错误（例如无效的时间值），通常会返回一个错误码，而不是直接返回 NULL。这增加了函数的安全性和可靠性。</p>
+]]></content>
+      <categories>
+        <category>编程语言</category>
+      </categories>
+      <tags>
+        <tag>C语言</tag>
       </tags>
   </entry>
   <entry>
@@ -1213,6 +1213,124 @@
 <h3 id="站点信息"><a href="#站点信息" class="headerlink" title="站点信息"></a>站点信息</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Site</span><br><span class="line">title: &#x27;&#x27; # 标题</span><br><span class="line">subtitle: &#x27;&#x27; # 副标题</span><br><span class="line">description: &#x27;&#x27; # 描述</span><br><span class="line">keywords:</span><br><span class="line">author: &#x27;&#x27; # 作者</span><br><span class="line">language: zh-CN # 语言</span><br><span class="line">timezone: &#x27;&#x27;</span><br></pre></td></tr></table></figure>
 
 
+]]></content>
+      <categories>
+        <category>博客</category>
+      </categories>
+      <tags>
+        <tag>博客</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>hook脚本大全</title>
+    <url>/2024/11/29/hook%E8%84%9A%E6%9C%AC%E5%A4%A7%E5%85%A8/</url>
+    <content><![CDATA[<h1 id="so层hook"><a href="#so层hook" class="headerlink" title="so层hook"></a>so层hook</h1><h2 id="hook-dlopen"><a href="#hook-dlopen" class="headerlink" title="hook_dlopen"></a>hook_dlopen</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">hook_dlopen</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="comment">// 在Android8.0之前加载so通过dlopen函数</span></span><br><span class="line">    <span class="keyword">var</span> dlopen = <span class="title class_">Module</span>.<span class="title function_">findExportByName</span>(<span class="literal">null</span>,<span class="string">&quot;dlopen&quot;</span>);</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;addr_dlopen&quot;</span>,dlopen);</span><br><span class="line">    <span class="title class_">Interceptor</span>.<span class="title function_">attach</span>(dlopen,&#123;</span><br><span class="line">        <span class="attr">onEnter</span>:<span class="keyword">function</span>(<span class="params">args</span>)&#123;</span><br><span class="line">            <span class="keyword">var</span> pathptr = args[<span class="number">0</span>];</span><br><span class="line">            <span class="keyword">if</span>(pathptr)&#123;</span><br><span class="line">                <span class="keyword">var</span> path = <span class="title function_">ptr</span>(pathptr).<span class="title function_">readCString</span>();</span><br><span class="line">                <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;dlopen:&quot;</span>,path);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">onLeave</span>:<span class="keyword">function</span>(<span class="params">retvel</span>)&#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;leave!&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//Android8.0之后加载so通过android_dlopen_ext函数</span></span><br><span class="line">    <span class="keyword">var</span> android_dlopen_ext = <span class="title class_">Module</span>.<span class="title function_">findExportByName</span>(<span class="literal">null</span>,<span class="string">&quot;android_dlopen_ext&quot;</span>);</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;addr_android_dlopen_ext&quot;</span>,android_dlopen_ext);</span><br><span class="line">    <span class="title class_">Interceptor</span>.<span class="title function_">attach</span>(android_dlopen_ext,&#123;</span><br><span class="line">        <span class="attr">onEnter</span>:<span class="keyword">function</span>(<span class="params">args</span>)&#123;</span><br><span class="line">            <span class="keyword">var</span> pathptr = args[<span class="number">0</span>];</span><br><span class="line">            <span class="keyword">if</span>(pathptr!=<span class="literal">null</span> &amp;&amp; pathptr != <span class="literal">undefined</span>)&#123;</span><br><span class="line">                <span class="keyword">var</span> path = <span class="title function_">ptr</span>(pathptr).<span class="title function_">readCString</span>();</span><br><span class="line">                <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;android_dlopen_ext:&quot;</span>,path);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">onLeave</span>:<span class="keyword">function</span>(<span class="params">retvel</span>)&#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;leave!&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">hook_dlopen</span>()</span><br></pre></td></tr></table></figure>
+<h2 id="hook-pthread"><a href="#hook-pthread" class="headerlink" title="hook_pthread"></a>hook_pthread</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">hook_pthread_create</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="keyword">var</span> pt_create_func = <span class="title class_">Module</span>.<span class="title function_">findExportByName</span>(<span class="string">&quot;libc.so&quot;</span>,<span class="string">&quot;pthread_create&quot;</span>);</span><br><span class="line">    <span class="title class_">Interceptor</span>.<span class="title function_">attach</span>(pt_create_func,&#123;</span><br><span class="line">        <span class="attr">onEnter</span>:<span class="keyword">function</span>(<span class="params">args</span>)&#123;</span><br><span class="line">            <span class="keyword">var</span> so_name = <span class="title class_">Process</span>.<span class="title function_">findModuleByAddress</span>(args[<span class="number">2</span>]).<span class="property">name</span>;</span><br><span class="line">            <span class="comment">// if(so_name.indexOf(&quot;libxxx.so&quot;)!= -1)&#123;</span></span><br><span class="line">            <span class="comment">//     //console.log(&quot;arg2&quot;,args[2].sub(Module.findBaseAddress(&quot;libxxx.so&quot;)))</span></span><br><span class="line">            <span class="comment">//     try&#123;</span></span><br><span class="line">            <span class="comment">//         Interceptor.replace(args[2],new NativeCallback(function()&#123;</span></span><br><span class="line">            <span class="comment">//             console.log(&quot;replace success&quot;);</span></span><br><span class="line">            <span class="comment">//             return null;</span></span><br><span class="line">            <span class="comment">//         &#125;,&#x27;void&#x27;,[&quot;void&quot;]));</span></span><br><span class="line">            <span class="comment">//     &#125;catch(e)&#123;</span></span><br><span class="line"></span><br><span class="line">            <span class="comment">//     &#125;</span></span><br><span class="line">            <span class="comment">// &#125;</span></span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;arg2&quot;</span>,args[<span class="number">2</span>]);</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">onLeave</span>:<span class="keyword">function</span>(<span class="params">retval</span>)&#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">hook_pthread_create</span>();</span><br></pre></td></tr></table></figure>
+<h2 id="hook-RegisterNatives"><a href="#hook-RegisterNatives" class="headerlink" title="hook_RegisterNatives"></a>hook_RegisterNatives</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">hook_RegisterNatives</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> <span class="title class_">RegisterNatives</span>_addr = <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">var</span> symbols = <span class="title class_">Process</span>.<span class="title function_">findModuleByName</span>(<span class="string">&quot;libart.so&quot;</span>).<span class="title function_">enumerateSymbols</span>();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; symbols.<span class="property">length</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">var</span> symbol = symbols[i].<span class="property">name</span>;</span><br><span class="line">        <span class="keyword">if</span> ((symbol.<span class="title function_">indexOf</span>(<span class="string">&quot;CheckJNI&quot;</span>) == -<span class="number">1</span>) &amp;&amp; (symbol.<span class="title function_">indexOf</span>(<span class="string">&quot;JNI&quot;</span>) &gt;= <span class="number">0</span>)) &#123;</span><br><span class="line">            <span class="keyword">if</span> (symbol.<span class="title function_">indexOf</span>(<span class="string">&quot;RegisterNatives&quot;</span>) &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="title class_">RegisterNatives</span>_addr = symbols[i].<span class="property">address</span>;</span><br><span class="line">                <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;RegisterNatives_addr: &quot;</span>, <span class="title class_">RegisterNatives</span>_addr);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="title class_">Interceptor</span>.<span class="title function_">attach</span>(<span class="title class_">RegisterNatives</span>_addr, &#123;</span><br><span class="line">        <span class="attr">onEnter</span>: <span class="keyword">function</span> (<span class="params">args</span>) &#123;</span><br><span class="line">            <span class="keyword">var</span> env = args[<span class="number">0</span>];</span><br><span class="line">            <span class="keyword">var</span> jclass = args[<span class="number">1</span>];</span><br><span class="line">            <span class="keyword">var</span> class_name = <span class="title class_">Java</span>.<span class="property">vm</span>.<span class="title function_">tryGetEnv</span>().<span class="title function_">getClassName</span>(jclass);</span><br><span class="line">            <span class="keyword">var</span> methods_ptr = <span class="title function_">ptr</span>(args[<span class="number">2</span>]);</span><br><span class="line">            <span class="keyword">var</span> method_count = args[<span class="number">3</span>].<span class="title function_">toInt32</span>();</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;RegisterNatives method counts: &quot;</span>, method_count);</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; method_count; i++) &#123;</span><br><span class="line">                <span class="keyword">var</span> name = methods_ptr.<span class="title function_">add</span>(i * <span class="title class_">Process</span>.<span class="property">pointerSize</span> * <span class="number">3</span>).<span class="title function_">readPointer</span>().<span class="title function_">readCString</span>();</span><br><span class="line">                <span class="keyword">var</span> sig = methods_ptr.<span class="title function_">add</span>(i * <span class="title class_">Process</span>.<span class="property">pointerSize</span> * <span class="number">3</span> + <span class="title class_">Process</span>.<span class="property">pointerSize</span>).<span class="title function_">readPointer</span>().<span class="title function_">readCString</span>();</span><br><span class="line">                <span class="keyword">var</span> fnPtr_ptr = methods_ptr.<span class="title function_">add</span>(i * <span class="title class_">Process</span>.<span class="property">pointerSize</span> * <span class="number">3</span> + <span class="title class_">Process</span>.<span class="property">pointerSize</span> * <span class="number">2</span>).<span class="title function_">readPointer</span>();</span><br><span class="line">                <span class="keyword">var</span> find_module = <span class="title class_">Process</span>.<span class="title function_">findModuleByAddress</span>(fnPtr_ptr);</span><br><span class="line">                <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;ClasssName: &quot;</span>, class_name, <span class="string">&quot;MethodName: &quot;</span>, name, <span class="string">&quot;Sig: &quot;</span>, sig, <span class="string">&quot;Function_addr: &quot;</span>, fnPtr_ptr, <span class="string">&quot;ModuleName: &quot;</span>, find_module.<span class="property">name</span>, <span class="string">&quot;Fun_Offset: &quot;</span>, <span class="title function_">ptr</span>(fnPtr_ptr).<span class="title function_">sub</span>(find_module.<span class="property">base</span>));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">onLeave</span>: <span class="keyword">function</span> (<span class="params">retval</span>) &#123;&#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">hook_RegisterNatives</span>()</span><br></pre></td></tr></table></figure>
+<h2 id="hook-dlsym"><a href="#hook-dlsym" class="headerlink" title="hook_dlsym"></a>hook_dlsym</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">hook_dlsym</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="comment">// 获取dlsym函数的地址</span></span><br><span class="line">    <span class="keyword">let</span> dlsymAddr = <span class="title class_">Module</span>.<span class="title function_">findExportByName</span>(<span class="string">&quot;libdl.so&quot;</span>,<span class="string">&quot;dlsym&quot;</span>);</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(dlsymAddr);</span><br><span class="line">    <span class="comment">// hook dlsym</span></span><br><span class="line">    <span class="title class_">Interceptor</span>.<span class="title function_">attach</span>(dlsymAddr,&#123;</span><br><span class="line">        <span class="attr">onEnter</span>:<span class="keyword">function</span>(<span class="params">args</span>)&#123;</span><br><span class="line">            <span class="variable language_">this</span>.<span class="property">args1</span> = args[<span class="number">1</span>];</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">onLeave</span>:<span class="keyword">function</span>(<span class="params">retval</span>)&#123;</span><br><span class="line">            <span class="keyword">let</span> <span class="variable language_">module</span>= <span class="title class_">Process</span>.<span class="title function_">findModuleByAddress</span>(retval);</span><br><span class="line">            <span class="keyword">if</span>(<span class="variable language_">module</span>==<span class="literal">null</span>)<span class="keyword">return</span>;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;函数：&quot;</span>+<span class="variable language_">this</span>.<span class="property">args1</span>.<span class="title function_">readCString</span>(),<span class="string">&quot;模块：&quot;</span>+<span class="variable language_">module</span>.<span class="property">name</span>,<span class="string">&quot;地址：&quot;</span>+retval,<span class="string">&quot;偏移：&quot;</span>+retval.<span class="title function_">sub</span>(<span class="variable language_">module</span>.<span class="property">base</span>));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">hook_dlsym</span>()</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Frida</category>
+      </categories>
+      <tags>
+        <tag>Frida</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>selenium</title>
+    <url>/2024/12/05/selenium/</url>
+    <content><![CDATA[<p>Selenium 是一个自动化测试工具，利用它我们可以驱动浏览器执行特定的动作。</p>
+<h1 id="安装ChromeDriver"><a href="#安装ChromeDriver" class="headerlink" title="安装ChromeDriver"></a>安装ChromeDriver</h1><p>Selenium的使用需要配合Chrome浏览器，需要额外安装ChromeDriver 和 Chrome 浏览器。<br>安装好Chrome 浏览器并可以正常运行之后，点击 Chrome 的菜单，帮助 -&gt; 关于 Chrome，查看 Chrome 的版本号，然后到ChromeDriver 的官方网站<a href="https://sites.google.com/chromium.org/driver/downloads">https://sites.google.com/chromium.org/driver/downloads</a>下载对应的ChromeDriver 版本。</p>
+<h2 id="环境变量配置"><a href="#环境变量配置" class="headerlink" title="环境变量配置"></a>环境变量配置</h2><p>Windows建议直接将 chromedriver.exe 文件拖到 Python 的 Scripts 目录下。<br>也可以单独将其所在路径配置到环境变量。<br>配置完成之后，就可以在命令行下直接执行 chromedriver 命令了。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">chromedriver</span><br></pre></td></tr></table></figure>
+<h1 id="安装Selenium"><a href="#安装Selenium" class="headerlink" title="安装Selenium"></a>安装Selenium</h1><p>使用pip直接安装</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pip install selenium</span><br></pre></td></tr></table></figure>
+<p><strong>可以运行一个脚本测试</strong><br>弹出一个 Chrome 浏览器并加载了百度页面，10 秒之后就关闭。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"><span class="keyword">from</span> time <span class="keyword">import</span> sleep</span><br><span class="line"></span><br><span class="line">browser = webdriver.Chrome()</span><br><span class="line">browser.get(<span class="string">&#x27;https://www.baidu.com&#x27;</span>)</span><br><span class="line">sleep(<span class="number">10</span>)</span><br><span class="line">browser.close() </span><br></pre></td></tr></table></figure>
+<h1 id="常用浏览器操作"><a href="#常用浏览器操作" class="headerlink" title="常用浏览器操作"></a>常用浏览器操作</h1><h2 id="打开页面"><a href="#打开页面" class="headerlink" title="打开页面"></a>打开页面</h2><figure class="highlight py"><table><tr><td class="code"><pre><span class="line">driver.get(<span class="string">&quot;https://xxx.com&quot;</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="获取URL"><a href="#获取URL" class="headerlink" title="获取URL"></a>获取URL</h2><figure class="highlight py"><table><tr><td class="code"><pre><span class="line">url = driver.current_url</span><br></pre></td></tr></table></figure>
+<h2 id="获取标题"><a href="#获取标题" class="headerlink" title="获取标题"></a>获取标题</h2><figure class="highlight py"><table><tr><td class="code"><pre><span class="line">title = driver.title</span><br></pre></td></tr></table></figure>
+
+<h2 id="页面元素定位"><a href="#页面元素定位" class="headerlink" title="页面元素定位"></a>页面元素定位</h2><p>使用By类型（需要导入By）  </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">from selenium.webdriver.common.by import By</span><br></pre></td></tr></table></figure>
+<h3 id="通过ID定位"><a href="#通过ID定位" class="headerlink" title="通过ID定位"></a>通过ID定位</h3><figure class="highlight py"><table><tr><td class="code"><pre><span class="line">element = driver.find_element(By.ID, <span class="string">&quot;xxx&quot;</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="通过"><a href="#通过" class="headerlink" title="通过"></a>通过</h3>]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>selenium</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>NexT主题美化</title>
+    <url>/2024/01/02/%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96/</url>
+    <content><![CDATA[<h1 id="NexT主题"><a href="#NexT主题" class="headerlink" title="NexT主题"></a>NexT主题</h1><p>从博客目录打开终端，执行命令</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/next-theme/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure>
+<p>下载好了之后会在themes目录下生成一个next目录，里面是next主题的配置文件。<br>修改主题只需要在博客根目录下的_config.yml配置文件里找到theme，将其修改为next即可。<br><img src="/2024/01/02/%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96/1.png"></p>
+<h2 id="修改布局"><a href="#修改布局" class="headerlink" title="修改布局"></a>修改布局</h2><p>在next目录下的_config.yml文件里搜索<code>Scheme</code>，有四种默认局部<br><img src="/2024/01/02/%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96/2.png"></p>
+<h3 id="主题颜色"><a href="#主题颜色" class="headerlink" title="主题颜色"></a>主题颜色</h3><p>白色模式和黑色模式<br><img src="/2024/01/02/%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96/3.png"><br>false为白色模式，true为黑色模式</p>
+<h2 id="增加标签页和分类页"><a href="#增加标签页和分类页" class="headerlink" title="增加标签页和分类页"></a>增加标签页和分类页</h2><p>在next目录下的_config.yml文件里搜索<code>menu</code></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">menu:</span><br><span class="line">  home: / || fa fa-home</span><br><span class="line">  #about: /about/ || fa fa-user</span><br><span class="line">  tags: /tags/ || fa fa-tags</span><br><span class="line">  categories: /categories/ || fa fa-th</span><br><span class="line">  archives: /archives/ || fa fa-archive</span><br><span class="line">  #schedule: /schedule/ || fa fa-calendar</span><br><span class="line">  #sitemap: /sitemap.xml || fa fa-sitemap</span><br><span class="line">  #commonweal: /404/ || fa fa-heartbeat</span><br><span class="line"></span><br><span class="line"># Enable / Disable menu icons / item badges.</span><br><span class="line">menu_settings:</span><br><span class="line">  icons: true</span><br><span class="line">  badges: true</span><br></pre></td></tr></table></figure>
+<p>把tags和categories前面的<code>#</code>去掉<br><strong>进一步配置</strong><br>创建两个文件，一个是tags，一个是categories</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo n page tags</span><br><span class="line">hexo n page categories</span><br></pre></td></tr></table></figure>
+<p>文件内容稍作修改<br><img src="/2024/01/02/%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96/4.jpg"><br><img src="/2024/01/02/%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96/5.jpg"></p>
+<h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><p>把menu下的about前面的<code>#</code>去掉</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">menu:</span><br><span class="line">  home: / || fa fa-home</span><br><span class="line">  about: /about/ || fa fa-user</span><br><span class="line">  tags: /tags/ || fa fa-tags</span><br><span class="line">  categories: /categories/ || fa fa-th</span><br><span class="line">  archives: /archives/ || fa fa-archive</span><br><span class="line">  #schedule: /schedule/ || fa fa-calendar</span><br><span class="line">  #sitemap: /sitemap.xml || fa fa-sitemap</span><br><span class="line">  #commonweal: /404/ || fa fa-heartbeat</span><br></pre></td></tr></table></figure>
+<p>新建页面</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo new page about</span><br></pre></td></tr></table></figure>
+<p>在source目录下生成了一个about文件夹，里面有一个index.md文件，可以对about页面进行修改。</p>
+<h2 id="侧边栏位置"><a href="#侧边栏位置" class="headerlink" title="侧边栏位置"></a>侧边栏位置</h2><p>侧边栏中包含多种配置，可通过修改主题<code>_config.yml</code>实现</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sidebar:</span><br><span class="line">  # Sidebar Position.</span><br><span class="line">  position: left</span><br><span class="line">  #position: right</span><br></pre></td></tr></table></figure>
+
+<h2 id="头像"><a href="#头像" class="headerlink" title="头像"></a>头像</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Sidebar Avatar</span><br><span class="line">avatar:</span><br><span class="line">  # Replace the default image and set the url here.</span><br><span class="line">  url: /images/android.svg</span><br><span class="line">  # If true, the avatar will be dispalyed in circle.</span><br><span class="line">  rounded: true</span><br><span class="line">  # If true, the avatar will be rotated with the cursor.</span><br><span class="line">  rotated: true</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>url</code>：图像地址。默认为<code>NexT</code>包下<code>/source/images/avatar.gif</code>，也可放置在站点路径<code>/source/uploads</code>文件夹内</li>
+<li><code>rounded</code>：是否显示为圆形图标</li>
+<li><code>rotated</code>：光标移动到图标是否旋转</li>
+</ul>
+<h2 id="返回顶部"><a href="#返回顶部" class="headerlink" title="返回顶部"></a>返回顶部</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">back2top:</span><br><span class="line">  enable: true</span><br><span class="line">  # Back to top in sidebar.</span><br><span class="line">  sidebar: true</span><br><span class="line">  # Scroll percent label in b2t button.</span><br><span class="line">  scrollpercent: true</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>enable</code>：默认为<code>true</code>。在右下角显示返回顶部图标</li>
+<li><code>sidebar</code>：默认为<code>false</code>。在侧边栏显示</li>
+<li><code>scrollpercent</code>：默认为<code>false</code>。是否显示进度</li>
+</ul>
+<h3 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a>代码块</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">codeblock:</span><br><span class="line">  # Code Highlight theme</span><br><span class="line">  # Available values: normal | night | night eighties | night blue | night bright | solarized | solarized dark | galactic</span><br><span class="line">  # See: https://github.com/chriskempson/tomorrow-theme</span><br><span class="line">  highlight_theme: normal</span><br><span class="line">  # Add copy button on codeblock</span><br><span class="line">  copy_button:</span><br><span class="line">    enable: true</span><br><span class="line">    # Show text copy result.</span><br><span class="line">    show_result: true</span><br><span class="line">    # Available values: default | flat | mac</span><br><span class="line">    style: mac</span><br></pre></td></tr></table></figure>
+
+<h2 id="自定义主页"><a href="#自定义主页" class="headerlink" title="自定义主页"></a>自定义主页</h2><ul>
+<li>在根目录的source目录下，新建一个index.md文档<br>这个source目录下的index.md文档即是我们自定义的主页。在文档中做出的任何修改均会体现在自定义主页中。  </li>
+<li>修改根目录下的_config.yml文件的index_generator项<br>打开根目录下的 <code>_config.yml</code> 文件，将 <code>index_generator</code> 项下的 <code>path</code> 项的值修改为一个无效值，例如：我将这一项修改为了default-index。目的是使Hexo框架的默认主页指向一个无效值。</li>
+<li>启用home（默认已启用）<br>打开 <code>themes/next/</code> 目录下的 <code>_config.yml</code> 文件，将 <code>menu</code> 项下的 <code>home</code> 项的值修改为<code>/ || fa fa-home</code> 。使得点击页面中的Home菜单时，可以返回自定义主页。</li>
+</ul>
+<h2 id="添加网站运行时间"><a href="#添加网站运行时间" class="headerlink" title="添加网站运行时间"></a>添加网站运行时间</h2><p>在<code>\themes\next\layout\_partials</code>目录下，找到footer.swig文件，添加如下代码</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;span id=&quot;timeDate&quot;&gt;载入天数...&lt;/span&gt;</span><br><span class="line">&lt;span id=&quot;times&quot;&gt;载入时分秒...&lt;/span&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    var now = new Date();</span><br><span class="line">    function createtime() &#123;</span><br><span class="line">        var grt= new Date(&quot;7/18/2023 10:00:00&quot;); //修改为你的网站开始运行的时间</span><br><span class="line">        now.setTime(now.getTime()+250);</span><br><span class="line">        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);</span><br><span class="line">        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);</span><br><span class="line">        if(String(hnum).length ==1 )&#123;hnum = &quot;0&quot; + hnum;&#125; minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);</span><br><span class="line">        mnum = Math.floor(minutes); if(String(mnum).length ==1 )&#123;mnum = &quot;0&quot; + mnum;&#125;</span><br><span class="line">        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);</span><br><span class="line">        snum = Math.round(seconds); if(String(snum).length ==1 )&#123;snum = &quot;0&quot; + snum;&#125;</span><br><span class="line">        document.getElementById(&quot;timeDate&quot;).innerHTML = &quot;本站已安全运行 &quot;+dnum+&quot; 天 &quot;;</span><br><span class="line">        document.getElementById(&quot;times&quot;).innerHTML = hnum + &quot; 小时 &quot; + mnum + &quot; 分 &quot; + snum + &quot; 秒.&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">setInterval(&quot;createtime()&quot;,250);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="去除文章底部带-的标签"><a href="#去除文章底部带-的标签" class="headerlink" title="去除文章底部带#的标签"></a>去除文章底部带<code>#</code>的标签</h2><p>文章底部的标签前会有一个#,我们可以将其修改<br>根据路径找到这个文件<code>\MyBlog\themes\next\layout\_macro\post.swig</code>，<br>找到对应文件后全文搜索<code>footer</code>，原内容如下</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">  &lt;footer class=&quot;post-footer&quot;&gt;</span><br><span class="line">    &#123;%- if post.tags and post.tags.length %&#125;</span><br><span class="line">      &#123;%- if theme.tag_icon %&#125;</span><br><span class="line">        &#123;%- set tag_indicate = &#x27;&lt;i class=&quot;fa fa-tag&quot;&gt;&lt;/i&gt;&#x27; %&#125;</span><br><span class="line">      &#123;% else %&#125;</span><br><span class="line">        &#123;%- set tag_indicate = &#x27;#&#x27; %&#125;</span><br><span class="line">      &#123;%- endif %&#125;</span><br><span class="line">      &lt;div class=&quot;post-tags&quot;&gt;</span><br><span class="line">        &#123;%- for tag in post.tags.toArray() %&#125;</span><br><span class="line">          &lt;a href=&quot;&#123;&#123; url_for(tag.path) &#125;&#125;&quot; rel=&quot;tag&quot;&gt;&#123;&#123; tag_indicate &#125;&#125; &#123;&#123; tag.name &#125;&#125;&lt;/a&gt;</span><br><span class="line">        &#123;%- endfor %&#125;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">    &#123;%- endif %&#125;</span><br><span class="line"></span><br><span class="line">    &#123;&#123; partial(&#x27;_partials/post/post-footer.swig&#x27;, &#123;&#125;, &#123;cache: theme.cache.enable&#125;) &#125;&#125;</span><br><span class="line"></span><br><span class="line">    &#123;&#123; post_nav(post) &#125;&#125;</span><br><span class="line">  &lt;/footer&gt;</span><br><span class="line">&#123;% else %&#125;</span><br><span class="line">  &lt;footer class=&quot;post-footer&quot;&gt;</span><br><span class="line">    &lt;div class=&quot;post-eof&quot;&gt;&lt;/div&gt;</span><br><span class="line">  &lt;/footer&gt;</span><br><span class="line">&#123;%- endif %&#125;</span><br></pre></td></tr></table></figure>
+<p>修改后的内容</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">  &lt;footer class=&quot;post-footer&quot;&gt;</span><br><span class="line">    &#123;%- if post.tags and post.tags.length %&#125;</span><br><span class="line">      &#123;%- if theme.tag_icon %&#125;</span><br><span class="line">        &#123;%- set tag_indicate = &#x27;&lt;i class=&quot;fa fa-tag&quot;&gt;&lt;/i&gt;&#x27; %&#125;</span><br><span class="line">      &#123;% else %&#125;</span><br><span class="line">        &#123;%- set tag_indicate = &#x27;&#x27; %&#125;</span><br><span class="line">      &#123;%- endif %&#125;</span><br><span class="line">      &lt;div class=&quot;post-tags&quot;&gt;</span><br><span class="line">        &#123;%- for tag in post.tags.toArray() %&#125;</span><br><span class="line">          &lt;a href=&quot;&#123;&#123; url_for(tag.path) &#125;&#125;&quot; rel=&quot;tag&quot;&gt;&#123;&#123; tag_indicate &#125;&#125; &#123;&#123; tag.name &#125;&#125;&lt;/a&gt;</span><br><span class="line">        &#123;%- endfor %&#125;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">    &#123;%- endif %&#125;</span><br><span class="line"></span><br><span class="line">    &#123;&#123; partial(&#x27;_partials/post/post-footer.swig&#x27;, &#123;&#125;, &#123;cache: theme.cache.enable&#125;) &#125;&#125;</span><br><span class="line"></span><br><span class="line">    &#123;&#123; post_nav(post) &#125;&#125;</span><br><span class="line">  &lt;/footer&gt;</span><br><span class="line">&#123;% else %&#125;</span><br><span class="line">  &lt;footer class=&quot;post-footer&quot;&gt;</span><br><span class="line">    &lt;div class=&quot;post-eof&quot;&gt;&lt;/div&gt;</span><br><span class="line">  &lt;/footer&gt;</span><br><span class="line">&#123;%- endif %&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="字数统计及阅读时长"><a href="#字数统计及阅读时长" class="headerlink" title="字数统计及阅读时长"></a>字数统计及阅读时长</h1><p>安装插件hexo-wordcount</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install hexo-symbols-count-time --save</span><br></pre></td></tr></table></figure>
+<h2 id="配置NexT目录下的-config-yml"><a href="#配置NexT目录下的-config-yml" class="headerlink" title="配置NexT目录下的_config.yml"></a>配置NexT目录下的_config.yml</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Post wordcount display settings</span><br><span class="line"># Dependencies: https://github.com/theme-next/hexo-symbols-count-time</span><br><span class="line">symbols_count_time:</span><br><span class="line">    separated_meta: true</span><br><span class="line">    item_text_post: true</span><br><span class="line">    item_text_total: false</span><br><span class="line">    awl: 2</span><br><span class="line">    wpm: 275</span><br></pre></td></tr></table></figure>
+<h1 id="自定义文件的路径"><a href="#自定义文件的路径" class="headerlink" title="自定义文件的路径"></a>自定义文件的路径</h1><p>修改主题配置文件 custom_file_path 部分</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">custom_file_path:</span><br><span class="line">  head: source/_data/head.swig #添加自定义内容在 head</span><br><span class="line">  #header: source/_data/header.swig #添加自定义内容在顶栏</span><br><span class="line">  #sidebar: source/_data/sidebar.swig #添加自定义内容在边栏</span><br><span class="line">  #postMeta: source/_data/post-meta.swig #添加自定义文章的 meta 信息</span><br><span class="line">  postBodyEnd: source/_data/post-body-end.swig #添加自定义内容在文章尾部</span><br><span class="line">  footer: source/_data/footer.swig #添加自定义内容在页脚</span><br><span class="line">  #bodyEnd: source/_data/body-end.swig</span><br><span class="line">  #variable: source/_data/variables.styl</span><br><span class="line">  #mixin: source/_data/mixins.styl</span><br><span class="line">  style: source/_data/styles.styl #添加自定义css</span><br></pre></td></tr></table></figure>
+<h2 id="文章图片圆角"><a href="#文章图片圆角" class="headerlink" title="文章图片圆角"></a>文章图片圆角</h2><p>添加以下内容到 source&#x2F;_data&#x2F;styles.styl</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 图片圆角</span><br><span class="line">.post-body img &#123;</span><br><span class="line">  border-radius: 1em </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="首页文章阴影-卡片化-效果"><a href="#首页文章阴影-卡片化-效果" class="headerlink" title="首页文章阴影(卡片化)效果"></a>首页文章阴影(卡片化)效果</h2><p>添加以下内容到source&#x2F;_data&#x2F;styles.styl</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 主页文章添加阴影效果</span><br><span class="line">.post-block &#123;</span><br><span class="line">   padding: 25px;</span><br><span class="line">   -webkit-box-shadow: 0 0 5px rgba(202, 203, 203, .5);</span><br><span class="line">   -moz-box-shadow: 0 0 5px rgba(202, 203, 204, .5);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="鼠标点击出现小红心"><a href="#鼠标点击出现小红心" class="headerlink" title="鼠标点击出现小红心"></a>鼠标点击出现小红心</h2><p>将如下内容保存到source&#x2F;js&#x2F;love.js（没有这个文件就自己创建）</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&quot;use strict&quot;;!function(e,r,t)&#123;function a()&#123;for(var e=0;e&lt;i.length;e++)i[e].alpha&lt;=0?(r.body.removeChild(i[e].el),i.splice(e,1)):(i[e].y--,i[e].scale+=.004,i[e].alpha-=.013,i[e].el.style.cssText=&quot;left:&quot;+i[e].x+&quot;px;top:&quot;+i[e].y+&quot;px;opacity:&quot;+i[e].alpha+&quot;;transform:scale(&quot;+i[e].scale+&quot;,&quot;+i[e].scale+&quot;) rotate(45deg);background:&quot;+i[e].color+&quot;;z-index:99999&quot;);requestAnimationFrame(a)&#125;var o,i=[];e.requestAnimationFrame=e.requestAnimationFrame||e.webkitRequestAnimationFrame||e.mozRequestAnimationFrame||e.oRequestAnimationFrame||e.msRequestAnimationFrame||function(e)&#123;setTimeout(e,1e3/60)&#125;,function(t)&#123;var a=r.createElement(&quot;style&quot;);a.type=&quot;text/css&quot;;try&#123;a.appendChild(r.createTextNode(t))&#125;catch(e)&#123;a.styleSheet.cssText=t&#125;r.getElementsByTagName(&quot;head&quot;)[0].appendChild(a)&#125;(&quot;.heart&#123;width: 10px;height: 10px;position: fixed;background: #f00;transform: rotate(45deg);-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);&#125;.heart:after,.heart:before&#123;content: &#x27;&#x27;;width: inherit;height: inherit;background: inherit;border-radius: 50%;-webkit-border-radius: 50%;-moz-border-radius: 50%;position: fixed;&#125;.heart:after&#123;top: -5px;&#125;.heart:before&#123;left: -5px;&#125;&quot;),o=&quot;function&quot;==typeof e.onclick&amp;&amp;e.onclick,e.onclick=function(e)&#123;var t,a;o&amp;&amp;o(),t=e,(a=r.createElement(&quot;div&quot;)).className=&quot;heart&quot;,i.push(&#123;el:a,x:t.clientX-5,y:t.clientY-5,scale:1,alpha:1,color:&quot;rgb(&quot;+~~(255*Math.random())+&quot;,&quot;+~~(255*Math.random())+&quot;,&quot;+~~(255*Math.random())+&quot;)&quot;&#125;),r.body.appendChild(a)&#125;,a()&#125;(window,document);</span><br></pre></td></tr></table></figure>
+<p>在 source&#x2F;_data&#x2F;head.swig 添加以下内容</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;!-- 页面点击小红心 --&gt;</span><br><span class="line">&lt;script type=&quot;text/javascript&quot; src=&quot;/js/love.js&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="自定义背景"><a href="#自定义背景" class="headerlink" title="自定义背景"></a>自定义背景</h2><p>把想设置的背景放入.&#x2F;themes&#x2F;next&#x2F;source&#x2F;images中，命名为background.jpg。在根目录的source文件夹下新建source&#x2F;_data&#x2F;styles.styl，添加如下内容</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 整体背景设置</span><br><span class="line">body &#123;</span><br><span class="line">	background:url(/images/background.png);// 设定背景图片,images同处于source文件夹下</span><br><span class="line">	background-repeat: no-repeat;// 设定背景图片非重复填充</span><br><span class="line">	background-attachment:fixed;// 设置背景图片不随页面滚动</span><br><span class="line">	background-position:50% 50%;// 设置背景图片位置</span><br><span class="line">	background-size: cover// 设置保持图像的纵横比并将图像缩放成将完全覆盖背景定位区域的最小大小</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 设置透明度</span><br><span class="line">.main-inner&#123;</span><br><span class="line">	opacity: 0.9;</span><br><span class="line">&#125;</span><br><span class="line">.header-inner&#123;</span><br><span class="line">	opacity: 0.9;</span><br><span class="line">	z-index: 10;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="添加本地搜索服务"><a href="#添加本地搜索服务" class="headerlink" title="添加本地搜索服务"></a>添加本地搜索服务</h1><p>使用<code>NexT</code>自带的本地搜索服务，执行如下命令</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cnpm install hexo-generator-searchdb --save</span><br></pre></td></tr></table></figure>
+<p>在Hexo目录下的配置文件中添加如下内容</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">search:</span><br><span class="line">  path: search.xml</span><br><span class="line">  field: post</span><br><span class="line">  format: html</span><br><span class="line">  limit: 10000</span><br></pre></td></tr></table></figure>
+<p>在Next配置文件中进行修改</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Local search</span><br><span class="line"># Dependencies: https://github.com/theme-next/hexo-generator-searchdb</span><br><span class="line">local_search:</span><br><span class="line">  enable: true</span><br><span class="line">  # If auto, trigger search by changing input.</span><br><span class="line">  # If manual, trigger search by pressing enter key or search button.</span><br><span class="line">  trigger: auto</span><br><span class="line">  # Show top n results per article, show all results by setting to -1</span><br><span class="line">  top_n_per_article: 1</span><br><span class="line">  # Unescape html strings to the readable one.</span><br><span class="line">  unescape: false</span><br><span class="line">  # Preload the search data when the page loads.</span><br><span class="line">  preload: false</span><br></pre></td></tr></table></figure>
+<p>把enable的值改为true即可</p>
 ]]></content>
       <categories>
         <category>博客</category>
@@ -1297,84 +1415,6 @@
       </tags>
   </entry>
   <entry>
-    <title>NexT主题美化</title>
-    <url>/2024/01/02/%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96/</url>
-    <content><![CDATA[<h1 id="NexT主题"><a href="#NexT主题" class="headerlink" title="NexT主题"></a>NexT主题</h1><p>从博客目录打开终端，执行命令</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/next-theme/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure>
-<p>下载好了之后会在themes目录下生成一个next目录，里面是next主题的配置文件。<br>修改主题只需要在博客根目录下的_config.yml配置文件里找到theme，将其修改为next即可。<br><img src="/2024/01/02/%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96/1.png"></p>
-<h2 id="修改布局"><a href="#修改布局" class="headerlink" title="修改布局"></a>修改布局</h2><p>在next目录下的_config.yml文件里搜索<code>Scheme</code>，有四种默认局部<br><img src="/2024/01/02/%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96/2.png"></p>
-<h3 id="主题颜色"><a href="#主题颜色" class="headerlink" title="主题颜色"></a>主题颜色</h3><p>白色模式和黑色模式<br><img src="/2024/01/02/%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96/3.png"><br>false为白色模式，true为黑色模式</p>
-<h2 id="增加标签页和分类页"><a href="#增加标签页和分类页" class="headerlink" title="增加标签页和分类页"></a>增加标签页和分类页</h2><p>在next目录下的_config.yml文件里搜索<code>menu</code></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">menu:</span><br><span class="line">  home: / || fa fa-home</span><br><span class="line">  #about: /about/ || fa fa-user</span><br><span class="line">  tags: /tags/ || fa fa-tags</span><br><span class="line">  categories: /categories/ || fa fa-th</span><br><span class="line">  archives: /archives/ || fa fa-archive</span><br><span class="line">  #schedule: /schedule/ || fa fa-calendar</span><br><span class="line">  #sitemap: /sitemap.xml || fa fa-sitemap</span><br><span class="line">  #commonweal: /404/ || fa fa-heartbeat</span><br><span class="line"></span><br><span class="line"># Enable / Disable menu icons / item badges.</span><br><span class="line">menu_settings:</span><br><span class="line">  icons: true</span><br><span class="line">  badges: true</span><br></pre></td></tr></table></figure>
-<p>把tags和categories前面的<code>#</code>去掉<br><strong>进一步配置</strong><br>创建两个文件，一个是tags，一个是categories</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo n page tags</span><br><span class="line">hexo n page categories</span><br></pre></td></tr></table></figure>
-<p>文件内容稍作修改<br><img src="/2024/01/02/%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96/4.jpg"><br><img src="/2024/01/02/%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96/5.jpg"></p>
-<h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><p>把menu下的about前面的<code>#</code>去掉</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">menu:</span><br><span class="line">  home: / || fa fa-home</span><br><span class="line">  about: /about/ || fa fa-user</span><br><span class="line">  tags: /tags/ || fa fa-tags</span><br><span class="line">  categories: /categories/ || fa fa-th</span><br><span class="line">  archives: /archives/ || fa fa-archive</span><br><span class="line">  #schedule: /schedule/ || fa fa-calendar</span><br><span class="line">  #sitemap: /sitemap.xml || fa fa-sitemap</span><br><span class="line">  #commonweal: /404/ || fa fa-heartbeat</span><br></pre></td></tr></table></figure>
-<p>新建页面</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo new page about</span><br></pre></td></tr></table></figure>
-<p>在source目录下生成了一个about文件夹，里面有一个index.md文件，可以对about页面进行修改。</p>
-<h2 id="侧边栏位置"><a href="#侧边栏位置" class="headerlink" title="侧边栏位置"></a>侧边栏位置</h2><p>侧边栏中包含多种配置，可通过修改主题<code>_config.yml</code>实现</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sidebar:</span><br><span class="line">  # Sidebar Position.</span><br><span class="line">  position: left</span><br><span class="line">  #position: right</span><br></pre></td></tr></table></figure>
-
-<h2 id="头像"><a href="#头像" class="headerlink" title="头像"></a>头像</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Sidebar Avatar</span><br><span class="line">avatar:</span><br><span class="line">  # Replace the default image and set the url here.</span><br><span class="line">  url: /images/android.svg</span><br><span class="line">  # If true, the avatar will be dispalyed in circle.</span><br><span class="line">  rounded: true</span><br><span class="line">  # If true, the avatar will be rotated with the cursor.</span><br><span class="line">  rotated: true</span><br></pre></td></tr></table></figure>
-<ul>
-<li><code>url</code>：图像地址。默认为<code>NexT</code>包下<code>/source/images/avatar.gif</code>，也可放置在站点路径<code>/source/uploads</code>文件夹内</li>
-<li><code>rounded</code>：是否显示为圆形图标</li>
-<li><code>rotated</code>：光标移动到图标是否旋转</li>
-</ul>
-<h2 id="返回顶部"><a href="#返回顶部" class="headerlink" title="返回顶部"></a>返回顶部</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">back2top:</span><br><span class="line">  enable: true</span><br><span class="line">  # Back to top in sidebar.</span><br><span class="line">  sidebar: true</span><br><span class="line">  # Scroll percent label in b2t button.</span><br><span class="line">  scrollpercent: true</span><br></pre></td></tr></table></figure>
-<ul>
-<li><code>enable</code>：默认为<code>true</code>。在右下角显示返回顶部图标</li>
-<li><code>sidebar</code>：默认为<code>false</code>。在侧边栏显示</li>
-<li><code>scrollpercent</code>：默认为<code>false</code>。是否显示进度</li>
-</ul>
-<h3 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a>代码块</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">codeblock:</span><br><span class="line">  # Code Highlight theme</span><br><span class="line">  # Available values: normal | night | night eighties | night blue | night bright | solarized | solarized dark | galactic</span><br><span class="line">  # See: https://github.com/chriskempson/tomorrow-theme</span><br><span class="line">  highlight_theme: normal</span><br><span class="line">  # Add copy button on codeblock</span><br><span class="line">  copy_button:</span><br><span class="line">    enable: true</span><br><span class="line">    # Show text copy result.</span><br><span class="line">    show_result: true</span><br><span class="line">    # Available values: default | flat | mac</span><br><span class="line">    style: mac</span><br></pre></td></tr></table></figure>
-
-<h2 id="自定义主页"><a href="#自定义主页" class="headerlink" title="自定义主页"></a>自定义主页</h2><ul>
-<li>在根目录的source目录下，新建一个index.md文档<br>这个source目录下的index.md文档即是我们自定义的主页。在文档中做出的任何修改均会体现在自定义主页中。  </li>
-<li>修改根目录下的_config.yml文件的index_generator项<br>打开根目录下的 <code>_config.yml</code> 文件，将 <code>index_generator</code> 项下的 <code>path</code> 项的值修改为一个无效值，例如：我将这一项修改为了default-index。目的是使Hexo框架的默认主页指向一个无效值。</li>
-<li>启用home（默认已启用）<br>打开 <code>themes/next/</code> 目录下的 <code>_config.yml</code> 文件，将 <code>menu</code> 项下的 <code>home</code> 项的值修改为<code>/ || fa fa-home</code> 。使得点击页面中的Home菜单时，可以返回自定义主页。</li>
-</ul>
-<h2 id="添加网站运行时间"><a href="#添加网站运行时间" class="headerlink" title="添加网站运行时间"></a>添加网站运行时间</h2><p>在<code>\themes\next\layout\_partials</code>目录下，找到footer.swig文件，添加如下代码</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;span id=&quot;timeDate&quot;&gt;载入天数...&lt;/span&gt;</span><br><span class="line">&lt;span id=&quot;times&quot;&gt;载入时分秒...&lt;/span&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    var now = new Date();</span><br><span class="line">    function createtime() &#123;</span><br><span class="line">        var grt= new Date(&quot;7/18/2023 10:00:00&quot;); //修改为你的网站开始运行的时间</span><br><span class="line">        now.setTime(now.getTime()+250);</span><br><span class="line">        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);</span><br><span class="line">        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);</span><br><span class="line">        if(String(hnum).length ==1 )&#123;hnum = &quot;0&quot; + hnum;&#125; minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);</span><br><span class="line">        mnum = Math.floor(minutes); if(String(mnum).length ==1 )&#123;mnum = &quot;0&quot; + mnum;&#125;</span><br><span class="line">        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);</span><br><span class="line">        snum = Math.round(seconds); if(String(snum).length ==1 )&#123;snum = &quot;0&quot; + snum;&#125;</span><br><span class="line">        document.getElementById(&quot;timeDate&quot;).innerHTML = &quot;本站已安全运行 &quot;+dnum+&quot; 天 &quot;;</span><br><span class="line">        document.getElementById(&quot;times&quot;).innerHTML = hnum + &quot; 小时 &quot; + mnum + &quot; 分 &quot; + snum + &quot; 秒.&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">setInterval(&quot;createtime()&quot;,250);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-
-<h2 id="去除文章底部带-的标签"><a href="#去除文章底部带-的标签" class="headerlink" title="去除文章底部带#的标签"></a>去除文章底部带<code>#</code>的标签</h2><p>文章底部的标签前会有一个#,我们可以将其修改<br>根据路径找到这个文件<code>\MyBlog\themes\next\layout\_macro\post.swig</code>，<br>找到对应文件后全文搜索<code>footer</code>，原内容如下</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">  &lt;footer class=&quot;post-footer&quot;&gt;</span><br><span class="line">    &#123;%- if post.tags and post.tags.length %&#125;</span><br><span class="line">      &#123;%- if theme.tag_icon %&#125;</span><br><span class="line">        &#123;%- set tag_indicate = &#x27;&lt;i class=&quot;fa fa-tag&quot;&gt;&lt;/i&gt;&#x27; %&#125;</span><br><span class="line">      &#123;% else %&#125;</span><br><span class="line">        &#123;%- set tag_indicate = &#x27;#&#x27; %&#125;</span><br><span class="line">      &#123;%- endif %&#125;</span><br><span class="line">      &lt;div class=&quot;post-tags&quot;&gt;</span><br><span class="line">        &#123;%- for tag in post.tags.toArray() %&#125;</span><br><span class="line">          &lt;a href=&quot;&#123;&#123; url_for(tag.path) &#125;&#125;&quot; rel=&quot;tag&quot;&gt;&#123;&#123; tag_indicate &#125;&#125; &#123;&#123; tag.name &#125;&#125;&lt;/a&gt;</span><br><span class="line">        &#123;%- endfor %&#125;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">    &#123;%- endif %&#125;</span><br><span class="line"></span><br><span class="line">    &#123;&#123; partial(&#x27;_partials/post/post-footer.swig&#x27;, &#123;&#125;, &#123;cache: theme.cache.enable&#125;) &#125;&#125;</span><br><span class="line"></span><br><span class="line">    &#123;&#123; post_nav(post) &#125;&#125;</span><br><span class="line">  &lt;/footer&gt;</span><br><span class="line">&#123;% else %&#125;</span><br><span class="line">  &lt;footer class=&quot;post-footer&quot;&gt;</span><br><span class="line">    &lt;div class=&quot;post-eof&quot;&gt;&lt;/div&gt;</span><br><span class="line">  &lt;/footer&gt;</span><br><span class="line">&#123;%- endif %&#125;</span><br></pre></td></tr></table></figure>
-<p>修改后的内容</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">  &lt;footer class=&quot;post-footer&quot;&gt;</span><br><span class="line">    &#123;%- if post.tags and post.tags.length %&#125;</span><br><span class="line">      &#123;%- if theme.tag_icon %&#125;</span><br><span class="line">        &#123;%- set tag_indicate = &#x27;&lt;i class=&quot;fa fa-tag&quot;&gt;&lt;/i&gt;&#x27; %&#125;</span><br><span class="line">      &#123;% else %&#125;</span><br><span class="line">        &#123;%- set tag_indicate = &#x27;&#x27; %&#125;</span><br><span class="line">      &#123;%- endif %&#125;</span><br><span class="line">      &lt;div class=&quot;post-tags&quot;&gt;</span><br><span class="line">        &#123;%- for tag in post.tags.toArray() %&#125;</span><br><span class="line">          &lt;a href=&quot;&#123;&#123; url_for(tag.path) &#125;&#125;&quot; rel=&quot;tag&quot;&gt;&#123;&#123; tag_indicate &#125;&#125; &#123;&#123; tag.name &#125;&#125;&lt;/a&gt;</span><br><span class="line">        &#123;%- endfor %&#125;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">    &#123;%- endif %&#125;</span><br><span class="line"></span><br><span class="line">    &#123;&#123; partial(&#x27;_partials/post/post-footer.swig&#x27;, &#123;&#125;, &#123;cache: theme.cache.enable&#125;) &#125;&#125;</span><br><span class="line"></span><br><span class="line">    &#123;&#123; post_nav(post) &#125;&#125;</span><br><span class="line">  &lt;/footer&gt;</span><br><span class="line">&#123;% else %&#125;</span><br><span class="line">  &lt;footer class=&quot;post-footer&quot;&gt;</span><br><span class="line">    &lt;div class=&quot;post-eof&quot;&gt;&lt;/div&gt;</span><br><span class="line">  &lt;/footer&gt;</span><br><span class="line">&#123;%- endif %&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="字数统计及阅读时长"><a href="#字数统计及阅读时长" class="headerlink" title="字数统计及阅读时长"></a>字数统计及阅读时长</h1><p>安装插件hexo-wordcount</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install hexo-symbols-count-time --save</span><br></pre></td></tr></table></figure>
-<h2 id="配置NexT目录下的-config-yml"><a href="#配置NexT目录下的-config-yml" class="headerlink" title="配置NexT目录下的_config.yml"></a>配置NexT目录下的_config.yml</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Post wordcount display settings</span><br><span class="line"># Dependencies: https://github.com/theme-next/hexo-symbols-count-time</span><br><span class="line">symbols_count_time:</span><br><span class="line">    separated_meta: true</span><br><span class="line">    item_text_post: true</span><br><span class="line">    item_text_total: false</span><br><span class="line">    awl: 2</span><br><span class="line">    wpm: 275</span><br></pre></td></tr></table></figure>
-<h1 id="自定义文件的路径"><a href="#自定义文件的路径" class="headerlink" title="自定义文件的路径"></a>自定义文件的路径</h1><p>修改主题配置文件 custom_file_path 部分</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">custom_file_path:</span><br><span class="line">  head: source/_data/head.swig #添加自定义内容在 head</span><br><span class="line">  #header: source/_data/header.swig #添加自定义内容在顶栏</span><br><span class="line">  #sidebar: source/_data/sidebar.swig #添加自定义内容在边栏</span><br><span class="line">  #postMeta: source/_data/post-meta.swig #添加自定义文章的 meta 信息</span><br><span class="line">  postBodyEnd: source/_data/post-body-end.swig #添加自定义内容在文章尾部</span><br><span class="line">  footer: source/_data/footer.swig #添加自定义内容在页脚</span><br><span class="line">  #bodyEnd: source/_data/body-end.swig</span><br><span class="line">  #variable: source/_data/variables.styl</span><br><span class="line">  #mixin: source/_data/mixins.styl</span><br><span class="line">  style: source/_data/styles.styl #添加自定义css</span><br></pre></td></tr></table></figure>
-<h2 id="文章图片圆角"><a href="#文章图片圆角" class="headerlink" title="文章图片圆角"></a>文章图片圆角</h2><p>添加以下内容到 source&#x2F;_data&#x2F;styles.styl</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 图片圆角</span><br><span class="line">.post-body img &#123;</span><br><span class="line">  border-radius: 1em </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="首页文章阴影-卡片化-效果"><a href="#首页文章阴影-卡片化-效果" class="headerlink" title="首页文章阴影(卡片化)效果"></a>首页文章阴影(卡片化)效果</h2><p>添加以下内容到source&#x2F;_data&#x2F;styles.styl</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 主页文章添加阴影效果</span><br><span class="line">.post-block &#123;</span><br><span class="line">   padding: 25px;</span><br><span class="line">   -webkit-box-shadow: 0 0 5px rgba(202, 203, 203, .5);</span><br><span class="line">   -moz-box-shadow: 0 0 5px rgba(202, 203, 204, .5);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-<h2 id="鼠标点击出现小红心"><a href="#鼠标点击出现小红心" class="headerlink" title="鼠标点击出现小红心"></a>鼠标点击出现小红心</h2><p>将如下内容保存到source&#x2F;js&#x2F;love.js（没有这个文件就自己创建）</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&quot;use strict&quot;;!function(e,r,t)&#123;function a()&#123;for(var e=0;e&lt;i.length;e++)i[e].alpha&lt;=0?(r.body.removeChild(i[e].el),i.splice(e,1)):(i[e].y--,i[e].scale+=.004,i[e].alpha-=.013,i[e].el.style.cssText=&quot;left:&quot;+i[e].x+&quot;px;top:&quot;+i[e].y+&quot;px;opacity:&quot;+i[e].alpha+&quot;;transform:scale(&quot;+i[e].scale+&quot;,&quot;+i[e].scale+&quot;) rotate(45deg);background:&quot;+i[e].color+&quot;;z-index:99999&quot;);requestAnimationFrame(a)&#125;var o,i=[];e.requestAnimationFrame=e.requestAnimationFrame||e.webkitRequestAnimationFrame||e.mozRequestAnimationFrame||e.oRequestAnimationFrame||e.msRequestAnimationFrame||function(e)&#123;setTimeout(e,1e3/60)&#125;,function(t)&#123;var a=r.createElement(&quot;style&quot;);a.type=&quot;text/css&quot;;try&#123;a.appendChild(r.createTextNode(t))&#125;catch(e)&#123;a.styleSheet.cssText=t&#125;r.getElementsByTagName(&quot;head&quot;)[0].appendChild(a)&#125;(&quot;.heart&#123;width: 10px;height: 10px;position: fixed;background: #f00;transform: rotate(45deg);-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);&#125;.heart:after,.heart:before&#123;content: &#x27;&#x27;;width: inherit;height: inherit;background: inherit;border-radius: 50%;-webkit-border-radius: 50%;-moz-border-radius: 50%;position: fixed;&#125;.heart:after&#123;top: -5px;&#125;.heart:before&#123;left: -5px;&#125;&quot;),o=&quot;function&quot;==typeof e.onclick&amp;&amp;e.onclick,e.onclick=function(e)&#123;var t,a;o&amp;&amp;o(),t=e,(a=r.createElement(&quot;div&quot;)).className=&quot;heart&quot;,i.push(&#123;el:a,x:t.clientX-5,y:t.clientY-5,scale:1,alpha:1,color:&quot;rgb(&quot;+~~(255*Math.random())+&quot;,&quot;+~~(255*Math.random())+&quot;,&quot;+~~(255*Math.random())+&quot;)&quot;&#125;),r.body.appendChild(a)&#125;,a()&#125;(window,document);</span><br></pre></td></tr></table></figure>
-<p>在 source&#x2F;_data&#x2F;head.swig 添加以下内容</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;!-- 页面点击小红心 --&gt;</span><br><span class="line">&lt;script type=&quot;text/javascript&quot; src=&quot;/js/love.js&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-<h2 id="自定义背景"><a href="#自定义背景" class="headerlink" title="自定义背景"></a>自定义背景</h2><p>把想设置的背景放入.&#x2F;themes&#x2F;next&#x2F;source&#x2F;images中，命名为background.jpg。在根目录的source文件夹下新建source&#x2F;_data&#x2F;styles.styl，添加如下内容</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 整体背景设置</span><br><span class="line">body &#123;</span><br><span class="line">	background:url(/images/background.png);// 设定背景图片,images同处于source文件夹下</span><br><span class="line">	background-repeat: no-repeat;// 设定背景图片非重复填充</span><br><span class="line">	background-attachment:fixed;// 设置背景图片不随页面滚动</span><br><span class="line">	background-position:50% 50%;// 设置背景图片位置</span><br><span class="line">	background-size: cover// 设置保持图像的纵横比并将图像缩放成将完全覆盖背景定位区域的最小大小</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 设置透明度</span><br><span class="line">.main-inner&#123;</span><br><span class="line">	opacity: 0.9;</span><br><span class="line">&#125;</span><br><span class="line">.header-inner&#123;</span><br><span class="line">	opacity: 0.9;</span><br><span class="line">	z-index: 10;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="添加本地搜索服务"><a href="#添加本地搜索服务" class="headerlink" title="添加本地搜索服务"></a>添加本地搜索服务</h1><p>使用<code>NexT</code>自带的本地搜索服务，执行如下命令</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cnpm install hexo-generator-searchdb --save</span><br></pre></td></tr></table></figure>
-<p>在Hexo目录下的配置文件中添加如下内容</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">search:</span><br><span class="line">  path: search.xml</span><br><span class="line">  field: post</span><br><span class="line">  format: html</span><br><span class="line">  limit: 10000</span><br></pre></td></tr></table></figure>
-<p>在Next配置文件中进行修改</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Local search</span><br><span class="line"># Dependencies: https://github.com/theme-next/hexo-generator-searchdb</span><br><span class="line">local_search:</span><br><span class="line">  enable: true</span><br><span class="line">  # If auto, trigger search by changing input.</span><br><span class="line">  # If manual, trigger search by pressing enter key or search button.</span><br><span class="line">  trigger: auto</span><br><span class="line">  # Show top n results per article, show all results by setting to -1</span><br><span class="line">  top_n_per_article: 1</span><br><span class="line">  # Unescape html strings to the readable one.</span><br><span class="line">  unescape: false</span><br><span class="line">  # Preload the search data when the page loads.</span><br><span class="line">  preload: false</span><br></pre></td></tr></table></figure>
-<p>把enable的值改为true即可</p>
-]]></content>
-      <categories>
-        <category>博客</category>
-      </categories>
-      <tags>
-        <tag>博客</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>玩转Python</title>
     <url>/2024/12/05/%E7%8E%A9%E8%BD%ACPython/</url>
     <content><![CDATA[<h1 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h1><p>需要配置的环境变量是python的安装路径和它的Scripts目录。<br><img src="/2024/12/05/%E7%8E%A9%E8%BD%ACPython/1.jpg"><br>python的安装路径下有python.exe。<br>Scripts目录下有pip.exe和我们安装的第三方库。</p>
@@ -1393,46 +1433,6 @@
       </categories>
       <tags>
         <tag>玩转Python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>selenium</title>
-    <url>/2024/12/05/selenium/</url>
-    <content><![CDATA[<p>Selenium 是一个自动化测试工具，利用它我们可以驱动浏览器执行特定的动作。</p>
-<h1 id="安装ChromeDriver"><a href="#安装ChromeDriver" class="headerlink" title="安装ChromeDriver"></a>安装ChromeDriver</h1><p>Selenium的使用需要配合Chrome浏览器，需要额外安装ChromeDriver 和 Chrome 浏览器。<br>安装好Chrome 浏览器并可以正常运行之后，点击 Chrome 的菜单，帮助 -&gt; 关于 Chrome，查看 Chrome 的版本号，然后到ChromeDriver 的官方网站<a href="https://sites.google.com/chromium.org/driver/downloads">https://sites.google.com/chromium.org/driver/downloads</a>下载对应的ChromeDriver 版本。</p>
-<h2 id="环境变量配置"><a href="#环境变量配置" class="headerlink" title="环境变量配置"></a>环境变量配置</h2><p>Windows建议直接将 chromedriver.exe 文件拖到 Python 的 Scripts 目录下。<br>也可以单独将其所在路径配置到环境变量。<br>配置完成之后，就可以在命令行下直接执行 chromedriver 命令了。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">chromedriver</span><br></pre></td></tr></table></figure>
-<h1 id="安装Selenium"><a href="#安装Selenium" class="headerlink" title="安装Selenium"></a>安装Selenium</h1><p>使用pip直接安装</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pip install selenium</span><br></pre></td></tr></table></figure>
-<p><strong>可以运行一个脚本测试</strong><br>弹出一个 Chrome 浏览器并加载了百度页面，10 秒之后就关闭。</p>
-<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"><span class="keyword">from</span> time <span class="keyword">import</span> sleep</span><br><span class="line"></span><br><span class="line">browser = webdriver.Chrome()</span><br><span class="line">browser.get(<span class="string">&#x27;https://www.baidu.com&#x27;</span>)</span><br><span class="line">sleep(<span class="number">10</span>)</span><br><span class="line">browser.close() </span><br></pre></td></tr></table></figure>
-<h1 id="常用浏览器操作"><a href="#常用浏览器操作" class="headerlink" title="常用浏览器操作"></a>常用浏览器操作</h1><h2 id="打开页面"><a href="#打开页面" class="headerlink" title="打开页面"></a>打开页面</h2><figure class="highlight py"><table><tr><td class="code"><pre><span class="line">driver.get(<span class="string">&quot;https://xxx.com&quot;</span>)</span><br></pre></td></tr></table></figure>
-<h2 id="获取URL"><a href="#获取URL" class="headerlink" title="获取URL"></a>获取URL</h2><figure class="highlight py"><table><tr><td class="code"><pre><span class="line">url = driver.current_url</span><br></pre></td></tr></table></figure>
-<h2 id="获取标题"><a href="#获取标题" class="headerlink" title="获取标题"></a>获取标题</h2><figure class="highlight py"><table><tr><td class="code"><pre><span class="line">title = driver.title</span><br></pre></td></tr></table></figure>
-
-<h2 id="页面元素定位"><a href="#页面元素定位" class="headerlink" title="页面元素定位"></a>页面元素定位</h2><p>使用By类型（需要导入By）  </p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">from selenium.webdriver.common.by import By</span><br></pre></td></tr></table></figure>
-<h3 id="通过ID定位"><a href="#通过ID定位" class="headerlink" title="通过ID定位"></a>通过ID定位</h3><figure class="highlight py"><table><tr><td class="code"><pre><span class="line">element = driver.find_element(By.ID, <span class="string">&quot;xxx&quot;</span>)</span><br></pre></td></tr></table></figure>
-<h3 id="通过"><a href="#通过" class="headerlink" title="通过"></a>通过</h3>]]></content>
-      <categories>
-        <category>Python</category>
-      </categories>
-      <tags>
-        <tag>selenium</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>hook脚本大全</title>
-    <url>/2024/11/29/hook%E8%84%9A%E6%9C%AC%E5%A4%A7%E5%85%A8/</url>
-    <content><![CDATA[<h1 id="so层hook"><a href="#so层hook" class="headerlink" title="so层hook"></a>so层hook</h1><h2 id="hook-dlopen"><a href="#hook-dlopen" class="headerlink" title="hook_dlopen"></a>hook_dlopen</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">hook_dlopen</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="comment">// 在Android8.0之前加载so通过dlopen函数</span></span><br><span class="line">    <span class="keyword">var</span> dlopen = <span class="title class_">Module</span>.<span class="title function_">findExportByName</span>(<span class="literal">null</span>,<span class="string">&quot;dlopen&quot;</span>);</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;addr_dlopen&quot;</span>,dlopen);</span><br><span class="line">    <span class="title class_">Interceptor</span>.<span class="title function_">attach</span>(dlopen,&#123;</span><br><span class="line">        <span class="attr">onEnter</span>:<span class="keyword">function</span>(<span class="params">args</span>)&#123;</span><br><span class="line">            <span class="keyword">var</span> pathptr = args[<span class="number">0</span>];</span><br><span class="line">            <span class="keyword">if</span>(pathptr)&#123;</span><br><span class="line">                <span class="keyword">var</span> path = <span class="title function_">ptr</span>(pathptr).<span class="title function_">readCString</span>();</span><br><span class="line">                <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;dlopen:&quot;</span>,path);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">onLeave</span>:<span class="keyword">function</span>(<span class="params">retvel</span>)&#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;leave!&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//Android8.0之后加载so通过android_dlopen_ext函数</span></span><br><span class="line">    <span class="keyword">var</span> android_dlopen_ext = <span class="title class_">Module</span>.<span class="title function_">findExportByName</span>(<span class="literal">null</span>,<span class="string">&quot;android_dlopen_ext&quot;</span>);</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;addr_android_dlopen_ext&quot;</span>,android_dlopen_ext);</span><br><span class="line">    <span class="title class_">Interceptor</span>.<span class="title function_">attach</span>(android_dlopen_ext,&#123;</span><br><span class="line">        <span class="attr">onEnter</span>:<span class="keyword">function</span>(<span class="params">args</span>)&#123;</span><br><span class="line">            <span class="keyword">var</span> pathptr = args[<span class="number">0</span>];</span><br><span class="line">            <span class="keyword">if</span>(pathptr!=<span class="literal">null</span> &amp;&amp; pathptr != <span class="literal">undefined</span>)&#123;</span><br><span class="line">                <span class="keyword">var</span> path = <span class="title function_">ptr</span>(pathptr).<span class="title function_">readCString</span>();</span><br><span class="line">                <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;android_dlopen_ext:&quot;</span>,path);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">onLeave</span>:<span class="keyword">function</span>(<span class="params">retvel</span>)&#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;leave!&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">hook_dlopen</span>()</span><br></pre></td></tr></table></figure>
-<h2 id="hook-pthread"><a href="#hook-pthread" class="headerlink" title="hook_pthread"></a>hook_pthread</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">hook_pthread_create</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="keyword">var</span> pt_create_func = <span class="title class_">Module</span>.<span class="title function_">findExportByName</span>(<span class="string">&quot;libc.so&quot;</span>,<span class="string">&quot;pthread_create&quot;</span>);</span><br><span class="line">    <span class="title class_">Interceptor</span>.<span class="title function_">attach</span>(pt_create_func,&#123;</span><br><span class="line">        <span class="attr">onEnter</span>:<span class="keyword">function</span>(<span class="params">args</span>)&#123;</span><br><span class="line">            <span class="keyword">var</span> so_name = <span class="title class_">Process</span>.<span class="title function_">findModuleByAddress</span>(args[<span class="number">2</span>]).<span class="property">name</span>;</span><br><span class="line">            <span class="comment">// if(so_name.indexOf(&quot;libxxx.so&quot;)!= -1)&#123;</span></span><br><span class="line">            <span class="comment">//     //console.log(&quot;arg2&quot;,args[2].sub(Module.findBaseAddress(&quot;libxxx.so&quot;)))</span></span><br><span class="line">            <span class="comment">//     try&#123;</span></span><br><span class="line">            <span class="comment">//         Interceptor.replace(args[2],new NativeCallback(function()&#123;</span></span><br><span class="line">            <span class="comment">//             console.log(&quot;replace success&quot;);</span></span><br><span class="line">            <span class="comment">//             return null;</span></span><br><span class="line">            <span class="comment">//         &#125;,&#x27;void&#x27;,[&quot;void&quot;]));</span></span><br><span class="line">            <span class="comment">//     &#125;catch(e)&#123;</span></span><br><span class="line"></span><br><span class="line">            <span class="comment">//     &#125;</span></span><br><span class="line">            <span class="comment">// &#125;</span></span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;arg2&quot;</span>,args[<span class="number">2</span>]);</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">onLeave</span>:<span class="keyword">function</span>(<span class="params">retval</span>)&#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">hook_pthread_create</span>();</span><br></pre></td></tr></table></figure>
-<h2 id="hook-RegisterNatives"><a href="#hook-RegisterNatives" class="headerlink" title="hook_RegisterNatives"></a>hook_RegisterNatives</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">hook_RegisterNatives</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> <span class="title class_">RegisterNatives</span>_addr = <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">var</span> symbols = <span class="title class_">Process</span>.<span class="title function_">findModuleByName</span>(<span class="string">&quot;libart.so&quot;</span>).<span class="title function_">enumerateSymbols</span>();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; symbols.<span class="property">length</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">var</span> symbol = symbols[i].<span class="property">name</span>;</span><br><span class="line">        <span class="keyword">if</span> ((symbol.<span class="title function_">indexOf</span>(<span class="string">&quot;CheckJNI&quot;</span>) == -<span class="number">1</span>) &amp;&amp; (symbol.<span class="title function_">indexOf</span>(<span class="string">&quot;JNI&quot;</span>) &gt;= <span class="number">0</span>)) &#123;</span><br><span class="line">            <span class="keyword">if</span> (symbol.<span class="title function_">indexOf</span>(<span class="string">&quot;RegisterNatives&quot;</span>) &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="title class_">RegisterNatives</span>_addr = symbols[i].<span class="property">address</span>;</span><br><span class="line">                <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;RegisterNatives_addr: &quot;</span>, <span class="title class_">RegisterNatives</span>_addr);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="title class_">Interceptor</span>.<span class="title function_">attach</span>(<span class="title class_">RegisterNatives</span>_addr, &#123;</span><br><span class="line">        <span class="attr">onEnter</span>: <span class="keyword">function</span> (<span class="params">args</span>) &#123;</span><br><span class="line">            <span class="keyword">var</span> env = args[<span class="number">0</span>];</span><br><span class="line">            <span class="keyword">var</span> jclass = args[<span class="number">1</span>];</span><br><span class="line">            <span class="keyword">var</span> class_name = <span class="title class_">Java</span>.<span class="property">vm</span>.<span class="title function_">tryGetEnv</span>().<span class="title function_">getClassName</span>(jclass);</span><br><span class="line">            <span class="keyword">var</span> methods_ptr = <span class="title function_">ptr</span>(args[<span class="number">2</span>]);</span><br><span class="line">            <span class="keyword">var</span> method_count = args[<span class="number">3</span>].<span class="title function_">toInt32</span>();</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;RegisterNatives method counts: &quot;</span>, method_count);</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; method_count; i++) &#123;</span><br><span class="line">                <span class="keyword">var</span> name = methods_ptr.<span class="title function_">add</span>(i * <span class="title class_">Process</span>.<span class="property">pointerSize</span> * <span class="number">3</span>).<span class="title function_">readPointer</span>().<span class="title function_">readCString</span>();</span><br><span class="line">                <span class="keyword">var</span> sig = methods_ptr.<span class="title function_">add</span>(i * <span class="title class_">Process</span>.<span class="property">pointerSize</span> * <span class="number">3</span> + <span class="title class_">Process</span>.<span class="property">pointerSize</span>).<span class="title function_">readPointer</span>().<span class="title function_">readCString</span>();</span><br><span class="line">                <span class="keyword">var</span> fnPtr_ptr = methods_ptr.<span class="title function_">add</span>(i * <span class="title class_">Process</span>.<span class="property">pointerSize</span> * <span class="number">3</span> + <span class="title class_">Process</span>.<span class="property">pointerSize</span> * <span class="number">2</span>).<span class="title function_">readPointer</span>();</span><br><span class="line">                <span class="keyword">var</span> find_module = <span class="title class_">Process</span>.<span class="title function_">findModuleByAddress</span>(fnPtr_ptr);</span><br><span class="line">                <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;ClasssName: &quot;</span>, class_name, <span class="string">&quot;MethodName: &quot;</span>, name, <span class="string">&quot;Sig: &quot;</span>, sig, <span class="string">&quot;Function_addr: &quot;</span>, fnPtr_ptr, <span class="string">&quot;ModuleName: &quot;</span>, find_module.<span class="property">name</span>, <span class="string">&quot;Fun_Offset: &quot;</span>, <span class="title function_">ptr</span>(fnPtr_ptr).<span class="title function_">sub</span>(find_module.<span class="property">base</span>));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">onLeave</span>: <span class="keyword">function</span> (<span class="params">retval</span>) &#123;&#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">hook_RegisterNatives</span>()</span><br></pre></td></tr></table></figure>
-<h2 id="hook-dlsym"><a href="#hook-dlsym" class="headerlink" title="hook_dlsym"></a>hook_dlsym</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">hook_dlsym</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="comment">// 获取dlsym函数的地址</span></span><br><span class="line">    <span class="keyword">let</span> dlsymAddr = <span class="title class_">Module</span>.<span class="title function_">findExportByName</span>(<span class="string">&quot;libdl.so&quot;</span>,<span class="string">&quot;dlsym&quot;</span>);</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(dlsymAddr);</span><br><span class="line">    <span class="comment">// hook dlsym</span></span><br><span class="line">    <span class="title class_">Interceptor</span>.<span class="title function_">attach</span>(dlsymAddr,&#123;</span><br><span class="line">        <span class="attr">onEnter</span>:<span class="keyword">function</span>(<span class="params">args</span>)&#123;</span><br><span class="line">            <span class="variable language_">this</span>.<span class="property">args1</span> = args[<span class="number">1</span>];</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">onLeave</span>:<span class="keyword">function</span>(<span class="params">retval</span>)&#123;</span><br><span class="line">            <span class="keyword">let</span> <span class="variable language_">module</span>= <span class="title class_">Process</span>.<span class="title function_">findModuleByAddress</span>(retval);</span><br><span class="line">            <span class="keyword">if</span>(<span class="variable language_">module</span>==<span class="literal">null</span>)<span class="keyword">return</span>;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;函数：&quot;</span>+<span class="variable language_">this</span>.<span class="property">args1</span>.<span class="title function_">readCString</span>(),<span class="string">&quot;模块：&quot;</span>+<span class="variable language_">module</span>.<span class="property">name</span>,<span class="string">&quot;地址：&quot;</span>+retval,<span class="string">&quot;偏移：&quot;</span>+retval.<span class="title function_">sub</span>(<span class="variable language_">module</span>.<span class="property">base</span>));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">hook_dlsym</span>()</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>Frida</category>
-      </categories>
-      <tags>
-        <tag>Frida</tag>
       </tags>
   </entry>
   <entry>
