@@ -124,17 +124,17 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">21</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">22</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">13</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">15</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">24</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">25</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -185,6 +185,97 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/12/20/FRIDA-JSAPI/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/android.svg">
+      <meta itemprop="name" content="Bileton">
+      <meta itemprop="description" content="路漫漫其修远夕！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="白乐天">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2024/12/20/FRIDA-JSAPI/" class="post-title-link" itemprop="url">FRIDA-JSAPI</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2024-12-20 00:00:00 / 修改时间：23:51:43" itemprop="dateCreated datePublished" datetime="2024-12-20T00:00:00+08:00">2024-12-20</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Frida/" itemprop="url" rel="index"><span itemprop="name">Frida</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>818</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h1><h2 id="Java-perform"><a href="#Java-perform" class="headerlink" title="Java.perform()"></a>Java.perform()</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Java</span>.<span class="title function_">perform</span>(<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;This is Java.perform!&quot;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="Java-use-className"><a href="#Java-use-className" class="headerlink" title="Java.use(className)"></a>Java.use(className)</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Java</span>.<span class="title function_">perform</span>(<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;This is Java.perform!&quot;</span>);</span><br><span class="line">    <span class="keyword">var</span> <span class="keyword">class</span> = <span class="title class_">Java</span>.<span class="title function_">use</span>(className);</span><br><span class="line">    <span class="keyword">class</span>.<span class="property">method</span>.<span class="property">implementation</span> = <span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;This is class.method!&quot;</span>);</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="Java-choose-className-callbacks"><a href="#Java-choose-className-callbacks" class="headerlink" title="Java.choose(className, callbacks)"></a>Java.choose(className, callbacks)</h2><h2 id="Java-enumerateLoadedClasses-callbacks"><a href="#Java-enumerateLoadedClasses-callbacks" class="headerlink" title="Java.enumerateLoadedClasses(callbacks)"></a>Java.enumerateLoadedClasses(callbacks)</h2><h2 id="Java-enumerateLoadedClassesSync"><a href="#Java-enumerateLoadedClassesSync" class="headerlink" title="Java.enumerateLoadedClassesSync()"></a>Java.enumerateLoadedClassesSync()</h2><h2 id="Java-enumerateClassLoaders-callbacks"><a href="#Java-enumerateClassLoaders-callbacks" class="headerlink" title="Java.enumerateClassLoaders(callbacks)"></a>Java.enumerateClassLoaders(callbacks)</h2><h2 id="Java-enumerateClassLoadersSync"><a href="#Java-enumerateClassLoadersSync" class="headerlink" title="Java.enumerateClassLoadersSync()"></a>Java.enumerateClassLoadersSync()</h2><h2 id="Java-enumerateMethods-query"><a href="#Java-enumerateMethods-query" class="headerlink" title="Java.enumerateMethods(query)"></a>Java.enumerateMethods(query)</h2><h1 id="Interceptor"><a href="#Interceptor" class="headerlink" title="Interceptor"></a>Interceptor</h1><h2 id="Interceptor-attach-target-callbacks"><a href="#Interceptor-attach-target-callbacks" class="headerlink" title="Interceptor.attach(target, callbacks)"></a>Interceptor.attach(target, callbacks)</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> functionAddr = <span class="title function_">ptr</span>(<span class="number">0x7777</span>);</span><br><span class="line"><span class="title class_">Interceptor</span>.<span class="title function_">attach</span>(functionAddr,&#123;</span><br><span class="line">    <span class="title class_">OnEnter</span>:<span class="keyword">function</span>(<span class="params">args</span>)&#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(args[<span class="number">0</span>]);</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(args[<span class="number">1</span>]);</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(args[<span class="number">2</span>]);</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="title class_">OnLeave</span>:<span class="keyword">function</span>(<span class="params">ret</span>)&#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(ret);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -424,10 +515,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2024-12-16 14:14:08 / 修改时间：18:05:03" itemprop="dateCreated datePublished" datetime="2024-12-16T14:14:08+08:00">2024-12-16</time>
+              <time title="创建时间：2024-12-16 14:14:08" itemprop="dateCreated datePublished" datetime="2024-12-16T14:14:08+08:00">2024-12-16</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-12-20 01:47:55" itemprop="dateModified" datetime="2024-12-20T01:47:55+08:00">2024-12-20</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -575,19 +672,19 @@
 <li>在A64指令中输入寄存器表示为Xn或Xm</li>
 </ul>
 <h2 id="条件标志位"><a href="#条件标志位" class="headerlink" title="条件标志位"></a>条件标志位</h2><ul>
-<li><p>**N (Negative)**：</p>
+<li><p><strong>N</strong>(Negative)：</p>
 <p>结果为负数，则值为1；</p>
 <p>结果是正数或零，则值为0。</p>
 </li>
-<li><p>**Z (Zero)**：</p>
+<li><p><strong>Z</strong>(Zero)：</p>
 <p>结果为 0，则值为1。</p>
 <p>否则，值为0。</p>
 </li>
-<li><p>**C (Carry)**：</p>
+<li><p><strong>C</strong>(Carry)：</p>
 <p>如果结果产生了进位条件，则值为1；</p>
 <p>否则，值为0。</p>
 </li>
-<li><p>**V (Overflow)**：</p>
+<li><p><strong>V</strong>(Overflow)：</p>
 <p>如果指令结果导致溢出条件，则值为1。</p>
 </li>
 </ul>
@@ -1256,118 +1353,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/12/02/%E6%8A%93%E5%8C%85/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/android.svg">
-      <meta itemprop="name" content="Bileton">
-      <meta itemprop="description" content="路漫漫其修远夕！">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="白乐天">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2024/12/02/%E6%8A%93%E5%8C%85/" class="post-title-link" itemprop="url">抓包</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2024-12-02 00:00:00" itemprop="dateCreated datePublished" datetime="2024-12-02T00:00:00+08:00">2024-12-02</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-12-05 21:40:00" itemprop="dateModified" datetime="2024-12-05T21:40:00+08:00">2024-12-05</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%8A%93%E5%8C%85/" itemprop="url" rel="index"><span itemprop="name">抓包</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>1.3k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="HTTP抓包"><a href="#HTTP抓包" class="headerlink" title="HTTP抓包"></a>HTTP抓包</h1><p>对于HTTP的包是可以通过抓包工具+配置手机代理直接抓取的。</p>
-<h1 id="HTTPS抓包"><a href="#HTTPS抓包" class="headerlink" title="HTTPS抓包"></a>HTTPS抓包</h1><p>HTTPS是有系统证书校验的，需要安装证书之后通过抓包工具+配置手机代理来进行抓包。<br>在安卓上，Android8.0之后，浏览器默认信任用户目录下的证书，而APP默认不再信任用户目录下的证书了，所以需要手动把用户目录下的证书移动到系统目录下（通过面具移动或者手动移动）。</p>
-<h1 id="检测代理"><a href="#检测代理" class="headerlink" title="检测代理"></a>检测代理</h1><ul>
-<li>APP在发起网络请求前会检测系统是否设置了代理，如果发现有代理，就不发起请求。  </li>
-<li>APP 用了No Proxy参数发起网络请求，即使系统设置了代理，也会被直接绕过，APP依然能正常获取网络数据，但抓包工具无法抓到该APP的数据包。</li>
-</ul>
-<h1 id="单向证书校验"><a href="#单向证书校验" class="headerlink" title="单向证书校验"></a>单向证书校验</h1><p>单向证书校验是指在客户端与服务器之间的通信中，只有服务器需要提供证书，客户端通过验证服务器的证书来确认服务器的身份。<br><strong>原理</strong>  </p>
-<ul>
-<li>客户端发起连接请求（如通过HTTPS）。  </li>
-<li>服务器将其数字证书发送给客户端，数字证书中包含了服务器的公钥和其他信息（如证书的有效期、签发者等）。  </li>
-<li>客户端收到证书后，通过信任的证书颁发机构（CA）的公钥来验证证书的有效性。如果证书有效，客户端就信任这个服务器，继续进行后续的加密通信。  </li>
-<li>客户端不需要提供任何证书或身份验证。</li>
-</ul>
-<h1 id="双向证书校验"><a href="#双向证书校验" class="headerlink" title="双向证书校验"></a>双向证书校验</h1><p>双向证书校验则要求客户端和服务器都提供证书，并且相互验证对方的身份。这样不仅服务器要验证客户端的身份，客户端也要验证服务器的身份。<br><strong>原理</strong>  </p>
-<ul>
-<li>客户端发起连接请求。  </li>
-<li>服务器发送其数字证书给客户端，客户端用CA公钥验证服务器证书的合法性。  </li>
-<li>服务器要求客户端也提供数字证书。客户端向服务器提供自己的证书，服务器同样使用CA公钥验证客户端证书的合法性。  </li>
-<li>双方都确认对方的身份后，开始建立加密通道进行安全通信。</li>
-</ul>
-<h1 id="SSL-pinning"><a href="#SSL-pinning" class="headerlink" title="SSL pinning"></a>SSL pinning</h1><p>SSL Pinning（SSL证书绑定）是为了增强应用程序对中间人攻击（MITM攻击）的防御的一种技术。它将特定的证书或公钥绑定到客户端应用程序中，使得客户端在建立SSL连接时，仅信任与该证书或公钥匹配的服务器证书，从而确保通信的安全性。</p>
-<h2 id="Certificate-Pinning"><a href="#Certificate-Pinning" class="headerlink" title="Certificate Pinning"></a>Certificate Pinning</h2><p>证书绑定是指将服务器的证书（通常是公钥）内置到客户端应用中。客户端在建立SSL连接时，会验证服务器的证书与客户端预定义的证书是否匹配。如果不匹配，连接会被拒绝，防止攻击者使用伪造的证书进行中间人攻击。  </p>
-<h2 id="Public-Key-Pinning"><a href="#Public-Key-Pinning" class="headerlink" title="Public Key Pinning"></a>Public Key Pinning</h2><p>公钥绑定是SSL Pinning的一种形式，客户端不直接绑定证书，而是绑定服务器证书中的公钥。这种方式可以避免证书过期或更新时造成的连接问题，因为即便证书发生变化，只要公钥保持不变，客户端仍然可以信任新的证书。  </p>
-<h2 id="绕过方式"><a href="#绕过方式" class="headerlink" title="绕过方式"></a>绕过方式</h2><h3 id="使用frida进行hook"><a href="#使用frida进行hook" class="headerlink" title="使用frida进行hook"></a>使用frida进行hook</h3><p>frida官方提供的客户端校验绕过脚本如下<br><a target="_blank" rel="noopener" href="https://codeshare.frida.re/@akabe1/frida-multiple-unpinning/">https:&#x2F;&#x2F;codeshare.frida.re&#x2F;@akabe1&#x2F;frida-multiple-unpinning&#x2F;</a></p>
-<h3 id="JustTrustMe"><a href="#JustTrustMe" class="headerlink" title="JustTrustMe"></a>JustTrustMe</h3><p>利用面具刷入LSPosed框架，然后安装JustTrustMe插件。<br>在LSPosed的模块里打开JustTrustMe，在要选择绕过的App后面方框勾选上即可。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1439,20 +1424,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">24</span>
+          <span class="site-state-item-count">25</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-count">15</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-count">22</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -1493,13 +1478,13 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">74k</span>
+    <span title="站点总字数">76k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">1:08</span>
+    <span title="站点阅读时长">1:09</span>
 </div>
 
 
