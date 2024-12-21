@@ -1,6 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Android启动流程分析</title>
+    <url>/2024/12/19/Android%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B%E5%88%86%E6%9E%90/</url>
+    <content><![CDATA[<p>本篇以从按下开机键开始至设备桌面图标出现进行分析。</p>
+<h1 id="Bootloader"><a href="#Bootloader" class="headerlink" title="Bootloader"></a>Bootloader</h1><p>&emsp;​&emsp;长按开机键，设备通电，从Boot ROM开始，Boot ROM是芯片上的一段只读存储器，存储设备的启动代码，一般是固定的，用于检测基本硬件的存在，验证 Bootloader 的完整性和安全性，并加载BootLoader到RAM，将控制权移交给BootLoader。</p>
+<p>&emsp;​&emsp;​BootLoader对硬件进行基本初始化，从存储设备中读取Android系统Linux内核镜像，通常是boot.img文件，将内核加载到内存中，并将控制权移交给内核。</p>
+<h1 id="Linux内核启动"><a href="#Linux内核启动" class="headerlink" title="Linux内核启动"></a>Linux内核启动</h1><p>&emsp;​&emsp;内核启动后会完成复杂的硬件初始化并挂载根文件系统，然后执行第一个用户空间进程<code>init</code>，将控制权移交给<code>init</code>。</p>
+<h1 id="init进程"><a href="#init进程" class="headerlink" title="init进程"></a>init进程</h1><p>&emsp;​&emsp;<code>init</code>是Android的第一个用户空间进程，它的PID为1。<code>init</code>解析<code>init.rc</code>脚本文件，定义系统初始化的行为等。</p>
+<p> function hook_dlsym(){    &#x2F;&#x2F; 获取dlsym函数的地址    let dlsymAddr &#x3D; Module.findExportByName(“libdl.so”,”dlsym”);    console.log(dlsymAddr);    &#x2F;&#x2F; hook dlsym    Interceptor.attach(dlsymAddr,{        onEnter:function(args){            this.args1 &#x3D; args[1];        },        onLeave:function(retval){            let module&#x3D; Process.findModuleByAddress(retval);            if(module&#x3D;&#x3D;null)return;            console.log(“函数：”+this.args1.readCString(),”模块：”+module.name,”地址：”+retval,”偏移：”+retval.sub(module.base));        }    })}hook_dlsym()js</p>
+<p>&emsp;​&emsp;启动Zygote进程，<code>Zygote</code>在<code>init.rc</code>文件中定义并通过<code>init</code>启动。</p>
+<p>&emsp;​&emsp;<code>init</code>调用<code>/system/bin/app_process</code>可执行文件启动 ART（Android Runtime）或 Dalvik 虚拟机，并执行 <code>ZygoteInit.main()</code>来启动<code>Zygote</code>。</p>
+<p>&emsp;​&emsp;<code>init</code>把控制权移交给了<code>Zygote</code>。</p>
+<h1 id="Zygote进程"><a href="#Zygote进程" class="headerlink" title="Zygote进程"></a>Zygote进程</h1><p>&emsp;​&emsp;Zygote 是 Android 应用运行时环境的核心，加载虚拟机、类、系统资源，启动SystemServer进程。SystemServer进程是Zygote进程孵化的第一个进程。</p>
+<p><strong>Zygote的任务</strong></p>
+<p>&emsp;​&emsp;等待应用启动请求，接收请求后，fork() 创建子进程，所有的App进程都是由Zygote孵化而来的。</p>
+<h1 id="SystemServer"><a href="#SystemServer" class="headerlink" title="SystemServer"></a>SystemServer</h1><p>&emsp;​&emsp;SystemServer是一个很重要的进程，系统里面重要的服务都是在这个进程里面开启的，比如ActivityManagerService、PackageManagerService、WindowManagerService，负责管理应用程序和系统资源。</p>
+<h1 id="Launcher"><a href="#Launcher" class="headerlink" title="Launcher"></a>Launcher</h1><p>&emsp;​&emsp;当 <code>SystemServer</code> 启动完成后，Android 系统会启动第一个前台进程：Launcher。</p>
+<p>&emsp;​&emsp;<code>ActivityManagerService</code> 会根据 <code>AndroidManifest.xml</code> 中的配置，启动标记为 <code>MAIN</code> 和 <code>LAUNCHER</code> 的应用，Launcher 加载桌面布局和图标资源。</p>
+<p>&emsp;​&emsp;Launcher进程是Zygote孵化出来的第一个App进程。</p>
+<p>​	</p>
+<p>​	</p>
+<p>​	</p>
+]]></content>
+      <categories>
+        <category>Android系统</category>
+      </categories>
+      <tags>
+        <tag>Android启动流程</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>ARM汇编</title>
     <url>/2024/12/16/ARM%E6%B1%87%E7%BC%96/</url>
     <content><![CDATA[<h1 id="ARM架构"><a href="#ARM架构" class="headerlink" title="ARM架构"></a>ARM架构</h1><p>ARM是一种精简指令集计算机架构（处理器架构）。</p>
@@ -186,61 +216,20 @@
       </tags>
   </entry>
   <entry>
-    <title>Android启动流程分析</title>
-    <url>/2024/12/19/Android%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B%E5%88%86%E6%9E%90/</url>
-    <content><![CDATA[<p>本篇以从按下开机键开始至设备桌面图标出现进行分析。</p>
-<h1 id="Bootloader"><a href="#Bootloader" class="headerlink" title="Bootloader"></a>Bootloader</h1><p>&emsp;​&emsp;长按开机键，设备通电，从Boot ROM开始，Boot ROM是芯片上的一段只读存储器，存储设备的启动代码，一般是固定的，用于检测基本硬件的存在，验证 Bootloader 的完整性和安全性，并加载BootLoader到RAM，将控制权移交给BootLoader。</p>
-<p>&emsp;​&emsp;​BootLoader对硬件进行基本初始化，从存储设备中读取Android系统Linux内核镜像，通常是boot.img文件，将内核加载到内存中，并将控制权移交给内核。</p>
-<h1 id="Linux内核启动"><a href="#Linux内核启动" class="headerlink" title="Linux内核启动"></a>Linux内核启动</h1><p>&emsp;​&emsp;内核启动后会完成复杂的硬件初始化并挂载根文件系统，然后执行第一个用户空间进程<code>init</code>，将控制权移交给<code>init</code>。</p>
-<h1 id="init进程"><a href="#init进程" class="headerlink" title="init进程"></a>init进程</h1><p>&emsp;​&emsp;<code>init</code>是Android的第一个用户空间进程，它的PID为1。<code>init</code>解析<code>init.rc</code>脚本文件，定义系统初始化的行为等。</p>
-<p> function hook_dlsym(){    &#x2F;&#x2F; 获取dlsym函数的地址    let dlsymAddr &#x3D; Module.findExportByName(“libdl.so”,”dlsym”);    console.log(dlsymAddr);    &#x2F;&#x2F; hook dlsym    Interceptor.attach(dlsymAddr,{        onEnter:function(args){            this.args1 &#x3D; args[1];        },        onLeave:function(retval){            let module&#x3D; Process.findModuleByAddress(retval);            if(module&#x3D;&#x3D;null)return;            console.log(“函数：”+this.args1.readCString(),”模块：”+module.name,”地址：”+retval,”偏移：”+retval.sub(module.base));        }    })}hook_dlsym()js</p>
-<p>&emsp;​&emsp;启动Zygote进程，<code>Zygote</code>在<code>init.rc</code>文件中定义并通过<code>init</code>启动。</p>
-<p>&emsp;​&emsp;<code>init</code>调用<code>/system/bin/app_process</code>可执行文件启动 ART（Android Runtime）或 Dalvik 虚拟机，并执行 <code>ZygoteInit.main()</code>来启动<code>Zygote</code>。</p>
-<p>&emsp;​&emsp;<code>init</code>把控制权移交给了<code>Zygote</code>。</p>
-<h1 id="Zygote进程"><a href="#Zygote进程" class="headerlink" title="Zygote进程"></a>Zygote进程</h1><p>&emsp;​&emsp;Zygote 是 Android 应用运行时环境的核心，加载虚拟机、类、系统资源，启动SystemServer进程。SystemServer进程是Zygote进程孵化的第一个进程。</p>
-<p><strong>Zygote的任务</strong></p>
-<p>&emsp;​&emsp;等待应用启动请求，接收请求后，fork() 创建子进程，所有的App进程都是由Zygote孵化而来的。</p>
-<h1 id="SystemServer"><a href="#SystemServer" class="headerlink" title="SystemServer"></a>SystemServer</h1><p>&emsp;​&emsp;SystemServer是一个很重要的进程，系统里面重要的服务都是在这个进程里面开启的，比如ActivityManagerService、PackageManagerService、WindowManagerService，负责管理应用程序和系统资源。</p>
-<h1 id="Launcher"><a href="#Launcher" class="headerlink" title="Launcher"></a>Launcher</h1><p>&emsp;​&emsp;当 <code>SystemServer</code> 启动完成后，Android 系统会启动第一个前台进程：Launcher。</p>
-<p>&emsp;​&emsp;<code>ActivityManagerService</code> 会根据 <code>AndroidManifest.xml</code> 中的配置，启动标记为 <code>MAIN</code> 和 <code>LAUNCHER</code> 的应用，Launcher 加载桌面布局和图标资源。</p>
-<p>&emsp;​&emsp;Launcher进程是Zygote孵化出来的第一个App进程。</p>
-<p>​	</p>
-<p>​	</p>
-<p>​	</p>
-]]></content>
-      <categories>
-        <category>Android系统</category>
-      </categories>
-      <tags>
-        <tag>Android启动流程</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>C++</title>
-    <url>/2024/02/01/Cpp/</url>
-    <content><![CDATA[<h1 id="C-基础编程"><a href="#C-基础编程" class="headerlink" title="C++基础编程"></a>C++基础编程</h1><h2 id="Hello-World"><a href="#Hello-World" class="headerlink" title="Hello World"></a>Hello World</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;Hello, World!&quot;</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="iostream"><a href="#iostream" class="headerlink" title="iostream"></a>iostream</h1><h2 id="cin"><a href="#cin" class="headerlink" title="cin"></a>cin</h2><p><code>cin</code> 使用流操作符（<code>&gt;&gt;</code>），一次可以读取多个变量，输入用空格或回车分隔。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="type">int</span> number;</span><br><span class="line">    cin &gt;&gt; number;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="cout"><a href="#cout" class="headerlink" title="cout"></a>cout</h2><p><code>cout</code> 使用流操作符（<code>&lt;&lt;</code>）可以连续输出多个变量。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="type">int</span> number;</span><br><span class="line">    cin &gt;&gt; number;</span><br><span class="line">    cout &lt;&lt; number;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;换行&quot;</span> &lt;&lt; endl; <span class="comment">// endl 表示换行，相当于\n，同时会刷新缓冲区。</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="cstring"><a href="#cstring" class="headerlink" title="cstring"></a>cstring</h1><h2 id="strlen"><a href="#strlen" class="headerlink" title="strlen"></a>strlen</h2>]]></content>
-      <categories>
-        <category>Cpp</category>
-      </categories>
-      <tags>
-        <tag>C++</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>C语言</title>
     <url>/2024/02/01/C%E8%AF%AD%E8%A8%80/</url>
     <content><![CDATA[<h1 id="C语言基础编程"><a href="#C语言基础编程" class="headerlink" title="C语言基础编程"></a>C语言基础编程</h1><h2 id="Hello-World"><a href="#Hello-World" class="headerlink" title="Hello World"></a>Hello World</h2><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Hello World!&quot;</span>); </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-
-
+<h2 id="基本数据类型"><a href="#基本数据类型" class="headerlink" title="基本数据类型"></a>基本数据类型</h2><ul>
+<li>char</li>
+<li>unsigned char</li>
+<li>short</li>
+<li>unsigned short</li>
+<li>int </li>
+<li>unsigned int </li>
+<li>long</li>
+<li>unsigned long</li>
+</ul>
 <h1 id="stdio-h"><a href="#stdio-h" class="headerlink" title="stdio.h"></a>stdio.h</h1><h2 id="库变量"><a href="#库变量" class="headerlink" title="库变量"></a>库变量</h2><h3 id="size-t"><a href="#size-t" class="headerlink" title="size_t"></a>size_t</h3><p>无符号整数类型，它是 sizeof 关键字的结果。</p>
 <h3 id="FILE"><a href="#FILE" class="headerlink" title="FILE"></a>FILE</h3><p>文件流类型，适合存储文件流信息的对象类型。</p>
 <h3 id="fpos-t"><a href="#fpos-t" class="headerlink" title="fpos_t"></a>fpos_t</h3><p>文件位置类型，适合存储文件中任何位置的对象类型。</p>
@@ -285,6 +274,51 @@
       </categories>
       <tags>
         <tag>C语言</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>C++</title>
+    <url>/2024/02/01/Cpp/</url>
+    <content><![CDATA[<h1 id="C-基础编程"><a href="#C-基础编程" class="headerlink" title="C++基础编程"></a>C++基础编程</h1><h2 id="Hello-World"><a href="#Hello-World" class="headerlink" title="Hello World"></a>Hello World</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;Hello, World!&quot;</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="std-string类"><a href="#std-string类" class="headerlink" title="std::string类"></a>std::string类</h2><h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><ul>
+<li><p><strong>c_str()</strong></p>
+<p>将 C++ 的 <code>std::string</code> 对象转换为 C 风格的字符串（即以空字符 <code>\0</code> 结尾的字符数组）。</p>
+</li>
+</ul>
+<h2 id="基本数据类型"><a href="#基本数据类型" class="headerlink" title="基本数据类型"></a>基本数据类型</h2><h1 id="iostream"><a href="#iostream" class="headerlink" title="iostream"></a>iostream</h1><h2 id="cin"><a href="#cin" class="headerlink" title="cin"></a>cin</h2><p><code>cin</code> 使用流操作符（<code>&gt;&gt;</code>），一次可以读取多个变量，输入用空格或回车分隔。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="type">int</span> number;</span><br><span class="line">    cin &gt;&gt; number;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="cout"><a href="#cout" class="headerlink" title="cout"></a>cout</h2><p><code>cout</code> 使用流操作符（<code>&lt;&lt;</code>）可以连续输出多个变量。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="type">int</span> number;</span><br><span class="line">    cin &gt;&gt; number;</span><br><span class="line">    cout &lt;&lt; number;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;换行&quot;</span> &lt;&lt; endl; <span class="comment">// endl 表示换行，相当于\n，同时会刷新缓冲区。</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="cstring"><a href="#cstring" class="headerlink" title="cstring"></a>cstring</h1><h2 id="strlen"><a href="#strlen" class="headerlink" title="strlen"></a>strlen</h2>]]></content>
+      <categories>
+        <category>Cpp</category>
+      </categories>
+      <tags>
+        <tag>C++</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>FRIDA-JSAPI</title>
+    <url>/2024/12/20/FRIDA-JSAPI/</url>
+    <content><![CDATA[<h1 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h1><h2 id="Java-perform"><a href="#Java-perform" class="headerlink" title="Java.perform()"></a>Java.perform()</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="title class_">Java</span>.<span class="title function_">perform</span>(<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;This is Java.perform!&quot;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="Java-use-className"><a href="#Java-use-className" class="headerlink" title="Java.use(className)"></a>Java.use(className)</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="title class_">Java</span>.<span class="title function_">perform</span>(<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;This is Java.perform!&quot;</span>);</span><br><span class="line">    <span class="keyword">var</span> <span class="keyword">class</span> = <span class="title class_">Java</span>.<span class="title function_">use</span>(className);</span><br><span class="line">    <span class="keyword">class</span>.<span class="property">method</span>.<span class="property">implementation</span> = <span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;This is class.method!&quot;</span>);</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="Java-choose-className-callbacks"><a href="#Java-choose-className-callbacks" class="headerlink" title="Java.choose(className, callbacks)"></a>Java.choose(className, callbacks)</h2><h2 id="Java-enumerateLoadedClasses-callbacks"><a href="#Java-enumerateLoadedClasses-callbacks" class="headerlink" title="Java.enumerateLoadedClasses(callbacks)"></a>Java.enumerateLoadedClasses(callbacks)</h2><h2 id="Java-enumerateLoadedClassesSync"><a href="#Java-enumerateLoadedClassesSync" class="headerlink" title="Java.enumerateLoadedClassesSync()"></a>Java.enumerateLoadedClassesSync()</h2><h2 id="Java-enumerateClassLoaders-callbacks"><a href="#Java-enumerateClassLoaders-callbacks" class="headerlink" title="Java.enumerateClassLoaders(callbacks)"></a>Java.enumerateClassLoaders(callbacks)</h2><h2 id="Java-enumerateClassLoadersSync"><a href="#Java-enumerateClassLoadersSync" class="headerlink" title="Java.enumerateClassLoadersSync()"></a>Java.enumerateClassLoadersSync()</h2><h2 id="Java-enumerateMethods-query"><a href="#Java-enumerateMethods-query" class="headerlink" title="Java.enumerateMethods(query)"></a>Java.enumerateMethods(query)</h2><h1 id="Interceptor"><a href="#Interceptor" class="headerlink" title="Interceptor"></a>Interceptor</h1><h2 id="Interceptor-attach-target-callbacks"><a href="#Interceptor-attach-target-callbacks" class="headerlink" title="Interceptor.attach(target, callbacks)"></a>Interceptor.attach(target, callbacks)</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> functionAddr = <span class="title function_">ptr</span>(<span class="number">0x7777</span>);</span><br><span class="line"><span class="title class_">Interceptor</span>.<span class="title function_">attach</span>(functionAddr,&#123;</span><br><span class="line">    <span class="title class_">OnEnter</span>:<span class="keyword">function</span>(<span class="params">args</span>)&#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(args[<span class="number">0</span>]);</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(args[<span class="number">1</span>]);</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(args[<span class="number">2</span>]);</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="title class_">OnLeave</span>:<span class="keyword">function</span>(<span class="params">ret</span>)&#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(ret);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>Frida</category>
+      </categories>
+      <tags>
+        <tag>FRIDA-JSAPI</tag>
       </tags>
   </entry>
   <entry>
@@ -543,38 +577,6 @@
       </tags>
   </entry>
   <entry>
-    <title>FRIDA-JSAPI</title>
-    <url>/2024/12/20/FRIDA-JSAPI/</url>
-    <content><![CDATA[<h1 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h1><h2 id="Java-perform"><a href="#Java-perform" class="headerlink" title="Java.perform()"></a>Java.perform()</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="title class_">Java</span>.<span class="title function_">perform</span>(<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;This is Java.perform!&quot;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="Java-use-className"><a href="#Java-use-className" class="headerlink" title="Java.use(className)"></a>Java.use(className)</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="title class_">Java</span>.<span class="title function_">perform</span>(<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;This is Java.perform!&quot;</span>);</span><br><span class="line">    <span class="keyword">var</span> <span class="keyword">class</span> = <span class="title class_">Java</span>.<span class="title function_">use</span>(className);</span><br><span class="line">    <span class="keyword">class</span>.<span class="property">method</span>.<span class="property">implementation</span> = <span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;This is class.method!&quot;</span>);</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="Java-choose-className-callbacks"><a href="#Java-choose-className-callbacks" class="headerlink" title="Java.choose(className, callbacks)"></a>Java.choose(className, callbacks)</h2><h2 id="Java-enumerateLoadedClasses-callbacks"><a href="#Java-enumerateLoadedClasses-callbacks" class="headerlink" title="Java.enumerateLoadedClasses(callbacks)"></a>Java.enumerateLoadedClasses(callbacks)</h2><h2 id="Java-enumerateLoadedClassesSync"><a href="#Java-enumerateLoadedClassesSync" class="headerlink" title="Java.enumerateLoadedClassesSync()"></a>Java.enumerateLoadedClassesSync()</h2><h2 id="Java-enumerateClassLoaders-callbacks"><a href="#Java-enumerateClassLoaders-callbacks" class="headerlink" title="Java.enumerateClassLoaders(callbacks)"></a>Java.enumerateClassLoaders(callbacks)</h2><h2 id="Java-enumerateClassLoadersSync"><a href="#Java-enumerateClassLoadersSync" class="headerlink" title="Java.enumerateClassLoadersSync()"></a>Java.enumerateClassLoadersSync()</h2><h2 id="Java-enumerateMethods-query"><a href="#Java-enumerateMethods-query" class="headerlink" title="Java.enumerateMethods(query)"></a>Java.enumerateMethods(query)</h2><h1 id="Interceptor"><a href="#Interceptor" class="headerlink" title="Interceptor"></a>Interceptor</h1><h2 id="Interceptor-attach-target-callbacks"><a href="#Interceptor-attach-target-callbacks" class="headerlink" title="Interceptor.attach(target, callbacks)"></a>Interceptor.attach(target, callbacks)</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> functionAddr = <span class="title function_">ptr</span>(<span class="number">0x7777</span>);</span><br><span class="line"><span class="title class_">Interceptor</span>.<span class="title function_">attach</span>(functionAddr,&#123;</span><br><span class="line">    <span class="title class_">OnEnter</span>:<span class="keyword">function</span>(<span class="params">args</span>)&#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(args[<span class="number">0</span>]);</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(args[<span class="number">1</span>]);</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(args[<span class="number">2</span>]);</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="title class_">OnLeave</span>:<span class="keyword">function</span>(<span class="params">ret</span>)&#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(ret);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>Frida</category>
-      </categories>
-      <tags>
-        <tag>FRIDA-JSAPI</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Java</title>
-    <url>/2024/05/01/Java/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>编程语言</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>JSON</title>
     <url>/2024/12/15/JSON/</url>
     <content><![CDATA[<p>JSON（JavaScript Object Notation）是一种轻量级的数据交换格式，易于人和机器阅读和解析。它基于JavaScript的对象表示法，但被广泛用于多种编程语言。</p>
@@ -669,6 +671,17 @@
       </categories>
       <tags>
         <tag>LSPosed开发</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Python基础</title>
+    <url>/2024/12/15/Python%E5%9F%BA%E7%A1%80/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>Python基础</tag>
       </tags>
   </entry>
   <entry>
@@ -784,82 +797,6 @@
       <tags>
         <tag>Linux命令</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>Python基础</title>
-    <url>/2024/12/15/Python%E5%9F%BA%E7%A1%80/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>Python</category>
-      </categories>
-      <tags>
-        <tag>Python基础</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>adb: Android调试桥</title>
-    <url>/2024/12/07/adb-Android%E8%B0%83%E8%AF%95%E6%A1%A5/</url>
-    <content><![CDATA[<p>Android 调试桥 (adb) 是一种功能多样的命令行工具，可以通过命令行与设备进行通信。</p>
-<h1 id="查询设备"><a href="#查询设备" class="headerlink" title="查询设备"></a>查询设备</h1><ul>
-<li><code>adb devices</code><br>adb 会创建一个字符串，用于通过端口号唯一标识设备。</li>
-<li><code>adb devices -l</code><br>加入 -l 选项，devices 命令会告知设备是什么。当连接了多个设备时，此信息会很有用，方便区分这些设备。</li>
-</ul>
-<h2 id="设备状态"><a href="#设备状态" class="headerlink" title="设备状态"></a>设备状态</h2><ul>
-<li><code>offline</code>：设备未连接到 adb 或没有响应。</li>
-<li><code>device</code>：设备已连接到 adb 服务器。<br>请注意，此状态并不表示 Android 系统已完全启动并可正常运行，因为在设备连接到 adb 时系统仍在启动。系统完成启动后，设备通常处于此运行状态。</li>
-<li><code>no device</code>：未连接任何设备。</li>
-<li><code>unauthorized</code>：电脑与安卓设备之间的调试授权未完成。</li>
-</ul>
-<h2 id="指定目标设备（-s选项）"><a href="#指定目标设备（-s选项）" class="headerlink" title="指定目标设备（-s选项）"></a>指定目标设备（-s选项）</h2><ul>
-<li>如果有多个设备在运行，必须指定目标设备 。  </li>
-<li>使用 devices 命令获取目标设备的序列号。  </li>
-<li>获得序列号后，结合使用-s选项与 adb 命令来指定序列号。</li>
-</ul>
-<h1 id="安装应用"><a href="#安装应用" class="headerlink" title="安装应用"></a>安装应用</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">adb install path_to_apk</span><br></pre></td></tr></table></figure>
-
-<h1 id="卸载应用"><a href="#卸载应用" class="headerlink" title="卸载应用"></a>卸载应用</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">adb uninstall &lt;package_name&gt;</span><br></pre></td></tr></table></figure>
-
-<h1 id="端口转发（forward）"><a href="#端口转发（forward）" class="headerlink" title="端口转发（forward）"></a>端口转发（forward）</h1><p>可以使用 forward 命令设置任意端口转发，将特定主机端口上的请求转发到设备上的其他端口。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">adb forward tcp:6100 tcp:7100</span><br></pre></td></tr></table></figure>
-<h1 id="push与pull"><a href="#push与pull" class="headerlink" title="push与pull"></a>push与pull</h1><h2 id="push"><a href="#push" class="headerlink" title="push"></a>push</h2><p>如需将某个文件或目录（及其子目录）从PC端复制到Android端</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">adb push local remote</span><br></pre></td></tr></table></figure>
-<h2 id="pull"><a href="#pull" class="headerlink" title="pull"></a>pull</h2><p>从Android端复制某个文件或目录（及其子目录）到PC端</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">adb pull remote local</span><br></pre></td></tr></table></figure>
-<h1 id="停止-adb-服务器"><a href="#停止-adb-服务器" class="headerlink" title="停止 adb 服务器"></a>停止 adb 服务器</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">adb kill-server</span><br></pre></td></tr></table></figure>
-
-<p>停止 adb 服务器候，可以通过发出其他任何 adb 命令来重启服务器。</p>
-<h1 id="shell-命令"><a href="#shell-命令" class="headerlink" title="shell 命令"></a>shell 命令</h1><p>可以使用 shell 命令通过 adb 发出设备命令，也可以使用该命令启动交互式 shell。</p>
-<h1 id="软件包管理器"><a href="#软件包管理器" class="headerlink" title="软件包管理器"></a>软件包管理器</h1><ul>
-<li>列出所有已安装应用  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">adb shell pm list packages</span><br></pre></td></tr></table></figure></li>
-<li>列出安卓设备上的所有系统应用  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">adb shell pm list packages -s</span><br></pre></td></tr></table></figure></li>
-<li>列出所有用户应用（非系统应用）  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">adb shell pm list packages -3</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h1 id="屏幕截图"><a href="#屏幕截图" class="headerlink" title="屏幕截图"></a>屏幕截图</h1><p>在shell中，进入<code>/sdcard</code>目录下，使用命令<code>screencap filename</code><br>在PC端，从命令行使用 screencap，使用命令<code>adb shell screencap /sdcard/filename</code></p>
-]]></content>
-      <categories>
-        <category>逆向工具集</category>
-      </categories>
-      <tags>
-        <tag>adb</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hello World</title>
-    <url>/2024/11/28/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-]]></content>
   </entry>
   <entry>
     <title>Python语言</title>
@@ -1144,18 +1081,80 @@
       </tags>
   </entry>
   <entry>
-    <title>hook脚本大全</title>
-    <url>/2024/11/29/hook%E8%84%9A%E6%9C%AC%E5%A4%A7%E5%85%A8/</url>
-    <content><![CDATA[<h1 id="so层hook"><a href="#so层hook" class="headerlink" title="so层hook"></a>so层hook</h1><h2 id="hook-dlopen"><a href="#hook-dlopen" class="headerlink" title="hook_dlopen"></a>hook_dlopen</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">hook_dlopen</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="comment">// 在Android8.0之前加载so通过dlopen函数</span></span><br><span class="line">    <span class="keyword">var</span> dlopen = <span class="title class_">Module</span>.<span class="title function_">findExportByName</span>(<span class="literal">null</span>,<span class="string">&quot;dlopen&quot;</span>);</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;addr_dlopen&quot;</span>,dlopen);</span><br><span class="line">    <span class="title class_">Interceptor</span>.<span class="title function_">attach</span>(dlopen,&#123;</span><br><span class="line">        <span class="attr">onEnter</span>:<span class="keyword">function</span>(<span class="params">args</span>)&#123;</span><br><span class="line">            <span class="keyword">var</span> pathptr = args[<span class="number">0</span>];</span><br><span class="line">            <span class="keyword">if</span>(pathptr)&#123;</span><br><span class="line">                <span class="keyword">var</span> path = <span class="title function_">ptr</span>(pathptr).<span class="title function_">readCString</span>();</span><br><span class="line">                <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;dlopen:&quot;</span>,path);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">onLeave</span>:<span class="keyword">function</span>(<span class="params">retvel</span>)&#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;leave!&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//Android8.0之后加载so通过android_dlopen_ext函数</span></span><br><span class="line">    <span class="keyword">var</span> android_dlopen_ext = <span class="title class_">Module</span>.<span class="title function_">findExportByName</span>(<span class="literal">null</span>,<span class="string">&quot;android_dlopen_ext&quot;</span>);</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;addr_android_dlopen_ext&quot;</span>,android_dlopen_ext);</span><br><span class="line">    <span class="title class_">Interceptor</span>.<span class="title function_">attach</span>(android_dlopen_ext,&#123;</span><br><span class="line">        <span class="attr">onEnter</span>:<span class="keyword">function</span>(<span class="params">args</span>)&#123;</span><br><span class="line">            <span class="keyword">var</span> pathptr = args[<span class="number">0</span>];</span><br><span class="line">            <span class="keyword">if</span>(pathptr!=<span class="literal">null</span> &amp;&amp; pathptr != <span class="literal">undefined</span>)&#123;</span><br><span class="line">                <span class="keyword">var</span> path = <span class="title function_">ptr</span>(pathptr).<span class="title function_">readCString</span>();</span><br><span class="line">                <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;android_dlopen_ext:&quot;</span>,path);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">onLeave</span>:<span class="keyword">function</span>(<span class="params">retvel</span>)&#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;leave!&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">hook_dlopen</span>()</span><br></pre></td></tr></table></figure>
-<h2 id="hook-pthread"><a href="#hook-pthread" class="headerlink" title="hook_pthread"></a>hook_pthread</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">hook_pthread_create</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="keyword">var</span> pt_create_func = <span class="title class_">Module</span>.<span class="title function_">findExportByName</span>(<span class="string">&quot;libc.so&quot;</span>,<span class="string">&quot;pthread_create&quot;</span>);</span><br><span class="line">    <span class="title class_">Interceptor</span>.<span class="title function_">attach</span>(pt_create_func,&#123;</span><br><span class="line">        <span class="attr">onEnter</span>:<span class="keyword">function</span>(<span class="params">args</span>)&#123;</span><br><span class="line">            <span class="keyword">var</span> so_name = <span class="title class_">Process</span>.<span class="title function_">findModuleByAddress</span>(args[<span class="number">2</span>]).<span class="property">name</span>;</span><br><span class="line">            <span class="comment">// if(so_name.indexOf(&quot;libxxx.so&quot;)!= -1)&#123;</span></span><br><span class="line">            <span class="comment">//     //console.log(&quot;arg2&quot;,args[2].sub(Module.findBaseAddress(&quot;libxxx.so&quot;)))</span></span><br><span class="line">            <span class="comment">//     try&#123;</span></span><br><span class="line">            <span class="comment">//         Interceptor.replace(args[2],new NativeCallback(function()&#123;</span></span><br><span class="line">            <span class="comment">//             console.log(&quot;replace success&quot;);</span></span><br><span class="line">            <span class="comment">//             return null;</span></span><br><span class="line">            <span class="comment">//         &#125;,&#x27;void&#x27;,[&quot;void&quot;]));</span></span><br><span class="line">            <span class="comment">//     &#125;catch(e)&#123;</span></span><br><span class="line"></span><br><span class="line">            <span class="comment">//     &#125;</span></span><br><span class="line">            <span class="comment">// &#125;</span></span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;arg2&quot;</span>,args[<span class="number">2</span>]);</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">onLeave</span>:<span class="keyword">function</span>(<span class="params">retval</span>)&#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">hook_pthread_create</span>();</span><br></pre></td></tr></table></figure>
-<h2 id="hook-RegisterNatives"><a href="#hook-RegisterNatives" class="headerlink" title="hook_RegisterNatives"></a>hook_RegisterNatives</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">hook_RegisterNatives</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> <span class="title class_">RegisterNatives</span>_addr = <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">var</span> symbols = <span class="title class_">Process</span>.<span class="title function_">findModuleByName</span>(<span class="string">&quot;libart.so&quot;</span>).<span class="title function_">enumerateSymbols</span>();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; symbols.<span class="property">length</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">var</span> symbol = symbols[i].<span class="property">name</span>;</span><br><span class="line">        <span class="keyword">if</span> ((symbol.<span class="title function_">indexOf</span>(<span class="string">&quot;CheckJNI&quot;</span>) == -<span class="number">1</span>) &amp;&amp; (symbol.<span class="title function_">indexOf</span>(<span class="string">&quot;JNI&quot;</span>) &gt;= <span class="number">0</span>)) &#123;</span><br><span class="line">            <span class="keyword">if</span> (symbol.<span class="title function_">indexOf</span>(<span class="string">&quot;RegisterNatives&quot;</span>) &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="title class_">RegisterNatives</span>_addr = symbols[i].<span class="property">address</span>;</span><br><span class="line">                <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;RegisterNatives_addr: &quot;</span>, <span class="title class_">RegisterNatives</span>_addr);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="title class_">Interceptor</span>.<span class="title function_">attach</span>(<span class="title class_">RegisterNatives</span>_addr, &#123;</span><br><span class="line">        <span class="attr">onEnter</span>: <span class="keyword">function</span> (<span class="params">args</span>) &#123;</span><br><span class="line">            <span class="keyword">var</span> env = args[<span class="number">0</span>];</span><br><span class="line">            <span class="keyword">var</span> jclass = args[<span class="number">1</span>];</span><br><span class="line">            <span class="keyword">var</span> class_name = <span class="title class_">Java</span>.<span class="property">vm</span>.<span class="title function_">tryGetEnv</span>().<span class="title function_">getClassName</span>(jclass);</span><br><span class="line">            <span class="keyword">var</span> methods_ptr = <span class="title function_">ptr</span>(args[<span class="number">2</span>]);</span><br><span class="line">            <span class="keyword">var</span> method_count = args[<span class="number">3</span>].<span class="title function_">toInt32</span>();</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;RegisterNatives method counts: &quot;</span>, method_count);</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; method_count; i++) &#123;</span><br><span class="line">                <span class="keyword">var</span> name = methods_ptr.<span class="title function_">add</span>(i * <span class="title class_">Process</span>.<span class="property">pointerSize</span> * <span class="number">3</span>).<span class="title function_">readPointer</span>().<span class="title function_">readCString</span>();</span><br><span class="line">                <span class="keyword">var</span> sig = methods_ptr.<span class="title function_">add</span>(i * <span class="title class_">Process</span>.<span class="property">pointerSize</span> * <span class="number">3</span> + <span class="title class_">Process</span>.<span class="property">pointerSize</span>).<span class="title function_">readPointer</span>().<span class="title function_">readCString</span>();</span><br><span class="line">                <span class="keyword">var</span> fnPtr_ptr = methods_ptr.<span class="title function_">add</span>(i * <span class="title class_">Process</span>.<span class="property">pointerSize</span> * <span class="number">3</span> + <span class="title class_">Process</span>.<span class="property">pointerSize</span> * <span class="number">2</span>).<span class="title function_">readPointer</span>();</span><br><span class="line">                <span class="keyword">var</span> find_module = <span class="title class_">Process</span>.<span class="title function_">findModuleByAddress</span>(fnPtr_ptr);</span><br><span class="line">                <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;ClasssName: &quot;</span>, class_name, <span class="string">&quot;MethodName: &quot;</span>, name, <span class="string">&quot;Sig: &quot;</span>, sig, <span class="string">&quot;Function_addr: &quot;</span>, fnPtr_ptr, <span class="string">&quot;ModuleName: &quot;</span>, find_module.<span class="property">name</span>, <span class="string">&quot;Fun_Offset: &quot;</span>, <span class="title function_">ptr</span>(fnPtr_ptr).<span class="title function_">sub</span>(find_module.<span class="property">base</span>));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">onLeave</span>: <span class="keyword">function</span> (<span class="params">retval</span>) &#123;&#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">hook_RegisterNatives</span>()</span><br></pre></td></tr></table></figure>
-<h2 id="hook-dlsym"><a href="#hook-dlsym" class="headerlink" title="hook_dlsym"></a>hook_dlsym</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">hook_dlsym</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="comment">// 获取dlsym函数的地址</span></span><br><span class="line">    <span class="keyword">let</span> dlsymAddr = <span class="title class_">Module</span>.<span class="title function_">findExportByName</span>(<span class="string">&quot;libdl.so&quot;</span>,<span class="string">&quot;dlsym&quot;</span>);</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(dlsymAddr);</span><br><span class="line">    <span class="comment">// hook dlsym</span></span><br><span class="line">    <span class="title class_">Interceptor</span>.<span class="title function_">attach</span>(dlsymAddr,&#123;</span><br><span class="line">        <span class="attr">onEnter</span>:<span class="keyword">function</span>(<span class="params">args</span>)&#123;</span><br><span class="line">            <span class="variable language_">this</span>.<span class="property">args1</span> = args[<span class="number">1</span>];</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">onLeave</span>:<span class="keyword">function</span>(<span class="params">retval</span>)&#123;</span><br><span class="line">            <span class="keyword">let</span> <span class="variable language_">module</span>= <span class="title class_">Process</span>.<span class="title function_">findModuleByAddress</span>(retval);</span><br><span class="line">            <span class="keyword">if</span>(<span class="variable language_">module</span>==<span class="literal">null</span>)<span class="keyword">return</span>;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;函数：&quot;</span>+<span class="variable language_">this</span>.<span class="property">args1</span>.<span class="title function_">readCString</span>(),<span class="string">&quot;模块：&quot;</span>+<span class="variable language_">module</span>.<span class="property">name</span>,<span class="string">&quot;地址：&quot;</span>+retval,<span class="string">&quot;偏移：&quot;</span>+retval.<span class="title function_">sub</span>(<span class="variable language_">module</span>.<span class="property">base</span>));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">hook_dlsym</span>()</span><br></pre></td></tr></table></figure>]]></content>
+    <title>Java</title>
+    <url>/2024/05/01/Java/</url>
+    <content><![CDATA[]]></content>
       <categories>
-        <category>Frida</category>
+        <category>编程语言</category>
       </categories>
       <tags>
-        <tag>Frida</tag>
+        <tag>Java</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>adb: Android调试桥</title>
+    <url>/2024/12/07/adb-Android%E8%B0%83%E8%AF%95%E6%A1%A5/</url>
+    <content><![CDATA[<p>Android 调试桥 (adb) 是一种功能多样的命令行工具，可以通过命令行与设备进行通信。</p>
+<h1 id="查询设备"><a href="#查询设备" class="headerlink" title="查询设备"></a>查询设备</h1><ul>
+<li><code>adb devices</code><br>adb 会创建一个字符串，用于通过端口号唯一标识设备。</li>
+<li><code>adb devices -l</code><br>加入 -l 选项，devices 命令会告知设备是什么。当连接了多个设备时，此信息会很有用，方便区分这些设备。</li>
+</ul>
+<h2 id="设备状态"><a href="#设备状态" class="headerlink" title="设备状态"></a>设备状态</h2><ul>
+<li><code>offline</code>：设备未连接到 adb 或没有响应。</li>
+<li><code>device</code>：设备已连接到 adb 服务器。<br>请注意，此状态并不表示 Android 系统已完全启动并可正常运行，因为在设备连接到 adb 时系统仍在启动。系统完成启动后，设备通常处于此运行状态。</li>
+<li><code>no device</code>：未连接任何设备。</li>
+<li><code>unauthorized</code>：电脑与安卓设备之间的调试授权未完成。</li>
+</ul>
+<h2 id="指定目标设备（-s选项）"><a href="#指定目标设备（-s选项）" class="headerlink" title="指定目标设备（-s选项）"></a>指定目标设备（-s选项）</h2><ul>
+<li>如果有多个设备在运行，必须指定目标设备 。  </li>
+<li>使用 devices 命令获取目标设备的序列号。  </li>
+<li>获得序列号后，结合使用-s选项与 adb 命令来指定序列号。</li>
+</ul>
+<h1 id="安装应用"><a href="#安装应用" class="headerlink" title="安装应用"></a>安装应用</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">adb install path_to_apk</span><br></pre></td></tr></table></figure>
+
+<h1 id="卸载应用"><a href="#卸载应用" class="headerlink" title="卸载应用"></a>卸载应用</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">adb uninstall &lt;package_name&gt;</span><br></pre></td></tr></table></figure>
+
+<h1 id="端口转发（forward）"><a href="#端口转发（forward）" class="headerlink" title="端口转发（forward）"></a>端口转发（forward）</h1><p>可以使用 forward 命令设置任意端口转发，将特定主机端口上的请求转发到设备上的其他端口。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">adb forward tcp:6100 tcp:7100</span><br></pre></td></tr></table></figure>
+<h1 id="push与pull"><a href="#push与pull" class="headerlink" title="push与pull"></a>push与pull</h1><h2 id="push"><a href="#push" class="headerlink" title="push"></a>push</h2><p>如需将某个文件或目录（及其子目录）从PC端复制到Android端</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">adb push local remote</span><br></pre></td></tr></table></figure>
+<h2 id="pull"><a href="#pull" class="headerlink" title="pull"></a>pull</h2><p>从Android端复制某个文件或目录（及其子目录）到PC端</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">adb pull remote local</span><br></pre></td></tr></table></figure>
+<h1 id="停止-adb-服务器"><a href="#停止-adb-服务器" class="headerlink" title="停止 adb 服务器"></a>停止 adb 服务器</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">adb kill-server</span><br></pre></td></tr></table></figure>
+
+<p>停止 adb 服务器候，可以通过发出其他任何 adb 命令来重启服务器。</p>
+<h1 id="shell-命令"><a href="#shell-命令" class="headerlink" title="shell 命令"></a>shell 命令</h1><p>可以使用 shell 命令通过 adb 发出设备命令，也可以使用该命令启动交互式 shell。</p>
+<h1 id="软件包管理器"><a href="#软件包管理器" class="headerlink" title="软件包管理器"></a>软件包管理器</h1><ul>
+<li>列出所有已安装应用  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">adb shell pm list packages</span><br></pre></td></tr></table></figure></li>
+<li>列出安卓设备上的所有系统应用  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">adb shell pm list packages -s</span><br></pre></td></tr></table></figure></li>
+<li>列出所有用户应用（非系统应用）  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">adb shell pm list packages -3</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h1 id="屏幕截图"><a href="#屏幕截图" class="headerlink" title="屏幕截图"></a>屏幕截图</h1><p>在shell中，进入<code>/sdcard</code>目录下，使用命令<code>screencap filename</code><br>在PC端，从命令行使用 screencap，使用命令<code>adb shell screencap /sdcard/filename</code></p>
+]]></content>
+      <categories>
+        <category>逆向工具集</category>
+      </categories>
+      <tags>
+        <tag>adb</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/2024/11/28/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
   </entry>
   <entry>
     <title>frida环境搭建</title>
@@ -1188,7 +1187,7 @@
 <li><code>-h,--help</code><br>显示帮助信息，列出所有可用选项并退出。</li>
 <li><code>-U, --usb</code><br>通过 USB 连接到设备。</li>
 <li><code>-H HOST, --host=HOST</code><br>连接到指定 HOST 上的远程 frida-server。</li>
-<li><code>-D ID, --device=ID</code><br>连接到指定 ID 的设备。</li>
+<li>xxxxxxxxxx function hook_pthread_create(){    var pt_create_func &#x3D; Module.findExportByName(“libc.so”,”pthread_create”);    Interceptor.attach(pt_create_func,{        onEnter:function(args){            var so_name &#x3D; Process.findModuleByAddress(args[2]).name;            if(so_name.indexOf(“libxxx.so”)!&#x3D; -1){                console.log(“arg2”,args[2].sub(Module.findBaseAddress(“libxxx.so”)));                try{                    Interceptor.replace(args[2],new NativeCallback(function(){                        console.log(“replace success”);                        return null;                    },’void’,[“void”]));                }catch(e){​                }            }        },        onLeave:function(retval){​        }    })}hook_pthread_create();js</li>
 <li><code>-f FILE, --file=FILE</code><br>spawn模式，启动指定的文件（启动一个新的进程并挂起）。</li>
 <li><code>-F, --attach-frontmost</code><br>attach模式，附加到前台运行的应用程序。</li>
 <li><code>-n NAME, --attach-name=NAME</code><br>附加到指定名称的应用程序。</li>
@@ -1203,32 +1202,6 @@
       </categories>
       <tags>
         <tag>frida环境搭建</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>selenium</title>
-    <url>/2024/12/05/selenium/</url>
-    <content><![CDATA[<p>Selenium 是一个自动化测试工具，利用它我们可以驱动浏览器执行特定的动作。</p>
-<h1 id="安装ChromeDriver"><a href="#安装ChromeDriver" class="headerlink" title="安装ChromeDriver"></a>安装ChromeDriver</h1><p>Selenium的使用需要配合Chrome浏览器，需要额外安装ChromeDriver 和 Chrome 浏览器。<br>安装好Chrome 浏览器并可以正常运行之后，点击 Chrome 的菜单，帮助 -&gt; 关于 Chrome，查看 Chrome 的版本号，然后到ChromeDriver 的官方网站<a href="https://sites.google.com/chromium.org/driver/downloads">https://sites.google.com/chromium.org/driver/downloads</a>下载对应的ChromeDriver 版本。</p>
-<h2 id="环境变量配置"><a href="#环境变量配置" class="headerlink" title="环境变量配置"></a>环境变量配置</h2><p>Windows建议直接将 chromedriver.exe 文件拖到 Python 的 Scripts 目录下。<br>也可以单独将其所在路径配置到环境变量。<br>配置完成之后，就可以在命令行下直接执行 chromedriver 命令了。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">chromedriver</span><br></pre></td></tr></table></figure>
-<h1 id="安装Selenium"><a href="#安装Selenium" class="headerlink" title="安装Selenium"></a>安装Selenium</h1><p>使用pip直接安装</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pip install selenium</span><br></pre></td></tr></table></figure>
-<p><strong>可以运行一个脚本测试</strong><br>弹出一个 Chrome 浏览器并加载了百度页面，10 秒之后就关闭。</p>
-<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"><span class="keyword">from</span> time <span class="keyword">import</span> sleep</span><br><span class="line"></span><br><span class="line">browser = webdriver.Chrome()</span><br><span class="line">browser.get(<span class="string">&#x27;https://www.baidu.com&#x27;</span>)</span><br><span class="line">sleep(<span class="number">10</span>)</span><br><span class="line">browser.close() </span><br></pre></td></tr></table></figure>
-<h1 id="常用浏览器操作"><a href="#常用浏览器操作" class="headerlink" title="常用浏览器操作"></a>常用浏览器操作</h1><h2 id="打开页面"><a href="#打开页面" class="headerlink" title="打开页面"></a>打开页面</h2><figure class="highlight py"><table><tr><td class="code"><pre><span class="line">driver.get(<span class="string">&quot;https://xxx.com&quot;</span>)</span><br></pre></td></tr></table></figure>
-<h2 id="获取URL"><a href="#获取URL" class="headerlink" title="获取URL"></a>获取URL</h2><figure class="highlight py"><table><tr><td class="code"><pre><span class="line">url = driver.current_url</span><br></pre></td></tr></table></figure>
-<h2 id="获取标题"><a href="#获取标题" class="headerlink" title="获取标题"></a>获取标题</h2><figure class="highlight py"><table><tr><td class="code"><pre><span class="line">title = driver.title</span><br></pre></td></tr></table></figure>
-
-<h2 id="页面元素定位"><a href="#页面元素定位" class="headerlink" title="页面元素定位"></a>页面元素定位</h2><p>使用By类型（需要导入By）  </p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">from selenium.webdriver.common.by import By</span><br></pre></td></tr></table></figure>
-<h3 id="通过ID定位"><a href="#通过ID定位" class="headerlink" title="通过ID定位"></a>通过ID定位</h3><figure class="highlight py"><table><tr><td class="code"><pre><span class="line">element = driver.find_element(By.ID, <span class="string">&quot;xxx&quot;</span>)</span><br></pre></td></tr></table></figure>
-<h3 id="通过"><a href="#通过" class="headerlink" title="通过"></a>通过</h3>]]></content>
-      <categories>
-        <category>Python</category>
-      </categories>
-      <tags>
-        <tag>selenium</tag>
       </tags>
   </entry>
   <entry>
@@ -1292,6 +1265,90 @@
       </categories>
       <tags>
         <tag>博客</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>hook脚本大全</title>
+    <url>/2024/11/29/hook%E8%84%9A%E6%9C%AC%E5%A4%A7%E5%85%A8/</url>
+    <content><![CDATA[<h1 id="so层hook"><a href="#so层hook" class="headerlink" title="so层hook"></a>so层hook</h1><h2 id="hook-dlopen"><a href="#hook-dlopen" class="headerlink" title="hook_dlopen"></a>hook_dlopen</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">hook_dlopen</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="comment">// 在Android8.0之前加载so通过dlopen函数</span></span><br><span class="line">    <span class="keyword">var</span> dlopen = <span class="title class_">Module</span>.<span class="title function_">findExportByName</span>(<span class="literal">null</span>,<span class="string">&quot;dlopen&quot;</span>);</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;addr_dlopen&quot;</span>,dlopen);</span><br><span class="line">    <span class="title class_">Interceptor</span>.<span class="title function_">attach</span>(dlopen,&#123;</span><br><span class="line">        <span class="attr">onEnter</span>:<span class="keyword">function</span>(<span class="params">args</span>)&#123;</span><br><span class="line">            <span class="keyword">var</span> pathptr = args[<span class="number">0</span>];</span><br><span class="line">            <span class="keyword">if</span>(pathptr)&#123;</span><br><span class="line">                <span class="keyword">var</span> path = <span class="title function_">ptr</span>(pathptr).<span class="title function_">readCString</span>();</span><br><span class="line">                <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;dlopen:&quot;</span>,path);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">onLeave</span>:<span class="keyword">function</span>(<span class="params">retvel</span>)&#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;leave!&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//Android8.0之后加载so通过android_dlopen_ext函数</span></span><br><span class="line">    <span class="keyword">var</span> android_dlopen_ext = <span class="title class_">Module</span>.<span class="title function_">findExportByName</span>(<span class="literal">null</span>,<span class="string">&quot;android_dlopen_ext&quot;</span>);</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;addr_android_dlopen_ext&quot;</span>,android_dlopen_ext);</span><br><span class="line">    <span class="title class_">Interceptor</span>.<span class="title function_">attach</span>(android_dlopen_ext,&#123;</span><br><span class="line">        <span class="attr">onEnter</span>:<span class="keyword">function</span>(<span class="params">args</span>)&#123;</span><br><span class="line">            <span class="keyword">var</span> pathptr = args[<span class="number">0</span>];</span><br><span class="line">            <span class="keyword">if</span>(pathptr!=<span class="literal">null</span> &amp;&amp; pathptr != <span class="literal">undefined</span>)&#123;</span><br><span class="line">                <span class="keyword">var</span> path = <span class="title function_">ptr</span>(pathptr).<span class="title function_">readCString</span>();</span><br><span class="line">                <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;android_dlopen_ext:&quot;</span>,path);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">onLeave</span>:<span class="keyword">function</span>(<span class="params">retvel</span>)&#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;leave!&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">hook_dlopen</span>()</span><br></pre></td></tr></table></figure>
+<h2 id="hook-pthread"><a href="#hook-pthread" class="headerlink" title="hook_pthread"></a>hook_pthread</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">hook_pthread_create</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="keyword">var</span> pt_create_func = <span class="title class_">Module</span>.<span class="title function_">findExportByName</span>(<span class="string">&quot;libc.so&quot;</span>,<span class="string">&quot;pthread_create&quot;</span>);</span><br><span class="line">    <span class="title class_">Interceptor</span>.<span class="title function_">attach</span>(pt_create_func,&#123;</span><br><span class="line">        <span class="attr">onEnter</span>:<span class="keyword">function</span>(<span class="params">args</span>)&#123;</span><br><span class="line">            <span class="keyword">var</span> so_name = <span class="title class_">Process</span>.<span class="title function_">findModuleByAddress</span>(args[<span class="number">2</span>]).<span class="property">name</span>;</span><br><span class="line">            <span class="comment">// if(so_name.indexOf(&quot;libxxx.so&quot;)!= -1)&#123;</span></span><br><span class="line">            <span class="comment">//     //console.log(&quot;arg2&quot;,args[2].sub(Module.findBaseAddress(&quot;libxxx.so&quot;)))</span></span><br><span class="line">            <span class="comment">//     try&#123;</span></span><br><span class="line">            <span class="comment">//         Interceptor.replace(args[2],new NativeCallback(function()&#123;</span></span><br><span class="line">            <span class="comment">//             console.log(&quot;replace success&quot;);</span></span><br><span class="line">            <span class="comment">//             return null;</span></span><br><span class="line">            <span class="comment">//         &#125;,&#x27;void&#x27;,[&quot;void&quot;]));</span></span><br><span class="line">            <span class="comment">//     &#125;catch(e)&#123;</span></span><br><span class="line"></span><br><span class="line">            <span class="comment">//     &#125;</span></span><br><span class="line">            <span class="comment">// &#125;</span></span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;arg2&quot;</span>,args[<span class="number">2</span>]);</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">onLeave</span>:<span class="keyword">function</span>(<span class="params">retval</span>)&#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">hook_pthread_create</span>();</span><br></pre></td></tr></table></figure>
+<h2 id="hook-RegisterNatives"><a href="#hook-RegisterNatives" class="headerlink" title="hook_RegisterNatives"></a>hook_RegisterNatives</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">hook_RegisterNatives</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> <span class="title class_">RegisterNatives</span>_addr = <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">var</span> symbols = <span class="title class_">Process</span>.<span class="title function_">findModuleByName</span>(<span class="string">&quot;libart.so&quot;</span>).<span class="title function_">enumerateSymbols</span>();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; symbols.<span class="property">length</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">var</span> symbol = symbols[i].<span class="property">name</span>;</span><br><span class="line">        <span class="keyword">if</span> ((symbol.<span class="title function_">indexOf</span>(<span class="string">&quot;CheckJNI&quot;</span>) == -<span class="number">1</span>) &amp;&amp; (symbol.<span class="title function_">indexOf</span>(<span class="string">&quot;JNI&quot;</span>) &gt;= <span class="number">0</span>)) &#123;</span><br><span class="line">            <span class="keyword">if</span> (symbol.<span class="title function_">indexOf</span>(<span class="string">&quot;RegisterNatives&quot;</span>) &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="title class_">RegisterNatives</span>_addr = symbols[i].<span class="property">address</span>;</span><br><span class="line">                <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;RegisterNatives_addr: &quot;</span>, <span class="title class_">RegisterNatives</span>_addr);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="title class_">Interceptor</span>.<span class="title function_">attach</span>(<span class="title class_">RegisterNatives</span>_addr, &#123;</span><br><span class="line">        <span class="attr">onEnter</span>: <span class="keyword">function</span> (<span class="params">args</span>) &#123;</span><br><span class="line">            <span class="keyword">var</span> env = args[<span class="number">0</span>];</span><br><span class="line">            <span class="keyword">var</span> jclass = args[<span class="number">1</span>];</span><br><span class="line">            <span class="keyword">var</span> class_name = <span class="title class_">Java</span>.<span class="property">vm</span>.<span class="title function_">tryGetEnv</span>().<span class="title function_">getClassName</span>(jclass);</span><br><span class="line">            <span class="keyword">var</span> methods_ptr = <span class="title function_">ptr</span>(args[<span class="number">2</span>]);</span><br><span class="line">            <span class="keyword">var</span> method_count = args[<span class="number">3</span>].<span class="title function_">toInt32</span>();</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;RegisterNatives method counts: &quot;</span>, method_count);</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; method_count; i++) &#123;</span><br><span class="line">                <span class="keyword">var</span> name = methods_ptr.<span class="title function_">add</span>(i * <span class="title class_">Process</span>.<span class="property">pointerSize</span> * <span class="number">3</span>).<span class="title function_">readPointer</span>().<span class="title function_">readCString</span>();</span><br><span class="line">                <span class="keyword">var</span> sig = methods_ptr.<span class="title function_">add</span>(i * <span class="title class_">Process</span>.<span class="property">pointerSize</span> * <span class="number">3</span> + <span class="title class_">Process</span>.<span class="property">pointerSize</span>).<span class="title function_">readPointer</span>().<span class="title function_">readCString</span>();</span><br><span class="line">                <span class="keyword">var</span> fnPtr_ptr = methods_ptr.<span class="title function_">add</span>(i * <span class="title class_">Process</span>.<span class="property">pointerSize</span> * <span class="number">3</span> + <span class="title class_">Process</span>.<span class="property">pointerSize</span> * <span class="number">2</span>).<span class="title function_">readPointer</span>();</span><br><span class="line">                <span class="keyword">var</span> find_module = <span class="title class_">Process</span>.<span class="title function_">findModuleByAddress</span>(fnPtr_ptr);</span><br><span class="line">                <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;ClasssName: &quot;</span>, class_name, <span class="string">&quot;MethodName: &quot;</span>, name, <span class="string">&quot;Sig: &quot;</span>, sig, <span class="string">&quot;Function_addr: &quot;</span>, fnPtr_ptr, <span class="string">&quot;ModuleName: &quot;</span>, find_module.<span class="property">name</span>, <span class="string">&quot;Fun_Offset: &quot;</span>, <span class="title function_">ptr</span>(fnPtr_ptr).<span class="title function_">sub</span>(find_module.<span class="property">base</span>));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">onLeave</span>: <span class="keyword">function</span> (<span class="params">retval</span>) &#123;&#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">hook_RegisterNatives</span>()</span><br></pre></td></tr></table></figure>
+<h2 id="hook-dlsym"><a href="#hook-dlsym" class="headerlink" title="hook_dlsym"></a>hook_dlsym</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">hook_dlsym</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="comment">// 获取dlsym函数的地址</span></span><br><span class="line">    <span class="keyword">let</span> dlsymAddr = <span class="title class_">Module</span>.<span class="title function_">findExportByName</span>(<span class="string">&quot;libdl.so&quot;</span>,<span class="string">&quot;dlsym&quot;</span>);</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(dlsymAddr);</span><br><span class="line">    <span class="comment">// hook dlsym</span></span><br><span class="line">    <span class="title class_">Interceptor</span>.<span class="title function_">attach</span>(dlsymAddr,&#123;</span><br><span class="line">        <span class="attr">onEnter</span>:<span class="keyword">function</span>(<span class="params">args</span>)&#123;</span><br><span class="line">            <span class="variable language_">this</span>.<span class="property">args1</span> = args[<span class="number">1</span>];</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">onLeave</span>:<span class="keyword">function</span>(<span class="params">retval</span>)&#123;</span><br><span class="line">            <span class="keyword">let</span> <span class="variable language_">module</span>= <span class="title class_">Process</span>.<span class="title function_">findModuleByAddress</span>(retval);</span><br><span class="line">            <span class="keyword">if</span>(<span class="variable language_">module</span>==<span class="literal">null</span>)<span class="keyword">return</span>;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;函数：&quot;</span>+<span class="variable language_">this</span>.<span class="property">args1</span>.<span class="title function_">readCString</span>(),<span class="string">&quot;模块：&quot;</span>+<span class="variable language_">module</span>.<span class="property">name</span>,<span class="string">&quot;地址：&quot;</span>+retval,<span class="string">&quot;偏移：&quot;</span>+retval.<span class="title function_">sub</span>(<span class="variable language_">module</span>.<span class="property">base</span>));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">hook_dlsym</span>()</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Frida</category>
+      </categories>
+      <tags>
+        <tag>Frida</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>selenium</title>
+    <url>/2024/12/05/selenium/</url>
+    <content><![CDATA[<p>Selenium 是一个自动化测试工具，利用它我们可以驱动浏览器执行特定的动作。</p>
+<h1 id="安装ChromeDriver"><a href="#安装ChromeDriver" class="headerlink" title="安装ChromeDriver"></a>安装ChromeDriver</h1><p>Selenium的使用需要配合Chrome浏览器，需要额外安装ChromeDriver 和 Chrome 浏览器。<br>安装好Chrome 浏览器并可以正常运行之后，点击 Chrome 的菜单，帮助 -&gt; 关于 Chrome，查看 Chrome 的版本号，然后到ChromeDriver 的官方网站<a href="https://sites.google.com/chromium.org/driver/downloads">https://sites.google.com/chromium.org/driver/downloads</a>下载对应的ChromeDriver 版本。</p>
+<h2 id="环境变量配置"><a href="#环境变量配置" class="headerlink" title="环境变量配置"></a>环境变量配置</h2><p>Windows建议直接将 chromedriver.exe 文件拖到 Python 的 Scripts 目录下。<br>也可以单独将其所在路径配置到环境变量。<br>配置完成之后，就可以在命令行下直接执行 chromedriver 命令了。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">chromedriver</span><br></pre></td></tr></table></figure>
+<h1 id="安装Selenium"><a href="#安装Selenium" class="headerlink" title="安装Selenium"></a>安装Selenium</h1><p>使用pip直接安装</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pip install selenium</span><br></pre></td></tr></table></figure>
+<p><strong>可以运行一个脚本测试</strong><br>弹出一个 Chrome 浏览器并加载了百度页面，10 秒之后就关闭。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"><span class="keyword">from</span> time <span class="keyword">import</span> sleep</span><br><span class="line"></span><br><span class="line">browser = webdriver.Chrome()</span><br><span class="line">browser.get(<span class="string">&#x27;https://www.baidu.com&#x27;</span>)</span><br><span class="line">sleep(<span class="number">10</span>)</span><br><span class="line">browser.close() </span><br></pre></td></tr></table></figure>
+<h1 id="常用浏览器操作"><a href="#常用浏览器操作" class="headerlink" title="常用浏览器操作"></a>常用浏览器操作</h1><h2 id="打开页面"><a href="#打开页面" class="headerlink" title="打开页面"></a>打开页面</h2><figure class="highlight py"><table><tr><td class="code"><pre><span class="line">driver.get(<span class="string">&quot;https://xxx.com&quot;</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="获取URL"><a href="#获取URL" class="headerlink" title="获取URL"></a>获取URL</h2><figure class="highlight py"><table><tr><td class="code"><pre><span class="line">url = driver.current_url</span><br></pre></td></tr></table></figure>
+<h2 id="获取标题"><a href="#获取标题" class="headerlink" title="获取标题"></a>获取标题</h2><figure class="highlight py"><table><tr><td class="code"><pre><span class="line">title = driver.title</span><br></pre></td></tr></table></figure>
+
+<h2 id="页面元素定位"><a href="#页面元素定位" class="headerlink" title="页面元素定位"></a>页面元素定位</h2><p>使用By类型（需要导入By）  </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">from selenium.webdriver.common.by import By</span><br></pre></td></tr></table></figure>
+<h3 id="通过ID定位"><a href="#通过ID定位" class="headerlink" title="通过ID定位"></a>通过ID定位</h3><figure class="highlight py"><table><tr><td class="code"><pre><span class="line">element = driver.find_element(By.ID, <span class="string">&quot;xxx&quot;</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="通过"><a href="#通过" class="headerlink" title="通过"></a>通过</h3>]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>selenium</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>关于ptrace</title>
+    <url>/2024/12/22/%E5%85%B3%E4%BA%8Eptrace/</url>
+    <content><![CDATA[<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>&emsp;&emsp;<code>ptrace</code> 是一个系统调用，允许一个进程（父进程即调试器）观察和控制另一个进程（子进程即被调试的目标进程）。同时，它还能检查和改变目标进程的内存、寄存器和执行状态。这种机制广泛用于调试器和逆向分析工具。</p>
+<h1 id="ptrace-函数原型"><a href="#ptrace-函数原型" class="headerlink" title="ptrace 函数原型"></a>ptrace 函数原型</h1><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;sys/ptrace.h&gt;</span></span></span><br><span class="line"><span class="type">long</span> <span class="title function_">ptrace</span><span class="params">(<span class="keyword">enum</span> __ptrace_request request, <span class="type">pid_t</span> pid, <span class="type">void</span> *addr, <span class="type">void</span> *data)</span>;</span><br></pre></td></tr></table></figure>
+
+<p><strong><code>request</code></strong><br>指定执行的操作，决定了 <code>ptrace</code> 的具体功能，比如追踪进程、读取内存、单步执行等。常见值如下：</p>
+<ul>
+<li><code>PTRACE_TRACEME</code>：表示当前进程希望被其父进程调试。</li>
+<li><code>PTRACE_ATTACH</code>：将当前进程附加到目标进程上。</li>
+<li><code>PTRACE_CONT</code>：继续运行目标进程。</li>
+<li><code>PTRACE_PEEKDATA</code>：读取目标进程的内存。</li>
+<li><code>PTRACE_POKEDATA</code>：写入目标进程的内存。</li>
+<li><code>PTRACE_SINGLESTEP</code>：让目标进程执行单条指令。</li>
+<li><code>PTRACE_GETREGS</code> 和 <code>PTRACE_SETREGS</code>：获取或设置目标进程的寄存器。</li>
+<li>其他值：具体见系统调用文档。</li>
+</ul>
+<p><strong><code>pid</code></strong><br>指定目标进程的 PID（进程 ID）。</p>
+<p><strong><code>addr</code></strong><br>表示地址参数：</p>
+<ul>
+<li>对于内存相关操作（如 <code>PTRACE_PEEKDATA</code> 和 <code>PTRACE_POKEDATA</code>），这是目标进程的内存地址。</li>
+<li>对于寄存器操作，可以忽略此参数。</li>
+</ul>
+<p><strong><code>data</code></strong><br>根据操作的不同，此参数可以用作输入或输出：</p>
+<ul>
+<li>用于传递写入目标进程的值。</li>
+<li>保存读取到的数据（如寄存器内容）。</li>
+</ul>
+<p>&emsp;&emsp;当一个调试器（如 <code>gdb</code> 或自定义调试器）使用 <code>ptrace(PTRACE_ATTACH)</code> 附加到目标进程时，内核会更新目标进程的 <code>TracerPid</code> 字段，记录调试器的 PID。</p>
+<h1 id="TracerPid"><a href="#TracerPid" class="headerlink" title="TracerPid"></a>TracerPid</h1><p>&emsp;&emsp;<code>/proc/&lt;pid&gt;/status</code> 文件中的 <code>TracerPid</code> 字段与 <code>ptrace</code> 密切相关，<code>TracerPid</code> 表示该进程的调试状态。</p>
+<ul>
+<li><p><code>TracerPid: 0</code> 表示当前进程没有被调试。</p>
+</li>
+<li><p><code>TracerPid: &lt;pid&gt;</code> 表示该进程正在被调试，且调试器的进程 ID 是 <code>&lt;pid&gt;</code>。</p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Android系统</category>
+      </categories>
+      <tags>
+        <tag>ptrace</tag>
       </tags>
   </entry>
   <entry>
@@ -1448,6 +1505,47 @@
       </tags>
   </entry>
   <entry>
+    <title>玩转Windows</title>
+    <url>/2024/12/01/%E7%8E%A9%E8%BD%ACWindows/</url>
+    <content><![CDATA[<h1 id="新机跳过联网"><a href="#新机跳过联网" class="headerlink" title="新机跳过联网"></a>新机跳过联网</h1><p>在连接网络的界面输入<code>Shift+F10</code>打开命令行，然后输入<code>oobe\bypassnro</code>然后会重启，重启后，在联网的界面会出现跳过的选项。</p>
+<h1 id="关于编码"><a href="#关于编码" class="headerlink" title="关于编码"></a>关于编码</h1><p>在中国大陆Windows使用的编码是GBK编码。</p>
+<h1 id="“运行”对话框"><a href="#“运行”对话框" class="headerlink" title="“运行”对话框"></a>“运行”对话框</h1><p>通过按下Win（Windows徽标键）和R键的组合来快速打开运行对话框，然后输入特定的命令或程序路径来运行程序或打开文件。</p>
+<ul>
+<li><code>cmd</code><br>打开控制台</li>
+<li><code>winver</code><br>查看系统版本</li>
+<li><code>control</code><br>打开控制面板</li>
+<li><code>calc</code><br>打开计算器</li>
+</ul>
+<h1 id="Terminal（终端）"><a href="#Terminal（终端）" class="headerlink" title="Terminal（终端）"></a>Terminal（终端）</h1>]]></content>
+      <categories>
+        <category>Windows</category>
+      </categories>
+      <tags>
+        <tag>玩转Windows</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>玩转Python</title>
+    <url>/2024/12/05/%E7%8E%A9%E8%BD%ACPython/</url>
+    <content><![CDATA[<h1 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h1><p>需要配置的环境变量是python的安装路径和它的Scripts目录。<br><img src="/2024/12/05/%E7%8E%A9%E8%BD%ACPython/1.jpg"><br>python的安装路径下有python.exe。<br>Scripts目录下有pip.exe和我们安装的第三方库。</p>
+<h1 id="python-exe"><a href="#python-exe" class="headerlink" title="python.exe"></a>python.exe</h1><h1 id="虚拟环境"><a href="#虚拟环境" class="headerlink" title="虚拟环境"></a>虚拟环境</h1><p>使用<code>virtualenv</code>来创建虚拟环境。  </p>
+<h2 id="安装virtualenv"><a href="#安装virtualenv" class="headerlink" title="安装virtualenv"></a>安装virtualenv</h2><figure class="highlight py"><table><tr><td class="code"><pre><span class="line">pip install virtualenv</span><br></pre></td></tr></table></figure>
+<h2 id="创建虚拟环境"><a href="#创建虚拟环境" class="headerlink" title="创建虚拟环境"></a>创建虚拟环境</h2><figure class="highlight py"><table><tr><td class="code"><pre><span class="line">virtualenv &lt;envName&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># &lt;envName&gt;是我们给虚拟环境起的名字</span></span><br></pre></td></tr></table></figure>
+<p>会在当前目录下创建一个文件夹，里面包含了Python解释器的副本和一套标准库。  </p>
+<h2 id="激活虚拟机环境"><a href="#激活虚拟机环境" class="headerlink" title="激活虚拟机环境"></a>激活虚拟机环境</h2><p>在虚拟环境目录下的Scripts目录里，有一个activate.exe，运行它，虚拟环境就生效了。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">activate</span><br></pre></td></tr></table></figure>
+<p>激活虚拟环境后，你会看到命令行提示符前出现环境名称，表明当前是在该虚拟环境中操作。</p>
+<h2 id="退出虚拟环境"><a href="#退出虚拟环境" class="headerlink" title="退出虚拟环境"></a>退出虚拟环境</h2><p>执行<code>deactivate</code>退出虚拟环境。</p>
+<h1 id="HTTP服务器"><a href="#HTTP服务器" class="headerlink" title="HTTP服务器"></a>HTTP服务器</h1><p>命令行运行<code>python -m http.server [port]</code>，创建http服务器，默认端口是8000。</p>
+]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>玩转Python</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>腾讯游戏安全移动赛题Tencent2016A</title>
     <url>/2024/12/21/%E8%85%BE%E8%AE%AF%E6%B8%B8%E6%88%8F%E5%AE%89%E5%85%A8%E7%A7%BB%E5%8A%A8%E8%B5%9B%E9%A2%98Tencent2016A/</url>
     <content><![CDATA[<h1 id="App信息"><a href="#App信息" class="headerlink" title="App信息"></a>App信息</h1><p>包名：com.tencent.tencent2016a</p>
@@ -1502,46 +1600,57 @@
 
 <h2 id="验证成功"><a href="#验证成功" class="headerlink" title="验证成功"></a>验证成功</h2><p><img src="/2024/12/21/%E8%85%BE%E8%AE%AF%E6%B8%B8%E6%88%8F%E5%AE%89%E5%85%A8%E7%A7%BB%E5%8A%A8%E8%B5%9B%E9%A2%98Tencent2016A/11.jpg"></p>
 ]]></content>
-  </entry>
-  <entry>
-    <title>玩转Python</title>
-    <url>/2024/12/05/%E7%8E%A9%E8%BD%ACPython/</url>
-    <content><![CDATA[<h1 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h1><p>需要配置的环境变量是python的安装路径和它的Scripts目录。<br><img src="/2024/12/05/%E7%8E%A9%E8%BD%ACPython/1.jpg"><br>python的安装路径下有python.exe。<br>Scripts目录下有pip.exe和我们安装的第三方库。</p>
-<h1 id="python-exe"><a href="#python-exe" class="headerlink" title="python.exe"></a>python.exe</h1><h1 id="虚拟环境"><a href="#虚拟环境" class="headerlink" title="虚拟环境"></a>虚拟环境</h1><p>使用<code>virtualenv</code>来创建虚拟环境。  </p>
-<h2 id="安装virtualenv"><a href="#安装virtualenv" class="headerlink" title="安装virtualenv"></a>安装virtualenv</h2><figure class="highlight py"><table><tr><td class="code"><pre><span class="line">pip install virtualenv</span><br></pre></td></tr></table></figure>
-<h2 id="创建虚拟环境"><a href="#创建虚拟环境" class="headerlink" title="创建虚拟环境"></a>创建虚拟环境</h2><figure class="highlight py"><table><tr><td class="code"><pre><span class="line">virtualenv &lt;envName&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># &lt;envName&gt;是我们给虚拟环境起的名字</span></span><br></pre></td></tr></table></figure>
-<p>会在当前目录下创建一个文件夹，里面包含了Python解释器的副本和一套标准库。  </p>
-<h2 id="激活虚拟机环境"><a href="#激活虚拟机环境" class="headerlink" title="激活虚拟机环境"></a>激活虚拟机环境</h2><p>在虚拟环境目录下的Scripts目录里，有一个activate.exe，运行它，虚拟环境就生效了。</p>
-<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">activate</span><br></pre></td></tr></table></figure>
-<p>激活虚拟环境后，你会看到命令行提示符前出现环境名称，表明当前是在该虚拟环境中操作。</p>
-<h2 id="退出虚拟环境"><a href="#退出虚拟环境" class="headerlink" title="退出虚拟环境"></a>退出虚拟环境</h2><p>执行<code>deactivate</code>退出虚拟环境。</p>
-<h1 id="HTTP服务器"><a href="#HTTP服务器" class="headerlink" title="HTTP服务器"></a>HTTP服务器</h1><p>命令行运行<code>python -m http.server [port]</code>，创建http服务器，默认端口是8000。</p>
-]]></content>
       <categories>
-        <category>Python</category>
+        <category>逆向实战案例</category>
       </categories>
       <tags>
-        <tag>玩转Python</tag>
+        <tag>Tencent2016A</tag>
       </tags>
   </entry>
   <entry>
-    <title>玩转Windows</title>
-    <url>/2024/12/01/%E7%8E%A9%E8%BD%ACWindows/</url>
-    <content><![CDATA[<h1 id="新机跳过联网"><a href="#新机跳过联网" class="headerlink" title="新机跳过联网"></a>新机跳过联网</h1><p>在连接网络的界面输入<code>Shift+F10</code>打开命令行，然后输入<code>oobe\bypassnro</code>然后会重启，重启后，在联网的界面会出现跳过的选项。</p>
-<h1 id="关于编码"><a href="#关于编码" class="headerlink" title="关于编码"></a>关于编码</h1><p>在中国大陆Windows使用的编码是GBK编码。</p>
-<h1 id="“运行”对话框"><a href="#“运行”对话框" class="headerlink" title="“运行”对话框"></a>“运行”对话框</h1><p>通过按下Win（Windows徽标键）和R键的组合来快速打开运行对话框，然后输入特定的命令或程序路径来运行程序或打开文件。</p>
-<ul>
-<li><code>cmd</code><br>打开控制台</li>
-<li><code>winver</code><br>查看系统版本</li>
-<li><code>control</code><br>打开控制面板</li>
-<li><code>calc</code><br>打开计算器</li>
-</ul>
-<h1 id="Terminal（终端）"><a href="#Terminal（终端）" class="headerlink" title="Terminal（终端）"></a>Terminal（终端）</h1>]]></content>
+    <title>自毁程序密码—阿里聚安全</title>
+    <url>/2024/12/22/%E8%87%AA%E6%AF%81%E7%A8%8B%E5%BA%8F%E5%AF%86%E7%A0%81%E2%80%94%E9%98%BF%E9%87%8C%E8%81%9A%E5%AE%89%E5%85%A8/</url>
+    <content><![CDATA[<h1 id="App信息"><a href="#App信息" class="headerlink" title="App信息"></a>App信息</h1><p>包名：com.yaotong.crackme</p>
+<p><img src="/2024/12/22/%E8%87%AA%E6%AF%81%E7%A8%8B%E5%BA%8F%E5%AF%86%E7%A0%81%E2%80%94%E9%98%BF%E9%87%8C%E8%81%9A%E5%AE%89%E5%85%A8/1.jpg"></p>
+<h2 id="Java层分析"><a href="#Java层分析" class="headerlink" title="Java层分析"></a>Java层分析</h2><h3 id="MainActivity"><a href="#MainActivity" class="headerlink" title="MainActivity"></a>MainActivity</h3><p><img src="/2024/12/22/%E8%87%AA%E6%AF%81%E7%A8%8B%E5%BA%8F%E5%AF%86%E7%A0%81%E2%80%94%E9%98%BF%E9%87%8C%E8%81%9A%E5%AE%89%E5%85%A8/2.jpg"></p>
+<p>很容易就能看出来是在securityCheck函数里进行安全校验。securityCheck是一个native函数，到so中进行分析。</p>
+<h1 id="SO层分析"><a href="#SO层分析" class="headerlink" title="SO层分析"></a>SO层分析</h1><h2 id="定位函数位置"><a href="#定位函数位置" class="headerlink" title="定位函数位置"></a>定位函数位置</h2><p>在导出函数里搜索</p>
+<p><img src="/2024/12/22/%E8%87%AA%E6%AF%81%E7%A8%8B%E5%BA%8F%E5%AF%86%E7%A0%81%E2%80%94%E9%98%BF%E9%87%8C%E8%81%9A%E5%AE%89%E5%85%A8/3.jpg"></p>
+<h2 id="securityCheck"><a href="#securityCheck" class="headerlink" title="securityCheck"></a>securityCheck</h2><p>数据类型修复和重命名后的securityCheck</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> __fastcall <span class="title function_">Java_com_yaotong_crackme_MainActivity_securityCheck</span><span class="params">(JNIEnv *a1, jobject a2, <span class="type">char</span> *str)</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">const</span> <span class="type">char</span> *inputStr; <span class="comment">// r0</span></span><br><span class="line">  <span class="type">char</span> *wojiushidaan; <span class="comment">// r2</span></span><br><span class="line">  <span class="type">int</span> tempResult; <span class="comment">// r3</span></span><br><span class="line">  <span class="type">int</span> v8; <span class="comment">// r1</span></span><br><span class="line">​</span><br><span class="line">  <span class="keyword">if</span> ( !byte_6359 )</span><br><span class="line">  &#123;</span><br><span class="line">    sub_2494(byte_6304, <span class="number">8</span>, &amp;unk_446B, &amp;unk_4468, <span class="number">2</span>, <span class="number">7</span>);</span><br><span class="line">    byte_6359 = <span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> ( !byte_635A )</span><br><span class="line">  &#123;</span><br><span class="line">    sub_24F4(byte_636C, <span class="number">25</span>, &amp;unk_4530, &amp;unk_4474, <span class="number">3</span>, <span class="number">117</span>);</span><br><span class="line">    byte_635A = <span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  _android_log_print(<span class="number">4</span>, byte_6304, byte_636C);</span><br><span class="line">  inputStr = (*a1)-&gt;GetStringUTFChars(a1, str, <span class="number">0</span>);</span><br><span class="line">  wojiushidaan = off_628C;</span><br><span class="line">  <span class="keyword">while</span> ( <span class="number">1</span> )</span><br><span class="line">  &#123;</span><br><span class="line">    tempResult = *wojiushidaan;</span><br><span class="line">    <span class="keyword">if</span> ( tempResult != *inputStr )</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    ++wojiushidaan;</span><br><span class="line">    ++inputStr;</span><br><span class="line">    v8 = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span> ( !tempResult )</span><br><span class="line">      <span class="keyword">return</span> v8;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="off-628C"><a href="#off-628C" class="headerlink" title="off_628C"></a>off_628C</h3><p>进入off_628C偏移查看，它的内容是”wojiushidaan”</p>
+<p><img src="/2024/12/22/%E8%87%AA%E6%AF%81%E7%A8%8B%E5%BA%8F%E5%AF%86%E7%A0%81%E2%80%94%E9%98%BF%E9%87%8C%E8%81%9A%E5%AE%89%E5%85%A8/4.jpg"></p>
+<p>数据查看</p>
+<p><img src="/2024/12/22/%E8%87%AA%E6%AF%81%E7%A8%8B%E5%BA%8F%E5%AF%86%E7%A0%81%E2%80%94%E9%98%BF%E9%87%8C%E8%81%9A%E5%AE%89%E5%85%A8/5.jpg"></p>
+<p>结合securityCheck函数分析，我觉得这就是正确答案了。</p>
+<p>可是输入之后，还是校验失败。</p>
+<p><img src="/2024/12/22/%E8%87%AA%E6%AF%81%E7%A8%8B%E5%BA%8F%E5%AF%86%E7%A0%81%E2%80%94%E9%98%BF%E9%87%8C%E8%81%9A%E5%AE%89%E5%85%A8/6.jpg"></p>
+<p>无奈只能动态调试</p>
+<h1 id="动态调试"><a href="#动态调试" class="headerlink" title="动态调试"></a>动态调试</h1><p>IDA动态调试环境配置这里不再介绍。</p>
+<h2 id="附加进程"><a href="#附加进程" class="headerlink" title="附加进程"></a>附加进程</h2><p>这里我们选择附加到进程</p>
+<p><img src="/2024/12/22/%E8%87%AA%E6%AF%81%E7%A8%8B%E5%BA%8F%E5%AF%86%E7%A0%81%E2%80%94%E9%98%BF%E9%87%8C%E8%81%9A%E5%AE%89%E5%85%A8/7.jpg"></p>
+<p>附加进程之后，我们运行一下，会发现，程序崩了，IDA也崩了，说明这个so是有反调试的。</p>
+<h2 id="反调试绕过"><a href="#反调试绕过" class="headerlink" title="反调试绕过"></a>反调试绕过</h2><p>猜测反调试是通过线程进行循环检测的。</p>
+<p>打开线程窗口</p>
+<p><img src="/2024/12/22/%E8%87%AA%E6%AF%81%E7%A8%8B%E5%BA%8F%E5%AF%86%E7%A0%81%E2%80%94%E9%98%BF%E9%87%8C%E8%81%9A%E5%AE%89%E5%85%A8/8.jpg"></p>
+<p>发现一个线程<code>yaotong.crackme</code>，有点可疑，右键这个线程，将状态改为suspend，暂停这个线程。</p>
+<p><img src="/2024/12/22/%E8%87%AA%E6%AF%81%E7%A8%8B%E5%BA%8F%E5%AF%86%E7%A0%81%E2%80%94%E9%98%BF%E9%87%8C%E8%81%9A%E5%AE%89%E5%85%A8/9.jpg"></p>
+<p>然后运行，程序没有挂掉，可以进行调试。</p>
+<h2 id="断点调试"><a href="#断点调试" class="headerlink" title="断点调试"></a>断点调试</h2><p>打开Modules窗口，找到libcrackme.so，双击进去，找到securityCheck函数，双击该函数跳转到函数的位置。</p>
+<p><img src="/2024/12/22/%E8%87%AA%E6%AF%81%E7%A8%8B%E5%BA%8F%E5%AF%86%E7%A0%81%E2%80%94%E9%98%BF%E9%87%8C%E8%81%9A%E5%AE%89%E5%85%A8/10.jpg"></p>
+<p>在这个函数起始的位置下一个断点，将光标移动到断点位置，按下快捷键F，然后在输入框输入任意数据，点击输入密码，程序就会运行到断点位置。</p>
+<p>F5查看反汇编，找到原来的变量偏移地址处，发现数据变了，变成了<code>aiyou,bucuoo</code></p>
+<p><img src="/2024/12/22/%E8%87%AA%E6%AF%81%E7%A8%8B%E5%BA%8F%E5%AF%86%E7%A0%81%E2%80%94%E9%98%BF%E9%87%8C%E8%81%9A%E5%AE%89%E5%85%A8/11.jpg"></p>
+<p><img src="/2024/12/22/%E8%87%AA%E6%AF%81%E7%A8%8B%E5%BA%8F%E5%AF%86%E7%A0%81%E2%80%94%E9%98%BF%E9%87%8C%E8%81%9A%E5%AE%89%E5%85%A8/12.jpg"></p>
+<h2 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h2><p>将<code>aiyou,bucuoo</code>放进输入框，点击输入密码，跳转到成功界面。</p>
+<p><img src="/2024/12/22/%E8%87%AA%E6%AF%81%E7%A8%8B%E5%BA%8F%E5%AF%86%E7%A0%81%E2%80%94%E9%98%BF%E9%87%8C%E8%81%9A%E5%AE%89%E5%85%A8/13.jpg"></p>
+]]></content>
       <categories>
-        <category>Windows</category>
+        <category>逆向实战案例</category>
       </categories>
       <tags>
-        <tag>玩转Windows</tag>
+        <tag>自毁程序密码</tag>
       </tags>
   </entry>
 </search>
