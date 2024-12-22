@@ -1,36 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Android启动流程分析</title>
-    <url>/2024/12/19/Android%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B%E5%88%86%E6%9E%90/</url>
-    <content><![CDATA[<p>本篇以从按下开机键开始至设备桌面图标出现进行分析。</p>
-<h1 id="Bootloader"><a href="#Bootloader" class="headerlink" title="Bootloader"></a>Bootloader</h1><p>&emsp;​&emsp;长按开机键，设备通电，从Boot ROM开始，Boot ROM是芯片上的一段只读存储器，存储设备的启动代码，一般是固定的，用于检测基本硬件的存在，验证 Bootloader 的完整性和安全性，并加载BootLoader到RAM，将控制权移交给BootLoader。</p>
-<p>&emsp;​&emsp;​BootLoader对硬件进行基本初始化，从存储设备中读取Android系统Linux内核镜像，通常是boot.img文件，将内核加载到内存中，并将控制权移交给内核。</p>
-<h1 id="Linux内核启动"><a href="#Linux内核启动" class="headerlink" title="Linux内核启动"></a>Linux内核启动</h1><p>&emsp;​&emsp;内核启动后会完成复杂的硬件初始化并挂载根文件系统，然后执行第一个用户空间进程<code>init</code>，将控制权移交给<code>init</code>。</p>
-<h1 id="init进程"><a href="#init进程" class="headerlink" title="init进程"></a>init进程</h1><p>&emsp;​&emsp;<code>init</code>是Android的第一个用户空间进程，它的PID为1。<code>init</code>解析<code>init.rc</code>脚本文件，定义系统初始化的行为等。</p>
-<p> function hook_dlsym(){    &#x2F;&#x2F; 获取dlsym函数的地址    let dlsymAddr &#x3D; Module.findExportByName(“libdl.so”,”dlsym”);    console.log(dlsymAddr);    &#x2F;&#x2F; hook dlsym    Interceptor.attach(dlsymAddr,{        onEnter:function(args){            this.args1 &#x3D; args[1];        },        onLeave:function(retval){            let module&#x3D; Process.findModuleByAddress(retval);            if(module&#x3D;&#x3D;null)return;            console.log(“函数：”+this.args1.readCString(),”模块：”+module.name,”地址：”+retval,”偏移：”+retval.sub(module.base));        }    })}hook_dlsym()js</p>
-<p>&emsp;​&emsp;启动Zygote进程，<code>Zygote</code>在<code>init.rc</code>文件中定义并通过<code>init</code>启动。</p>
-<p>&emsp;​&emsp;<code>init</code>调用<code>/system/bin/app_process</code>可执行文件启动 ART（Android Runtime）或 Dalvik 虚拟机，并执行 <code>ZygoteInit.main()</code>来启动<code>Zygote</code>。</p>
-<p>&emsp;​&emsp;<code>init</code>把控制权移交给了<code>Zygote</code>。</p>
-<h1 id="Zygote进程"><a href="#Zygote进程" class="headerlink" title="Zygote进程"></a>Zygote进程</h1><p>&emsp;​&emsp;Zygote 是 Android 应用运行时环境的核心，加载虚拟机、类、系统资源，启动SystemServer进程。SystemServer进程是Zygote进程孵化的第一个进程。</p>
-<p><strong>Zygote的任务</strong></p>
-<p>&emsp;​&emsp;等待应用启动请求，接收请求后，fork() 创建子进程，所有的App进程都是由Zygote孵化而来的。</p>
-<h1 id="SystemServer"><a href="#SystemServer" class="headerlink" title="SystemServer"></a>SystemServer</h1><p>&emsp;​&emsp;SystemServer是一个很重要的进程，系统里面重要的服务都是在这个进程里面开启的，比如ActivityManagerService、PackageManagerService、WindowManagerService，负责管理应用程序和系统资源。</p>
-<h1 id="Launcher"><a href="#Launcher" class="headerlink" title="Launcher"></a>Launcher</h1><p>&emsp;​&emsp;当 <code>SystemServer</code> 启动完成后，Android 系统会启动第一个前台进程：Launcher。</p>
-<p>&emsp;​&emsp;<code>ActivityManagerService</code> 会根据 <code>AndroidManifest.xml</code> 中的配置，启动标记为 <code>MAIN</code> 和 <code>LAUNCHER</code> 的应用，Launcher 加载桌面布局和图标资源。</p>
-<p>&emsp;​&emsp;Launcher进程是Zygote孵化出来的第一个App进程。</p>
-<p>​	</p>
-<p>​	</p>
-<p>​	</p>
-]]></content>
-      <categories>
-        <category>Android系统</category>
-      </categories>
-      <tags>
-        <tag>Android启动流程</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>ARM汇编</title>
     <url>/2024/12/16/ARM%E6%B1%87%E7%BC%96/</url>
     <content><![CDATA[<h1 id="ARM架构"><a href="#ARM架构" class="headerlink" title="ARM架构"></a>ARM架构</h1><p>ARM是一种精简指令集计算机架构（处理器架构）。</p>
@@ -216,6 +186,60 @@
       </tags>
   </entry>
   <entry>
+    <title>C++</title>
+    <url>/2024/02/01/Cpp/</url>
+    <content><![CDATA[<h1 id="C-基础编程"><a href="#C-基础编程" class="headerlink" title="C++基础编程"></a>C++基础编程</h1><h2 id="Hello-World"><a href="#Hello-World" class="headerlink" title="Hello World"></a>Hello World</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;Hello, World!&quot;</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="std-string类"><a href="#std-string类" class="headerlink" title="std::string类"></a>std::string类</h2><h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><ul>
+<li><p><strong>c_str()</strong></p>
+<p>将 C++ 的 <code>std::string</code> 对象转换为 C 风格的字符串（即以空字符 <code>\0</code> 结尾的字符数组）。</p>
+</li>
+</ul>
+<h2 id="基本数据类型"><a href="#基本数据类型" class="headerlink" title="基本数据类型"></a>基本数据类型</h2><h1 id="iostream"><a href="#iostream" class="headerlink" title="iostream"></a>iostream</h1><h2 id="cin"><a href="#cin" class="headerlink" title="cin"></a>cin</h2><p><code>cin</code> 使用流操作符（<code>&gt;&gt;</code>），一次可以读取多个变量，输入用空格或回车分隔。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="type">int</span> number;</span><br><span class="line">    cin &gt;&gt; number;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="cout"><a href="#cout" class="headerlink" title="cout"></a>cout</h2><p><code>cout</code> 使用流操作符（<code>&lt;&lt;</code>）可以连续输出多个变量。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="type">int</span> number;</span><br><span class="line">    cin &gt;&gt; number;</span><br><span class="line">    cout &lt;&lt; number;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;换行&quot;</span> &lt;&lt; endl; <span class="comment">// endl 表示换行，相当于\n，同时会刷新缓冲区。</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="cstring"><a href="#cstring" class="headerlink" title="cstring"></a>cstring</h1><h2 id="strlen"><a href="#strlen" class="headerlink" title="strlen"></a>strlen</h2>]]></content>
+      <categories>
+        <category>Cpp</category>
+      </categories>
+      <tags>
+        <tag>C++</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Android启动流程分析</title>
+    <url>/2024/12/19/Android%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B%E5%88%86%E6%9E%90/</url>
+    <content><![CDATA[<p>本篇以从按下开机键开始至设备桌面图标出现进行分析。</p>
+<h1 id="Bootloader"><a href="#Bootloader" class="headerlink" title="Bootloader"></a>Bootloader</h1><p>&emsp;​&emsp;长按开机键，设备通电，从Boot ROM开始，Boot ROM是芯片上的一段只读存储器，存储设备的启动代码，一般是固定的，用于检测基本硬件的存在，验证 Bootloader 的完整性和安全性，并加载BootLoader到RAM，将控制权移交给BootLoader。</p>
+<p>&emsp;​&emsp;​BootLoader对硬件进行基本初始化，从存储设备中读取Android系统Linux内核镜像，通常是boot.img文件，将内核加载到内存中，并将控制权移交给内核。</p>
+<h1 id="Linux内核启动"><a href="#Linux内核启动" class="headerlink" title="Linux内核启动"></a>Linux内核启动</h1><p>&emsp;​&emsp;内核启动后会完成复杂的硬件初始化并挂载根文件系统，然后执行第一个用户空间进程<code>init</code>，将控制权移交给<code>init</code>。</p>
+<h1 id="init进程"><a href="#init进程" class="headerlink" title="init进程"></a>init进程</h1><p>&emsp;​&emsp;<code>init</code>是Android的第一个用户空间进程，它的PID为1。<code>init</code>解析<code>init.rc</code>脚本文件，定义系统初始化的行为等。</p>
+<p> function hook_dlsym(){    &#x2F;&#x2F; 获取dlsym函数的地址    let dlsymAddr &#x3D; Module.findExportByName(“libdl.so”,”dlsym”);    console.log(dlsymAddr);    &#x2F;&#x2F; hook dlsym    Interceptor.attach(dlsymAddr,{        onEnter:function(args){            this.args1 &#x3D; args[1];        },        onLeave:function(retval){            let module&#x3D; Process.findModuleByAddress(retval);            if(module&#x3D;&#x3D;null)return;            console.log(“函数：”+this.args1.readCString(),”模块：”+module.name,”地址：”+retval,”偏移：”+retval.sub(module.base));        }    })}hook_dlsym()js</p>
+<p>&emsp;​&emsp;启动Zygote进程，<code>Zygote</code>在<code>init.rc</code>文件中定义并通过<code>init</code>启动。</p>
+<p>&emsp;​&emsp;<code>init</code>调用<code>/system/bin/app_process</code>可执行文件启动 ART（Android Runtime）或 Dalvik 虚拟机，并执行 <code>ZygoteInit.main()</code>来启动<code>Zygote</code>。</p>
+<p>&emsp;​&emsp;<code>init</code>把控制权移交给了<code>Zygote</code>。</p>
+<h1 id="Zygote进程"><a href="#Zygote进程" class="headerlink" title="Zygote进程"></a>Zygote进程</h1><p>&emsp;​&emsp;Zygote 是 Android 应用运行时环境的核心，加载虚拟机、类、系统资源，启动SystemServer进程。SystemServer进程是Zygote进程孵化的第一个进程。</p>
+<p><strong>Zygote的任务</strong></p>
+<p>&emsp;​&emsp;等待应用启动请求，接收请求后，fork() 创建子进程，所有的App进程都是由Zygote孵化而来的。</p>
+<h1 id="SystemServer"><a href="#SystemServer" class="headerlink" title="SystemServer"></a>SystemServer</h1><p>&emsp;​&emsp;SystemServer是一个很重要的进程，系统里面重要的服务都是在这个进程里面开启的，比如ActivityManagerService、PackageManagerService、WindowManagerService，负责管理应用程序和系统资源。</p>
+<h1 id="Launcher"><a href="#Launcher" class="headerlink" title="Launcher"></a>Launcher</h1><p>&emsp;​&emsp;当 <code>SystemServer</code> 启动完成后，Android 系统会启动第一个前台进程：Launcher。</p>
+<p>&emsp;​&emsp;<code>ActivityManagerService</code> 会根据 <code>AndroidManifest.xml</code> 中的配置，启动标记为 <code>MAIN</code> 和 <code>LAUNCHER</code> 的应用，Launcher 加载桌面布局和图标资源。</p>
+<p>&emsp;​&emsp;Launcher进程是Zygote孵化出来的第一个App进程。</p>
+<p>​	</p>
+<p>​	</p>
+<p>​	</p>
+]]></content>
+      <categories>
+        <category>Android系统</category>
+      </categories>
+      <tags>
+        <tag>Android启动流程</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>C语言</title>
     <url>/2024/02/01/C%E8%AF%AD%E8%A8%80/</url>
     <content><![CDATA[<h1 id="C语言基础编程"><a href="#C语言基础编程" class="headerlink" title="C语言基础编程"></a>C语言基础编程</h1><h2 id="Hello-World"><a href="#Hello-World" class="headerlink" title="Hello World"></a>Hello World</h2><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Hello World!&quot;</span>); </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -230,7 +254,14 @@
 <li>long</li>
 <li>unsigned long</li>
 </ul>
+<h1 id="内存分区"><a href="#内存分区" class="headerlink" title="内存分区"></a>内存分区</h1><h2 id="栈（stack）"><a href="#栈（stack）" class="headerlink" title="栈（stack）"></a>栈（stack）</h2><p>用于存储局部变量和函数调用时的上下文（如返回地址与参数等）。</p>
+<h2 id="堆（heap）"><a href="#堆（heap）" class="headerlink" title="堆（heap）"></a>堆（heap）</h2><p>动态分配的内存区域，用于存放程序运行时动态创建的数据。</p>
+<h2 id="静态区（全局区）"><a href="#静态区（全局区）" class="headerlink" title="静态区（全局区）"></a>静态区（全局区）</h2><p>用于全局变量、静态变量和常量的存储。这部分内存的生命周期从程序开始直到程序结束。</p>
+<h2 id="代码区"><a href="#代码区" class="headerlink" title="代码区"></a>代码区</h2><p>存放程序的机器指令，也就是程序的可执行代码。</p>
+<h2 id="常量区"><a href="#常量区" class="headerlink" title="常量区"></a>常量区</h2><p>存储程序中常量数据的区域，它存放的是程序中不允许修改的常量值。</p>
 <h1 id="stdio-h"><a href="#stdio-h" class="headerlink" title="stdio.h"></a>stdio.h</h1><h2 id="库变量"><a href="#库变量" class="headerlink" title="库变量"></a>库变量</h2><h3 id="size-t"><a href="#size-t" class="headerlink" title="size_t"></a>size_t</h3><p>无符号整数类型，它是 sizeof 关键字的结果。</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">unsigned</span> <span class="type">int</span></span><br></pre></td></tr></table></figure>
+
 <h3 id="FILE"><a href="#FILE" class="headerlink" title="FILE"></a>FILE</h3><p>文件流类型，适合存储文件流信息的对象类型。</p>
 <h3 id="fpos-t"><a href="#fpos-t" class="headerlink" title="fpos_t"></a>fpos_t</h3><p>文件位置类型，适合存储文件中任何位置的对象类型。</p>
 <h2 id="库函数"><a href="#库函数" class="headerlink" title="库函数"></a>库函数</h2><h3 id="sprintf"><a href="#sprintf" class="headerlink" title="sprintf()"></a>sprintf()</h3><p>用于将格式化的数据写入字符串。</p>
@@ -274,30 +305,6 @@
       </categories>
       <tags>
         <tag>C语言</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>C++</title>
-    <url>/2024/02/01/Cpp/</url>
-    <content><![CDATA[<h1 id="C-基础编程"><a href="#C-基础编程" class="headerlink" title="C++基础编程"></a>C++基础编程</h1><h2 id="Hello-World"><a href="#Hello-World" class="headerlink" title="Hello World"></a>Hello World</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;Hello, World!&quot;</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="std-string类"><a href="#std-string类" class="headerlink" title="std::string类"></a>std::string类</h2><h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><ul>
-<li><p><strong>c_str()</strong></p>
-<p>将 C++ 的 <code>std::string</code> 对象转换为 C 风格的字符串（即以空字符 <code>\0</code> 结尾的字符数组）。</p>
-</li>
-</ul>
-<h2 id="基本数据类型"><a href="#基本数据类型" class="headerlink" title="基本数据类型"></a>基本数据类型</h2><h1 id="iostream"><a href="#iostream" class="headerlink" title="iostream"></a>iostream</h1><h2 id="cin"><a href="#cin" class="headerlink" title="cin"></a>cin</h2><p><code>cin</code> 使用流操作符（<code>&gt;&gt;</code>），一次可以读取多个变量，输入用空格或回车分隔。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="type">int</span> number;</span><br><span class="line">    cin &gt;&gt; number;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="cout"><a href="#cout" class="headerlink" title="cout"></a>cout</h2><p><code>cout</code> 使用流操作符（<code>&lt;&lt;</code>）可以连续输出多个变量。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="type">int</span> number;</span><br><span class="line">    cin &gt;&gt; number;</span><br><span class="line">    cout &lt;&lt; number;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;换行&quot;</span> &lt;&lt; endl; <span class="comment">// endl 表示换行，相当于\n，同时会刷新缓冲区。</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="cstring"><a href="#cstring" class="headerlink" title="cstring"></a>cstring</h1><h2 id="strlen"><a href="#strlen" class="headerlink" title="strlen"></a>strlen</h2>]]></content>
-      <categories>
-        <category>Cpp</category>
-      </categories>
-      <tags>
-        <tag>C++</tag>
       </tags>
   </entry>
   <entry>
@@ -577,6 +584,28 @@
       </tags>
   </entry>
   <entry>
+    <title>JavaScript</title>
+    <url>/2024/12/04/JavaScript/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java</title>
+    <url>/2024/05/01/Java/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>编程语言</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>JSON</title>
     <url>/2024/12/15/JSON/</url>
     <content><![CDATA[<p>JSON（JavaScript Object Notation）是一种轻量级的数据交换格式，易于人和机器阅读和解析。它基于JavaScript的对象表示法，但被广泛用于多种编程语言。</p>
@@ -621,62 +650,81 @@
       </tags>
   </entry>
   <entry>
-    <title>JavaScript</title>
-    <url>/2024/12/04/JavaScript/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>JavaScript</category>
-      </categories>
-      <tags>
-        <tag>JS</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>LSPosed开发</title>
-    <url>/2024/12/19/LSPosed%E5%BC%80%E5%8F%91/</url>
-    <content><![CDATA[<h1 id="LSP前传Xposed介绍"><a href="#LSP前传Xposed介绍" class="headerlink" title="LSP前传Xposed介绍"></a>LSP前传Xposed介绍</h1><p>&emsp;&emsp;Xposed 框架是一个强大的 Android 逆向工程工具，它允许开发者在不修改应用程序源代码的情况下，动态地注入和修改Android 应用程序的行为。</p>
-<h2 id="Xposed原理"><a href="#Xposed原理" class="headerlink" title="Xposed原理"></a>Xposed原理</h2><p>&emsp;&emsp;Android 系统运行的核心和起点是 Zygote 进程，所有应用都是通过它 fork 子进程产生的，当系统开始运行时由 <code>init.rc</code> 脚本调用<code>/system/bin/app_process</code> 程序启动Zygote，加载所需的类并调用初始化方法。</p>
-<p>&emsp;&emsp;Xposed 使用 <strong>zygote</strong> 进程来注入代码，它会替换<code>/system/bin/app_process</code>，使其加载Xposed的核心模块<code>XposedBridge.jar</code>，导致所有从 Zygote fork 出来的子进程（包括应用进程和系统服务进程）都会继承 Xposed 的 Hook 环境。</p>
-<h2 id="图解分析"><a href="#图解分析" class="headerlink" title="图解分析"></a>图解分析</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[init 进程]</span><br><span class="line">   |</span><br><span class="line">   v</span><br><span class="line">[/system/bin/app_process] -- 启动 Zygote</span><br><span class="line">   |</span><br><span class="line">   v</span><br><span class="line">[ZygoteInit.main()] -- 加载核心类和资源</span><br><span class="line">   |</span><br><span class="line">   v</span><br><span class="line">[fork 子进程]</span><br><span class="line">   |</span><br><span class="line">   +--&gt; [系统服务] (如 system_server)</span><br><span class="line">   |</span><br><span class="line">   +--&gt; [应用进程] (如 com.example.app)</span><br><span class="line"></span><br><span class="line">[Xposed 框架]</span><br><span class="line">   |</span><br><span class="line">   +--&gt; 替换 app_process</span><br><span class="line">   |</span><br><span class="line">   +--&gt; 劫持 ZygoteInit，加载 XposedBridge</span><br><span class="line">   |</span><br><span class="line">   +--&gt; 影响所有子进程，进行 Hook</span><br></pre></td></tr></table></figure>
-
-<h2 id="局限性"><a href="#局限性" class="headerlink" title="局限性"></a>局限性</h2><p>在 Android 9 及更高版本中，安全限制增加，Xposed 原框架不支持。</p>
-<h1 id="LSPosed"><a href="#LSPosed" class="headerlink" title="LSPosed"></a>LSPosed</h1><p>&emsp;&emsp;LSPosed 是一个基于 <strong>Xposed</strong> 框架的增强工具，专注于模块化的安卓应用定制。</p>
-<ul>
-<li>基于Riru框架，使用 Riru 技术直接注入到 <code>zygote</code> 进程，避免直接修改系统文件。</li>
-</ul>
-<h2 id="开发准备"><a href="#开发准备" class="headerlink" title="开发准备"></a>开发准备</h2><ul>
-<li>面具安装LSPosed模块</li>
-<li>Xposed API（XposedBridgeAPI-82.jar，XposedBridgeAPI-89.jar）</li>
-</ul>
-<h2 id="开发一个简单模块"><a href="#开发一个简单模块" class="headerlink" title="开发一个简单模块"></a>开发一个简单模块</h2><h3 id="Android-Studio新建空项目"><a href="#Android-Studio新建空项目" class="headerlink" title="Android Studio新建空项目"></a>Android Studio新建空项目</h3><p>&emsp;&emsp;在app目录下新建一个libs目录（若已有该目录则无需新建），把XposedBridgeAPI.jar放到libs目录下，右击jar包，选择add as library，这一步会在build.gradle里新增一个依赖<code>implementation(files(&quot;libs/XposedBridgeAPI-89.jar&quot;))</code>，我们需要把<code>implementation</code>改为<code>compileOnly</code>。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">implementation 使用该方式依赖的库将会参与编译和打包</span><br><span class="line">compileOnly 只在编译时有效，不会参与打包</span><br></pre></td></tr></table></figure>
-
-<p>&emsp;&emsp;修改AndroidManifest.xml文件配置，在<code>&lt;application&gt;</code>标签内添加如下内容：</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 是否是xposed模块，xposed根据这个来判断是否是模块 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta-data</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:name</span>=<span class="string">&quot;xposedmodule&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:value</span>=<span class="string">&quot;true&quot;</span> /&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 模块描述，显示在xposed模块列表那里第二行 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta-data</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:name</span>=<span class="string">&quot;xposeddescription&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:value</span>=<span class="string">&quot;这是一个Xposed模块&quot;</span> /&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 最低xposed版本号(lib文件名可知) --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta-data</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:name</span>=<span class="string">&quot;xposedminversion&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:value</span>=<span class="string">&quot;82&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>&emsp;&emsp;在main目录下新建一个assets Folder目录，右击main，<code>new-&gt;Folder-&gt;Assets Folder</code>。在assets目录下新建一个xposed_init文件（无后缀），用来说明入口类。</p>
-<p>&emsp;&emsp;在项目包名目录下新建一个模块类lsptest1，然后向xposed_init文件里添加一行代码，lsptest1类的全类名<code>com.example.lsposedtest.lsptest1</code>。</p>
-<h3 id="实现IXposedHookLoadPackage接口"><a href="#实现IXposedHookLoadPackage接口" class="headerlink" title="实现IXposedHookLoadPackage接口"></a>实现<code>IXposedHookLoadPackage</code>接口</h3><p>&emsp;&emsp;在lsptest1类中实现<code>IXposedHookLoadPackage</code>接口。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">lsptest1</span> <span class="keyword">implements</span> <span class="title class_">IXposedHookLoadPackage</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">handleLoadPackage</span><span class="params">(XC_LoadPackage.LoadPackageParam loadPackageParam)</span> <span class="keyword">throws</span> Throwable &#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="添加Hook逻辑"><a href="#添加Hook逻辑" class="headerlink" title="添加Hook逻辑"></a>添加Hook逻辑</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">lsptest1</span> <span class="keyword">implements</span> <span class="title class_">IXposedHookLoadPackage</span> &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">handleLoadPackage</span><span class="params">(XC_LoadPackage.LoadPackageParam loadPackageParam)</span> <span class="keyword">throws</span> Throwable &#123;</span><br><span class="line">        XposedBridge.log(<span class="string">&quot;Bileton-&gt;package&quot;</span>+loadPackageParam.packageName);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h3><p>&emsp;&emsp;安装成功后，打开LSPosed，点击模块</p>
-<p><img src="/2024/12/19/LSPosed%E5%BC%80%E5%8F%91/1.jpg"></p>
-<p>&emsp;&emsp;点击我们开发的模块，然后勾选要Hook的app，勾选完成之后，不要直接退出，通过返回键，返回到桌面，然后启动勾选的app，可以在Android Studio里面的日志里看到打印出来的App的包名。</p>
-<p><img src="/2024/12/19/LSPosed%E5%BC%80%E5%8F%91/2.jpg"></p>
-]]></content>
-      <categories>
-        <category>LSPosed</category>
-      </categories>
-      <tags>
-        <tag>LSPosed开发</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Python基础</title>
     <url>/2024/12/15/Python%E5%9F%BA%E7%A1%80/</url>
-    <content><![CDATA[]]></content>
+    <content><![CDATA[<h1 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h1><h2 id="字符串方法"><a href="#字符串方法" class="headerlink" title="字符串方法"></a>字符串方法</h2><h3 id="join"><a href="#join" class="headerlink" title="join"></a>join</h3><figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="built_in">str</span>.join(iterable)</span><br><span class="line"></span><br><span class="line"><span class="comment"># str：要连接的字符串，即连接其他元素的分隔符。</span></span><br><span class="line"><span class="comment"># iterable：一个可迭代对象，比如列表、元组等，其元素会被 str 连接。</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>示例</strong></p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">result = <span class="string">&#x27;, &#x27;</span>.join([<span class="string">&#x27;Hello&#x27;</span>, <span class="string">&#x27;World&#x27;</span>])</span><br><span class="line"><span class="built_in">print</span>(result)  <span class="comment"># 输出: Hello, World</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="字典"><a href="#字典" class="headerlink" title="字典"></a>字典</h1><h2 id="字典的创建方式"><a href="#字典的创建方式" class="headerlink" title="字典的创建方式"></a>字典的创建方式</h2><ul>
+<li><p>直接定义</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">mydict = &#123;&#125; <span class="comment"># 创建空字典</span></span><br><span class="line">my_dict = &#123;<span class="string">&#x27;key1&#x27;</span>: <span class="string">&#x27;value1&#x27;</span>, <span class="string">&#x27;key2&#x27;</span>: <span class="string">&#x27;value2&#x27;</span>&#125;</span><br><span class="line"><span class="built_in">print</span>(my_dict)    <span class="comment"># &#123;&#x27;key1&#x27;: &#x27;value1&#x27;, &#x27;key2&#x27;: &#x27;value2&#x27;&#125;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用<code>dict()</code>构造函数</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">mydict = <span class="built_in">dict</span>() <span class="comment"># 空字典</span></span><br><span class="line">my_dict = <span class="built_in">dict</span>(key1=<span class="string">&#x27;value1&#x27;</span>,key2=<span class="string">&#x27;value2&#x27;</span>,key3=<span class="string">&#x27;value3&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(my_dict) <span class="comment"># &#123;&#x27;key1&#x27;: &#x27;value1&#x27;, &#x27;key2&#x27;: &#x27;value2&#x27;, &#x27;key3&#x27;: &#x27;value3&#x27;&#125;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>键值对序列</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">tuple1 = (<span class="string">&quot;key1&quot;</span>,<span class="string">&quot;value1&quot;</span>)</span><br><span class="line">tuple2 = (<span class="string">&quot;key2&quot;</span>,<span class="string">&quot;value2&quot;</span>)</span><br><span class="line">tuple3 = (<span class="string">&quot;key3&quot;</span>,<span class="string">&quot;value3&quot;</span>)</span><br><span class="line">my_list = <span class="built_in">list</span>()</span><br><span class="line">my_list.append(tuple1)</span><br><span class="line">my_list.append(tuple2)</span><br><span class="line">my_list.append(tuple3)</span><br><span class="line">my_dict = <span class="built_in">dict</span>(my_list)</span><br><span class="line"><span class="built_in">print</span>(my_dict) <span class="comment"># &#123;&#x27;key1&#x27;: &#x27;value1&#x27;, &#x27;key2&#x27;: &#x27;value2&#x27;, &#x27;key3&#x27;: &#x27;value3&#x27;&#125;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="访问字典"><a href="#访问字典" class="headerlink" title="访问字典"></a>访问字典</h2><ul>
+<li><p>通过key来获取value</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">my_dict = &#123;<span class="string">&#x27;key1&#x27;</span>: <span class="string">&#x27;value1&#x27;</span>, <span class="string">&#x27;key2&#x27;</span>: <span class="string">&#x27;value2&#x27;</span>, <span class="string">&#x27;key3&#x27;</span>: <span class="string">&#x27;value3&#x27;</span>&#125;</span><br><span class="line"><span class="built_in">print</span>(my_dict[<span class="string">&quot;key1&quot;</span>]) <span class="comment"># value1</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>添加元素</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">mydict = &#123;&#125;</span><br><span class="line">mydict[<span class="string">&quot;key1&quot;</span>]=<span class="string">&quot;value1&quot;</span></span><br><span class="line"><span class="built_in">print</span>(mydict) <span class="comment"># &#123;&#x27;key1&#x27;: &#x27;value1&#x27;&#125;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改元素</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">mydict = &#123;&#125;</span><br><span class="line">mydict[<span class="string">&quot;key1&quot;</span>]=<span class="string">&quot;value1&quot;</span></span><br><span class="line">mydict[<span class="string">&quot;key1&quot;</span>]=<span class="string">&quot;new_value1&quot;</span></span><br><span class="line"><span class="built_in">print</span>(mydict) <span class="comment"># &#123;&#x27;key1&#x27;: &#x27;new_value1&#x27;&#125;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除元素</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">mydict = &#123;&#125;</span><br><span class="line">mydict[<span class="string">&quot;key1&quot;</span>]=<span class="string">&quot;value1&quot;</span></span><br><span class="line"><span class="keyword">del</span> mydict[<span class="string">&quot;key1&quot;</span>]</span><br><span class="line"><span class="built_in">print</span>(mydict) <span class="comment"># &#123;&#125;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除字典</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">mydict = &#123;&#125;</span><br><span class="line">mydict[<span class="string">&quot;key1&quot;</span>]=<span class="string">&quot;value1&quot;</span></span><br><span class="line"><span class="keyword">del</span> mydict</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="字典方法"><a href="#字典方法" class="headerlink" title="字典方法"></a>字典方法</h2><h3 id="clear"><a href="#clear" class="headerlink" title="clear()"></a>clear()</h3><p>清空字典，使之变成一个空字典。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="built_in">dict</span>.clear()</span><br></pre></td></tr></table></figure>
+
+<h3 id="keys"><a href="#keys" class="headerlink" title="keys()"></a>keys()</h3><p>返回一个包含字典中所有键的对象</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">my_dict = &#123;<span class="string">&#x27;key1&#x27;</span>: <span class="string">&#x27;value1&#x27;</span>, <span class="string">&#x27;key2&#x27;</span>: <span class="string">&#x27;value2&#x27;</span>, <span class="string">&#x27;key3&#x27;</span>: <span class="string">&#x27;value3&#x27;</span>&#125;</span><br><span class="line"><span class="built_in">print</span>(my_dict.keys())</span><br><span class="line">keyslist = <span class="built_in">list</span>(my_dict.keys())</span><br><span class="line"><span class="built_in">print</span>(keyslist)</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line">dict_keys([<span class="string">&#x27;key1&#x27;</span>, <span class="string">&#x27;key2&#x27;</span>, <span class="string">&#x27;key3&#x27;</span>])</span><br><span class="line">[<span class="string">&#x27;key1&#x27;</span>, <span class="string">&#x27;key2&#x27;</span>, <span class="string">&#x27;key3&#x27;</span>]</span><br></pre></td></tr></table></figure>
+
+<h3 id="values"><a href="#values" class="headerlink" title="values()"></a>values()</h3><figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="built_in">dict</span>.values()</span><br></pre></td></tr></table></figure>
+
+<p>返回一个包含字典中所有值的对象</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">my_dict = &#123;<span class="string">&#x27;key1&#x27;</span>: <span class="string">&#x27;value1&#x27;</span>, <span class="string">&#x27;key2&#x27;</span>: <span class="string">&#x27;value2&#x27;</span>, <span class="string">&#x27;key3&#x27;</span>: <span class="string">&#x27;value3&#x27;</span>&#125;</span><br><span class="line"><span class="built_in">print</span>(my_dict.values())</span><br><span class="line">valueslist = <span class="built_in">list</span>(my_dict.values())</span><br><span class="line"><span class="built_in">print</span>(valueslist)</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line">dict_values([<span class="string">&#x27;value1&#x27;</span>, <span class="string">&#x27;value2&#x27;</span>, <span class="string">&#x27;value3&#x27;</span>])</span><br><span class="line">[<span class="string">&#x27;value1&#x27;</span>, <span class="string">&#x27;value2&#x27;</span>, <span class="string">&#x27;value3&#x27;</span>]</span><br></pre></td></tr></table></figure>
+
+<h3 id="items"><a href="#items" class="headerlink" title="items()"></a>items()</h3><figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="built_in">dict</span>.values()</span><br></pre></td></tr></table></figure>
+
+<p>返回一个包含字典中所以键值对的对象</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">my_dict = &#123;<span class="string">&#x27;key1&#x27;</span>: <span class="string">&#x27;value1&#x27;</span>, <span class="string">&#x27;key2&#x27;</span>: <span class="string">&#x27;value2&#x27;</span>, <span class="string">&#x27;key3&#x27;</span>: <span class="string">&#x27;value3&#x27;</span>&#125;</span><br><span class="line"><span class="built_in">print</span>(my_dict.items())</span><br><span class="line">itemslist = <span class="built_in">list</span>(my_dict.items())</span><br><span class="line"><span class="built_in">print</span>(ietmslist)</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line">dict_items([(<span class="string">&#x27;key1&#x27;</span>, <span class="string">&#x27;value1&#x27;</span>), (<span class="string">&#x27;key2&#x27;</span>, <span class="string">&#x27;value2&#x27;</span>), (<span class="string">&#x27;key3&#x27;</span>, <span class="string">&#x27;value3&#x27;</span>)])</span><br><span class="line">[(<span class="string">&#x27;key1&#x27;</span>, <span class="string">&#x27;value1&#x27;</span>), (<span class="string">&#x27;key2&#x27;</span>, <span class="string">&#x27;value2&#x27;</span>), (<span class="string">&#x27;key3&#x27;</span>, <span class="string">&#x27;value3&#x27;</span>)]</span><br></pre></td></tr></table></figure>
+
+<h3 id="update"><a href="#update" class="headerlink" title="update()"></a>update()</h3><p>将一个字典的键值对更新到另一个字典中。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="built_in">dict</span>.update([other])</span><br><span class="line"></span><br><span class="line"><span class="comment"># other:要更新到当前字典的键值对来源，可以是另一个字典、键值对列表或键值对元组序列。</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>示例</strong></p>
+<p>字典</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">dict1 = &#123;<span class="string">&quot;key1&quot;</span>:<span class="string">&quot;value1&quot;</span>&#125;</span><br><span class="line">dict2 = &#123;<span class="string">&quot;key2&quot;</span>:<span class="string">&quot;value2&quot;</span>&#125;</span><br><span class="line">dict1.update(dict2)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;dict1&quot;</span>,dict1)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;dict2&quot;</span>,dict2)</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line">&#123;<span class="string">&#x27;key1&#x27;</span>: <span class="string">&#x27;value1&#x27;</span>, <span class="string">&#x27;key2&#x27;</span>: <span class="string">&#x27;value2&#x27;</span>&#125;</span><br><span class="line">&#123;<span class="string">&#x27;key2&#x27;</span>: <span class="string">&#x27;value2&#x27;</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<p>元组列表</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">dict1 = &#123;<span class="string">&quot;key1&quot;</span>:<span class="string">&quot;value1&quot;</span>&#125;</span><br><span class="line">list2= [(<span class="string">&quot;key2&quot;</span>,<span class="string">&quot;value2&quot;</span>)]</span><br><span class="line">dict1.update(list2)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;dict1&quot;</span>,dict1)</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line">dict1 &#123;<span class="string">&#x27;key1&#x27;</span>: <span class="string">&#x27;value1&#x27;</span>, <span class="string">&#x27;key2&#x27;</span>: <span class="string">&#x27;value2&#x27;</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<p>键值对列表</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">dict1 = &#123;<span class="string">&quot;key1&quot;</span>:<span class="string">&quot;value1&quot;</span>&#125;</span><br><span class="line">list2= [[<span class="string">&quot;key2&quot;</span>,<span class="string">&quot;value2&quot;</span>]]</span><br><span class="line">dict1.update(list2)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;dict1&quot;</span>,dict1)</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line">dict1 &#123;<span class="string">&#x27;key1&#x27;</span>: <span class="string">&#x27;value1&#x27;</span>, <span class="string">&#x27;key2&#x27;</span>: <span class="string">&#x27;value2&#x27;</span>&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="pop"><a href="#pop" class="headerlink" title="pop()"></a>pop()</h3><p>移除字典中的一个元素，并返回该元素的值。</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="built_in">dict</span>.pop(key)</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例</strong></p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">my_dict = &#123;<span class="string">&#x27;key1&#x27;</span>: <span class="string">&#x27;value1&#x27;</span>, <span class="string">&#x27;key2&#x27;</span>: <span class="string">&#x27;value2&#x27;</span>, <span class="string">&#x27;key3&#x27;</span>: <span class="string">&#x27;value3&#x27;</span>&#125;</span><br><span class="line">popvalue = my_dict.pop(<span class="string">&quot;key3&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(popvalue)</span><br><span class="line"><span class="built_in">print</span>(my_dict)</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line">value3</span><br><span class="line">&#123;<span class="string">&#x27;key1&#x27;</span>: <span class="string">&#x27;value1&#x27;</span>, <span class="string">&#x27;key2&#x27;</span>: <span class="string">&#x27;value2&#x27;</span>&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+]]></content>
       <categories>
         <category>Python</category>
       </categories>
@@ -790,12 +838,92 @@
 <h2 id="whoami"><a href="#whoami" class="headerlink" title="whoami"></a>whoami</h2><p>显示当前用户名的命令。</p>
 <h2 id="file"><a href="#file" class="headerlink" title="file"></a>file</h2><p>查看一个文件的类型<br><code>file filename</code></p>
 <h2 id="关机命令"><a href="#关机命令" class="headerlink" title="关机命令"></a>关机命令</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">shutdown -h now # 关闭系统</span><br><span class="line">reboot # 重启</span><br><span class="line">logout # 注销</span><br></pre></td></tr></table></figure>
+
+<h1 id="网络"><a href="#网络" class="headerlink" title="网络"></a>网络</h1><h2 id="IP地址"><a href="#IP地址" class="headerlink" title="IP地址"></a>IP地址</h2><p>每台联网的电脑都会有一个地址，用于和其他计算机进行通讯<br>可以通过：<code>ifconfig</code>命令查看本机的ip</p>
+<h2 id="特殊IP地址"><a href="#特殊IP地址" class="headerlink" title="特殊IP地址"></a>特殊IP地址</h2><ul>
+<li><p><code>127.0.0.1</code>指代本机</p>
+</li>
+<li><pre><code>0.0.0.0
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">  特殊IP</span><br><span class="line"></span><br><span class="line">  - 可以用于指代本机</span><br><span class="line">  - 可以在端口绑定中来确定绑定关系</span><br><span class="line">  - 在一些IP地址限制中，表示所有IP的意思，表示允许任意IP访问</span><br><span class="line"></span><br><span class="line">## 主机名</span><br><span class="line"></span><br><span class="line">每台电脑除了IP地址外，还可以有一个名字，称为主机名</span><br><span class="line">Windows系统和Linux都可以给系统设置主机名</span><br><span class="line"></span><br><span class="line">- Windows查看系统设备名称</span><br><span class="line">- Linux可以用命令`hostname`</span><br><span class="line"></span><br><span class="line">## 在Linux中修改主机名</span><br><span class="line"></span><br><span class="line">可以使用命令：`hostnamectl set-hostname &quot;主机名&quot;`</span><br><span class="line">重新登陆即可看到更改</span><br><span class="line"></span><br><span class="line">## 域名解析</span><br><span class="line"></span><br><span class="line">先查看本机的记录（通过主机名找到对应计算机的IP地址）</span><br><span class="line"></span><br><span class="line">- `Windows：C:\Windows\System32\drivers\etc\hosts`</span><br><span class="line">- `Linux: /etc/hosts`</span><br><span class="line"></span><br><span class="line">再联网去DNS服务器询问</span><br><span class="line"></span><br><span class="line">## 网络传输</span><br><span class="line"></span><br><span class="line">### 使用ping命令检查服务器是否可联通</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+ping [-c num] ip或主机名
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">- `-c`，检查的次数，不使用`-c`选项，将无限次持续检查</span><br><span class="line">- `ip或主机名`，被检查的服务器的IP地址或主机名地址</span><br><span class="line"></span><br><span class="line">### 使用wget命令下载文件</span><br><span class="line"></span><br><span class="line">wget是一个非交互式的文件下载器，可以在命令行内下载网络文件</span><br><span class="line">`wget [-b] url`</span><br><span class="line"></span><br><span class="line">- `-b`，可选，后台下载，会将日志写入到当前工作目录的wget-log文件</span><br><span class="line">- `url` ,下载链接</span><br><span class="line"></span><br><span class="line">### 使用curl命令发起网络请求</span><br><span class="line"></span><br><span class="line">发送http网络请求，可用于下载文件、获取信息等</span><br><span class="line">`curl [-O] url`</span><br><span class="line"></span><br><span class="line">- `-O`，用于下载文件，当url是下载链接时，可以使用此选项保存文件</span><br><span class="line">- `url`，要发起请求的网络地址</span><br><span class="line"></span><br><span class="line">### 端口</span><br><span class="line"></span><br><span class="line">端口是设备与外界通讯交流的出入口。</span><br><span class="line"></span><br><span class="line">- 物理端口：又可以称之为接口，是可见端口，如USB接口，HDMI端口等</span><br><span class="line">- 虚拟端口：指计算机内部的端口，不可见，是用来操作系统和外部进行交互使用的</span><br><span class="line">  - 通过IP只能锁定计算机，但是无法锁定具体的程序。</span><br><span class="line">  - 通过端口可以锁定计算机上具体的应用程序，确保程序之间进行沟通。</span><br><span class="line"></span><br><span class="line">IP地址相当于小区地址，而端口相当于门牌号了。</span><br><span class="line"></span><br><span class="line">Linux系统可以支持65535个端口，这么多端口可以分为3类进行使用：</span><br><span class="line"></span><br><span class="line">- 公认端口：1~1023，通常用于一些系统内置或知名程序的预留使用，如SSH服务的22端口，HTTPS服务的443端口，非特殊需要，不能占用这个范围的端口</span><br><span class="line">- 注册端口：1024~49151，通常可以随意使用，用于松散的绑定一些程序\服务</span><br><span class="line">- 动态端口：49152~65535，通常不会固定绑定程序，而是当时程序对外网进行网络链接时，临时使用</span><br><span class="line"></span><br><span class="line">### 查看端口占用情况</span><br><span class="line"></span><br><span class="line">可以使用nmap命令</span><br><span class="line">`nmap 被查看的IP地址`</span><br><span class="line">**netstat**</span><br><span class="line">可以通过netstat命令，查看指定端口的占用情况</span><br><span class="line">`netstat -anp|grep 端口号`</span><br><span class="line">常用选项</span><br><span class="line"></span><br><span class="line">- `-a`: 列出所有端口</span><br><span class="line">- `-l`: 只显示监听端口</span><br><span class="line">- `-t`: 显示 TCP 传输协议的连线状况</span><br><span class="line">- `-u`: 显示 UDP 传输协议的连线状况</span><br><span class="line"></span><br><span class="line"># 进程管理</span><br><span class="line"></span><br><span class="line">程序运行在操作系统中，是被操作系统所管理的。</span><br><span class="line">每一个程序在运行的时候，便被操作系统注册为系统中的一个`进程`。</span><br><span class="line">并为每一个进程都分配一个独有的：进程ID（进程号）。</span><br><span class="line"></span><br><span class="line">### 查看进程ps</span><br><span class="line"></span><br><span class="line">通过PS命令查看Linux系统中的进程信息</span><br><span class="line">`ps [options]`</span><br><span class="line"></span><br><span class="line">- `-A`，显示所有终端进程</span><br><span class="line">- `-e`，显示出全部的进程</span><br><span class="line">- `-f`，以完全格式化的形式展示信息（展示全部信息）</span><br><span class="line"></span><br><span class="line">`ps -ef` 列出全部进程的全部信息</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+UID     :进程所属的用户ID
+PID     :进程的进程号ID
+PPID    :进程的父ID（启动此进程的其他进程）
+C       :此进程的CPU占用率（百分比）
+</code></pre>
+</li>
+</ul>
+<p>STIME   :进程的启动时间<br>TTY     :启动此进程的终端序号，如显示？，表示非终端启动<br>TIME    :进程占用CPU时间<br>CMD     :进程对应的名称或启动路径或启动命令</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">### 关闭进程kill</span><br><span class="line"></span><br><span class="line">通过kill命令关闭进程。</span><br><span class="line">`kill [-9] 进程ID`</span><br><span class="line"></span><br><span class="line">- `-9`，表示强制关闭进程。不使用此选项会向进程发送信号要求其关闭，但是否关闭看进程自身的处理机制。</span><br><span class="line"></span><br><span class="line">### pidof</span><br><span class="line"></span><br><span class="line">查找正在运行的特定程序的进程 ID（PID）。</span><br><span class="line">`pidof [options] programName`</span><br><span class="line"></span><br><span class="line"># 压缩和解压</span><br><span class="line"></span><br><span class="line">## 压缩格式</span><br><span class="line"></span><br><span class="line">- zip格式：Linux、Windows、MacOS常用</span><br><span class="line">- 7zip：Windows常用</span><br><span class="line">- rar：Windows常用</span><br><span class="line">- tar：Linux、MacOS常用</span><br><span class="line">- gzip：Linux、MacOS常用</span><br><span class="line"></span><br><span class="line">## tar命令</span><br><span class="line"></span><br><span class="line">有两种常见压缩格式，后缀名分别是：</span><br><span class="line"></span><br><span class="line">- .tar，称之为tarball，归档文件，简单的将文件组装到一个.tar的文件内，仅仅是简单的封装。</span><br><span class="line">- .gz，常见为.tar.gz，gzip格式压缩文件，即使用gzip压缩算法将文件压缩到一个文件内，极大减少压缩后的体积</span><br><span class="line"></span><br><span class="line">对于这两种格式，可以用tar命令进行压缩和解压操作：</span><br><span class="line">`tar [-c -v -x -f -z -C] 参数1 参数2 ... 参数N`</span><br><span class="line"></span><br><span class="line">- `-c`，创建压缩文件，用于压缩模式</span><br><span class="line">- `-v`显示压缩、解压过程，用于查看进度</span><br><span class="line">- `-x`，解压模式</span><br><span class="line">- `-f`，要创建的文件，或解压的文件，-f选项必须在所有选项中位置处于最后一个</span><br><span class="line">- `-z`，gzip模式，不使用就是tarball格式</span><br><span class="line">- `-C`，选择解压的目的地，用于解压模式</span><br><span class="line"></span><br><span class="line">### tar命令压缩</span><br><span class="line"></span><br><span class="line">tar常用压缩组合有两种：</span><br><span class="line"></span><br><span class="line">- tar -cvf test.tar 1.txt 2.txt 3.txt</span><br><span class="line">  将1.txt 2.txt 3.txt压缩到test.tar文件内</span><br><span class="line">- tar -zcvf test.tar.gz 1.txt 2.txt 3.txt</span><br><span class="line">  将1.txt 2.txt 3.txt压缩到test.tar.gz文件内，使用gzip模式</span><br><span class="line"></span><br><span class="line">要注意的是：</span><br><span class="line"></span><br><span class="line">- -z选项要使用的话，一般处于选项第一个</span><br><span class="line">- -f选项，必须在选项位最后一个</span><br><span class="line"></span><br><span class="line">### tar命令解压</span><br><span class="line"></span><br><span class="line">tar常用解压组合有：</span><br><span class="line"></span><br><span class="line">- `tar -xvf test.tar`</span><br><span class="line">  解压test.tar，将文件解压至当前目录</span><br><span class="line">- `tar -xvf test.tar -C /home/itheima`</span><br><span class="line">  解压test.tar，解压至`/home/itheima`</span><br><span class="line">- `tar -zxvf test.tar.gz -C /home/itheima`</span><br><span class="line">  以gzip模式解压test.tar.gz，将文件解压至指定目录（/home/itheima）</span><br><span class="line"></span><br><span class="line">注意：</span><br><span class="line"></span><br><span class="line">- `-f`选项必须在最后一位</span><br><span class="line">- `-z`选项，建议在开头位置</span><br><span class="line">- `-C`单独使用，和解压的其他参数分开</span><br><span class="line"></span><br><span class="line">## zip命令</span><br><span class="line"></span><br><span class="line">### zip压缩</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>zip [-r] 参数1 参数2 … 参数N</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">- `-r`，被压缩的文件包含文件夹的时候，需要使用`-r`选项</span><br><span class="line"></span><br><span class="line">### unzip解压</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>unzip 参数 [-d]</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">- `-d`，指定要解压去的位置，同tar的-C选项</span><br><span class="line">- `参数`，被解压的zip压缩包文件</span><br><span class="line"></span><br><span class="line">## dpkg命令</span><br><span class="line"></span><br><span class="line">`dpkg --help`</span><br><span class="line">`dpkg --version`</span><br><span class="line">管理deb包，可以对其安装、卸载、deb打包、deb解压等操作</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>-i: 安装软件包<br>-r: 删除软件包<br>-P: 删除软件包的同时删除其配置文件<br>-L: 显示与软件包关联的文件<br>-l: 显示已安装软件包列表<br>-s: 查看软件包（已安装）的详细信息<br>-S: 查询一个文件属于哪个软件包<br>–unpack:   解开软件包<br>-c: 显示软件包内文件列表<br>–configure:    配置软件包</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">## 7z命令</span><br><span class="line"></span><br><span class="line">### 解压</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>7z x [-r -o]</p>
+<pre><code>
+- `x`，代表解压文件，按原始目录解压
+- `-r`，表示递归解压所有的子文件夹
+- `-o`，指定解压到的目录，`-o`后面没有空格直接跟目录
+
+# 系统目录
+
+## /etc
+
+- /etc/hostname
+
+  这个文件里存放着主机名，可以进行修改
+</code></pre>
 ]]></content>
       <categories>
         <category>Linux</category>
       </categories>
       <tags>
         <tag>Linux命令</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>LSPosed开发</title>
+    <url>/2024/12/19/LSPosed%E5%BC%80%E5%8F%91/</url>
+    <content><![CDATA[<h1 id="LSP前传Xposed介绍"><a href="#LSP前传Xposed介绍" class="headerlink" title="LSP前传Xposed介绍"></a>LSP前传Xposed介绍</h1><p>&emsp;&emsp;Xposed 框架是一个强大的 Android 逆向工程工具，它允许开发者在不修改应用程序源代码的情况下，动态地注入和修改Android 应用程序的行为。</p>
+<h2 id="Xposed原理"><a href="#Xposed原理" class="headerlink" title="Xposed原理"></a>Xposed原理</h2><p>&emsp;&emsp;Android 系统运行的核心和起点是 Zygote 进程，所有应用都是通过它 fork 子进程产生的，当系统开始运行时由 <code>init.rc</code> 脚本调用<code>/system/bin/app_process</code> 程序启动Zygote，加载所需的类并调用初始化方法。</p>
+<p>&emsp;&emsp;Xposed 使用 <strong>zygote</strong> 进程来注入代码，它会替换<code>/system/bin/app_process</code>，使其加载Xposed的核心模块<code>XposedBridge.jar</code>，导致所有从 Zygote fork 出来的子进程（包括应用进程和系统服务进程）都会继承 Xposed 的 Hook 环境。</p>
+<h2 id="图解分析"><a href="#图解分析" class="headerlink" title="图解分析"></a>图解分析</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[init 进程]</span><br><span class="line">   |</span><br><span class="line">   v</span><br><span class="line">[/system/bin/app_process] -- 启动 Zygote</span><br><span class="line">   |</span><br><span class="line">   v</span><br><span class="line">[ZygoteInit.main()] -- 加载核心类和资源</span><br><span class="line">   |</span><br><span class="line">   v</span><br><span class="line">[fork 子进程]</span><br><span class="line">   |</span><br><span class="line">   +--&gt; [系统服务] (如 system_server)</span><br><span class="line">   |</span><br><span class="line">   +--&gt; [应用进程] (如 com.example.app)</span><br><span class="line"></span><br><span class="line">[Xposed 框架]</span><br><span class="line">   |</span><br><span class="line">   +--&gt; 替换 app_process</span><br><span class="line">   |</span><br><span class="line">   +--&gt; 劫持 ZygoteInit，加载 XposedBridge</span><br><span class="line">   |</span><br><span class="line">   +--&gt; 影响所有子进程，进行 Hook</span><br></pre></td></tr></table></figure>
+
+<h2 id="局限性"><a href="#局限性" class="headerlink" title="局限性"></a>局限性</h2><p>在 Android 9 及更高版本中，安全限制增加，Xposed 原框架不支持。</p>
+<h1 id="LSPosed"><a href="#LSPosed" class="headerlink" title="LSPosed"></a>LSPosed</h1><p>&emsp;&emsp;LSPosed 是一个基于 <strong>Xposed</strong> 框架的增强工具，专注于模块化的安卓应用定制。</p>
+<ul>
+<li>基于Riru框架，使用 Riru 技术直接注入到 <code>zygote</code> 进程，避免直接修改系统文件。</li>
+</ul>
+<h2 id="开发准备"><a href="#开发准备" class="headerlink" title="开发准备"></a>开发准备</h2><ul>
+<li>面具安装LSPosed模块</li>
+<li>Xposed API（XposedBridgeAPI-82.jar，XposedBridgeAPI-89.jar）</li>
+</ul>
+<h2 id="开发一个简单模块"><a href="#开发一个简单模块" class="headerlink" title="开发一个简单模块"></a>开发一个简单模块</h2><h3 id="Android-Studio新建空项目"><a href="#Android-Studio新建空项目" class="headerlink" title="Android Studio新建空项目"></a>Android Studio新建空项目</h3><p>&emsp;&emsp;在app目录下新建一个libs目录（若已有该目录则无需新建），把XposedBridgeAPI.jar放到libs目录下，右击jar包，选择add as library，这一步会在build.gradle里新增一个依赖<code>implementation(files(&quot;libs/XposedBridgeAPI-89.jar&quot;))</code>，我们需要把<code>implementation</code>改为<code>compileOnly</code>。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">implementation 使用该方式依赖的库将会参与编译和打包</span><br><span class="line">compileOnly 只在编译时有效，不会参与打包</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;修改AndroidManifest.xml文件配置，在<code>&lt;application&gt;</code>标签内添加如下内容：</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 是否是xposed模块，xposed根据这个来判断是否是模块 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta-data</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:name</span>=<span class="string">&quot;xposedmodule&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:value</span>=<span class="string">&quot;true&quot;</span> /&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 模块描述，显示在xposed模块列表那里第二行 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta-data</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:name</span>=<span class="string">&quot;xposeddescription&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:value</span>=<span class="string">&quot;这是一个Xposed模块&quot;</span> /&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 最低xposed版本号(lib文件名可知) --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta-data</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:name</span>=<span class="string">&quot;xposedminversion&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:value</span>=<span class="string">&quot;82&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;在main目录下新建一个assets Folder目录，右击main，<code>new-&gt;Folder-&gt;Assets Folder</code>。在assets目录下新建一个xposed_init文件（无后缀），用来说明入口类。</p>
+<p>&emsp;&emsp;在项目包名目录下新建一个模块类lsptest1，然后向xposed_init文件里添加一行代码，lsptest1类的全类名<code>com.example.lsposedtest.lsptest1</code>。</p>
+<h3 id="实现IXposedHookLoadPackage接口"><a href="#实现IXposedHookLoadPackage接口" class="headerlink" title="实现IXposedHookLoadPackage接口"></a>实现<code>IXposedHookLoadPackage</code>接口</h3><p>&emsp;&emsp;在lsptest1类中实现<code>IXposedHookLoadPackage</code>接口。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">lsptest1</span> <span class="keyword">implements</span> <span class="title class_">IXposedHookLoadPackage</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">handleLoadPackage</span><span class="params">(XC_LoadPackage.LoadPackageParam loadPackageParam)</span> <span class="keyword">throws</span> Throwable &#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="添加Hook逻辑"><a href="#添加Hook逻辑" class="headerlink" title="添加Hook逻辑"></a>添加Hook逻辑</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">lsptest1</span> <span class="keyword">implements</span> <span class="title class_">IXposedHookLoadPackage</span> &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">handleLoadPackage</span><span class="params">(XC_LoadPackage.LoadPackageParam loadPackageParam)</span> <span class="keyword">throws</span> Throwable &#123;</span><br><span class="line">        XposedBridge.log(<span class="string">&quot;Bileton-&gt;package&quot;</span>+loadPackageParam.packageName);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h3><p>&emsp;&emsp;安装成功后，打开LSPosed，点击模块</p>
+<p><img src="/2024/12/19/LSPosed%E5%BC%80%E5%8F%91/1.jpg"></p>
+<p>&emsp;&emsp;点击我们开发的模块，然后勾选要Hook的app，勾选完成之后，不要直接退出，通过返回键，返回到桌面，然后启动勾选的app，可以在Android Studio里面的日志里看到打印出来的App的包名。</p>
+<p><img src="/2024/12/19/LSPosed%E5%BC%80%E5%8F%91/2.jpg"></p>
+]]></content>
+      <categories>
+        <category>LSPosed</category>
+      </categories>
+      <tags>
+        <tag>LSPosed开发</tag>
       </tags>
   </entry>
   <entry>
@@ -1081,17 +1209,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Java</title>
-    <url>/2024/05/01/Java/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>编程语言</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>adb: Android调试桥</title>
     <url>/2024/12/07/adb-Android%E8%B0%83%E8%AF%95%E6%A1%A5/</url>
     <content><![CDATA[<p>Android 调试桥 (adb) 是一种功能多样的命令行工具，可以通过命令行与设备进行通信。</p>
@@ -1308,50 +1425,6 @@
       </tags>
   </entry>
   <entry>
-    <title>关于ptrace</title>
-    <url>/2024/12/22/%E5%85%B3%E4%BA%8Eptrace/</url>
-    <content><![CDATA[<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>&emsp;&emsp;<code>ptrace</code> 是一个系统调用，允许一个进程（父进程即调试器）观察和控制另一个进程（子进程即被调试的目标进程）。同时，它还能检查和改变目标进程的内存、寄存器和执行状态。这种机制广泛用于调试器和逆向分析工具。</p>
-<h1 id="ptrace-函数原型"><a href="#ptrace-函数原型" class="headerlink" title="ptrace 函数原型"></a>ptrace 函数原型</h1><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;sys/ptrace.h&gt;</span></span></span><br><span class="line"><span class="type">long</span> <span class="title function_">ptrace</span><span class="params">(<span class="keyword">enum</span> __ptrace_request request, <span class="type">pid_t</span> pid, <span class="type">void</span> *addr, <span class="type">void</span> *data)</span>;</span><br></pre></td></tr></table></figure>
-
-<p><strong><code>request</code></strong><br>指定执行的操作，决定了 <code>ptrace</code> 的具体功能，比如追踪进程、读取内存、单步执行等。常见值如下：</p>
-<ul>
-<li><code>PTRACE_TRACEME</code>：表示当前进程希望被其父进程调试。</li>
-<li><code>PTRACE_ATTACH</code>：将当前进程附加到目标进程上。</li>
-<li><code>PTRACE_CONT</code>：继续运行目标进程。</li>
-<li><code>PTRACE_PEEKDATA</code>：读取目标进程的内存。</li>
-<li><code>PTRACE_POKEDATA</code>：写入目标进程的内存。</li>
-<li><code>PTRACE_SINGLESTEP</code>：让目标进程执行单条指令。</li>
-<li><code>PTRACE_GETREGS</code> 和 <code>PTRACE_SETREGS</code>：获取或设置目标进程的寄存器。</li>
-<li>其他值：具体见系统调用文档。</li>
-</ul>
-<p><strong><code>pid</code></strong><br>指定目标进程的 PID（进程 ID）。</p>
-<p><strong><code>addr</code></strong><br>表示地址参数：</p>
-<ul>
-<li>对于内存相关操作（如 <code>PTRACE_PEEKDATA</code> 和 <code>PTRACE_POKEDATA</code>），这是目标进程的内存地址。</li>
-<li>对于寄存器操作，可以忽略此参数。</li>
-</ul>
-<p><strong><code>data</code></strong><br>根据操作的不同，此参数可以用作输入或输出：</p>
-<ul>
-<li>用于传递写入目标进程的值。</li>
-<li>保存读取到的数据（如寄存器内容）。</li>
-</ul>
-<p>&emsp;&emsp;当一个调试器（如 <code>gdb</code> 或自定义调试器）使用 <code>ptrace(PTRACE_ATTACH)</code> 附加到目标进程时，内核会更新目标进程的 <code>TracerPid</code> 字段，记录调试器的 PID。</p>
-<h1 id="TracerPid"><a href="#TracerPid" class="headerlink" title="TracerPid"></a>TracerPid</h1><p>&emsp;&emsp;<code>/proc/&lt;pid&gt;/status</code> 文件中的 <code>TracerPid</code> 字段与 <code>ptrace</code> 密切相关，<code>TracerPid</code> 表示该进程的调试状态。</p>
-<ul>
-<li><p><code>TracerPid: 0</code> 表示当前进程没有被调试。</p>
-</li>
-<li><p><code>TracerPid: &lt;pid&gt;</code> 表示该进程正在被调试，且调试器的进程 ID 是 <code>&lt;pid&gt;</code>。</p>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Android系统</category>
-      </categories>
-      <tags>
-        <tag>ptrace</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>NexT主题美化</title>
     <url>/2024/01/02/%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96/</url>
     <content><![CDATA[<h1 id="NexT主题"><a href="#NexT主题" class="headerlink" title="NexT主题"></a>NexT主题</h1><p>从博客目录打开终端，执行命令</p>
@@ -1430,6 +1503,50 @@
       </tags>
   </entry>
   <entry>
+    <title>关于ptrace</title>
+    <url>/2024/12/22/%E5%85%B3%E4%BA%8Eptrace/</url>
+    <content><![CDATA[<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>&emsp;&emsp;<code>ptrace</code> 是一个系统调用，允许一个进程（父进程即调试器）观察和控制另一个进程（子进程即被调试的目标进程）。同时，它还能检查和改变目标进程的内存、寄存器和执行状态。这种机制广泛用于调试器和逆向分析工具。</p>
+<h1 id="ptrace-函数原型"><a href="#ptrace-函数原型" class="headerlink" title="ptrace 函数原型"></a>ptrace 函数原型</h1><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;sys/ptrace.h&gt;</span></span></span><br><span class="line"><span class="type">long</span> <span class="title function_">ptrace</span><span class="params">(<span class="keyword">enum</span> __ptrace_request request, <span class="type">pid_t</span> pid, <span class="type">void</span> *addr, <span class="type">void</span> *data)</span>;</span><br></pre></td></tr></table></figure>
+
+<p><strong><code>request</code></strong><br>指定执行的操作，决定了 <code>ptrace</code> 的具体功能，比如追踪进程、读取内存、单步执行等。常见值如下：</p>
+<ul>
+<li><code>PTRACE_TRACEME</code>：表示当前进程希望被其父进程调试。</li>
+<li><code>PTRACE_ATTACH</code>：将当前进程附加到目标进程上。</li>
+<li><code>PTRACE_CONT</code>：继续运行目标进程。</li>
+<li><code>PTRACE_PEEKDATA</code>：读取目标进程的内存。</li>
+<li><code>PTRACE_POKEDATA</code>：写入目标进程的内存。</li>
+<li><code>PTRACE_SINGLESTEP</code>：让目标进程执行单条指令。</li>
+<li><code>PTRACE_GETREGS</code> 和 <code>PTRACE_SETREGS</code>：获取或设置目标进程的寄存器。</li>
+<li>其他值：具体见系统调用文档。</li>
+</ul>
+<p><strong><code>pid</code></strong><br>指定目标进程的 PID（进程 ID）。</p>
+<p><strong><code>addr</code></strong><br>表示地址参数：</p>
+<ul>
+<li>对于内存相关操作（如 <code>PTRACE_PEEKDATA</code> 和 <code>PTRACE_POKEDATA</code>），这是目标进程的内存地址。</li>
+<li>对于寄存器操作，可以忽略此参数。</li>
+</ul>
+<p><strong><code>data</code></strong><br>根据操作的不同，此参数可以用作输入或输出：</p>
+<ul>
+<li>用于传递写入目标进程的值。</li>
+<li>保存读取到的数据（如寄存器内容）。</li>
+</ul>
+<p>&emsp;&emsp;当一个调试器（如 <code>gdb</code> 或自定义调试器）使用 <code>ptrace(PTRACE_ATTACH)</code> 附加到目标进程时，内核会更新目标进程的 <code>TracerPid</code> 字段，记录调试器的 PID。</p>
+<h1 id="TracerPid"><a href="#TracerPid" class="headerlink" title="TracerPid"></a>TracerPid</h1><p>&emsp;&emsp;<code>/proc/&lt;pid&gt;/status</code> 文件中的 <code>TracerPid</code> 字段与 <code>ptrace</code> 密切相关，<code>TracerPid</code> 表示该进程的调试状态。</p>
+<ul>
+<li><p><code>TracerPid: 0</code> 表示当前进程没有被调试。</p>
+</li>
+<li><p><code>TracerPid: &lt;pid&gt;</code> 表示该进程正在被调试，且调试器的进程 ID 是 <code>&lt;pid&gt;</code>。</p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Android系统</category>
+      </categories>
+      <tags>
+        <tag>ptrace</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>抓包</title>
     <url>/2024/12/02/%E6%8A%93%E5%8C%85/</url>
     <content><![CDATA[<h1 id="HTTP抓包"><a href="#HTTP抓包" class="headerlink" title="HTTP抓包"></a>HTTP抓包</h1><p>对于HTTP的包是可以通过抓包工具+配置手机代理直接抓取的。</p>
@@ -1505,26 +1622,6 @@
       </tags>
   </entry>
   <entry>
-    <title>玩转Windows</title>
-    <url>/2024/12/01/%E7%8E%A9%E8%BD%ACWindows/</url>
-    <content><![CDATA[<h1 id="新机跳过联网"><a href="#新机跳过联网" class="headerlink" title="新机跳过联网"></a>新机跳过联网</h1><p>在连接网络的界面输入<code>Shift+F10</code>打开命令行，然后输入<code>oobe\bypassnro</code>然后会重启，重启后，在联网的界面会出现跳过的选项。</p>
-<h1 id="关于编码"><a href="#关于编码" class="headerlink" title="关于编码"></a>关于编码</h1><p>在中国大陆Windows使用的编码是GBK编码。</p>
-<h1 id="“运行”对话框"><a href="#“运行”对话框" class="headerlink" title="“运行”对话框"></a>“运行”对话框</h1><p>通过按下Win（Windows徽标键）和R键的组合来快速打开运行对话框，然后输入特定的命令或程序路径来运行程序或打开文件。</p>
-<ul>
-<li><code>cmd</code><br>打开控制台</li>
-<li><code>winver</code><br>查看系统版本</li>
-<li><code>control</code><br>打开控制面板</li>
-<li><code>calc</code><br>打开计算器</li>
-</ul>
-<h1 id="Terminal（终端）"><a href="#Terminal（终端）" class="headerlink" title="Terminal（终端）"></a>Terminal（终端）</h1>]]></content>
-      <categories>
-        <category>Windows</category>
-      </categories>
-      <tags>
-        <tag>玩转Windows</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>玩转Python</title>
     <url>/2024/12/05/%E7%8E%A9%E8%BD%ACPython/</url>
     <content><![CDATA[<h1 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h1><p>需要配置的环境变量是python的安装路径和它的Scripts目录。<br><img src="/2024/12/05/%E7%8E%A9%E8%BD%ACPython/1.jpg"><br>python的安装路径下有python.exe。<br>Scripts目录下有pip.exe和我们安装的第三方库。</p>
@@ -1543,6 +1640,26 @@
       </categories>
       <tags>
         <tag>玩转Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>玩转Windows</title>
+    <url>/2024/12/01/%E7%8E%A9%E8%BD%ACWindows/</url>
+    <content><![CDATA[<h1 id="新机跳过联网"><a href="#新机跳过联网" class="headerlink" title="新机跳过联网"></a>新机跳过联网</h1><p>在连接网络的界面输入<code>Shift+F10</code>打开命令行，然后输入<code>oobe\bypassnro</code>然后会重启，重启后，在联网的界面会出现跳过的选项。</p>
+<h1 id="关于编码"><a href="#关于编码" class="headerlink" title="关于编码"></a>关于编码</h1><p>在中国大陆Windows使用的编码是GBK编码。</p>
+<h1 id="“运行”对话框"><a href="#“运行”对话框" class="headerlink" title="“运行”对话框"></a>“运行”对话框</h1><p>通过按下Win（Windows徽标键）和R键的组合来快速打开运行对话框，然后输入特定的命令或程序路径来运行程序或打开文件。</p>
+<ul>
+<li><code>cmd</code><br>打开控制台</li>
+<li><code>winver</code><br>查看系统版本</li>
+<li><code>control</code><br>打开控制面板</li>
+<li><code>calc</code><br>打开计算器</li>
+</ul>
+<h1 id="Terminal（终端）"><a href="#Terminal（终端）" class="headerlink" title="Terminal（终端）"></a>Terminal（终端）</h1>]]></content>
+      <categories>
+        <category>Windows</category>
+      </categories>
+      <tags>
+        <tag>玩转Windows</tag>
       </tags>
   </entry>
   <entry>
