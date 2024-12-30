@@ -124,17 +124,17 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">30</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">33</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">19</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">20</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">33</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">37</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -189,6 +189,330 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/12/31/Go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/android.svg">
+      <meta itemprop="name" content="Bileton">
+      <meta itemprop="description" content="路漫漫其修远夕！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="白乐天">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2024/12/31/Go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80/" class="post-title-link" itemprop="url">Go语言基础</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2024-12-31 00:29:58 / 修改时间：01:17:13" itemprop="dateCreated datePublished" datetime="2024-12-31T00:29:58+08:00">2024-12-31</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Go/" itemprop="url" rel="index"><span itemprop="name">Go</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>357</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="开发环境搭建"><a href="#开发环境搭建" class="headerlink" title="开发环境搭建"></a>开发环境搭建</h1><h2 id="安装Go"><a href="#安装Go" class="headerlink" title="安装Go"></a>安装Go</h2><p>打开Go的官网进行下载安装。</p>
+<p>在终端输入命令<code>go version</code>可查看Go的版本，输入<code>go env</code>可查看Go的环境配置。</p>
+<p>可以通过<code>go build</code>命令编译代码并生成可执行文件。</p>
+<p>可以通过<code>go run</code>命令在终端运行Go文件。</p>
+<h2 id="开发工具"><a href="#开发工具" class="headerlink" title="开发工具"></a>开发工具</h2><p>下载安装GoLand开发工具</p>
+<h1 id="HelloWorld"><a href="#HelloWorld" class="headerlink" title="HelloWorld"></a>HelloWorld</h1><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 声明这是一个属于 main 包的程序。Go 的可执行程序必须包含一个名为 main 的包。</span></span><br><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="comment">// 导入 Go 的标准库 fmt 包，用于格式化输出</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义程序的入口函数 main。每个 Go 程序的执行都会从 main 函数开始。</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	fmt.Println(<span class="string">&quot;Hello World!&quot;</span>) <span class="comment">// Hello World!</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/12/31/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E7%9A%84%E5%8F%91%E5%B1%95%E8%BD%A8%E8%BF%B9/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/android.svg">
+      <meta itemprop="name" content="Bileton">
+      <meta itemprop="description" content="路漫漫其修远夕！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="白乐天">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2024/12/31/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E7%9A%84%E5%8F%91%E5%B1%95%E8%BD%A8%E8%BF%B9/" class="post-title-link" itemprop="url">编程语言的发展轨迹</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2024-12-31 00:09:52 / 修改时间：01:33:09" itemprop="dateCreated datePublished" datetime="2024-12-31T00:09:52+08:00">2024-12-31</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%A7%81%E5%A4%9A%E8%AF%86%E5%B9%BF/" itemprop="url" rel="index"><span itemprop="name">见多识广</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>293</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="机器指令"><a href="#机器指令" class="headerlink" title="机器指令"></a>机器指令</h1><h1 id="汇编语言"><a href="#汇编语言" class="headerlink" title="汇编语言"></a>汇编语言</h1><h1 id="C语言"><a href="#C语言" class="headerlink" title="C语言"></a>C语言</h1><h1 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h1><h1 id="C-1"><a href="#C-1" class="headerlink" title="C#"></a>C#</h1><h1 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h1><h1 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h1><h1 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h1><h1 id="Go"><a href="#Go" class="headerlink" title="Go"></a>Go</h1><p>&emsp;&emsp;Go语言原生支持并发，通过轻量级的<strong>goroutine</strong>和<strong>channel</strong>机制，极大地简化了并发编程的复杂性。goroutine相比线程更加高效，资源占用低，可以支持大规模并发任务，非常适合构建高性能的服务器和分布式系统。</p>
+<p>&emsp;&emsp;Go语言的并发是基于 <code>goroutine</code> 的，<code>goroutine</code> 类似于线程，但并非线程。可以将 <code>goroutine</code> 理解为一种虚拟线程。Go 语言运行时会参与调度 <code>goroutine</code>，并将 <code>goroutine</code> 合理地分配到每个 CPU 中，最大限度地使用CPU性能。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/12/28/B%E7%AB%99/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/android.svg">
+      <meta itemprop="name" content="Bileton">
+      <meta itemprop="description" content="路漫漫其修远夕！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="白乐天">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2024/12/28/B%E7%AB%99/" class="post-title-link" itemprop="url">B站</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2024-12-28 18:58:54 / 修改时间：20:35:13" itemprop="dateCreated datePublished" datetime="2024-12-28T18:58:54+08:00">2024-12-28</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%80%86%E5%90%91%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/" itemprop="url" rel="index"><span itemprop="name">逆向实战案例</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>8</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="APP信息"><a href="#APP信息" class="headerlink" title="APP信息"></a>APP信息</h1><p>包名：</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/12/28/Jadx%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/android.svg">
+      <meta itemprop="name" content="Bileton">
+      <meta itemprop="description" content="路漫漫其修远夕！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="白乐天">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2024/12/28/Jadx%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/" class="post-title-link" itemprop="url">Jadx使用指南</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2024-12-28 18:56:54" itemprop="dateCreated datePublished" datetime="2024-12-28T18:56:54+08:00">2024-12-28</time>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>0</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2024/12/26/%E8%A7%81%E5%A4%9A%E8%AF%86%E5%B9%BF/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -212,10 +536,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2024-12-26 21:19:27 / 修改时间：21:23:54" itemprop="dateCreated datePublished" datetime="2024-12-26T21:19:27+08:00">2024-12-26</time>
+              <time title="创建时间：2024-12-26 21:19:27" itemprop="dateCreated datePublished" datetime="2024-12-26T21:19:27+08:00">2024-12-26</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-12-30 20:40:37" itemprop="dateModified" datetime="2024-12-30T20:40:37+08:00">2024-12-30</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -232,7 +562,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>165</span>
+              <span>339</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -253,6 +583,8 @@
       
           <h1 id="AIGC"><a href="#AIGC" class="headerlink" title="AIGC"></a>AIGC</h1><p>人工智能生成内容（Artificial Intelligence Generated Content），是指由人工智能（AI）技术创建、生成的各种内容，涵盖了文本、图像、视频、音频、代码等多种形式。</p>
 <h1 id="LLM"><a href="#LLM" class="headerlink" title="LLM"></a>LLM</h1><p>大预言模型（Large Language Model），是指一种基于深度学习技术，尤其是通过神经网络训练而成的自然语言处理模型。</p>
+<h1 id="HCI"><a href="#HCI" class="headerlink" title="HCI"></a>HCI</h1><p>人机交互（Human-Computer Interaction），是指人与计算机之间的交互过程和相关技术研究领域。</p>
+<h1 id="RPC"><a href="#RPC" class="headerlink" title="RPC"></a>RPC</h1><p>远程过程调用（Remote Procedure Call），RPC 是一种计算机通信协议，允许程序在不同的地址空间（例如不同的计算机或同一台计算机的不同进程）之间调用函数或子程序，就像在本地调用一样，而无需了解底层的网络通信细节。</p>
 
       
     </div>
@@ -385,7 +717,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-12-26 21:14:37" itemprop="dateModified" datetime="2024-12-26T21:14:37+08:00">2024-12-26</time>
+                <time title="修改时间：2024-12-30 00:41:51" itemprop="dateModified" datetime="2024-12-30T00:41:51+08:00">2024-12-30</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -403,14 +735,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>1k</span>
+              <span>7.6k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
+              <span>7 分钟</span>
             </span>
 
         </div>
@@ -473,6 +805,255 @@
 <li><p><strong>水平线</strong></p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">hr</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
 </ul>
+<h3 id="文本格式标签"><a href="#文本格式标签" class="headerlink" title="文本格式标签"></a>文本格式标签</h3><ul>
+<li><p><strong>加粗</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">strong</span>&gt;</span>这是加粗的内容<span class="tag">&lt;/<span class="name">strong</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">b</span>&gt;</span>这是加粗的内容<span class="tag">&lt;/<span class="name">b</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>倾斜</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">em</span>&gt;</span>这是倾斜的内容<span class="tag">&lt;/<span class="name">em</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">i</span>&gt;</span>这是倾斜的内容<span class="tag">&lt;/<span class="name">i</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>下划线</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ins</span>&gt;</span>这是添加下划线的内容<span class="tag">&lt;/<span class="name">ins</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">u</span>&gt;</span>这是添加下划线的内容<span class="tag">&lt;/<span class="name">u</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除线</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">del</span>&gt;</span>这是添加删除线的内容<span class="tag">&lt;/<span class="name">del</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">s</span>&gt;</span>这是添加删除线的内容<span class="tag">&lt;/<span class="name">s</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="图像标签"><a href="#图像标签" class="headerlink" title="图像标签"></a>图像标签</h3><p><strong>基本语法</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;图片的路径&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;替代文本&quot;</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"># src: 必需属性，用于指定图片的路径，可以是相对路径或绝对路径。</span><br><span class="line"># alt: 可选属性，用于在图片无法加载时显示替代文本。</span><br></pre></td></tr></table></figure>
+
+<p><strong>常用属性</strong></p>
+<ul>
+<li><p><code>width</code>和<code>height</code></p>
+<p>用于设置图片的宽度和高度，可以是像素值。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;example.jpg&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;示例图片&quot;</span> <span class="attr">width</span>=<span class="string">&quot;200&quot;</span> <span class="attr">height</span>=<span class="string">&quot;100&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>title</code></p>
+<p>为图片提供提示文本，当鼠标悬停在图片上时显示。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;example.jpg&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;示例图片&quot;</span> <span class="attr">title</span>=<span class="string">&quot;这是示例图片&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>loading</code></p>
+<p>控制图片的加载方式，可选值有：</p>
+<ul>
+<li><p><code>lazy</code>（懒加载，仅当用户滚动到图片时才加载）</p>
+</li>
+<li><p><code>eager</code>（默认行为，立即加载）</p>
+</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;example.jpg&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;示例图片&quot;</span> <span class="attr">loading</span>=<span class="string">&quot;lazy&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="超链接标签"><a href="#超链接标签" class="headerlink" title="超链接标签"></a>超链接标签</h3><p>超链接可以用于从一个页面跳转到另一个页面，也可以跳转到同一页面的特定位置、下载资源或触发其他行为。</p>
+<p><strong>基本语法</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;链接地址&quot;</span> &gt;</span>链接文本或内容<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"></span><br><span class="line"># href：必须属性，指定超链接的目标地址。</span><br><span class="line"># 链接文本或内容：用户点击的内容，可以是文字、图片或其他元素。</span><br></pre></td></tr></table></figure>
+
+<p><strong>常用属性</strong></p>
+<ul>
+<li><p><strong>target</strong></p>
+<p>定义链接的打开方式。</p>
+<ul>
+<li><code>_self</code>：在当前窗口打开（默认值）。</li>
+<li><code>_blank</code>：在新窗口或标签页打开。</li>
+</ul>
+</li>
+<li><p><strong>title</strong></p>
+<p>提供额外信息，鼠标悬停时显示提示文本。</p>
+</li>
+<li><p><strong>download</strong></p>
+<p>提供下载功能，将链接目标作为文件下载。</p>
+</li>
+</ul>
+<p><strong>注意事项</strong></p>
+<p><code>href</code> 属性不能为空：如果未指定值，链接会变为无效。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;#&quot;</span>&gt;</span>点击无效链接<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="音频标签"><a href="#音频标签" class="headerlink" title="音频标签"></a>音频标签</h3><p>用于在网页中嵌入音频文件。</p>
+<p><strong>基本语法</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">audio</span> <span class="attr">src</span>=<span class="string">&quot;audio.mp3&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">audio</span>&gt;</span></span><br><span class="line"></span><br><span class="line"># src： 指定音频文件的路径。</span><br></pre></td></tr></table></figure>
+
+<p><strong>常用属性</strong></p>
+<ul>
+<li><p><strong>controls</strong></p>
+<p>添加音频播放器控件。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">audio</span> <span class="attr">src</span>=<span class="string">&quot;audio.mp3&quot;</span> <span class="attr">controls</span>&gt;</span><span class="tag">&lt;/<span class="name">audio</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>autoplay</strong></p>
+<p>自动播放（页面加载完成后）。</p>
+<p>为了防止干扰用户体验，大多数浏览器会禁止自动播放，除非静音或用户交互后允许。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">audio</span> <span class="attr">src</span>=<span class="string">&quot;audio.mp3&quot;</span> <span class="attr">autoplay</span>&gt;</span><span class="tag">&lt;/<span class="name">audio</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>loop</strong></p>
+<p>循环播放。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">audio</span> <span class="attr">src</span>=<span class="string">&quot;audio.mp3&quot;</span> <span class="attr">loop</span> <span class="attr">controls</span>&gt;</span><span class="tag">&lt;/<span class="name">audio</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="视频标签"><a href="#视频标签" class="headerlink" title="视频标签"></a>视频标签</h3><p>用于在网页中嵌入视频文件。</p>
+<p><strong>基本语法</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">video</span> <span class="attr">src</span>=<span class="string">&quot;video.mp4&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">video</span>&gt;</span></span><br><span class="line"></span><br><span class="line"># src：指定视频文件的路径。</span><br></pre></td></tr></table></figure>
+
+<p><strong>常用属性</strong></p>
+<ul>
+<li><p><strong>controls</strong></p>
+<p>显示视频控件。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">video</span> <span class="attr">src</span>=<span class="string">&quot;video.mp4&quot;</span> <span class="attr">controls</span>&gt;</span><span class="tag">&lt;/<span class="name">video</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>loop</strong></p>
+<p>循环播放。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">video</span> <span class="attr">src</span>=<span class="string">&quot;video.mp4&quot;</span> <span class="attr">loop</span> <span class="attr">controls</span>&gt;</span><span class="tag">&lt;/<span class="name">video</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>muted</strong></p>
+<p>默认静音播放。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">video</span> <span class="attr">src</span>=<span class="string">&quot;video.mp4&quot;</span> <span class="attr">muted</span> <span class="attr">controls</span>&gt;</span><span class="tag">&lt;/<span class="name">video</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>autoplay</strong></p>
+<p>自动播放（页面加载完成后）。</p>
+<p>注意：大多数浏览器要求视频自动播放时必须静音。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">video</span> <span class="attr">src</span>=<span class="string">&quot;video.mp4&quot;</span> <span class="attr">muted</span> <span class="attr">autoplay</span>&gt;</span><span class="tag">&lt;/<span class="name">video</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="列表标签"><a href="#列表标签" class="headerlink" title="列表标签"></a>列表标签</h2><h3 id="无序列表"><a href="#无序列表" class="headerlink" title="无序列表"></a>无序列表</h3><p>使用<code>&lt;ul&gt;</code>标签定义无序列表，使用<code>&lt;li&gt;</code>标签定义每个列表项。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>苹果<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>香蕉<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>橙子<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="有序列表"><a href="#有序列表" class="headerlink" title="有序列表"></a>有序列表</h3><p>使用<code>&lt;ol&gt;</code>标签定义有序列表，使用<code>&lt;li&gt;</code>标签定义每个列表项。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ol</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>语文<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>数学<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>英语<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ol</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>修改序号样式</strong></p>
+<p>可以通过<code>type</code>属性修改有序列表的样式。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">type=&quot;1&quot;：数字（默认）</span><br><span class="line">type=&quot;A&quot;：大写字母</span><br><span class="line">type=&quot;a&quot;：小写字母</span><br><span class="line">type=&quot;I&quot;：大写罗马数字</span><br><span class="line">type=&quot;i&quot;：小写罗马数字</span><br></pre></td></tr></table></figure>
+
+<h3 id="定义列表"><a href="#定义列表" class="headerlink" title="定义列表"></a>定义列表</h3><p>使用 <code>&lt;dl&gt;</code>标签定义列表，使用<code>&lt;dt&gt;</code>标签定义标题，使用<code>&lt;dd&gt;</code>标签定义描述。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dl</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">dt</span>&gt;</span>HTML<span class="tag">&lt;/<span class="name">dt</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">dd</span>&gt;</span>超文本标记语言<span class="tag">&lt;/<span class="name">dd</span>&gt;</span></span><br><span class="line">  </span><br><span class="line">  <span class="tag">&lt;<span class="name">dt</span>&gt;</span>CSS<span class="tag">&lt;/<span class="name">dt</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">dd</span>&gt;</span>层叠样式表<span class="tag">&lt;/<span class="name">dd</span>&gt;</span></span><br><span class="line">  </span><br><span class="line">  <span class="tag">&lt;<span class="name">dt</span>&gt;</span>JavaScript<span class="tag">&lt;/<span class="name">dt</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">dd</span>&gt;</span>一种脚本语言，用于开发动态交互的网页。<span class="tag">&lt;/<span class="name">dd</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dl</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>注意</strong></p>
+<ul>
+<li><code>&lt;dl&gt;</code>里面只能包含<code>&lt;dl&gt;</code>和<code>&lt;dd&gt;</code>。</li>
+<li><code>&lt;dl&gt;</code>和<code>&lt;dd&gt;</code>里面可以包含任意内容。</li>
+</ul>
+<h2 id="表格标签"><a href="#表格标签" class="headerlink" title="表格标签"></a>表格标签</h2><p><strong>基本表格结构</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">table</span> <span class="attr">border</span>=<span class="string">&quot;1&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">th</span>&gt;</span>姓名<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">th</span>&gt;</span>年龄<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">th</span>&gt;</span>职业<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">td</span>&gt;</span>张三<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">td</span>&gt;</span>25<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">td</span>&gt;</span>工程师<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">td</span>&gt;</span>李四<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">td</span>&gt;</span>30<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">td</span>&gt;</span>设计师<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><code>&lt;table&gt;</code>定义表格，<code>&lt;tr&gt;</code>定义行，<code>th</code>定义表头单元格，<code>&lt;td&gt;</code>定义数据单元格。</p>
+<p>在网页中，表格默认没有边框线，使用<strong>border</strong>属性可以为表格添加边框线。</p>
+<p><strong>表格结构标签</strong></p>
+<ul>
+<li><code>&lt;thead&gt;</code>：定义表格头部。</li>
+<li><code>&lt;tbody&gt;</code>：定义表格主体。</li>
+<li><code>&lt;tfoot&gt;</code>：定义表格尾部。</li>
+</ul>
+<h3 id="合并单元格"><a href="#合并单元格" class="headerlink" title="合并单元格"></a>合并单元格</h3><p><strong>合并行</strong>（纵向合并）</p>
+<p>使用 <code>rowspan</code> 属性，合并的单元格数由 <code>rowspan</code> 的值决定。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">table</span> <span class="attr">border</span>=<span class="string">&quot;1&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">th</span>&gt;</span>姓名<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">th</span>&gt;</span>年龄<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">th</span>&gt;</span>成绩<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span>李华<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span>19<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span> <span class="attr">rowspan</span>=<span class="string">&quot;2&quot;</span>&gt;</span>97<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span>李明<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span>18<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- &lt;td&gt;97&lt;/td&gt; --&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/2024/12/23/HTML/1.jpg"></p>
+<p><strong>合并列</strong>（横向合并）</p>
+<p>使用<code>colspan</code>属性，合并的单元格数由 <code>colspan</code> 的值决定。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">table</span> <span class="attr">border</span>=<span class="string">&quot;1&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">th</span>&gt;</span>姓名<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">th</span>&gt;</span>年龄<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">th</span>&gt;</span>成绩<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span>李华<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span>19<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span> <span class="attr">rowspan</span>=<span class="string">&quot;2&quot;</span>&gt;</span>97<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span>李明<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span>18<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- &lt;td&gt;97&lt;/td&gt; --&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span>总结<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span> <span class="attr">colspan</span>=<span class="string">&quot;2&quot;</span>&gt;</span>优秀<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/2024/12/23/HTML/2.jpg"></p>
+<h2 id="表单"><a href="#表单" class="headerlink" title="表单"></a>表单</h2><h3 id="输入框"><a href="#输入框" class="headerlink" title="输入框"></a>输入框</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="type属性"><a href="#type属性" class="headerlink" title="type属性"></a>type属性</h4><p>通过<code>type</code>属性定义输入框的类型</p>
+<ul>
+<li><p><strong>text</strong></p>
+<p>文本输入框 (<code>type=&quot;text&quot;</code>)</p>
+</li>
+<li><p><strong>password</strong></p>
+<p>密码输入框 (<code>type=&quot;password&quot;</code>)</p>
+<p>输入的内容会被掩盖（通常显示为星号或圆点）。</p>
+</li>
+<li><p><strong>radio</strong></p>
+<p>单选按钮 (<code>type=&quot;radio&quot;</code>)</p>
+<p>同一组单选按钮的 <code>name</code> 必须相同，用户只能选择一个。</p>
+</li>
+<li><p><strong>checkbox</strong></p>
+<p>复选框 (<code>type=&quot;checkbox&quot;</code>)</p>
+</li>
+<li><p><strong>file</strong></p>
+<p>文件上传框 (<code>type=&quot;file&quot;</code>)</p>
+</li>
+</ul>
+<h4 id="placeholder属性"><a href="#placeholder属性" class="headerlink" title="placeholder属性"></a>placeholder属性</h4><p>通过<code>placeholder</code>属性作为输入框的占位提示信息，用户未输入时显示。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">placeholder</span>=<span class="string">&quot;请输入&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="name属性"><a href="#name属性" class="headerlink" title="name属性"></a>name属性</h4><p>主要用于标识表单字段的名称，在表单提交时，<code>name</code> 属性的值会作为键，输入的值作为对应的值提交。</p>
+<h4 id="checked属性"><a href="#checked属性" class="headerlink" title="checked属性"></a>checked属性</h4><p><code>checked</code> 属性是 HTML 表单元素中专门用于 <strong>单选按钮（<code>&lt;input type=&quot;radio&quot;&gt;</code>）</strong> 和 <strong>复选框（<code>&lt;input type=&quot;checkbox&quot;&gt;</code>）</strong> 的布尔属性。它用来预先设置某个选项为“选中”状态。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;radio&quot;</span> <span class="attr">name</span>=<span class="string">&quot;group_name&quot;</span> <span class="attr">checked</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;checkbox&quot;</span> <span class="attr">name</span>=<span class="string">&quot;field_name&quot;</span> <span class="attr">checked</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="multiple属性"><a href="#multiple属性" class="headerlink" title="multiple属性"></a>multiple属性</h4><p><code>multiple</code> 属性允许用户在某些输入元素中选择多个值。它通常用于文件上传、选择框和电子邮件地址输入。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;file&quot;</span> <span class="attr">name</span>=<span class="string">&quot;files&quot;</span> <span class="attr">multiple</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="下拉菜单"><a href="#下拉菜单" class="headerlink" title="下拉菜单"></a>下拉菜单</h3><p>使用<code>&lt;select&gt;</code>定义下拉菜单，使用<code>&lt;option&gt;</code>定义下拉菜单中的每个选项，在 <code>&lt;option&gt;</code> 中添加 <code>selected</code> 属性可以设置默认选中值，如果未设置则默认第一个选项是默认选中值。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">name</span>=<span class="string">&quot;field_name&quot;</span> <span class="attr">id</span>=<span class="string">&quot;field_id&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;option1&quot;</span>&gt;</span>选项1<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;option2&quot;</span>&gt;</span>选项2<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;option3&quot;</span>&gt;</span>选项3<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="文本域标签"><a href="#文本域标签" class="headerlink" title="文本域标签"></a>文本域标签</h3><p>文本域标签用于创建多行的文本输入框，用户可以在其中输入较长的文本内容，如留言、评论等。</p>
+<p>使用<code>&lt;textarea&gt;</code>定义文本域，标签之间的内容是默认显示的初始文本。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">textarea</span> <span class="attr">name</span>=<span class="string">&quot;field_name&quot;</span> <span class="attr">id</span>=<span class="string">&quot;field_id&quot;</span> <span class="attr">rows</span>=<span class="string">&quot;行数&quot;</span> <span class="attr">cols</span>=<span class="string">&quot;列数&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">textarea</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="label标签"><a href="#label标签" class="headerlink" title="label标签"></a>label标签</h3><p><code>&lt;label&gt;</code> 标签用于为 HTML 表单元素定义标签。它可以通过 <code>for</code> 属性绑定到一个表单控件，或者直接将表单控件嵌套在 <code>&lt;label&gt;</code> 标签内。</p>
+<p><strong>基本语法</strong></p>
+<ul>
+<li><p><strong>使用for属性绑定控件</strong></p>
+<p><code>for</code> 属性的值需要与目标表单控件的 <code>id</code> 一致。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">&quot;username&quot;</span>&gt;</span>用户名：<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">id</span>=<span class="string">&quot;username&quot;</span> <span class="attr">name</span>=<span class="string">&quot;username&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>嵌套控件</strong></p>
+<p>直接将表单控件嵌套在 <code>&lt;label&gt;</code> 标签内。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">label</span>&gt;</span></span><br><span class="line">  密码：</span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;password&quot;</span> <span class="attr">name</span>=<span class="string">&quot;password&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="按钮"><a href="#按钮" class="headerlink" title="按钮"></a>按钮</h3><p>按钮主要用于用户交互，可以触发表单提交、运行 JavaScript 脚本，或者执行其他操作。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">button</span>&gt;</span>普通按钮<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>常用属性</strong></p>
+<ul>
+<li><p><strong>button</strong></p>
+<p>普通按钮，默认没有功能，配合JavaScript使用。</p>
+</li>
+<li><p><strong>submit</strong></p>
+<p>点击后提交数据到后台。</p>
+</li>
+<li><p><strong>reset</strong></p>
+<p>重置按钮，点击后将表单控件恢复默认值。</p>
+</li>
+</ul>
+<h3 id="form标签"><a href="#form标签" class="headerlink" title="form标签"></a>form标签</h3><p><code>&lt;form&gt;</code> 标签是用于创建 HTML 表单的容器。表单用于收集用户输入，并通过提交将数据发送到服务器进行处理。</p>
+<p><strong>基本语法</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">&quot;提交地址&quot;</span> <span class="attr">method</span>=<span class="string">&quot;请求方法&quot;</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 表单控件，例如文本框、按钮 --&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>常用属性</strong></p>
+<ul>
+<li><p><strong>action</strong></p>
+<p>表单提交时的目标 URL，表示数据提交到的服务器地址。</p>
+</li>
+<li><p><strong>method</strong></p>
+<p>表单数据提交的方法，常用值为 <code>GET</code> 和 <code>POST</code>。</p>
+</li>
+</ul>
+<h2 id="布局标签"><a href="#布局标签" class="headerlink" title="布局标签"></a>布局标签</h2><h3 id="div标签"><a href="#div标签" class="headerlink" title="div标签"></a>div标签</h3><p>通用的块级容器，用于分组 HTML 元素，没有语义，占据一行。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">  这是一个 div 容器。</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="span标签"><a href="#span标签" class="headerlink" title="span标签"></a>span标签</h3><p>通用的行内容器，用于分组文本或其他行内元素，没有语义，不会独占一行。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span></span><br><span class="line">  这是一个<span class="tag">&lt;<span class="name">span</span>&gt;</span>红色<span class="tag">&lt;/<span class="name">span</span>&gt;</span> 的单词。</span><br><span class="line"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="字符实体"><a href="#字符实体" class="headerlink" title="字符实体"></a>字符实体</h2><table>
+<thead>
+<tr>
+<th>显示结果</th>
+<th>描述</th>
+<th>实体名称</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td>空格</td>
+<td><code>&amp;nbsp;</code></td>
+</tr>
+<tr>
+<td>&lt;</td>
+<td>小于号</td>
+<td><code>&amp;lt;</code></td>
+</tr>
+<tr>
+<td>&gt;</td>
+<td>大于号</td>
+<td><code>&amp;gt</code></td>
+</tr>
+</tbody></table>
 
       
     </div>
@@ -932,457 +1513,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/12/22/%E8%87%AA%E6%AF%81%E7%A8%8B%E5%BA%8F%E5%AF%86%E7%A0%81%E2%80%94%E9%98%BF%E9%87%8C%E8%81%9A%E5%AE%89%E5%85%A8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/android.svg">
-      <meta itemprop="name" content="Bileton">
-      <meta itemprop="description" content="路漫漫其修远夕！">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="白乐天">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2024/12/22/%E8%87%AA%E6%AF%81%E7%A8%8B%E5%BA%8F%E5%AF%86%E7%A0%81%E2%80%94%E9%98%BF%E9%87%8C%E8%81%9A%E5%AE%89%E5%85%A8/" class="post-title-link" itemprop="url">自毁程序密码—阿里聚安全</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2024-12-22 00:40:22 / 修改时间：00:56:44" itemprop="dateCreated datePublished" datetime="2024-12-22T00:40:22+08:00">2024-12-22</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E9%80%86%E5%90%91%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/" itemprop="url" rel="index"><span itemprop="name">逆向实战案例</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>1.3k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="App信息"><a href="#App信息" class="headerlink" title="App信息"></a>App信息</h1><p>包名：com.yaotong.crackme</p>
-<p><img src="/2024/12/22/%E8%87%AA%E6%AF%81%E7%A8%8B%E5%BA%8F%E5%AF%86%E7%A0%81%E2%80%94%E9%98%BF%E9%87%8C%E8%81%9A%E5%AE%89%E5%85%A8/1.jpg"></p>
-<h2 id="Java层分析"><a href="#Java层分析" class="headerlink" title="Java层分析"></a>Java层分析</h2><h3 id="MainActivity"><a href="#MainActivity" class="headerlink" title="MainActivity"></a>MainActivity</h3><p><img src="/2024/12/22/%E8%87%AA%E6%AF%81%E7%A8%8B%E5%BA%8F%E5%AF%86%E7%A0%81%E2%80%94%E9%98%BF%E9%87%8C%E8%81%9A%E5%AE%89%E5%85%A8/2.jpg"></p>
-<p>很容易就能看出来是在securityCheck函数里进行安全校验。securityCheck是一个native函数，到so中进行分析。</p>
-<h1 id="SO层分析"><a href="#SO层分析" class="headerlink" title="SO层分析"></a>SO层分析</h1><h2 id="定位函数位置"><a href="#定位函数位置" class="headerlink" title="定位函数位置"></a>定位函数位置</h2><p>在导出函数里搜索</p>
-<p><img src="/2024/12/22/%E8%87%AA%E6%AF%81%E7%A8%8B%E5%BA%8F%E5%AF%86%E7%A0%81%E2%80%94%E9%98%BF%E9%87%8C%E8%81%9A%E5%AE%89%E5%85%A8/3.jpg"></p>
-<h2 id="securityCheck"><a href="#securityCheck" class="headerlink" title="securityCheck"></a>securityCheck</h2><p>数据类型修复和重命名后的securityCheck</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> __fastcall <span class="title function_">Java_com_yaotong_crackme_MainActivity_securityCheck</span><span class="params">(JNIEnv *a1, jobject a2, <span class="type">char</span> *str)</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">const</span> <span class="type">char</span> *inputStr; <span class="comment">// r0</span></span><br><span class="line">  <span class="type">char</span> *wojiushidaan; <span class="comment">// r2</span></span><br><span class="line">  <span class="type">int</span> tempResult; <span class="comment">// r3</span></span><br><span class="line">  <span class="type">int</span> v8; <span class="comment">// r1</span></span><br><span class="line">​</span><br><span class="line">  <span class="keyword">if</span> ( !byte_6359 )</span><br><span class="line">  &#123;</span><br><span class="line">    sub_2494(byte_6304, <span class="number">8</span>, &amp;unk_446B, &amp;unk_4468, <span class="number">2</span>, <span class="number">7</span>);</span><br><span class="line">    byte_6359 = <span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> ( !byte_635A )</span><br><span class="line">  &#123;</span><br><span class="line">    sub_24F4(byte_636C, <span class="number">25</span>, &amp;unk_4530, &amp;unk_4474, <span class="number">3</span>, <span class="number">117</span>);</span><br><span class="line">    byte_635A = <span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  _android_log_print(<span class="number">4</span>, byte_6304, byte_636C);</span><br><span class="line">  inputStr = (*a1)-&gt;GetStringUTFChars(a1, str, <span class="number">0</span>);</span><br><span class="line">  wojiushidaan = off_628C;</span><br><span class="line">  <span class="keyword">while</span> ( <span class="number">1</span> )</span><br><span class="line">  &#123;</span><br><span class="line">    tempResult = *wojiushidaan;</span><br><span class="line">    <span class="keyword">if</span> ( tempResult != *inputStr )</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    ++wojiushidaan;</span><br><span class="line">    ++inputStr;</span><br><span class="line">    v8 = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span> ( !tempResult )</span><br><span class="line">      <span class="keyword">return</span> v8;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="off-628C"><a href="#off-628C" class="headerlink" title="off_628C"></a>off_628C</h3><p>进入off_628C偏移查看，它的内容是”wojiushidaan”</p>
-<p><img src="/2024/12/22/%E8%87%AA%E6%AF%81%E7%A8%8B%E5%BA%8F%E5%AF%86%E7%A0%81%E2%80%94%E9%98%BF%E9%87%8C%E8%81%9A%E5%AE%89%E5%85%A8/4.jpg"></p>
-<p>数据查看</p>
-<p><img src="/2024/12/22/%E8%87%AA%E6%AF%81%E7%A8%8B%E5%BA%8F%E5%AF%86%E7%A0%81%E2%80%94%E9%98%BF%E9%87%8C%E8%81%9A%E5%AE%89%E5%85%A8/5.jpg"></p>
-<p>结合securityCheck函数分析，我觉得这就是正确答案了。</p>
-<p>可是输入之后，还是校验失败。</p>
-<p><img src="/2024/12/22/%E8%87%AA%E6%AF%81%E7%A8%8B%E5%BA%8F%E5%AF%86%E7%A0%81%E2%80%94%E9%98%BF%E9%87%8C%E8%81%9A%E5%AE%89%E5%85%A8/6.jpg"></p>
-<p>无奈只能动态调试</p>
-<h1 id="动态调试"><a href="#动态调试" class="headerlink" title="动态调试"></a>动态调试</h1><p>IDA动态调试环境配置这里不再介绍。</p>
-<h2 id="附加进程"><a href="#附加进程" class="headerlink" title="附加进程"></a>附加进程</h2><p>这里我们选择附加到进程</p>
-<p><img src="/2024/12/22/%E8%87%AA%E6%AF%81%E7%A8%8B%E5%BA%8F%E5%AF%86%E7%A0%81%E2%80%94%E9%98%BF%E9%87%8C%E8%81%9A%E5%AE%89%E5%85%A8/7.jpg"></p>
-<p>附加进程之后，我们运行一下，会发现，程序崩了，IDA也崩了，说明这个so是有反调试的。</p>
-<h2 id="反调试绕过"><a href="#反调试绕过" class="headerlink" title="反调试绕过"></a>反调试绕过</h2><p>猜测反调试是通过线程进行循环检测的。</p>
-<p>打开线程窗口</p>
-<p><img src="/2024/12/22/%E8%87%AA%E6%AF%81%E7%A8%8B%E5%BA%8F%E5%AF%86%E7%A0%81%E2%80%94%E9%98%BF%E9%87%8C%E8%81%9A%E5%AE%89%E5%85%A8/8.jpg"></p>
-<p>发现一个线程<code>yaotong.crackme</code>，有点可疑，右键这个线程，将状态改为suspend，暂停这个线程。</p>
-<p><img src="/2024/12/22/%E8%87%AA%E6%AF%81%E7%A8%8B%E5%BA%8F%E5%AF%86%E7%A0%81%E2%80%94%E9%98%BF%E9%87%8C%E8%81%9A%E5%AE%89%E5%85%A8/9.jpg"></p>
-<p>然后运行，程序没有挂掉，可以进行调试。</p>
-<h2 id="断点调试"><a href="#断点调试" class="headerlink" title="断点调试"></a>断点调试</h2><p>打开Modules窗口，找到libcrackme.so，双击进去，找到securityCheck函数，双击该函数跳转到函数的位置。</p>
-<p><img src="/2024/12/22/%E8%87%AA%E6%AF%81%E7%A8%8B%E5%BA%8F%E5%AF%86%E7%A0%81%E2%80%94%E9%98%BF%E9%87%8C%E8%81%9A%E5%AE%89%E5%85%A8/10.jpg"></p>
-<p>在这个函数起始的位置下一个断点，将光标移动到断点位置，按下快捷键F，然后在输入框输入任意数据，点击输入密码，程序就会运行到断点位置。</p>
-<p>F5查看反汇编，找到原来的变量偏移地址处，发现数据变了，变成了<code>aiyou,bucuoo</code></p>
-<p><img src="/2024/12/22/%E8%87%AA%E6%AF%81%E7%A8%8B%E5%BA%8F%E5%AF%86%E7%A0%81%E2%80%94%E9%98%BF%E9%87%8C%E8%81%9A%E5%AE%89%E5%85%A8/11.jpg"></p>
-<p><img src="/2024/12/22/%E8%87%AA%E6%AF%81%E7%A8%8B%E5%BA%8F%E5%AF%86%E7%A0%81%E2%80%94%E9%98%BF%E9%87%8C%E8%81%9A%E5%AE%89%E5%85%A8/12.jpg"></p>
-<h2 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h2><p>将<code>aiyou,bucuoo</code>放进输入框，点击输入密码，跳转到成功界面。</p>
-<p><img src="/2024/12/22/%E8%87%AA%E6%AF%81%E7%A8%8B%E5%BA%8F%E5%AF%86%E7%A0%81%E2%80%94%E9%98%BF%E9%87%8C%E8%81%9A%E5%AE%89%E5%85%A8/13.jpg"></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/12/21/%E8%85%BE%E8%AE%AF%E6%B8%B8%E6%88%8F%E5%AE%89%E5%85%A8%E7%A7%BB%E5%8A%A8%E8%B5%9B%E9%A2%98Tencent2016A/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/android.svg">
-      <meta itemprop="name" content="Bileton">
-      <meta itemprop="description" content="路漫漫其修远夕！">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="白乐天">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2024/12/21/%E8%85%BE%E8%AE%AF%E6%B8%B8%E6%88%8F%E5%AE%89%E5%85%A8%E7%A7%BB%E5%8A%A8%E8%B5%9B%E9%A2%98Tencent2016A/" class="post-title-link" itemprop="url">腾讯游戏安全移动赛题Tencent2016A</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2024-12-21 14:02:11" itemprop="dateCreated datePublished" datetime="2024-12-21T14:02:11+08:00">2024-12-21</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-12-22 00:44:48" itemprop="dateModified" datetime="2024-12-22T00:44:48+08:00">2024-12-22</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E9%80%86%E5%90%91%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/" itemprop="url" rel="index"><span itemprop="name">逆向实战案例</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>8.8k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>8 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="App信息"><a href="#App信息" class="headerlink" title="App信息"></a>App信息</h1><p>包名：com.tencent.tencent2016a</p>
-<p><img src="/2024/12/21/%E8%85%BE%E8%AE%AF%E6%B8%B8%E6%88%8F%E5%AE%89%E5%85%A8%E7%A7%BB%E5%8A%A8%E8%B5%9B%E9%A2%98Tencent2016A/1.jpg"></p>
-<h1 id="Java层分析"><a href="#Java层分析" class="headerlink" title="Java层分析"></a>Java层分析</h1><h2 id="MainActivity"><a href="#MainActivity" class="headerlink" title="MainActivity"></a>MainActivity</h2><p><img src="/2024/12/21/%E8%85%BE%E8%AE%AF%E6%B8%B8%E6%88%8F%E5%AE%89%E5%85%A8%E7%A7%BB%E5%8A%A8%E8%B5%9B%E9%A2%98Tencent2016A/2.jpg"></p>
-<h2 id="c"><a href="#c" class="headerlink" title="c"></a>c</h2><p><img src="/2024/12/21/%E8%85%BE%E8%AE%AF%E6%B8%B8%E6%88%8F%E5%AE%89%E5%85%A8%E7%A7%BB%E5%8A%A8%E8%B5%9B%E9%A2%98Tencent2016A/3.jpg"></p>
-<h2 id="NativeCheckRegister"><a href="#NativeCheckRegister" class="headerlink" title="NativeCheckRegister"></a>NativeCheckRegister</h2><p><img src="/2024/12/21/%E8%85%BE%E8%AE%AF%E6%B8%B8%E6%88%8F%E5%AE%89%E5%85%A8%E7%A7%BB%E5%8A%A8%E8%B5%9B%E9%A2%98Tencent2016A/4.jpg"></p>
-<h1 id="so分析"><a href="#so分析" class="headerlink" title="so分析"></a>so分析</h1><h2 id="定位NativeCheckRegister函数位置"><a href="#定位NativeCheckRegister函数位置" class="headerlink" title="定位NativeCheckRegister函数位置"></a>定位NativeCheckRegister函数位置</h2><p><img src="/2024/12/21/%E8%85%BE%E8%AE%AF%E6%B8%B8%E6%88%8F%E5%AE%89%E5%85%A8%E7%A7%BB%E5%8A%A8%E8%B5%9B%E9%A2%98Tencent2016A/5.jpg"></p>
-<h2 id="NativeCheckRegister-1"><a href="#NativeCheckRegister-1" class="headerlink" title="NativeCheckRegister"></a>NativeCheckRegister</h2><p>类型修复及函数重命名之后的NativeCheckRegister函数如下</p>
-<p><img src="/2024/12/21/%E8%85%BE%E8%AE%AF%E6%B8%B8%E6%88%8F%E5%AE%89%E5%85%A8%E7%A7%BB%E5%8A%A8%E8%B5%9B%E9%A2%98Tencent2016A/6.jpg"></p>
-<h2 id="check"><a href="#check" class="headerlink" title="check"></a>check</h2><p>类型修复及函数重命名后的check函数</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">bool</span> __fastcall <span class="title function_">check</span><span class="params">(<span class="type">const</span> <span class="type">char</span> *name, <span class="type">char</span> *code)</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">signed</span> <span class="type">int</span> namelength; <span class="comment">// r5</span></span><br><span class="line">  _BOOL4 result; <span class="comment">// r0</span></span><br><span class="line">  <span class="type">int</span> i; <span class="comment">// r4</span></span><br><span class="line">  _DWORD *nametempaddr; <span class="comment">// r7</span></span><br><span class="line">  <span class="type">int</span> nametempresult; <span class="comment">// r3</span></span><br><span class="line">  <span class="type">int</span> j; <span class="comment">// r4</span></span><br><span class="line">  <span class="type">int</span> codetemp; <span class="comment">// r1</span></span><br><span class="line">  _DWORD nameresultarray[<span class="number">5</span>]; <span class="comment">// [sp+18h] [bp-458h] BYREF</span></span><br><span class="line">  _DWORD coderesultarray[<span class="number">5</span>]; <span class="comment">// [sp+2Ch] [bp-444h] BYREF</span></span><br><span class="line">  _BYTE namemix[<span class="number">20</span>]; <span class="comment">// [sp+40h] [bp-430h] BYREF</span></span><br><span class="line">  _BYTE codeResult[<span class="number">1052</span>]; <span class="comment">// [sp+54h] [bp-41Ch] BYREF</span></span><br><span class="line"></span><br><span class="line">  namelength = j_strlen(name);</span><br><span class="line">  <span class="keyword">if</span> ( (namelength - <span class="number">6</span>) &gt; <span class="number">0xE</span> )                 <span class="comment">// 校验name长度范围[6:20]</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">  j_memset(namemix, <span class="number">0</span>, <span class="keyword">sizeof</span>(namemix));</span><br><span class="line">  <span class="keyword">for</span> ( i = <span class="number">0</span>; i != <span class="number">16</span>; ++i )                   <span class="comment">// 基于name生成一个混淆数据</span></span><br><span class="line">  &#123;</span><br><span class="line">    nametempaddr = &amp;namemix[i];</span><br><span class="line">    nametempresult = name[i % namelength] * (i + <span class="number">20160126</span>) * namelength;<span class="comment">// 基于 name 的字符生成一个与 name 相关的混淆数据，存入namemix</span></span><br><span class="line">    *nametempaddr += nametempresult;</span><br><span class="line">  &#125;</span><br><span class="line">  j_memset(codeResult, <span class="number">0</span>, <span class="number">0x400</span>u);</span><br><span class="line">  <span class="keyword">if</span> ( codeEnc1(code) &gt; <span class="number">1024</span> || codeEnc2(codeResult, code) != <span class="number">20</span> )</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">  j_memset(nameresultarray, <span class="number">0</span>, <span class="keyword">sizeof</span>(nameresultarray));</span><br><span class="line">  j_memset(coderesultarray, <span class="number">0</span>, <span class="keyword">sizeof</span>(coderesultarray));</span><br><span class="line">  <span class="keyword">for</span> ( j = <span class="number">0</span>; j != <span class="number">5</span>; ++j )</span><br><span class="line">  &#123;</span><br><span class="line">    codetemp = *&amp;codeResult[j * <span class="number">4</span>];</span><br><span class="line">    nameresultarray[j] = *&amp;namemix[j * <span class="number">4</span>] / <span class="number">10</span>;</span><br><span class="line">    coderesultarray[j] = codetemp;</span><br><span class="line">  &#125;</span><br><span class="line">  result = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">if</span> ( coderesultarray[<span class="number">4</span>] + nameresultarray[<span class="number">0</span>] == coderesultarray[<span class="number">2</span>]</span><br><span class="line">    &amp;&amp; coderesultarray[<span class="number">4</span>] + nameresultarray[<span class="number">0</span>] + nameresultarray[<span class="number">1</span>] == <span class="number">2</span> * coderesultarray[<span class="number">4</span>]</span><br><span class="line">    &amp;&amp; nameresultarray[<span class="number">2</span>] + coderesultarray[<span class="number">3</span>] == coderesultarray[<span class="number">0</span>]</span><br><span class="line">    &amp;&amp; nameresultarray[<span class="number">2</span>] + coderesultarray[<span class="number">3</span>] + nameresultarray[<span class="number">3</span>] == <span class="number">2</span> * coderesultarray[<span class="number">3</span>] )</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">return</span> nameresultarray[<span class="number">4</span>] + coderesultarray[<span class="number">1</span>] == <span class="number">3</span> * nameresultarray[<span class="number">2</span>];  <span class="comment">// 返回值为1则验证成功</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>根据以上信息，当满足以下条件，程序验证成功</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">coderesultarray[4] + nameresultarray[0] == coderesultarray[2]</span><br><span class="line">coderesultarray[4] + nameresultarray[0] + nameresultarray[1] == 2 * coderesultarray[4]</span><br><span class="line">nameresultarray[2] + coderesultarray[3] == coderesultarray[0]</span><br><span class="line">nameresultarray[2] + coderesultarray[3] + nameresultarray[3] == 2 * coderesultarray[3]</span><br><span class="line">nameresultarray[4] + coderesultarray[1] == 3 * nameresultarray[2]</span><br></pre></td></tr></table></figure>
-
-<p>变换，整理得到如下内容：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">coderesultarray[4] + nameresultarray[0] == coderesultarray[2]</span><br><span class="line">nameresultarray[0] + nameresultarray[1] == coderesultarray[4]</span><br><span class="line">nameresultarray[2] + coderesultarray[3] == coderesultarray[0]</span><br><span class="line">nameresultarray[2] + nameresultarray[3] == coderesultarray[3]</span><br><span class="line">nameresultarray[4] + coderesultarray[1] == 3 * nameresultarray[2]</span><br></pre></td></tr></table></figure>
-
-<p>由此可知：</p>
-<ul>
-<li>coderesultarray[0]可由nameresultarray[2]+nameresultarray[2]+nameresultarray[3]得到</li>
-<li>coderesultarray[1]可由3 * nameresultarray[2]-nameresultarray[4]]得到</li>
-<li>coderesultarray[2]可由nameresultarray[0] + nameresultarray[1]+nameresultarray[0]]得到</li>
-<li>coderesultarray[3]可由nameresultarray[2] + nameresultarray[3]]得到</li>
-<li>coderesultarray[4]可由nameresultarray[0] + nameresultarray[1]]得到</li>
-</ul>
-<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>由以上信息，我们可以知道，由<code>name-&gt;namemix-&gt;nameresultarray-&gt;coderesultarray</code></p>
-<p>还知道<code>code-&gt;codeResult-&gt;coderesultarray</code></p>
-<p>猜测可通过coderesultarray还原code</p>
-<p>接下来分析code的两个处理函数codeEnc1和codeEnc2</p>
-<h2 id="codeEnc1"><a href="#codeEnc1" class="headerlink" title="codeEnc1"></a>codeEnc1</h2><p><img src="/2024/12/21/%E8%85%BE%E8%AE%AF%E6%B8%B8%E6%88%8F%E5%AE%89%E5%85%A8%E7%A7%BB%E5%8A%A8%E8%B5%9B%E9%A2%98Tencent2016A/7.jpg"></p>
-<h3 id="a456789"><a href="#a456789" class="headerlink" title="a456789"></a>a456789</h3><p><img src="/2024/12/21/%E8%85%BE%E8%AE%AF%E6%B8%B8%E6%88%8F%E5%AE%89%E5%85%A8%E7%A7%BB%E5%8A%A8%E8%B5%9B%E9%A2%98Tencent2016A/8.jpg"></p>
-<p><strong>观察数据窗口</strong></p>
-<p>发现末尾有一串Base64表，盲猜会出现Base64编码</p>
-<p><img src="/2024/12/21/%E8%85%BE%E8%AE%AF%E6%B8%B8%E6%88%8F%E5%AE%89%E5%85%A8%E7%A7%BB%E5%8A%A8%E8%B5%9B%E9%A2%98Tencent2016A/9.jpg"></p>
-<p>经过分析，codeEnc1函数的功能是对输入的code进行校验，返回一个与字符串长度和规则相关的值，然后与1024进行比较。</p>
-<h2 id="codeEnc2"><a href="#codeEnc2" class="headerlink" title="codeEnc2"></a>codeEnc2</h2><p>处理过后的codeEnc2函数如下</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> __fastcall <span class="title function_">codeEnc2</span><span class="params">(<span class="type">char</span> *codeResult, <span class="type">char</span> *code)</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">char</span> *Cocode; <span class="comment">// r3</span></span><br><span class="line">  <span class="type">int</span> Cocode_code; <span class="comment">// r3</span></span><br><span class="line">  <span class="type">int</span> v4; <span class="comment">// r2</span></span><br><span class="line">  <span class="type">int</span> v5; <span class="comment">// r5</span></span><br><span class="line">  <span class="type">char</span> *codeResultTemp; <span class="comment">// r3</span></span><br><span class="line">  <span class="type">int</span> v7; <span class="comment">// r3</span></span><br><span class="line">  <span class="type">int</span> v8; <span class="comment">// r6</span></span><br><span class="line"></span><br><span class="line">  Cocode = code;</span><br><span class="line">  <span class="keyword">do</span></span><br><span class="line">    ++Cocode;</span><br><span class="line">  <span class="keyword">while</span> ( a456789[*(Cocode - <span class="number">1</span>)] &lt;= <span class="number">63u</span> );</span><br><span class="line">  Cocode_code = Cocode - code;                  <span class="comment">// Cocode_code是Cocode-code</span></span><br><span class="line">  v4 = Cocode_code - <span class="number">1</span>;</span><br><span class="line">  v5 = <span class="number">3</span> * ((Cocode_code + <span class="number">2</span>) / <span class="number">4</span>);</span><br><span class="line">  <span class="keyword">while</span> ( <span class="number">1</span> )</span><br><span class="line">  &#123;</span><br><span class="line">    codeResultTemp = codeResult;</span><br><span class="line">    <span class="keyword">if</span> ( v4 &lt;= <span class="number">4</span> )                              <span class="comment">// 判断剩余字符是否小于4字节</span></span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    v4 -= <span class="number">4</span>;</span><br><span class="line">    *codeResult = (a456789[code[<span class="number">1</span>]] &gt;&gt; <span class="number">4</span>) | (<span class="number">4</span> * a456789[*code]);</span><br><span class="line">    codeResult[<span class="number">1</span>] = (a456789[code[<span class="number">2</span>]] &gt;&gt; <span class="number">2</span>) | (<span class="number">16</span> * a456789[code[<span class="number">1</span>]]);</span><br><span class="line">    v7 = code[<span class="number">2</span>];</span><br><span class="line">    v8 = code[<span class="number">3</span>];</span><br><span class="line">    code += <span class="number">4</span>;</span><br><span class="line">    codeResult[<span class="number">2</span>] = (a456789[v7] &lt;&lt; <span class="number">6</span>) | a456789[v8];</span><br><span class="line">    codeResult += <span class="number">3</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> ( v4 &gt; <span class="number">1</span> )</span><br><span class="line">  &#123;</span><br><span class="line">    *codeResult = (a456789[code[<span class="number">1</span>]] &gt;&gt; <span class="number">4</span>) | (<span class="number">4</span> * a456789[*code]);</span><br><span class="line">    <span class="keyword">if</span> ( v4 == <span class="number">2</span> )</span><br><span class="line">    &#123;</span><br><span class="line">      codeResultTemp = codeResult + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">      codeResult[<span class="number">1</span>] = (a456789[code[<span class="number">2</span>]] &gt;&gt; <span class="number">2</span>) | (<span class="number">16</span> * a456789[code[<span class="number">1</span>]]);</span><br><span class="line">      <span class="keyword">if</span> ( v4 == <span class="number">4</span> )</span><br><span class="line">      &#123;</span><br><span class="line">        codeResultTemp = codeResult + <span class="number">3</span>;</span><br><span class="line">        codeResult[<span class="number">2</span>] = (a456789[code[<span class="number">2</span>]] &lt;&lt; <span class="number">6</span>) | a456789[code[<span class="number">3</span>]];</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">else</span></span><br><span class="line">      &#123;</span><br><span class="line">        codeResultTemp = codeResult + <span class="number">2</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;                                             <span class="comment">// 自实现过Base64编码的人在这里就不难看出来这里是Base64解码算法</span></span><br><span class="line">  *codeResultTemp = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">return</span> v5 - (-v4 &amp; <span class="number">3</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这是一个Base64解码算法</p>
-<h3 id="hook验证"><a href="#hook验证" class="headerlink" title="hook验证"></a>hook验证</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">hook_native</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="keyword">var</span> soAddr = <span class="title class_">Module</span>.<span class="title function_">findBaseAddress</span>(<span class="string">&quot;libCheckRegister.so&quot;</span>);</span><br><span class="line">    <span class="keyword">var</span> codeEnc2 = soAddr.<span class="title function_">add</span>(<span class="number">0x1499</span>)</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(codeEnc2)</span><br><span class="line">    <span class="title class_">Memory</span>.<span class="title function_">protect</span>(codeEnc2, <span class="number">0x1000</span>, <span class="string">&#x27;rwx&#x27;</span>);</span><br><span class="line">    <span class="title class_">Interceptor</span>.<span class="title function_">attach</span>(codeEnc2,&#123;</span><br><span class="line">        <span class="attr">onEnter</span>:<span class="keyword">function</span>(<span class="params">args</span>)&#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;arg0:&quot;</span>,<span class="title function_">hexdump</span>(args[<span class="number">0</span>]));</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;arg1:&quot;</span>,<span class="title function_">hexdump</span>(args[<span class="number">1</span>]));</span><br><span class="line">            <span class="variable language_">this</span>.<span class="property">codeResult</span> = args[<span class="number">0</span>];</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">onLeave</span>:<span class="keyword">function</span>(<span class="params">ret</span>)&#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;codeResult:&quot;</span>,<span class="title function_">hexdump</span>(<span class="variable language_">this</span>.<span class="property">codeResult</span>));</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;ret:&quot;</span>,ret)</span><br><span class="line">            <span class="variable language_">this</span>.<span class="property">ret</span>=<span class="number">1</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">hook_native</span>()</span><br></pre></td></tr></table></figure>
-
-<p><strong>输出</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">arg0:            </span><br><span class="line">0  1  2  3  4  5  6  7  8  9  A  B  C  D  E  F  0123456789ABCDEF</span><br><span class="line">ffdc62f4  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................</span><br><span class="line">ffdc6304  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................</span><br><span class="line">ffdc6314  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................</span><br><span class="line">arg1:</span><br><span class="line">0  1  2  3  4  5  6  7  8  9  A  B  C  D  E  F  0123456789ABCDEF</span><br><span class="line">deb247a0  31 32 33 34 35 36 37 38 00 00 00 00 00 00 00 00  12345678........</span><br><span class="line">deb247b0  00 00 00 00 28 00 00 00 00 00 00 00 00 00 00 00  ....(...........</span><br><span class="line">codeResult: </span><br><span class="line">0  1  2  3  4  5  6  7  8  9  A  B  C  D  E  F  0123456789ABCDEF</span><br><span class="line">ffdc62f4  d7 6d f8 e7 ae fc 00 00 00 00 00 00 00 00 00 00  .m..............</span><br><span class="line">ffdc6304  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................</span><br><span class="line">ffdc6314  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................</span><br><span class="line">ret: 0x6</span><br></pre></td></tr></table></figure>
-
-<p>如下证明codeEnc2是标准的Base64解码算法</p>
-<p><img src="/2024/12/21/%E8%85%BE%E8%AE%AF%E6%B8%B8%E6%88%8F%E5%AE%89%E5%85%A8%E7%A7%BB%E5%8A%A8%E8%B5%9B%E9%A2%98Tencent2016A/10.jpg"></p>
-<h2 id="分析-1"><a href="#分析-1" class="headerlink" title="分析"></a>分析</h2><p>这里弄明白了，code经过Base64解码得到codeResult，codeResult部分数据经过Base64解码得到coderesultarray。</p>
-<h3 id="重新捋一遍流程"><a href="#重新捋一遍流程" class="headerlink" title="重新捋一遍流程"></a>重新捋一遍流程</h3><p>首先，我们输入name，name经过混淆得到namemix，namemix的前20字节经过处理得到nameresultarray，然后由nameresultarray推导出coderesultarray，coderesultarray经过Base64编码得到code。</p>
-<h1 id="C-还原"><a href="#C-还原" class="headerlink" title="C++还原"></a>C++还原</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义 Base64 编码字符表</span></span><br><span class="line">string base64_chars =</span><br><span class="line">        <span class="string">&quot;ABCDEFGHIJKLMNOPQRSTUVWXYZ&quot;</span></span><br><span class="line">        <span class="string">&quot;abcdefghijklmnopqrstuvwxyz&quot;</span></span><br><span class="line">        <span class="string">&quot;0123456789+/&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Base64 编码函数，将字节数组编码为 Base64 格式的字符串</span></span><br><span class="line"><span class="function">string <span class="title">base64_encode</span><span class="params">(<span class="type">unsigned</span> <span class="type">char</span>* bytes_to_encode, <span class="type">unsigned</span> <span class="type">int</span> in_len)</span> </span>&#123;</span><br><span class="line">    std::string ret; <span class="comment">// 存储编码后的结果</span></span><br><span class="line">    <span class="type">int</span> i = <span class="number">0</span>;</span><br><span class="line">    <span class="type">int</span> j = <span class="number">0</span>;</span><br><span class="line">    <span class="type">unsigned</span> <span class="type">char</span> char_array_3[<span class="number">3</span>]; <span class="comment">// 临时存储3个字节</span></span><br><span class="line">    <span class="type">unsigned</span> <span class="type">char</span> char_array_4[<span class="number">4</span>]; <span class="comment">// 临时存储4个编码后的字符</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 处理输入数据，3个字节一组进行编码</span></span><br><span class="line">    <span class="keyword">while</span> (in_len--) &#123;</span><br><span class="line">        char_array_3[i++] = *(bytes_to_encode++);</span><br><span class="line">        <span class="keyword">if</span> (i == <span class="number">3</span>) &#123;</span><br><span class="line">            <span class="comment">// 将3个字节转换为4个6位的Base64字符索引</span></span><br><span class="line">            char_array_4[<span class="number">0</span>] = (char_array_3[<span class="number">0</span>] &amp; <span class="number">0xfc</span>) &gt;&gt; <span class="number">2</span>;</span><br><span class="line">            char_array_4[<span class="number">1</span>] = ((char_array_3[<span class="number">0</span>] &amp; <span class="number">0x03</span>) &lt;&lt; <span class="number">4</span>) + ((char_array_3[<span class="number">1</span>] &amp; <span class="number">0xf0</span>) &gt;&gt; <span class="number">4</span>);</span><br><span class="line">            char_array_4[<span class="number">2</span>] = ((char_array_3[<span class="number">1</span>] &amp; <span class="number">0x0f</span>) &lt;&lt; <span class="number">2</span>) + ((char_array_3[<span class="number">2</span>] &amp; <span class="number">0xc0</span>) &gt;&gt; <span class="number">6</span>);</span><br><span class="line">            char_array_4[<span class="number">3</span>] = char_array_3[<span class="number">2</span>] &amp; <span class="number">0x3f</span>;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 根据索引从Base64字符表中获取字符</span></span><br><span class="line">            <span class="keyword">for</span> (i = <span class="number">0</span>; (i &lt; <span class="number">4</span>); i++)</span><br><span class="line">                ret += base64_chars[char_array_4[i]];</span><br><span class="line">            i = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 处理剩余的不足3字节的数据</span></span><br><span class="line">    <span class="keyword">if</span> (i) &#123;</span><br><span class="line">        <span class="keyword">for</span> (j = i; j &lt; <span class="number">3</span>; j++)</span><br><span class="line">            char_array_3[j] = <span class="string">&#x27;\0&#x27;</span>; <span class="comment">// 用\0填充</span></span><br><span class="line"></span><br><span class="line">        char_array_4[<span class="number">0</span>] = (char_array_3[<span class="number">0</span>] &amp; <span class="number">0xfc</span>) &gt;&gt; <span class="number">2</span>;</span><br><span class="line">        char_array_4[<span class="number">1</span>] = ((char_array_3[<span class="number">0</span>] &amp; <span class="number">0x03</span>) &lt;&lt; <span class="number">4</span>) + ((char_array_3[<span class="number">1</span>] &amp; <span class="number">0xf0</span>) &gt;&gt; <span class="number">4</span>);</span><br><span class="line">        char_array_4[<span class="number">2</span>] = ((char_array_3[<span class="number">1</span>] &amp; <span class="number">0x0f</span>) &lt;&lt; <span class="number">2</span>) + ((char_array_3[<span class="number">2</span>] &amp; <span class="number">0xc0</span>) &gt;&gt; <span class="number">6</span>);</span><br><span class="line">        char_array_4[<span class="number">3</span>] = char_array_3[<span class="number">2</span>] &amp; <span class="number">0x3f</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (j = <span class="number">0</span>; (j &lt; i + <span class="number">1</span>); j++)</span><br><span class="line">            ret += base64_chars[char_array_4[j]];</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> ((i++ &lt; <span class="number">3</span>))</span><br><span class="line">            ret += <span class="string">&#x27;=&#x27;</span>; <span class="comment">// 用=填充</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">char</span> name[<span class="number">20</span>] = &#123;<span class="number">0</span>&#125;; <span class="comment">// 用于存储用户输入的姓名</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Please input name:&quot;</span>);</span><br><span class="line">    cin &gt;&gt; name; <span class="comment">// 输入姓名</span></span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> namelength = <span class="built_in">strlen</span>(name); <span class="comment">// 计算姓名长度</span></span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;namelength:&quot;</span> &lt;&lt; namelength &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">    <span class="type">char</span>* temppointer = <span class="literal">NULL</span>; <span class="comment">// 临时指针</span></span><br><span class="line">    <span class="type">int</span> namemix[<span class="number">5</span>] = &#123;<span class="number">0</span>&#125;; <span class="comment">// 混淆后的结果数组</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 生成混淆数据</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">16</span>; i++) &#123;</span><br><span class="line">        temppointer = (<span class="type">char</span>*)namemix + i; <span class="comment">// 将指针指向namemix数组中的第i字节</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 根据姓名字符和索引计算一个混淆数</span></span><br><span class="line">        <span class="type">int</span> tempnumber = name[i % namelength] * (i + <span class="number">20160126</span>) * namelength;</span><br><span class="line"></span><br><span class="line">        *(<span class="type">int</span>*)temppointer += tempnumber; <span class="comment">// 将计算结果写入对应位置</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 输出混淆数据</span></span><br><span class="line">    <span class="comment">//cout &lt;&lt; &quot;namemix:&quot; &lt;&lt; endl;</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i != <span class="number">5</span>; i++) &#123;</span><br><span class="line">        <span class="comment">//cout &lt;&lt; namemix[i] &lt;&lt; endl;</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 对混淆数据进一步处理，生成结果数组</span></span><br><span class="line">    <span class="type">int</span> nameresultarray[<span class="number">5</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</span><br><span class="line">        nameresultarray[i] = namemix[i] / <span class="number">10</span>; <span class="comment">// 每个值缩小10倍</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 输出结果数组</span></span><br><span class="line">    <span class="comment">//cout &lt;&lt; &quot;nameresultarrat&quot; &lt;&lt; endl;</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</span><br><span class="line">        <span class="comment">//cout &lt;&lt; nameresultarray[i] &lt;&lt; endl;</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 根据结果数组生成编码数组</span></span><br><span class="line">    <span class="type">int</span> coderesultarray[<span class="number">5</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">    coderesultarray[<span class="number">0</span>] = nameresultarray[<span class="number">2</span>] + nameresultarray[<span class="number">2</span>] + nameresultarray[<span class="number">3</span>];</span><br><span class="line">    coderesultarray[<span class="number">1</span>] = <span class="number">3</span> * nameresultarray[<span class="number">2</span>] - nameresultarray[<span class="number">4</span>];</span><br><span class="line">    coderesultarray[<span class="number">2</span>] = nameresultarray[<span class="number">0</span>] + nameresultarray[<span class="number">1</span>] + nameresultarray[<span class="number">0</span>];</span><br><span class="line">    coderesultarray[<span class="number">3</span>] = nameresultarray[<span class="number">2</span>] + nameresultarray[<span class="number">3</span>];</span><br><span class="line">    coderesultarray[<span class="number">4</span>] = nameresultarray[<span class="number">0</span>] + nameresultarray[<span class="number">1</span>];</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 输出编码数组</span></span><br><span class="line">    <span class="comment">//cout &lt;&lt; &quot;coderesultarray:&quot; &lt;&lt; endl;</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</span><br><span class="line">        <span class="comment">// 输出为16进制格式</span></span><br><span class="line">        <span class="comment">//printf(&quot;%x\n&quot;, coderesultarray[i]);</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 使用 Base64 对编码数组进行编码</span></span><br><span class="line">    string encodeStr = <span class="built_in">base64_encode</span>((<span class="type">unsigned</span> <span class="type">char</span>*)coderesultarray, <span class="number">20</span>);</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;Code is :&quot;</span> &lt;&lt; encodeStr;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h2 id="验证成功"><a href="#验证成功" class="headerlink" title="验证成功"></a>验证成功</h2><p><img src="/2024/12/21/%E8%85%BE%E8%AE%AF%E6%B8%B8%E6%88%8F%E5%AE%89%E5%85%A8%E7%A7%BB%E5%8A%A8%E8%B5%9B%E9%A2%98Tencent2016A/11.jpg"></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/12/20/FRIDA-JSAPI/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/android.svg">
-      <meta itemprop="name" content="Bileton">
-      <meta itemprop="description" content="路漫漫其修远夕！">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="白乐天">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2024/12/20/FRIDA-JSAPI/" class="post-title-link" itemprop="url">FRIDA-JSAPI</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2024-12-20 00:00:00 / 修改时间：23:51:43" itemprop="dateCreated datePublished" datetime="2024-12-20T00:00:00+08:00">2024-12-20</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Frida/" itemprop="url" rel="index"><span itemprop="name">Frida</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>818</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h1><h2 id="Java-perform"><a href="#Java-perform" class="headerlink" title="Java.perform()"></a>Java.perform()</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Java</span>.<span class="title function_">perform</span>(<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;This is Java.perform!&quot;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="Java-use-className"><a href="#Java-use-className" class="headerlink" title="Java.use(className)"></a>Java.use(className)</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Java</span>.<span class="title function_">perform</span>(<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;This is Java.perform!&quot;</span>);</span><br><span class="line">    <span class="keyword">var</span> <span class="keyword">class</span> = <span class="title class_">Java</span>.<span class="title function_">use</span>(className);</span><br><span class="line">    <span class="keyword">class</span>.<span class="property">method</span>.<span class="property">implementation</span> = <span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;This is class.method!&quot;</span>);</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="Java-choose-className-callbacks"><a href="#Java-choose-className-callbacks" class="headerlink" title="Java.choose(className, callbacks)"></a>Java.choose(className, callbacks)</h2><h2 id="Java-enumerateLoadedClasses-callbacks"><a href="#Java-enumerateLoadedClasses-callbacks" class="headerlink" title="Java.enumerateLoadedClasses(callbacks)"></a>Java.enumerateLoadedClasses(callbacks)</h2><h2 id="Java-enumerateLoadedClassesSync"><a href="#Java-enumerateLoadedClassesSync" class="headerlink" title="Java.enumerateLoadedClassesSync()"></a>Java.enumerateLoadedClassesSync()</h2><h2 id="Java-enumerateClassLoaders-callbacks"><a href="#Java-enumerateClassLoaders-callbacks" class="headerlink" title="Java.enumerateClassLoaders(callbacks)"></a>Java.enumerateClassLoaders(callbacks)</h2><h2 id="Java-enumerateClassLoadersSync"><a href="#Java-enumerateClassLoadersSync" class="headerlink" title="Java.enumerateClassLoadersSync()"></a>Java.enumerateClassLoadersSync()</h2><h2 id="Java-enumerateMethods-query"><a href="#Java-enumerateMethods-query" class="headerlink" title="Java.enumerateMethods(query)"></a>Java.enumerateMethods(query)</h2><h1 id="Interceptor"><a href="#Interceptor" class="headerlink" title="Interceptor"></a>Interceptor</h1><h2 id="Interceptor-attach-target-callbacks"><a href="#Interceptor-attach-target-callbacks" class="headerlink" title="Interceptor.attach(target, callbacks)"></a>Interceptor.attach(target, callbacks)</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> functionAddr = <span class="title function_">ptr</span>(<span class="number">0x7777</span>);</span><br><span class="line"><span class="title class_">Interceptor</span>.<span class="title function_">attach</span>(functionAddr,&#123;</span><br><span class="line">    <span class="title class_">OnEnter</span>:<span class="keyword">function</span>(<span class="params">args</span>)&#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(args[<span class="number">0</span>]);</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(args[<span class="number">1</span>]);</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(args[<span class="number">2</span>]);</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="title class_">OnLeave</span>:<span class="keyword">function</span>(<span class="params">ret</span>)&#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(ret);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/12/19/Android%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B%E5%88%86%E6%9E%90/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/android.svg">
-      <meta itemprop="name" content="Bileton">
-      <meta itemprop="description" content="路漫漫其修远夕！">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="白乐天">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2024/12/19/Android%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B%E5%88%86%E6%9E%90/" class="post-title-link" itemprop="url">Android启动流程分析</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2024-12-19 00:00:00" itemprop="dateCreated datePublished" datetime="2024-12-19T00:00:00+08:00">2024-12-19</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-12-21 02:00:12" itemprop="dateModified" datetime="2024-12-21T02:00:12+08:00">2024-12-21</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index"><span itemprop="name">Android系统</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>1.6k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>本篇以从按下开机键开始至设备桌面图标出现进行分析。</p>
-<h1 id="Bootloader"><a href="#Bootloader" class="headerlink" title="Bootloader"></a>Bootloader</h1><p>&emsp;​&emsp;长按开机键，设备通电，从Boot ROM开始，Boot ROM是芯片上的一段只读存储器，存储设备的启动代码，一般是固定的，用于检测基本硬件的存在，验证 Bootloader 的完整性和安全性，并加载BootLoader到RAM，将控制权移交给BootLoader。</p>
-<p>&emsp;​&emsp;​BootLoader对硬件进行基本初始化，从存储设备中读取Android系统Linux内核镜像，通常是boot.img文件，将内核加载到内存中，并将控制权移交给内核。</p>
-<h1 id="Linux内核启动"><a href="#Linux内核启动" class="headerlink" title="Linux内核启动"></a>Linux内核启动</h1><p>&emsp;​&emsp;内核启动后会完成复杂的硬件初始化并挂载根文件系统，然后执行第一个用户空间进程<code>init</code>，将控制权移交给<code>init</code>。</p>
-<h1 id="init进程"><a href="#init进程" class="headerlink" title="init进程"></a>init进程</h1><p>&emsp;​&emsp;<code>init</code>是Android的第一个用户空间进程，它的PID为1。<code>init</code>解析<code>init.rc</code>脚本文件，定义系统初始化的行为等。</p>
-<p> function hook_dlsym(){    &#x2F;&#x2F; 获取dlsym函数的地址    let dlsymAddr &#x3D; Module.findExportByName(“libdl.so”,”dlsym”);    console.log(dlsymAddr);    &#x2F;&#x2F; hook dlsym    Interceptor.attach(dlsymAddr,{        onEnter:function(args){            this.args1 &#x3D; args[1];        },        onLeave:function(retval){            let module&#x3D; Process.findModuleByAddress(retval);            if(module&#x3D;&#x3D;null)return;            console.log(“函数：”+this.args1.readCString(),”模块：”+module.name,”地址：”+retval,”偏移：”+retval.sub(module.base));        }    })}hook_dlsym()js</p>
-<p>&emsp;​&emsp;启动Zygote进程，<code>Zygote</code>在<code>init.rc</code>文件中定义并通过<code>init</code>启动。</p>
-<p>&emsp;​&emsp;<code>init</code>调用<code>/system/bin/app_process</code>可执行文件启动 ART（Android Runtime）或 Dalvik 虚拟机，并执行 <code>ZygoteInit.main()</code>来启动<code>Zygote</code>。</p>
-<p>&emsp;​&emsp;<code>init</code>把控制权移交给了<code>Zygote</code>。</p>
-<h1 id="Zygote进程"><a href="#Zygote进程" class="headerlink" title="Zygote进程"></a>Zygote进程</h1><p>&emsp;​&emsp;Zygote 是 Android 应用运行时环境的核心，加载虚拟机、类、系统资源，启动SystemServer进程。SystemServer进程是Zygote进程孵化的第一个进程。</p>
-<p><strong>Zygote的任务</strong></p>
-<p>&emsp;​&emsp;等待应用启动请求，接收请求后，fork() 创建子进程，所有的App进程都是由Zygote孵化而来的。</p>
-<h1 id="SystemServer"><a href="#SystemServer" class="headerlink" title="SystemServer"></a>SystemServer</h1><p>&emsp;​&emsp;SystemServer是一个很重要的进程，系统里面重要的服务都是在这个进程里面开启的，比如ActivityManagerService、PackageManagerService、WindowManagerService，负责管理应用程序和系统资源。</p>
-<h1 id="Launcher"><a href="#Launcher" class="headerlink" title="Launcher"></a>Launcher</h1><p>&emsp;​&emsp;当 <code>SystemServer</code> 启动完成后，Android 系统会启动第一个前台进程：Launcher。</p>
-<p>&emsp;​&emsp;<code>ActivityManagerService</code> 会根据 <code>AndroidManifest.xml</code> 中的配置，启动标记为 <code>MAIN</code> 和 <code>LAUNCHER</code> 的应用，Launcher 加载桌面布局和图标资源。</p>
-<p>&emsp;​&emsp;Launcher进程是Zygote孵化出来的第一个App进程。</p>
-<p>​	</p>
-<p>​	</p>
-<p>​	</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1454,20 +1584,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">33</span>
+          <span class="site-state-item-count">37</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-count">20</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">30</span>
+        <span class="site-state-item-count">33</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -1508,13 +1638,13 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">154k</span>
+    <span title="站点总字数">163k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">2:20</span>
+    <span title="站点阅读时长">2:28</span>
 </div>
 
 
