@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="App信息包名：com.douban.frodo  frida反调试绕过首先尝试注入frida，发现直接就挂掉了，说明frida被检测到了  定位检测frida的sohook dlopen查看so加载流程，看在加载哪一个so的时候挂掉的，说明检测frida的函数在那个so里。 123456789101112131415161718function hook_dlopen()&#123;    &#x2F;&#x2F;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="豆瓣frida检测绕过及搜索接口参数还原">
+<meta property="og:url" content="http://example.com/2025/01/07/%E8%B1%86%E7%93%A3frida%E6%A3%80%E6%B5%8B%E7%BB%95%E8%BF%87%E5%8F%8A%E6%90%9C%E7%B4%A2%E6%8E%A5%E5%8F%A3%E5%8F%82%E6%95%B0%E8%BF%98%E5%8E%9F/index.html">
+<meta property="og:site_name" content="白乐天">
+<meta property="og:description" content="App信息包名：com.douban.frodo  frida反调试绕过首先尝试注入frida，发现直接就挂掉了，说明frida被检测到了  定位检测frida的sohook dlopen查看so加载流程，看在加载哪一个so的时候挂掉的，说明检测frida的函数在那个so里。 123456789101112131415161718function hook_dlopen()&#123;    &#x2F;&#x2F;">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2025/01/07/%E8%B1%86%E7%93%A3frida%E6%A3%80%E6%B5%8B%E7%BB%95%E8%BF%87%E5%8F%8A%E6%90%9C%E7%B4%A2%E6%8E%A5%E5%8F%A3%E5%8F%82%E6%95%B0%E8%BF%98%E5%8E%9F/1.png">
+<meta property="og:image" content="http://example.com/2025/01/07/%E8%B1%86%E7%93%A3frida%E6%A3%80%E6%B5%8B%E7%BB%95%E8%BF%87%E5%8F%8A%E6%90%9C%E7%B4%A2%E6%8E%A5%E5%8F%A3%E5%8F%82%E6%95%B0%E8%BF%98%E5%8E%9F/2.jpg">
+<meta property="og:image" content="http://example.com/2025/01/07/%E8%B1%86%E7%93%A3frida%E6%A3%80%E6%B5%8B%E7%BB%95%E8%BF%87%E5%8F%8A%E6%90%9C%E7%B4%A2%E6%8E%A5%E5%8F%A3%E5%8F%82%E6%95%B0%E8%BF%98%E5%8E%9F/3.jpg">
+<meta property="og:image" content="http://example.com/2025/01/07/%E8%B1%86%E7%93%A3frida%E6%A3%80%E6%B5%8B%E7%BB%95%E8%BF%87%E5%8F%8A%E6%90%9C%E7%B4%A2%E6%8E%A5%E5%8F%A3%E5%8F%82%E6%95%B0%E8%BF%98%E5%8E%9F/4.jpg">
+<meta property="og:image" content="http://example.com/2025/01/07/%E8%B1%86%E7%93%A3frida%E6%A3%80%E6%B5%8B%E7%BB%95%E8%BF%87%E5%8F%8A%E6%90%9C%E7%B4%A2%E6%8E%A5%E5%8F%A3%E5%8F%82%E6%95%B0%E8%BF%98%E5%8E%9F/5.jpg">
+<meta property="og:image" content="http://example.com/2025/01/07/%E8%B1%86%E7%93%A3frida%E6%A3%80%E6%B5%8B%E7%BB%95%E8%BF%87%E5%8F%8A%E6%90%9C%E7%B4%A2%E6%8E%A5%E5%8F%A3%E5%8F%82%E6%95%B0%E8%BF%98%E5%8E%9F/6.jpg">
+<meta property="og:image" content="http://example.com/2025/01/07/%E8%B1%86%E7%93%A3frida%E6%A3%80%E6%B5%8B%E7%BB%95%E8%BF%87%E5%8F%8A%E6%90%9C%E7%B4%A2%E6%8E%A5%E5%8F%A3%E5%8F%82%E6%95%B0%E8%BF%98%E5%8E%9F/7.jpg">
+<meta property="og:image" content="http://example.com/2025/01/07/%E8%B1%86%E7%93%A3frida%E6%A3%80%E6%B5%8B%E7%BB%95%E8%BF%87%E5%8F%8A%E6%90%9C%E7%B4%A2%E6%8E%A5%E5%8F%A3%E5%8F%82%E6%95%B0%E8%BF%98%E5%8E%9F/8.jpg">
+<meta property="og:image" content="http://example.com/2025/01/07/%E8%B1%86%E7%93%A3frida%E6%A3%80%E6%B5%8B%E7%BB%95%E8%BF%87%E5%8F%8A%E6%90%9C%E7%B4%A2%E6%8E%A5%E5%8F%A3%E5%8F%82%E6%95%B0%E8%BF%98%E5%8E%9F/9.jpg">
+<meta property="og:image" content="http://example.com/2025/01/07/%E8%B1%86%E7%93%A3frida%E6%A3%80%E6%B5%8B%E7%BB%95%E8%BF%87%E5%8F%8A%E6%90%9C%E7%B4%A2%E6%8E%A5%E5%8F%A3%E5%8F%82%E6%95%B0%E8%BF%98%E5%8E%9F/10.jpg">
+<meta property="article:published_time" content="2025-01-07T10:33:18.000Z">
+<meta property="article:modified_time" content="2025-01-07T15:00:24.907Z">
+<meta property="article:author" content="Bileton">
+<meta property="article:tag" content="豆瓣">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2025/01/07/%E8%B1%86%E7%93%A3frida%E6%A3%80%E6%B5%8B%E7%BB%95%E8%BF%87%E5%8F%8A%E6%90%9C%E7%B4%A2%E6%8E%A5%E5%8F%A3%E5%8F%82%E6%95%B0%E8%BF%98%E5%8E%9F/1.png">
+
+<link rel="canonical" href="http://example.com/2025/01/07/%E8%B1%86%E7%93%A3frida%E6%A3%80%E6%B5%8B%E7%BB%95%E8%BF%87%E5%8F%8A%E6%90%9C%E7%B4%A2%E6%8E%A5%E5%8F%A3%E5%8F%82%E6%95%B0%E8%BF%98%E5%8E%9F/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>豆瓣frida检测绕过及搜索接口参数还原 | 白乐天</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">白乐天</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">道阻且长，行则将至。</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">41</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">24</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">44</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/love.js"></script>
+</div>
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/01/07/%E8%B1%86%E7%93%A3frida%E6%A3%80%E6%B5%8B%E7%BB%95%E8%BF%87%E5%8F%8A%E6%90%9C%E7%B4%A2%E6%8E%A5%E5%8F%A3%E5%8F%82%E6%95%B0%E8%BF%98%E5%8E%9F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/android.svg">
+      <meta itemprop="name" content="Bileton">
+      <meta itemprop="description" content="路漫漫其修远夕！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="白乐天">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          豆瓣frida检测绕过及搜索接口参数还原
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2025-01-07 18:33:18 / 修改时间：23:00:24" itemprop="dateCreated datePublished" datetime="2025-01-07T18:33:18+08:00">2025-01-07</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%80%86%E5%90%91%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/" itemprop="url" rel="index"><span itemprop="name">逆向实战案例</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>12k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>11 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="App信息"><a href="#App信息" class="headerlink" title="App信息"></a>App信息</h1><p>包名：com.douban.frodo</p>
+<p><img src="/2025/01/07/%E8%B1%86%E7%93%A3frida%E6%A3%80%E6%B5%8B%E7%BB%95%E8%BF%87%E5%8F%8A%E6%90%9C%E7%B4%A2%E6%8E%A5%E5%8F%A3%E5%8F%82%E6%95%B0%E8%BF%98%E5%8E%9F/1.png" alt="1"></p>
+<h1 id="frida反调试绕过"><a href="#frida反调试绕过" class="headerlink" title="frida反调试绕过"></a>frida反调试绕过</h1><p>首先尝试注入frida，发现直接就挂掉了，说明frida被检测到了</p>
+<p><img src="/2025/01/07/%E8%B1%86%E7%93%A3frida%E6%A3%80%E6%B5%8B%E7%BB%95%E8%BF%87%E5%8F%8A%E6%90%9C%E7%B4%A2%E6%8E%A5%E5%8F%A3%E5%8F%82%E6%95%B0%E8%BF%98%E5%8E%9F/2.jpg" alt="1"></p>
+<h2 id="定位检测frida的so"><a href="#定位检测frida的so" class="headerlink" title="定位检测frida的so"></a>定位检测frida的so</h2><p>hook dlopen查看so加载流程，看在加载哪一个so的时候挂掉的，说明检测frida的函数在那个so里。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">hook_dlopen</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="comment">//Android8.0之后加载so通过android_dlopen_ext函数</span></span><br><span class="line">    <span class="keyword">var</span> android_dlopen_ext = <span class="title class_">Module</span>.<span class="title function_">findExportByName</span>(<span class="literal">null</span>,<span class="string">&quot;android_dlopen_ext&quot;</span>);</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;addr_android_dlopen_ext&quot;</span>,android_dlopen_ext);</span><br><span class="line">    <span class="title class_">Interceptor</span>.<span class="title function_">attach</span>(android_dlopen_ext,&#123;</span><br><span class="line">        <span class="attr">onEnter</span>:<span class="keyword">function</span>(<span class="params">args</span>)&#123;</span><br><span class="line">            <span class="keyword">var</span> pathptr = args[<span class="number">0</span>];</span><br><span class="line">            <span class="keyword">if</span>(pathptr!=<span class="literal">null</span> &amp;&amp; pathptr != <span class="literal">undefined</span>)&#123;</span><br><span class="line">                <span class="keyword">var</span> path = <span class="title function_">ptr</span>(pathptr).<span class="title function_">readCString</span>();</span><br><span class="line">                <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;android_dlopen_ext:&quot;</span>,path);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">onLeave</span>:<span class="keyword">function</span>(<span class="params">retvel</span>)&#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;leave!&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">hook_dlopen</span>()</span><br></pre></td></tr></table></figure>
+
+<p>根据hook的输出可以知道，在加载<code>libmsaoaidsec.so</code>之后，frida就挂掉了，说明是在<code>libmsaoaidsec.so</code>里检测的frida。</p>
+<p><img src="/2025/01/07/%E8%B1%86%E7%93%A3frida%E6%A3%80%E6%B5%8B%E7%BB%95%E8%BF%87%E5%8F%8A%E6%90%9C%E7%B4%A2%E6%8E%A5%E5%8F%A3%E5%8F%82%E6%95%B0%E8%BF%98%E5%8E%9F/3.jpg" alt="1"></p>
+<h2 id="定位检测frida的函数地址，并进行替换"><a href="#定位检测frida的函数地址，并进行替换" class="headerlink" title="定位检测frida的函数地址，并进行替换"></a>定位检测frida的函数地址，并进行替换</h2><p>根据so的加载流程，<code>call_construction()</code>函数用来确保动态库中的函数得到加载并执行，在<code>call_construction()</code>函数里会调用一个<code>init_array()</code>函数，它包含了一组指向函数的指针，用于对函数进行初始化，在so加载完成之后，会调用<code>JNI_OnLoad()</code>函数，用于进行 JNI 环境的初始化、注册本地方法。</p>
+<h3 id="hook-pthread-create"><a href="#hook-pthread-create" class="headerlink" title="hook pthread_create()"></a>hook pthread_create()</h3><p>检测frida的函数通常不会在主线程中，我们可以通过hook pthread_create()函数来打印线程中创建的函数的地址</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">hook_dlopen</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="comment">//Android8.0之后加载so通过android_dlopen_ext函数</span></span><br><span class="line">    <span class="keyword">var</span> android_dlopen_ext = <span class="title class_">Module</span>.<span class="title function_">findExportByName</span>(<span class="literal">null</span>,<span class="string">&quot;android_dlopen_ext&quot;</span>);</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;addr_android_dlopen_ext&quot;</span>,android_dlopen_ext);</span><br><span class="line">    <span class="title class_">Interceptor</span>.<span class="title function_">attach</span>(android_dlopen_ext,&#123;</span><br><span class="line">        <span class="attr">onEnter</span>:<span class="keyword">function</span>(<span class="params">args</span>)&#123;</span><br><span class="line">            <span class="keyword">var</span> pathptr = args[<span class="number">0</span>];</span><br><span class="line">            <span class="keyword">if</span>(pathptr!=<span class="literal">null</span> &amp;&amp; pathptr != <span class="literal">undefined</span>)&#123;</span><br><span class="line">                <span class="keyword">var</span> path = <span class="title function_">ptr</span>(pathptr).<span class="title function_">readCString</span>();</span><br><span class="line">                <span class="keyword">if</span>(path.<span class="title function_">indexOf</span>(<span class="string">&quot;libmsaoaidsec.so&quot;</span>)!=-<span class="number">1</span>)&#123;</span><br><span class="line">                    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;android_dlopen_ext:&quot;</span>,path);</span><br><span class="line">                    <span class="title function_">hook_pthread</span>()</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">onLeave</span>:<span class="keyword">function</span>(<span class="params">retvel</span>)&#123;</span><br><span class="line">            <span class="comment">// console.log(&quot;leave!&quot;);</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">hook_pthread</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> pth_create = <span class="title class_">Module</span>.<span class="title function_">findExportByName</span>(<span class="string">&quot;libc.so&quot;</span>, <span class="string">&quot;pthread_create&quot;</span>);</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;[pth_create]&quot;</span>, pth_create);</span><br><span class="line">    <span class="title class_">Interceptor</span>.<span class="title function_">attach</span>(pth_create, &#123;</span><br><span class="line">        <span class="attr">onEnter</span>: <span class="keyword">function</span> (<span class="params">args</span>) &#123;</span><br><span class="line">            <span class="keyword">var</span> <span class="variable language_">module</span> = <span class="title class_">Process</span>.<span class="title function_">findModuleByAddress</span>(args[<span class="number">2</span>]);</span><br><span class="line">            <span class="keyword">if</span> (<span class="variable language_">module</span> != <span class="literal">null</span>) &#123;</span><br><span class="line">                <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;address&quot;</span>, <span class="variable language_">module</span>.<span class="property">name</span>, args[<span class="number">2</span>].<span class="title function_">sub</span>(<span class="variable language_">module</span>.<span class="property">base</span>));</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">onLeave</span>: <span class="keyword">function</span> (<span class="params">retval</span>) &#123;&#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">main</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="title function_">hook_dlopen</span>()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">main</span>()</span><br></pre></td></tr></table></figure>
+
+<p>结果如下，在<code>libmsaoaidsec.so</code>里创建了三个函数</p>
+<p><img src="/2025/01/07/%E8%B1%86%E7%93%A3frida%E6%A3%80%E6%B5%8B%E7%BB%95%E8%BF%87%E5%8F%8A%E6%90%9C%E7%B4%A2%E6%8E%A5%E5%8F%A3%E5%8F%82%E6%95%B0%E8%BF%98%E5%8E%9F/4.jpg" alt="1"></p>
+<h3 id="hook-call-construction"><a href="#hook-call-construction" class="headerlink" title="hook call_construction()"></a>hook call_construction()</h3><p>可以通过hook call_construction()这个函数来对pthread_create()中创建的函数进行替换</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">hook_dlopen</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="comment">//Android8.0之后加载so通过android_dlopen_ext函数</span></span><br><span class="line">    <span class="keyword">var</span> android_dlopen_ext = <span class="title class_">Module</span>.<span class="title function_">findExportByName</span>(<span class="literal">null</span>,<span class="string">&quot;android_dlopen_ext&quot;</span>);</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;addr_android_dlopen_ext&quot;</span>,android_dlopen_ext);</span><br><span class="line">    <span class="title class_">Interceptor</span>.<span class="title function_">attach</span>(android_dlopen_ext,&#123;</span><br><span class="line">        <span class="attr">onEnter</span>:<span class="keyword">function</span>(<span class="params">args</span>)&#123;</span><br><span class="line">            <span class="keyword">var</span> pathptr = args[<span class="number">0</span>];</span><br><span class="line">            <span class="keyword">if</span>(pathptr!=<span class="literal">null</span> &amp;&amp; pathptr != <span class="literal">undefined</span>)&#123;</span><br><span class="line">                <span class="keyword">var</span> path = <span class="title function_">ptr</span>(pathptr).<span class="title function_">readCString</span>();</span><br><span class="line">                <span class="keyword">if</span>(path.<span class="title function_">indexOf</span>(<span class="string">&quot;libmsaoaidsec.so&quot;</span>)!=-<span class="number">1</span>)&#123;</span><br><span class="line">                    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;android_dlopen_ext:&quot;</span>,path);</span><br><span class="line">                    <span class="title function_">hook_call_constructors</span>()</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">onLeave</span>:<span class="keyword">function</span>(<span class="params">retvel</span>)&#123;</span><br><span class="line">            <span class="comment">//console.log(&quot;leave!&quot;);</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">hook_call_constructors</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> linker64_base_addr = <span class="title class_">Module</span>.<span class="title function_">getBaseAddress</span>(<span class="string">&quot;linker64&quot;</span>)</span><br><span class="line">    <span class="keyword">var</span> call_constructors_func_off = <span class="number">0x2C274</span> <span class="comment">//这个地址是从手机上把linker64 pull出来，然后到IDA中找到的，不同的机型，地址可能不一样</span></span><br><span class="line">    <span class="keyword">var</span> call_constructors_func_addr = linker64_base_addr.<span class="title function_">add</span>(call_constructors_func_off)</span><br><span class="line">    <span class="keyword">var</span> listener = <span class="title class_">Interceptor</span>.<span class="title function_">attach</span>(call_constructors_func_addr, &#123;</span><br><span class="line">        <span class="attr">onEnter</span>: <span class="keyword">function</span> (<span class="params">args</span>) &#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;hooked call_constructors&quot;</span>)</span><br><span class="line">            <span class="keyword">var</span> <span class="variable language_">module</span> = <span class="title class_">Process</span>.<span class="title function_">findModuleByName</span>(<span class="string">&quot;libmsaoaidsec.so&quot;</span>)</span><br><span class="line">            <span class="keyword">if</span> (<span class="variable language_">module</span> != <span class="literal">null</span>) &#123;</span><br><span class="line">                <span class="title class_">Interceptor</span>.<span class="title function_">replace</span>(<span class="variable language_">module</span>.<span class="property">base</span>.<span class="title function_">add</span>(<span class="number">0x1c544</span>), <span class="keyword">new</span> <span class="title class_">NativeCallback</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">                    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;0x1c544:替换成功&quot;</span>)</span><br><span class="line">                &#125;, <span class="string">&quot;void&quot;</span>, []))</span><br><span class="line">                <span class="title class_">Interceptor</span>.<span class="title function_">replace</span>(<span class="variable language_">module</span>.<span class="property">base</span>.<span class="title function_">add</span>(<span class="number">0x1b924</span>), <span class="keyword">new</span> <span class="title class_">NativeCallback</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">                    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;0x1B924:替换成功&quot;</span>)</span><br><span class="line">                &#125;, <span class="string">&quot;void&quot;</span>, []))</span><br><span class="line">                <span class="title class_">Interceptor</span>.<span class="title function_">replace</span>(<span class="variable language_">module</span>.<span class="property">base</span>.<span class="title function_">add</span>(<span class="number">0x26e5c</span>), <span class="keyword">new</span> <span class="title class_">NativeCallback</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">                    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;0x26e5c:替换成功&quot;</span>)</span><br><span class="line">                &#125;, <span class="string">&quot;void&quot;</span>, []))</span><br><span class="line">                listener.<span class="title function_">detach</span>()</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">main</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="title function_">hook_dlopen</span>()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">main</span>()</span><br></pre></td></tr></table></figure>
+
+<p>结果如下，frida反调试绕过成功了！</p>
+<p><img src="/2025/01/07/%E8%B1%86%E7%93%A3frida%E6%A3%80%E6%B5%8B%E7%BB%95%E8%BF%87%E5%8F%8A%E6%90%9C%E7%B4%A2%E6%8E%A5%E5%8F%A3%E5%8F%82%E6%95%B0%E8%BF%98%E5%8E%9F/5.jpg" alt="1"></p>
+<h1 id="sign参数还原"><a href="#sign参数还原" class="headerlink" title="_sign参数还原"></a>_sign参数还原</h1><h2 id="抓包分析"><a href="#抓包分析" class="headerlink" title="抓包分析"></a>抓包分析</h2><p>通过抓包找到有关<code>_sig</code>参数的数据包</p>
+<p><img src="/2025/01/07/%E8%B1%86%E7%93%A3frida%E6%A3%80%E6%B5%8B%E7%BB%95%E8%BF%87%E5%8F%8A%E6%90%9C%E7%B4%A2%E6%8E%A5%E5%8F%A3%E5%8F%82%E6%95%B0%E8%BF%98%E5%8E%9F/6.jpg" alt="1"></p>
+<h2 id="jadx反编译apk"><a href="#jadx反编译apk" class="headerlink" title="jadx反编译apk"></a>jadx反编译apk</h2><p>搜索字符串<code>&quot;_sig&quot;</code></p>
+<p><img src="/2025/01/07/%E8%B1%86%E7%93%A3frida%E6%A3%80%E6%B5%8B%E7%BB%95%E8%BF%87%E5%8F%8A%E6%90%9C%E7%B4%A2%E6%8E%A5%E5%8F%A3%E5%8F%82%E6%95%B0%E8%BF%98%E5%8E%9F/7.jpg" alt="1"></p>
+<h2 id="intercept"><a href="#intercept" class="headerlink" title="intercept"></a>intercept</h2><p>定位到intercept函数，如下可以看出来<code>sig</code>的值为F3.first，F3的值为<code>i0.d.F(request)</code></p>
+<p><img src="/2025/01/07/%E8%B1%86%E7%93%A3frida%E6%A3%80%E6%B5%8B%E7%BB%95%E8%BF%87%E5%8F%8A%E6%90%9C%E7%B4%A2%E6%8E%A5%E5%8F%A3%E5%8F%82%E6%95%B0%E8%BF%98%E5%8E%9F/8.jpg" alt="1"></p>
+<p>跟进到F方法里</p>
+<h2 id="F"><a href="#F" class="headerlink" title="F"></a>F</h2><p>F方法内容如下</p>
+<p><img src="/2025/01/07/%E8%B1%86%E7%93%A3frida%E6%A3%80%E6%B5%8B%E7%BB%95%E8%BF%87%E5%8F%8A%E6%90%9C%E7%B4%A2%E6%8E%A5%E5%8F%A3%E5%8F%82%E6%95%B0%E8%BF%98%E5%8E%9F/9.jpg" alt="1"></p>
+<p>返回值是E方法</p>
+<p>跟进到E方法</p>
+<h2 id="E"><a href="#E" class="headerlink" title="E"></a>E</h2><p>E方法内容如下</p>
+<p><img src="/2025/01/07/%E8%B1%86%E7%93%A3frida%E6%A3%80%E6%B5%8B%E7%BB%95%E8%BF%87%E5%8F%8A%E6%90%9C%E7%B4%A2%E6%8E%A5%E5%8F%A3%E5%8F%82%E6%95%B0%E8%BF%98%E5%8E%9F/10.jpg" alt="1"></p>
+<p><strong>分析流程</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">1.判断str是否为空	（TextUtils.isEmpty(str)）</span><br><span class="line">   ↓</span><br><span class="line">2.获取str2	（StringBuilder l10 = android.support.v4.media.e.l(str2)）</span><br><span class="line">   ↓</span><br><span class="line">3.获取URL的路径部分，并进行url编码	（String encodedPath = HttpUrl.parse(str).encodedPath()）</span><br><span class="line">   ↓</span><br><span class="line">4.对进行过URL解码的路径部分进行URL解码	（decode = Uri.decode(encodedPath)）</span><br><span class="line">   ↓</span><br><span class="line">5.如果路径URL的路径部分的末尾有/符号，则删除它</span><br><span class="line">   ↓</span><br><span class="line">6.在l10末尾追加一个&amp;符号</span><br><span class="line">   ↓</span><br><span class="line">7.对解码的URL路径部分进行url编码，然后追加到l10末尾</span><br><span class="line">   ↓</span><br><span class="line">8.在l10末尾追加一个&amp;符号</span><br><span class="line">   ↓</span><br><span class="line">9.在l10末尾追加当前时间戳</span><br><span class="line">   ↓</span><br><span class="line">10.进行HmacSHA1签名</span><br><span class="line">   ↓</span><br><span class="line">11.进行Base64编码</span><br></pre></td></tr></table></figure>
+
+<h2 id="hook-doFinal"><a href="#hook-doFinal" class="headerlink" title="hook doFinal"></a>hook doFinal</h2><p>hook doFinal方法来查看参与加密的参数的格式</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Java</span>.<span class="title function_">perform</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> <span class="title class_">ByteString</span> = <span class="title class_">Java</span>.<span class="title function_">use</span>(<span class="string">&quot;com.android.okhttp.okio.ByteString&quot;</span>);</span><br><span class="line">    <span class="keyword">function</span> <span class="title function_">toBase64</span>(<span class="params">tag, data</span>) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(tag + <span class="string">&quot; Base64: &quot;</span> + <span class="title class_">ByteString</span>.<span class="title function_">of</span>(data).<span class="title function_">base64</span>());</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">function</span> <span class="title function_">toHex</span>(<span class="params">tag, data</span>) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(tag + <span class="string">&quot; Hex: &quot;</span> + <span class="title class_">ByteString</span>.<span class="title function_">of</span>(data).<span class="title function_">hex</span>());</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">function</span> <span class="title function_">toUtf8</span>(<span class="params">tag, data</span>) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(tag + <span class="string">&quot; Utf8: &quot;</span> + <span class="title class_">ByteString</span>.<span class="title function_">of</span>(data).<span class="title function_">utf8</span>());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> mac = <span class="title class_">Java</span>.<span class="title function_">use</span>(<span class="string">&quot;javax.crypto.Mac&quot;</span>);</span><br><span class="line">    mac.<span class="property">init</span>.<span class="title function_">overload</span>(<span class="string">&#x27;java.security.Key&#x27;</span>).<span class="property">implementation</span> = <span class="keyword">function</span> (<span class="params">key</span>) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Mac.init(&#x27;java.security.Key&#x27;) is called!&quot;</span>);</span><br><span class="line">        <span class="keyword">var</span> algorithm = <span class="variable language_">this</span>.<span class="title function_">getAlgorithm</span>();</span><br><span class="line">        <span class="keyword">var</span> tag = algorithm + <span class="string">&quot; init Key&quot;</span>;</span><br><span class="line">        <span class="keyword">var</span> keyBytes = key.<span class="title function_">getEncoded</span>();</span><br><span class="line">        <span class="title function_">toUtf8</span>(tag, keyBytes);</span><br><span class="line">        <span class="title function_">toHex</span>(tag, keyBytes);</span><br><span class="line">        <span class="title function_">toBase64</span>(tag, keyBytes);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="title function_">init</span>(key);</span><br><span class="line">    &#125;</span><br><span class="line">    mac.<span class="property">doFinal</span>.<span class="title function_">overload</span>(<span class="string">&#x27;[B&#x27;</span>).<span class="property">implementation</span> = <span class="keyword">function</span> (<span class="params">data</span>) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Mac.doFinal.overload(&#x27;[B&#x27;) is called!&quot;</span>);</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;data:&quot;</span>,<span class="title function_">toUtf8</span>(<span class="string">&quot;data:&quot;</span>,data))</span><br><span class="line">        <span class="keyword">var</span> result = <span class="variable language_">this</span>.<span class="title function_">doFinal</span>(data)</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;result:&quot;</span>,<span class="title function_">toBase64</span>(<span class="string">&quot;result&quot;</span>,result))</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;=======================================================&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p><strong>hook 结果</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Mac.init(&#x27;java.security.Key&#x27;) is called!</span><br><span class="line">HmacSHA1 init Key Utf8: bf7dddc7c9cfe6f7</span><br><span class="line">HmacSHA1 init Key Hex: 62663764646463376339636665366637</span><br><span class="line">HmacSHA1 init Key Base64: YmY3ZGRkYzdjOWNmZTZmNw==</span><br><span class="line">Mac.doFinal.overload(&#x27;[B&#x27;) is called!</span><br><span class="line">data: Utf8: GET&amp;%2Fapi%2Fv2%2Fsearch&amp;1736261466</span><br><span class="line">data: undefined</span><br><span class="line">result Base64: S6+RLmdsNP1NdjQghxJebsST7Tc=</span><br><span class="line">result: undefined</span><br><span class="line">=======================================================</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="hook-E"><a href="#hook-E" class="headerlink" title="hook E"></a>hook E</h2><p>对E方法进行hook，可以查看参数和返回值</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">hook_E</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="title class_">Java</span>.<span class="title function_">perform</span>(<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="keyword">let</span> d = <span class="title class_">Java</span>.<span class="title function_">use</span>(<span class="string">&quot;i0.d&quot;</span>);</span><br><span class="line">        d.<span class="property">E</span>.<span class="property">implementation</span> = <span class="keyword">function</span>(<span class="params">str1,str2,str3</span>)&#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;----E----&quot;</span>)</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;str1:&quot;</span>,str1);</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;str2:&quot;</span>,str2);</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;str3:&quot;</span>,str3);</span><br><span class="line">            <span class="keyword">let</span> result = <span class="variable language_">this</span>.<span class="title function_">E</span>(str1,str2,str3);</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;result:&quot;</span>,result)</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;----over----&quot;</span>)</span><br><span class="line">            <span class="keyword">return</span> result</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">hook_E</span>()</span><br></pre></td></tr></table></figure>
+
+<p><strong>hook 结果</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">----E----</span><br><span class="line">str1: https://frodo.douban.com/api/v2/search/suggestion?q=%E8%AF%AF%E6%9D%80&amp;loc_id=108288&amp;apikey=0dad551ec0f84ed02907ff5c42e8ec70&amp;channel=ali_market&amp;udid=ce0fb355c7f98012b1d6716853b6841ba7e35819&amp;os_rom=android&amp;timezone=Asia%2FShanghai</span><br><span class="line">str2: GET</span><br><span class="line">str3: null</span><br><span class="line">result: Pair&#123;idc8eWIGKhtP6hTr9piPi5OSadQ= 1736098880&#125;</span><br><span class="line">----over----</span><br><span class="line">----E----</span><br><span class="line">str1: https://frodo.douban.com/api/v2/search/found_words?screen_width=1080&amp;screen_height=2028&amp;wx_api_ver=0&amp;opensdk_ver=638058496&amp;webview_ua=Mozilla%2F5.0%20%28Linux%3B%20Android%209%3B%20Pixel%203%20Build%2FPD1A.180720.030%3B%20wv%29%20AppleWebKit%2F537.36%20%28KHTML%2C%20like%20Gecko%29%20Version%2F4.0%20Chrome%2F66.0.3359.158%20Mobile%20Safari%2F537.36&amp;sugar=0&amp;update_mark=1709887761.853333336&amp;network=wifi&amp;enable_sdk_bidding=1&amp;timezone=Asia%2FShanghai</span><br><span class="line">str2: POST</span><br><span class="line">str3: null</span><br><span class="line">result: Pair&#123;gYm5pJeYn7Wh/uv2QxJF6sh6sfA= 1736098863&#125;</span><br><span class="line">----over----</span><br></pre></td></tr></table></figure>
+
+<h2 id="hook-SecretKeySpec"><a href="#hook-SecretKeySpec" class="headerlink" title="hook SecretKeySpec"></a>hook SecretKeySpec</h2><p>对于hmacsha1算法，我们得知道密钥才行，可以hook SecretKeySpec得到密钥</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">hook_SecretKeySpec</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="title class_">Java</span>.<span class="title function_">perform</span>(<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="keyword">let</span> secretkeyspec = <span class="title class_">Java</span>.<span class="title function_">use</span>(<span class="string">&quot;javax.crypto.spec.SecretKeySpec&quot;</span>);</span><br><span class="line">        secretkeyspec.<span class="property">$init</span>.<span class="title function_">overload</span>(<span class="string">&#x27;[B&#x27;</span>, <span class="string">&#x27;java.lang.String&#x27;</span>).<span class="property">implementation</span> = <span class="keyword">function</span>(<span class="params">str5,sha1</span>)&#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;str5&quot;</span>,str5);</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;sha1&quot;</span>,sha1);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">hook_SecretKeySpec</span>()</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line">str5 <span class="number">98</span>,<span class="number">102</span>,<span class="number">55</span>,<span class="number">100</span>,<span class="number">100</span>,<span class="number">100</span>,<span class="number">99</span>,<span class="number">55</span>,<span class="number">99</span>,<span class="number">57</span>,<span class="number">99</span>,<span class="number">102</span>,<span class="number">101</span>,<span class="number">54</span>,<span class="number">102</span>,<span class="number">55</span></span><br><span class="line">sha1 <span class="title class_">HmacSHA1</span></span><br></pre></td></tr></table></figure>
+
+<p>用python处理一下数据，得到hmacsha1的密钥为<code>bf7dddc7c9cfe6f7</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">bytekey = [<span class="number">98</span>,<span class="number">102</span>,<span class="number">55</span>,<span class="number">100</span>,<span class="number">100</span>,<span class="number">100</span>,<span class="number">99</span>,<span class="number">55</span>,<span class="number">99</span>,<span class="number">57</span>,<span class="number">99</span>,<span class="number">102</span>,<span class="number">101</span>,<span class="number">54</span>,<span class="number">102</span>,<span class="number">55</span>]</span><br><span class="line">asciikey = <span class="string">&#x27;&#x27;</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="attr">bytekey</span>:</span><br><span class="line">    asciikey+=<span class="title function_">chr</span>(i)</span><br><span class="line"><span class="title function_">print</span>(asciikey)</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line">bf7dddc7c9cfe6f7</span><br></pre></td></tr></table></figure>
+
+<h2 id="参数还原"><a href="#参数还原" class="headerlink" title="参数还原"></a>参数还原</h2><p>这里拿一份hook到的数据进行分析</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">----E----</span><br><span class="line">str1: https://frodo.douban.com/api/v2/search/suggestion?q=%E8%AF%AF%E6%9D%80&amp;loc_id=108288&amp;apikey=0dad551ec0f84ed02907ff5c42e8ec70&amp;channel=ali_market&amp;udid=ce0fb355c7f98012b1d6716853b6841ba7e35819&amp;os_rom=android&amp;timezone=Asia%2FShanghai</span><br><span class="line">str2: GET</span><br><span class="line">str3: null</span><br><span class="line">result: Pair&#123;idc8eWIGKhtP6hTr9piPi5OSadQ= 1736098880&#125;</span><br><span class="line">----over----</span><br></pre></td></tr></table></figure>
+
+<p>首先需要的是请求方式，这里是<code>GET</code></p>
+<p>其次是URL的路径部分，还要进行url编码，这里拿到的是<code>%2Fapi%2Fv2%2Fsearch%2Fsuggestion</code></p>
+<p>然后是时间戳<code>1736098880</code></p>
+<p>进行HmacSHA1签名，在进行Base64编码</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> hashlib</span><br><span class="line"><span class="keyword">import</span> hmac</span><br><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">hmacsha1</span>(<span class="params">key,data</span>):</span><br><span class="line">    key_bytes = key.encode()</span><br><span class="line">    data_bytes = data.encode()</span><br><span class="line">    mac = hmac.new(key_bytes,data_bytes,hashlib.sha1)</span><br><span class="line">    sha1_result = mac.digest()</span><br><span class="line">    <span class="keyword">return</span> base64.b64encode(sha1_result).decode(<span class="string">&quot;utf-8&quot;</span>)</span><br><span class="line">    </span><br><span class="line">key = <span class="string">&quot;bf7dddc7c9cfe6f7&quot;</span></span><br><span class="line">data = <span class="string">&quot;GET&amp;%2Fapi%2Fv2%2Fsearch%2Fsuggestion&amp;1736098880&quot;</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;sig:&quot;</span>+hmacsha1(key,data))</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line">sig:idc8eWIGKhtP6hTr9piPi5OSadQ=</span><br></pre></td></tr></table></figure>
+
+<h1 id="搜索接口"><a href="#搜索接口" class="headerlink" title="搜索接口"></a>搜索接口</h1><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">from</span> urllib.parse <span class="keyword">import</span> quote</span><br><span class="line"><span class="keyword">import</span> hashlib</span><br><span class="line"><span class="keyword">import</span> hmac</span><br><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">hmacsha1</span>(<span class="params">key,data</span>):</span><br><span class="line">    key_bytes = key.encode()</span><br><span class="line">    data_bytes = data.encode()</span><br><span class="line">    mac = hmac.new(key_bytes,data_bytes,hashlib.sha1)</span><br><span class="line">    sha1_result = mac.digest()</span><br><span class="line">    <span class="keyword">return</span> base64.b64encode(sha1_result).decode(<span class="string">&quot;utf-8&quot;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">url = <span class="string">&quot;https://frodo.douban.com/api/v2/search&quot;</span></span><br><span class="line">headers = &#123;</span><br><span class="line">  <span class="string">&quot;user-agent&quot;</span>: <span class="string">&quot;api-client/1 com.douban.frodo/7.89.0(307) Android/28 product/blueline vendor/Google model/Pixel 3 brand/google  rom/android  network/wifi  udid/ce0fb355c7f98012b1d6716853b6841ba7e35819  platform/mobile&quot;</span>,</span><br><span class="line">  <span class="string">&quot;accept-encoding&quot;</span>: <span class="string">&quot;br,gzip&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">timestamp = <span class="built_in">int</span>(time.time())</span><br><span class="line">encode_data = <span class="string">&quot;GET&quot;</span>+<span class="string">&quot;&amp;&quot;</span>+<span class="string">&quot;%2Fapi%2Fv2%2Fsearch&quot;</span>+<span class="string">&quot;&amp;&quot;</span>+<span class="built_in">str</span>(timestamp)</span><br><span class="line">key = <span class="string">&quot;bf7dddc7c9cfe6f7&quot;</span></span><br><span class="line">sig = hmacsha1(key,encode_data)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;sig:&quot;</span>,sig)</span><br><span class="line"></span><br><span class="line">query = <span class="built_in">input</span>(<span class="string">&quot;请输入：&quot;</span>)</span><br><span class="line"></span><br><span class="line">params = &#123;</span><br><span class="line">  <span class="string">&quot;q&quot;</span>: query,</span><br><span class="line">  <span class="string">&quot;sort&quot;</span>: <span class="string">&quot;relevance&quot;</span>,</span><br><span class="line">  <span class="string">&quot;count&quot;</span>: <span class="string">&quot;20&quot;</span>,</span><br><span class="line">  <span class="string">&quot;screen_width&quot;</span>: <span class="string">&quot;1080&quot;</span>,</span><br><span class="line">  <span class="string">&quot;screen_height&quot;</span>: <span class="string">&quot;2028&quot;</span>,</span><br><span class="line">  <span class="string">&quot;wx_api_ver&quot;</span>: <span class="string">&quot;0&quot;</span>,</span><br><span class="line">  <span class="string">&quot;opensdk_ver&quot;</span>: <span class="string">&quot;638058496&quot;</span>,</span><br><span class="line">  <span class="string">&quot;webview_ua&quot;</span>: <span class="string">&quot;Mozilla/5.0 (Linux; Android 9; Pixel 3 Build/PD1A.180720.030; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/66.0.3359.158 Mobile Safari/537.36&quot;</span>,</span><br><span class="line">  <span class="string">&quot;sugar&quot;</span>: <span class="string">&quot;0&quot;</span>,</span><br><span class="line">  <span class="string">&quot;update_mark&quot;</span>: <span class="string">&quot;1709887761.853333336&quot;</span>,</span><br><span class="line">  <span class="string">&quot;network&quot;</span>: <span class="string">&quot;wifi&quot;</span>,</span><br><span class="line">  <span class="string">&quot;enable_sdk_bidding&quot;</span>: <span class="string">&quot;1&quot;</span>,</span><br><span class="line">  <span class="string">&quot;loc_id&quot;</span>: <span class="string">&quot;108288&quot;</span>,</span><br><span class="line">  <span class="string">&quot;apikey&quot;</span>: <span class="string">&quot;0dad551ec0f84ed02907ff5c42e8ec70&quot;</span>,</span><br><span class="line">  <span class="string">&quot;channel&quot;</span>: <span class="string">&quot;ali_market&quot;</span>,</span><br><span class="line">  <span class="string">&quot;udid&quot;</span>: <span class="string">&quot;ce0fb355c7f98012b1d6716853b6841ba7e35819&quot;</span>,</span><br><span class="line">  <span class="string">&quot;os_rom&quot;</span>: <span class="string">&quot;android&quot;</span>,</span><br><span class="line">  <span class="string">&quot;oaid&quot;</span>: <span class="string">&quot;EdGi3zYQCRzmwwB1YR7WKg==\n&quot;</span>,</span><br><span class="line">  <span class="string">&quot;timezone&quot;</span>: <span class="string">&quot;Asia/Shanghai&quot;</span>,</span><br><span class="line">  <span class="string">&quot;_sig&quot;</span>:sig,</span><br><span class="line">  <span class="string">&quot;_ts&quot;</span>: timestamp</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">response = requests.get(url=url,headers=headers,params=params)</span><br><span class="line"><span class="built_in">print</span>(response.status_code)</span><br><span class="line"><span class="comment"># print(response.text)</span></span><br><span class="line">text = json.loads(response.text)</span><br><span class="line"><span class="built_in">print</span>(text)</span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E8%B1%86%E7%93%A3/" rel="tag"><svg t="1732789072752" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4858" width="15" height="15"><path d="M229.443715 343.118259l565.172804 0 0 410.010794c0 37.525595-30.237317 67.762912-67.040108 67.762912l-46.319715 0 0 139.742183c0 35.116247-28.249605 63.365852-63.305618 63.365852-35.116247 0-63.546553-28.309839-63.546553-63.365852l0-139.742183-84.809049 0 0 139.742183c0 35.056013-28.430306 63.365852-63.546553 63.365852-34.393443 0-62.763515-28.309839-62.763515-63.365852l-0.542103-139.742183-45.596911 0c-37.465361 0-67.702678-30.177084-67.702678-67.762912l0-410.010794zM141.984383 331.432921c-35.056013 0-63.426086 28.370073-63.426086 62.763515l0 264.787344c0 35.116247 28.370073 63.365852 63.426086 63.365852s62.763515-28.309839 62.763515-63.365852l0-264.787344c0-34.393443-28.189371-62.763515-62.763515-62.763515zM796.42353 320.952257l-569.449397 0c0-97.879762 58.547156-182.869512 145.343917-227.141282l-43.7899-80.59269c-2.469582-4.336826-1.264908-9.878327 3.071919-12.347908 4.276593-1.867245 9.878327-0.662571 12.347908 3.734489l44.271769 81.255261c37.646062-16.684735 79.508484-25.900491 123.780253-25.900491s86.134191 9.215756 123.780253 25.840257l44.271769-81.255261c2.469582-4.336826 8.071316-5.5415 12.347908-3.734489 4.336826 2.469582 5.5415 8.011082 3.071919 12.347908l-43.7899 80.59269c86.254658 44.332003 144.74158 129.321753 144.74158 227.201515zM406.048922 194.160319c0-12.950245-10.42043-24.033246-23.912779-24.033246-13.010479 0-23.430909 11.083001-23.430909 24.033246 0 12.890012 10.42043 23.973012 23.430909 23.973012 13.492349 0.060234 23.912779-11.022767 23.912779-23.973012zM665.294766 194.160319c0-12.950245-10.42043-24.033246-23.430909-24.033246-13.552582 0-23.912779 11.083001-23.912779 24.033246 0 12.890012 10.42043 23.973012 23.912779 23.973012 13.010479 0.060234 23.430909-11.022767 23.430909-23.973012zM882.015617 331.432921c-34.51391 0-62.763515 27.707502-62.763515 62.763515l0 264.787344c0 35.116247 28.249605 63.365852 62.763515 63.365852 35.056013 0 63.426086-28.309839 63.426086-63.365852l0-264.787344c-0.060234-35.056013-28.370073-62.763515-63.426086-62.763515z" fill="#000000" p-id="4859"></path></svg> 豆瓣</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2025/01/06/%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%91/" rel="prev" title="安卓开发">
+      <i class="fa fa-chevron-left"></i> 安卓开发
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2025/01/07/Vocabulary-In-Use/" rel="next" title="Vocabulary In Use">
+      Vocabulary In Use <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#App%E4%BF%A1%E6%81%AF"><span class="nav-number">1.</span> <span class="nav-text">App信息</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#frida%E5%8F%8D%E8%B0%83%E8%AF%95%E7%BB%95%E8%BF%87"><span class="nav-number">2.</span> <span class="nav-text">frida反调试绕过</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9A%E4%BD%8D%E6%A3%80%E6%B5%8Bfrida%E7%9A%84so"><span class="nav-number">2.1.</span> <span class="nav-text">定位检测frida的so</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9A%E4%BD%8D%E6%A3%80%E6%B5%8Bfrida%E7%9A%84%E5%87%BD%E6%95%B0%E5%9C%B0%E5%9D%80%EF%BC%8C%E5%B9%B6%E8%BF%9B%E8%A1%8C%E6%9B%BF%E6%8D%A2"><span class="nav-number">2.2.</span> <span class="nav-text">定位检测frida的函数地址，并进行替换</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#hook-pthread-create"><span class="nav-number">2.2.1.</span> <span class="nav-text">hook pthread_create()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#hook-call-construction"><span class="nav-number">2.2.2.</span> <span class="nav-text">hook call_construction()</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#sign%E5%8F%82%E6%95%B0%E8%BF%98%E5%8E%9F"><span class="nav-number">3.</span> <span class="nav-text">_sign参数还原</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8A%93%E5%8C%85%E5%88%86%E6%9E%90"><span class="nav-number">3.1.</span> <span class="nav-text">抓包分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jadx%E5%8F%8D%E7%BC%96%E8%AF%91apk"><span class="nav-number">3.2.</span> <span class="nav-text">jadx反编译apk</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#intercept"><span class="nav-number">3.3.</span> <span class="nav-text">intercept</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#F"><span class="nav-number">3.4.</span> <span class="nav-text">F</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#E"><span class="nav-number">3.5.</span> <span class="nav-text">E</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hook-doFinal"><span class="nav-number">3.6.</span> <span class="nav-text">hook doFinal</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hook-E"><span class="nav-number">3.7.</span> <span class="nav-text">hook E</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hook-SecretKeySpec"><span class="nav-number">3.8.</span> <span class="nav-text">hook SecretKeySpec</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E6%95%B0%E8%BF%98%E5%8E%9F"><span class="nav-number">3.9.</span> <span class="nav-text">参数还原</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%90%9C%E7%B4%A2%E6%8E%A5%E5%8F%A3"><span class="nav-number">4.</span> <span class="nav-text">搜索接口</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Bileton"
+      src="/images/android.svg">
+  <p class="site-author-name" itemprop="name">Bileton</p>
+  <div class="site-description" itemprop="description">路漫漫其修远夕！</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">44</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">24</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">41</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Bileton</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">217k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">3:18</span>
+</div>
+
+
+<span id="timeDate">载入天数...</span>
+<span id="times">载入时分秒...</span>
+<script>
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("01/01/2024 00:00:00"); //修改为你的网站开始运行的时间
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+        document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 ";
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒.";
+    }
+setInterval("createtime()",250);
+</script>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
