@@ -124,7 +124,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">42</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">43</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -134,7 +134,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">45</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">46</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -189,6 +189,106 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/02/01/Cpp/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/android.svg">
+      <meta itemprop="name" content="Bileton">
+      <meta itemprop="description" content="路漫漫其修远夕！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="白乐天">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2024/02/01/Cpp/" class="post-title-link" itemprop="url">C++</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2024-02-01 00:00:00" itemprop="dateCreated datePublished" datetime="2024-02-01T00:00:00+08:00">2024-02-01</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-12-21 16:32:18" itemprop="dateModified" datetime="2024-12-21T16:32:18+08:00">2024-12-21</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Cpp/" itemprop="url" rel="index"><span itemprop="name">Cpp</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>585</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="C-基础编程"><a href="#C-基础编程" class="headerlink" title="C++基础编程"></a>C++基础编程</h1><h2 id="Hello-World"><a href="#Hello-World" class="headerlink" title="Hello World"></a>Hello World</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;Hello, World!&quot;</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="std-string类"><a href="#std-string类" class="headerlink" title="std::string类"></a>std::string类</h2><h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><ul>
+<li><p><strong>c_str()</strong></p>
+<p>将 C++ 的 <code>std::string</code> 对象转换为 C 风格的字符串（即以空字符 <code>\0</code> 结尾的字符数组）。</p>
+</li>
+</ul>
+<h2 id="基本数据类型"><a href="#基本数据类型" class="headerlink" title="基本数据类型"></a>基本数据类型</h2><h1 id="iostream"><a href="#iostream" class="headerlink" title="iostream"></a>iostream</h1><h2 id="cin"><a href="#cin" class="headerlink" title="cin"></a>cin</h2><p><code>cin</code> 使用流操作符（<code>&gt;&gt;</code>），一次可以读取多个变量，输入用空格或回车分隔。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="type">int</span> number;</span><br><span class="line">    cin &gt;&gt; number;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="cout"><a href="#cout" class="headerlink" title="cout"></a>cout</h2><p><code>cout</code> 使用流操作符（<code>&lt;&lt;</code>）可以连续输出多个变量。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="type">int</span> number;</span><br><span class="line">    cin &gt;&gt; number;</span><br><span class="line">    cout &lt;&lt; number;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;换行&quot;</span> &lt;&lt; endl; <span class="comment">// endl 表示换行，相当于\n，同时会刷新缓冲区。</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="cstring"><a href="#cstring" class="headerlink" title="cstring"></a>cstring</h1><h2 id="strlen"><a href="#strlen" class="headerlink" title="strlen"></a>strlen</h2>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2024/02/01/C%E8%AF%AD%E8%A8%80/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -220,7 +320,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-12-22 11:17:35" itemprop="dateModified" datetime="2024-12-22T11:17:35+08:00">2024-12-22</time>
+                <time title="修改时间：2025-01-09 23:30:48" itemprop="dateModified" datetime="2025-01-09T23:30:48+08:00">2025-01-09</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -238,14 +338,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>3.1k</span>
+              <span>4.1k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>3 分钟</span>
+              <span>4 分钟</span>
             </span>
 
         </div>
@@ -268,18 +368,49 @@
 <li>unsigned int </li>
 <li>long</li>
 <li>unsigned long</li>
+<li>float</li>
+<li>double</li>
+<li>void</li>
 </ul>
+<h2 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">算术运算符</span><br><span class="line">+</span><br><span class="line">-</span><br><span class="line">*</span><br><span class="line">/</span><br><span class="line">%</span><br><span class="line">++</span><br><span class="line">--</span><br><span class="line">比较运算符</span><br><span class="line">==</span><br><span class="line">!=</span><br><span class="line">&gt;</span><br><span class="line">&lt;</span><br><span class="line">&gt;=</span><br><span class="line">&lt;=</span><br><span class="line">逻辑运算符</span><br><span class="line">&amp;&amp;</span><br><span class="line">||</span><br><span class="line">!</span><br><span class="line">位运算符</span><br><span class="line">&amp;</span><br><span class="line">|</span><br><span class="line">^</span><br><span class="line">~</span><br><span class="line">&lt;&lt;</span><br><span class="line">&gt;&gt;</span><br><span class="line">赋值运算符</span><br><span class="line">=</span><br><span class="line">+=</span><br><span class="line">-=</span><br><span class="line">*=</span><br><span class="line">/=</span><br><span class="line">%=</span><br><span class="line">&lt;&lt;=</span><br><span class="line">&gt;&gt;=</span><br><span class="line">&amp;=</span><br><span class="line">^=</span><br><span class="line">|=</span><br><span class="line">其他运算符</span><br><span class="line"><span class="keyword">sizeof</span>()  	<span class="comment">// 返回变量或数据类型的大小</span></span><br><span class="line">&amp;			<span class="comment">// 取地址</span></span><br><span class="line">*			<span class="comment">// 解引用</span></span><br><span class="line">?:			<span class="comment">// 三元运算符</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="流程控制"><a href="#流程控制" class="headerlink" title="流程控制"></a>流程控制</h2><h3 id="if"><a href="#if" class="headerlink" title="if"></a>if</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(expression)&#123;</span><br><span class="line">    ...;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">  <span class="keyword">if</span>(expression)&#123;</span><br><span class="line">...;</span><br><span class="line">  &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">      ...;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">  <span class="keyword">if</span>(expression)&#123;</span><br><span class="line">...;</span><br><span class="line">  &#125;<span class="keyword">else</span> <span class="keyword">if</span>(expression)&#123;</span><br><span class="line">...;</span><br><span class="line">  &#125; <span class="keyword">else</span>&#123;</span><br><span class="line">      ...;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="switch"><a href="#switch" class="headerlink" title="switch"></a>switch</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span> (表达式) &#123;</span><br><span class="line">    <span class="keyword">case</span> 常量表达式<span class="number">1</span>:</span><br><span class="line">        <span class="comment">// 语句块1</span></span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> 常量表达式<span class="number">2</span>:</span><br><span class="line">        <span class="comment">// 语句块2</span></span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    ...</span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">        <span class="comment">// 默认语句块</span></span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="while"><a href="#while" class="headerlink" title="while"></a>while</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> (条件表达式) &#123;</span><br><span class="line">    <span class="comment">// 循环体</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="do-while"><a href="#do-while" class="headerlink" title="do-while"></a>do-while</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line">    <span class="comment">// 循环体</span></span><br><span class="line">&#125; <span class="keyword">while</span> (条件表达式);</span><br></pre></td></tr></table></figure>
+
+<h3 id="for"><a href="#for" class="headerlink" title="for"></a>for</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (初始化语句; 条件表达式; 更新语句) &#123;</span><br><span class="line">    <span class="comment">// 循环体</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">return_type <span class="title function_">function_name</span><span class="params">( parameter <span class="built_in">list</span> )</span></span><br><span class="line">&#123;</span><br><span class="line">   body of the function</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
 <h1 id="内存分区"><a href="#内存分区" class="headerlink" title="内存分区"></a>内存分区</h1><h2 id="栈（stack）"><a href="#栈（stack）" class="headerlink" title="栈（stack）"></a>栈（stack）</h2><p>用于存储局部变量和函数调用时的上下文（如返回地址与参数等）。</p>
 <h2 id="堆（heap）"><a href="#堆（heap）" class="headerlink" title="堆（heap）"></a>堆（heap）</h2><p>动态分配的内存区域，用于存放程序运行时动态创建的数据。</p>
 <h2 id="静态区（全局区）"><a href="#静态区（全局区）" class="headerlink" title="静态区（全局区）"></a>静态区（全局区）</h2><p>用于全局变量、静态变量和常量的存储。这部分内存的生命周期从程序开始直到程序结束。</p>
 <h2 id="代码区"><a href="#代码区" class="headerlink" title="代码区"></a>代码区</h2><p>存放程序的机器指令，也就是程序的可执行代码。</p>
 <h2 id="常量区"><a href="#常量区" class="headerlink" title="常量区"></a>常量区</h2><p>存储程序中常量数据的区域，它存放的是程序中不允许修改的常量值。</p>
-<h1 id="stdio-h"><a href="#stdio-h" class="headerlink" title="stdio.h"></a>stdio.h</h1><h2 id="库变量"><a href="#库变量" class="headerlink" title="库变量"></a>库变量</h2><h3 id="size-t"><a href="#size-t" class="headerlink" title="size_t"></a>size_t</h3><p>无符号整数类型，它是 sizeof 关键字的结果。</p>
+<h1 id="stdio-h"><a href="#stdio-h" class="headerlink" title="stdio.h"></a>stdio.h</h1><h2 id="占位符"><a href="#占位符" class="headerlink" title="占位符"></a>占位符</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">%d 十进制有符号整数</span><br><span class="line">%u 十进制无符号整数</span><br><span class="line">%f 浮点数</span><br><span class="line">%c 单个字符</span><br><span class="line">%s 字符串</span><br><span class="line">%x 十六进制无符号整数</span><br><span class="line">%X 大写十六进制无符号整数</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="库变量"><a href="#库变量" class="headerlink" title="库变量"></a>库变量</h2><h3 id="size-t"><a href="#size-t" class="headerlink" title="size_t"></a>size_t</h3><p>无符号整数类型，它是 sizeof 关键字的结果。</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">unsigned</span> <span class="type">int</span></span><br></pre></td></tr></table></figure>
 
 <h3 id="FILE"><a href="#FILE" class="headerlink" title="FILE"></a>FILE</h3><p>文件流类型，适合存储文件流信息的对象类型。</p>
 <h3 id="fpos-t"><a href="#fpos-t" class="headerlink" title="fpos_t"></a>fpos_t</h3><p>文件位置类型，适合存储文件中任何位置的对象类型。</p>
-<h2 id="库函数"><a href="#库函数" class="headerlink" title="库函数"></a>库函数</h2><h3 id="sprintf"><a href="#sprintf" class="headerlink" title="sprintf()"></a>sprintf()</h3><p>用于将格式化的数据写入字符串。</p>
+<h2 id="库函数"><a href="#库函数" class="headerlink" title="库函数"></a>库函数</h2><h3 id="printf"><a href="#printf" class="headerlink" title="printf()"></a>printf()</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">printf</span><span class="params">(<span class="type">const</span> <span class="type">char</span> *format, ...)</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// format：格式化字符串，用于指定输出的内容和格式。</span></span><br><span class="line"><span class="comment">// ...：可变参数，表示要输出的数据，可以是变量或值。</span></span><br><span class="line"><span class="comment">// 返回值：返回成功打印的字符数量（不包括格式字符串中的额外字符，如 \n、% 等）。如果发生错误，通常返回 -1。</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="sprintf"><a href="#sprintf" class="headerlink" title="sprintf()"></a>sprintf()</h3><p>用于将格式化的数据写入字符串。</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">sprintf</span><span class="params">(<span class="type">char</span> *str, <span class="type">const</span> <span class="type">char</span> *format, ...)</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// str: 一个字符数组，用于存储格式化后的输出结果。</span></span><br><span class="line"><span class="comment">// format: 一个格式字符串，指定输出的格式。</span></span><br><span class="line"><span class="comment">// ...: 根据格式字符串提供的其他参数，用于格式化输出。</span></span><br><span class="line"><span class="comment">// 返回值：返回写入 str 中的字符数，不包括结尾的 \0 字符。如果发生错误，返回一个负值。</span></span><br></pre></td></tr></table></figure>
 <p><strong>示例</strong></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">char</span> buffer[<span class="number">100</span>];</span><br><span class="line">    <span class="type">int</span> n = <span class="number">42</span>;</span><br><span class="line">    <span class="type">float</span> pi = <span class="number">3.14159</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 使用 sprintf 格式化数据并写入 buffer</span></span><br><span class="line">    <span class="type">int</span> written = <span class="built_in">sprintf</span>(buffer, <span class="string">&quot;The answer is %d and pi is approximately %.2f.&quot;</span>, n, pi);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 打印结果</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Formatted string: %s\n&quot;</span>, buffer);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Number of characters written: %d\n&quot;</span>, written);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line">Formatted <span class="built_in">string</span>: The answer is <span class="number">42</span> and pi is approximately <span class="number">3.14</span>.</span><br><span class="line">Number of characters written: <span class="number">46</span></span><br></pre></td></tr></table></figure>
@@ -1166,7 +1297,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">45</span>
+          <span class="site-state-item-count">46</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1179,7 +1310,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">42</span>
+        <span class="site-state-item-count">43</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -1220,13 +1351,13 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">219k</span>
+    <span title="站点总字数">226k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">3:19</span>
+    <span title="站点阅读时长">3:26</span>
 </div>
 
 
