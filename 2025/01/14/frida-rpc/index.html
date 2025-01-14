@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="枚举所有进程及其进程ID123456789import fridadevice &#x3D; frida.get_usb_device()print(&quot;Connected to device&quot;)processes &#x3D; device.enumerate_processes()print(&quot;Listing all processes:&quot;)for process in pr">
+<meta property="og:type" content="article">
+<meta property="og:title" content="frida_rpc">
+<meta property="og:url" content="http://example.com/2025/01/14/frida-rpc/index.html">
+<meta property="og:site_name" content="白乐天">
+<meta property="og:description" content="枚举所有进程及其进程ID123456789import fridadevice &#x3D; frida.get_usb_device()print(&quot;Connected to device&quot;)processes &#x3D; device.enumerate_processes()print(&quot;Listing all processes:&quot;)for process in pr">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-01-14T14:10:47.000Z">
+<meta property="article:modified_time" content="2025-01-14T15:53:12.347Z">
+<meta property="article:author" content="Bileton">
+<meta property="article:tag" content="frida_rpc">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2025/01/14/frida-rpc/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>frida_rpc | 白乐天</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">白乐天</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">道阻且长，行则将至。</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">47</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">25</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">50</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/love.js"></script>
+</div>
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/01/14/frida-rpc/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/android.svg">
+      <meta itemprop="name" content="Bileton">
+      <meta itemprop="description" content="路漫漫其修远夕！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="白乐天">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          frida_rpc
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2025-01-14 22:10:47 / 修改时间：23:53:12" itemprop="dateCreated datePublished" datetime="2025-01-14T22:10:47+08:00">2025-01-14</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Frida/" itemprop="url" rel="index"><span itemprop="name">Frida</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>4.6k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>4 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="枚举所有进程及其进程ID"><a href="#枚举所有进程及其进程ID" class="headerlink" title="枚举所有进程及其进程ID"></a>枚举所有进程及其进程ID</h1><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> frida</span><br><span class="line"></span><br><span class="line">device = frida.get_usb_device()</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Connected to device&quot;</span>)</span><br><span class="line"></span><br><span class="line">processes = device.enumerate_processes()</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Listing all processes:&quot;</span>)</span><br><span class="line"><span class="keyword">for</span> process <span class="keyword">in</span> processes:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;<span class="subst">&#123;process.name&#125;</span> (PID: <span class="subst">&#123;process.pid&#125;</span>)&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h1 id="注入进程"><a href="#注入进程" class="headerlink" title="注入进程"></a>注入进程</h1><h2 id="附加进程注入"><a href="#附加进程注入" class="headerlink" title="附加进程注入"></a>附加进程注入</h2><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> frida</span><br><span class="line"></span><br><span class="line">process = frida.get_usb_device().attach(ProcessName/PID)</span><br><span class="line"></span><br><span class="line">jsCode = <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    console.log(&quot;frida hooked!&quot;)</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">script = process.create_script(jsCode)</span><br><span class="line">script.load()</span><br></pre></td></tr></table></figure>
+
+<h2 id="spawn方式注入"><a href="#spawn方式注入" class="headerlink" title="spawn方式注入"></a>spawn方式注入</h2><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> frida</span><br><span class="line"></span><br><span class="line">device = frida.get_usb_device()</span><br><span class="line">pid = device.spawn([PackageName])</span><br><span class="line">process = device.attach(pid)</span><br><span class="line"></span><br><span class="line">jsCode = <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    console.log(&quot;frida hooked!&quot;);</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line">script = process.create_script(jsCode)</span><br><span class="line">script.load()</span><br><span class="line"></span><br><span class="line">device.resume(pid) 	<span class="comment"># 恢复进程</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Script loaded&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="非标准端口注入"><a href="#非标准端口注入" class="headerlink" title="非标准端口注入"></a>非标准端口注入</h2><p>需要进行端口转发</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb forword tcp:27042 tcp:27042</span><br></pre></td></tr></table></figure>
+
+<h3 id="attach"><a href="#attach" class="headerlink" title="attach"></a>attach</h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> frida</span><br><span class="line"></span><br><span class="line">device = frida.get_device_manager().add_remote_device(<span class="string">&quot;127.0.0.1:7788&quot;</span>)	<span class="comment"># 指定IP地址</span></span><br><span class="line">process = device.attach(ProcessName/PID)</span><br><span class="line"></span><br><span class="line">jsCode = <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    console.log(&quot;frida hooked!&quot;);</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line">script = process.create_script(jsCode)</span><br><span class="line">script.load()</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Script loaded&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="spawn"><a href="#spawn" class="headerlink" title="spawn"></a>spawn</h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> frida</span><br><span class="line"></span><br><span class="line">device = frida.get_device_manager().add_remote_device(<span class="string">&quot;127.0.0.1:7788&quot;</span>)	<span class="comment"># 指定IP地址</span></span><br><span class="line">pid = device.spawn(PackageName)</span><br><span class="line">process = device.attach(pid)</span><br><span class="line"></span><br><span class="line">jsCode = <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    console.log(&quot;frida hooked!&quot;);</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line">script = process.create_script(jsCode)</span><br><span class="line">script.load()</span><br><span class="line"></span><br><span class="line">device.resume(pid)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Script loaded&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h1 id="send"><a href="#send" class="headerlink" title="send"></a>send</h1><p><code>send</code> 是用于在 Frida 脚本和主机 Python 程序之间通信的函数。</p>
+<h2 id="JS端"><a href="#JS端" class="headerlink" title="JS端"></a>JS端</h2><p><code>send</code> 是 Frida 的全局函数，用于向Python程序发送字符串、对象或其他序列化数据。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">send</span>(<span class="string">&quot;Hello from Frida!&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="Python端"><a href="#Python端" class="headerlink" title="Python端"></a>Python端</h2><p>通过 <code>script.on(&quot;message&quot;, callback)</code> 监听 JavaScript 脚本发送的消息。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">on_message</span>(<span class="params">message, data</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;Received message: <span class="subst">&#123;message&#125;</span>&quot;</span>)</span><br><span class="line">    </span><br><span class="line">script.on(<span class="string">&quot;message&quot;</span>, on_message)  <span class="comment"># 注册消息回调</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> frida</span><br><span class="line"></span><br><span class="line">device = frida.get_device_manager().add_remote_device(<span class="string">&quot;127.0.0.1:7788&quot;</span>)</span><br><span class="line">pid = device.spawn(PackageName)</span><br><span class="line">process = device.attach(pid)</span><br><span class="line"></span><br><span class="line">jsCode = <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    console.log(&quot;frida hooked!&quot;);</span></span><br><span class="line"><span class="string">    send(&quot;Hello from Frida!&quot;);</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line">script = process.create_script(jsCode)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">on_message</span>(<span class="params">message,data</span>):</span><br><span class="line">    <span class="keyword">if</span> message[<span class="string">&quot;type&quot;</span>] == <span class="string">&quot;send&quot;</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;Received from JavaScript: <span class="subst">&#123;message&#125;</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line">script.on(<span class="string">&quot;message&quot;</span>,on_message)</span><br><span class="line"></span><br><span class="line">script.load()</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Script loaded&quot;</span>)</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line">frida hooked!</span><br><span class="line">Received <span class="keyword">from</span> JavaScript: &#123;<span class="string">&#x27;type&#x27;</span>: <span class="string">&#x27;send&#x27;</span>, <span class="string">&#x27;payload&#x27;</span>: <span class="string">&#x27;Hello from Frida!&#x27;</span>&#125;</span><br><span class="line">Script loaded</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="双向通信"><a href="#双向通信" class="headerlink" title="双向通信"></a>双向通信</h2><h3 id="JS端-1"><a href="#JS端-1" class="headerlink" title="JS端"></a>JS端</h3><p>通过&#96;&#96;send<code>发送，</code>recv&#96;来接收。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">send</span>(<span class="string">&quot;Requesting data from Python&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 接收来自 Python 的消息</span></span><br><span class="line"><span class="title function_">recv</span>(<span class="keyword">function</span> (<span class="params">message</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Received from Python:&quot;</span>, message.<span class="property">payload</span>);</span><br><span class="line">&#125;).<span class="title function_">wait</span>();</span><br></pre></td></tr></table></figure>
+
+<h3 id="Python端-1"><a href="#Python端-1" class="headerlink" title="Python端"></a>Python端</h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">on_message</span>(<span class="params">message, data</span>):</span><br><span class="line">    <span class="keyword">if</span> message[<span class="string">&quot;type&quot;</span>] == <span class="string">&quot;send&quot;</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;Received from JavaScript: <span class="subst">&#123;message[<span class="string">&#x27;payload&#x27;</span>]&#125;</span>&quot;</span>)</span><br><span class="line">        <span class="comment"># 回复消息给 JavaScript</span></span><br><span class="line">        script.post(&#123;<span class="string">&quot;response&quot;</span>: <span class="string">&quot;Data received!&quot;</span>&#125;)</span><br><span class="line"></span><br><span class="line">script.on(<span class="string">&quot;message&quot;</span>, on_message)</span><br></pre></td></tr></table></figure>
+
+<h2 id="示例-1"><a href="#示例-1" class="headerlink" title="示例"></a>示例</h2><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> frida</span><br><span class="line"></span><br><span class="line">device = frida.get_device_manager().add_remote_device(<span class="string">&quot;127.0.0.1:7788&quot;</span>)</span><br><span class="line">pid = device.spawn(PackageName)</span><br><span class="line">process = device.attach(pid)</span><br><span class="line"></span><br><span class="line">jsCode = <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    console.log(&quot;frida hooked!&quot;);</span></span><br><span class="line"><span class="string">    send(&quot;Hello from Frida!&quot;);</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    recv(function (message)&#123;</span></span><br><span class="line"><span class="string">        console.log(&quot;Received from Python:&quot;, message)</span></span><br><span class="line"><span class="string">    &#125;).wait();</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line">script = process.create_script(jsCode)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">on_message</span>(<span class="params">message,data</span>):</span><br><span class="line">    <span class="keyword">if</span> message[<span class="string">&quot;type&quot;</span>] == <span class="string">&quot;send&quot;</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;Received from JavaScript: <span class="subst">&#123;message&#125;</span>&quot;</span>)</span><br><span class="line">    script.post(<span class="string">&quot;message from Python&quot;</span>)</span><br><span class="line"></span><br><span class="line">script.on(<span class="string">&quot;message&quot;</span>,on_message)</span><br><span class="line">script.load()</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Script loaded&quot;</span>)</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line">frida hooked!</span><br><span class="line">Received <span class="keyword">from</span> JavaScript: &#123;<span class="string">&#x27;type&#x27;</span>: <span class="string">&#x27;send&#x27;</span>, <span class="string">&#x27;payload&#x27;</span>: <span class="string">&#x27;Hello from Frida!&#x27;</span>&#125;</span><br><span class="line">Received <span class="keyword">from</span> Python: message <span class="keyword">from</span> Python</span><br><span class="line">Script loaded</span><br></pre></td></tr></table></figure>
+
+<h1 id="rpc"><a href="#rpc" class="headerlink" title="rpc"></a>rpc</h1><h2 id="JS端定义rpc函数"><a href="#JS端定义rpc函数" class="headerlink" title="JS端定义rpc函数"></a>JS端定义rpc函数</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">rpc.<span class="property">exports</span> = &#123;</span><br><span class="line">    <span class="attr">hello</span>: <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;Hello from Frida!&quot;</span>;</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    <span class="attr">add</span>: <span class="keyword">function</span> (<span class="params">a, b</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> a + b;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p><code>rpc.exports</code> 是一个对象，暴露的函数作为其属性。</p>
+<h2 id="Python端调用rpc方法"><a href="#Python端调用rpc方法" class="headerlink" title="Python端调用rpc方法"></a>Python端调用rpc方法</h2><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> frida</span><br><span class="line"></span><br><span class="line"><span class="comment"># 连接到目标设备和应用</span></span><br><span class="line">device = frida.get_usb_device()</span><br><span class="line">pid = device.spawn([<span class="string">&quot;com.example.app&quot;</span>])</span><br><span class="line">session = device.attach(pid)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 加载 JavaScript 脚本</span></span><br><span class="line">js_code = <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">rpc.exports = &#123;</span></span><br><span class="line"><span class="string">    hello: function () &#123;</span></span><br><span class="line"><span class="string">        return &quot;Hello from Frida!&quot;;</span></span><br><span class="line"><span class="string">    &#125;,</span></span><br><span class="line"><span class="string">    add: function (a, b) &#123;</span></span><br><span class="line"><span class="string">        return a + b;</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">&#125;;</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line">script = session.create_script(js_code)</span><br><span class="line">script.load()</span><br><span class="line">device.resume(pid)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 调用 RPC 方法</span></span><br><span class="line"><span class="built_in">print</span>(script.exports.hello())  <span class="comment"># 输出: Hello from Frida!</span></span><br><span class="line"><span class="built_in">print</span>(script.exports.add(<span class="number">3</span>, <span class="number">5</span>))  <span class="comment"># 输出: 8</span></span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/frida-rpc/" rel="tag"><svg t="1732789072752" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4858" width="15" height="15"><path d="M229.443715 343.118259l565.172804 0 0 410.010794c0 37.525595-30.237317 67.762912-67.040108 67.762912l-46.319715 0 0 139.742183c0 35.116247-28.249605 63.365852-63.305618 63.365852-35.116247 0-63.546553-28.309839-63.546553-63.365852l0-139.742183-84.809049 0 0 139.742183c0 35.056013-28.430306 63.365852-63.546553 63.365852-34.393443 0-62.763515-28.309839-62.763515-63.365852l-0.542103-139.742183-45.596911 0c-37.465361 0-67.702678-30.177084-67.702678-67.762912l0-410.010794zM141.984383 331.432921c-35.056013 0-63.426086 28.370073-63.426086 62.763515l0 264.787344c0 35.116247 28.370073 63.365852 63.426086 63.365852s62.763515-28.309839 62.763515-63.365852l0-264.787344c0-34.393443-28.189371-62.763515-62.763515-62.763515zM796.42353 320.952257l-569.449397 0c0-97.879762 58.547156-182.869512 145.343917-227.141282l-43.7899-80.59269c-2.469582-4.336826-1.264908-9.878327 3.071919-12.347908 4.276593-1.867245 9.878327-0.662571 12.347908 3.734489l44.271769 81.255261c37.646062-16.684735 79.508484-25.900491 123.780253-25.900491s86.134191 9.215756 123.780253 25.840257l44.271769-81.255261c2.469582-4.336826 8.071316-5.5415 12.347908-3.734489 4.336826 2.469582 5.5415 8.011082 3.071919 12.347908l-43.7899 80.59269c86.254658 44.332003 144.74158 129.321753 144.74158 227.201515zM406.048922 194.160319c0-12.950245-10.42043-24.033246-23.912779-24.033246-13.010479 0-23.430909 11.083001-23.430909 24.033246 0 12.890012 10.42043 23.973012 23.430909 23.973012 13.492349 0.060234 23.912779-11.022767 23.912779-23.973012zM665.294766 194.160319c0-12.950245-10.42043-24.033246-23.430909-24.033246-13.552582 0-23.912779 11.083001-23.912779 24.033246 0 12.890012 10.42043 23.973012 23.912779 23.973012 13.010479 0.060234 23.430909-11.022767 23.430909-23.973012zM882.015617 331.432921c-34.51391 0-62.763515 27.707502-62.763515 62.763515l0 264.787344c0 35.116247 28.249605 63.365852 62.763515 63.365852 35.056013 0 63.426086-28.309839 63.426086-63.365852l0-264.787344c-0.060234-35.056013-28.370073-62.763515-63.426086-62.763515z" fill="#000000" p-id="4859"></path></svg> frida_rpc</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2025/01/13/%E7%88%B1%E5%BA%93%E5%AD%98app%E5%8F%82%E6%95%B0sign%E8%BF%98%E5%8E%9F/" rel="prev" title="爱库存app参数sign还原">
+      <i class="fa fa-chevron-left"></i> 爱库存app参数sign还原
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2025/01/14/English-Words-Study/" rel="next" title="English Words Study">
+      English Words Study <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9E%9A%E4%B8%BE%E6%89%80%E6%9C%89%E8%BF%9B%E7%A8%8B%E5%8F%8A%E5%85%B6%E8%BF%9B%E7%A8%8BID"><span class="nav-number">1.</span> <span class="nav-text">枚举所有进程及其进程ID</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B3%A8%E5%85%A5%E8%BF%9B%E7%A8%8B"><span class="nav-number">2.</span> <span class="nav-text">注入进程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%99%84%E5%8A%A0%E8%BF%9B%E7%A8%8B%E6%B3%A8%E5%85%A5"><span class="nav-number">2.1.</span> <span class="nav-text">附加进程注入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#spawn%E6%96%B9%E5%BC%8F%E6%B3%A8%E5%85%A5"><span class="nav-number">2.2.</span> <span class="nav-text">spawn方式注入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9D%9E%E6%A0%87%E5%87%86%E7%AB%AF%E5%8F%A3%E6%B3%A8%E5%85%A5"><span class="nav-number">2.3.</span> <span class="nav-text">非标准端口注入</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#attach"><span class="nav-number">2.3.1.</span> <span class="nav-text">attach</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#spawn"><span class="nav-number">2.3.2.</span> <span class="nav-text">spawn</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#send"><span class="nav-number">3.</span> <span class="nav-text">send</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#JS%E7%AB%AF"><span class="nav-number">3.1.</span> <span class="nav-text">JS端</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Python%E7%AB%AF"><span class="nav-number">3.2.</span> <span class="nav-text">Python端</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B"><span class="nav-number">3.3.</span> <span class="nav-text">示例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%8C%E5%90%91%E9%80%9A%E4%BF%A1"><span class="nav-number">3.4.</span> <span class="nav-text">双向通信</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#JS%E7%AB%AF-1"><span class="nav-number">3.4.1.</span> <span class="nav-text">JS端</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Python%E7%AB%AF-1"><span class="nav-number">3.4.2.</span> <span class="nav-text">Python端</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B-1"><span class="nav-number">3.5.</span> <span class="nav-text">示例</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#rpc"><span class="nav-number">4.</span> <span class="nav-text">rpc</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#JS%E7%AB%AF%E5%AE%9A%E4%B9%89rpc%E5%87%BD%E6%95%B0"><span class="nav-number">4.1.</span> <span class="nav-text">JS端定义rpc函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Python%E7%AB%AF%E8%B0%83%E7%94%A8rpc%E6%96%B9%E6%B3%95"><span class="nav-number">4.2.</span> <span class="nav-text">Python端调用rpc方法</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Bileton"
+      src="/images/android.svg">
+  <p class="site-author-name" itemprop="name">Bileton</p>
+  <div class="site-description" itemprop="description">路漫漫其修远夕！</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">50</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">47</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Bileton</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">270k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">4:06</span>
+</div>
+
+
+<span id="timeDate">载入天数...</span>
+<span id="times">载入时分秒...</span>
+<script>
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("01/01/2024 00:00:00"); //修改为你的网站开始运行的时间
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+        document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 ";
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒.";
+    }
+setInterval("createtime()",250);
+</script>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
