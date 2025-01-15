@@ -124,7 +124,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">47</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">48</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -134,7 +134,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">50</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">51</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -185,6 +185,161 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/01/15/AndroidDemo-Hook%E6%A1%88%E4%BE%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/android.svg">
+      <meta itemprop="name" content="Bileton">
+      <meta itemprop="description" content="路漫漫其修远夕！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="白乐天">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2025/01/15/AndroidDemo-Hook%E6%A1%88%E4%BE%8B/" class="post-title-link" itemprop="url">AndroidDemo Hook案例</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2025-01-15 17:49:11" itemprop="dateCreated datePublished" datetime="2025-01-15T17:49:11+08:00">2025-01-15</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2025-01-16 00:16:08" itemprop="dateModified" datetime="2025-01-16T00:16:08+08:00">2025-01-16</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%80%86%E5%90%91%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/" itemprop="url" rel="index"><span itemprop="name">逆向实战案例</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>6.4k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>6 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="App信息"><a href="#App信息" class="headerlink" title="App信息"></a>App信息</h1><p>包名：com.example.androiddemo</p>
+<h1 id="第一关"><a href="#第一关" class="headerlink" title="第一关"></a>第一关</h1><p>一个登录界面</p>
+<p><img src="/2025/01/15/AndroidDemo-Hook%E6%A1%88%E4%BE%8B/1.jpg"></p>
+<p>把apk丢进jadx进行分析</p>
+<p>查看<code>AndroidManifest.xml</code>文件</p>
+<p>程序启动的第一个<code>Activity</code>是<code>com.example.androiddemo.Activity.LoginActivity</code></p>
+<p><img src="/2025/01/15/AndroidDemo-Hook%E6%A1%88%E4%BE%8B/2.jpg"></p>
+<h2 id="LoginActivity"><a href="#LoginActivity" class="headerlink" title="LoginActivity"></a>LoginActivity</h2><p>如下，调用了一个<code>a</code>方法来对用户名和密码进行校验</p>
+<p><img src="/2025/01/15/AndroidDemo-Hook%E6%A1%88%E4%BE%8B/3.jpg"></p>
+<h3 id="a"><a href="#a" class="headerlink" title="a"></a>a</h3><p>如下，对<code>Username</code>进行了一次<code>HmacSHA256</code>签名</p>
+<p><img src="/2025/01/15/AndroidDemo-Hook%E6%A1%88%E4%BE%8B/4.jpg"></p>
+<p>当<code>Username</code>的<code>HmacSHA256</code>签名与<code>Password</code>相同时，可以登录成功。</p>
+<h3 id="hook-a"><a href="#hook-a" class="headerlink" title="hook a"></a>hook a</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">hook_a</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="title class_">Java</span>.<span class="title function_">perform</span>(<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="keyword">var</span> <span class="title class_">LoginActivity</span> = <span class="title class_">Java</span>.<span class="title function_">use</span>(<span class="string">&quot;com.example.androiddemo.Activity.LoginActivity&quot;</span>)</span><br><span class="line">        <span class="title class_">LoginActivity</span>.<span class="property">a</span>.<span class="title function_">overload</span>(<span class="string">&#x27;java.lang.String&#x27;</span>, <span class="string">&#x27;java.lang.String&#x27;</span>).<span class="property">implementation</span> = <span class="keyword">function</span>(<span class="params">str1,str2</span>)&#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;str1:&quot;</span>,str1);</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;str2:&quot;</span>,str2);</span><br><span class="line">            <span class="keyword">var</span> result = <span class="variable language_">this</span>.<span class="title function_">a</span>(str1,str2);</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;result:&quot;</span>,result);</span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">hook_a</span>()</span><br></pre></td></tr></table></figure>
+
+<p><strong>hook 结果</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">bileton</span><br><span class="line">77cd249b2fa536da37dcd3fc6993fe94aefb61a70328aa4cd12984a053f6a7c3</span><br></pre></td></tr></table></figure>
+
+<p>登录成功</p>
+<p><img src="/2025/01/15/AndroidDemo-Hook%E6%A1%88%E4%BE%8B/5.jpg"></p>
+<h2 id="进入下一关"><a href="#进入下一关" class="headerlink" title="进入下一关"></a>进入下一关</h2><p>点击进入下一关，会出现<code>Check Failed</code></p>
+<p><img src="/2025/01/15/AndroidDemo-Hook%E6%A1%88%E4%BE%8B/6.jpg"></p>
+<h2 id="FridaActivity1"><a href="#FridaActivity1" class="headerlink" title="FridaActivity1"></a>FridaActivity1</h2><p>查看源码，得知点击登录之后，会进入<code>FridaActivity1</code></p>
+<p><img src="/2025/01/15/AndroidDemo-Hook%E6%A1%88%E4%BE%8B/7.jpg"></p>
+<p>如下是<code>FridaActivity1</code>的内容</p>
+<p><img src="/2025/01/15/AndroidDemo-Hook%E6%A1%88%E4%BE%8B/9.jpg"></p>
+<p>绕过方式很简单，可以直接修改<code>a</code>方法的返回值</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">hook_a</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="title class_">Java</span>.<span class="title function_">perform</span>(<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="keyword">var</span> <span class="title class_">FridaActivity1</span> = <span class="title class_">Java</span>.<span class="title function_">use</span>(<span class="string">&quot;com.example.androiddemo.Activity.FridaActivity1&quot;</span>);</span><br><span class="line">        <span class="title class_">FridaActivity1</span>.<span class="property">a</span>.<span class="property">implementation</span> = <span class="keyword">function</span>(<span class="params">data</span>)&#123;</span><br><span class="line">            <span class="keyword">var</span> result = <span class="variable language_">this</span>.<span class="title function_">a</span>(data);</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;result:&quot;</span>,result)</span><br><span class="line">            result =  <span class="string">&quot;R4jSLLLLLLLLLLOrLE7/5B+Z6fsl65yj6BgC6YWz66gO6g2t65Pk6a+P65NK44NNROl0wNOLLLL=&quot;</span>;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;replaced result:&quot;</span>,result)</span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">hook_a</span>()</span><br></pre></td></tr></table></figure>
+
+<p><strong>hook 结果</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">result: R4jSLLLLLLLLLRknplkBpZDpis69kh7i+YAPTmMn2ABsOLLLLL==</span><br><span class="line">replaced result: R4jSLLLLLLLLLLOrLE7/5B+Z6fsl65yj6BgC6YWz66gO6g2t65Pk6a+P65NK44NNROl0wNOLLLL=</span><br></pre></td></tr></table></figure>
+
+<p>还有另一种绕过方式</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">hook_a</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="title class_">Java</span>.<span class="title function_">perform</span>(<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="keyword">var</span> <span class="title class_">FridaActivity1</span> = <span class="title class_">Java</span>.<span class="title function_">use</span>(<span class="string">&quot;com.example.androiddemo.Activity.FridaActivity1&quot;</span>);</span><br><span class="line">        <span class="title class_">FridaActivity1</span>.<span class="property">a</span>.<span class="property">implementation</span> = <span class="keyword">function</span>(<span class="params">original_data</span>)&#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;original_data:&quot;</span>,original_data);</span><br><span class="line">            <span class="keyword">var</span> my_data = <span class="title class_">FridaActivity1</span>.<span class="title function_">b</span>(<span class="string">&quot;bileton&quot;</span>);</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;data:&quot;</span>,my_data);</span><br><span class="line">            <span class="keyword">var</span> result = <span class="variable language_">this</span>.<span class="title function_">a</span>(my_data);</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;result:&quot;</span>,result);</span><br><span class="line">            result =  <span class="string">&quot;R4jSLLLLLLLLLLOrLE7/5B+Z6fsl65yj6BgC6YWz66gO6g2t65Pk6a+P65NK44NNROl0wNOLLLL=&quot;</span>;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;replaced result:&quot;</span>,result)</span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">hook_a</span>()</span><br></pre></td></tr></table></figure>
+
+<p><strong>hook 结果</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">original_data: 31,-117,8,0,0,0,0,0,0,0,123,-79,126,-5,-117,125,-109,-97,-74,46,125,-70,-66,-19,-7,-126,70,43,0,-15,-40,-110,-30,16,0,0,0</span><br><span class="line">data: 31,-117,8,0,0,0,0,0,0,0,75,-54,-52,73,45,-55,-49,3,0,-26,-70,19,-27,7,0,0,0</span><br><span class="line">result: R4jSLLLLLLLLLOlTzOuiyc8MLDa5O+URLLLL</span><br><span class="line">replaced result: R4jSLLLLLLLLLLOrLE7/5B+Z6fsl65yj6BgC6YWz66gO6g2t65Pk6a+P65NK44NNROl0wNOLLLL=</span><br></pre></td></tr></table></figure>
+
+<p>进入到了第二关</p>
+<p><img src="/2025/01/15/AndroidDemo-Hook%E6%A1%88%E4%BE%8B/8.jpg"></p>
+<h1 id="第二关"><a href="#第二关" class="headerlink" title="第二关"></a>第二关</h1><p>第一关结束跳转到了<code>FridaActivity2</code></p>
+<p><img src="/2025/01/15/AndroidDemo-Hook%E6%A1%88%E4%BE%8B/10.jpg"></p>
+<p>需要把<code>static_bool_var</code>和<code>bool_var</code>的值都修改为<code>true</code>才能进入<code>FridaActivity3</code></p>
+<p>这里可以主动调用<code>setStatic_bool_var</code>方法和<code>setBool_var</code>方法</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">hook_activity2</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="title class_">Java</span>.<span class="title function_">perform</span>(<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="keyword">var</span> <span class="title class_">FridaActivity2</span> = <span class="title class_">Java</span>.<span class="title function_">use</span>(<span class="string">&quot;com.example.androiddemo.Activity.FridaActivity2&quot;</span>);</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;static_bool_var:&quot;</span>,<span class="title class_">FridaActivity2</span>.<span class="property">static_bool_var</span>.<span class="property">value</span>);</span><br><span class="line">        <span class="title class_">FridaActivity2</span>.<span class="title function_">setStatic_bool_var</span>();</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;replaced_static_bool_var:&quot;</span>,<span class="title class_">FridaActivity2</span>.<span class="property">static_bool_var</span>.<span class="property">value</span>);</span><br><span class="line">        <span class="title class_">Java</span>.<span class="title function_">choose</span>(<span class="string">&quot;com.example.androiddemo.Activity.FridaActivity2&quot;</span>,&#123;</span><br><span class="line">            <span class="attr">onMatch</span>:<span class="keyword">function</span>(<span class="params">obj</span>)&#123;</span><br><span class="line">                <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;obj.bool_var:&quot;</span>,obj.<span class="property">bool_var</span>.<span class="property">value</span>);</span><br><span class="line">                obj.<span class="title function_">setBool_var</span>();</span><br><span class="line">                <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;replaced_obj.bool_var:&quot;</span>,obj.<span class="property">bool_var</span>.<span class="property">value</span>);</span><br><span class="line">            &#125;,</span><br><span class="line">            <span class="attr">onComplete</span>:<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>hook 结果</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">static_bool_var: false</span><br><span class="line">replaced_static_bool_var: true</span><br><span class="line">obj.bool_var: false</span><br><span class="line">replaced_obj.bool_var: true</span><br></pre></td></tr></table></figure>
+
+<p>点击进入第三关</p>
+<h1 id="第三关"><a href="#第三关" class="headerlink" title="第三关"></a>第三关</h1><p>第二关结束跳转到了<code>FridaActivity3</code></p>
+<p><img src="/2025/01/15/AndroidDemo-Hook%E6%A1%88%E4%BE%8B/11.jpg"></p>
+<p>需要把<code>static_bool_var</code>、<code>bool_var</code>、<code>same_name_bool_var</code>三个值都设置为<code>true</code>才能进入<code>FridaActivity4</code></p>
+<p>这里存在一个坑点是存在一个与字段名<code>same_name_bool_var</code>相同的方法名<code>same_name_bool_var</code>，操作字段名的话需要在其名字前面加上一个<code>_</code>，即<code>_same_name_bool_var</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">hook_activity3</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="keyword">var</span> <span class="title class_">FridaActivity3</span> = <span class="title class_">Java</span>.<span class="title function_">use</span>(<span class="string">&quot;com.example.androiddemo.Activity.FridaActivity3&quot;</span>);</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;static_bool_var:&quot;</span>,<span class="title class_">FridaActivity3</span>.<span class="property">static_bool_var</span>.<span class="property">value</span>);</span><br><span class="line">    <span class="title class_">FridaActivity3</span>.<span class="property">static_bool_var</span>.<span class="property">value</span> = <span class="literal">true</span>;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;replaced_static_bool_var:&quot;</span>,<span class="title class_">FridaActivity3</span>.<span class="property">static_bool_var</span>.<span class="property">value</span>);</span><br><span class="line">    <span class="title class_">Java</span>.<span class="title function_">choose</span>(<span class="string">&quot;com.example.androiddemo.Activity.FridaActivity3&quot;</span>,&#123;</span><br><span class="line">        <span class="attr">onMatch</span>:<span class="keyword">function</span>(<span class="params">obj</span>)&#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;obj.bool_var:&quot;</span>,obj.<span class="property">bool_var</span>.<span class="property">value</span>);</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;obj._same_name_bool_var:&quot;</span>,obj.<span class="property">_same_name_bool_var</span>.<span class="property">value</span>);</span><br><span class="line">            obj.<span class="property">bool_var</span>.<span class="property">value</span> = <span class="literal">true</span>;</span><br><span class="line">            obj.<span class="property">_same_name_bool_var</span>.<span class="property">value</span> = <span class="literal">true</span>;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;replaced_obj.bool_var:&quot;</span>,obj.<span class="property">bool_var</span>.<span class="property">value</span>);</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;replaced_obj._same_name_bool_var:&quot;</span>,obj.<span class="property">_same_name_bool_var</span>.<span class="property">value</span>);</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">onComplete</span>:<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>hook 结果</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">static_bool_var: false</span><br><span class="line">replaced_static_bool_var: true</span><br><span class="line">obj.bool_var: false</span><br><span class="line">obj._same_name_bool_var: false</span><br><span class="line">replaced_obj.bool_var: true</span><br><span class="line">replaced_obj._same_name_bool_var: true</span><br></pre></td></tr></table></figure>
+
+<p>点击进入第四关</p>
+<h1 id="第四关"><a href="#第四关" class="headerlink" title="第四关"></a>第四关</h1><p>第三关结束跳转到了<code>FridaActivity4</code></p>
+<p>如下是第四关的源代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">FridaActivity4</span> <span class="keyword">extends</span> <span class="title class_">BaseFridaActivity</span> &#123;</span><br><span class="line">    <span class="meta">@Override</span> <span class="comment">// com.example.androiddemo.Activity.BaseFridaActivity</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getNextCheckTitle</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;当前第4关&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">class</span> <span class="title class_">InnerClasses</span> &#123;</span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">boolean</span> <span class="title function_">check1</span><span class="params">()</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">boolean</span> <span class="title function_">check2</span><span class="params">()</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">boolean</span> <span class="title function_">check3</span><span class="params">()</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">boolean</span> <span class="title function_">check4</span><span class="params">()</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">boolean</span> <span class="title function_">check5</span><span class="params">()</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">boolean</span> <span class="title function_">check6</span><span class="params">()</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">private</span> <span class="title function_">InnerClasses</span><span class="params">()</span> &#123;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span> <span class="comment">// com.example.androiddemo.Activity.BaseFridaActivity</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onCheck</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (InnerClasses.check1() &amp;&amp; InnerClasses.check2() &amp;&amp; InnerClasses.check3() &amp;&amp; InnerClasses.check4() &amp;&amp; InnerClasses.check5() &amp;&amp; InnerClasses.check6()) &#123;</span><br><span class="line">            CheckSuccess();</span><br><span class="line">            startActivity(<span class="keyword">new</span> <span class="title class_">Intent</span>(<span class="built_in">this</span>, (Class&lt;?&gt;) FridaActivity5.class));</span><br><span class="line">            finishActivity(<span class="number">0</span>);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">super</span>.CheckFailed();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里出现了内部类，需要把内部类中的方法返回值都设置为<code>true</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">hook_activity4</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="keyword">var</span> <span class="title class_">InnerClasses</span> = <span class="title class_">Java</span>.<span class="title function_">use</span>(<span class="string">&quot;com.example.androiddemo.Activity.FridaActivity4$InnerClasses&quot;</span>);</span><br><span class="line">    <span class="title class_">InnerClasses</span>.<span class="property">check1</span>.<span class="property">implementation</span> = <span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="title class_">InnerClasses</span>.<span class="property">check2</span>.<span class="property">implementation</span> = <span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="title class_">InnerClasses</span>.<span class="property">check3</span>.<span class="property">implementation</span> = <span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="title class_">InnerClasses</span>.<span class="property">check4</span>.<span class="property">implementation</span> = <span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="title class_">InnerClasses</span>.<span class="property">check5</span>.<span class="property">implementation</span> = <span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="title class_">InnerClasses</span>.<span class="property">check6</span>.<span class="property">implementation</span> = <span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>点击进入第五关</p>
+<h1 id="第五关"><a href="#第五关" class="headerlink" title="第五关"></a>第五关</h1><p>第四关结束跳转到了<code>FridaActivity5</code></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -1156,10 +1311,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2025-01-08 00:17:08 / 修改时间：00:21:13" itemprop="dateCreated datePublished" datetime="2025-01-08T00:17:08+08:00">2025-01-08</time>
+              <time title="创建时间：2025-01-08 00:17:08" itemprop="dateCreated datePublished" datetime="2025-01-08T00:17:08+08:00">2025-01-08</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2025-01-15 14:18:29" itemprop="dateModified" datetime="2025-01-15T14:18:29+08:00">2025-01-15</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -1176,7 +1337,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>97</span>
+              <span>112</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -1198,6 +1359,7 @@
           <h1 id="Everything"><a href="#Everything" class="headerlink" title="Everything"></a>Everything</h1><p>一个强大的文件搜索工具，快速定位计算机上的文件和文件夹。</p>
 <h1 id="Snipast"><a href="#Snipast" class="headerlink" title="Snipast"></a>Snipast</h1><p>一个简单但强大的截图工具，也可以让你将截图贴回到屏幕上！</p>
 <h1 id="Typora"><a href="#Typora" class="headerlink" title="Typora"></a>Typora</h1><p>一款 Markdown 编辑器和阅读器。</p>
+<h1 id="VSCode"><a href="#VSCode" class="headerlink" title="VSCode"></a>VSCode</h1><p>轻量级代码编辑器。</p>
 
       
     </div>
@@ -1452,145 +1614,10 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/01/06/%E7%BC%96%E7%A0%81%E4%B8%8E%E5%8A%A0%E8%A7%A3%E5%AF%86/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/android.svg">
-      <meta itemprop="name" content="Bileton">
-      <meta itemprop="description" content="路漫漫其修远夕！">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="白乐天">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2025/01/06/%E7%BC%96%E7%A0%81%E4%B8%8E%E5%8A%A0%E8%A7%A3%E5%AF%86/" class="post-title-link" itemprop="url">编码与加解密</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2025-01-06 00:20:54" itemprop="dateCreated datePublished" datetime="2025-01-06T00:20:54+08:00">2025-01-06</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2025-01-13 20:12:24" itemprop="dateModified" datetime="2025-01-13T20:12:24+08:00">2025-01-13</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%BC%96%E7%A0%81%E4%B8%8E%E5%8A%A0%E8%A7%A3%E5%AF%86/" itemprop="url" rel="index"><span itemprop="name">编码与加解密</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>2.8k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>3 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="编码"><a href="#编码" class="headerlink" title="编码"></a>编码</h1><h2 id="ASCII"><a href="#ASCII" class="headerlink" title="ASCII"></a>ASCII</h2><h2 id="Hex"><a href="#Hex" class="headerlink" title="Hex"></a>Hex</h2><h2 id="Base64"><a href="#Base64" class="headerlink" title="Base64"></a>Base64</h2><h3 id="Python实现Base64的加解密"><a href="#Python实现Base64的加解密" class="headerlink" title="Python实现Base64的加解密"></a>Python实现Base64的加解密</h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> base64</span><br><span class="line">data = <span class="string">&quot;Bielton&quot;</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;data:&quot;</span>,data)</span><br><span class="line">data_b64encode = base64.b64encode(data.encode())</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;b64编码：&quot;</span>,data_b64encode.decode(<span class="string">&quot;utf-8&quot;</span>))</span><br><span class="line">data_b64decode = base64.b64decode(data_b64encode)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;b64解码&quot;</span>,data_b64decode.decode(<span class="string">&quot;utf-8&quot;</span>))</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line">data: Bielton</span><br><span class="line">b64编码： QmllbHRvbg==</span><br><span class="line">b64解码 Bielton</span><br></pre></td></tr></table></figure>
-
-<h3 id="Java实现Base64的加解密"><a href="#Java实现Base64的加解密" class="headerlink" title="Java实现Base64的加解密"></a>Java实现Base64的加解密</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">      <span class="type">String</span> <span class="variable">data</span> <span class="operator">=</span> <span class="string">&quot;Bielton&quot;</span>;</span><br><span class="line">      Base64.Encoder  encoder=  Base64.getEncoder();</span><br><span class="line">      <span class="type">byte</span>[] encoded = encoder.encode(data.getBytes());</span><br><span class="line">      <span class="type">String</span> <span class="variable">encodedToString</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">String</span>(encoded);</span><br><span class="line">      System.out.println(encodedToString); <span class="comment">// QmllbHRvbg==</span></span><br><span class="line"></span><br><span class="line"><span class="type">byte</span>[] decoded = Base64.getDecoder().decode(encodedToString);</span><br><span class="line">      <span class="type">String</span> <span class="variable">decodedToString</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">String</span>(decoded);</span><br><span class="line">      System.out.println(decodedToString);  <span class="comment">// Bielton</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="Android-Studio"><a href="#Android-Studio" class="headerlink" title="Android Studio"></a>Android Studio</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Button</span> <span class="variable">B64_en</span> <span class="operator">=</span> findViewById(R.id.b64encode);</span><br><span class="line">B64_en.setOnClickListener(<span class="keyword">new</span> <span class="title class_">View</span>.OnClickListener() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onClick</span><span class="params">(View v)</span> &#123;</span><br><span class="line">        <span class="type">String</span> <span class="variable">data</span> <span class="operator">=</span> <span class="string">&quot;Bileton&quot;</span>;</span><br><span class="line">        <span class="type">String</span> <span class="variable">data_encode</span> <span class="operator">=</span> Base64.encodeToString(data.getBytes(), Base64.DEFAULT);</span><br><span class="line">        Toast.makeText(MainActivity.<span class="built_in">this</span>,data_encode,Toast.LENGTH_SHORT).show();  <span class="comment">// QmllbHRvbg==</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="type">Button</span> <span class="variable">B64_de</span> <span class="operator">=</span> findViewById(R.id.b64decode);</span><br><span class="line">B64_de.setOnClickListener(<span class="keyword">new</span> <span class="title class_">View</span>.OnClickListener() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onClick</span><span class="params">(View v)</span> &#123;</span><br><span class="line">        <span class="type">String</span> <span class="variable">data</span> <span class="operator">=</span> <span class="string">&quot;Bileton&quot;</span>;</span><br><span class="line">        <span class="type">String</span> <span class="variable">data_encode</span> <span class="operator">=</span> Base64.encodeToString(data.getBytes(), Base64.DEFAULT);</span><br><span class="line">        <span class="type">byte</span>[] data_decode = Base64.decode(data_encode,Base64.DEFAULT);</span><br><span class="line">        <span class="type">String</span> <span class="variable">decodeString</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">String</span>(data_decode);</span><br><span class="line">        Toast.makeText(MainActivity.<span class="built_in">this</span>,decodeString,Toast.LENGTH_SHORT).show();  <span class="comment">// Bielton</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="消息摘要算法"><a href="#消息摘要算法" class="headerlink" title="消息摘要算法"></a>消息摘要算法</h1><h2 id="MD5"><a href="#MD5" class="headerlink" title="MD5"></a>MD5</h2><p><strong>消息处理</strong></p>
-<p>对输入消息进行分块，每个分块的长度为512位（32字节），不足512位的进行填充，先填充一个1，然后补0，直到长度为448位，然后在最后的64位中添加原始消息的长度。</p>
-<p><strong>初始化常量</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">A = 0x67452301</span><br><span class="line">B = 0xEFCDAB89</span><br><span class="line">C = 0x98BADCFE</span><br><span class="line">D = 0x10325476</span><br></pre></td></tr></table></figure>
-
-<p><strong>生成结果</strong></p>
-<p>最终生成128位（16字节）长度的哈希值。</p>
-<h3 id="Python实现MD5"><a href="#Python实现MD5" class="headerlink" title="Python实现MD5"></a>Python实现MD5</h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> hashlib</span><br><span class="line"></span><br><span class="line"><span class="comment"># 要加密的字符串</span></span><br><span class="line">md5_str = <span class="string">&quot;Bileton&quot;</span></span><br><span class="line"><span class="comment"># 创建md5对象</span></span><br><span class="line">md5 = hashlib.md5()</span><br><span class="line"><span class="comment"># 更新要加密的数据，参数要是字节类型</span></span><br><span class="line">md5.update(md5_str.encode(<span class="string">&#x27;UTF-8&#x27;</span>))</span><br><span class="line"><span class="comment"># 获取加密后的数据，以16进制表示</span></span><br><span class="line">md5_hash = md5.hexdigest()</span><br><span class="line"><span class="built_in">print</span>(md5_str,<span class="string">&quot;的哈希值为：&quot;</span>,md5_hash)</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span></span><br><span class="line">Bileton 的哈希值为： 1483ab1f77ea828faa5f78514d2765c1</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="SHA1"><a href="#SHA1" class="headerlink" title="SHA1"></a>SHA1</h2><p><strong>消息处理</strong></p>
-<p>SHA1的消息处理方式与MD5基本相同，区别是最后的消息长度使用的是大端字节序。</p>
-<p><strong>初始化常量</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">H0 = 0x67452301</span><br><span class="line">H1 = 0xEFCDAB89</span><br><span class="line">H2 = 0x98BADCFE</span><br><span class="line">H3 = 0x10325476</span><br><span class="line">H4 = 0xC3D2E1F0</span><br></pre></td></tr></table></figure>
-
-<p><strong>生成结果</strong></p>
-<p>最终生成160位（20字节）长度的哈希值。(这里的结果使用的是大端字节序。)</p>
-<h2 id="SHA256"><a href="#SHA256" class="headerlink" title="SHA256"></a>SHA256</h2><p><strong>消息处理</strong></p>
-<p>与SHA1相同。</p>
-<p><strong>初始化常量</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">H0 = 0x6a09e667</span><br><span class="line">H1 = 0xbb67ae85</span><br><span class="line">H2 = 0x3c6ef372</span><br><span class="line">H3 = 0xa54ff53a</span><br><span class="line">H4 = 0x510e527f</span><br><span class="line">H5 = 0x9b05688c</span><br><span class="line">H6 = 0x1f83d9ab</span><br><span class="line">H7 = 0x5be0cd19</span><br></pre></td></tr></table></figure>
-
-
-
-<p><strong>生成结果</strong></p>
-<p>最终生成256位（32字节）长度的哈希值。(这里的结果使用的是大端字节序。)</p>
-<h2 id="MAC算法"><a href="#MAC算法" class="headerlink" title="MAC算法"></a>MAC算法</h2><p><strong>MAC公式</strong></p>
-<p><img src="/2025/01/06/%E7%BC%96%E7%A0%81%E4%B8%8E%E5%8A%A0%E8%A7%A3%E5%AF%86/1.jpg"></p>
-<p><code>message</code>是消息m<br><code>key</code>是密钥<br><code>||</code>是级联，其实就是拼接操作<br><code>ipad</code>值为0x36<br><code>opad</code>值为0x5c<br><code>⊕</code>代表异或</p>
-<p><strong>密钥扩展</strong></p>
-<ul>
-<li>若密钥长度小于Hash的分组长度<br>在密钥末尾填充0，直到长度达到Hash的分组长度</li>
-<li>若密钥长度大于Hash的分组长度<br>将密钥进行哈希运算，然后补充0，直到长度达到Hash的分组长度</li>
-</ul>
-<h3 id="HmacMD5"><a href="#HmacMD5" class="headerlink" title="HmacMD5"></a>HmacMD5</h3><p>与MD5不同的是，HmacMD5结合了密钥。</p>
-<p>生成128位（16字节）长度的哈希值。</p>
-<h3 id="HmacSHA1"><a href="#HmacSHA1" class="headerlink" title="HmacSHA1"></a>HmacSHA1</h3><p>与HmacSHA1不同的是，HmacSHA1结合了密钥。</p>
-<p>生成256位（32字节）长度的哈希值。</p>
-<h3 id="HmacSHA256"><a href="#HmacSHA256" class="headerlink" title="HmacSHA256"></a>HmacSHA256</h3><p>与HmacSHA256不同的是，HmacSHA256结合了密钥。</p>
-<h1 id="对称加密算法"><a href="#对称加密算法" class="headerlink" title="对称加密算法"></a>对称加密算法</h1><h2 id="DES"><a href="#DES" class="headerlink" title="DES"></a>DES</h2><h2 id="3DES"><a href="#3DES" class="headerlink" title="3DES"></a>3DES</h2><h2 id="AES"><a href="#AES" class="headerlink" title="AES"></a>AES</h2><h1 id="非对称加密算法"><a href="#非对称加密算法" class="headerlink" title="非对称加密算法"></a>非对称加密算法</h1><h2 id="RSA"><a href="#RSA" class="headerlink" title="RSA"></a>RSA</h2>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/default-index/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/default-index/page/5/">5</a><a class="extend next" rel="next" href="/default-index/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/default-index/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/default-index/page/6/">6</a><a class="extend next" rel="next" href="/default-index/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1658,7 +1685,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">50</span>
+          <span class="site-state-item-count">51</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1671,7 +1698,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">47</span>
+        <span class="site-state-item-count">48</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -1712,13 +1739,13 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">270k</span>
+    <span title="站点总字数">277k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">4:06</span>
+    <span title="站点阅读时长">4:12</span>
 </div>
 
 
