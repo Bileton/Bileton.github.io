@@ -124,17 +124,17 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">50</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">52</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">25</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">27</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">54</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">55</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -185,6 +185,152 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/12/04/JavaScript/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/android.svg">
+      <meta itemprop="name" content="Bileton">
+      <meta itemprop="description" content="路漫漫其修远夕！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="白乐天">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2024/12/04/JavaScript/" class="post-title-link" itemprop="url">JavaScript</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2024-12-04 00:00:00" itemprop="dateCreated datePublished" datetime="2024-12-04T00:00:00+08:00">2024-12-04</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2025-01-13 10:01:57" itemprop="dateModified" datetime="2025-01-13T10:01:57+08:00">2025-01-13</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.2k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h1><h2 id="声明变量"><a href="#声明变量" class="headerlink" title="声明变量"></a>声明变量</h2><p>在JavaScript中，使用<code>var</code>关键字来声明变量，声明块级作用域变量使用<code>let</code>。</p>
+<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><ul>
+<li><p><strong>null</strong></p>
+<p>空值。</p>
+</li>
+<li><p><strong>undefined</strong></p>
+<p>未定义，即变量在声明时没有被初始化。</p>
+</li>
+<li><p><strong>boolean</strong></p>
+<p><code>true</code>表示真，<code>false</code>表示假。</p>
+</li>
+<li><p><strong>number</strong></p>
+<p>整数和浮点数。</p>
+</li>
+<li><p><strong>string</strong></p>
+<p>字符串。</p>
+</li>
+<li><p><strong>object</strong></p>
+<p>在JavaScript中，object是一种用于存储键值对（属性和方法）的集合。</p>
+</li>
+<li><p><strong>function</strong></p>
+<p>函数。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">fun</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;this is a function!&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h2><h3 id="比较运算符"><a href="#比较运算符" class="headerlink" title="比较运算符"></a>比较运算符</h3><ul>
+<li><p><strong>&#x3D;&#x3D;</strong></p>
+<p>相等运算符</p>
+<p>如果两个值不是同一类型，相等运算符（<code>==</code>）会将它们转换成同一个类型，再用严格相等运算符进行比较。</p>
+</li>
+<li><p><strong>&#x3D;&#x3D;&#x3D;</strong></p>
+<p>严格相等运算符</p>
+<p>比较两个值是否为“同一个值”。如果两个值不是同一类型，严格相等运算符（<code>===</code>）直接返回<code>false</code>。</p>
+</li>
+</ul>
+<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function FuncName()&#123;</span><br><span class="line">	//函数体</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="标准库"><a href="#标准库" class="headerlink" title="标准库"></a>标准库</h1><h2 id="String对象"><a href="#String对象" class="headerlink" title="String对象"></a>String对象</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> aaa = <span class="keyword">new</span> <span class="title class_">String</span>(<span class="string">&quot;123&quot;</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(aaa)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(aaa.<span class="title function_">valueOf</span>())</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line">[<span class="title class_">String</span>: <span class="string">&#x27;123&#x27;</span>]</span><br><span class="line"><span class="number">123</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="实例属性"><a href="#实例属性" class="headerlink" title="实例属性"></a>实例属性</h3><ul>
+<li><p><strong>length</strong></p>
+<p>字符串的长度。</p>
+</li>
+</ul>
+<h3 id="实例方法"><a href="#实例方法" class="headerlink" title="实例方法"></a>实例方法</h3><ul>
+<li><p><strong>concat()</strong></p>
+<p>连接两个字符串，返回一个新字符串，不改变原字符串。</p>
+</li>
+<li><p><strong>indexOf()</strong></p>
+<p>用于确定一个字符串在另一个字符串中第一次出现的位置，返回结果是匹配开始的位置。如果返回<code>-1</code>，就表示不匹配。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#x27;hello world&#x27;</span>.<span class="title function_">indexOf</span>(<span class="string">&#x27;o&#x27;</span>) <span class="comment">// 4</span></span><br><span class="line"><span class="string">&#x27;JavaScript&#x27;</span>.<span class="title function_">indexOf</span>(<span class="string">&#x27;script&#x27;</span>) <span class="comment">// -1</span></span><br><span class="line"></span><br><span class="line"><span class="string">&#x27;hello world&#x27;</span>.<span class="title function_">indexOf</span>(<span class="string">&#x27;o&#x27;</span>, <span class="number">6</span>) <span class="comment">// 7，可以接受第二个参数，表示从该位置开始向后匹配。</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>split()</strong></p>
+<p>按照给定规则分割字符串，返回一个由分割出来的子字符串组成的数组。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#x27;a|b|c&#x27;</span>.<span class="title function_">split</span>(<span class="string">&#x27;|&#x27;</span>) <span class="comment">// [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;]</span></span><br><span class="line"></span><br><span class="line"><span class="string">&#x27;a|b|c&#x27;</span>.<span class="title function_">split</span>(<span class="string">&#x27;&#x27;</span>) <span class="comment">// [&quot;a&quot;, &quot;|&quot;, &quot;b&quot;, &quot;|&quot;, &quot;c&quot;]，如果分割规则为空字符串，则返回数组的成员是原字符串的每一个字符。</span></span><br><span class="line"></span><br><span class="line"><span class="string">&#x27;a|b|c&#x27;</span>.<span class="title function_">split</span>() <span class="comment">// [&quot;a|b|c&quot;]，如果省略参数，则返回数组的唯一成员就是原字符串。</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -804,7 +950,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2025-01-18 12:52:09" itemprop="dateModified" datetime="2025-01-18T12:52:09+08:00">2025-01-18</time>
+                <time title="修改时间：2025-01-21 00:52:41" itemprop="dateModified" datetime="2025-01-21T00:52:41+08:00">2025-01-21</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -822,14 +968,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>20k</span>
+              <span>21k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>18 分钟</span>
+              <span>19 分钟</span>
             </span>
 
         </div>
@@ -874,7 +1020,13 @@
 
 <h2 id="hook-call-constructors"><a href="#hook-call-constructors" class="headerlink" title="hook_call_constructors()"></a>hook_call_constructors()</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">hook_call_constructors</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="keyword">var</span> linker = <span class="title class_">Process</span>.<span class="title function_">findModuleByName</span>(<span class="string">&quot;linker64&quot;</span>);</span><br><span class="line">    <span class="keyword">var</span> symbols = linker.<span class="title function_">enumerateSymbols</span>();</span><br><span class="line">    <span class="keyword">var</span> addr_call_constructors = <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">var</span> symbol = <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> index =<span class="number">0</span>;index&lt;symbols.<span class="property">length</span>;index++)&#123;</span><br><span class="line">        symbol = symbols[index];</span><br><span class="line">        <span class="keyword">if</span>(symbol.<span class="property">name</span>===<span class="string">&quot;__dl__ZN6soinfo17call_constructorsEv&quot;</span>)&#123;</span><br><span class="line">            addr_call_constructors = symbol.<span class="property">address</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="title class_">Interceptor</span>.<span class="title function_">attach</span>(addr_call_constructors,&#123;</span><br><span class="line">        <span class="attr">onEnter</span>:<span class="keyword">function</span>(<span class="params">args</span>)&#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;hooked call_constructors!&quot;</span>)</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">onLeave</span>:<span class="keyword">function</span>(<span class="params">ret</span>)&#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">hook_call_constructors</span>()</span><br></pre></td></tr></table></figure>
 
-<h3 id="配合dlopen使用hook-call-constructors"><a href="#配合dlopen使用hook-call-constructors" class="headerlink" title="配合dlopen使用hook_call_constructors()"></a>配合dlopen使用hook_call_constructors()</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">hook_dlopen</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="keyword">var</span> android_dlopen_ext = <span class="title class_">Module</span>.<span class="title function_">findExportByName</span>(<span class="literal">null</span>,<span class="string">&quot;android_dlopen_ext&quot;</span>);</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;addr_android_dlopen_ext&quot;</span>,android_dlopen_ext);</span><br><span class="line">    <span class="title class_">Interceptor</span>.<span class="title function_">attach</span>(android_dlopen_ext,&#123;</span><br><span class="line">        <span class="attr">onEnter</span>:<span class="keyword">function</span>(<span class="params">args</span>)&#123;</span><br><span class="line">            <span class="keyword">var</span> pathptr = args[<span class="number">0</span>];</span><br><span class="line">            <span class="keyword">if</span>(pathptr!=<span class="literal">null</span> &amp;&amp; pathptr != <span class="literal">undefined</span>)&#123;</span><br><span class="line">                <span class="keyword">var</span> path = <span class="title function_">ptr</span>(pathptr).<span class="title function_">readCString</span>();</span><br><span class="line">                <span class="keyword">if</span>(path.<span class="title function_">indexOf</span>(<span class="string">&quot;libmsaoaidsec.so&quot;</span>)!=-<span class="number">1</span>)&#123;</span><br><span class="line">                    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;android_dlopen_ext:&quot;</span>,path);</span><br><span class="line">                    <span class="title function_">hook_call_constructors</span>()</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">onLeave</span>:<span class="keyword">function</span>(<span class="params">retvel</span>)&#123;</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">hook_pthread</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> pth_create = <span class="title class_">Module</span>.<span class="title function_">findExportByName</span>(<span class="string">&quot;libc.so&quot;</span>, <span class="string">&quot;pthread_create&quot;</span>);</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;[pth_create]&quot;</span>, pth_create);</span><br><span class="line">    <span class="title class_">Interceptor</span>.<span class="title function_">attach</span>(pth_create, &#123;</span><br><span class="line">        <span class="attr">onEnter</span>: <span class="keyword">function</span> (<span class="params">args</span>) &#123;</span><br><span class="line">            <span class="keyword">var</span> <span class="variable language_">module</span> = <span class="title class_">Process</span>.<span class="title function_">findModuleByAddress</span>(args[<span class="number">2</span>]);</span><br><span class="line">            <span class="keyword">if</span> (<span class="variable language_">module</span> != <span class="literal">null</span>) &#123;</span><br><span class="line">                <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;address&quot;</span>, <span class="variable language_">module</span>.<span class="property">name</span>, args[<span class="number">2</span>].<span class="title function_">sub</span>(<span class="variable language_">module</span>.<span class="property">base</span>));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">onLeave</span>: <span class="keyword">function</span> (<span class="params">retval</span>) &#123;&#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">hook_call_constructors</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="keyword">var</span> linker = <span class="title class_">Process</span>.<span class="title function_">findModuleByName</span>(<span class="string">&quot;linker64&quot;</span>);</span><br><span class="line">    <span class="keyword">var</span> symbols = linker.<span class="title function_">enumerateSymbols</span>();</span><br><span class="line">    <span class="keyword">var</span> addr_call_constructors = <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">var</span> symbol = <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> index =<span class="number">0</span>;index&lt;symbols.<span class="property">length</span>;index++)&#123;</span><br><span class="line">        symbol = symbols[index];</span><br><span class="line">        <span class="keyword">if</span>(symbol.<span class="property">name</span>===<span class="string">&quot;__dl__ZN6soinfo17call_constructorsEv&quot;</span>)&#123;</span><br><span class="line">            addr_call_constructors = symbol.<span class="property">address</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">var</span> listener = <span class="title class_">Interceptor</span>.<span class="title function_">attach</span>(addr_call_constructors,&#123;</span><br><span class="line">        <span class="attr">onEnter</span>:<span class="keyword">function</span>(<span class="params">args</span>)&#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;hooked call_constructors&quot;</span>)</span><br><span class="line">            <span class="keyword">var</span> <span class="variable language_">module</span> = <span class="title class_">Process</span>.<span class="title function_">findModuleByName</span>(<span class="string">&quot;libmsaoaidsec.so&quot;</span>)</span><br><span class="line">            <span class="keyword">if</span> (<span class="variable language_">module</span> != <span class="literal">null</span>) &#123;</span><br><span class="line">                <span class="title class_">Interceptor</span>.<span class="title function_">replace</span>(<span class="variable language_">module</span>.<span class="property">base</span>.<span class="title function_">add</span>(<span class="number">0x175f8</span>), <span class="keyword">new</span> <span class="title class_">NativeCallback</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">                    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;0x175f8:替换成功&quot;</span>)</span><br><span class="line">                &#125;, <span class="string">&quot;void&quot;</span>, []))</span><br><span class="line">                <span class="title class_">Interceptor</span>.<span class="title function_">replace</span>(<span class="variable language_">module</span>.<span class="property">base</span>.<span class="title function_">add</span>(<span class="number">0x16d30</span>), <span class="keyword">new</span> <span class="title class_">NativeCallback</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">                    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;0x16d30:替换成功&quot;</span>)</span><br><span class="line">                &#125;, <span class="string">&quot;void&quot;</span>, []))</span><br><span class="line">                listener.<span class="title function_">detach</span>()</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">onLeave</span>:<span class="keyword">function</span>(<span class="params">ret</span>)&#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">main</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="title function_">hook_dlopen</span>()</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">main</span>()</span><br></pre></td></tr></table></figure>
+<h3 id="配合dlopen使用hook-call-constructors"><a href="#配合dlopen使用hook-call-constructors" class="headerlink" title="配合dlopen使用hook_call_constructors()"></a>配合dlopen使用hook_call_constructors()</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">hook_dlopen</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="keyword">var</span> android_dlopen_ext = <span class="title class_">Module</span>.<span class="title function_">findExportByName</span>(<span class="literal">null</span>,<span class="string">&quot;android_dlopen_ext&quot;</span>);</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;addr_android_dlopen_ext&quot;</span>,android_dlopen_ext);</span><br><span class="line">    <span class="title class_">Interceptor</span>.<span class="title function_">attach</span>(android_dlopen_ext,&#123;</span><br><span class="line">        <span class="attr">onEnter</span>:<span class="keyword">function</span>(<span class="params">args</span>)&#123;</span><br><span class="line">            <span class="keyword">var</span> pathptr = args[<span class="number">0</span>];</span><br><span class="line">            <span class="keyword">if</span>(pathptr!=<span class="literal">null</span> &amp;&amp; pathptr != <span class="literal">undefined</span>)&#123;</span><br><span class="line">                <span class="keyword">var</span> path = <span class="title function_">ptr</span>(pathptr).<span class="title function_">readCString</span>();</span><br><span class="line">                <span class="keyword">if</span>(path.<span class="title function_">indexOf</span>(<span class="string">&quot;libmsaoaidsec.so&quot;</span>)!=-<span class="number">1</span>)&#123;</span><br><span class="line">                    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;android_dlopen_ext:&quot;</span>,path);</span><br><span class="line">                    <span class="title function_">hook_call_constructors</span>()</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">onLeave</span>:<span class="keyword">function</span>(<span class="params">retvel</span>)&#123;</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">hook_call_constructors</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="keyword">var</span> linker = <span class="title class_">Process</span>.<span class="title function_">findModuleByName</span>(<span class="string">&quot;linker64&quot;</span>);</span><br><span class="line">    <span class="keyword">var</span> symbols = linker.<span class="title function_">enumerateSymbols</span>();</span><br><span class="line">    <span class="keyword">var</span> addr_call_constructors = <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">var</span> symbol = <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> index =<span class="number">0</span>;index&lt;symbols.<span class="property">length</span>;index++)&#123;</span><br><span class="line">        symbol = symbols[index];</span><br><span class="line">        <span class="keyword">if</span>(symbol.<span class="property">name</span>===<span class="string">&quot;__dl__ZN6soinfo17call_constructorsEv&quot;</span>)&#123;</span><br><span class="line">            addr_call_constructors = symbol.<span class="property">address</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">var</span> listener = <span class="title class_">Interceptor</span>.<span class="title function_">attach</span>(addr_call_constructors,&#123;</span><br><span class="line">        <span class="attr">onEnter</span>:<span class="keyword">function</span>(<span class="params">args</span>)&#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;hooked call_constructors&quot;</span>)</span><br><span class="line">            <span class="keyword">var</span> <span class="variable language_">module</span> = <span class="title class_">Process</span>.<span class="title function_">findModuleByName</span>(<span class="string">&quot;libmsaoaidsec.so&quot;</span>)</span><br><span class="line">            <span class="keyword">if</span> (<span class="variable language_">module</span> != <span class="literal">null</span>) &#123;</span><br><span class="line">                <span class="title class_">Interceptor</span>.<span class="title function_">replace</span>(<span class="variable language_">module</span>.<span class="property">base</span>.<span class="title function_">add</span>(<span class="number">0x175f8</span>), <span class="keyword">new</span> <span class="title class_">NativeCallback</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">                    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;0x175f8:替换成功&quot;</span>)</span><br><span class="line">                &#125;, <span class="string">&quot;void&quot;</span>, []))</span><br><span class="line">                <span class="title class_">Interceptor</span>.<span class="title function_">replace</span>(<span class="variable language_">module</span>.<span class="property">base</span>.<span class="title function_">add</span>(<span class="number">0x16d30</span>), <span class="keyword">new</span> <span class="title class_">NativeCallback</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">                    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;0x16d30:替换成功&quot;</span>)</span><br><span class="line">                &#125;, <span class="string">&quot;void&quot;</span>, []))</span><br><span class="line">                listener.<span class="title function_">detach</span>()</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">onLeave</span>:<span class="keyword">function</span>(<span class="params">ret</span>)&#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">main</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="title function_">hook_dlopen</span>()</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">main</span>()</span><br></pre></td></tr></table></figure>
+
+<h2 id="nop-addr"><a href="#nop-addr" class="headerlink" title="nop_addr"></a>nop_addr</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">nop_addr</span>(<span class="params">addr</span>) &#123;</span><br><span class="line">    <span class="title class_">Memory</span>.<span class="title function_">protect</span>(addr, <span class="number">4</span> , <span class="string">&#x27;rwx&#x27;</span>);</span><br><span class="line">    <span class="keyword">var</span> w = <span class="keyword">new</span> <span class="title class_">Arm64Writer</span>(addr);</span><br><span class="line">    w.<span class="title function_">putRet</span>();</span><br><span class="line">    w.<span class="title function_">flush</span>();</span><br><span class="line">    w.<span class="title function_">dispose</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="配合hook-call-constructors-使用"><a href="#配合hook-call-constructors-使用" class="headerlink" title="配合hook_call_constructors()使用"></a>配合hook_call_constructors()使用</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">hook_dlopen</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="comment">//Android8.0之后加载so通过android_dlopen_ext函数</span></span><br><span class="line">    <span class="keyword">var</span> android_dlopen_ext = <span class="title class_">Module</span>.<span class="title function_">findExportByName</span>(<span class="literal">null</span>,<span class="string">&quot;android_dlopen_ext&quot;</span>);</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;addr_android_dlopen_ext&quot;</span>,android_dlopen_ext);</span><br><span class="line">    <span class="title class_">Interceptor</span>.<span class="title function_">attach</span>(android_dlopen_ext,&#123;</span><br><span class="line">        <span class="attr">onEnter</span>:<span class="keyword">function</span>(<span class="params">args</span>)&#123;</span><br><span class="line">            <span class="keyword">var</span> pathptr = args[<span class="number">0</span>];</span><br><span class="line">            <span class="keyword">if</span>(pathptr!=<span class="literal">null</span> &amp;&amp; pathptr != <span class="literal">undefined</span>)&#123;</span><br><span class="line">                <span class="keyword">var</span> path = <span class="title function_">ptr</span>(pathptr).<span class="title function_">readCString</span>();</span><br><span class="line">                <span class="keyword">if</span>(path.<span class="title function_">indexOf</span>(<span class="string">&quot;libmsaoaidsec.so&quot;</span>)!=-<span class="number">1</span>)&#123;</span><br><span class="line">                    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;android_dlopen_ext:&quot;</span>,path);</span><br><span class="line">                    <span class="title function_">hook_call_constructors</span>()</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">onLeave</span>:<span class="keyword">function</span>(<span class="params">retvel</span>)&#123;</span><br><span class="line">            <span class="comment">//console.log(&quot;leave!&quot;);</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">hook_call_constructors</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> linker64_base_addr = <span class="title class_">Module</span>.<span class="title function_">getBaseAddress</span>(<span class="string">&quot;linker64&quot;</span>)</span><br><span class="line">    <span class="keyword">var</span> call_constructors_func_off = <span class="number">0x2C274</span> <span class="comment">//这个地址是从手机上把linker64 pull出来，然后到IDA中找到的，不同的机型，地址可能不一样</span></span><br><span class="line">    <span class="keyword">var</span> call_constructors_func_addr = linker64_base_addr.<span class="title function_">add</span>(call_constructors_func_off)</span><br><span class="line">    <span class="keyword">var</span> listener = <span class="title class_">Interceptor</span>.<span class="title function_">attach</span>(call_constructors_func_addr, &#123;</span><br><span class="line">        <span class="attr">onEnter</span>: <span class="keyword">function</span> (<span class="params">args</span>) &#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;hooked call_constructors&quot;</span>)</span><br><span class="line">            <span class="keyword">var</span> <span class="variable language_">module</span> = <span class="title class_">Process</span>.<span class="title function_">findModuleByName</span>(<span class="string">&quot;libmsaoaidsec.so&quot;</span>)</span><br><span class="line">            <span class="keyword">if</span> (<span class="variable language_">module</span> != <span class="literal">null</span>) &#123;</span><br><span class="line">                <span class="title function_">nop_addr</span>(<span class="variable language_">module</span>.<span class="property">base</span>.<span class="title function_">add</span>(<span class="number">0x1c544</span>))</span><br><span class="line">                <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;0x1c544:替换成功&quot;</span>)</span><br><span class="line">                <span class="title function_">nop_addr</span>(<span class="variable language_">module</span>.<span class="property">base</span>.<span class="title function_">add</span>(<span class="number">0x1b924</span>))</span><br><span class="line">                <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;0x1B924:替换成功&quot;</span>)</span><br><span class="line">                <span class="title function_">nop_addr</span>(<span class="variable language_">module</span>.<span class="property">base</span>.<span class="title function_">add</span>(<span class="number">0x26e5c</span>))</span><br><span class="line">                <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;0x26e5c:替换成功&quot;</span>)</span><br><span class="line">                listener.<span class="title function_">detach</span>()</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">nop_addr</span>(<span class="params">addr</span>) &#123;</span><br><span class="line">    <span class="title class_">Memory</span>.<span class="title function_">protect</span>(addr, <span class="number">4</span> , <span class="string">&#x27;rwx&#x27;</span>);</span><br><span class="line">    <span class="keyword">var</span> w = <span class="keyword">new</span> <span class="title class_">Arm64Writer</span>(addr);</span><br><span class="line">    w.<span class="title function_">putRet</span>();</span><br><span class="line">    w.<span class="title function_">flush</span>();</span><br><span class="line">    w.<span class="title function_">dispose</span>();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">main</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="title function_">hook_dlopen</span>()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">main</span>()</span><br></pre></td></tr></table></figure>
+
+
 
 <h2 id="hook-JNI-OnLoad"><a href="#hook-JNI-OnLoad" class="headerlink" title="hook_JNI_OnLoad()"></a>hook_JNI_OnLoad()</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">hook_JNI_OnLoad</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="keyword">var</span> <span class="title class_">Addr</span>_JNI_OnLoad = <span class="title class_">Module</span>.<span class="title function_">findExportByName</span>(<span class="string">&quot;libmsaoaidsec.so&quot;</span>,<span class="string">&quot;JNI_OnLoad&quot;</span>);</span><br><span class="line">    <span class="title class_">Interceptor</span>.<span class="title function_">attach</span>(<span class="title class_">Addr</span>_JNI_OnLoad,&#123;</span><br><span class="line">        <span class="attr">onEnter</span>:<span class="keyword">function</span>(<span class="params">args</span>)&#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;hooked JNI_OnLoad!&quot;</span>);</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">onLeave</span>:<span class="keyword">function</span>(<span class="params">retval</span>)&#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;JNI_OnLoad over!&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -1062,7 +1214,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-12-22 16:49:21" itemprop="dateModified" datetime="2024-12-22T16:49:21+08:00">2024-12-22</time>
+                <time title="修改时间：2025-01-20 16:40:54" itemprop="dateModified" datetime="2025-01-20T16:40:54+08:00">2025-01-20</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1080,14 +1232,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>5.3k</span>
+              <span>4.8k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>5 分钟</span>
+              <span>4 分钟</span>
             </span>
 
         </div>
@@ -1203,43 +1355,155 @@
 <h2 id="file"><a href="#file" class="headerlink" title="file"></a>file</h2><p>查看一个文件的类型<br><code>file filename</code></p>
 <h2 id="关机命令"><a href="#关机命令" class="headerlink" title="关机命令"></a>关机命令</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">shutdown -h now # 关闭系统</span><br><span class="line">reboot # 重启</span><br><span class="line">logout # 注销</span><br></pre></td></tr></table></figure>
 
-<h1 id="网络"><a href="#网络" class="headerlink" title="网络"></a>网络</h1><h2 id="IP地址"><a href="#IP地址" class="headerlink" title="IP地址"></a>IP地址</h2><p>每台联网的电脑都会有一个地址，用于和其他计算机进行通讯<br>可以通过：<code>ifconfig</code>命令查看本机的ip</p>
+<h1 id="环境变量"><a href="#环境变量" class="headerlink" title="环境变量"></a>环境变量</h1><h1 id="网络"><a href="#网络" class="headerlink" title="网络"></a>网络</h1><h2 id="IP地址"><a href="#IP地址" class="headerlink" title="IP地址"></a>IP地址</h2><p>每台联网的电脑都会有一个地址，用于和其他计算机进行通讯<br>可以通过：<code>ifconfig</code>命令查看本机的ip</p>
 <h2 id="特殊IP地址"><a href="#特殊IP地址" class="headerlink" title="特殊IP地址"></a>特殊IP地址</h2><ul>
 <li><p><code>127.0.0.1</code>指代本机</p>
 </li>
-<li><pre><code>0.0.0.0
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">  特殊IP</span><br><span class="line"></span><br><span class="line">  - 可以用于指代本机</span><br><span class="line">  - 可以在端口绑定中来确定绑定关系</span><br><span class="line">  - 在一些IP地址限制中，表示所有IP的意思，表示允许任意IP访问</span><br><span class="line"></span><br><span class="line">## 主机名</span><br><span class="line"></span><br><span class="line">每台电脑除了IP地址外，还可以有一个名字，称为主机名</span><br><span class="line">Windows系统和Linux都可以给系统设置主机名</span><br><span class="line"></span><br><span class="line">- Windows查看系统设备名称</span><br><span class="line">- Linux可以用命令`hostname`</span><br><span class="line"></span><br><span class="line">## 在Linux中修改主机名</span><br><span class="line"></span><br><span class="line">可以使用命令：`hostnamectl set-hostname &quot;主机名&quot;`</span><br><span class="line">重新登陆即可看到更改</span><br><span class="line"></span><br><span class="line">## 域名解析</span><br><span class="line"></span><br><span class="line">先查看本机的记录（通过主机名找到对应计算机的IP地址）</span><br><span class="line"></span><br><span class="line">- `Windows：C:\Windows\System32\drivers\etc\hosts`</span><br><span class="line">- `Linux: /etc/hosts`</span><br><span class="line"></span><br><span class="line">再联网去DNS服务器询问</span><br><span class="line"></span><br><span class="line">## 网络传输</span><br><span class="line"></span><br><span class="line">### 使用ping命令检查服务器是否可联通</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-ping [-c num] ip或主机名
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- `-c`，检查的次数，不使用`-c`选项，将无限次持续检查</span><br><span class="line">- `ip或主机名`，被检查的服务器的IP地址或主机名地址</span><br><span class="line"></span><br><span class="line">### 使用wget命令下载文件</span><br><span class="line"></span><br><span class="line">wget是一个非交互式的文件下载器，可以在命令行内下载网络文件</span><br><span class="line">`wget [-b] url`</span><br><span class="line"></span><br><span class="line">- `-b`，可选，后台下载，会将日志写入到当前工作目录的wget-log文件</span><br><span class="line">- `url` ,下载链接</span><br><span class="line"></span><br><span class="line">### 使用curl命令发起网络请求</span><br><span class="line"></span><br><span class="line">发送http网络请求，可用于下载文件、获取信息等</span><br><span class="line">`curl [-O] url`</span><br><span class="line"></span><br><span class="line">- `-O`，用于下载文件，当url是下载链接时，可以使用此选项保存文件</span><br><span class="line">- `url`，要发起请求的网络地址</span><br><span class="line"></span><br><span class="line">### 端口</span><br><span class="line"></span><br><span class="line">端口是设备与外界通讯交流的出入口。</span><br><span class="line"></span><br><span class="line">- 物理端口：又可以称之为接口，是可见端口，如USB接口，HDMI端口等</span><br><span class="line">- 虚拟端口：指计算机内部的端口，不可见，是用来操作系统和外部进行交互使用的</span><br><span class="line">  - 通过IP只能锁定计算机，但是无法锁定具体的程序。</span><br><span class="line">  - 通过端口可以锁定计算机上具体的应用程序，确保程序之间进行沟通。</span><br><span class="line"></span><br><span class="line">IP地址相当于小区地址，而端口相当于门牌号了。</span><br><span class="line"></span><br><span class="line">Linux系统可以支持65535个端口，这么多端口可以分为3类进行使用：</span><br><span class="line"></span><br><span class="line">- 公认端口：1~1023，通常用于一些系统内置或知名程序的预留使用，如SSH服务的22端口，HTTPS服务的443端口，非特殊需要，不能占用这个范围的端口</span><br><span class="line">- 注册端口：1024~49151，通常可以随意使用，用于松散的绑定一些程序\服务</span><br><span class="line">- 动态端口：49152~65535，通常不会固定绑定程序，而是当时程序对外网进行网络链接时，临时使用</span><br><span class="line"></span><br><span class="line">### 查看端口占用情况</span><br><span class="line"></span><br><span class="line">可以使用nmap命令</span><br><span class="line">`nmap 被查看的IP地址`</span><br><span class="line">**netstat**</span><br><span class="line">可以通过netstat命令，查看指定端口的占用情况</span><br><span class="line">`netstat -anp|grep 端口号`</span><br><span class="line">常用选项</span><br><span class="line"></span><br><span class="line">- `-a`: 列出所有端口</span><br><span class="line">- `-l`: 只显示监听端口</span><br><span class="line">- `-t`: 显示 TCP 传输协议的连线状况</span><br><span class="line">- `-u`: 显示 UDP 传输协议的连线状况</span><br><span class="line"></span><br><span class="line"># 进程管理</span><br><span class="line"></span><br><span class="line">程序运行在操作系统中，是被操作系统所管理的。</span><br><span class="line">每一个程序在运行的时候，便被操作系统注册为系统中的一个`进程`。</span><br><span class="line">并为每一个进程都分配一个独有的：进程ID（进程号）。</span><br><span class="line"></span><br><span class="line">### 查看进程ps</span><br><span class="line"></span><br><span class="line">通过PS命令查看Linux系统中的进程信息</span><br><span class="line">`ps [options]`</span><br><span class="line"></span><br><span class="line">- `-A`，显示所有终端进程</span><br><span class="line">- `-e`，显示出全部的进程</span><br><span class="line">- `-f`，以完全格式化的形式展示信息（展示全部信息）</span><br><span class="line"></span><br><span class="line">`ps -ef` 列出全部进程的全部信息</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-UID     :进程所属的用户ID
-PID     :进程的进程号ID
-PPID    :进程的父ID（启动此进程的其他进程）
-C       :此进程的CPU占用率（百分比）
-</code></pre>
+<li><p><code>0.0.0.0</code></p>
+<p>特殊IP</p>
+<ul>
+<li>可以用于指代本机</li>
+<li>可以在端口绑定中来确定绑定关系</li>
+<li>在一些IP地址限制中，表示所有IP的意思，表示允许任意IP访问</li>
+</ul>
 </li>
 </ul>
-<p>STIME   :进程的启动时间<br>TTY     :启动此进程的终端序号，如显示？，表示非终端启动<br>TIME    :进程占用CPU时间<br>CMD     :进程对应的名称或启动路径或启动命令</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 关闭进程kill</span><br><span class="line"></span><br><span class="line">通过kill命令关闭进程。</span><br><span class="line">`kill [-9] 进程ID`</span><br><span class="line"></span><br><span class="line">- `-9`，表示强制关闭进程。不使用此选项会向进程发送信号要求其关闭，但是否关闭看进程自身的处理机制。</span><br><span class="line"></span><br><span class="line">### pidof</span><br><span class="line"></span><br><span class="line">查找正在运行的特定程序的进程 ID（PID）。</span><br><span class="line">`pidof [options] programName`</span><br><span class="line"></span><br><span class="line"># 压缩和解压</span><br><span class="line"></span><br><span class="line">## 压缩格式</span><br><span class="line"></span><br><span class="line">- zip格式：Linux、Windows、MacOS常用</span><br><span class="line">- 7zip：Windows常用</span><br><span class="line">- rar：Windows常用</span><br><span class="line">- tar：Linux、MacOS常用</span><br><span class="line">- gzip：Linux、MacOS常用</span><br><span class="line"></span><br><span class="line">## tar命令</span><br><span class="line"></span><br><span class="line">有两种常见压缩格式，后缀名分别是：</span><br><span class="line"></span><br><span class="line">- .tar，称之为tarball，归档文件，简单的将文件组装到一个.tar的文件内，仅仅是简单的封装。</span><br><span class="line">- .gz，常见为.tar.gz，gzip格式压缩文件，即使用gzip压缩算法将文件压缩到一个文件内，极大减少压缩后的体积</span><br><span class="line"></span><br><span class="line">对于这两种格式，可以用tar命令进行压缩和解压操作：</span><br><span class="line">`tar [-c -v -x -f -z -C] 参数1 参数2 ... 参数N`</span><br><span class="line"></span><br><span class="line">- `-c`，创建压缩文件，用于压缩模式</span><br><span class="line">- `-v`显示压缩、解压过程，用于查看进度</span><br><span class="line">- `-x`，解压模式</span><br><span class="line">- `-f`，要创建的文件，或解压的文件，-f选项必须在所有选项中位置处于最后一个</span><br><span class="line">- `-z`，gzip模式，不使用就是tarball格式</span><br><span class="line">- `-C`，选择解压的目的地，用于解压模式</span><br><span class="line"></span><br><span class="line">### tar命令压缩</span><br><span class="line"></span><br><span class="line">tar常用压缩组合有两种：</span><br><span class="line"></span><br><span class="line">- tar -cvf test.tar 1.txt 2.txt 3.txt</span><br><span class="line">  将1.txt 2.txt 3.txt压缩到test.tar文件内</span><br><span class="line">- tar -zcvf test.tar.gz 1.txt 2.txt 3.txt</span><br><span class="line">  将1.txt 2.txt 3.txt压缩到test.tar.gz文件内，使用gzip模式</span><br><span class="line"></span><br><span class="line">要注意的是：</span><br><span class="line"></span><br><span class="line">- -z选项要使用的话，一般处于选项第一个</span><br><span class="line">- -f选项，必须在选项位最后一个</span><br><span class="line"></span><br><span class="line">### tar命令解压</span><br><span class="line"></span><br><span class="line">tar常用解压组合有：</span><br><span class="line"></span><br><span class="line">- `tar -xvf test.tar`</span><br><span class="line">  解压test.tar，将文件解压至当前目录</span><br><span class="line">- `tar -xvf test.tar -C /home/itheima`</span><br><span class="line">  解压test.tar，解压至`/home/itheima`</span><br><span class="line">- `tar -zxvf test.tar.gz -C /home/itheima`</span><br><span class="line">  以gzip模式解压test.tar.gz，将文件解压至指定目录（/home/itheima）</span><br><span class="line"></span><br><span class="line">注意：</span><br><span class="line"></span><br><span class="line">- `-f`选项必须在最后一位</span><br><span class="line">- `-z`选项，建议在开头位置</span><br><span class="line">- `-C`单独使用，和解压的其他参数分开</span><br><span class="line"></span><br><span class="line">## zip命令</span><br><span class="line"></span><br><span class="line">### zip压缩</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>zip [-r] 参数1 参数2 … 参数N</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- `-r`，被压缩的文件包含文件夹的时候，需要使用`-r`选项</span><br><span class="line"></span><br><span class="line">### unzip解压</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>unzip 参数 [-d]</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- `-d`，指定要解压去的位置，同tar的-C选项</span><br><span class="line">- `参数`，被解压的zip压缩包文件</span><br><span class="line"></span><br><span class="line">## dpkg命令</span><br><span class="line"></span><br><span class="line">`dpkg --help`</span><br><span class="line">`dpkg --version`</span><br><span class="line">管理deb包，可以对其安装、卸载、deb打包、deb解压等操作</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>-i: 安装软件包<br>-r: 删除软件包<br>-P: 删除软件包的同时删除其配置文件<br>-L: 显示与软件包关联的文件<br>-l: 显示已安装软件包列表<br>-s: 查看软件包（已安装）的详细信息<br>-S: 查询一个文件属于哪个软件包<br>–unpack:   解开软件包<br>-c: 显示软件包内文件列表<br>–configure:    配置软件包</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## 7z命令</span><br><span class="line"></span><br><span class="line">### 解压</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>7z x [-r -o]</p>
-<pre><code>
-- `x`，代表解压文件，按原始目录解压
-- `-r`，表示递归解压所有的子文件夹
-- `-o`，指定解压到的目录，`-o`后面没有空格直接跟目录
+<h2 id="主机名"><a href="#主机名" class="headerlink" title="主机名"></a>主机名</h2><p>每台电脑除了IP地址外，还可以有一个名字，称为主机名<br>Windows系统和Linux都可以给系统设置主机名</p>
+<ul>
+<li>Windows查看系统设备名称</li>
+<li>Linux可以用命令<code>hostname</code></li>
+</ul>
+<h2 id="在Linux中修改主机名"><a href="#在Linux中修改主机名" class="headerlink" title="在Linux中修改主机名"></a>在Linux中修改主机名</h2><p>可以使用命令：<code>hostnamectl set-hostname &quot;主机名&quot;</code><br>重新登陆即可看到更改</p>
+<h2 id="域名解析"><a href="#域名解析" class="headerlink" title="域名解析"></a>域名解析</h2><p>先查看本机的记录（通过主机名找到对应计算机的IP地址）</p>
+<ul>
+<li><code>Windows：C:\Windows\System32\drivers\etc\hosts</code></li>
+<li><code>Linux: /etc/hosts</code></li>
+</ul>
+<p>再联网去DNS服务器询问</p>
+<h2 id="网络传输"><a href="#网络传输" class="headerlink" title="网络传输"></a>网络传输</h2><h3 id="使用ping命令检查服务器是否可联通"><a href="#使用ping命令检查服务器是否可联通" class="headerlink" title="使用ping命令检查服务器是否可联通"></a>使用ping命令检查服务器是否可联通</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ping [-c num] ip或主机名</span><br></pre></td></tr></table></figure>
 
-# 系统目录
+<ul>
+<li><code>-c</code>，检查的次数，不使用<code>-c</code>选项，将无限次持续检查</li>
+<li><code>ip或主机名</code>，被检查的服务器的IP地址或主机名地址</li>
+</ul>
+<h3 id="使用wget命令下载文件"><a href="#使用wget命令下载文件" class="headerlink" title="使用wget命令下载文件"></a>使用wget命令下载文件</h3><p>wget是一个非交互式的文件下载器，可以在命令行内下载网络文件<br><code>wget [-b] url</code></p>
+<ul>
+<li><code>-b</code>，可选，后台下载，会将日志写入到当前工作目录的wget-log文件</li>
+<li><code>url</code> ,下载链接</li>
+</ul>
+<h3 id="使用curl命令发起网络请求"><a href="#使用curl命令发起网络请求" class="headerlink" title="使用curl命令发起网络请求"></a>使用curl命令发起网络请求</h3><p>发送http网络请求，可用于下载文件、获取信息等<br><code>curl [-O] url</code></p>
+<ul>
+<li><code>-O</code>，用于下载文件，当url是下载链接时，可以使用此选项保存文件</li>
+<li><code>url</code>，要发起请求的网络地址</li>
+</ul>
+<h3 id="端口"><a href="#端口" class="headerlink" title="端口"></a>端口</h3><p>端口是设备与外界通讯交流的出入口。</p>
+<ul>
+<li>物理端口：又可以称之为接口，是可见端口，如USB接口，HDMI端口等</li>
+<li>虚拟端口：指计算机内部的端口，不可见，是用来操作系统和外部进行交互使用的<ul>
+<li>通过IP只能锁定计算机，但是无法锁定具体的程序。</li>
+<li>通过端口可以锁定计算机上具体的应用程序，确保程序之间进行沟通。</li>
+</ul>
+</li>
+</ul>
+<p>IP地址相当于小区地址，而端口相当于门牌号了。</p>
+<p>Linux系统可以支持65535个端口，这么多端口可以分为3类进行使用：</p>
+<ul>
+<li>公认端口：1~1023，通常用于一些系统内置或知名程序的预留使用，如SSH服务的22端口，HTTPS服务的443端口，非特殊需要，不能占用这个范围的端口</li>
+<li>注册端口：1024~49151，通常可以随意使用，用于松散的绑定一些程序\服务</li>
+<li>动态端口：49152~65535，通常不会固定绑定程序，而是当时程序对外网进行网络链接时，临时使用</li>
+</ul>
+<h3 id="查看端口占用情况"><a href="#查看端口占用情况" class="headerlink" title="查看端口占用情况"></a>查看端口占用情况</h3><p>可以使用nmap命令<br><code>nmap 被查看的IP地址</code><br><strong>netstat</strong><br>可以通过netstat命令，查看指定端口的占用情况<br><code>netstat -anp|grep 端口号</code><br>常用选项</p>
+<ul>
+<li><code>-a</code>: 列出所有端口</li>
+<li><code>-l</code>: 只显示监听端口</li>
+<li><code>-t</code>: 显示 TCP 传输协议的连线状况</li>
+<li><code>-u</code>: 显示 UDP 传输协议的连线状况</li>
+</ul>
+<h1 id="进程管理"><a href="#进程管理" class="headerlink" title="进程管理"></a>进程管理</h1><p>程序运行在操作系统中，是被操作系统所管理的。<br>每一个程序在运行的时候，便被操作系统注册为系统中的一个<code>进程</code>。<br>并为每一个进程都分配一个独有的：进程ID（进程号）。</p>
+<h3 id="查看进程ps"><a href="#查看进程ps" class="headerlink" title="查看进程ps"></a>查看进程ps</h3><p>通过PS命令查看Linux系统中的进程信息<br><code>ps [options]</code></p>
+<ul>
+<li><code>-A</code>，显示所有终端进程</li>
+<li><code>-e</code>，显示出全部的进程</li>
+<li><code>-f</code>，以完全格式化的形式展示信息（展示全部信息）</li>
+</ul>
+<p><code>ps -ef</code> 列出全部进程的全部信息</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">UID     :进程所属的用户ID</span><br><span class="line">PID     :进程的进程号ID</span><br><span class="line">PPID    :进程的父ID（启动此进程的其他进程）</span><br><span class="line">C       :此进程的CPU占用率（百分比）</span><br><span class="line">STIME   :进程的启动时间</span><br><span class="line">TTY     :启动此进程的终端序号，如显示？，表示非终端启动</span><br><span class="line">TIME    :进程占用CPU时间</span><br><span class="line">CMD     :进程对应的名称或启动路径或启动命令</span><br></pre></td></tr></table></figure>
 
-## /etc
+<h3 id="关闭进程kill"><a href="#关闭进程kill" class="headerlink" title="关闭进程kill"></a>关闭进程kill</h3><p>通过kill命令关闭进程。<br><code>kill [-9] 进程ID</code></p>
+<ul>
+<li><code>-9</code>，表示强制关闭进程。不使用此选项会向进程发送信号要求其关闭，但是否关闭看进程自身的处理机制。</li>
+</ul>
+<h3 id="pidof"><a href="#pidof" class="headerlink" title="pidof"></a>pidof</h3><p>查找正在运行的特定程序的进程 ID（PID）。<br><code>pidof [options] programName</code></p>
+<h1 id="压缩和解压"><a href="#压缩和解压" class="headerlink" title="压缩和解压"></a>压缩和解压</h1><h2 id="压缩格式"><a href="#压缩格式" class="headerlink" title="压缩格式"></a>压缩格式</h2><ul>
+<li>zip格式：Linux、Windows、MacOS常用</li>
+<li>7zip：Windows常用</li>
+<li>rar：Windows常用</li>
+<li>tar：Linux、MacOS常用</li>
+<li>gzip：Linux、MacOS常用</li>
+</ul>
+<h2 id="tar命令"><a href="#tar命令" class="headerlink" title="tar命令"></a>tar命令</h2><p>有两种常见压缩格式，后缀名分别是：</p>
+<ul>
+<li>.tar，称之为tarball，归档文件，简单的将文件组装到一个.tar的文件内，仅仅是简单的封装。</li>
+<li>.gz，常见为.tar.gz，gzip格式压缩文件，即使用gzip压缩算法将文件压缩到一个文件内，极大减少压缩后的体积</li>
+</ul>
+<p>对于这两种格式，可以用tar命令进行压缩和解压操作：<br><code>tar [-c -v -x -f -z -C] 参数1 参数2 ... 参数N</code></p>
+<ul>
+<li><code>-c</code>，创建压缩文件，用于压缩模式</li>
+<li><code>-v</code>显示压缩、解压过程，用于查看进度</li>
+<li><code>-x</code>，解压模式</li>
+<li><code>-f</code>，要创建的文件，或解压的文件，-f选项必须在所有选项中位置处于最后一个</li>
+<li><code>-z</code>，gzip模式，不使用就是tarball格式</li>
+<li><code>-C</code>，选择解压的目的地，用于解压模式</li>
+</ul>
+<h3 id="tar命令压缩"><a href="#tar命令压缩" class="headerlink" title="tar命令压缩"></a>tar命令压缩</h3><p>tar常用压缩组合有两种：</p>
+<ul>
+<li>tar -cvf test.tar 1.txt 2.txt 3.txt<br>将1.txt 2.txt 3.txt压缩到test.tar文件内</li>
+<li>tar -zcvf test.tar.gz 1.txt 2.txt 3.txt<br>将1.txt 2.txt 3.txt压缩到test.tar.gz文件内，使用gzip模式</li>
+</ul>
+<p>要注意的是：</p>
+<ul>
+<li>-z选项要使用的话，一般处于选项第一个</li>
+<li>-f选项，必须在选项位最后一个</li>
+</ul>
+<h3 id="tar命令解压"><a href="#tar命令解压" class="headerlink" title="tar命令解压"></a>tar命令解压</h3><p>tar常用解压组合有：</p>
+<ul>
+<li><code>tar -xvf test.tar</code><br>解压test.tar，将文件解压至当前目录</li>
+<li><code>tar -xvf test.tar -C /home/itheima</code><br>解压test.tar，解压至<code>/home/itheima</code></li>
+<li><code>tar -zxvf test.tar.gz -C /home/itheima</code><br>以gzip模式解压test.tar.gz，将文件解压至指定目录（&#x2F;home&#x2F;itheima）</li>
+</ul>
+<p>注意：</p>
+<ul>
+<li><code>-f</code>选项必须在最后一位</li>
+<li><code>-z</code>选项，建议在开头位置</li>
+<li><code>-C</code>单独使用，和解压的其他参数分开</li>
+</ul>
+<h2 id="zip命令"><a href="#zip命令" class="headerlink" title="zip命令"></a>zip命令</h2><h3 id="zip压缩"><a href="#zip压缩" class="headerlink" title="zip压缩"></a>zip压缩</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">zip [-r] 参数1 参数2 ... 参数N</span><br></pre></td></tr></table></figure>
 
-- /etc/hostname
+<ul>
+<li><code>-r</code>，被压缩的文件包含文件夹的时候，需要使用<code>-r</code>选项</li>
+</ul>
+<h3 id="unzip解压"><a href="#unzip解压" class="headerlink" title="unzip解压"></a>unzip解压</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">unzip 参数 [-d]</span><br></pre></td></tr></table></figure>
 
-  这个文件里存放着主机名，可以进行修改
-</code></pre>
+<ul>
+<li><code>-d</code>，指定要解压去的位置，同tar的-C选项</li>
+<li><code>参数</code>，被解压的zip压缩包文件</li>
+</ul>
+<h2 id="dpkg命令"><a href="#dpkg命令" class="headerlink" title="dpkg命令"></a>dpkg命令</h2><p><code>dpkg --help</code><br><code>dpkg --version</code><br>管理deb包，可以对其安装、卸载、deb打包、deb解压等操作</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">-i: 安装软件包</span><br><span class="line">-r: 删除软件包</span><br><span class="line">-P: 删除软件包的同时删除其配置文件</span><br><span class="line">-L: 显示与软件包关联的文件</span><br><span class="line">-l: 显示已安装软件包列表</span><br><span class="line">-s: 查看软件包（已安装）的详细信息</span><br><span class="line">-S: 查询一个文件属于哪个软件包</span><br><span class="line">--unpack:   解开软件包</span><br><span class="line">-c: 显示软件包内文件列表</span><br><span class="line">--configure:    配置软件包</span><br></pre></td></tr></table></figure>
+
+<h2 id="7z命令"><a href="#7z命令" class="headerlink" title="7z命令"></a>7z命令</h2><h3 id="解压"><a href="#解压" class="headerlink" title="解压"></a>解压</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">7z x [-r -o]</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>x</code>，代表解压文件，按原始目录解压</li>
+<li><code>-r</code>，表示递归解压所有的子文件夹</li>
+<li><code>-o</code>，指定解压到的目录，<code>-o</code>后面没有空格直接跟目录</li>
+</ul>
+<h1 id="系统目录"><a href="#系统目录" class="headerlink" title="系统目录"></a>系统目录</h1><h2 id="etc"><a href="#etc" class="headerlink" title="&#x2F;etc"></a>&#x2F;etc</h2><ul>
+<li><p>&#x2F;etc&#x2F;hostname</p>
+<p>这个文件里存放着主机名，可以进行修改</p>
+</li>
+</ul>
+<h1 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h1><h2 id="Ctrl-Alt-T"><a href="#Ctrl-Alt-T" class="headerlink" title="Ctrl+Alt+T"></a>Ctrl+Alt+T</h2><p>打开</p>
 
       
     </div>
@@ -1290,7 +1554,7 @@ C       :此进程的CPU占用率（百分比）
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2025-01-18 12:18:28" itemprop="dateModified" datetime="2025-01-18T12:18:28+08:00">2025-01-18</time>
+                <time title="修改时间：2025-01-19 20:55:39" itemprop="dateModified" datetime="2025-01-19T20:55:39+08:00">2025-01-19</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1478,7 +1742,9 @@ C       :此进程的CPU占用率（百分比）
 <p>  用于修改类、方法、字段等成员的访问权限，以便访问被 <code>private</code>、<code>protected</code> 或 <code>default</code>（包内访问权限）修饰的成员。</p>
 </li>
 </ul>
-<h1 id="String类"><a href="#String类" class="headerlink" title="String类"></a>String类</h1><h2 id="getBytes"><a href="#getBytes" class="headerlink" title="getBytes()"></a>getBytes()</h2><p><code>getBytes()</code> 方法用于将字符串转换为一个字节数组。</p>
+<h1 id="Boolean"><a href="#Boolean" class="headerlink" title="Boolean"></a>Boolean</h1><p><code>java.lang.Boolean</code></p>
+<h1 id="String类"><a href="#String类" class="headerlink" title="String类"></a>String类</h1><p><code>java.lang.String</code></p>
+<h2 id="getBytes"><a href="#getBytes" class="headerlink" title="getBytes()"></a>getBytes()</h2><p><code>getBytes()</code> 方法用于将字符串转换为一个字节数组。</p>
 <p>它将字符串的每个字符按照指定的编码格式转换为字节。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">byte</span>[] getBytes()</span><br></pre></td></tr></table></figure>
 
@@ -1533,7 +1799,7 @@ C       :此进程的CPU占用率（百分比）
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2025-01-03 01:46:46" itemprop="dateModified" datetime="2025-01-03T01:46:46+08:00">2025-01-03</time>
+                <time title="修改时间：2025-01-20 21:03:23" itemprop="dateModified" datetime="2025-01-20T21:03:23+08:00">2025-01-20</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1541,7 +1807,7 @@ C       :此进程的CPU占用率（百分比）
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Frida/" itemprop="url" rel="index"><span itemprop="name">Frida</span></a>
+                  <a href="/categories/Fridaf-r/" itemprop="url" rel="index"><span itemprop="name">Fridaf'r</span></a>
                 </span>
             </span>
 
@@ -1551,7 +1817,7 @@ C       :此进程的CPU占用率（百分比）
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>668</span>
+              <span>711</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -1570,7 +1836,8 @@ C       :此进程的CPU占用率（百分比）
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="安装frida"><a href="#安装frida" class="headerlink" title="安装frida"></a>安装frida</h1><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>使用如下命令安装frida，默认安装最新版的frida</p>
+          <h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p><strong>Frida</strong> 是一个强大的动态代码插桩工具，用于对应用程序的运行时行为进行分析和修改。</p>
+<h1 id="安装frida"><a href="#安装frida" class="headerlink" title="安装frida"></a>安装frida</h1><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>使用如下命令安装frida，默认安装最新版的frida</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install frida </span><br></pre></td></tr></table></figure>
 <h2 id="卸载"><a href="#卸载" class="headerlink" title="卸载"></a>卸载</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip uninstall frida</span><br></pre></td></tr></table></figure>
 <h2 id="指定版本"><a href="#指定版本" class="headerlink" title="指定版本"></a>指定版本</h2><p>安装指定版本的frida</p>
@@ -1702,190 +1969,6 @@ C       :此进程的CPU占用率（百分比）
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/02/01/C%E8%AF%AD%E8%A8%80/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/android.svg">
-      <meta itemprop="name" content="Bileton">
-      <meta itemprop="description" content="路漫漫其修远夕！">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="白乐天">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2024/02/01/C%E8%AF%AD%E8%A8%80/" class="post-title-link" itemprop="url">C语言</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2024-02-01 00:00:00" itemprop="dateCreated datePublished" datetime="2024-02-01T00:00:00+08:00">2024-02-01</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2025-01-18 01:42:02" itemprop="dateModified" datetime="2025-01-18T01:42:02+08:00">2025-01-18</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/C/" itemprop="url" rel="index"><span itemprop="name">C</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>4.4k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>4 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="C语言基础编程"><a href="#C语言基础编程" class="headerlink" title="C语言基础编程"></a>C语言基础编程</h1><h2 id="Hello-World"><a href="#Hello-World" class="headerlink" title="Hello World"></a>Hello World</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Hello World!&quot;</span>); </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="基本数据类型"><a href="#基本数据类型" class="headerlink" title="基本数据类型"></a>基本数据类型</h2><ul>
-<li>char</li>
-<li>unsigned char</li>
-<li>short</li>
-<li>unsigned short</li>
-<li>int </li>
-<li>unsigned int </li>
-<li>long</li>
-<li>unsigned long</li>
-<li>float</li>
-<li>double</li>
-<li>void</li>
-</ul>
-<h2 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">算术运算符</span><br><span class="line">+</span><br><span class="line">-</span><br><span class="line">*</span><br><span class="line">/</span><br><span class="line">%</span><br><span class="line">++</span><br><span class="line">--</span><br><span class="line">比较运算符</span><br><span class="line">==</span><br><span class="line">!=</span><br><span class="line">&gt;</span><br><span class="line">&lt;</span><br><span class="line">&gt;=</span><br><span class="line">&lt;=</span><br><span class="line">逻辑运算符</span><br><span class="line">&amp;&amp;</span><br><span class="line">||</span><br><span class="line">!</span><br><span class="line">位运算符</span><br><span class="line">&amp;</span><br><span class="line">|</span><br><span class="line">^</span><br><span class="line">~</span><br><span class="line">&lt;&lt;</span><br><span class="line">&gt;&gt;</span><br><span class="line">赋值运算符</span><br><span class="line">=</span><br><span class="line">+=</span><br><span class="line">-=</span><br><span class="line">*=</span><br><span class="line">/=</span><br><span class="line">%=</span><br><span class="line">&lt;&lt;=</span><br><span class="line">&gt;&gt;=</span><br><span class="line">&amp;=</span><br><span class="line">^=</span><br><span class="line">|=</span><br><span class="line">其他运算符</span><br><span class="line"><span class="keyword">sizeof</span>()  	<span class="comment">// 返回变量或数据类型的大小</span></span><br><span class="line">&amp;			<span class="comment">// 取地址</span></span><br><span class="line">*			<span class="comment">// 解引用</span></span><br><span class="line">?:			<span class="comment">// 三元运算符</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="流程控制"><a href="#流程控制" class="headerlink" title="流程控制"></a>流程控制</h2><h3 id="if"><a href="#if" class="headerlink" title="if"></a>if</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(expression)&#123;</span><br><span class="line">    ...;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
-
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">  <span class="keyword">if</span>(expression)&#123;</span><br><span class="line">...;</span><br><span class="line">  &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">      ...;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">  <span class="keyword">if</span>(expression)&#123;</span><br><span class="line">...;</span><br><span class="line">  &#125;<span class="keyword">else</span> <span class="keyword">if</span>(expression)&#123;</span><br><span class="line">...;</span><br><span class="line">  &#125; <span class="keyword">else</span>&#123;</span><br><span class="line">      ...;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="switch"><a href="#switch" class="headerlink" title="switch"></a>switch</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span> (表达式) &#123;</span><br><span class="line">    <span class="keyword">case</span> 常量表达式<span class="number">1</span>:</span><br><span class="line">        <span class="comment">// 语句块1</span></span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> 常量表达式<span class="number">2</span>:</span><br><span class="line">        <span class="comment">// 语句块2</span></span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    ...</span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">        <span class="comment">// 默认语句块</span></span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="while"><a href="#while" class="headerlink" title="while"></a>while</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> (条件表达式) &#123;</span><br><span class="line">    <span class="comment">// 循环体</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="do-while"><a href="#do-while" class="headerlink" title="do-while"></a>do-while</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line">    <span class="comment">// 循环体</span></span><br><span class="line">&#125; <span class="keyword">while</span> (条件表达式);</span><br></pre></td></tr></table></figure>
-
-<h3 id="for"><a href="#for" class="headerlink" title="for"></a>for</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (初始化语句; 条件表达式; 更新语句) &#123;</span><br><span class="line">    <span class="comment">// 循环体</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">return_type <span class="title function_">function_name</span><span class="params">( parameter <span class="built_in">list</span> )</span></span><br><span class="line">&#123;</span><br><span class="line">   body of the function</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="内存分区"><a href="#内存分区" class="headerlink" title="内存分区"></a>内存分区</h1><h2 id="栈（stack）"><a href="#栈（stack）" class="headerlink" title="栈（stack）"></a>栈（stack）</h2><p>用于存储局部变量和函数调用时的上下文（如返回地址与参数等）。</p>
-<h2 id="堆（heap）"><a href="#堆（heap）" class="headerlink" title="堆（heap）"></a>堆（heap）</h2><p>动态分配的内存区域，用于存放程序运行时动态创建的数据。</p>
-<h2 id="静态区（全局区）"><a href="#静态区（全局区）" class="headerlink" title="静态区（全局区）"></a>静态区（全局区）</h2><p>用于全局变量、静态变量和常量的存储。这部分内存的生命周期从程序开始直到程序结束。</p>
-<h2 id="代码区"><a href="#代码区" class="headerlink" title="代码区"></a>代码区</h2><p>存放程序的机器指令，也就是程序的可执行代码。</p>
-<h2 id="常量区"><a href="#常量区" class="headerlink" title="常量区"></a>常量区</h2><p>存储程序中常量数据的区域，它存放的是程序中不允许修改的常量值。</p>
-<h1 id="stdio-h"><a href="#stdio-h" class="headerlink" title="stdio.h"></a>stdio.h</h1><h2 id="占位符"><a href="#占位符" class="headerlink" title="占位符"></a>占位符</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">%d 十进制有符号整数</span><br><span class="line">%u 十进制无符号整数</span><br><span class="line">%f 浮点数</span><br><span class="line">%c 单个字符</span><br><span class="line">%s 字符串</span><br><span class="line">%x 十六进制无符号整数</span><br><span class="line">%X 大写十六进制无符号整数</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="库变量"><a href="#库变量" class="headerlink" title="库变量"></a>库变量</h2><h3 id="size-t"><a href="#size-t" class="headerlink" title="size_t"></a>size_t</h3><p>无符号整数类型，它是 sizeof 关键字的结果。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">unsigned</span> <span class="type">int</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="FILE"><a href="#FILE" class="headerlink" title="FILE"></a>FILE</h3><p>文件流类型，适合存储文件流信息的对象类型。</p>
-<h3 id="fpos-t"><a href="#fpos-t" class="headerlink" title="fpos_t"></a>fpos_t</h3><p>文件位置类型，适合存储文件中任何位置的对象类型。</p>
-<h2 id="库函数"><a href="#库函数" class="headerlink" title="库函数"></a>库函数</h2><h3 id="printf"><a href="#printf" class="headerlink" title="printf()"></a>printf()</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">printf</span><span class="params">(<span class="type">const</span> <span class="type">char</span> *format, ...)</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// format：格式化字符串，用于指定输出的内容和格式。</span></span><br><span class="line"><span class="comment">// ...：可变参数，表示要输出的数据，可以是变量或值。</span></span><br><span class="line"><span class="comment">// 返回值：返回成功打印的字符数量（不包括格式字符串中的额外字符，如 \n、% 等）。如果发生错误，通常返回 -1。</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="sprintf"><a href="#sprintf" class="headerlink" title="sprintf()"></a>sprintf()</h3><p>用于将格式化的数据写入字符串。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">sprintf</span><span class="params">(<span class="type">char</span> *str, <span class="type">const</span> <span class="type">char</span> *format, ...)</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// str: 一个字符数组，用于存储格式化后的输出结果。</span></span><br><span class="line"><span class="comment">// format: 一个格式字符串，指定输出的格式。</span></span><br><span class="line"><span class="comment">// ...: 根据格式字符串提供的其他参数，用于格式化输出。</span></span><br><span class="line"><span class="comment">// 返回值：返回写入 str 中的字符数，不包括结尾的 \0 字符。如果发生错误，返回一个负值。</span></span><br></pre></td></tr></table></figure>
-<p><strong>示例</strong></p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">char</span> buffer[<span class="number">100</span>];</span><br><span class="line">    <span class="type">int</span> n = <span class="number">42</span>;</span><br><span class="line">    <span class="type">float</span> pi = <span class="number">3.14159</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 使用 sprintf 格式化数据并写入 buffer</span></span><br><span class="line">    <span class="type">int</span> written = <span class="built_in">sprintf</span>(buffer, <span class="string">&quot;The answer is %d and pi is approximately %.2f.&quot;</span>, n, pi);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 打印结果</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Formatted string: %s\n&quot;</span>, buffer);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Number of characters written: %d\n&quot;</span>, written);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line">Formatted <span class="built_in">string</span>: The answer is <span class="number">42</span> and pi is approximately <span class="number">3.14</span>.</span><br><span class="line">Number of characters written: <span class="number">46</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="snprintf"><a href="#snprintf" class="headerlink" title="snprintf()"></a>snprintf()</h3><p>用于将格式化的数据写入字符串。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">snprintf</span><span class="params">(<span class="type">char</span> *str, <span class="type">size_t</span> size, <span class="type">const</span> <span class="type">char</span> *format, ...)</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// str: 一个字符数组，用于存储格式化后的输出。</span></span><br><span class="line"><span class="comment">// size: 字符数组的大小，即 str 能容纳的最大字符数（包括终止的 \0 字符）。</span></span><br><span class="line"><span class="comment">// format: 一个格式字符串，指定输出的格式。</span></span><br><span class="line"><span class="comment">// ...: 依据格式字符串提供的其他参数。</span></span><br><span class="line"><span class="comment">// 返回值：返回写入 str 中的字符数，不包括结尾的 \0 字符。如果返回值大于或等于 size，说明输出被截断了。</span></span><br></pre></td></tr></table></figure>
-<p><strong>示例</strong></p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">char</span> buffer[<span class="number">50</span>];</span><br><span class="line">    <span class="type">int</span> n = <span class="number">42</span>;</span><br><span class="line">    <span class="type">float</span> pi = <span class="number">3.14159</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 使用 snprintf 格式化数据并写入 buffer</span></span><br><span class="line">    <span class="type">int</span> written = <span class="built_in">snprintf</span>(buffer, <span class="keyword">sizeof</span>(buffer), <span class="string">&quot;The answer is %d and pi is approximately %.2f.&quot;</span>, n, pi);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 打印结果</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Formatted string: %s\n&quot;</span>, buffer);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Number of characters written: %d\n&quot;</span>, written);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line">Formatted <span class="built_in">string</span>: The answer is <span class="number">42</span> and pi is approximately <span class="number">3.14</span>.</span><br><span class="line">Number of characters written: <span class="number">46</span></span><br></pre></td></tr></table></figure>
-<h3 id><a href="#" class="headerlink" title></a></h3><h1 id="time-h"><a href="#time-h" class="headerlink" title="time.h"></a>time.h</h1><h2 id="库变量-1"><a href="#库变量-1" class="headerlink" title="库变量"></a>库变量</h2><h3 id="size-t-1"><a href="#size-t-1" class="headerlink" title="size_t"></a>size_t</h3><p>无符号整型，sizeof运算符的结果。 </p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">unsigned</span> <span class="type">int</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="clock-t"><a href="#clock-t" class="headerlink" title="clock_t"></a>clock_t</h3><p>表示处理器的时钟周期数。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="type">long</span> <span class="type">clock_t</span>; <span class="comment">// 或者</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="type">int</span> <span class="type">clock_t</span>;</span><br></pre></td></tr></table></figure>
-
-<h3 id="time-t"><a href="#time-t" class="headerlink" title="time_t"></a>time_t</h3><p>用于存储时间戳</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="type">long</span> <span class="type">time_t</span>; <span class="comment">//或者</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="type">int</span> <span class="type">time_t</span>;</span><br></pre></td></tr></table></figure>
-
-<h3 id="struct-tm"><a href="#struct-tm" class="headerlink" title="struct tm"></a>struct tm</h3><p>tm 是一个结构体类型，用于表示具体的时间信息，通常是通过将时间戳（time_t）转换成更易于理解和操作的日期和时间格式。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">tm</span> &#123;</span></span><br><span class="line">    <span class="type">int</span> tm_sec;   <span class="comment">// 秒 (0-59)</span></span><br><span class="line">    <span class="type">int</span> tm_min;   <span class="comment">// 分 (0-59)</span></span><br><span class="line">    <span class="type">int</span> tm_hour;  <span class="comment">// 小时 (0-23)</span></span><br><span class="line">    <span class="type">int</span> tm_mday;  <span class="comment">// 一个月中的日期 (1-31)</span></span><br><span class="line">    <span class="type">int</span> tm_mon;   <span class="comment">// 月份 (0-11) -&gt; 0 表示 1 月，11 表示 12 月</span></span><br><span class="line">    <span class="type">int</span> tm_year;  <span class="comment">// 从 1900 年开始的年数 (例如，2024 年就是 124)</span></span><br><span class="line">    <span class="type">int</span> tm_wday;  <span class="comment">// 星期几 (0-6)，0 表示星期天</span></span><br><span class="line">    <span class="type">int</span> tm_yday;  <span class="comment">// 一年中的第几天 (0-365)，0 表示 1 月 1 日</span></span><br><span class="line">    <span class="type">int</span> tm_isdst; <span class="comment">// 夏令时标志，正值表示夏令时，0 表示非夏令时，负值表示信息不可用</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h2 id="库函数-1"><a href="#库函数-1" class="headerlink" title="库函数"></a>库函数</h2><h3 id="time"><a href="#time" class="headerlink" title="time()"></a>time()</h3><p><code>time()</code>函数用于获取当前时间戳。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;time.h&gt;</span></span></span><br><span class="line"><span class="type">time_t</span> <span class="title function_">time</span><span class="params">(<span class="type">time_t</span> *timer)</span>;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>如果参数为NULL或0，返回当前时间的time_t值。</li>
-<li>如果传递一个有效指针，函数会将当前时间保存到指针所指向的变量中，并返回相同的值。</li>
-</ul>
-<h3 id="localtime"><a href="#localtime" class="headerlink" title="localtime()"></a>localtime()</h3><p>用于将 time_t 类型的时间值转换为结构化的本地时间格式（struct tm）。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> tm* <span class="title function_">localtime</span><span class="params">(<span class="type">const</span> <span class="type">time_t</span>* timer)</span>;</span><br></pre></td></tr></table></figure>
-<p>将 time_t 类型的时间转换为本地时间，返回一个 struct tm 结构，表示本地时间的各个组成部分（年、月、日、小时、分钟、秒等）。</p>
-<h3 id="localtime-r"><a href="#localtime-r" class="headerlink" title="localtime_r()"></a>localtime_r()</h3><p>用于将 time_t 类型的时间值转换为结构化的本地时间格式（struct tm）。<br>由于它将结果存储在用户提供的缓冲区中，多个线程可以同时调用 localtime_r 而不会发生冲突，因此它是线程安全的。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> tm* <span class="title function_">localtime_r</span><span class="params">(<span class="type">const</span> <span class="type">time_t</span>* timer, <span class="keyword">struct</span> tm* buf)</span>;</span><br></pre></td></tr></table></figure>
-<h3 id="localtime-s"><a href="#localtime-s" class="headerlink" title="localtime_s()"></a>localtime_s()</h3><p>localtime_s 是 C11 标准引入的函数，功能和 localtime_r 类似。它将 time_t 转换为本地时间，并将结果存储在用户提供的缓冲区中。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> tm* <span class="title function_">localtime_s</span><span class="params">(<span class="type">const</span> <span class="type">time_t</span>* <span class="keyword">restrict</span> timer, <span class="keyword">struct</span> tm* <span class="keyword">restrict</span> buf)</span>;</span><br></pre></td></tr></table></figure>
-<p>localtime_s 在 C11 标准中引入时，具有更严格的错误检查。如果出现错误（例如无效的时间值），通常会返回一个错误码，而不是直接返回 NULL。这增加了函数的安全性和可靠性。</p>
-<h1 id="pthread-h"><a href="#pthread-h" class="headerlink" title="pthread.h"></a>pthread.h</h1><h2 id="pthread-create"><a href="#pthread-create" class="headerlink" title="pthread_create()"></a>pthread_create()</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">pthread_create</span><span class="params">(<span class="type">pthread_t</span> *thread, <span class="type">const</span> <span class="type">pthread_attr_t</span> *attr, <span class="type">void</span> *(*start_routine)(<span class="type">void</span> *), <span class="type">void</span> *arg)</span>;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>pthread_t *thread</code>:<br>  指向 pthread_t 类型的指针，用于存储新创建线程的线程 ID。</li>
-<li><code>const pthread_attr_t *attr</code>:<br>  指向线程属性对象的指针，可以是 NULL，表示使用默认属性。</li>
-<li><code>void *(*start_routine)(void *)</code>:<br>  线程的起始函数，这是一个函数指针，它指向一个函数，该函数接收一个 void * 类型的参数，并返回一个 void * 类型的值。</li>
-<li><code>void *arg</code>:<br>  传递给起始函数的参数。</li>
-<li><code>返回值</code><br>  成功返回0，否则返回错误码。</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1957,20 +2040,20 @@ C       :此进程的CPU占用率（百分比）
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">54</span>
+          <span class="site-state-item-count">55</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-count">27</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">50</span>
+        <span class="site-state-item-count">52</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -2011,13 +2094,13 @@ C       :此进程的CPU占用率（百分比）
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">304k</span>
+    <span title="站点总字数">321k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">4:37</span>
+    <span title="站点阅读时长">4:52</span>
 </div>
 
 

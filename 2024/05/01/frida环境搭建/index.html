@@ -20,15 +20,15 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="安装frida安装使用如下命令安装frida，默认安装最新版的frida 1pip install frida  卸载1pip uninstall frida 指定版本安装指定版本的frida 1pip install frida&#x3D;&#x3D;xx.xx.xx frida-tools（安装frida-tools会自动安装frida）安装frida-tools使用如下命令安装frida-tools，默认安装最">
+  <meta name="description" content="介绍Frida 是一个强大的动态代码插桩工具，用于对应用程序的运行时行为进行分析和修改。 安装frida安装使用如下命令安装frida，默认安装最新版的frida 1pip install frida  卸载1pip uninstall frida 指定版本安装指定版本的frida 1pip install frida&#x3D;&#x3D;xx.xx.xx frida-tools（安装frida-tools会自动安">
 <meta property="og:type" content="article">
 <meta property="og:title" content="frida环境搭建">
 <meta property="og:url" content="http://example.com/2024/05/01/frida%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/index.html">
 <meta property="og:site_name" content="白乐天">
-<meta property="og:description" content="安装frida安装使用如下命令安装frida，默认安装最新版的frida 1pip install frida  卸载1pip uninstall frida 指定版本安装指定版本的frida 1pip install frida&#x3D;&#x3D;xx.xx.xx frida-tools（安装frida-tools会自动安装frida）安装frida-tools使用如下命令安装frida-tools，默认安装最">
+<meta property="og:description" content="介绍Frida 是一个强大的动态代码插桩工具，用于对应用程序的运行时行为进行分析和修改。 安装frida安装使用如下命令安装frida，默认安装最新版的frida 1pip install frida  卸载1pip uninstall frida 指定版本安装指定版本的frida 1pip install frida&#x3D;&#x3D;xx.xx.xx frida-tools（安装frida-tools会自动安">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-04-30T16:00:00.000Z">
-<meta property="article:modified_time" content="2025-01-02T17:46:46.753Z">
+<meta property="article:modified_time" content="2025-01-20T13:03:23.887Z">
 <meta property="article:author" content="Bileton">
 <meta property="article:tag" content="frida环境搭建">
 <meta name="twitter:card" content="summary">
@@ -127,17 +127,17 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">50</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">52</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">25</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">27</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">54</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">55</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -223,7 +223,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2025-01-03 01:46:46" itemprop="dateModified" datetime="2025-01-03T01:46:46+08:00">2025-01-03</time>
+                <time title="修改时间：2025-01-20 21:03:23" itemprop="dateModified" datetime="2025-01-20T21:03:23+08:00">2025-01-20</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -231,7 +231,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Frida/" itemprop="url" rel="index"><span itemprop="name">Frida</span></a>
+                  <a href="/categories/Fridaf-r/" itemprop="url" rel="index"><span itemprop="name">Fridaf'r</span></a>
                 </span>
             </span>
 
@@ -241,7 +241,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>668</span>
+              <span>711</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -260,7 +260,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="安装frida"><a href="#安装frida" class="headerlink" title="安装frida"></a>安装frida</h1><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>使用如下命令安装frida，默认安装最新版的frida</p>
+        <h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p><strong>Frida</strong> 是一个强大的动态代码插桩工具，用于对应用程序的运行时行为进行分析和修改。</p>
+<h1 id="安装frida"><a href="#安装frida" class="headerlink" title="安装frida"></a>安装frida</h1><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>使用如下命令安装frida，默认安装最新版的frida</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install frida </span><br></pre></td></tr></table></figure>
 <h2 id="卸载"><a href="#卸载" class="headerlink" title="卸载"></a>卸载</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip uninstall frida</span><br></pre></td></tr></table></figure>
 <h2 id="指定版本"><a href="#指定版本" class="headerlink" title="指定版本"></a>指定版本</h2><p>安装指定版本的frida</p>
@@ -360,7 +361,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%85frida"><span class="nav-number">1.</span> <span class="nav-text">安装frida</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-number">1.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%B8%E8%BD%BD"><span class="nav-number">1.2.</span> <span class="nav-text">卸载</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%87%E5%AE%9A%E7%89%88%E6%9C%AC"><span class="nav-number">1.3.</span> <span class="nav-text">指定版本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#frida-tools%EF%BC%88%E5%AE%89%E8%A3%85frida-tools%E4%BC%9A%E8%87%AA%E5%8A%A8%E5%AE%89%E8%A3%85frida%EF%BC%89"><span class="nav-number">1.4.</span> <span class="nav-text">frida-tools（安装frida-tools会自动安装frida）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85frida-tools"><span class="nav-number">1.4.1.</span> <span class="nav-text">安装frida-tools</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E6%8C%87%E5%AE%9A%E7%89%88%E6%9C%AC%E7%9A%84frida-tools"><span class="nav-number">1.4.2.</span> <span class="nav-text">安装指定版本的frida-tools</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%B8%E8%BD%BDfrida-tools"><span class="nav-number">1.4.3.</span> <span class="nav-text">卸载frida-tools</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%85%8D%E7%BD%AEfrida-server"><span class="nav-number">2.</span> <span class="nav-text">配置frida-server</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BDfrida-server"><span class="nav-number">2.1.</span> <span class="nav-text">下载frida-server</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%85frida%E8%84%9A%E6%9C%AC%E4%BB%A3%E7%A0%81%E8%87%AA%E5%8A%A8%E8%A1%A5%E5%85%A8%E5%8C%85"><span class="nav-number">3.</span> <span class="nav-text">安装frida脚本代码自动补全包</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%85frida"><span class="nav-number">2.</span> <span class="nav-text">安装frida</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-number">2.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%B8%E8%BD%BD"><span class="nav-number">2.2.</span> <span class="nav-text">卸载</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%87%E5%AE%9A%E7%89%88%E6%9C%AC"><span class="nav-number">2.3.</span> <span class="nav-text">指定版本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#frida-tools%EF%BC%88%E5%AE%89%E8%A3%85frida-tools%E4%BC%9A%E8%87%AA%E5%8A%A8%E5%AE%89%E8%A3%85frida%EF%BC%89"><span class="nav-number">2.4.</span> <span class="nav-text">frida-tools（安装frida-tools会自动安装frida）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85frida-tools"><span class="nav-number">2.4.1.</span> <span class="nav-text">安装frida-tools</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E6%8C%87%E5%AE%9A%E7%89%88%E6%9C%AC%E7%9A%84frida-tools"><span class="nav-number">2.4.2.</span> <span class="nav-text">安装指定版本的frida-tools</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%B8%E8%BD%BDfrida-tools"><span class="nav-number">2.4.3.</span> <span class="nav-text">卸载frida-tools</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%85%8D%E7%BD%AEfrida-server"><span class="nav-number">3.</span> <span class="nav-text">配置frida-server</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BDfrida-server"><span class="nav-number">3.1.</span> <span class="nav-text">下载frida-server</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%85frida%E8%84%9A%E6%9C%AC%E4%BB%A3%E7%A0%81%E8%87%AA%E5%8A%A8%E8%A1%A5%E5%85%A8%E5%8C%85"><span class="nav-number">4.</span> <span class="nav-text">安装frida脚本代码自动补全包</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -376,20 +377,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">54</span>
+          <span class="site-state-item-count">55</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-count">27</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">50</span>
+        <span class="site-state-item-count">52</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -430,13 +431,13 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">304k</span>
+    <span title="站点总字数">321k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">4:37</span>
+    <span title="站点阅读时长">4:52</span>
 </div>
 
 
