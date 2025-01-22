@@ -129,7 +129,7 @@
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">27</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">26</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
@@ -927,7 +927,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2025-01-21 19:13:38" itemprop="dateModified" datetime="2025-01-21T19:13:38+08:00">2025-01-21</time>
+                <time title="修改时间：2025-01-22 23:07:09" itemprop="dateModified" datetime="2025-01-22T23:07:09+08:00">2025-01-22</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -945,7 +945,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>6.1k</span>
+              <span>6.5k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -1057,7 +1057,33 @@
 
 
 
-<h1 id="Broadcast"><a href="#Broadcast" class="headerlink" title="Broadcast"></a>Broadcast</h1>
+<h1 id="Broadcast"><a href="#Broadcast" class="headerlink" title="Broadcast"></a>Broadcast</h1><p>广播（Broadcast）是一种消息传递机制，允许应用之间或应用内部的不同组件之间进行通信。</p>
+<h2 id="广播的分类"><a href="#广播的分类" class="headerlink" title="广播的分类"></a>广播的分类</h2><h3 id="标准广播"><a href="#标准广播" class="headerlink" title="标准广播"></a>标准广播</h3><ul>
+<li><p>是一种异步广播，所有接收者几乎在同一时间接收广播。</p>
+</li>
+<li><p>优点：效率高，因为广播是同时分发的。</p>
+</li>
+<li><p>缺点：接收器之间无法中断广播，无法保证接收顺序。</p>
+</li>
+</ul>
+<h3 id="有序广播"><a href="#有序广播" class="headerlink" title="有序广播"></a>有序广播</h3><ul>
+<li><p>是一种同步广播，按接收器的优先级依次接收广播。</p>
+</li>
+<li><p>每个接收器可以处理后终止广播的传递，或者修改广播内容。</p>
+</li>
+<li><p>优点：可控制广播的传播，并允许对广播进行修改。</p>
+</li>
+<li><p>缺点：效率较低，因为接收器按顺序逐个处理广播。</p>
+</li>
+</ul>
+<h2 id="广播的类型"><a href="#广播的类型" class="headerlink" title="广播的类型"></a>广播的类型</h2><p><strong>系统广播</strong></p>
+<p>安卓系统定义了一些广播来通知应用程序系统事件。</p>
+<p><strong>自定义广播</strong></p>
+<p>开发者可以发送自己定义的广播，用于应用内部或多个应用之间的通信。</p>
+<h2 id="广播接收器"><a href="#广播接收器" class="headerlink" title="广播接收器"></a>广播接收器</h2><p>广播接收器可以通过两种方式注册：</p>
+<h3 id="静态注册"><a href="#静态注册" class="headerlink" title="静态注册"></a>静态注册</h3><p>静态注册的广播接收器在应用未运行时也可以接收到广播。</p>
+<h3 id="动态注册"><a href="#动态注册" class="headerlink" title="动态注册"></a>动态注册</h3><p>动态注册的广播只在应用运行时有效。</p>
+<h4 id="动态注册广播监听网络变化"><a href="#动态注册广播监听网络变化" class="headerlink" title="动态注册广播监听网络变化"></a>动态注册广播监听网络变化</h4>
       
     </div>
 
@@ -1242,7 +1268,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2025-01-21 16:41:41" itemprop="dateModified" datetime="2025-01-21T16:41:41+08:00">2025-01-21</time>
+                <time title="修改时间：2025-01-22 21:23:45" itemprop="dateModified" datetime="2025-01-22T21:23:45+08:00">2025-01-22</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1260,7 +1286,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>1k</span>
+              <span>1.5k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -1279,7 +1305,14 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="Log"><a href="#Log" class="headerlink" title="Log"></a>Log</h1><p><code>android.util.Log</code>是Android中的日志工具类，这个类中提供了5个方法。</p>
+          <h1 id="DexClassLoader"><a href="#DexClassLoader" class="headerlink" title="DexClassLoader"></a>DexClassLoader</h1><p>Android 提供的用于动态加载 <code>.dex</code> 文件、<code>.apk</code> 文件或 <code>.jar</code> 文件的核心工具。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="title function_">DexClassLoader</span><span class="params">(</span></span><br><span class="line"><span class="params">    String dexPath,      // .dex/.apk/.jar 文件的路径</span></span><br><span class="line"><span class="params">    String optimizedDirectory, // 解压和优化后的 .odex 文件存放路径</span></span><br><span class="line"><span class="params">    String librarySearchPath,  // 关联的本地库(.so)</span>文件的路径，可为 <span class="literal">null</span></span><br><span class="line">    ClassLoader parent         <span class="comment">// 父类加载器（委托机制使用）</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment">// dexPath：必填，一个完整的文件路径</span></span><br><span class="line"><span class="comment">// optimizedDirectory：必填，存放优化后的文件，，一个可写的目录路径。</span></span><br><span class="line"><span class="comment">// librarySearchPath：可选</span></span><br><span class="line"><span class="comment">// parent：必填：父类加载器（ClassLoader），用于实现 Java 的类加载委托机制。</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="findClass"><a href="#findClass" class="headerlink" title="findClass"></a>findClass</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">protected</span> Class&lt;?&gt; findClass(String name) <span class="keyword">throws</span> ClassNotFoundException</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="Log"><a href="#Log" class="headerlink" title="Log"></a>Log</h1><p><code>android.util.Log</code>是Android中的日志工具类，这个类中提供了5个方法。</p>
 <ul>
 <li><code>Log.v()</code>：用于打印那些最为繁琐、意义最小的日志信息。对应级别verbose。</li>
 <li><code>Log.d()</code>：用于打印一些调试信息，这些信息对调试程序和分析问题应该是有帮助的。对应级别是debug。</li>
@@ -1738,7 +1771,7 @@
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">27</span>
+        <span class="site-state-item-count">26</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
@@ -1785,13 +1818,13 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">321k</span>
+    <span title="站点总字数">331k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">4:52</span>
+    <span title="站点阅读时长">5:01</span>
 </div>
 
 

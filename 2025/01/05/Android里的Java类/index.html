@@ -20,15 +20,15 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="Logandroid.util.Log是Android中的日志工具类，这个类中提供了5个方法。  Log.v()：用于打印那些最为繁琐、意义最小的日志信息。对应级别verbose。 Log.d()：用于打印一些调试信息，这些信息对调试程序和分析问题应该是有帮助的。对应级别是debug。 Log.i()：用于打印一些比较重要的数据，这些数据应该是可以帮助分析用户行为的数据。对应级别info。 Log">
+  <meta name="description" content="DexClassLoaderAndroid 提供的用于动态加载 .dex 文件、.apk 文件或 .jar 文件的核心工具。 1234567891011public DexClassLoader(    String dexPath,      &#x2F;&#x2F; .dex&#x2F;.apk&#x2F;.jar 文件的路径    String optimizedDirectory, &#x2F;&#x2F; 解压和优化后的 .odex 文件存放路径">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android里的Java类">
 <meta property="og:url" content="http://example.com/2025/01/05/Android%E9%87%8C%E7%9A%84Java%E7%B1%BB/index.html">
 <meta property="og:site_name" content="白乐天">
-<meta property="og:description" content="Logandroid.util.Log是Android中的日志工具类，这个类中提供了5个方法。  Log.v()：用于打印那些最为繁琐、意义最小的日志信息。对应级别verbose。 Log.d()：用于打印一些调试信息，这些信息对调试程序和分析问题应该是有帮助的。对应级别是debug。 Log.i()：用于打印一些比较重要的数据，这些数据应该是可以帮助分析用户行为的数据。对应级别info。 Log">
+<meta property="og:description" content="DexClassLoaderAndroid 提供的用于动态加载 .dex 文件、.apk 文件或 .jar 文件的核心工具。 1234567891011public DexClassLoader(    String dexPath,      &#x2F;&#x2F; .dex&#x2F;.apk&#x2F;.jar 文件的路径    String optimizedDirectory, &#x2F;&#x2F; 解压和优化后的 .odex 文件存放路径">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-01-04T16:27:18.000Z">
-<meta property="article:modified_time" content="2025-01-21T08:41:41.592Z">
+<meta property="article:modified_time" content="2025-01-22T13:23:45.653Z">
 <meta property="article:author" content="Bileton">
 <meta property="article:tag" content="Java类">
 <meta name="twitter:card" content="summary">
@@ -132,7 +132,7 @@
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">27</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">26</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
@@ -223,7 +223,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2025-01-21 16:41:41" itemprop="dateModified" datetime="2025-01-21T16:41:41+08:00">2025-01-21</time>
+                <time title="修改时间：2025-01-22 21:23:45" itemprop="dateModified" datetime="2025-01-22T21:23:45+08:00">2025-01-22</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -241,7 +241,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>1k</span>
+              <span>1.5k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -260,7 +260,14 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="Log"><a href="#Log" class="headerlink" title="Log"></a>Log</h1><p><code>android.util.Log</code>是Android中的日志工具类，这个类中提供了5个方法。</p>
+        <h1 id="DexClassLoader"><a href="#DexClassLoader" class="headerlink" title="DexClassLoader"></a>DexClassLoader</h1><p>Android 提供的用于动态加载 <code>.dex</code> 文件、<code>.apk</code> 文件或 <code>.jar</code> 文件的核心工具。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="title function_">DexClassLoader</span><span class="params">(</span></span><br><span class="line"><span class="params">    String dexPath,      // .dex/.apk/.jar 文件的路径</span></span><br><span class="line"><span class="params">    String optimizedDirectory, // 解压和优化后的 .odex 文件存放路径</span></span><br><span class="line"><span class="params">    String librarySearchPath,  // 关联的本地库(.so)</span>文件的路径，可为 <span class="literal">null</span></span><br><span class="line">    ClassLoader parent         <span class="comment">// 父类加载器（委托机制使用）</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment">// dexPath：必填，一个完整的文件路径</span></span><br><span class="line"><span class="comment">// optimizedDirectory：必填，存放优化后的文件，，一个可写的目录路径。</span></span><br><span class="line"><span class="comment">// librarySearchPath：可选</span></span><br><span class="line"><span class="comment">// parent：必填：父类加载器（ClassLoader），用于实现 Java 的类加载委托机制。</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="findClass"><a href="#findClass" class="headerlink" title="findClass"></a>findClass</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">protected</span> Class&lt;?&gt; findClass(String name) <span class="keyword">throws</span> ClassNotFoundException</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="Log"><a href="#Log" class="headerlink" title="Log"></a>Log</h1><p><code>android.util.Log</code>是Android中的日志工具类，这个类中提供了5个方法。</p>
 <ul>
 <li><code>Log.v()</code>：用于打印那些最为繁琐、意义最小的日志信息。对应级别verbose。</li>
 <li><code>Log.d()</code>：用于打印一些调试信息，这些信息对调试程序和分析问题应该是有帮助的。对应级别是debug。</li>
@@ -367,7 +374,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Log"><span class="nav-number">1.</span> <span class="nav-text">Log</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Toast"><span class="nav-number">2.</span> <span class="nav-text">Toast</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Pair"><span class="nav-number">3.</span> <span class="nav-text">Pair</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#DexClassLoader"><span class="nav-number">1.</span> <span class="nav-text">DexClassLoader</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#findClass"><span class="nav-number">1.1.</span> <span class="nav-text">findClass</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Log"><span class="nav-number">2.</span> <span class="nav-text">Log</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Toast"><span class="nav-number">3.</span> <span class="nav-text">Toast</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Pair"><span class="nav-number">4.</span> <span class="nav-text">Pair</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -390,7 +397,7 @@
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">27</span>
+        <span class="site-state-item-count">26</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
@@ -437,13 +444,13 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">321k</span>
+    <span title="站点总字数">331k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">4:52</span>
+    <span title="站点阅读时长">5:01</span>
 </div>
 
 

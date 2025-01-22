@@ -129,7 +129,7 @@
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">27</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">26</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
@@ -494,7 +494,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2025-01-21 00:56:36" itemprop="dateModified" datetime="2025-01-21T00:56:36+08:00">2025-01-21</time>
+                <time title="修改时间：2025-01-22 21:05:50" itemprop="dateModified" datetime="2025-01-22T21:05:50+08:00">2025-01-22</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -512,14 +512,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>3.6k</span>
+              <span>4.2k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>3 分钟</span>
+              <span>4 分钟</span>
             </span>
 
         </div>
@@ -535,7 +535,15 @@
 
 <h2 id="use-className"><a href="#use-className" class="headerlink" title="use(className)"></a>use(className)</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Java</span>.<span class="title function_">perform</span>(<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;This is Java.perform!&quot;</span>);</span><br><span class="line">    <span class="keyword">var</span> <span class="keyword">class</span> = <span class="title class_">Java</span>.<span class="title function_">use</span>(className);</span><br><span class="line">    <span class="keyword">class</span>.<span class="property">method</span>.<span class="property">implementation</span> = <span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;This is class.method!&quot;</span>);</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
-<h2 id="Java-choose-className-callbacks"><a href="#Java-choose-className-callbacks" class="headerlink" title="Java.choose(className, callbacks)"></a>Java.choose(className, callbacks)</h2><h2 id="Java-enumerateLoadedClasses-callbacks"><a href="#Java-enumerateLoadedClasses-callbacks" class="headerlink" title="Java.enumerateLoadedClasses(callbacks)"></a>Java.enumerateLoadedClasses(callbacks)</h2><h2 id="Java-enumerateLoadedClassesSync"><a href="#Java-enumerateLoadedClassesSync" class="headerlink" title="Java.enumerateLoadedClassesSync()"></a>Java.enumerateLoadedClassesSync()</h2><h2 id="Java-enumerateClassLoaders-callbacks"><a href="#Java-enumerateClassLoaders-callbacks" class="headerlink" title="Java.enumerateClassLoaders(callbacks)"></a>Java.enumerateClassLoaders(callbacks)</h2><h2 id="Java-enumerateClassLoadersSync"><a href="#Java-enumerateClassLoadersSync" class="headerlink" title="Java.enumerateClassLoadersSync()"></a>Java.enumerateClassLoadersSync()</h2><h2 id="Java-enumerateMethods-query"><a href="#Java-enumerateMethods-query" class="headerlink" title="Java.enumerateMethods(query)"></a>Java.enumerateMethods(query)</h2><h1 id="Process"><a href="#Process" class="headerlink" title="Process"></a>Process</h1><h2 id="pointerSize"><a href="#pointerSize" class="headerlink" title="pointerSize"></a>pointerSize</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Process.pointerSize</span><br></pre></td></tr></table></figure>
+<h2 id="Java-choose-className-callbacks"><a href="#Java-choose-className-callbacks" class="headerlink" title="Java.choose(className, callbacks)"></a>Java.choose(className, callbacks)</h2><h2 id="Java-enumerateLoadedClasses-callbacks"><a href="#Java-enumerateLoadedClasses-callbacks" class="headerlink" title="Java.enumerateLoadedClasses(callbacks)"></a>Java.enumerateLoadedClasses(callbacks)</h2><p>枚举已加载的类</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Java</span>.<span class="title function_">perform</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="title class_">Java</span>.<span class="title function_">enumerateLoadedClasses</span>(&#123;</span><br><span class="line">        <span class="attr">onMatch</span>: <span class="keyword">function</span> (<span class="params">className</span>) &#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Loaded class: &quot;</span> + className);</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">onComplete</span>: <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Class enumeration complete&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="Java-enumerateLoadedClassesSync"><a href="#Java-enumerateLoadedClassesSync" class="headerlink" title="Java.enumerateLoadedClassesSync()"></a>Java.enumerateLoadedClassesSync()</h2><h2 id="Java-enumerateClassLoaders-callbacks"><a href="#Java-enumerateClassLoaders-callbacks" class="headerlink" title="Java.enumerateClassLoaders(callbacks)"></a>Java.enumerateClassLoaders(callbacks)</h2><p>枚举所有的类加载器</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Java</span>.<span class="title function_">perform</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="title class_">Java</span>.<span class="title function_">enumerateClassLoaders</span>(&#123;</span><br><span class="line">        <span class="attr">onMatch</span>: <span class="keyword">function</span> (<span class="params">loader</span>) &#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Found ClassLoader: &quot;</span> + loader);</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">onComplete</span>: <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;ClassLoader enumeration complete&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="Java-enumerateClassLoadersSync"><a href="#Java-enumerateClassLoadersSync" class="headerlink" title="Java.enumerateClassLoadersSync()"></a>Java.enumerateClassLoadersSync()</h2><h2 id="Java-enumerateMethods-query"><a href="#Java-enumerateMethods-query" class="headerlink" title="Java.enumerateMethods(query)"></a>Java.enumerateMethods(query)</h2><h1 id="Process"><a href="#Process" class="headerlink" title="Process"></a>Process</h1><h2 id="pointerSize"><a href="#pointerSize" class="headerlink" title="pointerSize"></a>pointerSize</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Process.pointerSize</span><br></pre></td></tr></table></figure>
 
 <p>以字节为单位获取指针的大小。</p>
 <h2 id="getCurrentThreadId"><a href="#getCurrentThreadId" class="headerlink" title="getCurrentThreadId()"></a>getCurrentThreadId()</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Process.getCurrentThreadId()</span><br></pre></td></tr></table></figure>
@@ -1218,7 +1226,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2025-01-16 22:36:48" itemprop="dateModified" datetime="2025-01-16T22:36:48+08:00">2025-01-16</time>
+                <time title="修改时间：2025-01-22 23:12:36" itemprop="dateModified" datetime="2025-01-22T23:12:36+08:00">2025-01-22</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1236,14 +1244,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>7.3k</span>
+              <span>8.7k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>7 分钟</span>
+              <span>8 分钟</span>
             </span>
 
         </div>
@@ -1334,9 +1342,154 @@
 
 
 
+<h1 id="re"><a href="#re" class="headerlink" title="re"></a>re</h1><p>正则表达式</p>
+<h2 id="常用匹配规则"><a href="#常用匹配规则" class="headerlink" title="常用匹配规则"></a>常用匹配规则</h2><h3 id="元字符"><a href="#元字符" class="headerlink" title="元字符"></a>元字符</h3><table>
+<thead>
+<tr>
+<th>模式</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>.</td>
+<td>匹配任意单个字符（除换行符）。</td>
+</tr>
+<tr>
+<td>^</td>
+<td>匹配字符串的开头。</td>
+</tr>
+<tr>
+<td>$</td>
+<td>匹配字符串的结尾。</td>
+</tr>
+<tr>
+<td>*</td>
+<td>匹配前一个字符0次或多次。</td>
+</tr>
+<tr>
+<td>+</td>
+<td>匹配前一个字符1次或多次。</td>
+</tr>
+<tr>
+<td>?</td>
+<td>匹配前一个字符0次或1次。</td>
+</tr>
+<tr>
+<td>{n}</td>
+<td>精确匹配前一个字符 n 次。</td>
+</tr>
+<tr>
+<td>{n,}</td>
+<td>匹配前一个字符至少 n 次。</td>
+</tr>
+<tr>
+<td>{n,m}</td>
+<td>匹配前一个字符 n 到 m 次。</td>
+</tr>
+</tbody></table>
+<h3 id="字符类"><a href="#字符类" class="headerlink" title="字符类"></a>字符类</h3><table>
+<thead>
+<tr>
+<th>模式</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>[abc]</code></td>
+<td>匹配字符 “a”、”b” 或 “c”。</td>
+</tr>
+<tr>
+<td><code>[a-z]</code></td>
+<td>匹配所有小写字母。</td>
+</tr>
+<tr>
+<td><code>[^abc]</code></td>
+<td>匹配除 “a”、”b” 和 “c” 之外的任意字符。</td>
+</tr>
+</tbody></table>
+<h3 id="预定义字符类"><a href="#预定义字符类" class="headerlink" title="预定义字符类"></a>预定义字符类</h3><table>
+<thead>
+<tr>
+<th>模式</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>\d</code></td>
+<td>匹配任意数字，等价于 [0-9]。</td>
+</tr>
+<tr>
+<td><code>\D</code></td>
+<td>匹配任意非数字。</td>
+</tr>
+<tr>
+<td><code>\w</code></td>
+<td>匹配字母、数字或下划线，等价于 [a-zA-Z0-9_]。</td>
+</tr>
+<tr>
+<td><code>\W</code></td>
+<td>匹配非字母、数字和下划线。</td>
+</tr>
+<tr>
+<td><code>\s</code></td>
+<td>匹配空白字符，包括空格、制表符等。</td>
+</tr>
+<tr>
+<td><code>\S</code></td>
+<td>匹配非空白字符。</td>
+</tr>
+</tbody></table>
+<h3 id="分组和引用"><a href="#分组和引用" class="headerlink" title="分组和引用"></a>分组和引用</h3><table>
+<thead>
+<tr>
+<th>模式</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>()</td>
+<td>用于分组，可以将一部分模式看作一个整体</td>
+</tr>
+<tr>
+<td>|</td>
+<td>匹配左边或右边的表达式。</td>
+</tr>
+<tr>
+<td>\1, \2,…</td>
+<td>反向引用，用于引用分组匹配的内容。</td>
+</tr>
+</tbody></table>
+<h2 id="match-object（匹配对象）"><a href="#match-object（匹配对象）" class="headerlink" title="match object（匹配对象）"></a>match object（匹配对象）</h2><p>匹配对象是 re.Match 类型的实例，可以通过该对象访问有关匹配的信息。</p>
+<h3 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h3><h4 id="lastindex"><a href="#lastindex" class="headerlink" title="lastindex"></a>lastindex</h4><p>返回正则表达式中最后一个分组的索引。如果没有分组，则返回 None。</p>
+<h4 id="lastgroup"><a href="#lastgroup" class="headerlink" title="lastgroup"></a>lastgroup</h4><p>返回最后一个匹配的分组名称（如果正则表达式使用了命名分组）。如果没有使用命名分组，则返回 None。</p>
+<h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><h4 id="group"><a href="#group" class="headerlink" title="group()"></a>group()</h4><ul>
+<li>返回整个匹配的字符串（即正则表达式匹配到的内容）。  </li>
+<li>如果正则表达式包含分组（用圆括号 () 包围的部分），可以通过 group() 方法传入一个数字来返回特定分组的匹配内容。</li>
+</ul>
+<h4 id="start"><a href="#start" class="headerlink" title="start()"></a>start()</h4><p>返回匹配的起始位置（索引），即匹配字符串的第一个字符在原始字符串中的位置。</p>
+<h4 id="end"><a href="#end" class="headerlink" title="end()"></a>end()</h4><p>返回匹配的结束位置（索引），即匹配字符串的最后一个字符后面的索引。注意，这个位置是匹配的结束位置的下一个位置。</p>
+<h4 id="span"><a href="#span" class="headerlink" title="span()"></a>span()</h4><p>返回一个元组 (start, end)，分别表示匹配的起始位置和结束位置。</p>
+<h4 id="groups"><a href="#groups" class="headerlink" title="groups()"></a>groups()</h4><p>返回所有分组的元组（不包括整个匹配的字符串），如果正则表达式没有分组，则返回一个空元组 ()。</p>
+<h4 id="groupdict"><a href="#groupdict" class="headerlink" title="groupdict()"></a>groupdict()</h4><p>如果正则表达式使用了命名分组，groupdict() 会返回一个字典，键为分组名称，值为对应分组的匹配内容。否则，返回一个空字典。</p>
+<h2 id="match"><a href="#match" class="headerlink" title="match()"></a>match()</h2><p>从字符串的起始位置开始匹配正则表达式 pattern，如果匹配成功，返回一个匹配对象；如果不匹配，返回 None。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">re.<span class="keyword">match</span>(pattern, string)</span><br></pre></td></tr></table></figure>
 
+<h2 id="search"><a href="#search" class="headerlink" title="search()"></a>search()</h2><p>在整个字符串中搜索匹配正则表达式 pattern 的部分，只要找到了第一个匹配项就返回匹配对象，否则返回 None。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">re.search(pattern, string)</span><br></pre></td></tr></table></figure>
 
-<h1 id="JSON"><a href="#JSON" class="headerlink" title="JSON"></a>JSON</h1><p>JSON（JavaScript Object Notation）是一种轻量级的数据交换格式，易于人和机器阅读和解析。它基于JavaScript的对象表示法，但被广泛用于多种编程语言。</p>
+<h2 id="findall"><a href="#findall" class="headerlink" title="findall()"></a>findall()</h2><p>查找所有匹配 pattern 的部分，并返回一个列表。如果没有匹配项，则返回空列表。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">re.findall(pattern, string)</span><br></pre></td></tr></table></figure>
+
+<h2 id="finditer"><a href="#finditer" class="headerlink" title="finditer()"></a>finditer()</h2><p>与 findall 类似，但是返回的是一个迭代器，每个元素是一个匹配对象。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">re.finditer(pattern, string)</span><br></pre></td></tr></table></figure>
+
+<h2 id="sub"><a href="#sub" class="headerlink" title="sub()"></a>sub()</h2><p>用 repl 替换字符串中所有匹配 pattern 的部分，返回替换后的新字符串。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">re.sub(pattern, repl, string)</span><br></pre></td></tr></table></figure>
+
+<h2 id="split"><a href="#split" class="headerlink" title="split()"></a>split()</h2><p>根据正则表达式 pattern 将字符串分割成多个部分，返回一个列表。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">re.split(pattern, string)</span><br></pre></td></tr></table></figure>
+
+<h1 id><a href="#" class="headerlink" title></a></h1><h1 id="JSON"><a href="#JSON" class="headerlink" title="JSON"></a>JSON</h1><p>JSON（JavaScript Object Notation）是一种轻量级的数据交换格式，易于人和机器阅读和解析。它基于JavaScript的对象表示法，但被广泛用于多种编程语言。</p>
 <h2 id="JSON中的数据类型"><a href="#JSON中的数据类型" class="headerlink" title="JSON中的数据类型"></a>JSON中的数据类型</h2><ul>
 <li>字符串（String）：用双引号包围，如 “Hello, World!”。</li>
 <li>数字（Number）：如 123、3.14，无引号。</li>
@@ -1827,7 +1980,7 @@
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">27</span>
+        <span class="site-state-item-count">26</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
@@ -1874,13 +2027,13 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">321k</span>
+    <span title="站点总字数">331k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">4:52</span>
+    <span title="站点阅读时长">5:01</span>
 </div>
 
 
