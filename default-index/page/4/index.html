@@ -1086,7 +1086,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2025-01-15 00:08:31" itemprop="dateModified" datetime="2025-01-15T00:08:31+08:00">2025-01-15</time>
+                <time title="修改时间：2025-01-25 23:43:48" itemprop="dateModified" datetime="2025-01-25T23:43:48+08:00">2025-01-25</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1104,7 +1104,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>2.3k</span>
+              <span>2.7k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -1258,7 +1258,17 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adds x0,x1,x2  ;x0=x1+x2 and set flags</span><br></pre></td></tr></table></figure>
 
 <h3 id="sub"><a href="#sub" class="headerlink" title="sub"></a>sub</h3><p>减法</p>
-<h3 id="mul"><a href="#mul" class="headerlink" title="mul"></a>mul</h3><p>乘法</p>
+<h3 id="mul"><a href="#mul" class="headerlink" title="mul"></a>mul</h3><p><code>MUL</code> 指令用于无符号乘法。它将两个寄存器的值相乘，并将结果存储在目标寄存器中。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MUL destination, operand1, operand2</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="muls"><a href="#muls" class="headerlink" title="muls"></a>muls</h3><p><code>MULS</code> 与 <code>MUL</code> 指令类似，但是它还会更新条件码（N, Z, C, V），即用于设置 ARM 标志寄存器的状态。用于无符号乘法，格式和 <code>MUL</code> 类似。</p>
+<h3 id="mla"><a href="#mla" class="headerlink" title="mla"></a>mla</h3><p><code>MLA</code> 指令用于乘法累加操作，即将两个数相乘后将结果加到一个寄存器上。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MLA destination, operand1, operand2, operand3</span><br></pre></td></tr></table></figure>
+
+
+
 <h3 id="sdiv-udiv"><a href="#sdiv-udiv" class="headerlink" title="sdiv&#x2F;udiv"></a>sdiv&#x2F;udiv</h3><p>除法</p>
 <h2 id="移位和循环移位"><a href="#移位和循环移位" class="headerlink" title="移位和循环移位"></a>移位和循环移位</h2><h3 id="lsl（Logical-Shift-Left）"><a href="#lsl（Logical-Shift-Left）" class="headerlink" title="lsl（Logical Shift Left）"></a>lsl（Logical Shift Left）</h3><p>逻辑左移，左移后相当于乘以 2 的若干次方。</p>
 <p>将一个值的二进制位整体向左移动，用 <strong>0</strong> 填充右边空出的位，丢弃左边溢出的位。</p>
@@ -1297,7 +1307,17 @@
 <h3 id="STR"><a href="#STR" class="headerlink" title="STR"></a>STR</h3><p>将寄存器中的数据存储到内存地址中。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">STR R0, [R1]      ; 将寄存器R0的值存储到R1指向的内存地址</span><br><span class="line">STR R2, [R3, #8]  ; 将R2的值存储到R3 + 8的内存地址</span><br></pre></td></tr></table></figure>
 
-<h1 id="控制流"><a href="#控制流" class="headerlink" title="控制流"></a>控制流</h1><h2 id="分支指令"><a href="#分支指令" class="headerlink" title="分支指令"></a>分支指令</h2><h3 id="BL"><a href="#BL" class="headerlink" title="BL"></a>BL</h3><p><code>BL</code> 指令的主要作用是跳转到目标地址（Branch），同时将当前指令的下一条指令地址（即返回地址）保存到链接寄存器 **<code>LR</code>**中。</p>
+<h1 id="控制流"><a href="#控制流" class="headerlink" title="控制流"></a>控制流</h1><h2 id="分支指令"><a href="#分支指令" class="headerlink" title="分支指令"></a>分支指令</h2><h3 id="B（Branch）"><a href="#B（Branch）" class="headerlink" title="B（Branch）"></a>B（Branch）</h3><p>用于无条件跳转到指定标签的指令。该指令会直接将程序的执行转到目标地址。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">B label  ; 跳转到指定的 label</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="BL（Branch-with-Link）"><a href="#BL（Branch-with-Link）" class="headerlink" title="BL（Branch with Link）"></a>BL（Branch with Link）</h3><p>用于调用子程序。当执行该指令时，程序跳转到目标地址，并将当前指令的下一条指令地址保存在链接寄存器（LR，R14）中。之后可以通过 <code>BX LR</code> 或 <code>MOV PC, LR</code> 返回。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BL function  ; 调用 function 子程序，并将返回地址保存到 LR</span><br></pre></td></tr></table></figure>
+
+<h3 id="BX（Branch-and-Exchange）"><a href="#BX（Branch-and-Exchange）" class="headerlink" title="BX（Branch and Exchange）"></a>BX（Branch and Exchange）</h3><p><code>BX</code> 指令用于根据寄存器的值跳转，并且可以用于 ARM 和 Thumb 模式之间的切换。<code>BX</code> 常用于从子程序返回。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BX LR  ; 使用链接寄存器 LR 跳转，通常用于返回</span><br></pre></td></tr></table></figure>
+
 
       
     </div>
@@ -2038,13 +2058,13 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">345k</span>
+    <span title="站点总字数">347k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">5:13</span>
+    <span title="站点阅读时长">5:15</span>
 </div>
 
 
