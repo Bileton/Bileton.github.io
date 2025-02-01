@@ -28,7 +28,7 @@
 <meta property="og:description" content="AES简介AES的全称是Advanced Encryption Standard，意思是高级加密标准，是一种对称密钥加密算法，它的出现主要是为了取代DES加密算法的。AES是一种块加密算法，它将数据分成固定大小的块（通常是128位），然后进行加密。 块大小：AES加密算法使用128位（16字节）的块来处理数据。无论输入数据的大小是多少，AES都会将其分割成多个128位块进行加密。 秘钥长度：AES">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-01-28T17:05:22.000Z">
-<meta property="article:modified_time" content="2025-01-29T15:34:07.255Z">
+<meta property="article:modified_time" content="2025-01-29T15:42:29.254Z">
 <meta property="article:author" content="Bileton">
 <meta property="article:tag" content="AES">
 <meta name="twitter:card" content="summary">
@@ -217,7 +217,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2025-01-29 01:05:22 / 修改时间：23:34:07" itemprop="dateCreated datePublished" datetime="2025-01-29T01:05:22+08:00">2025-01-29</time>
+              <time title="创建时间：2025-01-29 01:05:22 / 修改时间：23:42:29" itemprop="dateCreated datePublished" datetime="2025-01-29T01:05:22+08:00">2025-01-29</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -263,19 +263,24 @@
 <li><strong>AES-256</strong>：密钥长度为256位（32字节）</li>
 </ul>
 <h1 id="加密流程"><a href="#加密流程" class="headerlink" title="加密流程"></a>加密流程</h1><p>AES的加密流程可以分为3个步骤。</p>
-<h2 id="初始轮（Initial-Round）"><a href="#初始轮（Initial-Round）" class="headerlink" title="初始轮（Initial Round）"></a>初始轮（Initial Round）</h2><h3 id="轮密钥加（AddRoundKey）"><a href="#轮密钥加（AddRoundKey）" class="headerlink" title="轮密钥加（AddRoundKey）"></a>轮密钥加（AddRoundKey）</h3><p>在初始轮，输入的明文块（128位）与扩展出的第一轮密钥（轮密钥）进行按位异或（XOR）操作。</p>
+<h2 id="初始轮（Initial-Round）"><a href="#初始轮（Initial-Round）" class="headerlink" title="初始轮（Initial Round）"></a>初始轮（Initial Round）</h2><p><strong>轮密钥加（AddRoundKey）</strong></p>
+<p>在初始轮，输入的明文块（128位）与扩展出的第一轮密钥（轮密钥）进行按位异或（XOR）操作。</p>
 <h2 id="中间轮（Rounds）"><a href="#中间轮（Rounds）" class="headerlink" title="中间轮（Rounds）"></a>中间轮（Rounds）</h2><p>中间轮在初始轮之后，会重复进行多次（取决于密钥长度，AES-128通常为9轮，AES-192为11轮，AES-256为13轮）。</p>
-<h3 id="字节代换（SubBytes）"><a href="#字节代换（SubBytes）" class="headerlink" title="字节代换（SubBytes）"></a>字节代换（SubBytes）</h3><p>字节替代使用一个固定的S-Box（代换盒），将数据块中的每个字节都进行代换。S-Box是一个非线性的替代表，可以增加算法的复杂性和安全性。</p>
+<p><strong>字节代换（SubBytes）</strong></p>
+<p>字节代换使用一个固定的S-Box（代换盒），将数据块中的每个字节都进行代换。S-Box是一个非线性的代换表，可以增加算法的复杂性和安全性。</p>
 <p>对于状态矩阵中的每个字节，AES通过查找S-Box表中的对应值来替换。例如，如果某个字节的值是<code>0x32</code>，那么该字节将被替换为S-Box中<code>0x32</code>位置对应的值。</p>
-<h3 id="行移位（ShiftRows）"><a href="#行移位（ShiftRows）" class="headerlink" title="行移位（ShiftRows）"></a>行移位（ShiftRows）</h3><p>对状态矩阵中的每一行进行循环左移。具体来说：</p>
+<p><strong>行移位（ShiftRows）</strong></p>
+<p>对状态矩阵中的每一行进行循环左移。具体来说：</p>
 <ul>
 <li>第一行不变。</li>
 <li>第二行左移1个字节。</li>
 <li>第三行左移2个字节。</li>
 <li>第四行左移3个字节。</li>
 </ul>
-<h3 id="列混合（MixColumns）"><a href="#列混合（MixColumns）" class="headerlink" title="列混合（MixColumns）"></a>列混合（MixColumns）</h3><p>每一列的四个字节会与一个固定矩阵相乘，生成新的四个字节。</p>
-<h3 id="轮密钥加（AddRoundKey）-1"><a href="#轮密钥加（AddRoundKey）-1" class="headerlink" title="轮密钥加（AddRoundKey）"></a>轮密钥加（AddRoundKey）</h3><p>将当前状态矩阵与当前轮的轮密钥进行按位异或（XOR）操作。轮密钥是在密钥扩展阶段从原始密钥中生成的，每一轮都有不同的轮密钥。</p>
+<p><strong>列混合（MixColumns）</strong></p>
+<p>每一列的四个字节会与一个固定矩阵相乘，生成新的四个字节。</p>
+<p><strong>轮密钥加（AddRoundKey）</strong></p>
+<p>将当前状态矩阵与当前轮的轮密钥进行按位异或（XOR）操作。轮密钥是在密钥扩展阶段从原始密钥中生成的，每一轮都有不同的轮密钥。</p>
 <h2 id="最终轮（Final-Round）"><a href="#最终轮（Final-Round）" class="headerlink" title="最终轮（Final Round）"></a>最终轮（Final Round）</h2><p>最终轮与中间轮类似，但没有列混合步骤。</p>
 <p>最终轮执行完后，生成的内容就是AES加密后的密文。</p>
 <h1 id="密钥扩展"><a href="#密钥扩展" class="headerlink" title="密钥扩展"></a>密钥扩展</h1><p>密钥扩展（Key Expansion）是AES加密过程中的一个关键步骤，它将原始的密钥扩展成多个轮密钥（Round Keys），这些轮密钥将在加密过程中使用。密钥扩展的目的是确保在每一轮加密中，使用的密钥都是不同的，以增强算法的安全性。</p>
@@ -285,14 +290,17 @@
 <li><strong>AES-192</strong>：原始密钥长度为24字节，扩展出13个轮密钥。</li>
 <li><strong>AES-256</strong>：原始密钥长度为32字节，扩展出15个轮密钥。</li>
 </ul>
-<h2 id="密钥扩展的步骤"><a href="#密钥扩展的步骤" class="headerlink" title="密钥扩展的步骤"></a>密钥扩展的步骤</h2><h3 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h3><p>将原始密钥按字节划分为多个字。每个字是4字节（32位）。假设原始密钥长度为128位（16字节），则将其分为4个字：</p>
+<h2 id="密钥扩展的步骤"><a href="#密钥扩展的步骤" class="headerlink" title="密钥扩展的步骤"></a>密钥扩展的步骤</h2><p><strong>初始化</strong></p>
+<p>将原始密钥按字节划分为多个字。每个字是4字节（32位）。假设原始密钥长度为128位（16字节），则将其分为4个字：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">W0, W1, W2, W3</span><br></pre></td></tr></table></figure>
 
-<h3 id="扩展轮秘钥"><a href="#扩展轮秘钥" class="headerlink" title="扩展轮秘钥"></a>扩展轮秘钥</h3><ul>
-<li><strong>初始密钥</strong>：16字节（4字），记为 <code>W[0]</code> 到 <code>W[3]</code>。</li>
-<li><strong>扩展密钥</strong>：从<code>W[4]</code>扩展到<code>W[44]</code>，生成44个字（176字节），用于11轮加密。</li>
+<p><strong>扩展轮秘钥</strong></p>
+<ul>
+<li>初始密钥：16字节（4字），记为 <code>W[0]</code> 到 <code>W[3]</code>。</li>
+<li>扩展密钥：从<code>W[4]</code>扩展到<code>W[44]</code>，生成44个字（176字节），用于11轮加密。</li>
 </ul>
-<h3 id="生成规则"><a href="#生成规则" class="headerlink" title="生成规则"></a>生成规则</h3><p>对于<code>W[i]</code></p>
+<p><strong>生成规则</strong></p>
+<p>对于<code>W[i]</code></p>
 <ul>
 <li><p>如果i不是4的倍数，那么第i列为</p>
   <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">W[i] = W[i-4] ⊕ W[i-1]</span><br></pre></td></tr></table></figure>
@@ -302,9 +310,9 @@
 
 <p>  函数T包含三部分内容</p>
 <ul>
-<li><strong>循环左移</strong>（RotWord）：将输入字的4字节左移1位，如 <code>[a,b,c,d] → [b,c,d,a]</code>。</li>
-<li><strong>S盒替换</strong>（SubWord）：每个字节通过AES的S盒进行非线性替换。</li>
-<li><strong>异或轮常数</strong>（Rcon）：与轮常数 <code>Rcon[j] = [0x01, 0x02, 0x04, ..., 0x80]</code>异或。</li>
+<li>循环左移（RotWord）：将输入字的4字节左移1位，如 <code>[a,b,c,d] → [b,c,d,a]</code>。</li>
+<li>S盒替换（SubWord）：每个字节通过AES的S盒进行非线性替换。</li>
+<li>异或轮常数（Rcon）：与轮常数 <code>Rcon[j] = [0x01, 0x02, 0x04, ..., 0x80]</code>异或。</li>
 </ul>
 <p>  如</p>
   <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">W4 = W0 ⊕ SubWord(RotWord(W3)) ⊕ Rcon[1]</span><br></pre></td></tr></table></figure></li>
@@ -392,7 +400,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#AES%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">AES简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8A%A0%E5%AF%86%E6%B5%81%E7%A8%8B"><span class="nav-number">2.</span> <span class="nav-text">加密流程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9D%E5%A7%8B%E8%BD%AE%EF%BC%88Initial-Round%EF%BC%89"><span class="nav-number">2.1.</span> <span class="nav-text">初始轮（Initial Round）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AE%E5%AF%86%E9%92%A5%E5%8A%A0%EF%BC%88AddRoundKey%EF%BC%89"><span class="nav-number">2.1.1.</span> <span class="nav-text">轮密钥加（AddRoundKey）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%AD%E9%97%B4%E8%BD%AE%EF%BC%88Rounds%EF%BC%89"><span class="nav-number">2.2.</span> <span class="nav-text">中间轮（Rounds）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%97%E8%8A%82%E4%BB%A3%E6%8D%A2%EF%BC%88SubBytes%EF%BC%89"><span class="nav-number">2.2.1.</span> <span class="nav-text">字节代换（SubBytes）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A1%8C%E7%A7%BB%E4%BD%8D%EF%BC%88ShiftRows%EF%BC%89"><span class="nav-number">2.2.2.</span> <span class="nav-text">行移位（ShiftRows）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%97%E6%B7%B7%E5%90%88%EF%BC%88MixColumns%EF%BC%89"><span class="nav-number">2.2.3.</span> <span class="nav-text">列混合（MixColumns）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AE%E5%AF%86%E9%92%A5%E5%8A%A0%EF%BC%88AddRoundKey%EF%BC%89-1"><span class="nav-number">2.2.4.</span> <span class="nav-text">轮密钥加（AddRoundKey）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%80%E7%BB%88%E8%BD%AE%EF%BC%88Final-Round%EF%BC%89"><span class="nav-number">2.3.</span> <span class="nav-text">最终轮（Final Round）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AF%86%E9%92%A5%E6%89%A9%E5%B1%95"><span class="nav-number">3.</span> <span class="nav-text">密钥扩展</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BD%AE%E7%A7%98%E9%92%A5%E7%9A%84%E7%94%9F%E6%88%90"><span class="nav-number">3.1.</span> <span class="nav-text">轮秘钥的生成</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%86%E9%92%A5%E6%89%A9%E5%B1%95%E7%9A%84%E6%AD%A5%E9%AA%A4"><span class="nav-number">3.2.</span> <span class="nav-text">密钥扩展的步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="nav-number">3.2.1.</span> <span class="nav-text">初始化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%A9%E5%B1%95%E8%BD%AE%E7%A7%98%E9%92%A5"><span class="nav-number">3.2.2.</span> <span class="nav-text">扩展轮秘钥</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%9F%E6%88%90%E8%A7%84%E5%88%99"><span class="nav-number">3.2.3.</span> <span class="nav-text">生成规则</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#AES%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">AES简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8A%A0%E5%AF%86%E6%B5%81%E7%A8%8B"><span class="nav-number">2.</span> <span class="nav-text">加密流程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9D%E5%A7%8B%E8%BD%AE%EF%BC%88Initial-Round%EF%BC%89"><span class="nav-number">2.1.</span> <span class="nav-text">初始轮（Initial Round）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%AD%E9%97%B4%E8%BD%AE%EF%BC%88Rounds%EF%BC%89"><span class="nav-number">2.2.</span> <span class="nav-text">中间轮（Rounds）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%80%E7%BB%88%E8%BD%AE%EF%BC%88Final-Round%EF%BC%89"><span class="nav-number">2.3.</span> <span class="nav-text">最终轮（Final Round）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AF%86%E9%92%A5%E6%89%A9%E5%B1%95"><span class="nav-number">3.</span> <span class="nav-text">密钥扩展</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BD%AE%E7%A7%98%E9%92%A5%E7%9A%84%E7%94%9F%E6%88%90"><span class="nav-number">3.1.</span> <span class="nav-text">轮秘钥的生成</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%86%E9%92%A5%E6%89%A9%E5%B1%95%E7%9A%84%E6%AD%A5%E9%AA%A4"><span class="nav-number">3.2.</span> <span class="nav-text">密钥扩展的步骤</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -462,13 +470,13 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">364k</span>
+    <span title="站点总字数">368k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">5:31</span>
+    <span title="站点阅读时长">5:35</span>
 </div>
 
 
