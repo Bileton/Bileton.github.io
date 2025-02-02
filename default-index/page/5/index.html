@@ -660,7 +660,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2025-02-01 22:53:00" itemprop="dateModified" datetime="2025-02-01T22:53:00+08:00">2025-02-01</time>
+                <time title="修改时间：2025-02-02 14:46:13" itemprop="dateModified" datetime="2025-02-02T14:46:13+08:00">2025-02-02</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -697,7 +697,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h1><h2 id="字符串拼接"><a href="#字符串拼接" class="headerlink" title="字符串拼接"></a>字符串拼接</h2><p>使用<code>+</code>运算符可以将多个字符串拼接起来</p>
+          <h1 id="String"><a href="#String" class="headerlink" title="String"></a>String</h1><h2 id="字符串拼接"><a href="#字符串拼接" class="headerlink" title="字符串拼接"></a>字符串拼接</h2><p>使用<code>+</code>运算符可以将多个字符串拼接起来</p>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">str1 = <span class="string">&quot;Hello&quot;</span></span><br><span class="line">str2 = <span class="string">&quot; &quot;</span></span><br><span class="line">str3 = <span class="string">&quot;World!&quot;</span></span><br><span class="line"></span><br><span class="line">result = str1 + str2 + str3</span><br><span class="line"><span class="built_in">print</span>(result)  <span class="comment"># 输出: Hello World!</span></span><br></pre></td></tr></table></figure>
 
 <h2 id="字符串方法"><a href="#字符串方法" class="headerlink" title="字符串方法"></a>字符串方法</h2><h3 id="join"><a href="#join" class="headerlink" title="join"></a>join</h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">string.join(iterable)</span><br><span class="line"></span><br><span class="line"><span class="comment"># string：要连接的字符串，即连接其他元素的分隔符。</span></span><br><span class="line"><span class="comment"># iterable：一个可迭代对象，比如列表、元组等，其元素会被 str 连接。</span></span><br></pre></td></tr></table></figure>
@@ -714,7 +714,7 @@
 
 
 
-<h1 id="字典"><a href="#字典" class="headerlink" title="字典"></a>字典</h1><h2 id="字典的创建方式"><a href="#字典的创建方式" class="headerlink" title="字典的创建方式"></a>字典的创建方式</h2><ul>
+<h1 id="Dict"><a href="#Dict" class="headerlink" title="Dict"></a>Dict</h1><h2 id="字典的创建方式"><a href="#字典的创建方式" class="headerlink" title="字典的创建方式"></a>字典的创建方式</h2><ul>
 <li><p>直接定义</p>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mydict = &#123;&#125; <span class="comment"># 创建空字典</span></span><br><span class="line">my_dict = &#123;<span class="string">&#x27;key1&#x27;</span>: <span class="string">&#x27;value1&#x27;</span>, <span class="string">&#x27;key2&#x27;</span>: <span class="string">&#x27;value2&#x27;</span>&#125;</span><br><span class="line"><span class="built_in">print</span>(my_dict)    <span class="comment"># &#123;&#x27;key1&#x27;: &#x27;value1&#x27;, &#x27;key2&#x27;: &#x27;value2&#x27;&#125;</span></span><br></pre></td></tr></table></figure>
 </li>
@@ -777,7 +777,7 @@
 <p><strong>示例</strong></p>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">my_dict = &#123;<span class="string">&#x27;key1&#x27;</span>: <span class="string">&#x27;value1&#x27;</span>, <span class="string">&#x27;key2&#x27;</span>: <span class="string">&#x27;value2&#x27;</span>, <span class="string">&#x27;key3&#x27;</span>: <span class="string">&#x27;value3&#x27;</span>&#125;</span><br><span class="line">popvalue = my_dict.pop(<span class="string">&quot;key3&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(popvalue)</span><br><span class="line"><span class="built_in">print</span>(my_dict)</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line">value3</span><br><span class="line">&#123;<span class="string">&#x27;key1&#x27;</span>: <span class="string">&#x27;value1&#x27;</span>, <span class="string">&#x27;key2&#x27;</span>: <span class="string">&#x27;value2&#x27;</span>&#125;</span><br></pre></td></tr></table></figure>
 
-<h1 id="文件I-O"><a href="#文件I-O" class="headerlink" title="文件I&#x2F;O"></a>文件I&#x2F;O</h1><h2 id="open"><a href="#open" class="headerlink" title="open"></a>open</h2><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">file = <span class="built_in">open</span>(file, mode=<span class="string">&#x27;r&#x27;</span>)</span><br><span class="line"></span><br><span class="line">// file: 要打开的文件名（包含路径）</span><br><span class="line">// mdoe: 打开文件的模式</span><br><span class="line">// <span class="keyword">return</span>: 返回一个文件对象</span><br></pre></td></tr></table></figure>
+<h1 id="File-I-O"><a href="#File-I-O" class="headerlink" title="File I&#x2F;O"></a>File I&#x2F;O</h1><h2 id="open"><a href="#open" class="headerlink" title="open"></a>open</h2><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">file = <span class="built_in">open</span>(file, mode=<span class="string">&#x27;r&#x27;</span>)</span><br><span class="line"></span><br><span class="line">// file: 要打开的文件名（包含路径）</span><br><span class="line">// mdoe: 打开文件的模式</span><br><span class="line">// <span class="keyword">return</span>: 返回一个文件对象</span><br></pre></td></tr></table></figure>
 
 <h3 id="mode"><a href="#mode" class="headerlink" title="mode"></a>mode</h3><table>
 <thead>
@@ -897,6 +897,11 @@
 <h2 id="uniform"><a href="#uniform" class="headerlink" title="uniform()"></a>uniform()</h2><p><code>random.uniform(a, b)</code> 用于生成一个在 <code>[a, b]</code> 或 <code>[b, a]</code> 之间的随机浮点数，包括 <code>a</code> 和 <code>b</code>（即闭区间）。</p>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> random</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(random.uniform(<span class="number">1</span>, <span class="number">10</span>))  <span class="comment"># 可能输出 3.758382659073293</span></span><br><span class="line"><span class="built_in">print</span>(random.uniform(-<span class="number">5</span>, <span class="number">5</span>))  <span class="comment"># 可能输出 -2.134985731</span></span><br></pre></td></tr></table></figure>
 
+<h2 id="randbytes"><a href="#randbytes" class="headerlink" title="randbytes()"></a>randbytes()</h2><p><code>random.randbytes()</code> 用于生成指定长度的随机字节序列（<code>bytes</code> 对象）。这是 Python 3.9 版本引入的功能。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">random.randbytes(n)</span><br><span class="line"></span><br><span class="line">// n：要生成的随机字节数（必须是正整数）。</span><br><span class="line">// <span class="keyword">return</span>：一个长度为 n 的 <span class="built_in">bytes</span> 对象，每个字节的值范围为 <span class="number">0</span>-<span class="number">255</span>。</span><br></pre></td></tr></table></figure>
+
+
+
 <h2 id="choice"><a href="#choice" class="headerlink" title="choice()"></a>choice()</h2><p>用于从非空序列中随机选择一个元素，序列可以是任何可迭代的对象（如列表、元组、字符串等）。</p>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">random.choice(seq)</span><br><span class="line"></span><br><span class="line">// seq：一个非空的序列（如列表、元组、字符串、<span class="built_in">range</span> 等）。</span><br><span class="line">// <span class="keyword">return</span>：返回 序列 seq 中的一个随机元素。</span><br></pre></td></tr></table></figure>
 
@@ -912,7 +917,7 @@
 <p><strong>示例用法</strong></p>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> random</span><br><span class="line"></span><br><span class="line"><span class="comment"># 从列表中随机选择 3 个元素</span></span><br><span class="line">fruits = [<span class="string">&quot;苹果&quot;</span>, <span class="string">&quot;香蕉&quot;</span>, <span class="string">&quot;橙子&quot;</span>, <span class="string">&quot;葡萄&quot;</span>, <span class="string">&quot;草莓&quot;</span>]</span><br><span class="line">sampled_fruits = random.sample(fruits, <span class="number">3</span>)</span><br><span class="line"><span class="built_in">print</span>(sampled_fruits)  <span class="comment"># 可能输出 [&#x27;草莓&#x27;, &#x27;香蕉&#x27;, &#x27;橙子&#x27;]</span></span><br></pre></td></tr></table></figure>
 
-<h1 id="requests"><a href="#requests" class="headerlink" title="requests"></a>requests</h1><h2 id="request"><a href="#request" class="headerlink" title="request()"></a>request()</h2><p><code>requests.request()</code> 是 <code>requests</code> 库中最底层、最通用的 HTTP 请求方法。它允许你通过传入不同的 HTTP 方法（如 <code>GET</code>、<code>POST</code>、<code>PUT</code>、<code>DELETE</code> 等）来构造请求，内部所有的专用方法（如 <code>requests.get()</code>、<code>requests.post()</code> 等）其实都是对 <code>requests.request()</code> 的简单封装。</p>
+<h1 id="binascii"><a href="#binascii" class="headerlink" title="binascii"></a>binascii</h1><h1 id="requests"><a href="#requests" class="headerlink" title="requests"></a>requests</h1><h2 id="request"><a href="#request" class="headerlink" title="request()"></a>request()</h2><p><code>requests.request()</code> 是 <code>requests</code> 库中最底层、最通用的 HTTP 请求方法。它允许你通过传入不同的 HTTP 方法（如 <code>GET</code>、<code>POST</code>、<code>PUT</code>、<code>DELETE</code> 等）来构造请求，内部所有的专用方法（如 <code>requests.get()</code>、<code>requests.post()</code> 等）其实都是对 <code>requests.request()</code> 的简单封装。</p>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">requests.request(method, url, **kwargs)</span><br><span class="line"></span><br><span class="line"><span class="comment"># method：请求方法的名称，字符串形式，如 &quot;GET&quot;、&quot;POST&quot;、&quot;PUT&quot;、&quot;DELETE&quot;、&quot;HEAD&quot;、&quot;OPTIONS&quot;、&quot;PATCH&quot; 等。</span></span><br><span class="line"><span class="comment"># url：请求的 URL 地址。</span></span><br><span class="line"><span class="comment"># kwargs：其他可选参数，用于控制请求的各个方面。</span></span><br></pre></td></tr></table></figure>
 
 <h2 id="get"><a href="#get" class="headerlink" title="get()"></a>get()</h2><p><code>requests.get()</code> 用于向指定 URL 发送 GET 请求，从服务器获取数据。</p>
@@ -1091,7 +1096,7 @@
 
 
 
-<h1 id="JSON"><a href="#JSON" class="headerlink" title="JSON"></a>JSON</h1><p>JSON（JavaScript Object Notation）是一种轻量级的数据交换格式，易于人和机器阅读和解析。它基于JavaScript的对象表示法，但被广泛用于多种编程语言。</p>
+<h1 id="json-1"><a href="#json-1" class="headerlink" title="json"></a>json</h1><p>JSON（JavaScript Object Notation）是一种轻量级的数据交换格式，易于人和机器阅读和解析。它基于JavaScript的对象表示法，但被广泛用于多种编程语言。</p>
 <h2 id="JSON中的数据类型"><a href="#JSON中的数据类型" class="headerlink" title="JSON中的数据类型"></a>JSON中的数据类型</h2><ul>
 <li>字符串（String）：用双引号包围，如 “Hello, World!”。</li>
 <li>数字（Number）：如 123、3.14，无引号。</li>
@@ -2372,13 +2377,13 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">368k</span>
+    <span title="站点总字数">370k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">5:35</span>
+    <span title="站点阅读时长">5:36</span>
 </div>
 
 
