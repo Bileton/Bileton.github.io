@@ -20,12 +20,12 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="函数与极限映射与函数映射映射的概念 映射类似于一种对应关系，把一个集合中的元素对应到另一个集合里的元素。比如说，集合A里的每个元素，通过某种规则，对应到集合B里的一个元素，这种对应关系就是映射。   逆映射  复合映射   函数   例1  例2  例3  函数的几种特性有界性  单调性  奇偶性   周期性 反函数与复合函数">
+  <meta name="description" content="函数与极限映射与函数映射映射的概念 映射类似于一种对应关系，把一个集合中的元素对应到另一个集合里的元素。比如说，集合A里的每个元素，通过某种规则，对应到集合B里的一个元素，这种对应关系就是映射。      函数   例1  例2  例3  函数的几种特性有界性  单调性  奇偶性   周期性 反函数与复合函数反函数  复合函数  函数的运算 初等函数 数列的极限数列的定义  极限的定义">
 <meta property="og:type" content="article">
-<meta property="og:title" content="高等数学">
+<meta property="og:title" content="高数">
 <meta property="og:url" content="http://example.com/2025/01/29/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/index.html">
 <meta property="og:site_name" content="白乐天">
-<meta property="og:description" content="函数与极限映射与函数映射映射的概念 映射类似于一种对应关系，把一个集合中的元素对应到另一个集合里的元素。比如说，集合A里的每个元素，通过某种规则，对应到集合B里的一个元素，这种对应关系就是映射。   逆映射  复合映射   函数   例1  例2  例3  函数的几种特性有界性  单调性  奇偶性   周期性 反函数与复合函数">
+<meta property="og:description" content="函数与极限映射与函数映射映射的概念 映射类似于一种对应关系，把一个集合中的元素对应到另一个集合里的元素。比如说，集合A里的每个元素，通过某种规则，对应到集合B里的一个元素，这种对应关系就是映射。      函数   例1  例2  例3  函数的几种特性有界性  单调性  奇偶性   周期性 反函数与复合函数反函数  复合函数  函数的运算 初等函数 数列的极限数列的定义  极限的定义">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/2025/01/29/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/1.jpg">
 <meta property="og:image" content="http://example.com/2025/01/29/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/7.jpg">
@@ -46,10 +46,17 @@
 <meta property="og:image" content="http://example.com/2025/01/29/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/17.jpg">
 <meta property="og:image" content="http://example.com/2025/01/29/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/18.jpg">
 <meta property="og:image" content="http://example.com/2025/01/29/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/19.jpg">
-<meta property="article:published_time" content="2025-01-29T03:36:02.000Z">
-<meta property="article:modified_time" content="2025-01-30T02:52:33.935Z">
+<meta property="og:image" content="http://example.com/2025/01/29/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/20.jpg">
+<meta property="og:image" content="http://example.com/2025/01/29/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/21.jpg">
+<meta property="og:image" content="http://example.com/2025/01/29/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/22.jpg">
+<meta property="og:image" content="http://example.com/2025/01/29/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/23.jpg">
+<meta property="og:image" content="http://example.com/2025/01/29/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/24.jpg">
+<meta property="og:image" content="http://example.com/2025/01/29/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/25.jpg">
+<meta property="og:image" content="http://example.com/2025/01/29/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/26.jpg">
+<meta property="article:published_time" content="2025-01-29T03:36:48.000Z">
+<meta property="article:modified_time" content="2025-02-07T16:17:33.005Z">
 <meta property="article:author" content="Bileton">
-<meta property="article:tag" content="高等数学">
+<meta property="article:tag" content="高数">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://example.com/2025/01/29/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/1.jpg">
 
@@ -66,7 +73,7 @@
   };
 </script>
 
-  <title>高等数学 | 白乐天</title>
+  <title>高数 | 白乐天</title>
   
 
 
@@ -147,7 +154,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">59</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">60</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -157,7 +164,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">64</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">65</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -226,7 +233,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          高等数学
+          高数
         </h1>
 
         <div class="post-meta">
@@ -236,14 +243,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2025-01-29 11:36:02" itemprop="dateCreated datePublished" datetime="2025-01-29T11:36:02+08:00">2025-01-29</time>
+              <time title="创建时间：2025-01-29 11:36:48" itemprop="dateCreated datePublished" datetime="2025-01-29T11:36:48+08:00">2025-01-29</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2025-01-30 10:52:33" itemprop="dateModified" datetime="2025-01-30T10:52:33+08:00">2025-01-30</time>
+                <time title="修改时间：2025-02-08 00:17:33" itemprop="dateModified" datetime="2025-02-08T00:17:33+08:00">2025-02-08</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -261,7 +268,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>138</span>
+              <span>162</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -284,9 +291,7 @@
 <p>映射类似于一种对应关系，把一个集合中的元素对应到另一个集合里的元素。比如说，集合A里的每个元素，通过某种规则，对应到集合B里的一个元素，这种对应关系就是映射。</p>
 <p><img src="/2025/01/29/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/1.jpg"></p>
 <p><img src="/2025/01/29/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/7.jpg"></p>
-<p><strong>逆映射</strong></p>
 <p><img src="/2025/01/29/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/2.jpg"></p>
-<p><strong>复合映射</strong></p>
 <p><img src="/2025/01/29/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/3.jpg"></p>
 <p><img src="/2025/01/29/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/4.jpg"></p>
 <h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><p><img src="/2025/01/29/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/5.jpg"></p>
@@ -306,7 +311,16 @@
 <p><img src="/2025/01/29/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/17.jpg"></p>
 <p><img src="/2025/01/29/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/18.jpg"></p>
 <h5 id="周期性"><a href="#周期性" class="headerlink" title="周期性"></a>周期性</h5><p><img src="/2025/01/29/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/19.jpg"></p>
-<h4 id="反函数与复合函数"><a href="#反函数与复合函数" class="headerlink" title="反函数与复合函数"></a>反函数与复合函数</h4>
+<h4 id="反函数与复合函数"><a href="#反函数与复合函数" class="headerlink" title="反函数与复合函数"></a>反函数与复合函数</h4><p><strong>反函数</strong></p>
+<p><img src="/2025/01/29/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/20.jpg"></p>
+<p><strong>复合函数</strong></p>
+<p><img src="/2025/01/29/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/21.jpg"></p>
+<h4 id="函数的运算"><a href="#函数的运算" class="headerlink" title="函数的运算"></a>函数的运算</h4><p><img src="/2025/01/29/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/22.jpg"></p>
+<h4 id="初等函数"><a href="#初等函数" class="headerlink" title="初等函数"></a>初等函数</h4><p><img src="/2025/01/29/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/23.jpg"></p>
+<h2 id="数列的极限"><a href="#数列的极限" class="headerlink" title="数列的极限"></a>数列的极限</h2><h3 id="数列的定义"><a href="#数列的定义" class="headerlink" title="数列的定义"></a>数列的定义</h3><p><img src="/2025/01/29/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/24.jpg"></p>
+<p><img src="/2025/01/29/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/25.jpg"></p>
+<h3 id="极限的定义"><a href="#极限的定义" class="headerlink" title="极限的定义"></a>极限的定义</h3><p><img src="/2025/01/29/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/26.jpg"></p>
+
     </div>
 
     
@@ -315,7 +329,7 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/" rel="tag"><svg t="1732789072752" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4858" width="15" height="15"><path d="M229.443715 343.118259l565.172804 0 0 410.010794c0 37.525595-30.237317 67.762912-67.040108 67.762912l-46.319715 0 0 139.742183c0 35.116247-28.249605 63.365852-63.305618 63.365852-35.116247 0-63.546553-28.309839-63.546553-63.365852l0-139.742183-84.809049 0 0 139.742183c0 35.056013-28.430306 63.365852-63.546553 63.365852-34.393443 0-62.763515-28.309839-62.763515-63.365852l-0.542103-139.742183-45.596911 0c-37.465361 0-67.702678-30.177084-67.702678-67.762912l0-410.010794zM141.984383 331.432921c-35.056013 0-63.426086 28.370073-63.426086 62.763515l0 264.787344c0 35.116247 28.370073 63.365852 63.426086 63.365852s62.763515-28.309839 62.763515-63.365852l0-264.787344c0-34.393443-28.189371-62.763515-62.763515-62.763515zM796.42353 320.952257l-569.449397 0c0-97.879762 58.547156-182.869512 145.343917-227.141282l-43.7899-80.59269c-2.469582-4.336826-1.264908-9.878327 3.071919-12.347908 4.276593-1.867245 9.878327-0.662571 12.347908 3.734489l44.271769 81.255261c37.646062-16.684735 79.508484-25.900491 123.780253-25.900491s86.134191 9.215756 123.780253 25.840257l44.271769-81.255261c2.469582-4.336826 8.071316-5.5415 12.347908-3.734489 4.336826 2.469582 5.5415 8.011082 3.071919 12.347908l-43.7899 80.59269c86.254658 44.332003 144.74158 129.321753 144.74158 227.201515zM406.048922 194.160319c0-12.950245-10.42043-24.033246-23.912779-24.033246-13.010479 0-23.430909 11.083001-23.430909 24.033246 0 12.890012 10.42043 23.973012 23.430909 23.973012 13.492349 0.060234 23.912779-11.022767 23.912779-23.973012zM665.294766 194.160319c0-12.950245-10.42043-24.033246-23.430909-24.033246-13.552582 0-23.912779 11.083001-23.912779 24.033246 0 12.890012 10.42043 23.973012 23.912779 23.973012 13.010479 0.060234 23.430909-11.022767 23.430909-23.973012zM882.015617 331.432921c-34.51391 0-62.763515 27.707502-62.763515 62.763515l0 264.787344c0 35.116247 28.249605 63.365852 62.763515 63.365852 35.056013 0 63.426086-28.309839 63.426086-63.365852l0-264.787344c-0.060234-35.056013-28.370073-62.763515-63.426086-62.763515z" fill="#000000" p-id="4859"></path></svg> 高等数学</a>
+              <a href="/tags/%E9%AB%98%E6%95%B0/" rel="tag"><svg t="1732789072752" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4858" width="15" height="15"><path d="M229.443715 343.118259l565.172804 0 0 410.010794c0 37.525595-30.237317 67.762912-67.040108 67.762912l-46.319715 0 0 139.742183c0 35.116247-28.249605 63.365852-63.305618 63.365852-35.116247 0-63.546553-28.309839-63.546553-63.365852l0-139.742183-84.809049 0 0 139.742183c0 35.056013-28.430306 63.365852-63.546553 63.365852-34.393443 0-62.763515-28.309839-62.763515-63.365852l-0.542103-139.742183-45.596911 0c-37.465361 0-67.702678-30.177084-67.702678-67.762912l0-410.010794zM141.984383 331.432921c-35.056013 0-63.426086 28.370073-63.426086 62.763515l0 264.787344c0 35.116247 28.370073 63.365852 63.426086 63.365852s62.763515-28.309839 62.763515-63.365852l0-264.787344c0-34.393443-28.189371-62.763515-62.763515-62.763515zM796.42353 320.952257l-569.449397 0c0-97.879762 58.547156-182.869512 145.343917-227.141282l-43.7899-80.59269c-2.469582-4.336826-1.264908-9.878327 3.071919-12.347908 4.276593-1.867245 9.878327-0.662571 12.347908 3.734489l44.271769 81.255261c37.646062-16.684735 79.508484-25.900491 123.780253-25.900491s86.134191 9.215756 123.780253 25.840257l44.271769-81.255261c2.469582-4.336826 8.071316-5.5415 12.347908-3.734489 4.336826 2.469582 5.5415 8.011082 3.071919 12.347908l-43.7899 80.59269c86.254658 44.332003 144.74158 129.321753 144.74158 227.201515zM406.048922 194.160319c0-12.950245-10.42043-24.033246-23.912779-24.033246-13.010479 0-23.430909 11.083001-23.430909 24.033246 0 12.890012 10.42043 23.973012 23.430909 23.973012 13.492349 0.060234 23.912779-11.022767 23.912779-23.973012zM665.294766 194.160319c0-12.950245-10.42043-24.033246-23.430909-24.033246-13.552582 0-23.912779 11.083001-23.912779 24.033246 0 12.890012 10.42043 23.973012 23.912779 23.973012 13.010479 0.060234 23.430909-11.022767 23.430909-23.973012zM882.015617 331.432921c-34.51391 0-62.763515 27.707502-62.763515 62.763515l0 264.787344c0 35.116247 28.249605 63.365852 62.763515 63.365852 35.056013 0 63.426086-28.309839 63.426086-63.365852l0-264.787344c-0.060234-35.056013-28.370073-62.763515-63.426086-62.763515z" fill="#000000" p-id="4859"></path></svg> 高数</a>
           </div>
 
         
@@ -324,12 +338,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2025/01/29/%E8%AF%A6%E8%A7%A3AES/" rel="prev" title="详解AES">
-      <i class="fa fa-chevron-left"></i> 详解AES
+    <a href="/2025/01/29/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/" rel="prev" title="线性代数">
+      <i class="fa fa-chevron-left"></i> 线性代数
     </a></div>
       <div class="post-nav-item">
-    <a href="/2025/01/29/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/" rel="next" title="线性代数">
-      线性代数 <i class="fa fa-chevron-right"></i>
+    <a href="/2025/01/29/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/" rel="next" title="概率论与数理统计">
+      概率论与数理统计 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -389,7 +403,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%87%BD%E6%95%B0%E4%B8%8E%E6%9E%81%E9%99%90"><span class="nav-number">1.</span> <span class="nav-text">函数与极限</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%98%A0%E5%B0%84%E4%B8%8E%E5%87%BD%E6%95%B0"><span class="nav-number">1.1.</span> <span class="nav-text">映射与函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%98%A0%E5%B0%84"><span class="nav-number">1.1.1.</span> <span class="nav-text">映射</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%BD%E6%95%B0"><span class="nav-number">1.1.2.</span> <span class="nav-text">函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%87%BD%E6%95%B0%E7%9A%84%E5%87%A0%E7%A7%8D%E7%89%B9%E6%80%A7"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">函数的几种特性</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%9C%89%E7%95%8C%E6%80%A7"><span class="nav-number">1.1.2.1.1.</span> <span class="nav-text">有界性</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%8D%95%E8%B0%83%E6%80%A7"><span class="nav-number">1.1.2.1.2.</span> <span class="nav-text">单调性</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%A5%87%E5%81%B6%E6%80%A7"><span class="nav-number">1.1.2.1.3.</span> <span class="nav-text">奇偶性</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%91%A8%E6%9C%9F%E6%80%A7"><span class="nav-number">1.1.2.1.4.</span> <span class="nav-text">周期性</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%8D%E5%87%BD%E6%95%B0%E4%B8%8E%E5%A4%8D%E5%90%88%E5%87%BD%E6%95%B0"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">反函数与复合函数</span></a></li></ol></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%87%BD%E6%95%B0%E4%B8%8E%E6%9E%81%E9%99%90"><span class="nav-number">1.</span> <span class="nav-text">函数与极限</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%98%A0%E5%B0%84%E4%B8%8E%E5%87%BD%E6%95%B0"><span class="nav-number">1.1.</span> <span class="nav-text">映射与函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%98%A0%E5%B0%84"><span class="nav-number">1.1.1.</span> <span class="nav-text">映射</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%BD%E6%95%B0"><span class="nav-number">1.1.2.</span> <span class="nav-text">函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%87%BD%E6%95%B0%E7%9A%84%E5%87%A0%E7%A7%8D%E7%89%B9%E6%80%A7"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">函数的几种特性</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%9C%89%E7%95%8C%E6%80%A7"><span class="nav-number">1.1.2.1.1.</span> <span class="nav-text">有界性</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%8D%95%E8%B0%83%E6%80%A7"><span class="nav-number">1.1.2.1.2.</span> <span class="nav-text">单调性</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%A5%87%E5%81%B6%E6%80%A7"><span class="nav-number">1.1.2.1.3.</span> <span class="nav-text">奇偶性</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%91%A8%E6%9C%9F%E6%80%A7"><span class="nav-number">1.1.2.1.4.</span> <span class="nav-text">周期性</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%8D%E5%87%BD%E6%95%B0%E4%B8%8E%E5%A4%8D%E5%90%88%E5%87%BD%E6%95%B0"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">反函数与复合函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%87%BD%E6%95%B0%E7%9A%84%E8%BF%90%E7%AE%97"><span class="nav-number">1.1.2.3.</span> <span class="nav-text">函数的运算</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9D%E7%AD%89%E5%87%BD%E6%95%B0"><span class="nav-number">1.1.2.4.</span> <span class="nav-text">初等函数</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E5%88%97%E7%9A%84%E6%9E%81%E9%99%90"><span class="nav-number">1.2.</span> <span class="nav-text">数列的极限</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E5%88%97%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="nav-number">1.2.1.</span> <span class="nav-text">数列的定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9E%81%E9%99%90%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="nav-number">1.2.2.</span> <span class="nav-text">极限的定义</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -405,7 +419,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">64</span>
+          <span class="site-state-item-count">65</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -418,7 +432,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">59</span>
+        <span class="site-state-item-count">60</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -459,13 +473,13 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">497k</span>
+    <span title="站点总字数">502k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">7:32</span>
+    <span title="站点阅读时长">7:37</span>
 </div>
 
 

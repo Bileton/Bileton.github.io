@@ -124,7 +124,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">59</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">60</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -134,7 +134,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">64</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">65</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -185,6 +185,112 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/01/20/Ubuntu%E5%88%9D%E5%A7%8B%E5%8C%96/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/android.svg">
+      <meta itemprop="name" content="Bileton">
+      <meta itemprop="description" content="路漫漫其修远夕！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="白乐天">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2025/01/20/Ubuntu%E5%88%9D%E5%A7%8B%E5%8C%96/" class="post-title-link" itemprop="url">Ubuntu初始化</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2025-01-20 15:45:19" itemprop="dateCreated datePublished" datetime="2025-01-20T15:45:19+08:00">2025-01-20</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2025-01-26 00:14:27" itemprop="dateModified" datetime="2025-01-26T00:14:27+08:00">2025-01-26</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%99%9A%E6%8B%9F%E6%9C%BA/" itemprop="url" rel="index"><span itemprop="name">虚拟机</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>492</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="open-vm-tools-desktop"><a href="#open-vm-tools-desktop" class="headerlink" title="open-vm-tools-desktop"></a>open-vm-tools-desktop</h1><p>提供如下功能：</p>
+<ul>
+<li>自动调整屏幕分辨率</li>
+<li>共享剪贴板</li>
+<li>图形性能优化</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install open-vm-tools-desktop -y</span><br></pre></td></tr></table></figure>
+
+<h1 id="调整桌面环境缩放比例"><a href="#调整桌面环境缩放比例" class="headerlink" title="调整桌面环境缩放比例"></a>调整桌面环境缩放比例</h1><p>调整 GNOME 桌面环境中所有界面文本（如菜单、窗口标题、工具提示等）的缩放比例，将文本按照比例 <strong>1.5 倍</strong>放大。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gsettings set org.gnome.desktop.interface text-scaling-factor 1.5</span><br></pre></td></tr></table></figure>
+
+<h1 id="设置root密码"><a href="#设置root密码" class="headerlink" title="设置root密码"></a>设置root密码</h1><p>打开终端，输入<code>sudo -i</code>，会提示输入普通用户密码，输入后回车。<br>输入<code>passwd root</code>命令来修改root密码。<br>输入新的root密码，接着回车，注意的是输入的密码不会显示。<br>然后再重新输入新的root密码，然后回车root密码就修改成功。</p>
+<h1 id="更新系统包管理器"><a href="#更新系统包管理器" class="headerlink" title="更新系统包管理器"></a>更新系统包管理器</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt upgrade -y</span><br></pre></td></tr></table></figure>
+
+<h1 id="安装常用包"><a href="#安装常用包" class="headerlink" title="安装常用包"></a>安装常用包</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">net-tools</span><br><span class="line">vim</span><br><span class="line">git</span><br><span class="line">nodejs</span><br><span class="line">npm</span><br><span class="line">make</span><br><span class="line">curl</span><br><span class="line">wget</span><br><span class="line">adb</span><br><span class="line">cmake</span><br></pre></td></tr></table></figure>
+
+<p>下载安装vscode，使用如下命令安装软件包</p>
+<p><code>dpkg -i code</code></p>
+<h1 id="我的软件"><a href="#我的软件" class="headerlink" title="我的软件"></a>我的软件</h1><h2 id="Android-Studio"><a href="#Android-Studio" class="headerlink" title="Android Studio"></a>Android Studio</h2><p>官网下载安装</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -812,7 +918,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2025-02-06 22:44:20" itemprop="dateModified" datetime="2025-02-06T22:44:20+08:00">2025-02-06</time>
+                <time title="修改时间：2025-02-07 23:22:12" itemprop="dateModified" datetime="2025-02-07T23:22:12+08:00">2025-02-07</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -830,7 +936,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>628</span>
+              <span>778</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -850,6 +956,7 @@
 
       
           <h1 id="A"><a href="#A" class="headerlink" title="A"></a>A</h1><h2 id="b"><a href="#b" class="headerlink" title="b"></a>b</h2><h3 id="abandon"><a href="#abandon" class="headerlink" title="abandon"></a>abandon</h3><p>v.放弃，抛弃</p>
+<h2 id="l"><a href="#l" class="headerlink" title="l"></a>l</h2><h3 id="align"><a href="#align" class="headerlink" title="align"></a>align</h3><p>v.对齐</p>
 <h2 id="t"><a href="#t" class="headerlink" title="t"></a>t</h2><h3 id="attach"><a href="#attach" class="headerlink" title="attach"></a>attach</h3><p>附加；贴上</p>
 <h1 id="B"><a href="#B" class="headerlink" title="B"></a>B</h1><h2 id="a"><a href="#a" class="headerlink" title="a"></a>a</h2><h3 id="band"><a href="#band" class="headerlink" title="band"></a>band</h3><p>n.乐队；帮伙</p>
 <p>v.用带捆扎；联合；划分范围；</p>
@@ -857,24 +964,29 @@
 <h2 id="o"><a href="#o" class="headerlink" title="o"></a>o</h2><h3 id="collection"><a href="#collection" class="headerlink" title="collection"></a>collection</h3><p>n.收藏，收藏品；集合；</p>
 <h2 id="u"><a href="#u" class="headerlink" title="u"></a>u</h2><h3 id="custom"><a href="#custom" class="headerlink" title="custom"></a>custom</h3><p>n.风俗；习惯；传统</p>
 <p>adj.定制的</p>
-<h1 id="E"><a href="#E" class="headerlink" title="E"></a>E</h1><h3 id="n"><a href="#n" class="headerlink" title="n"></a>n</h3><h3 id="encrypt"><a href="#encrypt" class="headerlink" title="encrypt"></a>encrypt</h3><p>v.加密；编码；</p>
-<h4 id="decrypt"><a href="#decrypt" class="headerlink" title="decrypt"></a>decrypt</h4><p>v.破译，解密；解释；</p>
+<h1 id="D"><a href="#D" class="headerlink" title="D"></a>D</h1><h2 id="e"><a href="#e" class="headerlink" title="e"></a>e</h2><h3 id="debug"><a href="#debug" class="headerlink" title="debug"></a>debug</h3><p>v.调试</p>
+<h3 id="decorate"><a href="#decorate" class="headerlink" title="decorate"></a>decorate</h3><p>v.装饰</p>
+<h3 id="decoration"><a href="#decoration" class="headerlink" title="decoration"></a>decoration</h3><p>n.装饰</p>
+<h3 id="decrypt"><a href="#decrypt" class="headerlink" title="decrypt"></a>decrypt</h3><p>v.破译，解密；解释；</p>
+<h1 id="E"><a href="#E" class="headerlink" title="E"></a>E</h1><h2 id="n"><a href="#n" class="headerlink" title="n"></a>n</h2><h3 id="encrypt"><a href="#encrypt" class="headerlink" title="encrypt"></a>encrypt</h3><p>v.加密；编码；</p>
 <h1 id="F"><a href="#F" class="headerlink" title="F"></a>F</h1><h2 id="i"><a href="#i" class="headerlink" title="i"></a>i</h2><h3 id="filter"><a href="#filter" class="headerlink" title="filter"></a>filter</h3><p>v.过滤，渗透；</p>
 <p>n.过滤器</p>
+<h2 id="o-1"><a href="#o-1" class="headerlink" title="o"></a>o</h2><h3 id="font"><a href="#font" class="headerlink" title="font"></a>font</h3><p>n.字体；</p>
 <h2 id="r"><a href="#r" class="headerlink" title="r"></a>r</h2><h3 id="front"><a href="#front" class="headerlink" title="front"></a>front</h3><p>adj.前面的，正面的</p>
 <p>n.前面，正面；</p>
 <p>adv.在前面</p>
 <p>v.面对</p>
-<h1 id="G"><a href="#G" class="headerlink" title="G"></a>G</h1><h2 id="e"><a href="#e" class="headerlink" title="e"></a>e</h2><h3 id="generate"><a href="#generate" class="headerlink" title="generate"></a>generate</h3><p>v.产生；引起；生成</p>
-<h1 id="I"><a href="#I" class="headerlink" title="I"></a>I</h1><h2 id="n-1"><a href="#n-1" class="headerlink" title="n"></a>n</h2><h3 id="instrumentation"><a href="#instrumentation" class="headerlink" title="instrumentation"></a>instrumentation</h3><p>n.仪器；器乐谱写；测试设备</p>
+<h1 id="G"><a href="#G" class="headerlink" title="G"></a>G</h1><h2 id="e-1"><a href="#e-1" class="headerlink" title="e"></a>e</h2><h3 id="generate"><a href="#generate" class="headerlink" title="generate"></a>generate</h3><p>v.产生；引起；生成</p>
+<h1 id="I"><a href="#I" class="headerlink" title="I"></a>I</h1><h2 id="n-1"><a href="#n-1" class="headerlink" title="n"></a>n</h2><h3 id="indent"><a href="#indent" class="headerlink" title="indent"></a>indent</h3><p>n.缩进；</p>
+<h3 id="instrumentation"><a href="#instrumentation" class="headerlink" title="instrumentation"></a>instrumentation</h3><p>n.仪器；器乐谱写；测试设备</p>
 <h3 id="intent"><a href="#intent" class="headerlink" title="intent"></a>intent</h3><p>adj.全神贯注的；专心致志的</p>
 <p>n.意图；意向；目的</p>
 <h3 id="interceptor"><a href="#interceptor" class="headerlink" title="interceptor"></a>interceptor</h3><p>n.拦截器</p>
-<h1 id="L"><a href="#L" class="headerlink" title="L"></a>L</h1><h2 id="e-1"><a href="#e-1" class="headerlink" title="e"></a>e</h2><h3 id="leak"><a href="#leak" class="headerlink" title="leak"></a>leak</h3><p>v.泄露</p>
+<h1 id="L"><a href="#L" class="headerlink" title="L"></a>L</h1><h2 id="e-2"><a href="#e-2" class="headerlink" title="e"></a>e</h2><h3 id="leak"><a href="#leak" class="headerlink" title="leak"></a>leak</h3><p>v.泄露</p>
 <h1 id="P"><a href="#P" class="headerlink" title="P"></a>P</h1><h2 id="a-2"><a href="#a-2" class="headerlink" title="a"></a>a</h2><h3 id="paragrah"><a href="#paragrah" class="headerlink" title="paragrah"></a>paragrah</h3><p>n.段，节。</p>
-<h2 id="e-2"><a href="#e-2" class="headerlink" title="e"></a>e</h2><h3 id="peek"><a href="#peek" class="headerlink" title="peek"></a>peek</h3><p>v.窥视，偷看</p>
+<h2 id="e-3"><a href="#e-3" class="headerlink" title="e"></a>e</h2><h3 id="peek"><a href="#peek" class="headerlink" title="peek"></a>peek</h3><p>v.窥视，偷看</p>
 <h2 id="r-1"><a href="#r-1" class="headerlink" title="r"></a>r</h2><h3 id="preference"><a href="#preference" class="headerlink" title="preference"></a>preference</h3><p>n.偏好；喜好；优先（权）；</p>
-<h1 id="R"><a href="#R" class="headerlink" title="R"></a>R</h1><h2 id="e-3"><a href="#e-3" class="headerlink" title="e"></a>e</h2><h3 id="rear"><a href="#rear" class="headerlink" title="rear"></a>rear</h3><p>adj.背面的，后面的</p>
+<h1 id="R"><a href="#R" class="headerlink" title="R"></a>R</h1><h2 id="e-4"><a href="#e-4" class="headerlink" title="e"></a>e</h2><h3 id="rear"><a href="#rear" class="headerlink" title="rear"></a>rear</h3><p>adj.背面的，后面的</p>
 <p>n.后部</p>
 <p>v.抚养；举起</p>
 <h3 id="receive"><a href="#receive" class="headerlink" title="receive"></a>receive</h3><p>v.收到，得到；接收</p>
@@ -887,12 +999,17 @@
 <p>n.信号；标志；</p>
 <h2 id="p"><a href="#p" class="headerlink" title="p"></a>p</h2><h3 id="spawn"><a href="#spawn" class="headerlink" title="spawn"></a>spawn</h3><p>n.卵；菌丝；产物</p>
 <p>v.产卵；启动；</p>
-<h2 id="t-1"><a href="#t-1" class="headerlink" title="t"></a>t</h2><h3 id="standard"><a href="#standard" class="headerlink" title="standard"></a>standard</h3><p>n.标准；规格，规范；</p>
+<h2 id="t-1"><a href="#t-1" class="headerlink" title="t"></a>t</h2><h3 id="stalker"><a href="#stalker" class="headerlink" title="stalker"></a>stalker</h3><p>n.跟踪者；潜行者；</p>
+<h3 id="standard"><a href="#standard" class="headerlink" title="standard"></a>standard</h3><p>n.标准；规格，规范；</p>
 <p>adj.标准的</p>
-<h1 id="T"><a href="#T" class="headerlink" title="T"></a>T</h1><h2 id="r-2"><a href="#r-2" class="headerlink" title="r"></a>r</h2><h3 id="transformer"><a href="#transformer" class="headerlink" title="transformer"></a>transformer</h3><p>n.变压器，变换器</p>
+<h2 id="y"><a href="#y" class="headerlink" title="y"></a>y</h2><h3 id="sync"><a href="#sync" class="headerlink" title="sync"></a>sync</h3><p>v.同步；</p>
+<h1 id="T"><a href="#T" class="headerlink" title="T"></a>T</h1><h2 id="r-2"><a href="#r-2" class="headerlink" title="r"></a>r</h2><h3 id="transform"><a href="#transform" class="headerlink" title="transform"></a>transform</h3><p>v.改变，转换；</p>
+<h3 id="transformation"><a href="#transformation" class="headerlink" title="transformation"></a>transformation</h3><p>n.变化，转变；</p>
+<h3 id="transformer"><a href="#transformer" class="headerlink" title="transformer"></a>transformer</h3><p>n.变压器，变换器</p>
 <h1 id="U"><a href="#U" class="headerlink" title="U"></a>U</h1><h2 id="n-2"><a href="#n-2" class="headerlink" title="n"></a>n</h2><h3 id="uniform"><a href="#uniform" class="headerlink" title="uniform"></a>uniform</h3><p>v.穿制服，使…统一</p>
 <p>n.制服；校服</p>
 <p>adj.相同的，统一的；一致的；</p>
+<h1 id="V"><a href="#V" class="headerlink" title="V"></a>V</h1><h2 id="i-2"><a href="#i-2" class="headerlink" title="i"></a>i</h2><h3 id="virtual"><a href="#virtual" class="headerlink" title="virtual"></a>virtual</h3><p>adj.虚拟的</p>
 
       
     </div>
@@ -1331,130 +1448,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/01/11/Markdown%E8%AF%AD%E6%B3%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/android.svg">
-      <meta itemprop="name" content="Bileton">
-      <meta itemprop="description" content="路漫漫其修远夕！">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="白乐天">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2025/01/11/Markdown%E8%AF%AD%E6%B3%95/" class="post-title-link" itemprop="url">Markdown语法</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2025-01-11 16:05:04" itemprop="dateCreated datePublished" datetime="2025-01-11T16:05:04+08:00">2025-01-11</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2025-01-28 15:13:12" itemprop="dateModified" datetime="2025-01-28T15:13:12+08:00">2025-01-28</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Markdown%E8%AF%AD%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">Markdown语法</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>691</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>Markdown是一种轻量级标记语言，使用易读易写的纯文本格式编写文档。</p>
-<h1 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h1><h2 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h2><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">#	    一级标题</span></span><br><span class="line"><span class="section">##	    二级标题</span></span><br><span class="line"><span class="section">###	    三级标题</span></span><br><span class="line"><span class="section">####	四级标题</span></span><br><span class="line"><span class="section">#####	五级标题</span></span><br><span class="line"><span class="section">######	六级标题</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="段落"><a href="#段落" class="headerlink" title="段落"></a>段落</h2><p>使用空白行来进行段落分隔。</p>
-<h2 id="换行"><a href="#换行" class="headerlink" title="换行"></a>换行</h2><p>在一行的末尾添加两个空格，然后按回车键,即可创建一个换行。</p>
-<h2 id="加粗文本"><a href="#加粗文本" class="headerlink" title="加粗文本"></a>加粗文本</h2><p>在文本的前后各添加两个星号或下划线。</p>
-<h2 id="斜体"><a href="#斜体" class="headerlink" title="斜体"></a>斜体</h2><p>在文本前后添加一个星号或下划线。</p>
-<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p>在段落前添加一个 <code>&gt;</code> 符号。</p>
-<h2 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h2><p><strong>有序列表</strong></p>
-<p>在每个列表项前添加数字并紧跟一个英文句点。</p>
-<p><strong>无序列表</strong></p>
-<p>在每个列表项前面添加破折号 (-)、星号 (*) 或加号 (+) 。</p>
-<h2 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a>代码块</h2><p>要将单词或短语表示为代码，将其包裹在反引号 &#96;&#96;&#96; 中。</p>
-<h2 id="分隔线"><a href="#分隔线" class="headerlink" title="分隔线"></a>分隔线</h2><p>在单独一行上使用三个或多个星号 (<code>***</code>)、破折号 (<code>---</code>) 或下划线 (<code>___</code>) ，并且不能包含其他内容。</p>
-<h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[超链接显示名](超链接地址 &quot;超链接title&quot;)</span><br></pre></td></tr></table></figure>
-
-<h2 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![图片alt](图片链接 &quot;图片title&quot;)</span><br></pre></td></tr></table></figure>
-
-<h1 id="数学公式"><a href="#数学公式" class="headerlink" title="数学公式"></a>数学公式</h1><ul>
-<li><p><strong>行内公式：</strong> 使用<code>$</code>包裹公式</p>
-</li>
-<li><p><strong>独立公式：</strong> 使用<code>$$</code>包裹公式</p>
-</li>
-</ul>
-<h2 id="上下标"><a href="#上下标" class="headerlink" title="上下标"></a>上下标</h2><p>上下标分别使用^和_表示。例如：</p>
-<p><code>$x^2$</code> $\rightarrow$ $x^2$</p>
-<p><code>$x_2$</code> $ \rightarrow$$x_2$</p>
-<h2 id="分数"><a href="#分数" class="headerlink" title="分数"></a>分数</h2><ul>
-<li><p>第一种</p>
-<p>  <code>$\frac &#123;a&#125;&#123;b&#125;$</code>$ \rightarrow$$\frac {a}{b}$</p>
-</li>
-<li><p>第二种</p>
-<p>  <code>$\over$</code> $ \rightarrow$ $a+1 \over b+1$</p>
-</li>
-</ul>
-<h2 id="数学运算符"><a href="#数学运算符" class="headerlink" title="数学运算符"></a>数学运算符</h2><p><code>$\sum$</code> $ \rightarrow$ $\sum$</p>
-<h2 id="标注"><a href="#标注" class="headerlink" title="标注"></a>标注</h2><p><code>$\hat&#123;x&#125;$</code>  $ \rightarrow$ $\hat{x}$</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1526,7 +1519,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">64</span>
+          <span class="site-state-item-count">65</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1539,7 +1532,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">59</span>
+        <span class="site-state-item-count">60</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -1580,13 +1573,13 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">497k</span>
+    <span title="站点总字数">502k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">7:32</span>
+    <span title="站点阅读时长">7:37</span>
 </div>
 
 
