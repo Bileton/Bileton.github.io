@@ -318,7 +318,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2025-02-07 15:07:14" itemprop="dateModified" datetime="2025-02-07T15:07:14+08:00">2025-02-07</time>
+                <time title="修改时间：2025-02-09 00:00:53" itemprop="dateModified" datetime="2025-02-09T00:00:53+08:00">2025-02-09</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -336,14 +336,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>4.7k</span>
+              <span>7.1k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>4 分钟</span>
+              <span>6 分钟</span>
             </span>
 
         </div>
@@ -356,14 +356,14 @@
 
       
           <h1 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h1><p>层叠样式表（Cascading  Style Sheets）,是一种样式表语言，用来描述HTML文档的呈现。</p>
-<h1 id="CSS引入方式"><a href="#CSS引入方式" class="headerlink" title="CSS引入方式"></a>CSS引入方式</h1><h3 id="内部样式表"><a href="#内部样式表" class="headerlink" title="内部样式表"></a>内部样式表</h3><p>书写位置：<code>title</code>标签下方，<code>style</code>标签里</p>
+<h1 id="CSS引入方式"><a href="#CSS引入方式" class="headerlink" title="CSS引入方式"></a>CSS引入方式</h1><h2 id="内部样式表"><a href="#内部样式表" class="headerlink" title="内部样式表"></a>内部样式表</h2><p>书写位置：<code>title</code>标签下方，<code>style</code>标签里</p>
 <p>CSS书写规则：<code>选择器 &#123; 属性名 : 属性值;&#125;</code></p>
 <p><strong>示例</strong></p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="language-css"> <span class="selector-tag">p</span> &#123;<span class="attribute">color</span>: red;&#125; </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>This is a Html document!<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p>效果如下</p>
 <p><img src="/2025/02/06/CSS/1.jpg"></p>
-<h3 id="外部样式表"><a href="#外部样式表" class="headerlink" title="外部样式表"></a>外部样式表</h3><p>将CSS代码写在单独的CSS文件中（.css）。</p>
+<h2 id="外部样式表"><a href="#外部样式表" class="headerlink" title="外部样式表"></a>外部样式表</h2><p>将CSS代码写在单独的CSS文件中（.css）。</p>
 <p>在HTML里使用<code>link</code>标签引入。</p>
 <p><strong>示例</strong></p>
 <p>html文件</p>
@@ -374,45 +374,11 @@
 
 <p>效果如下</p>
 <p><img src="/2025/02/06/CSS/1.jpg"></p>
-<h3 id="行内样式表"><a href="#行内样式表" class="headerlink" title="行内样式表"></a>行内样式表</h3><p>配合Javascript使用，CSS写在标签的style属性值里。</p>
+<h2 id="行内样式"><a href="#行内样式" class="headerlink" title="行内样式"></a>行内样式</h2><p>配合Javascript使用，CSS写在标签的style属性值里。</p>
 <p><strong>示例</strong></p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span> <span class="attr">style</span>=<span class="string">&quot;color: red; font-size: 20px;&quot;</span>&gt;</span>This is a Html document!<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p><img src="/2025/02/06/CSS/1.jpg"></p>
-<h1 id="选择器"><a href="#选择器" class="headerlink" title="选择器"></a>选择器</h1><p>查找标签，设置样式。</p>
-<h2 id="标签选择器"><a href="#标签选择器" class="headerlink" title="标签选择器"></a>标签选择器</h2><p>使用标签名作为选择器，选中同名标签设置相同的样式，但是无法差异化同名标签的样式。</p>
-<h2 id="类选择器"><a href="#类选择器" class="headerlink" title="类选择器"></a>类选择器</h2><p>查找标签，差异化设置标签的显示效果。</p>
-<ul>
-<li>定义类选择器：<code>.类名</code>。</li>
-<li>使用类选择器：标签添加<code>class = 类名</code>。</li>
-<li>一个类选择器可以给多个标签使用。</li>
-<li>一个标签可以使用多个类名，class属性值里可以写多个类名，类名用空格隔开。</li>
-</ul>
-<p><strong>示例</strong></p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="language-xml"></span></span><br><span class="line"><span class="language-xml">        <span class="comment">&lt;!-- 定义类选择器 --&gt;</span></span></span><br><span class="line"><span class="language-xml">        .green &#123;</span></span><br><span class="line"><span class="language-xml">            color: green;</span></span><br><span class="line"><span class="language-xml">        &#125;</span></span><br><span class="line"><span class="language-xml"></span></span><br><span class="line"><span class="language-xml">    </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 使用类选择器 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">&quot;green&quot;</span>&gt;</span>This is a Html document!<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>效果</p>
-<p><img src="/2025/02/06/CSS/2.jpg"></p>
-<h2 id="id选择器"><a href="#id选择器" class="headerlink" title="id选择器"></a>id选择器</h2><p>查找标签，差异化设置标签的显示效果。</p>
-<p>id选择器一般配合Javascript使用，很少用来设置CSS样式。</p>
-<ul>
-<li>定义id选择器：<code>#id名</code></li>
-<li>使用id选择器：标签添加 <code>id = &quot;id名&quot;</code></li>
-<li>同一个id选择器在一个页面只能使用一次</li>
-</ul>
-<p><strong>示例</strong></p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="language-xml"></span></span><br><span class="line"><span class="language-xml">        <span class="comment">&lt;!-- 定义id选择器 --&gt;</span></span></span><br><span class="line"><span class="language-xml">        #green &#123;</span></span><br><span class="line"><span class="language-xml">            color: green;</span></span><br><span class="line"><span class="language-xml">        &#125;</span></span><br><span class="line"><span class="language-xml"></span></span><br><span class="line"><span class="language-xml">    </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 使用id选择器 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span> <span class="attr">id</span>=<span class="string">&quot;green&quot;</span>&gt;</span>This is a Html document!<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>效果</p>
-<p><img src="/2025/02/06/CSS/2.jpg"></p>
-<h2 id="通配符选择器"><a href="#通配符选择器" class="headerlink" title="通配符选择器"></a>通配符选择器</h2><p>查找页面所有标签，设置相同样式。</p>
-<p>通配符不需要调用，浏览器会自动查找所有标签，设置相同样式。</p>
-<p>通配符选择器使用<code>*</code>来定义。</p>
-<p><strong>示例</strong></p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="language-xml"></span></span><br><span class="line"><span class="language-xml">        <span class="comment">&lt;!-- 定义通配符选择器 --&gt;</span></span></span><br><span class="line"><span class="language-xml">        * &#123;</span></span><br><span class="line"><span class="language-xml">            color: green;</span></span><br><span class="line"><span class="language-xml">        &#125;</span></span><br><span class="line"><span class="language-xml"></span></span><br><span class="line"><span class="language-xml">    </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span> &gt;</span>This is a Html document!<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">        This is a div label!</span><br><span class="line">        <span class="tag">&lt;<span class="name">span</span>&gt;</span>This is a span label!<span class="tag">&lt;/<span class="name">span</span>&gt;</span>    </span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>效果</p>
-<p><img src="/2025/02/06/CSS/3.jpg"></p>
 <h1 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h1><h2 id="宽度高度背景色"><a href="#宽度高度背景色" class="headerlink" title="宽度高度背景色"></a>宽度高度背景色</h2><ul>
 <li><p><strong>width</strong></p>
 <p>  宽度</p>
@@ -565,6 +531,273 @@
 </tbody></table>
 </li>
 </ul>
+<h2 id="背景属性"><a href="#背景属性" class="headerlink" title="背景属性"></a>背景属性</h2><ul>
+<li><p><strong>background-color</strong>（bgc）</p>
+<p>  背景色</p>
+</li>
+<li><p><strong>background-image</strong></p>
+<p>  背景图</p>
+<p>  <strong>属性值</strong></p>
+<p>  url(背景图的url或者背景图的路径)</p>
+</li>
+<li><p><strong>background-repeat</strong></p>
+<p>  平铺方式</p>
+<table>
+<thead>
+<tr>
+<th>属性值</th>
+<th>效果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>no-repeat</td>
+<td>不平铺</td>
+</tr>
+<tr>
+<td>repeat</td>
+<td>平铺（默认效果）</td>
+</tr>
+<tr>
+<td>repeat-x</td>
+<td>水平方向平铺</td>
+</tr>
+<tr>
+<td>repeat-y</td>
+<td>垂直方向平铺</td>
+</tr>
+</tbody></table>
+</li>
+<li><p><strong>background-position</strong>（bgp）</p>
+<p>  背景图位置</p>
+<p>  <strong>属性值</strong></p>
+<ul>
+<li><p><strong>关键字</strong></p>
+<table>
+<thead>
+<tr>
+<th>关键字</th>
+<th>位置</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>left</td>
+<td>左侧</td>
+</tr>
+<tr>
+<td>right</td>
+<td>右侧</td>
+</tr>
+<tr>
+<td>center</td>
+<td>居中</td>
+</tr>
+<tr>
+<td>top</td>
+<td>顶部</td>
+</tr>
+<tr>
+<td>bottom</td>
+<td>底部</td>
+</tr>
+</tbody></table>
+</li>
+<li><p><strong>坐标</strong>（数字+<code>px</code>，正负都可以）</p>
+<p>  水平：正数向右；负数向左</p>
+<p>  垂直：正数向下；负数向下</p>
+</li>
+</ul>
+<p>  可以只写一个关键字，另一个方向默认为居中；数字只写一个值表示水平方向，垂直方向为居中。</p>
+</li>
+<li><p><strong>background-size</strong></p>
+<p>  背景图缩放</p>
+<p>  <strong>属性值</strong></p>
+<ul>
+<li><p><strong>关键字</strong></p>
+<p>  cover：等比例缩放图片以完全覆盖背景区，可能背景图片部分看不见</p>
+<p>  contain：等比例缩放背景图片以完全装入背景区，可能背景区部分空白</p>
+</li>
+<li><p><strong>百分比</strong></p>
+<p>  根据盒子尺寸计算图片大小</p>
+</li>
+<li><p>数字+<code>px</code></p>
+</li>
+</ul>
+</li>
+<li><p><strong>background-attachment</strong></p>
+<p>  背景图固定</p>
+<p>  <strong>属性值</strong></p>
+<p>  fixed</p>
+</li>
+<li><p><strong>background</strong>（bg）</p>
+<p>  复合属性</p>
+<p>  <strong>属性值</strong>：背景色 背景图 背景图平铺方式 背景图位置&#x2F;背景图缩放 背景图固定</p>
+</li>
+</ul>
+<h1 id="选择器"><a href="#选择器" class="headerlink" title="选择器"></a>选择器</h1><p>查找标签，设置样式。</p>
+<h2 id="标签选择器"><a href="#标签选择器" class="headerlink" title="标签选择器"></a>标签选择器</h2><p>使用标签名作为选择器，选中同名标签设置相同的样式，但是无法差异化同名标签的样式。</p>
+<h2 id="类选择器"><a href="#类选择器" class="headerlink" title="类选择器"></a>类选择器</h2><p>查找标签，差异化设置标签的显示效果。</p>
+<ul>
+<li>定义类选择器：<code>.类名</code>。</li>
+<li>使用类选择器：标签添加<code>class = 类名</code>。</li>
+<li>一个类选择器可以给多个标签使用。</li>
+<li>一个标签可以使用多个类名，class属性值里可以写多个类名，类名用空格隔开。</li>
+</ul>
+<p><strong>示例</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="language-xml"></span></span><br><span class="line"><span class="language-xml">        <span class="comment">&lt;!-- 定义类选择器 --&gt;</span></span></span><br><span class="line"><span class="language-xml">        .green &#123;</span></span><br><span class="line"><span class="language-xml">            color: green;</span></span><br><span class="line"><span class="language-xml">        &#125;</span></span><br><span class="line"><span class="language-xml"></span></span><br><span class="line"><span class="language-xml">    </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 使用类选择器 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">&quot;green&quot;</span>&gt;</span>This is a Html document!<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>效果</p>
+<p><img src="/2025/02/06/CSS/2.jpg"></p>
+<h2 id="id选择器"><a href="#id选择器" class="headerlink" title="id选择器"></a>id选择器</h2><p>查找标签，差异化设置标签的显示效果。</p>
+<p>id选择器一般配合Javascript使用，很少用来设置CSS样式。</p>
+<ul>
+<li>定义id选择器：<code>#id名</code></li>
+<li>使用id选择器：标签添加 <code>id = &quot;id名&quot;</code></li>
+<li>同一个id选择器在一个页面只能使用一次</li>
+</ul>
+<p><strong>示例</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="language-xml"></span></span><br><span class="line"><span class="language-xml">        <span class="comment">&lt;!-- 定义id选择器 --&gt;</span></span></span><br><span class="line"><span class="language-xml">        #green &#123;</span></span><br><span class="line"><span class="language-xml">            color: green;</span></span><br><span class="line"><span class="language-xml">        &#125;</span></span><br><span class="line"><span class="language-xml"></span></span><br><span class="line"><span class="language-xml">    </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 使用id选择器 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span> <span class="attr">id</span>=<span class="string">&quot;green&quot;</span>&gt;</span>This is a Html document!<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>效果</p>
+<p><img src="/2025/02/06/CSS/2.jpg"></p>
+<h2 id="通配符选择器"><a href="#通配符选择器" class="headerlink" title="通配符选择器"></a>通配符选择器</h2><p>查找页面所有标签，设置相同样式。</p>
+<p>通配符不需要调用，浏览器会自动查找所有标签，设置相同样式。</p>
+<p>通配符选择器使用<code>*</code>来定义。</p>
+<p><strong>示例</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="language-xml"></span></span><br><span class="line"><span class="language-xml">        <span class="comment">&lt;!-- 定义通配符选择器 --&gt;</span></span></span><br><span class="line"><span class="language-xml">        * &#123;</span></span><br><span class="line"><span class="language-xml">            color: green;</span></span><br><span class="line"><span class="language-xml">        &#125;</span></span><br><span class="line"><span class="language-xml"></span></span><br><span class="line"><span class="language-xml">    </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span> &gt;</span>This is a Html document!<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">        This is a div label!</span><br><span class="line">        <span class="tag">&lt;<span class="name">span</span>&gt;</span>This is a span label!<span class="tag">&lt;/<span class="name">span</span>&gt;</span>    </span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>效果</p>
+<p><img src="/2025/02/06/CSS/3.jpg"></p>
+<h2 id="复合选择器"><a href="#复合选择器" class="headerlink" title="复合选择器"></a>复合选择器</h2><p>由两个或多个基础选择器，通过不同的方式组合而成。</p>
+<h3 id="后代选择器"><a href="#后代选择器" class="headerlink" title="后代选择器"></a>后代选择器</h3><p>用于选择某个元素内部的所有指定后代元素，无论它们嵌套在多少层。</p>
+<p>写法：父选择器 子选择器{ CSS属性 } ，父子选择器之间用空格隔开。</p>
+<p><strong>示例</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">div p &#123;</span><br><span class="line">    color: red;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>这是一个段落。<span class="tag">&lt;/<span class="name">p</span>&gt;</span> <span class="comment">&lt;!-- 会被选中 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span>嵌套的段落。<span class="tag">&lt;/<span class="name">p</span>&gt;</span> <span class="comment">&lt;!-- 也会被选中 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="子代选择器"><a href="#子代选择器" class="headerlink" title="子代选择器"></a>子代选择器</h3><p>子选择器只选择直接子元素，不会匹配更深层的后代。</p>
+<p>写法：父选择器 &gt; 子选择器{ CSS属性 } ，父子选择器之间用 &gt; 隔开。</p>
+<p><strong>示例</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">div &gt; p &#123;</span><br><span class="line">    color: blue;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>直接子元素段落。<span class="tag">&lt;/<span class="name">p</span>&gt;</span> <span class="comment">&lt;!-- 会被选中 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span>嵌套的段落。<span class="tag">&lt;/<span class="name">p</span>&gt;</span> <span class="comment">&lt;!-- 不会被选中 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="并集选择器"><a href="#并集选择器" class="headerlink" title="并集选择器"></a>并集选择器</h3><p>并集选择器可以同时选择多个不同类型的元素。</p>
+<p><strong>示例</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">h1, p, .box &#123;</span><br><span class="line">    background-color: lightgray;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>标题<span class="tag">&lt;/<span class="name">h1</span>&gt;</span> <span class="comment">&lt;!-- 受影响 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>段落<span class="tag">&lt;/<span class="name">p</span>&gt;</span> <span class="comment">&lt;!-- 受影响 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;box&quot;</span>&gt;</span>我是box<span class="tag">&lt;/<span class="name">div</span>&gt;</span> <span class="comment">&lt;!-- 受影响 --&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="交集选择器"><a href="#交集选择器" class="headerlink" title="交集选择器"></a>交集选择器</h3><p>交集选择器选择同时匹配多个条件的元素。</p>
+<p><strong>示例</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">div.box &#123;</span><br><span class="line">    border: 2px solid black;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;box&quot;</span>&gt;</span>我是box<span class="tag">&lt;/<span class="name">div</span>&gt;</span> <span class="comment">&lt;!-- 受影响 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span>普通div<span class="tag">&lt;/<span class="name">div</span>&gt;</span> <span class="comment">&lt;!-- 不受影响 --&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="伪类选择器"><a href="#伪类选择器" class="headerlink" title="伪类选择器"></a>伪类选择器</h2><h3 id="用户交互伪类"><a href="#用户交互伪类" class="headerlink" title="用户交互伪类"></a>用户交互伪类</h3><ul>
+<li><p><strong>link</strong></p>
+<p>  访问前的状态。</p>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a:link &#123;</span><br><span class="line">    color: blue;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>visited</strong></p>
+<p>  访问后的状态。</p>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a:link &#123;</span><br><span class="line">    color: #999;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>hover</strong></p>
+<p>  当鼠标悬停在元素上时触发。</p>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a:link &#123;</span><br><span class="line">    color: red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>active</strong></p>
+<p>  当元素被点击时触发。</p>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a:link &#123;</span><br><span class="line">    color: green;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h1 id="CSS三大特性"><a href="#CSS三大特性" class="headerlink" title="CSS三大特性"></a>CSS三大特性</h1><h2 id="继承性"><a href="#继承性" class="headerlink" title="继承性"></a>继承性</h2><p>子级默认继承父级的文字控制属性。</p>
+<h2 id="层叠性"><a href="#层叠性" class="headerlink" title="层叠性"></a>层叠性</h2><ul>
+<li>相同的属性会覆盖：后面的属性会覆盖前面的CSS属性。</li>
+<li>不同的属性会叠加：不同的CSS属性都生效。</li>
+</ul>
+<h2 id="优先级"><a href="#优先级" class="headerlink" title="优先级"></a>优先级</h2><p>也叫权重，当一个标签使用了多种选择器时，基于不同种类的选择器的匹配规则。</p>
+<p>规则：选择器优先级高的样式生效。</p>
+<p>公式：通配符选择器&lt;标签选择器&lt;类选择器&lt;id选择器&lt;行内样式&lt;!important（选中标签的范围越大，优先级越低）</p>
+<h3 id="叠加计算规则"><a href="#叠加计算规则" class="headerlink" title="叠加计算规则"></a>叠加计算规则</h3><p>如果是复合选择器，则需要权重叠加计算。</p>
+<p>规则：</p>
+<ul>
+<li><p>比较 行内样式、id选择器、类选择器和标签选择器的个数，从左至右比较选择器的个数，同一级个数多的优先级高，如果个数相同，则向后比较。</p>
+</li>
+<li><p>!important权重最高</p>
+</li>
+<li><p>继承权重最低</p>
+</li>
+</ul>
+<h1 id="Emmet写法"><a href="#Emmet写法" class="headerlink" title="Emmet写法"></a>Emmet写法</h1><p>代码的简写方式，输入缩写会自动生成对应的代码。</p>
+<h2 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h2><table>
+<thead>
+<tr>
+<th>说明</th>
+<th>标签结构</th>
+<th>Emmet</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>类选择器</td>
+<td><code>&lt;div class=&quot;box&quot;&gt;&lt;/div&gt;</code></td>
+<td>标签名.类名</td>
+</tr>
+<tr>
+<td>id选择器</td>
+<td><code>&lt;div id=&quot;box&quot;&gt;&lt;/div&gt;</code></td>
+<td>标签名#id名</td>
+</tr>
+<tr>
+<td>同级标签</td>
+<td><code>&lt;div&gt;&lt;/div&gt;&lt;p&gt;&lt;/p&gt;</code></td>
+<td>div+p</td>
+</tr>
+<tr>
+<td>父子级标签</td>
+<td><code>&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;/div&gt;</code></td>
+<td>div&gt;p</td>
+</tr>
+<tr>
+<td>多个相同标签</td>
+<td><code>&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;</code></td>
+<td>span*3</td>
+</tr>
+<tr>
+<td>有内容的标签</td>
+<td><code>&lt;div&gt;111&lt;/div&gt;</code></td>
+<td>div{内容}</td>
+</tr>
+</tbody></table>
+<h1 id="显示模式"><a href="#显示模式" class="headerlink" title="显示模式"></a>显示模式</h1><h2 id="块级元素"><a href="#块级元素" class="headerlink" title="块级元素"></a>块级元素</h2><ul>
+<li>独占一行</li>
+<li>宽度默认是父级的100%</li>
+<li>添加宽高属性生效</li>
+</ul>
+<h2 id="行内元素"><a href="#行内元素" class="headerlink" title="行内元素"></a>行内元素</h2><ul>
+<li>一行共存多个</li>
+<li>尺寸由内容有关</li>
+<li>设置宽高不生效</li>
+</ul>
+<h2 id="行内块元素"><a href="#行内块元素" class="headerlink" title="行内块元素"></a>行内块元素</h2><ul>
+<li>一行共存多个</li>
+<li>默认尺寸与内容有关</li>
+<li>设置高生效</li>
+</ul>
+<h2 id="转换显示模式"><a href="#转换显示模式" class="headerlink" title="转换显示模式"></a>转换显示模式</h2><p>属性名：display</p>
+<p><strong>属性值</strong></p>
+<table>
+<thead>
+<tr>
+<th>属性值</th>
+<th>效果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>block</td>
+<td>块级</td>
+</tr>
+<tr>
+<td>inline-block</td>
+<td>行内块</td>
+</tr>
+<tr>
+<td>inline</td>
+<td>行内</td>
+</tr>
+</tbody></table>
 
       
     </div>
@@ -2145,13 +2378,13 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">502k</span>
+    <span title="站点总字数">505k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">7:37</span>
+    <span title="站点阅读时长">7:39</span>
 </div>
 
 
