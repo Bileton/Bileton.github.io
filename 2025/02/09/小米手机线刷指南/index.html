@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="注意事项线刷方式刷机会清除手机数据。 线刷需要手机已完成 BL 解锁，否则无法操作。 解BL锁在解锁前确认小米账号是否可以解锁（即每月最多解锁 1 台手机，每年最多 4 台，超过需要更换帐号）。 需要插入SIM卡。 打开开发者模式进入设置-&gt;我的设备-&gt;全部参数-&gt;连点”MIUI版本” 即可打开开发者模式 OEM解锁进入设置-&gt;更多设置-&gt;开发者选项-&gt;勾选”O">
+<meta property="og:type" content="article">
+<meta property="og:title" content="小米手机线刷指南">
+<meta property="og:url" content="http://example.com/2025/02/09/%E5%B0%8F%E7%B1%B3%E6%89%8B%E6%9C%BA%E7%BA%BF%E5%88%B7%E6%8C%87%E5%8D%97/index.html">
+<meta property="og:site_name" content="白乐天">
+<meta property="og:description" content="注意事项线刷方式刷机会清除手机数据。 线刷需要手机已完成 BL 解锁，否则无法操作。 解BL锁在解锁前确认小米账号是否可以解锁（即每月最多解锁 1 台手机，每年最多 4 台，超过需要更换帐号）。 需要插入SIM卡。 打开开发者模式进入设置-&gt;我的设备-&gt;全部参数-&gt;连点”MIUI版本” 即可打开开发者模式 OEM解锁进入设置-&gt;更多设置-&gt;开发者选项-&gt;勾选”O">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2025/02/09/%E5%B0%8F%E7%B1%B3%E6%89%8B%E6%9C%BA%E7%BA%BF%E5%88%B7%E6%8C%87%E5%8D%97/1.jpg">
+<meta property="og:image" content="http://example.com/2025/02/09/%E5%B0%8F%E7%B1%B3%E6%89%8B%E6%9C%BA%E7%BA%BF%E5%88%B7%E6%8C%87%E5%8D%97/2.jpg">
+<meta property="og:image" content="http://example.com/2025/02/09/%E5%B0%8F%E7%B1%B3%E6%89%8B%E6%9C%BA%E7%BA%BF%E5%88%B7%E6%8C%87%E5%8D%97/3.jpg">
+<meta property="og:image" content="http://example.com/2025/02/09/%E5%B0%8F%E7%B1%B3%E6%89%8B%E6%9C%BA%E7%BA%BF%E5%88%B7%E6%8C%87%E5%8D%97/4.jpg">
+<meta property="og:image" content="http://example.com/2025/02/09/%E5%B0%8F%E7%B1%B3%E6%89%8B%E6%9C%BA%E7%BA%BF%E5%88%B7%E6%8C%87%E5%8D%97/5.jpg">
+<meta property="article:published_time" content="2025-02-09T07:03:46.000Z">
+<meta property="article:modified_time" content="2025-02-09T14:22:20.513Z">
+<meta property="article:author" content="Bileton">
+<meta property="article:tag" content="小米手机线刷指南">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2025/02/09/%E5%B0%8F%E7%B1%B3%E6%89%8B%E6%9C%BA%E7%BA%BF%E5%88%B7%E6%8C%87%E5%8D%97/1.jpg">
+
+<link rel="canonical" href="http://example.com/2025/02/09/%E5%B0%8F%E7%B1%B3%E6%89%8B%E6%9C%BA%E7%BA%BF%E5%88%B7%E6%8C%87%E5%8D%97/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>小米手机线刷指南 | 白乐天</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">白乐天</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">道阻且长，行则将至。</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">63</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">29</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">68</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/love.js"></script>
+</div>
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/02/09/%E5%B0%8F%E7%B1%B3%E6%89%8B%E6%9C%BA%E7%BA%BF%E5%88%B7%E6%8C%87%E5%8D%97/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/android.svg">
+      <meta itemprop="name" content="Bileton">
+      <meta itemprop="description" content="路漫漫其修远夕！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="白乐天">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          小米手机线刷指南
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2025-02-09 15:03:46 / 修改时间：22:22:20" itemprop="dateCreated datePublished" datetime="2025-02-09T15:03:46+08:00">2025-02-09</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%88%B7%E6%9C%BA/" itemprop="url" rel="index"><span itemprop="name">刷机</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.3k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h1><p>线刷方式刷机会清除手机数据。</p>
+<p>线刷需要手机已完成 BL 解锁，否则无法操作。</p>
+<h1 id="解BL锁"><a href="#解BL锁" class="headerlink" title="解BL锁"></a>解BL锁</h1><p>在解锁前确认小米账号是否可以解锁（即每月最多解锁 1 台手机，每年最多 4 台，超过需要更换帐号）。</p>
+<p>需要插入SIM卡。</p>
+<h2 id="打开开发者模式"><a href="#打开开发者模式" class="headerlink" title="打开开发者模式"></a>打开开发者模式</h2><p>进入设置-&gt;我的设备-&gt;全部参数-&gt;连点”MIUI版本” 即可打开开发者模式</p>
+<h2 id="OEM解锁"><a href="#OEM解锁" class="headerlink" title="OEM解锁"></a>OEM解锁</h2><p>进入设置-&gt;更多设置-&gt;开发者选项-&gt;勾选”OEM解锁”</p>
+<h2 id="绑定账号和设备"><a href="#绑定账号和设备" class="headerlink" title="绑定账号和设备"></a>绑定账号和设备</h2><p>进入设置-&gt;更多设置-&gt;开发者选项-&gt;设备解锁状态-&gt;绑定账号和设备</p>
+<h2 id="解锁"><a href="#解锁" class="headerlink" title="解锁"></a>解锁</h2><p>下载小米BL解锁工具，解压后运行<code>miflash.unlock.exe</code>程序，登录小米账号。</p>
+<p><a target="_blank" rel="noopener" href="https://www.miui.com/unlock/index.html">小米BL解锁工具</a></p>
+<p>进入 Fastboot 模式，用数据线连接电脑，识别手机连接后，点击“解锁”按钮，稍等片刻就会看到 BL 解锁结果，然后重启手机，BL 解锁就完成了。</p>
+<h1 id="刷机"><a href="#刷机" class="headerlink" title="刷机"></a>刷机</h1><p>设备预先保持充足的电量。</p>
+<p>下载MIUI版本线刷包和MiFlash线刷工具。</p>
+<p><a target="_blank" rel="noopener" href="https://xiaomirom.com/">小米刷机包</a></p>
+<p><a target="_blank" rel="noopener" href="https://miuiver.com/miflash/">MiFlash 线刷工具下载合集</a></p>
+<p>进入fastboot模式，用数据线连接电脑。</p>
+<p>在线刷工具文件夹里找到 <code>XiaoMiFlash.exe</code> 双击运行，如果电脑没有驱动会提示安装，然后软件界面点击“选择”按钮，选中之前解压的线刷包文件夹（留意路径不要选错了，选择线刷包解压的根目录，也就是 <code>images</code> 上一级目录）。</p>
+<p><img src="/2025/02/09/%E5%B0%8F%E7%B1%B3%E6%89%8B%E6%9C%BA%E7%BA%BF%E5%88%B7%E6%8C%87%E5%8D%97/1.jpg"></p>
+<p>选择刷机模式</p>
+<p><img src="/2025/02/09/%E5%B0%8F%E7%B1%B3%E6%89%8B%E6%9C%BA%E7%BA%BF%E5%88%B7%E6%8C%87%E5%8D%97/2.jpg"></p>
+<p>点击“加载设备”，识别到手机设备后就可以点击刷机。刷机过程大约需时十几分钟，完成后手机会自动重启进入系统。</p>
+<p><img src="/2025/02/09/%E5%B0%8F%E7%B1%B3%E6%89%8B%E6%9C%BA%E7%BA%BF%E5%88%B7%E6%8C%87%E5%8D%97/3.jpg"></p>
+<h2 id="error"><a href="#error" class="headerlink" title="error"></a>error</h2><ul>
+<li><p>如果出现Not catch checkpoint </p>
+<p>  <img src="/2025/02/09/%E5%B0%8F%E7%B1%B3%E6%89%8B%E6%9C%BA%E7%BA%BF%E5%88%B7%E6%8C%87%E5%8D%97/4.jpg"></p>
+<p>  导致这个问题的原因是，新版 MiFlash 在刷机完成后会检测手机是否已上 BL 锁。由于这个检查是在刷机完成后进行的，所以实际上对手机并没有影响，这是 MiFlash 本身的问题。</p>
+<p>  <strong>解决办法</strong></p>
+<p>  在菜单栏点击“Configuration”，点击“MiFlash Configuration”，在弹出窗口删除 CheckPoint 里的 <code>\$fastboot -s .*lock</code> 文本。</p>
+<p>  <img src="/2025/02/09/%E5%B0%8F%E7%B1%B3%E6%89%8B%E6%9C%BA%E7%BA%BF%E5%88%B7%E6%8C%87%E5%8D%97/5.jpg"></p>
+<p>  保持设置后再次刷机就不会遇到 <code>error:Not catch checkpoint (\$fastboot -s .*lock), flash is not done</code> 问题了。</p>
+</li>
+</ul>
+<h1 id="root"><a href="#root" class="headerlink" title="root"></a>root</h1><p>在系统设置里打开开发者模式，然后找到开发者选项，勾选USB调试</p>
+<p>打开刷机包，在<code>images</code>文件夹里找到<code>boot.img</code>文件</p>
+<p>利用adb工具将其push到<code>/sdcard/Download</code>目录下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"> adb push /sdcard/Download</span><br></pre></td></tr></table></figure>
+
+<p>安装面具Magisk</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb install magisk.apk</span><br></pre></td></tr></table></figure>
+
+<p>打开Magisk，找到Magisk的安装，点击选择并修补一个文件，找到<code>/sdcard/Download</code>目录下的<code>boot.img</code>文件，然后进行修补，修补完成后找到<code>/sdcard/Download</code>目录下生成的修补文件<code>magisk...xxx.img</code>，把它导出到电脑端</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb pull /sdcard/Download/magisk...xxx.img</span><br></pre></td></tr></table></figure>
+
+<p>然后进入fastboot模式</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb reboot bootloader</span><br></pre></td></tr></table></figure>
+
+<p>把<code>magisk...xxx.img</code>镜像刷入到boot分区</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fastboot flash boot magisk...xxx.img</span><br></pre></td></tr></table></figure>
+
+<p>然后重启</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fastboot reboot</span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%B0%8F%E7%B1%B3%E6%89%8B%E6%9C%BA%E7%BA%BF%E5%88%B7%E6%8C%87%E5%8D%97/" rel="tag"><svg t="1732789072752" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4858" width="15" height="15"><path d="M229.443715 343.118259l565.172804 0 0 410.010794c0 37.525595-30.237317 67.762912-67.040108 67.762912l-46.319715 0 0 139.742183c0 35.116247-28.249605 63.365852-63.305618 63.365852-35.116247 0-63.546553-28.309839-63.546553-63.365852l0-139.742183-84.809049 0 0 139.742183c0 35.056013-28.430306 63.365852-63.546553 63.365852-34.393443 0-62.763515-28.309839-62.763515-63.365852l-0.542103-139.742183-45.596911 0c-37.465361 0-67.702678-30.177084-67.702678-67.762912l0-410.010794zM141.984383 331.432921c-35.056013 0-63.426086 28.370073-63.426086 62.763515l0 264.787344c0 35.116247 28.370073 63.365852 63.426086 63.365852s62.763515-28.309839 62.763515-63.365852l0-264.787344c0-34.393443-28.189371-62.763515-62.763515-62.763515zM796.42353 320.952257l-569.449397 0c0-97.879762 58.547156-182.869512 145.343917-227.141282l-43.7899-80.59269c-2.469582-4.336826-1.264908-9.878327 3.071919-12.347908 4.276593-1.867245 9.878327-0.662571 12.347908 3.734489l44.271769 81.255261c37.646062-16.684735 79.508484-25.900491 123.780253-25.900491s86.134191 9.215756 123.780253 25.840257l44.271769-81.255261c2.469582-4.336826 8.071316-5.5415 12.347908-3.734489 4.336826 2.469582 5.5415 8.011082 3.071919 12.347908l-43.7899 80.59269c86.254658 44.332003 144.74158 129.321753 144.74158 227.201515zM406.048922 194.160319c0-12.950245-10.42043-24.033246-23.912779-24.033246-13.010479 0-23.430909 11.083001-23.430909 24.033246 0 12.890012 10.42043 23.973012 23.430909 23.973012 13.492349 0.060234 23.912779-11.022767 23.912779-23.973012zM665.294766 194.160319c0-12.950245-10.42043-24.033246-23.430909-24.033246-13.552582 0-23.912779 11.083001-23.912779 24.033246 0 12.890012 10.42043 23.973012 23.912779 23.973012 13.010479 0.060234 23.430909-11.022767 23.430909-23.973012zM882.015617 331.432921c-34.51391 0-62.763515 27.707502-62.763515 62.763515l0 264.787344c0 35.116247 28.249605 63.365852 62.763515 63.365852 35.056013 0 63.426086-28.309839 63.426086-63.365852l0-264.787344c-0.060234-35.056013-28.370073-62.763515-63.426086-62.763515z" fill="#000000" p-id="4859"></path></svg> 小米手机线刷指南</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2025/02/09/elf%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/" rel="prev" title="elf文件结构">
+      <i class="fa fa-chevron-left"></i> elf文件结构
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="nav-number">1.</span> <span class="nav-text">注意事项</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%A7%A3BL%E9%94%81"><span class="nav-number">2.</span> <span class="nav-text">解BL锁</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%89%93%E5%BC%80%E5%BC%80%E5%8F%91%E8%80%85%E6%A8%A1%E5%BC%8F"><span class="nav-number">2.1.</span> <span class="nav-text">打开开发者模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#OEM%E8%A7%A3%E9%94%81"><span class="nav-number">2.2.</span> <span class="nav-text">OEM解锁</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%91%E5%AE%9A%E8%B4%A6%E5%8F%B7%E5%92%8C%E8%AE%BE%E5%A4%87"><span class="nav-number">2.3.</span> <span class="nav-text">绑定账号和设备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3%E9%94%81"><span class="nav-number">2.4.</span> <span class="nav-text">解锁</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%B7%E6%9C%BA"><span class="nav-number">3.</span> <span class="nav-text">刷机</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#error"><span class="nav-number">3.1.</span> <span class="nav-text">error</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#root"><span class="nav-number">4.</span> <span class="nav-text">root</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Bileton"
+      src="/images/android.svg">
+  <p class="site-author-name" itemprop="name">Bileton</p>
+  <div class="site-description" itemprop="description">路漫漫其修远夕！</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">68</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">29</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">63</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Bileton</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">510k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">7:44</span>
+</div>
+
+
+<span id="timeDate">载入天数...</span>
+<span id="times">载入时分秒...</span>
+<script>
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("01/01/2024 00:00:00"); //修改为你的网站开始运行的时间
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+        document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 ";
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒.";
+    }
+setInterval("createtime()",250);
+</script>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
