@@ -124,7 +124,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">63</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">64</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -134,7 +134,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">68</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">69</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -185,6 +185,153 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/02/11/Pixel%E5%88%B7%E6%9C%BA%E6%95%99%E7%A8%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/android.svg">
+      <meta itemprop="name" content="Bileton">
+      <meta itemprop="description" content="路漫漫其修远夕！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="白乐天">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2025/02/11/Pixel%E5%88%B7%E6%9C%BA%E6%95%99%E7%A8%8B/" class="post-title-link" itemprop="url">Pixel刷机教程</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2025-02-11 12:43:14 / 修改时间：14:44:15" itemprop="dateCreated datePublished" datetime="2025-02-11T12:43:14+08:00">2025-02-11</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%88%B7%E6%9C%BA/" itemprop="url" rel="index"><span itemprop="name">刷机</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.8k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="环境-设备"><a href="#环境-设备" class="headerlink" title="环境+设备"></a>环境+设备</h1><p>电脑：Windows11</p>
+<p>测试机：o版，Pixel3，Android 9</p>
+<h1 id="测试机准备"><a href="#测试机准备" class="headerlink" title="测试机准备"></a>测试机准备</h1><h2 id="打开开发者模式"><a href="#打开开发者模式" class="headerlink" title="打开开发者模式"></a>打开开发者模式</h2><p>进入系统设置-&gt;系统-&gt;关于手机-&gt;连续点击版本号，进入开发者模式</p>
+<h2 id="解OEM锁"><a href="#解OEM锁" class="headerlink" title="解OEM锁"></a>解OEM锁</h2><p>进入系统设置-&gt;系统-&gt;高级-&gt;开发者选项-&gt;勾选OEM解锁</p>
+<h2 id="打开USB调试"><a href="#打开USB调试" class="headerlink" title="打开USB调试"></a>打开USB调试</h2><p>进入系统设置-&gt;系统-&gt;高级-&gt;开发者选项-&gt;勾选USB调试</p>
+<h1 id="电脑准备"><a href="#电脑准备" class="headerlink" title="电脑准备"></a>电脑准备</h1><h2 id="安装USB驱动"><a href="#安装USB驱动" class="headerlink" title="安装USB驱动"></a>安装USB驱动</h2><p>在Windows上对Google设备进行adb调试，必须安装Google USB驱动，链接<code>https://developer.android.google.cn/studio/run/win-usb</code>，下载好了之后可以放在桌面或指定一个目录里。</p>
+<p><img src="/2025/02/11/Pixel%E5%88%B7%E6%9C%BA%E6%95%99%E7%A8%8B/1.jpg"></p>
+<p>通过数据线将测试机和电脑连接</p>
+<p>打开设备管理器</p>
+<p>找到其他设备，可以看到如下</p>
+<p><img src="/2025/02/11/Pixel%E5%88%B7%E6%9C%BA%E6%95%99%E7%A8%8B/3.jpg"></p>
+<p>右键设备名称，选择更新驱动程序，选择浏览我的电脑以查找驱动程序，根据路径找到下载的usb驱动，然后进行安装</p>
+<h2 id="下载刷机包镜像"><a href="#下载刷机包镜像" class="headerlink" title="下载刷机包镜像"></a>下载刷机包镜像</h2><p>访问如下链接进行下载</p>
+<p><code>https://developers.google.cn/android/images?hl=zh-cn#blueline</code></p>
+<p>因为我的设备是Pixel3，要刷的系统是Android 10，所以下载与之相关的刷机包</p>
+<p>（建议新建一个文件夹，存放与刷机相关的文件，路径不要有中文）</p>
+<h2 id="下载Platform-Tools"><a href="#下载Platform-Tools" class="headerlink" title="下载Platform-Tools"></a>下载Platform-Tools</h2><p>adb和fastboot可对测试机进行调试</p>
+<p><img src="/2025/02/11/Pixel%E5%88%B7%E6%9C%BA%E6%95%99%E7%A8%8B/2.jpg"></p>
+<p>在这个目录下打开终端，通过命令查看已连接的设备</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb devices</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2025/02/11/Pixel%E5%88%B7%E6%9C%BA%E6%95%99%E7%A8%8B/4.jpg"></p>
+<h1 id="刷机"><a href="#刷机" class="headerlink" title="刷机"></a>刷机</h1><p>设备预先留有足够的电量，刷机期间数据线不要断开。</p>
+<h2 id="进入fastboot模式"><a href="#进入fastboot模式" class="headerlink" title="进入fastboot模式"></a>进入fastboot模式</h2><p>通过adb命令进入fastboot模式</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb reboot bootloader #重启进入fastboot mode</span><br></pre></td></tr></table></figure>
+
+<h2 id="解BL锁"><a href="#解BL锁" class="headerlink" title="解BL锁"></a>解BL锁</h2><p>在fastboot界面会有一个参数<code>Device staet</code>显示设备状态，locked是未解锁，unlocked是解锁的</p>
+<p>有的设备bl锁可能已经是解开的了，如果未解锁，通过如下命令解锁</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fastboot flashing unlock</span><br></pre></td></tr></table></figure>
+
+<h2 id="刷机-1"><a href="#刷机-1" class="headerlink" title="刷机"></a>刷机</h2><p>在刷机包的目录下打开终端，输入如下命令</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flash-all.bat</span><br></pre></td></tr></table></figure>
+
+<p>等待刷机完成</p>
+<h1 id="root"><a href="#root" class="headerlink" title="root"></a>root</h1><p>在系统设置里打开开发者模式，然后找到开发者选项，勾选USB调试</p>
+<p>打开刷机包，在<code>images</code>文件夹里找到<code>boot.img</code>文件</p>
+<p>利用adb工具将其push到<code>/sdcard/Download</code>目录下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"> adb push /sdcard/Download</span><br></pre></td></tr></table></figure>
+
+<p>安装面具Magisk</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb install magisk.apk</span><br></pre></td></tr></table></figure>
+
+<p>打开Magisk，找到Magisk的安装，点击选择并修补一个文件，找到<code>/sdcard/Download</code>目录下的<code>boot.img</code>文件，然后进行修补，修补完成后找到<code>/sdcard/Download</code>目录下生成的修补文件<code>magisk...xxx.img</code>，把它导出到电脑端</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb pull /sdcard/Download/magisk...xxx.img</span><br></pre></td></tr></table></figure>
+
+<p>然后进入fastboot模式</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb reboot bootloader</span><br></pre></td></tr></table></figure>
+
+<p>把<code>magisk...xxx.img</code>镜像刷入到boot分区</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fastboot flash boot magisk...xxx.img</span><br></pre></td></tr></table></figure>
+
+<p>然后重启</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fastboot reboot</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="关于网络连接受限"><a href="#关于网络连接受限" class="headerlink" title="关于网络连接受限"></a>关于网络连接受限</h1><p>谷歌从 Android 5.0 开始就引入了「Captive Portal」机制，主要用来检测 WiFI 网络认证是否正常，默认检测访问的是谷歌服务器。  </p>
+<p>谷歌服务器是需要工具才能正常访问的，所以如果没有工具的情况下，WiFi 就会出现网络受限、WiFi图标出现一个感叹号标志，系统会以为你网络不好，导致网络不稳定。</p>
+<p>可以通过如下方式解决</p>
+<p>输入如下命令，删除默认地址</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">adb shell settings delete global captive_portal_https_url</span><br><span class="line">adb shell settings delete global captive_portal_http_url</span><br></pre></td></tr></table></figure>
+
+<p>然后输入如下命令，添加新的地址</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">adb shell settings put global captive_portal_http_url http://captive.v2ex.co/generate_204</span><br><span class="line">adb shell settings put global captive_portal_https_url https://captive.v2ex.co/generate_204</span><br></pre></td></tr></table></figure>
+
+<p>打开飞行模式，然后关闭飞行模式，就可以上网了。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -2087,77 +2234,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/01/29/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/android.svg">
-      <meta itemprop="name" content="Bileton">
-      <meta itemprop="description" content="路漫漫其修远夕！">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="白乐天">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2025/01/29/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/" class="post-title-link" itemprop="url">线性代数</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2025-01-29 11:36:20" itemprop="dateCreated datePublished" datetime="2025-01-29T11:36:20+08:00">2025-01-29</time>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>0</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -2229,7 +2305,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">68</span>
+          <span class="site-state-item-count">69</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -2242,7 +2318,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">63</span>
+        <span class="site-state-item-count">64</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -2283,13 +2359,13 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">510k</span>
+    <span title="站点总字数">514k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">7:44</span>
+    <span title="站点阅读时长">7:48</span>
 </div>
 
 

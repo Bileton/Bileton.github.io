@@ -124,7 +124,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">63</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">64</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -134,7 +134,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">68</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">69</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -185,6 +185,594 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/12/15/Python%E5%9F%BA%E7%A1%80/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/android.svg">
+      <meta itemprop="name" content="Bileton">
+      <meta itemprop="description" content="路漫漫其修远夕！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="白乐天">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2024/12/15/Python%E5%9F%BA%E7%A1%80/" class="post-title-link" itemprop="url">Python基础</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2024-12-15 00:00:00" itemprop="dateCreated datePublished" datetime="2024-12-15T00:00:00+08:00">2024-12-15</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2025-02-09 21:15:19" itemprop="dateModified" datetime="2025-02-09T21:15:19+08:00">2025-02-09</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>17k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>15 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h1><h2 id="int"><a href="#int" class="headerlink" title="int()"></a>int()</h2><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">int</span>(x, base=<span class="number">10</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># x：可以是一个数字、字符串或符合 __int__() 方法的对象。</span></span><br><span class="line"><span class="comment"># base（可选）：进制，默认是 10，仅在 x 为字符串时有效。</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="bin"><a href="#bin" class="headerlink" title="bin()"></a>bin()</h2><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">bin</span>(x)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将x转换为二进制字符串，前缀 &#x27;0b&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="oct"><a href="#oct" class="headerlink" title="oct()"></a>oct()</h2><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">oct</span>(x)   </span><br><span class="line"></span><br><span class="line"><span class="comment"># 将x转换为八进制字符串，前缀 &#x27;0o&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="hex"><a href="#hex" class="headerlink" title="hex()"></a>hex()</h2><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">hex</span>(x)   </span><br><span class="line"></span><br><span class="line"><span class="comment"># 将x转换为十六进制字符串，前缀 &#x27;0x&#x27;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="String"><a href="#String" class="headerlink" title="String"></a>String</h1><h2 id="字符串拼接"><a href="#字符串拼接" class="headerlink" title="字符串拼接"></a>字符串拼接</h2><p>使用<code>+</code>运算符可以将多个字符串拼接起来</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">str1 = <span class="string">&quot;Hello&quot;</span></span><br><span class="line">str2 = <span class="string">&quot; &quot;</span></span><br><span class="line">str3 = <span class="string">&quot;World!&quot;</span></span><br><span class="line"></span><br><span class="line">result = str1 + str2 + str3</span><br><span class="line"><span class="built_in">print</span>(result)  <span class="comment"># 输出: Hello World!</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="slice（切片）"><a href="#slice（切片）" class="headerlink" title="slice（切片）"></a>slice（切片）</h2><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">str</span>[start:end:step]</span><br><span class="line"></span><br><span class="line">// start：子字符串的起始位置（包含）。如果省略，默认为 <span class="number">0</span>。</span><br><span class="line">// end：子字符串的结束位置（不包含）。如果省略，默认为字符串的末尾。</span><br><span class="line">// step：步长，表示每次切片时跳过多少个字符。如果省略，默认为 <span class="number">1</span>。</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="字符串方法"><a href="#字符串方法" class="headerlink" title="字符串方法"></a>字符串方法</h2><h3 id="join"><a href="#join" class="headerlink" title="join"></a>join</h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">string.join(iterable)</span><br><span class="line"></span><br><span class="line"><span class="comment"># string：要连接的字符串，即连接其他元素的分隔符。</span></span><br><span class="line"><span class="comment"># iterable：一个可迭代对象，比如列表、元组等，其元素会被 str 连接。</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>示例</strong></p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">result = <span class="string">&#x27;, &#x27;</span>.join([<span class="string">&#x27;Hello&#x27;</span>, <span class="string">&#x27;World&#x27;</span>])</span><br><span class="line"><span class="built_in">print</span>(result)  <span class="comment"># 输出: Hello, World</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="lower"><a href="#lower" class="headerlink" title="lower"></a>lower</h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">string.lower()</span><br><span class="line"></span><br><span class="line">转换 string 中所有大写字符为小写</span><br></pre></td></tr></table></figure>
+
+<h3 id="upper"><a href="#upper" class="headerlink" title="upper"></a>upper</h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">string.upper()</span><br><span class="line"></span><br><span class="line">转换 string 中的小写字母为大写</span><br></pre></td></tr></table></figure>
+
+<h3 id="replace"><a href="#replace" class="headerlink" title="replace"></a>replace</h3><p>用于替换字符串中的指定子字符串。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">str</span>.replace(old, new[, count])</span><br><span class="line"></span><br><span class="line"><span class="comment"># old：要被替换的子字符串。</span></span><br><span class="line"><span class="comment"># new：用于替换 old 的新字符串。</span></span><br><span class="line"><span class="comment"># count（可选）：指定替换的最大次数，默认为全部替换。</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="split"><a href="#split" class="headerlink" title="split()"></a>split()</h3><p>用于将字符串分割成多个子字符串，返回一个列表。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">str</span>.split(sep=<span class="literal">None</span>, maxsplit=-<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">// sep（可选）：指定分隔符。默认值是 <span class="literal">None</span>，表示根据空格（包括多个连续空格）进行分割。如果指定了 sep，字符串会根据该分隔符来进行分割。</span><br><span class="line">// maxsplit（可选）：指定分割的最大次数。默认为 -<span class="number">1</span>，表示分割所有匹配的分隔符。如果指定了 maxsplit，那么返回的列表最多会包含 maxsplit + <span class="number">1</span> 个元素。</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例</strong></p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">text = <span class="string">&quot;Hello world, welcome to Python.&quot;</span></span><br><span class="line">result = text.split()</span><br><span class="line"><span class="built_in">print</span>(result) </span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line">[<span class="string">&#x27;Hello&#x27;</span>, <span class="string">&#x27;world,&#x27;</span>, <span class="string">&#x27;welcome&#x27;</span>, <span class="string">&#x27;to&#x27;</span>, <span class="string">&#x27;Python.&#x27;</span>]</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="encode"><a href="#encode" class="headerlink" title="encode()"></a>encode()</h3><h3 id="decode"><a href="#decode" class="headerlink" title="decode()"></a>decode()</h3><h3 id="format"><a href="#format" class="headerlink" title="format()"></a>format()</h3><h2 id="字符串格式化"><a href="#字符串格式化" class="headerlink" title="字符串格式化"></a>字符串格式化</h2><h3 id="格式化"><a href="#格式化" class="headerlink" title="%格式化"></a>%格式化</h3><h3 id="f-s"><a href="#f-s" class="headerlink" title="f-s"></a>f-s</h3><h1 id="Dict"><a href="#Dict" class="headerlink" title="Dict"></a>Dict</h1><h2 id="字典的创建方式"><a href="#字典的创建方式" class="headerlink" title="字典的创建方式"></a>字典的创建方式</h2><ul>
+<li><p>直接定义</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mydict = &#123;&#125; <span class="comment"># 创建空字典</span></span><br><span class="line">my_dict = &#123;<span class="string">&#x27;key1&#x27;</span>: <span class="string">&#x27;value1&#x27;</span>, <span class="string">&#x27;key2&#x27;</span>: <span class="string">&#x27;value2&#x27;</span>&#125;</span><br><span class="line"><span class="built_in">print</span>(my_dict)    <span class="comment"># &#123;&#x27;key1&#x27;: &#x27;value1&#x27;, &#x27;key2&#x27;: &#x27;value2&#x27;&#125;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用<code>dict()</code>构造函数</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mydict = <span class="built_in">dict</span>() <span class="comment"># 空字典</span></span><br><span class="line">my_dict = <span class="built_in">dict</span>(key1=<span class="string">&#x27;value1&#x27;</span>,key2=<span class="string">&#x27;value2&#x27;</span>,key3=<span class="string">&#x27;value3&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(my_dict) <span class="comment"># &#123;&#x27;key1&#x27;: &#x27;value1&#x27;, &#x27;key2&#x27;: &#x27;value2&#x27;, &#x27;key3&#x27;: &#x27;value3&#x27;&#125;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>键值对序列</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">tuple1 = (<span class="string">&quot;key1&quot;</span>,<span class="string">&quot;value1&quot;</span>)</span><br><span class="line">tuple2 = (<span class="string">&quot;key2&quot;</span>,<span class="string">&quot;value2&quot;</span>)</span><br><span class="line">tuple3 = (<span class="string">&quot;key3&quot;</span>,<span class="string">&quot;value3&quot;</span>)</span><br><span class="line">my_list = <span class="built_in">list</span>()</span><br><span class="line">my_list.append(tuple1)</span><br><span class="line">my_list.append(tuple2)</span><br><span class="line">my_list.append(tuple3)</span><br><span class="line">my_dict = <span class="built_in">dict</span>(my_list)</span><br><span class="line"><span class="built_in">print</span>(my_dict) <span class="comment"># &#123;&#x27;key1&#x27;: &#x27;value1&#x27;, &#x27;key2&#x27;: &#x27;value2&#x27;, &#x27;key3&#x27;: &#x27;value3&#x27;&#125;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="访问字典"><a href="#访问字典" class="headerlink" title="访问字典"></a>访问字典</h2><ul>
+<li><p>通过key来获取value</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">my_dict = &#123;<span class="string">&#x27;key1&#x27;</span>: <span class="string">&#x27;value1&#x27;</span>, <span class="string">&#x27;key2&#x27;</span>: <span class="string">&#x27;value2&#x27;</span>, <span class="string">&#x27;key3&#x27;</span>: <span class="string">&#x27;value3&#x27;</span>&#125;</span><br><span class="line"><span class="built_in">print</span>(my_dict[<span class="string">&quot;key1&quot;</span>]) <span class="comment"># value1</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>添加元素</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mydict = &#123;&#125;</span><br><span class="line">mydict[<span class="string">&quot;key1&quot;</span>]=<span class="string">&quot;value1&quot;</span></span><br><span class="line"><span class="built_in">print</span>(mydict) <span class="comment"># &#123;&#x27;key1&#x27;: &#x27;value1&#x27;&#125;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改元素</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mydict = &#123;&#125;</span><br><span class="line">mydict[<span class="string">&quot;key1&quot;</span>]=<span class="string">&quot;value1&quot;</span></span><br><span class="line">mydict[<span class="string">&quot;key1&quot;</span>]=<span class="string">&quot;new_value1&quot;</span></span><br><span class="line"><span class="built_in">print</span>(mydict) <span class="comment"># &#123;&#x27;key1&#x27;: &#x27;new_value1&#x27;&#125;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除元素</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mydict = &#123;&#125;</span><br><span class="line">mydict[<span class="string">&quot;key1&quot;</span>]=<span class="string">&quot;value1&quot;</span></span><br><span class="line"><span class="keyword">del</span> mydict[<span class="string">&quot;key1&quot;</span>]</span><br><span class="line"><span class="built_in">print</span>(mydict) <span class="comment"># &#123;&#125;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除字典</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mydict = &#123;&#125;</span><br><span class="line">mydict[<span class="string">&quot;key1&quot;</span>]=<span class="string">&quot;value1&quot;</span></span><br><span class="line"><span class="keyword">del</span> mydict</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="字典方法"><a href="#字典方法" class="headerlink" title="字典方法"></a>字典方法</h2><h3 id="clear"><a href="#clear" class="headerlink" title="clear()"></a>clear()</h3><p>清空字典，使之变成一个空字典。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">dict</span>.clear()</span><br></pre></td></tr></table></figure>
+
+<h3 id="keys"><a href="#keys" class="headerlink" title="keys()"></a>keys()</h3><p>返回一个包含字典中所有键的对象</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">my_dict = &#123;<span class="string">&#x27;key1&#x27;</span>: <span class="string">&#x27;value1&#x27;</span>, <span class="string">&#x27;key2&#x27;</span>: <span class="string">&#x27;value2&#x27;</span>, <span class="string">&#x27;key3&#x27;</span>: <span class="string">&#x27;value3&#x27;</span>&#125;</span><br><span class="line"><span class="built_in">print</span>(my_dict.keys())</span><br><span class="line">keyslist = <span class="built_in">list</span>(my_dict.keys())</span><br><span class="line"><span class="built_in">print</span>(keyslist)</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line">dict_keys([<span class="string">&#x27;key1&#x27;</span>, <span class="string">&#x27;key2&#x27;</span>, <span class="string">&#x27;key3&#x27;</span>])</span><br><span class="line">[<span class="string">&#x27;key1&#x27;</span>, <span class="string">&#x27;key2&#x27;</span>, <span class="string">&#x27;key3&#x27;</span>]</span><br></pre></td></tr></table></figure>
+
+<h3 id="values"><a href="#values" class="headerlink" title="values()"></a>values()</h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">dict</span>.values()</span><br></pre></td></tr></table></figure>
+
+<p>返回一个包含字典中所有值的对象</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">my_dict = &#123;<span class="string">&#x27;key1&#x27;</span>: <span class="string">&#x27;value1&#x27;</span>, <span class="string">&#x27;key2&#x27;</span>: <span class="string">&#x27;value2&#x27;</span>, <span class="string">&#x27;key3&#x27;</span>: <span class="string">&#x27;value3&#x27;</span>&#125;</span><br><span class="line"><span class="built_in">print</span>(my_dict.values())</span><br><span class="line">valueslist = <span class="built_in">list</span>(my_dict.values())</span><br><span class="line"><span class="built_in">print</span>(valueslist)</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line">dict_values([<span class="string">&#x27;value1&#x27;</span>, <span class="string">&#x27;value2&#x27;</span>, <span class="string">&#x27;value3&#x27;</span>])</span><br><span class="line">[<span class="string">&#x27;value1&#x27;</span>, <span class="string">&#x27;value2&#x27;</span>, <span class="string">&#x27;value3&#x27;</span>]</span><br></pre></td></tr></table></figure>
+
+<h3 id="items"><a href="#items" class="headerlink" title="items()"></a>items()</h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">dict</span>.values()</span><br></pre></td></tr></table></figure>
+
+<p>返回一个包含字典中所以键值对的对象</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">my_dict = &#123;<span class="string">&#x27;key1&#x27;</span>: <span class="string">&#x27;value1&#x27;</span>, <span class="string">&#x27;key2&#x27;</span>: <span class="string">&#x27;value2&#x27;</span>, <span class="string">&#x27;key3&#x27;</span>: <span class="string">&#x27;value3&#x27;</span>&#125;</span><br><span class="line"><span class="built_in">print</span>(my_dict.items())</span><br><span class="line">itemslist = <span class="built_in">list</span>(my_dict.items())</span><br><span class="line"><span class="built_in">print</span>(ietmslist)</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line">dict_items([(<span class="string">&#x27;key1&#x27;</span>, <span class="string">&#x27;value1&#x27;</span>), (<span class="string">&#x27;key2&#x27;</span>, <span class="string">&#x27;value2&#x27;</span>), (<span class="string">&#x27;key3&#x27;</span>, <span class="string">&#x27;value3&#x27;</span>)])</span><br><span class="line">[(<span class="string">&#x27;key1&#x27;</span>, <span class="string">&#x27;value1&#x27;</span>), (<span class="string">&#x27;key2&#x27;</span>, <span class="string">&#x27;value2&#x27;</span>), (<span class="string">&#x27;key3&#x27;</span>, <span class="string">&#x27;value3&#x27;</span>)]</span><br></pre></td></tr></table></figure>
+
+<h3 id="update"><a href="#update" class="headerlink" title="update()"></a>update()</h3><p>将一个字典的键值对更新到另一个字典中。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">dict</span>.update([other])</span><br><span class="line"></span><br><span class="line"><span class="comment"># other:要更新到当前字典的键值对来源，可以是另一个字典、键值对列表或键值对元组序列。</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>示例</strong></p>
+<p>字典</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">dict1 = &#123;<span class="string">&quot;key1&quot;</span>:<span class="string">&quot;value1&quot;</span>&#125;</span><br><span class="line">dict2 = &#123;<span class="string">&quot;key2&quot;</span>:<span class="string">&quot;value2&quot;</span>&#125;</span><br><span class="line">dict1.update(dict2)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;dict1&quot;</span>,dict1)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;dict2&quot;</span>,dict2)</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line">&#123;<span class="string">&#x27;key1&#x27;</span>: <span class="string">&#x27;value1&#x27;</span>, <span class="string">&#x27;key2&#x27;</span>: <span class="string">&#x27;value2&#x27;</span>&#125;</span><br><span class="line">&#123;<span class="string">&#x27;key2&#x27;</span>: <span class="string">&#x27;value2&#x27;</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<p>元组列表</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">dict1 = &#123;<span class="string">&quot;key1&quot;</span>:<span class="string">&quot;value1&quot;</span>&#125;</span><br><span class="line">list2= [(<span class="string">&quot;key2&quot;</span>,<span class="string">&quot;value2&quot;</span>)]</span><br><span class="line">dict1.update(list2)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;dict1&quot;</span>,dict1)</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line">dict1 &#123;<span class="string">&#x27;key1&#x27;</span>: <span class="string">&#x27;value1&#x27;</span>, <span class="string">&#x27;key2&#x27;</span>: <span class="string">&#x27;value2&#x27;</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<p>键值对列表</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">dict1 = &#123;<span class="string">&quot;key1&quot;</span>:<span class="string">&quot;value1&quot;</span>&#125;</span><br><span class="line">list2= [[<span class="string">&quot;key2&quot;</span>,<span class="string">&quot;value2&quot;</span>]]</span><br><span class="line">dict1.update(list2)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;dict1&quot;</span>,dict1)</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line">dict1 &#123;<span class="string">&#x27;key1&#x27;</span>: <span class="string">&#x27;value1&#x27;</span>, <span class="string">&#x27;key2&#x27;</span>: <span class="string">&#x27;value2&#x27;</span>&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="pop"><a href="#pop" class="headerlink" title="pop()"></a>pop()</h3><p>移除字典中的一个元素，并返回该元素的值。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">dict</span>.pop(key)</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例</strong></p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">my_dict = &#123;<span class="string">&#x27;key1&#x27;</span>: <span class="string">&#x27;value1&#x27;</span>, <span class="string">&#x27;key2&#x27;</span>: <span class="string">&#x27;value2&#x27;</span>, <span class="string">&#x27;key3&#x27;</span>: <span class="string">&#x27;value3&#x27;</span>&#125;</span><br><span class="line">popvalue = my_dict.pop(<span class="string">&quot;key3&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(popvalue)</span><br><span class="line"><span class="built_in">print</span>(my_dict)</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line">value3</span><br><span class="line">&#123;<span class="string">&#x27;key1&#x27;</span>: <span class="string">&#x27;value1&#x27;</span>, <span class="string">&#x27;key2&#x27;</span>: <span class="string">&#x27;value2&#x27;</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="File-I-O"><a href="#File-I-O" class="headerlink" title="File I&#x2F;O"></a>File I&#x2F;O</h1><h2 id="open"><a href="#open" class="headerlink" title="open()"></a>open()</h2><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">file = <span class="built_in">open</span>(file, mode=<span class="string">&#x27;r&#x27;</span>)</span><br><span class="line"></span><br><span class="line">// file: 要打开的文件名（包含路径）</span><br><span class="line">// mdoe: 打开文件的模式</span><br><span class="line">// <span class="keyword">return</span>: 返回一个文件对象</span><br></pre></td></tr></table></figure>
+
+<h3 id="mode"><a href="#mode" class="headerlink" title="mode"></a>mode</h3><table>
+<thead>
+<tr>
+<th>模式</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>r</td>
+<td>以只读方式打开文件。文件的指针将会放在文件的开头。</td>
+</tr>
+<tr>
+<td>w</td>
+<td>打开一个文件只用于写入。如果该文件已存在则打开文件，并从开头开始编辑，即原有内容会被删除。如果该文件不存在，创建新文件。</td>
+</tr>
+<tr>
+<td>a</td>
+<td>打开一个文件用于追加。如果该文件已存在，文件指针将会放在文件的结尾。也就是说，新的内容将会被写入到已有内容之后。如果该文件不存在，创建新文件进行写入。</td>
+</tr>
+<tr>
+<td>+</td>
+<td>打开一个文件进行更新(可读可写)。</td>
+</tr>
+<tr>
+<td>r+</td>
+<td>打开一个文件用于读写。文件指针将会放在文件的开头。</td>
+</tr>
+<tr>
+<td>w+</td>
+<td>打开一个文件用于读写。如果该文件已存在则打开文件，并从开头开始编辑，即原有内容会被删除。如果该文件不存在，创建新文件。</td>
+</tr>
+<tr>
+<td>a+</td>
+<td>打开一个文件用于读写。如果该文件已存在，文件指针将会放在文件的结尾。文件打开时会是追加模式。如果该文件不存在，创建新文件用于读写。</td>
+</tr>
+<tr>
+<td>b</td>
+<td>二进制模式。（与r、w、a组合使用）</td>
+</tr>
+<tr>
+<td>rb</td>
+<td>以二进制格式打开一个文件用于只读。文件指针将会放在文件的开头。</td>
+</tr>
+<tr>
+<td>rb+</td>
+<td>以二进制格式打开一个文件用于读写。文件指针将会放在文件的开头。</td>
+</tr>
+<tr>
+<td>wb</td>
+<td>以二进制格式打开一个文件只用于写入。如果该文件已存在则打开文件，并从开头开始编辑，即原有内容会被删除。如果该文件不存在，创建新文件。</td>
+</tr>
+<tr>
+<td>wb+</td>
+<td>以二进制格式打开一个文件用于读写。如果该文件已存在则打开文件，并从开头开始编辑，即原有内容会被删除。如果该文件不存在，创建新文件。</td>
+</tr>
+<tr>
+<td>ab</td>
+<td>以二进制格式打开一个文件用于追加。如果该文件已存在，文件指针将会放在文件的结尾。也就是说，新的内容将会被写入到已有内容之后。如果该文件不存在，创建新文件进行写入。</td>
+</tr>
+<tr>
+<td>ab+</td>
+<td>以二进制格式打开一个文件用于追加。如果该文件已存在，文件指针将会放在文件的结尾。如果该文件不存在，创建新文件用于读写。</td>
+</tr>
+</tbody></table>
+<h2 id="close"><a href="#close" class="headerlink" title="close()"></a>close()</h2><p>关闭文件。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">file.close()</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 以只读模式 (&quot;r&quot;) 打开名为 &quot;example.txt&quot; 的文件</span></span><br><span class="line">file = <span class="built_in">open</span>(<span class="string">&quot;example.txt&quot;</span>, <span class="string">&quot;r&quot;</span>)  </span><br><span class="line"></span><br><span class="line"><span class="comment"># 读取文件的全部内容，并存入变量 content</span></span><br><span class="line">content = file.read()  </span><br><span class="line"></span><br><span class="line"><span class="comment"># 关闭文件，释放系统资源（必须手动关闭，否则可能会占用文件资源）</span></span><br><span class="line">file.close()</span><br></pre></td></tr></table></figure>
+
+<h2 id="read"><a href="#read" class="headerlink" title="read"></a>read</h2><h3 id="read-1"><a href="#read-1" class="headerlink" title="read()"></a>read()</h3><p>读取整个文件</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">content = file.read(size)</span><br><span class="line"></span><br><span class="line">// size=-<span class="number">1</span>（默认）：读取整个文件</span><br><span class="line">// size=n：读取前 n 个字节（字符），适用于大文件逐步读取</span><br></pre></td></tr></table></figure>
+
+<h3 id="readline"><a href="#readline" class="headerlink" title="readline()"></a>readline()</h3><p>读取一行</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">file.readline()</span><br><span class="line"></span><br><span class="line">// 每次调用 readline() 读取一行（包含换行符 \n）。</span><br><span class="line">// 若到达文件末尾，则返回 <span class="string">&quot;&quot;</span>（空字符串）。</span><br></pre></td></tr></table></figure>
+
+<h3 id="readlines"><a href="#readlines" class="headerlink" title="readlines()"></a>readlines()</h3><p>读取所有行，返回列表</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">file.readlines()</span><br><span class="line"></span><br><span class="line">// 一次性读取所有行，返回列表</span><br><span class="line">// 每行作为一个字符串元素，保留换行符 \n</span><br></pre></td></tr></table></figure>
+
+<h2 id="write"><a href="#write" class="headerlink" title="write"></a>write</h2><h3 id="write-1"><a href="#write-1" class="headerlink" title="write()"></a>write()</h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">file.write(string)</span><br><span class="line"></span><br><span class="line">// 只能写入字符串，不能直接写入数字、列表等（需转换）</span><br><span class="line">// 不会自动换行，需要手动加 \n</span><br><span class="line">// 写入完成后必须关闭文件（推荐 <span class="keyword">with</span> <span class="built_in">open</span> 方式）</span><br></pre></td></tr></table></figure>
+
+<h3 id="writelines"><a href="#writelines" class="headerlink" title="writelines()"></a>writelines()</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">file.writelines(lines)</span><br><span class="line"></span><br><span class="line">// 一次性写入多行，参数需为列表或可迭代对象</span><br><span class="line">// 不会自动换行，需确保列表中的字符串带有 \n</span><br></pre></td></tr></table></figure>
+
+<h2 id="flush"><a href="#flush" class="headerlink" title="flush()"></a>flush()</h2><p>刷新缓冲区</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">file.flush()</span><br></pre></td></tr></table></figure>
+
+<h2 id="tell"><a href="#tell" class="headerlink" title="tell()"></a>tell()</h2><p>返回文件指针当前位置。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fileObject.tell()</span><br></pre></td></tr></table></figure>
+
+<h2 id="seek"><a href="#seek" class="headerlink" title="seek()"></a>seek()</h2><p>移动文件读取指针到指定位置。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">file.seek(offset, whence)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p><strong>offset</strong></p>
+<p>  开始的偏移量，也就是代表需要移动偏移的字节数</p>
+</li>
+<li><p><strong>whence</strong></p>
+<p>  可选，默认值为 0。给offset参数一个定义，表示要从哪个位置开始偏移；0代表从文件开头开始算起，1代表从当前位置开始算起，2代表从文件末尾算起。</p>
+</li>
+</ul>
+<h1 id="random"><a href="#random" class="headerlink" title="random"></a>random</h1><h2 id="seed"><a href="#seed" class="headerlink" title="seed()"></a>seed()</h2><p><code>random.seed()</code> 用于初始化随机数生成器的种子（Seed）。它的主要作用是让伪随机数的生成过程可预测，从而在不同的运行环境下产生相同的随机序列。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> random</span><br><span class="line"></span><br><span class="line">random.seed(<span class="number">42</span>)  <span class="comment"># 设置随机种子</span></span><br><span class="line"><span class="built_in">print</span>(random.random())  <span class="comment"># 0.6394267984578837</span></span><br><span class="line"><span class="built_in">print</span>(random.randint(<span class="number">1</span>, <span class="number">100</span>))  <span class="comment"># 82</span></span><br></pre></td></tr></table></figure>
+
+<p><code>random.seed(42)</code> 设定了随机数种子为 <code>42</code>。</p>
+<p>之后调用 <code>random.random()</code> 和 <code>random.randint()</code> 会得到固定的值。</p>
+<p>只要种子值相同，每次运行时生成的随机序列也相同。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">random.seed(a=<span class="literal">None</span>, version=<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line">// a（可选）：用于初始化随机数生成器的种子，可以是：</span><br><span class="line">	// <span class="built_in">int</span> 类型（最常见）</span><br><span class="line">	// <span class="built_in">float</span> 类型</span><br><span class="line">	// <span class="built_in">str</span>、<span class="built_in">bytes</span>、<span class="built_in">bytearray</span> 等</span><br><span class="line">	//<span class="literal">None</span>（默认），会使用系统时间或其他随机源进行初始化</span><br><span class="line">// version（可选）：默认为 <span class="number">2</span>，表示使用 <span class="built_in">hash</span>(a) % <span class="number">2</span>**<span class="number">32</span> 作为种子；如果 version=<span class="number">1</span>，则直接使用 a 作为种子（但只支持整数类型）。</span><br></pre></td></tr></table></figure>
+
+<h2 id="random-1"><a href="#random-1" class="headerlink" title="random()"></a>random()</h2><p><code>random.random()</code>用于生成一个 [0.0, 1.0) 之间的浮点数（包括 0.0，但不包括 1.0）。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> random</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(random.random())  <span class="comment"># 生成一个随机浮点数，例如 0.3745401188473625</span></span><br><span class="line"><span class="built_in">print</span>(random.random())  <span class="comment"># 可能是 0.9507143064099162</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="randint"><a href="#randint" class="headerlink" title="randint()"></a>randint()</h2><p><code>random.randint(a, b)</code> 用于<strong>生成一个在 <code>[a, b]</code> 之间的随机整数</strong>，**包括 <code>a</code> 和 <code>b</code>**。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> random</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(random.randint(<span class="number">1</span>, <span class="number">10</span>))  <span class="comment"># 可能输出 1 到 10 之间的整数</span></span><br><span class="line"><span class="built_in">print</span>(random.randint(<span class="number">1</span>, <span class="number">10</span>))  <span class="comment"># 可能输出 7</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="uniform"><a href="#uniform" class="headerlink" title="uniform()"></a>uniform()</h2><p><code>random.uniform(a, b)</code> 用于生成一个在 <code>[a, b]</code> 或 <code>[b, a]</code> 之间的随机浮点数，包括 <code>a</code> 和 <code>b</code>（即闭区间）。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> random</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(random.uniform(<span class="number">1</span>, <span class="number">10</span>))  <span class="comment"># 可能输出 3.758382659073293</span></span><br><span class="line"><span class="built_in">print</span>(random.uniform(-<span class="number">5</span>, <span class="number">5</span>))  <span class="comment"># 可能输出 -2.134985731</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="randbytes"><a href="#randbytes" class="headerlink" title="randbytes()"></a>randbytes()</h2><p><code>random.randbytes()</code> 用于生成指定长度的随机字节序列（<code>bytes</code> 对象）。这是 Python 3.9 版本引入的功能。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">random.randbytes(n)</span><br><span class="line"></span><br><span class="line">// n：要生成的随机字节数（必须是正整数）。</span><br><span class="line">// <span class="keyword">return</span>：一个长度为 n 的 <span class="built_in">bytes</span> 对象，每个字节的值范围为 <span class="number">0</span>-<span class="number">255</span>。</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="choice"><a href="#choice" class="headerlink" title="choice()"></a>choice()</h2><p>用于从非空序列中随机选择一个元素，序列可以是任何可迭代的对象（如列表、元组、字符串等）。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">random.choice(seq)</span><br><span class="line"></span><br><span class="line">// seq：一个非空的序列（如列表、元组、字符串、<span class="built_in">range</span> 等）。</span><br><span class="line">// <span class="keyword">return</span>：返回 序列 seq 中的一个随机元素。</span><br></pre></td></tr></table></figure>
+
+<h2 id="shuffle"><a href="#shuffle" class="headerlink" title="shuffle()"></a>shuffle()</h2><p><code>random.shuffle(seq)</code>用于 随机打乱可变序列（如列表）中的元素顺序。该方法会直接修改原始序列，而不是返回一个新的序列。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">random.shuffle(seq)</span><br><span class="line"></span><br><span class="line">// seq：seq：一个可变序列（通常是列表）。shuffle() 会对该序列中的元素进行随机排序。</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例用法</strong></p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> random</span><br><span class="line"></span><br><span class="line"><span class="comment"># 打乱列表顺序</span></span><br><span class="line">numbers = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line">random.shuffle(numbers)</span><br><span class="line"><span class="built_in">print</span>(numbers)  <span class="comment"># 可能输出 [3, 1, 5, 4, 2]</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="sample"><a href="#sample" class="headerlink" title="sample()"></a>sample()</h2><p><code>random.sample(seq, k)</code> 用于 从序列 <code>seq</code> 中随机选择 <code>k</code> 个不重复的元素，并返回一个新列表。这个方法不会修改原始序列。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">random.sample(seq, k)</span><br><span class="line"></span><br><span class="line">// seq：一个序列（如列表、元组、字符串、<span class="built_in">range</span> 等）。</span><br><span class="line">// k：要选择的元素个数，必须小于或等于 seq 中元素的数量。</span><br><span class="line">// <span class="keyword">return</span>：返回一个包含 k 个从 seq 中随机选出的不重复元素的列表。</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例用法</strong></p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> random</span><br><span class="line"></span><br><span class="line"><span class="comment"># 从列表中随机选择 3 个元素</span></span><br><span class="line">fruits = [<span class="string">&quot;苹果&quot;</span>, <span class="string">&quot;香蕉&quot;</span>, <span class="string">&quot;橙子&quot;</span>, <span class="string">&quot;葡萄&quot;</span>, <span class="string">&quot;草莓&quot;</span>]</span><br><span class="line">sampled_fruits = random.sample(fruits, <span class="number">3</span>)</span><br><span class="line"><span class="built_in">print</span>(sampled_fruits)  <span class="comment"># 可能输出 [&#x27;草莓&#x27;, &#x27;香蕉&#x27;, &#x27;橙子&#x27;]</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="binascii"><a href="#binascii" class="headerlink" title="binascii"></a>binascii</h1><h1 id="urllib"><a href="#urllib" class="headerlink" title="urllib"></a>urllib</h1><h2 id="parse"><a href="#parse" class="headerlink" title="parse"></a>parse</h2><h3 id="quote"><a href="#quote" class="headerlink" title="quote()"></a>quote()</h3><p>用于对字符串进行 URL 编码。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">urllib.parse.quote(string, safe=<span class="string">&#x27;/&#x27;</span>, encoding=<span class="literal">None</span>, errors=<span class="literal">None</span>)</span><br><span class="line"></span><br><span class="line">// string: 要进行 URL 编码的字符串。</span><br><span class="line">// safe: 指定哪些字符不需要进行编码。默认情况下，safe=<span class="string">&#x27;/&#x27;</span>，表示 / 字符不会被编码。</span><br><span class="line">// encoding: 字符串编码的方式。默认使用 utf-<span class="number">8</span> 编码。</span><br><span class="line">// errors: 处理编码错误的方式。通常情况下，不需要设置此参数，默认值为 <span class="literal">None</span>。</span><br></pre></td></tr></table></figure>
+
+<h3 id="unquote"><a href="#unquote" class="headerlink" title="unquote()"></a>unquote()</h3><p>用于 对字符串进行URL 解码。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">urllib.parse.unquote(string, encoding=<span class="string">&#x27;utf-8&#x27;</span>, errors=<span class="string">&#x27;replace&#x27;</span>)</span><br><span class="line"></span><br><span class="line">// string:要解码的 URL 编码字符串。该字符串中包含百分号编码的部分，需要被转换回对应的字符。</span><br><span class="line">// encoding (可选):指定用于解码的字符编码。默认使用 utf-<span class="number">8</span> 编码。</span><br><span class="line">// errors (可选):指定在解码过程中遇到错误时的处理方式。默认值是 <span class="string">&#x27;replace&#x27;</span>，即遇到无法解码的字节时用一个替代字符（通常是 �）代替。</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="requests"><a href="#requests" class="headerlink" title="requests"></a>requests</h1><h2 id="request"><a href="#request" class="headerlink" title="request()"></a>request()</h2><p><code>requests.request()</code> 是 <code>requests</code> 库中最底层、最通用的 HTTP 请求方法。它允许你通过传入不同的 HTTP 方法（如 <code>GET</code>、<code>POST</code>、<code>PUT</code>、<code>DELETE</code> 等）来构造请求，内部所有的专用方法（如 <code>requests.get()</code>、<code>requests.post()</code> 等）其实都是对 <code>requests.request()</code> 的简单封装。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">requests.request(method, url, **kwargs)</span><br><span class="line"></span><br><span class="line"><span class="comment"># method：请求方法的名称，字符串形式，如 &quot;GET&quot;、&quot;POST&quot;、&quot;PUT&quot;、&quot;DELETE&quot;、&quot;HEAD&quot;、&quot;OPTIONS&quot;、&quot;PATCH&quot; 等。</span></span><br><span class="line"><span class="comment"># url：请求的 URL 地址。</span></span><br><span class="line"><span class="comment"># kwargs：其他可选参数，用于控制请求的各个方面。</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="get"><a href="#get" class="headerlink" title="get()"></a>get()</h2><p><code>requests.get()</code> 用于向指定 URL 发送 GET 请求，从服务器获取数据。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">response = requests.get(url, params=<span class="literal">None</span>, **kwargs)</span><br><span class="line"></span><br><span class="line"><span class="comment"># url：必需参数，表示请求的目标 URL。</span></span><br><span class="line"><span class="comment"># params：可选参数，一般以字典、元组列表或字节流的形式传入，用于构造 URL 的查询字符串。传递的参数会自动编码并附加到 URL 后面。</span></span><br><span class="line"><span class="comment"># kwargs：其他可选参数，用于定制请求行为。</span></span><br><span class="line">	<span class="comment"># 常见的有：headers,cookies,timeout等</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>示例</strong></p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">params = &#123;<span class="string">&quot;q&quot;</span>: <span class="string">&quot;python教程&quot;</span>, <span class="string">&quot;page&quot;</span>: <span class="number">1</span>&#125;</span><br><span class="line">response = requests.get(<span class="string">&quot;https://www.example.com/search&quot;</span>, params=params)</span><br><span class="line"><span class="built_in">print</span>(response.url)</span><br><span class="line"><span class="comment"># 输出类似：https://www.example.com/search?q=python%E6%95%99%E7%A8%8B&amp;page=1</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="post"><a href="#post" class="headerlink" title="post()"></a>post()</h2><p><code>requests.post()</code> 方法用于向服务器发送 HTTP POST 请求。与 GET 请求不同，POST 请求通常用于向服务器提交数据（如表单数据、JSON 数据、文件上传等），数据内容被放在请求体（body）中。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">response = requests.post(url, data=<span class="literal">None</span>, json=<span class="literal">None</span>, headers=<span class="literal">None</span>, params=<span class="literal">None</span>, files=<span class="literal">None</span>, auth=<span class="literal">None</span>, timeout=<span class="literal">None</span>, **kwargs)</span><br><span class="line"></span><br><span class="line"><span class="comment"># url：必需参数，目标请求地址。</span></span><br><span class="line"><span class="comment"># data：常用于提交表单数据，可为字典、字节序列或文件对象。当传入字典时，默认以 application/x-www-form-urlencoded 编码；也可以传入字符串，此时默认为 text/plain。</span></span><br><span class="line"><span class="comment"># json：用于提交 JSON 数据。当使用该参数时，requests 会自动将数据序列化为 JSON 字符串，并设置请求头 Content-Type: application/json。如果同时传入了 data 和 json，通常后者优先。</span></span><br><span class="line"><span class="comment"># headers：字典，设置请求头，可以用来自定义 User-Agent、Content-Type 等信息。</span></span><br><span class="line"><span class="comment"># params：用于 URL 查询参数，类似于 GET 请求，但在 POST 请求中有时也会用到。</span></span><br><span class="line"><span class="comment"># files：用于上传文件，支持多种格式。</span></span><br></pre></td></tr></table></figure>
+
+<p>使用 <code>data</code> 参数提交表单数据时，数据会以 URL 编码格式发送；使用 <code>json</code> 参数提交数据时，数据会自动转换为 JSON 字符串，并设置 <code>Content-Type: application/json</code>。</p>
+<h2 id="Response对象"><a href="#Response对象" class="headerlink" title="Response对象"></a>Response对象</h2><p>Response 对象是 Python requests 库中用来表示服务器响应的核心对象。每当你使用 requests.get()、requests.post() 等方法发送 HTTP 请求时，返回的就是一个 Response 对象，它包含了服务器返回的所有信息，例如状态码、响应头、响应体、Cookies 以及请求相关的信息等。</p>
+<h3 id="status-code"><a href="#status-code" class="headerlink" title="status_code"></a>status_code</h3><p>表示 HTTP 响应的状态，如 200（成功）、404（资源未找到）、500（服务器错误）等。</p>
+<h3 id="headers"><a href="#headers" class="headerlink" title="headers"></a>headers</h3><p>是一个字典，存储了服务器返回的所有 HTTP 响应头信息，如 Content-Type、Content-Encoding 等。</p>
+<h3 id="响应体"><a href="#响应体" class="headerlink" title="响应体"></a>响应体</h3><p>有两种常用形式</p>
+<ul>
+<li><p><strong>text</strong>：</p>
+<p>  经过编码（通常基于响应头中指定的 charset 或通过 apparent_encoding 计算）解码后的字符串数据，适合处理文本内容。</p>
+</li>
+<li><p><strong>content</strong>：</p>
+<p>  原始的二进制数据</p>
+</li>
+</ul>
+<h3 id="Cookies"><a href="#Cookies" class="headerlink" title="Cookies"></a>Cookies</h3><p>Response 对象的 cookies 属性是一个 RequestsCookieJar 对象，用于存储服务器返回的 Cookie。</p>
+<h3 id="json"><a href="#json" class="headerlink" title="json()"></a>json()</h3><p>用于将响应体内容解析为 JSON 格式并返回对应的 Python 对象（通常是字典或列表）。如果响应内容不是合法的 JSON，则会抛出异常。</p>
+<h3 id="close-1"><a href="#close-1" class="headerlink" title="close()"></a>close()</h3><p>用于关闭响应连接，尤其在使用流式请求（stream&#x3D;True）时显得尤为重要。</p>
+<h1 id="re"><a href="#re" class="headerlink" title="re"></a>re</h1><p>正则表达式</p>
+<h2 id="常用匹配规则"><a href="#常用匹配规则" class="headerlink" title="常用匹配规则"></a>常用匹配规则</h2><h3 id="元字符"><a href="#元字符" class="headerlink" title="元字符"></a>元字符</h3><table>
+<thead>
+<tr>
+<th>模式</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>.</td>
+<td>匹配任意单个字符（除换行符）。</td>
+</tr>
+<tr>
+<td>^</td>
+<td>匹配字符串的开头。</td>
+</tr>
+<tr>
+<td>$</td>
+<td>匹配字符串的结尾。</td>
+</tr>
+<tr>
+<td>*</td>
+<td>匹配前一个字符0次或多次。</td>
+</tr>
+<tr>
+<td>+</td>
+<td>匹配前一个字符1次或多次。</td>
+</tr>
+<tr>
+<td>?</td>
+<td>匹配前一个字符0次或1次。</td>
+</tr>
+<tr>
+<td>{n}</td>
+<td>精确匹配前一个字符 n 次。</td>
+</tr>
+<tr>
+<td>{n,}</td>
+<td>匹配前一个字符至少 n 次。</td>
+</tr>
+<tr>
+<td>{n,m}</td>
+<td>匹配前一个字符 n 到 m 次。</td>
+</tr>
+</tbody></table>
+<h3 id="字符类"><a href="#字符类" class="headerlink" title="字符类"></a>字符类</h3><table>
+<thead>
+<tr>
+<th>模式</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>[abc]</code></td>
+<td>匹配字符 “a”、”b” 或 “c”。</td>
+</tr>
+<tr>
+<td><code>[a-z]</code></td>
+<td>匹配所有小写字母。</td>
+</tr>
+<tr>
+<td><code>[^abc]</code></td>
+<td>匹配除 “a”、”b” 和 “c” 之外的任意字符。</td>
+</tr>
+</tbody></table>
+<h3 id="预定义字符类"><a href="#预定义字符类" class="headerlink" title="预定义字符类"></a>预定义字符类</h3><table>
+<thead>
+<tr>
+<th>模式</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>\d</code></td>
+<td>匹配任意数字，等价于 [0-9]。</td>
+</tr>
+<tr>
+<td><code>\D</code></td>
+<td>匹配任意非数字。</td>
+</tr>
+<tr>
+<td><code>\w</code></td>
+<td>匹配字母、数字或下划线，等价于 [a-zA-Z0-9_]。</td>
+</tr>
+<tr>
+<td><code>\W</code></td>
+<td>匹配非字母、数字和下划线。</td>
+</tr>
+<tr>
+<td><code>\s</code></td>
+<td>匹配空白字符，包括空格、制表符等。</td>
+</tr>
+<tr>
+<td><code>\S</code></td>
+<td>匹配非空白字符。</td>
+</tr>
+</tbody></table>
+<h3 id="分组和引用"><a href="#分组和引用" class="headerlink" title="分组和引用"></a>分组和引用</h3><table>
+<thead>
+<tr>
+<th>模式</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>()</td>
+<td>用于分组，可以将一部分模式看作一个整体</td>
+</tr>
+<tr>
+<td>|</td>
+<td>匹配左边或右边的表达式。</td>
+</tr>
+<tr>
+<td>\1, \2,…</td>
+<td>反向引用，用于引用分组匹配的内容。</td>
+</tr>
+</tbody></table>
+<h2 id="match-object（匹配对象）"><a href="#match-object（匹配对象）" class="headerlink" title="match object（匹配对象）"></a>match object（匹配对象）</h2><p>匹配对象是 re.Match 类型的实例，可以通过该对象访问有关匹配的信息。</p>
+<h3 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h3><h4 id="lastindex"><a href="#lastindex" class="headerlink" title="lastindex"></a>lastindex</h4><p>返回正则表达式中最后一个分组的索引。如果没有分组，则返回 None。</p>
+<h4 id="lastgroup"><a href="#lastgroup" class="headerlink" title="lastgroup"></a>lastgroup</h4><p>返回最后一个匹配的分组名称（如果正则表达式使用了命名分组）。如果没有使用命名分组，则返回 None。</p>
+<h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><h4 id="group"><a href="#group" class="headerlink" title="group()"></a>group()</h4><ul>
+<li>返回整个匹配的字符串（即正则表达式匹配到的内容）。  </li>
+<li>如果正则表达式包含分组（用圆括号 () 包围的部分），可以通过 group() 方法传入一个数字来返回特定分组的匹配内容。</li>
+</ul>
+<h4 id="start"><a href="#start" class="headerlink" title="start()"></a>start()</h4><p>返回匹配的起始位置（索引），即匹配字符串的第一个字符在原始字符串中的位置。</p>
+<h4 id="end"><a href="#end" class="headerlink" title="end()"></a>end()</h4><p>返回匹配的结束位置（索引），即匹配字符串的最后一个字符后面的索引。注意，这个位置是匹配的结束位置的下一个位置。</p>
+<h4 id="span"><a href="#span" class="headerlink" title="span()"></a>span()</h4><p>返回一个元组 (start, end)，分别表示匹配的起始位置和结束位置。</p>
+<h4 id="groups"><a href="#groups" class="headerlink" title="groups()"></a>groups()</h4><p>返回所有分组的元组（不包括整个匹配的字符串），如果正则表达式没有分组，则返回一个空元组 ()。</p>
+<h4 id="groupdict"><a href="#groupdict" class="headerlink" title="groupdict()"></a>groupdict()</h4><p>如果正则表达式使用了命名分组，groupdict() 会返回一个字典，键为分组名称，值为对应分组的匹配内容。否则，返回一个空字典。</p>
+<h2 id="match"><a href="#match" class="headerlink" title="match()"></a>match()</h2><p>从字符串的起始位置开始匹配正则表达式 pattern，如果匹配成功，返回一个匹配对象；如果不匹配，返回 None。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">re.<span class="keyword">match</span>(pattern, string)</span><br></pre></td></tr></table></figure>
+
+<h2 id="search"><a href="#search" class="headerlink" title="search()"></a>search()</h2><p>在整个字符串中搜索匹配正则表达式 pattern 的部分，只要找到了第一个匹配项就返回匹配对象，否则返回 None。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">re.search(pattern, string)</span><br></pre></td></tr></table></figure>
+
+<h2 id="findall"><a href="#findall" class="headerlink" title="findall()"></a>findall()</h2><p>查找所有匹配 pattern 的部分，并返回一个列表。如果没有匹配项，则返回空列表。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">re.findall(pattern, string)</span><br></pre></td></tr></table></figure>
+
+<h2 id="finditer"><a href="#finditer" class="headerlink" title="finditer()"></a>finditer()</h2><p>与 findall 类似，但是返回的是一个迭代器，每个元素是一个匹配对象。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">re.finditer(pattern, string)</span><br></pre></td></tr></table></figure>
+
+<h2 id="sub"><a href="#sub" class="headerlink" title="sub()"></a>sub()</h2><p>用 repl 替换字符串中所有匹配 pattern 的部分，返回替换后的新字符串。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">re.sub(pattern, repl, string)</span><br></pre></td></tr></table></figure>
+
+<h2 id="split-1"><a href="#split-1" class="headerlink" title="split()"></a>split()</h2><p>根据正则表达式 pattern 将字符串分割成多个部分，返回一个列表。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">re.split(pattern, string)</span><br></pre></td></tr></table></figure>
+
+<h1 id="time"><a href="#time" class="headerlink" title="time"></a>time</h1><h2 id="time-1"><a href="#time-1" class="headerlink" title="time()"></a>time()</h2><p>返回当前时间的时间戳。时间戳是从1970年1月1日00:00:00 UTC开始的秒数。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">time.time()</span><br></pre></td></tr></table></figure>
+
+<p><strong>调用示例</strong></p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(time.time())</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line"><span class="number">1738742885.6218357</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<h1 id="json-1"><a href="#json-1" class="headerlink" title="json"></a>json</h1><p>JSON（JavaScript Object Notation）是一种轻量级的数据交换格式，易于人和机器阅读和解析。它基于JavaScript的对象表示法，但被广泛用于多种编程语言。</p>
+<h2 id="JSON中的数据类型"><a href="#JSON中的数据类型" class="headerlink" title="JSON中的数据类型"></a>JSON中的数据类型</h2><ul>
+<li>字符串（String）：用双引号包围，如 “Hello, World!”。</li>
+<li>数字（Number）：如 123、3.14，无引号。</li>
+<li>布尔值（Boolean）：true 或 false。</li>
+<li>数组（Array）：如 [1, 2, “abc”, true]。</li>
+<li>对象（Object）：如 {“name”: “Alice”, “age”: 30}。</li>
+<li>空值（Null）：表示空，如 null。</li>
+</ul>
+<h2 id="JSON的基本语法"><a href="#JSON的基本语法" class="headerlink" title="JSON的基本语法"></a>JSON的基本语法</h2><ul>
+<li>数据在键值对中：每个键值对由键和值组成，格式为 “key”: value。</li>
+<li>数据由逗号分隔：多个键值对之间使用逗号分隔。</li>
+<li>对象由花括号 {} 包围：表示一个无序的键值对集合。</li>
+<li>数组由方括号 [] 包围：表示一个有序的值的集合。</li>
+<li>键 必须是字符串（用双引号包裹），值 可以是字符串、数字、布尔值、数组、对象或 null。</li>
+</ul>
+<h2 id="JSON示例"><a href="#JSON示例" class="headerlink" title="JSON示例"></a>JSON示例</h2><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;args&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;headers&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;Accept&quot;</span><span class="punctuation">:</span> <span class="string">&quot;text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;Accept-Encoding&quot;</span><span class="punctuation">:</span> <span class="string">&quot;gzip, deflate, br, zstd&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;Accept-Language&quot;</span><span class="punctuation">:</span> <span class="string">&quot;zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;Host&quot;</span><span class="punctuation">:</span> <span class="string">&quot;www.httpbin.org&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;Priority&quot;</span><span class="punctuation">:</span> <span class="string">&quot;u=0, i&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;Sec-Ch-Ua&quot;</span><span class="punctuation">:</span> <span class="string">&quot;\&quot;Chromium\&quot;;v=\&quot;130\&quot;, \&quot;Microsoft Edge\&quot;;v=\&quot;130\&quot;, \&quot;Not?A_Brand\&quot;;v=\&quot;99\&quot;&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;Sec-Ch-Ua-Mobile&quot;</span><span class="punctuation">:</span> <span class="string">&quot;?0&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;Sec-Ch-Ua-Platform&quot;</span><span class="punctuation">:</span> <span class="string">&quot;\&quot;Windows\&quot;&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;Sec-Fetch-Dest&quot;</span><span class="punctuation">:</span> <span class="string">&quot;document&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;Sec-Fetch-Mode&quot;</span><span class="punctuation">:</span> <span class="string">&quot;navigate&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;Sec-Fetch-Site&quot;</span><span class="punctuation">:</span> <span class="string">&quot;none&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;Sec-Fetch-User&quot;</span><span class="punctuation">:</span> <span class="string">&quot;?1&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;Upgrade-Insecure-Requests&quot;</span><span class="punctuation">:</span> <span class="string">&quot;1&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;User-Agent&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36 Edg/130.0.0.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;X-Amzn-Trace-Id&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Root=1-672db183-55e0183d3ee3822d699e15c5&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;origin&quot;</span><span class="punctuation">:</span> <span class="string">&quot;45.32.145.117&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;url&quot;</span><span class="punctuation">:</span> <span class="string">&quot;https://www.httpbin.org/get&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="load"><a href="#load" class="headerlink" title="load()"></a>load()</h2><ul>
+<li>从文件对象读取 JSON 格式的数据并将其解析为 Python 对象。</li>
+<li>用于直接从文件中加载 JSON 数据。</li>
+</ul>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;data.json&#x27;</span>, <span class="string">&#x27;r&#x27;</span>) <span class="keyword">as</span> file:</span><br><span class="line">    data = json.load(file)</span><br><span class="line"><span class="built_in">print</span>(data)</span><br></pre></td></tr></table></figure>
+
+<h2 id="loads"><a href="#loads" class="headerlink" title="loads()"></a>loads()</h2><ul>
+<li>从字符串中解析 JSON 格式的数据并将其转换为 Python 对象。</li>
+<li>用于从 JSON 字符串中加载数据。</li>
+</ul>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br><span class="line">json_string = <span class="string">&#x27;&#123;&quot;name&quot;: &quot;Alice&quot;, &quot;age&quot;: 25&#125;&#x27;</span></span><br><span class="line">data = json.loads(json_string)</span><br><span class="line"><span class="built_in">print</span>(data)</span><br></pre></td></tr></table></figure>
+
+<h2 id="dump"><a href="#dump" class="headerlink" title="dump()"></a>dump()</h2><ul>
+<li>将 Python 对象转换为 JSON 格式，并将其写入到文件中。</li>
+<li>用于将 JSON 数据保存到文件。</li>
+</ul>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br><span class="line">data = &#123;</span><br><span class="line">    <span class="string">&quot;name&quot;</span>: <span class="string">&quot;Bob&quot;</span>,</span><br><span class="line">    <span class="string">&quot;age&quot;</span>: <span class="number">30</span>,</span><br><span class="line">    <span class="string">&quot;isStudent&quot;</span>: <span class="literal">True</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;output.json&#x27;</span>, <span class="string">&#x27;w&#x27;</span>) <span class="keyword">as</span> file:</span><br><span class="line">    json.dump(data, file, indent=<span class="number">4</span>)  <span class="comment"># 使用 indent 参数使输出美观</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="dumps"><a href="#dumps" class="headerlink" title="dumps()"></a>dumps()</h2><ul>
+<li>将 Python 对象转换为 JSON 格式的字符串。</li>
+<li>用于在程序中将 Python 对象转换为 JSON 字符串以便于传输或输出。</li>
+</ul>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br><span class="line">data = &#123;</span><br><span class="line">    <span class="string">&quot;name&quot;</span>: <span class="string">&quot;Charlie&quot;</span>,</span><br><span class="line">    <span class="string">&quot;age&quot;</span>: <span class="number">22</span>,</span><br><span class="line">    <span class="string">&quot;isStudent&quot;</span>: <span class="literal">False</span></span><br><span class="line">&#125;</span><br><span class="line">json_string = json.dumps(data, indent=<span class="number">4</span>)  <span class="comment"># 使用 indent 参数格式化输出</span></span><br><span class="line"><span class="built_in">print</span>(json_string)</span><br></pre></td></tr></table></figure>
+
+<h1 id="uuid"><a href="#uuid" class="headerlink" title="uuid"></a>uuid</h1><p><code>uuid</code> 库用于生成<strong>通用唯一标识符（UUID）</strong>。UUID 是 128 位的唯一标识符，通常用于标记对象、数据或会话，以确保唯一性。</p>
+<h2 id="uuid1"><a href="#uuid1" class="headerlink" title="uuid1"></a>uuid1</h2><p>基于时间戳和主机 MAC 地址生成。</p>
+<p><strong>示例</strong></p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> uuid</span><br><span class="line">u1 = uuid.uuid1()</span><br><span class="line"><span class="built_in">print</span>(u1)  <span class="comment"># 输出类似: 123e4567-e89b-12d3-a456-426614174000</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="uuid4"><a href="#uuid4" class="headerlink" title="uuid4"></a>uuid4</h2><p>完全基于随机数生成。</p>
+<p><strong>示例</strong></p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">u4 = uuid.uuid4()</span><br><span class="line"><span class="built_in">print</span>(u4)  <span class="comment"># 输出完全随机的 UUID，如：e30d81fe-d831-4867-804b-da6c476fa270</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="Crypto"><a href="#Crypto" class="headerlink" title="Crypto"></a>Crypto</h1><h2 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h2><h3 id="No-module-named-“Crypto”"><a href="#No-module-named-“Crypto”" class="headerlink" title="No module named “Crypto”"></a>No module named “Crypto”</h3><p>安装<code>pycryptodome</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install pycryptodome</span><br></pre></td></tr></table></figure>
+
+<p><code>pycryptodome</code>是<code>crypto</code>的延伸版本，用法和<code>crypto</code>是一模一样的，可以完全替代<code>crypto</code>。</p>
+<p>如果上述方法仍不能解决问题，可以找到 python 下面的<code>\Lib\site-packages</code>，手动将<code>crypto</code>改为<code>Crypto</code>。</p>
+<h1 id="Jupyter-notebook"><a href="#Jupyter-notebook" class="headerlink" title="Jupyter notebook"></a>Jupyter notebook</h1><h2 id="安装与启动"><a href="#安装与启动" class="headerlink" title="安装与启动"></a>安装与启动</h2><p>在终端执行如下命令进行安装</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install notebook</span><br></pre></td></tr></table></figure>
+
+<p>在终端输入如下命令进行启动</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jupyter notebook</span><br></pre></td></tr></table></figure>
+
+<p>会在浏览器打开<code>Jupyter</code>，选择一个目录新建文件，编写代码</p>
+<p>在终端执行<code>Ctrl + C</code>命令停止服务</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -893,7 +1481,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2025-01-15 16:27:12" itemprop="dateModified" datetime="2025-01-15T16:27:12+08:00">2025-01-15</time>
+                <time title="修改时间：2025-02-11 20:38:09" itemprop="dateModified" datetime="2025-02-11T20:38:09+08:00">2025-02-11</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -911,14 +1499,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>4.9k</span>
+              <span>5k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>4 分钟</span>
+              <span>5 分钟</span>
             </span>
 
         </div>
@@ -990,6 +1578,7 @@
 <li><code>Alt + I</code>：快速查找二进制文件中与某个特定值相关的指令或数据</li>
 <li><code>Alt + B</code>：直接在二进制文件中查找特定的字节序列</li>
 <li><code>Ctrl+S</code>：打开<code>Segments</code>窗口</li>
+<li><code>Shift+F7</code>：打开<code>Segments</code>窗口</li>
 </ul>
 <h2 id="代码转换"><a href="#代码转换" class="headerlink" title="代码转换"></a>代码转换</h2><ul>
 <li><code>N</code>：修改变量名</li>
@@ -1321,7 +1910,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2025-02-10 18:51:51" itemprop="dateModified" datetime="2025-02-10T18:51:51+08:00">2025-02-10</time>
+                <time title="修改时间：2025-02-11 22:16:13" itemprop="dateModified" datetime="2025-02-11T22:16:13+08:00">2025-02-11</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1339,14 +1928,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>23k</span>
+              <span>25k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>21 分钟</span>
+              <span>23 分钟</span>
             </span>
 
         </div>
@@ -1397,16 +1986,20 @@
 <h1 id="so层hook"><a href="#so层hook" class="headerlink" title="so层hook"></a>so层hook</h1><h2 id="hook-dlopen"><a href="#hook-dlopen" class="headerlink" title="hook_dlopen"></a>hook_dlopen</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">hook_dlopen</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="comment">// 在Android8.0之前加载so通过dlopen函数</span></span><br><span class="line">    <span class="keyword">var</span> dlopen = <span class="title class_">Module</span>.<span class="title function_">findExportByName</span>(<span class="literal">null</span>,<span class="string">&quot;dlopen&quot;</span>);</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;addr_dlopen&quot;</span>,dlopen);</span><br><span class="line">    <span class="title class_">Interceptor</span>.<span class="title function_">attach</span>(dlopen,&#123;</span><br><span class="line">        <span class="attr">onEnter</span>:<span class="keyword">function</span>(<span class="params">args</span>)&#123;</span><br><span class="line">            <span class="keyword">var</span> pathptr = args[<span class="number">0</span>];</span><br><span class="line">            <span class="keyword">if</span>(pathptr)&#123;</span><br><span class="line">                <span class="keyword">var</span> path = <span class="title function_">ptr</span>(pathptr).<span class="title function_">readCString</span>();</span><br><span class="line">                <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;dlopen:&quot;</span>,path);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">onLeave</span>:<span class="keyword">function</span>(<span class="params">retvel</span>)&#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;leave!&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//Android8.0之后加载so通过android_dlopen_ext函数</span></span><br><span class="line">    <span class="keyword">var</span> android_dlopen_ext = <span class="title class_">Module</span>.<span class="title function_">findExportByName</span>(<span class="literal">null</span>,<span class="string">&quot;android_dlopen_ext&quot;</span>);</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;addr_android_dlopen_ext&quot;</span>,android_dlopen_ext);</span><br><span class="line">    <span class="title class_">Interceptor</span>.<span class="title function_">attach</span>(android_dlopen_ext,&#123;</span><br><span class="line">        <span class="attr">onEnter</span>:<span class="keyword">function</span>(<span class="params">args</span>)&#123;</span><br><span class="line">            <span class="keyword">var</span> pathptr = args[<span class="number">0</span>];</span><br><span class="line">            <span class="keyword">if</span>(pathptr!=<span class="literal">null</span> &amp;&amp; pathptr != <span class="literal">undefined</span>)&#123;</span><br><span class="line">                <span class="keyword">var</span> path = <span class="title function_">ptr</span>(pathptr).<span class="title function_">readCString</span>();</span><br><span class="line">                <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;android_dlopen_ext:&quot;</span>,path);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">onLeave</span>:<span class="keyword">function</span>(<span class="params">retvel</span>)&#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;leave!&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">hook_dlopen</span>()</span><br></pre></td></tr></table></figure>
 <h3 id="指定so的dlopen"><a href="#指定so的dlopen" class="headerlink" title="指定so的dlopen"></a><strong>指定so的dlopen</strong></h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">hook_dlopen</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="keyword">var</span> android_dlopen_ext = <span class="title class_">Module</span>.<span class="title function_">findExportByName</span>(<span class="literal">null</span>,<span class="string">&quot;android_dlopen_ext&quot;</span>);</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;addr_android_dlopen_ext&quot;</span>,android_dlopen_ext);</span><br><span class="line">    <span class="title class_">Interceptor</span>.<span class="title function_">attach</span>(android_dlopen_ext,&#123;</span><br><span class="line">        <span class="attr">onEnter</span>:<span class="keyword">function</span>(<span class="params">args</span>)&#123;</span><br><span class="line">            <span class="keyword">var</span> pathptr = args[<span class="number">0</span>];</span><br><span class="line">            <span class="keyword">if</span>(pathptr!=<span class="literal">null</span> &amp;&amp; pathptr != <span class="literal">undefined</span>)&#123;</span><br><span class="line">                <span class="keyword">var</span> path = <span class="title function_">ptr</span>(pathptr).<span class="title function_">readCString</span>();</span><br><span class="line">                <span class="keyword">if</span>(path.<span class="title function_">indexOf</span>(<span class="string">&quot;SoName&quot;</span>)!=-<span class="number">1</span>)&#123;</span><br><span class="line">                    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;android_dlopen_ext:&quot;</span>,path);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">onLeave</span>:<span class="keyword">function</span>(<span class="params">retvel</span>)&#123;</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">hook_dlopen</span>()</span><br></pre></td></tr></table></figure>
 
+<h3 id="替换参数，不加载so"><a href="#替换参数，不加载so" class="headerlink" title="替换参数，不加载so"></a>替换参数，不加载so</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">hook_dlopen</span>(<span class="params">so_name</span>)&#123;</span><br><span class="line">    <span class="keyword">var</span> android_dlopen_ext = <span class="title class_">Module</span>.<span class="title function_">findExportByName</span>(<span class="literal">null</span>,<span class="string">&quot;android_dlopen_ext&quot;</span>);</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;addr_android_dlopen_ext&quot;</span>,android_dlopen_ext);</span><br><span class="line">    <span class="title class_">Interceptor</span>.<span class="title function_">attach</span>(android_dlopen_ext,&#123;</span><br><span class="line">        <span class="attr">onEnter</span>:<span class="keyword">function</span>(<span class="params">args</span>)&#123;</span><br><span class="line">            <span class="keyword">var</span> pathptr = args[<span class="number">0</span>];</span><br><span class="line">            <span class="keyword">if</span>(pathptr!=<span class="literal">null</span> &amp;&amp; pathptr != <span class="literal">undefined</span>)&#123;</span><br><span class="line">                <span class="keyword">var</span> path = <span class="title function_">ptr</span>(pathptr).<span class="title function_">readCString</span>();</span><br><span class="line">                <span class="variable language_">console</span>.<span class="title function_">log</span>(path);</span><br><span class="line">                <span class="keyword">if</span>(path.<span class="title function_">indexOf</span>(so_name)!=-<span class="number">1</span>)&#123;</span><br><span class="line">                    args[<span class="number">0</span>] = <span class="title class_">Memory</span>.<span class="title function_">allocUtf8String</span>(<span class="string">&quot;libc.so&quot;</span>);</span><br><span class="line">                    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;replaced!&quot;</span>);</span><br><span class="line">                    <span class="variable language_">this</span>.<span class="property">match</span> = <span class="literal">true</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                </span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">onLeave</span>:<span class="keyword">function</span>(<span class="params">retvel</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span> (<span class="variable language_">this</span>.<span class="property">match</span>)&#123;</span><br><span class="line">                <span class="variable language_">console</span>.<span class="title function_">log</span>(so_name,<span class="string">&quot;加载成功&quot;</span>);</span><br><span class="line">                <span class="keyword">let</span> <span class="variable language_">module</span> = <span class="title class_">Process</span>.<span class="title function_">findModuleByName</span>(so_name);</span><br><span class="line">                <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">module</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">hook_dlopen</span>(so_name)</span><br></pre></td></tr></table></figure>
 
 
 
 
-<h2 id="hook-pthread"><a href="#hook-pthread" class="headerlink" title="hook_pthread"></a>hook_pthread</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">hook_pthread</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> pth_create = <span class="title class_">Module</span>.<span class="title function_">findExportByName</span>(<span class="string">&quot;libc.so&quot;</span>, <span class="string">&quot;pthread_create&quot;</span>);</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;[pth_create]&quot;</span>, pth_create);</span><br><span class="line">    <span class="title class_">Interceptor</span>.<span class="title function_">attach</span>(pth_create, &#123;</span><br><span class="line">        <span class="attr">onEnter</span>: <span class="keyword">function</span> (<span class="params">args</span>) &#123;</span><br><span class="line">            <span class="keyword">var</span> <span class="variable language_">module</span> = <span class="title class_">Process</span>.<span class="title function_">findModuleByAddress</span>(args[<span class="number">2</span>]);</span><br><span class="line">            <span class="keyword">if</span> (<span class="variable language_">module</span> != <span class="literal">null</span>) &#123;</span><br><span class="line">                <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;address&quot;</span>, <span class="variable language_">module</span>.<span class="property">name</span>, args[<span class="number">2</span>].<span class="title function_">sub</span>(<span class="variable language_">module</span>.<span class="property">base</span>));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">onLeave</span>: <span class="keyword">function</span> (<span class="params">retval</span>) &#123;&#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="hook-pthread"><a href="#hook-pthread" class="headerlink" title="hook_pthread"></a>hook_pthread</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">hook_pthread</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> pth_create = <span class="title class_">Module</span>.<span class="title function_">findExportByName</span>(<span class="string">&quot;libc.so&quot;</span>, <span class="string">&quot;pthread_create&quot;</span>);</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;[pth_create]&quot;</span>, pth_create);</span><br><span class="line">    <span class="title class_">Interceptor</span>.<span class="title function_">attach</span>(pth_create, &#123;</span><br><span class="line">        <span class="attr">onEnter</span>: <span class="keyword">function</span> (<span class="params">args</span>) &#123;</span><br><span class="line">            <span class="keyword">var</span> <span class="variable language_">module</span> = <span class="title class_">Process</span>.<span class="title function_">findModuleByAddress</span>(args[<span class="number">2</span>]);</span><br><span class="line">            <span class="keyword">if</span> (<span class="variable language_">module</span> != <span class="literal">null</span>) &#123;</span><br><span class="line">                <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;address&quot;</span>, <span class="variable language_">module</span>.<span class="property">name</span>, args[<span class="number">2</span>].<span class="title function_">sub</span>(<span class="variable language_">module</span>.<span class="property">base</span>));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">onLeave</span>: <span class="keyword">function</span> (<span class="params">retval</span>) &#123;&#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">hook_pthread</span>()</span><br></pre></td></tr></table></figure>
 <h3 id="hook-dlopen配合pthread"><a href="#hook-dlopen配合pthread" class="headerlink" title="hook_dlopen配合pthread"></a>hook_dlopen配合pthread</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">hook_dlopen</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="keyword">var</span> android_dlopen_ext = <span class="title class_">Module</span>.<span class="title function_">findExportByName</span>(<span class="literal">null</span>,<span class="string">&quot;android_dlopen_ext&quot;</span>);</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;addr_android_dlopen_ext&quot;</span>,android_dlopen_ext);</span><br><span class="line">    <span class="title class_">Interceptor</span>.<span class="title function_">attach</span>(android_dlopen_ext,&#123;</span><br><span class="line">        <span class="attr">onEnter</span>:<span class="keyword">function</span>(<span class="params">args</span>)&#123;</span><br><span class="line">            <span class="keyword">var</span> pathptr = args[<span class="number">0</span>];</span><br><span class="line">            <span class="keyword">if</span>(pathptr!=<span class="literal">null</span> &amp;&amp; pathptr != <span class="literal">undefined</span>)&#123;</span><br><span class="line">                <span class="keyword">var</span> path = <span class="title function_">ptr</span>(pathptr).<span class="title function_">readCString</span>();</span><br><span class="line">                <span class="keyword">if</span>(path.<span class="title function_">indexOf</span>(<span class="string">&quot;libmsaoaidsec.so&quot;</span>)!=-<span class="number">1</span>)&#123;</span><br><span class="line">                    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;android_dlopen_ext:&quot;</span>,path);</span><br><span class="line">                    <span class="title function_">hook_pthread</span>()</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">onLeave</span>:<span class="keyword">function</span>(<span class="params">retvel</span>)&#123;</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">hook_pthread</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> pth_create = <span class="title class_">Module</span>.<span class="title function_">findExportByName</span>(<span class="string">&quot;libc.so&quot;</span>, <span class="string">&quot;pthread_create&quot;</span>);</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;[pth_create]&quot;</span>, pth_create);</span><br><span class="line">    <span class="title class_">Interceptor</span>.<span class="title function_">attach</span>(pth_create, &#123;</span><br><span class="line">        <span class="attr">onEnter</span>: <span class="keyword">function</span> (<span class="params">args</span>) &#123;</span><br><span class="line">            <span class="keyword">var</span> <span class="variable language_">module</span> = <span class="title class_">Process</span>.<span class="title function_">findModuleByAddress</span>(args[<span class="number">2</span>]);</span><br><span class="line">            <span class="keyword">if</span> (<span class="variable language_">module</span> != <span class="literal">null</span>) &#123;</span><br><span class="line">                <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;address&quot;</span>, <span class="variable language_">module</span>.<span class="property">name</span>, args[<span class="number">2</span>].<span class="title function_">sub</span>(<span class="variable language_">module</span>.<span class="property">base</span>));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">onLeave</span>: <span class="keyword">function</span> (<span class="params">retval</span>) &#123;&#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">main</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="title function_">hook_dlopen</span>()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">main</span>()</span><br></pre></td></tr></table></figure>
 
-<h2 id="替换pthread-create函数打印参数信息"><a href="#替换pthread-create函数打印参数信息" class="headerlink" title="替换pthread_create函数打印参数信息"></a>替换pthread_create函数打印参数信息</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">func_new_pthread_create</span>(<span class="params">pthread_create_addr</span>)&#123;</span><br><span class="line">    <span class="keyword">const</span> pthread_create = <span class="keyword">new</span> <span class="title class_">NativeFunction</span>(pthread_create_addr, <span class="string">&quot;int&quot;</span>, [<span class="string">&quot;pointer&quot;</span>, <span class="string">&quot;pointer&quot;</span>, <span class="string">&quot;pointer&quot;</span>, <span class="string">&quot;pointer&quot;</span>]);</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">NativeCallback</span>(<span class="keyword">function</span>(<span class="params">parg0, parg1, parg2, parg3</span>)&#123;</span><br><span class="line">        <span class="keyword">const</span> <span class="variable language_">module</span> = <span class="title class_">Process</span>.<span class="title function_">findModuleByAddress</span>(parg2);</span><br><span class="line">        <span class="keyword">const</span> so_name = <span class="variable language_">module</span>.<span class="property">name</span>;</span><br><span class="line">        <span class="keyword">const</span> baseAddr = <span class="variable language_">module</span>.<span class="property">base</span></span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;pthread_create&quot;</span>, so_name, <span class="string">&quot;0x&quot;</span> + parg2.<span class="title function_">sub</span>(baseAddr).<span class="title function_">toString</span>(<span class="number">16</span>), <span class="string">&quot;0x&quot;</span> + parg3.<span class="title function_">toString</span>(<span class="number">16</span>));</span><br><span class="line">        <span class="keyword">return</span> <span class="title function_">pthread_create</span>(parg0, parg1, parg2, parg3);</span><br><span class="line">    &#125;,<span class="string">&quot;int&quot;</span>,[<span class="string">&quot;pointer&quot;</span>, <span class="string">&quot;pointer&quot;</span>, <span class="string">&quot;pointer&quot;</span>, <span class="string">&quot;pointer&quot;</span>])</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">replace_pthread_create</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="keyword">var</span> pthread_create_addr = <span class="title class_">Module</span>.<span class="title function_">findExportByName</span>(<span class="string">&quot;libart.so&quot;</span>, <span class="string">&quot;pthread_create&quot;</span>);</span><br><span class="line">    <span class="keyword">var</span> new_pthread_create = <span class="title function_">func_new_pthread_create</span>(pthread_create_addr);</span><br><span class="line">    <span class="comment">// 函数替换</span></span><br><span class="line">    <span class="title class_">Interceptor</span>.<span class="title function_">replace</span>(pthread_create_addr,new_pthread_create);</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">replace_pthread_create</span>();</span><br></pre></td></tr></table></figure>
+<h3 id="替换pthread-create函数打印参数信息"><a href="#替换pthread-create函数打印参数信息" class="headerlink" title="替换pthread_create函数打印参数信息"></a>替换pthread_create函数打印参数信息</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">func_new_pthread_create</span>(<span class="params">pthread_create_addr</span>)&#123;</span><br><span class="line">    <span class="keyword">const</span> pthread_create = <span class="keyword">new</span> <span class="title class_">NativeFunction</span>(pthread_create_addr, <span class="string">&quot;int&quot;</span>, [<span class="string">&quot;pointer&quot;</span>, <span class="string">&quot;pointer&quot;</span>, <span class="string">&quot;pointer&quot;</span>, <span class="string">&quot;pointer&quot;</span>]);</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">NativeCallback</span>(<span class="keyword">function</span>(<span class="params">parg0, parg1, parg2, parg3</span>)&#123;</span><br><span class="line">        <span class="keyword">const</span> <span class="variable language_">module</span> = <span class="title class_">Process</span>.<span class="title function_">findModuleByAddress</span>(parg2);</span><br><span class="line">        <span class="keyword">const</span> so_name = <span class="variable language_">module</span>.<span class="property">name</span>;</span><br><span class="line">        <span class="keyword">const</span> baseAddr = <span class="variable language_">module</span>.<span class="property">base</span></span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;pthread_create&quot;</span>, so_name, <span class="string">&quot;0x&quot;</span> + parg2.<span class="title function_">sub</span>(baseAddr).<span class="title function_">toString</span>(<span class="number">16</span>), <span class="string">&quot;0x&quot;</span> + parg3.<span class="title function_">toString</span>(<span class="number">16</span>));</span><br><span class="line">        <span class="keyword">return</span> <span class="title function_">pthread_create</span>(parg0, parg1, parg2, parg3);</span><br><span class="line">    &#125;,<span class="string">&quot;int&quot;</span>,[<span class="string">&quot;pointer&quot;</span>, <span class="string">&quot;pointer&quot;</span>, <span class="string">&quot;pointer&quot;</span>, <span class="string">&quot;pointer&quot;</span>])</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">replace_pthread_create</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="keyword">var</span> pthread_create_addr = <span class="title class_">Module</span>.<span class="title function_">findExportByName</span>(<span class="string">&quot;libart.so&quot;</span>, <span class="string">&quot;pthread_create&quot;</span>);</span><br><span class="line">    <span class="keyword">var</span> new_pthread_create = <span class="title function_">func_new_pthread_create</span>(pthread_create_addr);</span><br><span class="line">    <span class="comment">// 函数替换</span></span><br><span class="line">    <span class="title class_">Interceptor</span>.<span class="title function_">replace</span>(pthread_create_addr,new_pthread_create);</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">replace_pthread_create</span>();</span><br></pre></td></tr></table></figure>
 
-<h2 id="hook-RegisterNatives"><a href="#hook-RegisterNatives" class="headerlink" title="hook_RegisterNatives"></a>hook_RegisterNatives</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">hook_RegisterNatives</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> <span class="title class_">RegisterNatives</span>_addr = <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">var</span> symbols = <span class="title class_">Process</span>.<span class="title function_">findModuleByName</span>(<span class="string">&quot;libart.so&quot;</span>).<span class="title function_">enumerateSymbols</span>();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; symbols.<span class="property">length</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">var</span> symbol = symbols[i].<span class="property">name</span>;</span><br><span class="line">        <span class="keyword">if</span> ((symbol.<span class="title function_">indexOf</span>(<span class="string">&quot;CheckJNI&quot;</span>) == -<span class="number">1</span>) &amp;&amp; (symbol.<span class="title function_">indexOf</span>(<span class="string">&quot;JNI&quot;</span>) &gt;= <span class="number">0</span>)) &#123;</span><br><span class="line">            <span class="keyword">if</span> (symbol.<span class="title function_">indexOf</span>(<span class="string">&quot;RegisterNatives&quot;</span>) &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="title class_">RegisterNatives</span>_addr = symbols[i].<span class="property">address</span>;</span><br><span class="line">                <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;RegisterNatives_addr: &quot;</span>, <span class="title class_">RegisterNatives</span>_addr);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="title class_">Interceptor</span>.<span class="title function_">attach</span>(<span class="title class_">RegisterNatives</span>_addr, &#123;</span><br><span class="line">        <span class="attr">onEnter</span>: <span class="keyword">function</span> (<span class="params">args</span>) &#123;</span><br><span class="line">            <span class="keyword">var</span> env = args[<span class="number">0</span>];</span><br><span class="line">            <span class="keyword">var</span> jclass = args[<span class="number">1</span>];</span><br><span class="line">            <span class="keyword">var</span> class_name = <span class="title class_">Java</span>.<span class="property">vm</span>.<span class="title function_">tryGetEnv</span>().<span class="title function_">getClassName</span>(jclass);</span><br><span class="line">            <span class="keyword">var</span> methods_ptr = <span class="title function_">ptr</span>(args[<span class="number">2</span>]);</span><br><span class="line">            <span class="keyword">var</span> method_count = args[<span class="number">3</span>].<span class="title function_">toInt32</span>();</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;RegisterNatives method counts: &quot;</span>, method_count);</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; method_count; i++) &#123;</span><br><span class="line">                <span class="keyword">var</span> name = methods_ptr.<span class="title function_">add</span>(i * <span class="title class_">Process</span>.<span class="property">pointerSize</span> * <span class="number">3</span>).<span class="title function_">readPointer</span>().<span class="title function_">readCString</span>();</span><br><span class="line">                <span class="keyword">var</span> sig = methods_ptr.<span class="title function_">add</span>(i * <span class="title class_">Process</span>.<span class="property">pointerSize</span> * <span class="number">3</span> + <span class="title class_">Process</span>.<span class="property">pointerSize</span>).<span class="title function_">readPointer</span>().<span class="title function_">readCString</span>();</span><br><span class="line">                <span class="keyword">var</span> fnPtr_ptr = methods_ptr.<span class="title function_">add</span>(i * <span class="title class_">Process</span>.<span class="property">pointerSize</span> * <span class="number">3</span> + <span class="title class_">Process</span>.<span class="property">pointerSize</span> * <span class="number">2</span>).<span class="title function_">readPointer</span>();</span><br><span class="line">                <span class="keyword">var</span> find_module = <span class="title class_">Process</span>.<span class="title function_">findModuleByAddress</span>(fnPtr_ptr);</span><br><span class="line">                <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;ClasssName: &quot;</span>, class_name, <span class="string">&quot;MethodName: &quot;</span>, name, <span class="string">&quot;Sig: &quot;</span>, sig, <span class="string">&quot;Function_addr: &quot;</span>, fnPtr_ptr, <span class="string">&quot;ModuleName: &quot;</span>, find_module.<span class="property">name</span>, <span class="string">&quot;Fun_Offset: &quot;</span>, <span class="title function_">ptr</span>(fnPtr_ptr).<span class="title function_">sub</span>(find_module.<span class="property">base</span>));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">onLeave</span>: <span class="keyword">function</span> (<span class="params">retval</span>) &#123;&#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">hook_RegisterNatives</span>()</span><br></pre></td></tr></table></figure>
+<h3 id="替换pthread-create函数并指定so"><a href="#替换pthread-create函数并指定so" class="headerlink" title="替换pthread_create函数并指定so"></a>替换pthread_create函数并指定so</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">func_new_pthread_create</span>(<span class="params">pthread_create_addr</span>)&#123;</span><br><span class="line">    <span class="keyword">const</span> pthread_create = <span class="keyword">new</span> <span class="title class_">NativeFunction</span>(pthread_create_addr, <span class="string">&quot;int&quot;</span>, [<span class="string">&quot;pointer&quot;</span>, <span class="string">&quot;pointer&quot;</span>, <span class="string">&quot;pointer&quot;</span>, <span class="string">&quot;pointer&quot;</span>]);</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">NativeCallback</span>(<span class="keyword">function</span>(<span class="params">parg0, parg1, parg2, parg3</span>)&#123;</span><br><span class="line">        <span class="keyword">const</span> <span class="variable language_">module</span> = <span class="title class_">Process</span>.<span class="title function_">findModuleByAddress</span>(parg2);</span><br><span class="line">        <span class="keyword">const</span> so_name = <span class="variable language_">module</span>.<span class="property">name</span>;</span><br><span class="line">        <span class="keyword">const</span> baseAddr = <span class="variable language_">module</span>.<span class="property">base</span></span><br><span class="line">        <span class="keyword">if</span> (so_name === <span class="string">&quot;libmsaoaidsec.so&quot;</span>) &#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;pthread_create&quot;</span>, so_name, <span class="string">&quot;0x&quot;</span> + parg2.<span class="title function_">sub</span>(baseAddr).<span class="title function_">toString</span>(<span class="number">16</span>), <span class="string">&quot;0x&quot;</span> + parg3.<span class="title function_">toString</span>(<span class="number">16</span>))</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 成功的返回值是0</span></span><br><span class="line">        <span class="keyword">return</span> <span class="title function_">pthread_create</span>(parg0, parg1, parg2, parg3);</span><br><span class="line">    &#125;,<span class="string">&quot;int&quot;</span>,[<span class="string">&quot;pointer&quot;</span>, <span class="string">&quot;pointer&quot;</span>, <span class="string">&quot;pointer&quot;</span>, <span class="string">&quot;pointer&quot;</span>])</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">replace_pthread_create</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="keyword">var</span> pthread_create_addr = <span class="title class_">Module</span>.<span class="title function_">findExportByName</span>(<span class="string">&quot;libart.so&quot;</span>, <span class="string">&quot;pthread_create&quot;</span>);</span><br><span class="line">    <span class="keyword">var</span> new_pthread_create = <span class="title function_">func_new_pthread_create</span>(pthread_create_addr);</span><br><span class="line">    <span class="comment">// 函数替换</span></span><br><span class="line">    <span class="title class_">Interceptor</span>.<span class="title function_">replace</span>(pthread_create_addr,new_pthread_create);</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">replace_pthread_create</span>();</span><br></pre></td></tr></table></figure>
+
+<h3 id="替换pthread-create函数并指定函数"><a href="#替换pthread-create函数并指定函数" class="headerlink" title="替换pthread_create函数并指定函数"></a>替换pthread_create函数并指定函数</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">## hook_RegisterNatives</span><br><span class="line"></span><br><span class="line">```js</span><br><span class="line">function hook_RegisterNatives() &#123;</span><br><span class="line">    var RegisterNatives_addr = null;</span><br><span class="line">    var symbols = Process.findModuleByName(&quot;libart.so&quot;).enumerateSymbols();</span><br><span class="line">    for (var i = 0; i &lt; symbols.length; i++) &#123;</span><br><span class="line">        var symbol = symbols[i].name;</span><br><span class="line">        if ((symbol.indexOf(&quot;CheckJNI&quot;) == -1) &amp;&amp; (symbol.indexOf(&quot;JNI&quot;) &gt;= 0)) &#123;</span><br><span class="line">            if (symbol.indexOf(&quot;RegisterNatives&quot;) &gt;= 0) &#123;</span><br><span class="line">                RegisterNatives_addr = symbols[i].address;</span><br><span class="line">                console.log(&quot;RegisterNatives_addr: &quot;, RegisterNatives_addr);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    Interceptor.attach(RegisterNatives_addr, &#123;</span><br><span class="line">        onEnter: function (args) &#123;</span><br><span class="line">            var env = args[0];</span><br><span class="line">            var jclass = args[1];</span><br><span class="line">            var class_name = Java.vm.tryGetEnv().getClassName(jclass);</span><br><span class="line">            var methods_ptr = ptr(args[2]);</span><br><span class="line">            var method_count = args[3].toInt32();</span><br><span class="line">            console.log(&quot;RegisterNatives method counts: &quot;, method_count);</span><br><span class="line">            for (var i = 0; i &lt; method_count; i++) &#123;</span><br><span class="line">                var name = methods_ptr.add(i * Process.pointerSize * 3).readPointer().readCString();</span><br><span class="line">                var sig = methods_ptr.add(i * Process.pointerSize * 3 + Process.pointerSize).readPointer().readCString();</span><br><span class="line">                var fnPtr_ptr = methods_ptr.add(i * Process.pointerSize * 3 + Process.pointerSize * 2).readPointer();</span><br><span class="line">                var find_module = Process.findModuleByAddress(fnPtr_ptr);</span><br><span class="line">                console.log(&quot;ClasssName: &quot;, class_name, &quot;MethodName: &quot;, name, &quot;Sig: &quot;, sig, &quot;Function_addr: &quot;, fnPtr_ptr, &quot;ModuleName: &quot;, find_module.name, &quot;Fun_Offset: &quot;, ptr(fnPtr_ptr).sub(find_module.base));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        onLeave: function (retval) &#123;&#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line">hook_RegisterNatives()</span><br></pre></td></tr></table></figure>
 <h2 id="hook-dlsym"><a href="#hook-dlsym" class="headerlink" title="hook_dlsym"></a>hook_dlsym</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">hook_dlsym</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="comment">// 获取dlsym函数的地址</span></span><br><span class="line">    <span class="keyword">let</span> dlsymAddr = <span class="title class_">Module</span>.<span class="title function_">findExportByName</span>(<span class="string">&quot;libdl.so&quot;</span>,<span class="string">&quot;dlsym&quot;</span>);</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(dlsymAddr);</span><br><span class="line">    <span class="comment">// hook dlsym</span></span><br><span class="line">    <span class="title class_">Interceptor</span>.<span class="title function_">attach</span>(dlsymAddr,&#123;</span><br><span class="line">        <span class="attr">onEnter</span>:<span class="keyword">function</span>(<span class="params">args</span>)&#123;</span><br><span class="line">            <span class="variable language_">this</span>.<span class="property">args1</span> = args[<span class="number">1</span>];</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">onLeave</span>:<span class="keyword">function</span>(<span class="params">retval</span>)&#123;</span><br><span class="line">            <span class="keyword">let</span> <span class="variable language_">module</span>= <span class="title class_">Process</span>.<span class="title function_">findModuleByAddress</span>(retval);</span><br><span class="line">            <span class="keyword">if</span>(<span class="variable language_">module</span>==<span class="literal">null</span>)<span class="keyword">return</span>;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;函数：&quot;</span>+<span class="variable language_">this</span>.<span class="property">args1</span>.<span class="title function_">readCString</span>(),<span class="string">&quot;模块：&quot;</span>+<span class="variable language_">module</span>.<span class="property">name</span>,<span class="string">&quot;地址：&quot;</span>+retval,<span class="string">&quot;偏移：&quot;</span>+retval.<span class="title function_">sub</span>(<span class="variable language_">module</span>.<span class="property">base</span>));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">hook_dlsym</span>()</span><br></pre></td></tr></table></figure>
 
 <h2 id="hook-call-constructors"><a href="#hook-call-constructors" class="headerlink" title="hook_call_constructors()"></a>hook_call_constructors()</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">hook_call_constructors</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="keyword">var</span> linker = <span class="title class_">Process</span>.<span class="title function_">findModuleByName</span>(<span class="string">&quot;linker64&quot;</span>);</span><br><span class="line">    <span class="keyword">var</span> symbols = linker.<span class="title function_">enumerateSymbols</span>();</span><br><span class="line">    <span class="keyword">var</span> addr_call_constructors = <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">var</span> symbol = <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> index =<span class="number">0</span>;index&lt;symbols.<span class="property">length</span>;index++)&#123;</span><br><span class="line">        symbol = symbols[index];</span><br><span class="line">        <span class="keyword">if</span>(symbol.<span class="property">name</span>===<span class="string">&quot;__dl__ZN6soinfo17call_constructorsEv&quot;</span>)&#123;</span><br><span class="line">            addr_call_constructors = symbol.<span class="property">address</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="title class_">Interceptor</span>.<span class="title function_">attach</span>(addr_call_constructors,&#123;</span><br><span class="line">        <span class="attr">onEnter</span>:<span class="keyword">function</span>(<span class="params">args</span>)&#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;hooked call_constructors!&quot;</span>)</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">onLeave</span>:<span class="keyword">function</span>(<span class="params">ret</span>)&#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">hook_call_constructors</span>()</span><br></pre></td></tr></table></figure>
@@ -1575,399 +2168,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/08/09/Linux%E5%91%BD%E4%BB%A4/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/android.svg">
-      <meta itemprop="name" content="Bileton">
-      <meta itemprop="description" content="路漫漫其修远夕！">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="白乐天">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2024/08/09/Linux%E5%91%BD%E4%BB%A4/" class="post-title-link" itemprop="url">Linux命令</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2024-08-09 00:05:20" itemprop="dateCreated datePublished" datetime="2024-08-09T00:05:20+08:00">2024-08-09</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2025-02-09 18:09:02" itemprop="dateModified" datetime="2025-02-09T18:09:02+08:00">2025-02-09</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>5.8k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>5 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="基础命令"><a href="#基础命令" class="headerlink" title="基础命令"></a>基础命令</h1><p>命令基础格式<br><code>command [-options] [parameter]</code></p>
-<ul>
-<li><code>command</code> : 命令本身。  </li>
-<li><code>[]</code> : 可选，非必填。  </li>
-<li><code>options</code> : 命令的一些选项。  </li>
-<li><code>parameter</code> : 命令的参数。</li>
-</ul>
-<h2 id="ls"><a href="#ls" class="headerlink" title="ls"></a>ls</h2><p><code>ls [-a -l -h] [Linux路径]</code></p>
-<ul>
-<li><code>[-a -l -h]</code> 是可选的选项。</li>
-<li><code>Linux路径</code>是此命令的可选参数。</li>
-<li><code>-a</code>表示<code>all</code>的意思，即列出全部文件（包含隐藏的文件&#x2F;文件夹），以<code>.</code>开头的文件夹就是Linux系统中隐藏的文件&#x2F;文件夹。</li>
-<li><code>-l</code>表示以列表（竖向排列）的形式展示内容，并展示更多信息。</li>
-<li><code>-h</code>表示以易于阅读的形式，列出文件大小，需要和-l搭配使用。</li>
-</ul>
-<h2 id="cd"><a href="#cd" class="headerlink" title="cd"></a>cd</h2><p>cd来自英文：Change Directory  </p>
-<p><code>cd [Linux路径]</code></p>
-<ul>
-<li><code>cd</code>命令无需选项，只有参数，切换目录。</li>
-<li><code>cd</code>命令直接执行，不写参数，表示回到用户的HOME目录&#x2F;系统的根目录。</li>
-</ul>
-<h2 id="pwd"><a href="#pwd" class="headerlink" title="pwd"></a>pwd</h2><p>查看当前所在的工作目录（Print Work Directory）。  </p>
-<p><code>pwd</code>命令，无选项，无参数，直接输入<code>pwd</code>即可。</p>
-<h2 id="特殊路径符"><a href="#特殊路径符" class="headerlink" title="特殊路径符"></a>特殊路径符</h2><p><code>.</code>：表示当前目录<br><code>.</code>.：表示上一级目录<br><code>~</code>：表示HOME目录<br><code>/</code>:根目录  </p>
-<h2 id="文件操作命令"><a href="#文件操作命令" class="headerlink" title="文件操作命令"></a>文件操作命令</h2><h3 id="mkdir"><a href="#mkdir" class="headerlink" title="mkdir"></a>mkdir</h3><p>可以创建新的目录文件夹<br>mkdir来自英文：Make Directory<br><code>mkdir [-p] Linux路径</code>  </p>
-<ul>
-<li>参数必填，表示Linux路径，就是要创建的文件夹的路径。</li>
-<li><code>-p</code>选项可选，表示自动创建不存在的父目录，适用于创建连续多层级的目录，如<code>mkdir -p dir1/dir2/dir3</code>。</li>
-</ul>
-<h3 id="touch"><a href="#touch" class="headerlink" title="touch"></a>touch</h3><p>创建文件<br><code>touch Linux路径</code></p>
-<ul>
-<li>touch命令无选项，参数必填</li>
-</ul>
-<h3 id="cat"><a href="#cat" class="headerlink" title="cat"></a>cat</h3><p>查看文件的内容<br><code>cat Linux路径</code></p>
-<ul>
-<li>cat同样没有选项，只有必填参数</li>
-</ul>
-<h3 id="more"><a href="#more" class="headerlink" title="more"></a>more</h3><p>也可以查看文件内容，不同的是：</p>
-<ul>
-<li>cat直接将内容全部显示出来  </li>
-<li>more支持翻页，如果文件内容过多，可以一页一页显示</li>
-</ul>
-<p><code>more Linux路径</code>  </p>
-<ul>
-<li>没有选项，只有必填参数</li>
-<li>在查看的过程中，通过空格翻页</li>
-<li>通过q退出查看</li>
-</ul>
-<h3 id="cp"><a href="#cp" class="headerlink" title="cp"></a>cp</h3><p>复制文件&#x2F;文件夹<br><code>cp [-r] 源文件 目标文件</code></p>
-<ul>
-<li><code>-r</code>：选项，可选，用于复制文件夹使用</li>
-<li><code>源文件</code>：Linux路径，表示被复制的文件或文件夹</li>
-<li><code>目标文件</code>：Linux路径，表示要复制去的地方</li>
-</ul>
-<h3 id="mv"><a href="#mv" class="headerlink" title="mv"></a>mv</h3><p>用于移动文件&#x2F;文件夹<br><code>mv 源文件 目标文件</code></p>
-<ul>
-<li><code>源文件</code>：Linux路径，表示被移动的文件或文件夹</li>
-<li><code>目标文件</code>：Linux路径，表示要移动去的地方，如果目标不存在，则进行改名，确保目标存在</li>
-</ul>
-<h3 id="rm"><a href="#rm" class="headerlink" title="rm"></a>rm</h3><p>删除文件、文件夹<br><code>rm [-r -f] 参数1 参数2 ... 参数n</code></p>
-<ul>
-<li><code>-r</code>：选项用于删除文件夹</li>
-<li><code>-f</code>表示force，强制删除（不会弹出提示确认信息）<br>普通用户删除内容不会弹出提示，只有root管理员用户删除内容会有提示<br>所以一般普通用户用不到-f选项</li>
-<li><code>参数1、参数2…参数n</code>：表示要删除的文件或文件夹路径，按照空格隔开</li>
-</ul>
-<p>rm命令支持通配符<code>*</code>，用来做模糊匹配</p>
-<ul>
-<li>符号<code>*</code>表示通配符，即匹配任意内容（包含空）  </li>
-<li><code>test*</code>，表示匹配任何以test开头的内容  </li>
-<li><code>*test</code>，表示匹配任何以test结尾的内容  </li>
-<li><code>*test*</code>，表示匹配任何包含test的内容</li>
-</ul>
-<p>以下命令慎用</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">rm -f *</span><br><span class="line">rm -rf *</span><br><span class="line">rm -rf /*</span><br></pre></td></tr></table></figure>
-<h2 id="which"><a href="#which" class="headerlink" title="which"></a>which</h2><p>搜索系统的环境变量 $PATH 中列出的目录，以找到对应的可执行文件。<br><code>which xxx</code></p>
-<ul>
-<li>which 命令只能查找在 $PATH 环境变量中列出的目录里的可执行文件。</li>
-</ul>
-<h2 id="grep"><a href="#grep" class="headerlink" title="grep"></a>grep</h2><p>从文件中通过关键字过滤文件的行<br><code>grep [-n] &quot;关键字&quot; 文件路径</code></p>
-<ul>
-<li><code>-n</code>：表示在结果中显示匹配的行的行号</li>
-<li><code>&quot;关键字&quot;</code>：必填，表示过滤的关键字。</li>
-<li><code>参数文件路径</code>：必填，表示要过滤的文件的文件路径，可作为内容输入端口。</li>
-</ul>
-<h2 id><a href="#" class="headerlink" title="|"></a>|</h2><p>管道符，将管道符左边命令的结果作为右边命令的输入</p>
-<h2 id="echo"><a href="#echo" class="headerlink" title="echo"></a>echo</h2><p>在命令行内输出指定内容<br><code>echo &quot;输出的内容&quot;</code></p>
-<ul>
-<li>无需选项，只有一个参数，表示要输出的内容</li>
-</ul>
-<h2 id="反引号"><a href="#反引号" class="headerlink" title="反引号 &#96;"></a>反引号 &#96;</h2><p>被&#96;包围的内容，会被当做命令执行，而非普通字符</p>
-<p><img src="/2024/08/09/Linux%E5%91%BD%E4%BB%A4/1.png"></p>
-<h2 id="重定向符-和"><a href="#重定向符-和" class="headerlink" title="重定向符&gt;和&gt;&gt;"></a>重定向符<code>&gt;</code>和<code>&gt;&gt;</code></h2><p><code>&gt;</code>将左侧命令的结果，覆盖 写入到符号右侧指定的的文件中<br><code>&gt;&gt;</code>将左侧命令的结果，追加 写入到符号右侧指定的文件中</p>
-<p><img src="/2024/08/09/Linux%E5%91%BD%E4%BB%A4/2.png"></p>
-<h2 id="tail"><a href="#tail" class="headerlink" title="tail"></a>tail</h2><p>查看文件尾部内容，跟踪文件的最新更改<br><code>tail [-f -num] Linux路径</code></p>
-<ul>
-<li><code>Linux路径</code>：表示被跟踪的文件路径</li>
-<li><code>-f</code>：表示持续跟踪</li>
-<li><code>-num</code>：表示查看尾部多少行，不填默认10行</li>
-</ul>
-<h2 id="tree"><a href="#tree" class="headerlink" title="tree"></a>tree</h2><p>以树状图的形式列出目录的内容。</p>
-<h2 id="whoami"><a href="#whoami" class="headerlink" title="whoami"></a>whoami</h2><p>显示当前用户名的命令。</p>
-<h2 id="file"><a href="#file" class="headerlink" title="file"></a>file</h2><p>查看一个文件的类型<br><code>file filename</code></p>
-<h2 id="find"><a href="#find" class="headerlink" title="find"></a>find</h2><p><code>find [路径] [选项] [参数]</code></p>
-<p><strong>选项</strong></p>
-<ul>
-<li><p>-name</p>
-<p>  根据文件名查找</p>
-<p>  <code>find path -name &quot;name&quot;</code></p>
-</li>
-<li><p>-size</p>
-<p>  根据文件大小查找</p>
-<p>  <code>find path -size [+|-] #size</code></p>
-<p>  <code>size</code>单位：<code>c(字节)</code>、<code>k()千字节</code>、<code>M(兆字节)</code>、<code>G</code></p>
-<p>  <code>find /path/to/search -size +100M</code></p>
-</li>
-</ul>
-<h2 id="curl"><a href="#curl" class="headerlink" title="curl"></a>curl</h2><p>curl 是常用的命令行工具，用来请求 Web 服务器。</p>
-<ul>
-<li><p>无选项时</p>
-  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl https://www.example.com</span><br></pre></td></tr></table></figure>
-
-<p>  向<code>www.example.com</code>发出 GET 请求，服务器返回的内容会在命令行输出。</p>
-</li>
-</ul>
-<p>当使用curl访问github时出现<code>Couldn&#39;t contect to server</code>问题时，可以在<code>/etc/hosts</code>将github的ip改为国外的ip，然后进行访问。</p>
-<h2 id="关机命令"><a href="#关机命令" class="headerlink" title="关机命令"></a>关机命令</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">shutdown -h now # 关闭系统</span><br><span class="line">reboot # 重启</span><br><span class="line">logout # 注销</span><br></pre></td></tr></table></figure>
-
-<h1 id="环境变量"><a href="#环境变量" class="headerlink" title="环境变量"></a>环境变量</h1><p>执行<code>env</code>可查看当前系统中记录的环境变量<br>环境变量是一种KeyValue型结构</p>
-<h2 id="PATH"><a href="#PATH" class="headerlink" title="PATH"></a>PATH</h2><p>PATH记录了系统执行任何命令的搜索路径（路径之间以<code>:</code>隔开）<br>执行任何命令就会从上述路径中搜索要执行的本体</p>
-<h2 id="符号"><a href="#符号" class="headerlink" title="$符号"></a>$符号</h2><p>在Linux系统中，<code>$</code>符号用于取“变量”的值<br>比如<code>echo $PATH</code>，取得PATH这个环境变量的值，并通过echo语句输出出来。<br>或者<code>echo $&#123;PATH&#125;ABC</code>，通过{}来标注取的变量是谁</p>
-<h2 id="设置环境变量"><a href="#设置环境变量" class="headerlink" title="设置环境变量"></a>设置环境变量</h2><h3 id="临时设置环境变量"><a href="#临时设置环境变量" class="headerlink" title="临时设置环境变量"></a>临时设置环境变量</h3><p>在当前 shell 会话中有效，关闭 shell 后失效。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export PATH=$PATH:value</span><br></pre></td></tr></table></figure>
-
-<p>可以通过<code>echo $PATH</code>查看</p>
-<h3 id="永久设置环境变量"><a href="#永久设置环境变量" class="headerlink" title="永久设置环境变量"></a>永久设置环境变量</h3><p>需要编辑配置文件，根据作用范围选择以下文件：</p>
-<ul>
-<li><p>全局设置： 修改 <code>/etc/profile</code> 或 <code>/etc/environment</code>（所有用户）。</p>
-</li>
-<li><p>用户级设置： 修改 <code>~/.bashrc</code> 或 <code>~/.bash_profile</code>（仅当前用户）。</p>
-</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim ~/.bashrc</span><br></pre></td></tr></table></figure>
-
-<p>添加如下内容</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export PATH=$PATH:value</span><br></pre></td></tr></table></figure>
-
-<p>可以通过命令直接把环境变量添加到<code>.bashrc</code>文件中</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">echo &#x27;export PATH=$PATH:value&#x27; &gt;&gt; ~/.bashrc</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>保存后退出，执行如下命名使配置文件生效</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source ~/.bashrc</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="网络"><a href="#网络" class="headerlink" title="网络"></a>网络</h1><h2 id="IP地址"><a href="#IP地址" class="headerlink" title="IP地址"></a>IP地址</h2><p>每台联网的电脑都会有一个地址，用于和其他计算机进行通讯<br>可以通过：<code>ifconfig</code>命令查看本机的ip</p>
-<h2 id="特殊IP地址"><a href="#特殊IP地址" class="headerlink" title="特殊IP地址"></a>特殊IP地址</h2><ul>
-<li><p><code>127.0.0.1</code>指代本机</p>
-</li>
-<li><p><code>0.0.0.0</code></p>
-<p>特殊IP</p>
-<ul>
-<li>可以用于指代本机</li>
-<li>可以在端口绑定中来确定绑定关系</li>
-<li>在一些IP地址限制中，表示所有IP的意思，表示允许任意IP访问</li>
-</ul>
-</li>
-</ul>
-<h2 id="主机名"><a href="#主机名" class="headerlink" title="主机名"></a>主机名</h2><p>每台电脑除了IP地址外，还可以有一个名字，称为主机名<br>Windows系统和Linux都可以给系统设置主机名</p>
-<ul>
-<li>Windows查看系统设备名称</li>
-<li>Linux可以用命令<code>hostname</code></li>
-</ul>
-<h2 id="在Linux中修改主机名"><a href="#在Linux中修改主机名" class="headerlink" title="在Linux中修改主机名"></a>在Linux中修改主机名</h2><p>可以使用命令：<code>hostnamectl set-hostname &quot;主机名&quot;</code><br>重新登陆即可看到更改</p>
-<h2 id="域名解析"><a href="#域名解析" class="headerlink" title="域名解析"></a>域名解析</h2><p>先查看本机的记录（通过主机名找到对应计算机的IP地址）</p>
-<ul>
-<li><code>Windows：C:\Windows\System32\drivers\etc\hosts</code></li>
-<li><code>Linux: /etc/hosts</code></li>
-</ul>
-<p>再联网去DNS服务器询问</p>
-<h2 id="网络传输"><a href="#网络传输" class="headerlink" title="网络传输"></a>网络传输</h2><h3 id="使用ping命令检查服务器是否可联通"><a href="#使用ping命令检查服务器是否可联通" class="headerlink" title="使用ping命令检查服务器是否可联通"></a>使用ping命令检查服务器是否可联通</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ping [-c num] ip或主机名</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>-c</code>，检查的次数，不使用<code>-c</code>选项，将无限次持续检查</li>
-<li><code>ip或主机名</code>，被检查的服务器的IP地址或主机名地址</li>
-</ul>
-<h3 id="使用wget命令下载文件"><a href="#使用wget命令下载文件" class="headerlink" title="使用wget命令下载文件"></a>使用wget命令下载文件</h3><p>wget是一个非交互式的文件下载器，可以在命令行内下载网络文件<br><code>wget [-b] url</code></p>
-<ul>
-<li><code>-b</code>，可选，后台下载，会将日志写入到当前工作目录的wget-log文件</li>
-<li><code>url</code> ,下载链接</li>
-</ul>
-<h3 id="使用curl命令发起网络请求"><a href="#使用curl命令发起网络请求" class="headerlink" title="使用curl命令发起网络请求"></a>使用curl命令发起网络请求</h3><p>发送http网络请求，可用于下载文件、获取信息等<br><code>curl [-O] url</code></p>
-<ul>
-<li><code>-O</code>，用于下载文件，当url是下载链接时，可以使用此选项保存文件</li>
-<li><code>url</code>，要发起请求的网络地址</li>
-</ul>
-<h3 id="端口"><a href="#端口" class="headerlink" title="端口"></a>端口</h3><p>端口是设备与外界通讯交流的出入口。</p>
-<ul>
-<li>物理端口：又可以称之为接口，是可见端口，如USB接口，HDMI端口等</li>
-<li>虚拟端口：指计算机内部的端口，不可见，是用来操作系统和外部进行交互使用的<ul>
-<li>通过IP只能锁定计算机，但是无法锁定具体的程序。</li>
-<li>通过端口可以锁定计算机上具体的应用程序，确保程序之间进行沟通。</li>
-</ul>
-</li>
-</ul>
-<p>IP地址相当于小区地址，而端口相当于门牌号了。</p>
-<p>Linux系统可以支持65535个端口，这么多端口可以分为3类进行使用：</p>
-<ul>
-<li>公认端口：1~1023，通常用于一些系统内置或知名程序的预留使用，如SSH服务的22端口，HTTPS服务的443端口，非特殊需要，不能占用这个范围的端口</li>
-<li>注册端口：1024~49151，通常可以随意使用，用于松散的绑定一些程序\服务</li>
-<li>动态端口：49152~65535，通常不会固定绑定程序，而是当时程序对外网进行网络链接时，临时使用</li>
-</ul>
-<h3 id="查看端口占用情况"><a href="#查看端口占用情况" class="headerlink" title="查看端口占用情况"></a>查看端口占用情况</h3><p>可以使用nmap命令<br><code>nmap 被查看的IP地址</code><br><strong>netstat</strong><br>可以通过netstat命令，查看指定端口的占用情况<br><code>netstat -anp|grep 端口号</code><br>常用选项</p>
-<ul>
-<li><code>-a</code>: 列出所有端口</li>
-<li><code>-l</code>: 只显示监听端口</li>
-<li><code>-t</code>: 显示 TCP 传输协议的连线状况</li>
-<li><code>-u</code>: 显示 UDP 传输协议的连线状况</li>
-</ul>
-<h1 id="进程管理"><a href="#进程管理" class="headerlink" title="进程管理"></a>进程管理</h1><p>程序运行在操作系统中，是被操作系统所管理的。<br>每一个程序在运行的时候，便被操作系统注册为系统中的一个<code>进程</code>。<br>并为每一个进程都分配一个独有的：进程ID（进程号）。</p>
-<h2 id="查看进程ps"><a href="#查看进程ps" class="headerlink" title="查看进程ps"></a>查看进程ps</h2><p>通过PS命令查看Linux系统中的进程信息<br><code>ps [options]</code></p>
-<ul>
-<li><code>-A</code>，显示所有终端进程</li>
-<li><code>-e</code>，显示出全部的进程</li>
-<li><code>-f</code>，以完全格式化的形式展示信息（展示全部信息）</li>
-</ul>
-<p><code>ps -ef</code> 列出全部进程的全部信息</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">UID     :进程所属的用户ID</span><br><span class="line">PID     :进程的进程号ID</span><br><span class="line">PPID    :进程的父ID（启动此进程的其他进程）</span><br><span class="line">C       :此进程的CPU占用率（百分比）</span><br><span class="line">STIME   :进程的启动时间</span><br><span class="line">TTY     :启动此进程的终端序号，如显示？，表示非终端启动</span><br><span class="line">TIME    :进程占用CPU时间</span><br><span class="line">CMD     :进程对应的名称或启动路径或启动命令</span><br></pre></td></tr></table></figure>
-
-<h2 id="关闭进程kill"><a href="#关闭进程kill" class="headerlink" title="关闭进程kill"></a>关闭进程kill</h2><p>通过kill命令关闭进程。<br><code>kill [-9] 进程ID</code></p>
-<ul>
-<li><code>-9</code>，表示强制关闭进程。不使用此选项会向进程发送信号要求其关闭，但是否关闭看进程自身的处理机制。</li>
-</ul>
-<h2 id="pidof"><a href="#pidof" class="headerlink" title="pidof"></a>pidof</h2><p>查找正在运行的特定程序的进程 ID（PID）。<br><code>pidof [options] programName</code></p>
-<h1 id="压缩和解压"><a href="#压缩和解压" class="headerlink" title="压缩和解压"></a>压缩和解压</h1><h2 id="压缩格式"><a href="#压缩格式" class="headerlink" title="压缩格式"></a>压缩格式</h2><ul>
-<li>zip格式：Linux、Windows、MacOS常用</li>
-<li>7zip：Windows常用</li>
-<li>rar：Windows常用</li>
-<li>tar：Linux、MacOS常用</li>
-<li>gzip：Linux、MacOS常用</li>
-</ul>
-<h2 id="tar命令"><a href="#tar命令" class="headerlink" title="tar命令"></a>tar命令</h2><p>有两种常见压缩格式，后缀名分别是：</p>
-<ul>
-<li>.tar，称之为tarball，归档文件，简单的将文件组装到一个.tar的文件内，仅仅是简单的封装。</li>
-<li>.gz，常见为.tar.gz，gzip格式压缩文件，即使用gzip压缩算法将文件压缩到一个文件内，极大减少压缩后的体积</li>
-</ul>
-<p>对于这两种格式，可以用tar命令进行压缩和解压操作：<br><code>tar [-c -v -x -f -z -C] 参数1 参数2 ... 参数N</code></p>
-<ul>
-<li><code>-c</code>，创建压缩文件，用于压缩模式</li>
-<li><code>-v</code>显示压缩、解压过程，用于查看进度</li>
-<li><code>-x</code>，解压模式</li>
-<li><code>-f</code>，要创建的文件，或解压的文件，-f选项必须在所有选项中位置处于最后一个</li>
-<li><code>-z</code>，gzip模式，不使用就是tarball格式</li>
-<li><code>-C</code>，选择解压的目的地，用于解压模式</li>
-</ul>
-<h3 id="tar命令压缩"><a href="#tar命令压缩" class="headerlink" title="tar命令压缩"></a>tar命令压缩</h3><p>tar常用压缩组合有两种：</p>
-<ul>
-<li>tar -cvf test.tar 1.txt 2.txt 3.txt<br>将1.txt 2.txt 3.txt压缩到test.tar文件内</li>
-<li>tar -zcvf test.tar.gz 1.txt 2.txt 3.txt<br>将1.txt 2.txt 3.txt压缩到test.tar.gz文件内，使用gzip模式</li>
-</ul>
-<p>要注意的是：</p>
-<ul>
-<li>-z选项要使用的话，一般处于选项第一个</li>
-<li>-f选项，必须在选项位最后一个</li>
-</ul>
-<h3 id="tar命令解压"><a href="#tar命令解压" class="headerlink" title="tar命令解压"></a>tar命令解压</h3><p>tar常用解压组合有：</p>
-<ul>
-<li><code>tar -xvf test.tar</code><br>解压test.tar，将文件解压至当前目录</li>
-<li><code>tar -xvf test.tar -C /home/itheima</code><br>解压test.tar，解压至<code>/home/itheima</code></li>
-<li><code>tar -zxvf test.tar.gz -C /home/itheima</code><br>以gzip模式解压test.tar.gz，将文件解压至指定目录（&#x2F;home&#x2F;itheima）</li>
-</ul>
-<p>注意：</p>
-<ul>
-<li><code>-f</code>选项必须在最后一位</li>
-<li><code>-z</code>选项，建议在开头位置</li>
-<li><code>-C</code>单独使用，和解压的其他参数分开</li>
-</ul>
-<h2 id="zip命令"><a href="#zip命令" class="headerlink" title="zip命令"></a>zip命令</h2><h3 id="zip压缩"><a href="#zip压缩" class="headerlink" title="zip压缩"></a>zip压缩</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">zip [-r] 参数1 参数2 ... 参数N</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>-r</code>，被压缩的文件包含文件夹的时候，需要使用<code>-r</code>选项</li>
-</ul>
-<h3 id="unzip解压"><a href="#unzip解压" class="headerlink" title="unzip解压"></a>unzip解压</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">unzip 参数 [-d]</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>-d</code>，指定要解压去的位置，同tar的-C选项</li>
-<li><code>参数</code>，被解压的zip压缩包文件</li>
-</ul>
-<h2 id="dpkg命令"><a href="#dpkg命令" class="headerlink" title="dpkg命令"></a>dpkg命令</h2><p><code>dpkg --help</code><br><code>dpkg --version</code><br>管理deb包，可以对其安装、卸载、deb打包、deb解压等操作</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">-i: 安装软件包</span><br><span class="line">-r: 删除软件包</span><br><span class="line">-P: 删除软件包的同时删除其配置文件</span><br><span class="line">-L: 显示与软件包关联的文件</span><br><span class="line">-l: 显示已安装软件包列表</span><br><span class="line">-s: 查看软件包（已安装）的详细信息</span><br><span class="line">-S: 查询一个文件属于哪个软件包</span><br><span class="line">--unpack:   解开软件包</span><br><span class="line">-c: 显示软件包内文件列表</span><br><span class="line">--configure:    配置软件包</span><br></pre></td></tr></table></figure>
-
-<h2 id="7z命令"><a href="#7z命令" class="headerlink" title="7z命令"></a>7z命令</h2><h3 id="解压"><a href="#解压" class="headerlink" title="解压"></a>解压</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">7z x [-r -o]</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>x</code>，代表解压文件，按原始目录解压</li>
-<li><code>-r</code>，表示递归解压所有的子文件夹</li>
-<li><code>-o</code>，指定解压到的目录，<code>-o</code>后面没有空格直接跟目录</li>
-</ul>
-<h1 id="系统目录"><a href="#系统目录" class="headerlink" title="系统目录"></a>系统目录</h1><h2 id="etc"><a href="#etc" class="headerlink" title="&#x2F;etc"></a>&#x2F;etc</h2><ul>
-<li><p>&#x2F;etc&#x2F;hostname</p>
-<p>这个文件里存放着主机名，可以进行修改</p>
-</li>
-<li><p>&#x2F;etc&#x2F;hosts</p>
-<p>本地主机名解析文件，用于将 IP 地址映射到主机名，在 DNS（域名系统）查询之前进行解析。</p>
-</li>
-</ul>
-<h1 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h1><h2 id="Ctrl-Alt-T"><a href="#Ctrl-Alt-T" class="headerlink" title="Ctrl+Alt+T"></a>Ctrl+Alt+T</h2><p>打开终端</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -2039,7 +2239,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">68</span>
+          <span class="site-state-item-count">69</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -2052,7 +2252,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">63</span>
+        <span class="site-state-item-count">64</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -2093,13 +2293,13 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">510k</span>
+    <span title="站点总字数">514k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">7:44</span>
+    <span title="站点阅读时长">7:48</span>
 </div>
 
 
