@@ -134,7 +134,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">69</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">70</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -185,6 +185,175 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/01/06/%E7%BC%96%E7%A0%81%E4%B8%8E%E5%8A%A0%E8%A7%A3%E5%AF%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/android.svg">
+      <meta itemprop="name" content="Bileton">
+      <meta itemprop="description" content="路漫漫其修远夕！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="白乐天">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2025/01/06/%E7%BC%96%E7%A0%81%E4%B8%8E%E5%8A%A0%E8%A7%A3%E5%AF%86/" class="post-title-link" itemprop="url">编码与加解密</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2025-01-06 00:20:54" itemprop="dateCreated datePublished" datetime="2025-01-06T00:20:54+08:00">2025-01-06</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2025-02-05 17:20:57" itemprop="dateModified" datetime="2025-02-05T17:20:57+08:00">2025-02-05</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%BC%96%E7%A0%81%E4%B8%8E%E5%8A%A0%E8%A7%A3%E5%AF%86/" itemprop="url" rel="index"><span itemprop="name">编码与加解密</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>4.9k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>4 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="编码"><a href="#编码" class="headerlink" title="编码"></a>编码</h1><h2 id="ASCII"><a href="#ASCII" class="headerlink" title="ASCII"></a>ASCII</h2><h2 id="Hex"><a href="#Hex" class="headerlink" title="Hex"></a>Hex</h2><h3 id="JS实现toHex"><a href="#JS实现toHex" class="headerlink" title="JS实现toHex"></a>JS实现toHex</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">toHex</span>(<span class="params">data</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> hexdata = <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; data.<span class="property">length</span>; i++) &#123;</span><br><span class="line">        hexdata += data.<span class="title function_">charCodeAt</span>(i).<span class="title function_">toString</span>(<span class="number">16</span>).<span class="title function_">padStart</span>(<span class="number">2</span>, <span class="string">&#x27;0&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> hexdata;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">toHex</span>(<span class="string">&quot;Bileton&quot;</span>)) <span class="comment">// 42696c65746f6e</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p><code>charCodeAt(i)</code> 获取字符串中每个字符的 Unicode 编码。</p>
+</li>
+<li><p><code>toString(16)</code> 将数字转换为 16 进制字符串。</p>
+</li>
+<li><p><code>padStart(2, &#39;0&#39;)</code> 确保每个字符的 Hex 码都是两位数（即不足两位时会在前面补充 0）。</p>
+</li>
+</ul>
+<p><strong>frida常用</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> <span class="title class_">ByteString</span> = <span class="title class_">Java</span>.<span class="title function_">use</span>(<span class="string">&quot;com.android.okhttp.okio.ByteString&quot;</span>);</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">toHex</span>(<span class="params">tag, data</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(tag + <span class="string">&quot; Hex: &quot;</span> + <span class="title class_">ByteString</span>.<span class="title function_">of</span>(data).<span class="title function_">hex</span>());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Python实现toHex与fromHex"><a href="#Python实现toHex与fromHex" class="headerlink" title="Python实现toHex与fromHex"></a>Python实现toHex与fromHex</h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">data = <span class="string">&quot;Bileton&quot;</span></span><br><span class="line">data_toHex = data.encode(<span class="string">&quot;utf-8&quot;</span>).<span class="built_in">hex</span>()</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;toHex: &quot;</span>,data_toHex)</span><br><span class="line">data_toHex_fromHex = <span class="built_in">bytes</span>.fromhex(data_toHex).decode(<span class="string">&quot;utf-8&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;fromHex: &quot;</span>,data_toHex_fromHex)</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line">toHex:  42696c65746f6e</span><br><span class="line">fromHex:  Bileton</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> binascii</span><br><span class="line"></span><br><span class="line">data = <span class="string">&quot;Bileton&quot;</span></span><br><span class="line">data_toHex = binascii.hexlify(data.encode(<span class="string">&quot;utf-8&quot;</span>)).decode(<span class="string">&quot;utf-8&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;toHex: &quot;</span>, data_toHex)</span><br><span class="line">data_toHex_fromHex = binascii.unhexlify(data_toHex.encode(<span class="string">&quot;utf-8&quot;</span>)).decode(<span class="string">&quot;utf-8&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;fromHex: &quot;</span>, data_toHex_fromHex)</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line">toHex:  42696c65746f6e</span><br><span class="line">fromHex:  Bileton</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="Base64"><a href="#Base64" class="headerlink" title="Base64"></a>Base64</h2><h3 id="Python实现Base64的编码与解码"><a href="#Python实现Base64的编码与解码" class="headerlink" title="Python实现Base64的编码与解码"></a>Python实现Base64的编码与解码</h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> base64</span><br><span class="line">data = <span class="string">&quot;Bielton&quot;</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;data:&quot;</span>,data)</span><br><span class="line">data_b64encode = base64.b64encode(data.encode())</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;b64编码：&quot;</span>,data_b64encode.decode(<span class="string">&quot;utf-8&quot;</span>))</span><br><span class="line">data_b64decode = base64.b64decode(data_b64encode)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;b64解码&quot;</span>,data_b64decode.decode(<span class="string">&quot;utf-8&quot;</span>))</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line">data: Bielton</span><br><span class="line">b64编码： QmllbHRvbg==</span><br><span class="line">b64解码 Bielton</span><br></pre></td></tr></table></figure>
+
+<h3 id="Java实现Base64的编码与解码"><a href="#Java实现Base64的编码与解码" class="headerlink" title="Java实现Base64的编码与解码"></a>Java实现Base64的编码与解码</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">      <span class="type">String</span> <span class="variable">data</span> <span class="operator">=</span> <span class="string">&quot;Bielton&quot;</span>;</span><br><span class="line">      Base64.Encoder  encoder=  Base64.getEncoder();</span><br><span class="line">      <span class="type">byte</span>[] encoded = encoder.encode(data.getBytes());</span><br><span class="line">      <span class="type">String</span> <span class="variable">encodedToString</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">String</span>(encoded);</span><br><span class="line">      System.out.println(encodedToString); <span class="comment">// QmllbHRvbg==</span></span><br><span class="line"></span><br><span class="line"><span class="type">byte</span>[] decoded = Base64.getDecoder().decode(encodedToString);</span><br><span class="line">      <span class="type">String</span> <span class="variable">decodedToString</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">String</span>(decoded);</span><br><span class="line">      System.out.println(decodedToString);  <span class="comment">// Bielton</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Android-Studio"><a href="#Android-Studio" class="headerlink" title="Android Studio"></a>Android Studio</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Button</span> <span class="variable">B64_en</span> <span class="operator">=</span> findViewById(R.id.b64encode);</span><br><span class="line">B64_en.setOnClickListener(<span class="keyword">new</span> <span class="title class_">View</span>.OnClickListener() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onClick</span><span class="params">(View v)</span> &#123;</span><br><span class="line">        <span class="type">String</span> <span class="variable">data</span> <span class="operator">=</span> <span class="string">&quot;Bileton&quot;</span>;</span><br><span class="line">        <span class="type">String</span> <span class="variable">data_encode</span> <span class="operator">=</span> Base64.encodeToString(data.getBytes(), Base64.DEFAULT);</span><br><span class="line">        Toast.makeText(MainActivity.<span class="built_in">this</span>,data_encode,Toast.LENGTH_SHORT).show();  <span class="comment">// QmllbHRvbg==</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="type">Button</span> <span class="variable">B64_de</span> <span class="operator">=</span> findViewById(R.id.b64decode);</span><br><span class="line">B64_de.setOnClickListener(<span class="keyword">new</span> <span class="title class_">View</span>.OnClickListener() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onClick</span><span class="params">(View v)</span> &#123;</span><br><span class="line">        <span class="type">String</span> <span class="variable">data</span> <span class="operator">=</span> <span class="string">&quot;Bileton&quot;</span>;</span><br><span class="line">        <span class="type">String</span> <span class="variable">data_encode</span> <span class="operator">=</span> Base64.encodeToString(data.getBytes(), Base64.DEFAULT);</span><br><span class="line">        <span class="type">byte</span>[] data_decode = Base64.decode(data_encode,Base64.DEFAULT);</span><br><span class="line">        <span class="type">String</span> <span class="variable">decodeString</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">String</span>(data_decode);</span><br><span class="line">        Toast.makeText(MainActivity.<span class="built_in">this</span>,decodeString,Toast.LENGTH_SHORT).show();  <span class="comment">// Bielton</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="哈希算法"><a href="#哈希算法" class="headerlink" title="哈希算法"></a>哈希算法</h1><h2 id="CRC32"><a href="#CRC32" class="headerlink" title="CRC32"></a>CRC32</h2><p>最终生成32位（4字节）的哈希值。</p>
+<h2 id="MD5"><a href="#MD5" class="headerlink" title="MD5"></a>MD5</h2><p><strong>消息处理</strong></p>
+<p>对输入消息进行分块，每个分块的长度为512位（32字节），不足512位的进行填充，先填充一个1，然后补0，直到长度为448位，然后在最后的64位中添加原始消息的长度。</p>
+<p><strong>初始化常量</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">A = 0x67452301</span><br><span class="line">B = 0xEFCDAB89</span><br><span class="line">C = 0x98BADCFE</span><br><span class="line">D = 0x10325476</span><br></pre></td></tr></table></figure>
+
+<p><strong>生成结果</strong></p>
+<p>最终生成128位（16字节）长度的哈希值。</p>
+<h3 id="Python实现MD5"><a href="#Python实现MD5" class="headerlink" title="Python实现MD5"></a>Python实现MD5</h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> hashlib</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">md5_call</span>(<span class="params">data</span>):</span><br><span class="line">    <span class="comment"># 创建md5对象</span></span><br><span class="line">    md5 = hashlib.md5()</span><br><span class="line">    <span class="comment"># 更新要加密的数据，参数要是字节类型</span></span><br><span class="line">    md5.update(data.encode(<span class="string">&quot;utf-8&quot;</span>))</span><br><span class="line">    <span class="comment"># 获取加密后的数据，以16进制表示</span></span><br><span class="line">    md5_hex = md5.hexdigest()</span><br><span class="line">    <span class="keyword">return</span> md5_hex</span><br><span class="line">	<span class="comment"># 获取加密后的数据，以字节码表示</span></span><br><span class="line">    <span class="comment"># md5_byte = md5.digest()</span></span><br><span class="line">    <span class="comment"># return md5_byte</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 要加密的字符串</span></span><br><span class="line">md5_str = <span class="string">&quot;Bileton&quot;</span></span><br><span class="line"><span class="built_in">print</span>(md5_str,<span class="string">&quot;的哈希值为：&quot;</span>,md5call(md5_str))</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span></span><br><span class="line">Bileton 的哈希值为： 1483ab1f77ea828faa5f78514d2765c1</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="SHA1"><a href="#SHA1" class="headerlink" title="SHA1"></a>SHA1</h2><p><strong>消息处理</strong></p>
+<p>SHA1的消息处理方式与MD5基本相同，区别是最后的消息长度使用的是大端字节序。</p>
+<p><strong>初始化常量</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">H0 = 0x67452301</span><br><span class="line">H1 = 0xEFCDAB89</span><br><span class="line">H2 = 0x98BADCFE</span><br><span class="line">H3 = 0x10325476</span><br><span class="line">H4 = 0xC3D2E1F0</span><br></pre></td></tr></table></figure>
+
+<p><strong>生成结果</strong></p>
+<p>最终生成160位（20字节）长度的哈希值。(这里的结果使用的是大端字节序。)</p>
+<h3 id="Python实现SHA1"><a href="#Python实现SHA1" class="headerlink" title="Python实现SHA1"></a>Python实现SHA1</h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> hashlib</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">SHA1_call</span>(<span class="params">data</span>):</span><br><span class="line">    <span class="comment"># 创建sha1对象</span></span><br><span class="line">    sha1 = hashlib.sha1()</span><br><span class="line">    sha1.update(data.encode(<span class="string">&quot;utf-8&quot;</span>))</span><br><span class="line">    <span class="comment"># 获取加密后的数据，以16进制表示</span></span><br><span class="line">    sha1_hex = sha1.hexdigest()</span><br><span class="line">    <span class="keyword">return</span> sha1_hex</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 获取加密后的数据，以字节码表示</span></span><br><span class="line">    <span class="comment"># sha1_bytes = sha1.digest()</span></span><br><span class="line">    <span class="comment"># return sha1_bytes</span></span><br><span class="line">    </span><br><span class="line"><span class="built_in">print</span>(SHA1_call(<span class="string">&quot;Bileton&quot;</span>))</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line">ab345d2ef3e3a48433207b746c9cb3a49b473e3a</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="SHA256"><a href="#SHA256" class="headerlink" title="SHA256"></a>SHA256</h2><p><strong>消息处理</strong></p>
+<p>与SHA1相同。</p>
+<p><strong>初始化常量</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">H0 = 0x6a09e667</span><br><span class="line">H1 = 0xbb67ae85</span><br><span class="line">H2 = 0x3c6ef372</span><br><span class="line">H3 = 0xa54ff53a</span><br><span class="line">H4 = 0x510e527f</span><br><span class="line">H5 = 0x9b05688c</span><br><span class="line">H6 = 0x1f83d9ab</span><br><span class="line">H7 = 0x5be0cd19</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>生成结果</strong></p>
+<p>最终生成256位（32字节）长度的哈希值。(这里的结果使用的是大端字节序。)</p>
+<h3 id="Python实现SHA256"><a href="#Python实现SHA256" class="headerlink" title="Python实现SHA256"></a>Python实现SHA256</h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> hashlib</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">SHA256_call</span>(<span class="params">data</span>):</span><br><span class="line">    <span class="comment"># 创建sha256对象</span></span><br><span class="line">    sha256 = hashlib.sha256()</span><br><span class="line">    sha256.update(data.encode(<span class="string">&quot;utf-8&quot;</span>))</span><br><span class="line">    <span class="comment"># 获取加密后的数据，以16进制表示</span></span><br><span class="line">    sha256_hex = sha256.hexdigest()</span><br><span class="line">    <span class="keyword">return</span> sha256_hex</span><br><span class="line">    <span class="comment"># 获取加密后的数据，以字节码表示</span></span><br><span class="line">    <span class="comment"># sha256_byte = sha256.digest()</span></span><br><span class="line">    <span class="comment"># return sha256_byte</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 要加密的字符串</span></span><br><span class="line">sha256_data = <span class="string">&quot;Bileton&quot;</span></span><br><span class="line"><span class="built_in">print</span>(SHA256_call(sha256_data))</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line">b54bc358a78fb7bbfcb6bdcd79ba65436534c222ce67ebbc838e8a29df5b2b28</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="MAC算法"><a href="#MAC算法" class="headerlink" title="MAC算法"></a>MAC算法</h2><p><strong>MAC公式</strong></p>
+<p><img src="/2025/01/06/%E7%BC%96%E7%A0%81%E4%B8%8E%E5%8A%A0%E8%A7%A3%E5%AF%86/1.jpg"></p>
+<p><code>message</code>是消息m<br><code>key</code>是密钥<br><code>||</code>是级联，其实就是拼接操作<br><code>ipad</code>值为0x36<br><code>opad</code>值为0x5c<br><code>⊕</code>代表异或</p>
+<p><strong>密钥扩展</strong></p>
+<ul>
+<li>若密钥长度小于Hash的分组长度<br>在密钥末尾填充0，直到长度达到Hash的分组长度</li>
+<li>若密钥长度大于Hash的分组长度<br>将密钥进行哈希运算，然后补充0，直到长度达到Hash的分组长度</li>
+</ul>
+<h3 id="HmacMD5"><a href="#HmacMD5" class="headerlink" title="HmacMD5"></a>HmacMD5</h3><p>与MD5不同的是，HmacMD5结合了密钥。</p>
+<p>生成128位（16字节）长度的哈希值。</p>
+<h3 id="HmacSHA1"><a href="#HmacSHA1" class="headerlink" title="HmacSHA1"></a>HmacSHA1</h3><p>与HmacSHA1不同的是，HmacSHA1结合了密钥。</p>
+<p>生成256位（32字节）长度的哈希值。</p>
+<h3 id="HmacSHA256"><a href="#HmacSHA256" class="headerlink" title="HmacSHA256"></a>HmacSHA256</h3><p>与HmacSHA256不同的是，HmacSHA256结合了密钥。</p>
+<h1 id="对称加密算法"><a href="#对称加密算法" class="headerlink" title="对称加密算法"></a>对称加密算法</h1><h2 id="RC4"><a href="#RC4" class="headerlink" title="RC4"></a>RC4</h2><h2 id="DES"><a href="#DES" class="headerlink" title="DES"></a>DES</h2><h2 id="3DES"><a href="#3DES" class="headerlink" title="3DES"></a>3DES</h2><h2 id="AES"><a href="#AES" class="headerlink" title="AES"></a>AES</h2><h2 id="SM4"><a href="#SM4" class="headerlink" title="SM4"></a>SM4</h2><h1 id="非对称加密算法"><a href="#非对称加密算法" class="headerlink" title="非对称加密算法"></a>非对称加密算法</h1><h2 id="RSA"><a href="#RSA" class="headerlink" title="RSA"></a>RSA</h2><h2 id="ECC"><a href="#ECC" class="headerlink" title="ECC"></a>ECC</h2><h1 id="压缩算法"><a href="#压缩算法" class="headerlink" title="压缩算法"></a>压缩算法</h1><h2 id="gzip"><a href="#gzip" class="headerlink" title="gzip"></a>gzip</h2><h2 id="zlib"><a href="#zlib" class="headerlink" title="zlib"></a>zlib</h2><h2 id="zip"><a href="#zip" class="headerlink" title="zip"></a>zip</h2><h2 id="tar"><a href="#tar" class="headerlink" title="tar"></a>tar</h2><h2 id="7z"><a href="#7z" class="headerlink" title="7z"></a>7z</h2>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -1652,100 +1821,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/12/24/VSCode%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/android.svg">
-      <meta itemprop="name" content="Bileton">
-      <meta itemprop="description" content="路漫漫其修远夕！">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="白乐天">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2024/12/24/VSCode%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/" class="post-title-link" itemprop="url">VSCode使用指南</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2024-12-24 16:06:41" itemprop="dateCreated datePublished" datetime="2024-12-24T16:06:41+08:00">2024-12-24</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2025-01-21 22:12:05" itemprop="dateModified" datetime="2025-01-21T22:12:05+08:00">2025-01-21</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E9%AB%98%E6%95%88%E7%8E%87%E5%B7%A5%E5%85%B7%E5%90%88%E9%9B%86/" itemprop="url" rel="index"><span itemprop="name">高效率工具合集</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>511</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="提高工作效率"><a href="#提高工作效率" class="headerlink" title="提高工作效率"></a>提高工作效率</h1><h2 id="自动保存"><a href="#自动保存" class="headerlink" title="自动保存"></a>自动保存</h2><p>打开设置搜索<code>Auto Save</code>，将选项改为<code>afterDelay</code></p>
-<h2 id="鼠标滚轮缩放"><a href="#鼠标滚轮缩放" class="headerlink" title="鼠标滚轮缩放"></a>鼠标滚轮缩放</h2><p>打开设置搜索<code>Mouse Wheel Zoom</code>，勾选相应的选项即可。</p>
-<h1 id="自定义背景"><a href="#自定义背景" class="headerlink" title="自定义背景"></a>自定义背景</h1><p>安装插件<code>background</code></p>
-<p>打开设置，搜索<code>background</code>，找到<code>Background: Fullscreen</code>，进行编辑</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;background.fullscreen&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;images&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;file:///C:/Users/blttttt/Desktop/shuimo.png&quot;</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;opacity&quot;</span><span class="punctuation">:</span> <span class="number">0.2</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;size&quot;</span><span class="punctuation">:</span> <span class="string">&quot;cover&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;position&quot;</span><span class="punctuation">:</span> <span class="string">&quot;center&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;interval&quot;</span><span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;random&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span></span><br><span class="line"><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;workbench.colorTheme&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Default High Contrast&quot;</span></span><br></pre></td></tr></table></figure>
-
-<h1 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h1><h2 id="Ctrl-B"><a href="#Ctrl-B" class="headerlink" title="Ctrl+B"></a>Ctrl+B</h2><p>切换侧边栏的显示&#x2F;隐藏状态</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1817,7 +1892,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">69</span>
+          <span class="site-state-item-count">70</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1871,7 +1946,7 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">514k</span>
+    <span title="站点总字数">515k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
