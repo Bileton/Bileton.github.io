@@ -124,7 +124,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">64</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">65</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -134,7 +134,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">70</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">71</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -185,6 +185,119 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/02/13/%E8%AF%A6%E8%A7%A3DES%E5%8F%8A3DES/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/android.svg">
+      <meta itemprop="name" content="Bileton">
+      <meta itemprop="description" content="路漫漫其修远夕！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="白乐天">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2025/02/13/%E8%AF%A6%E8%A7%A3DES%E5%8F%8A3DES/" class="post-title-link" itemprop="url">详解DES及3DES</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2025-02-13 19:55:28 / 修改时间：22:38:49" itemprop="dateCreated datePublished" datetime="2025-02-13T19:55:28+08:00">2025-02-13</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%BC%96%E7%A0%81%E4%B8%8E%E5%8A%A0%E8%A7%A3%E5%AF%86/" itemprop="url" rel="index"><span itemprop="name">编码与加解密</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>936</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="DES简介"><a href="#DES简介" class="headerlink" title="DES简介"></a>DES简介</h1><p>DES（Data Encryption Standard）是一种对称加密算法。DES是一种分组加密算法，分组长度是64位（即8字节），密钥长度为64位（8字节），每8位包含一个校验位，用于奇偶校验，所以只有56位参与运算。</p>
+<h1 id="加密流程"><a href="#加密流程" class="headerlink" title="加密流程"></a>加密流程</h1><p>DES的加密流程可以分为3个步骤。</p>
+<h2 id="初始置换（IP）"><a href="#初始置换（IP）" class="headerlink" title="初始置换（IP）"></a>初始置换（IP）</h2><p>64位明文通过固定置换表（IP表）重新排列。</p>
+<p><strong>初始置换表</strong></p>
+<p><img src="/2025/02/13/%E8%AF%A6%E8%A7%A3DES%E5%8F%8A3DES/1.jpg"></p>
+<p>原来位于第58个位置的数据放在第1个位置，原来位于第50个位置的数据放在第2个位置，第42个放在第3个，以此类推。</p>
+<h2 id="16轮Feistel迭代"><a href="#16轮Feistel迭代" class="headerlink" title="16轮Feistel迭代"></a>16轮Feistel迭代</h2><p>将经过初始置换的64位数据被分成两部分，分为左32位（L₀）和右32位（R₀）。</p>
+<p>后面每一轮都会输出新的左部分和右部分，记为 Ln和 Rn，其中n 是轮次编号（从0到15）。</p>
+<h3 id="E扩展置换"><a href="#E扩展置换" class="headerlink" title="E扩展置换"></a>E扩展置换</h3><p>将32位的 Rn 通过一个固定的扩展置换表变成48位的数据。</p>
+<p><strong>扩展置换表</strong></p>
+<p><img src="/2025/02/13/%E8%AF%A6%E8%A7%A3DES%E5%8F%8A3DES/2.jpg"></p>
+<p>经过这样一个表将原来32位的数据扩展为48位的数据。</p>
+<h3 id="与子密钥异或（XOR）"><a href="#与子密钥异或（XOR）" class="headerlink" title="与子密钥异或（XOR）"></a>与子密钥异或（XOR）</h3><p>扩展后的48位数据与当前轮子密钥Kₙ按位异或，子密钥的长度是48位，异或后的数据长度也是48位。（后面会讲子密钥生成过程）。</p>
+<h3 id="S盒替换"><a href="#S盒替换" class="headerlink" title="S盒替换"></a>S盒替换</h3><p>将异或后的48位数据分为8块，每块数据长度为6位，在DES中有8个S盒，在每个S盒中，将6位的输入压缩为4位的输出，然后得到32位的输出。</p>
+<p><img src="/2025/02/13/%E8%AF%A6%E8%A7%A3DES%E5%8F%8A3DES/3.jpg"></p>
+<h3 id="P盒置换"><a href="#P盒置换" class="headerlink" title="P盒置换"></a>P盒置换</h3><p>S盒得到的32位输出通过固定置换表（P盒）进一步混淆，重新排列。</p>
+<p><strong>P盒置换表</strong></p>
+<p><img src="/2025/02/13/%E8%AF%A6%E8%A7%A3DES%E5%8F%8A3DES/4.jpg"></p>
+<p>这样一次轮函数就结束了</p>
+<h2 id="逆初始置换（IP⁻¹）"><a href="#逆初始置换（IP⁻¹）" class="headerlink" title="逆初始置换（IP⁻¹）"></a>逆初始置换（IP⁻¹）</h2><p>经过16轮的轮函数迭代之后，将L15和R15拼接成64位的数据，经过逆初始置换表置换之后，生成最终的64位密文。</p>
+<p><strong>逆IP置换表</strong></p>
+<p><img src="/2025/02/13/%E8%AF%A6%E8%A7%A3DES%E5%8F%8A3DES/5.jpg"></p>
+<h1 id="密钥调度（生成子密钥）"><a href="#密钥调度（生成子密钥）" class="headerlink" title="密钥调度（生成子密钥）"></a>密钥调度（生成子密钥）</h1><p>主密钥长度为64位，除去8位校验位（第8,16,24,32,40,48,56,64位），剩余56位参与运算。</p>
+<h2 id="PC-1置换"><a href="#PC-1置换" class="headerlink" title="PC-1置换"></a>PC-1置换</h2><p>将64位密钥（剔除校验位后为56位）按照预定的PC-1置换表重新排列，并分为左右两部分（各28位）。</p>
+<p><strong>PC-1置换表</strong></p>
+<p><img src="/2025/02/13/%E8%AF%A6%E8%A7%A3DES%E5%8F%8A3DES/6.jpg"></p>
+<h2 id="循环左移"><a href="#循环左移" class="headerlink" title="循环左移"></a>循环左移</h2><p>对左右各28位数据进行循环左移。根据轮数不同，每一轮移位的位数（1位或2位）也有所不同，目的是使得子密钥具有足够的扩散性。</p>
+<p>每次循环左移是基于上一次生成的中间密钥部分进行移位。</p>
+<p><img src="/2025/02/13/%E8%AF%A6%E8%A7%A3DES%E5%8F%8A3DES/7.jpg"></p>
+<h2 id="PC-2置换"><a href="#PC-2置换" class="headerlink" title="PC-2置换"></a>PC-2置换</h2><p>将移位后的56位密钥合并后，通过PC-2置换表选择48位作为当前轮的子密钥，生成16轮子密钥。</p>
+<p><strong>PC-2置换表</strong></p>
+<p><img src="/2025/02/13/%E8%AF%A6%E8%A7%A3DES%E5%8F%8A3DES/8.jpg"></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -2130,88 +2243,10 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/01/29/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/android.svg">
-      <meta itemprop="name" content="Bileton">
-      <meta itemprop="description" content="路漫漫其修远夕！">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="白乐天">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2025/01/29/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/" class="post-title-link" itemprop="url">概率论与数理统计</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2025-01-29 11:36:48" itemprop="dateCreated datePublished" datetime="2025-01-29T11:36:48+08:00">2025-01-29</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2025-02-08 00:15:01" itemprop="dateModified" datetime="2025-02-08T00:15:01+08:00">2025-02-08</time>
-              </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>0</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/default-index/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/default-index/page/7/">7</a><a class="extend next" rel="next" href="/default-index/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/default-index/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/default-index/page/8/">8</a><a class="extend next" rel="next" href="/default-index/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -2279,7 +2314,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">70</span>
+          <span class="site-state-item-count">71</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -2292,7 +2327,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">64</span>
+        <span class="site-state-item-count">65</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -2333,13 +2368,13 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">515k</span>
+    <span title="站点总字数">516k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">7:48</span>
+    <span title="站点阅读时长">7:49</span>
 </div>
 
 

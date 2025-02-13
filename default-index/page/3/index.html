@@ -124,7 +124,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">64</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">65</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -134,7 +134,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">70</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">71</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -185,6 +185,126 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/01/16/ndk%E5%BC%80%E5%8F%91/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/android.svg">
+      <meta itemprop="name" content="Bileton">
+      <meta itemprop="description" content="路漫漫其修远夕！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="白乐天">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2025/01/16/ndk%E5%BC%80%E5%8F%91/" class="post-title-link" itemprop="url">ndk开发</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2025-01-16 00:47:49" itemprop="dateCreated datePublished" datetime="2025-01-16T00:47:49+08:00">2025-01-16</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2025-01-21 21:06:55" itemprop="dateModified" datetime="2025-01-21T21:06:55+08:00">2025-01-21</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">安卓开发</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>3k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>3 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><h2 id="NDK（Native-Development-Kit）"><a href="#NDK（Native-Development-Kit）" class="headerlink" title="NDK（Native Development Kit）"></a>NDK（Native Development Kit）</h2><p>Android NDK 是一个工具集，可以使用 C 和 C++ 等语言以原生代码实现应用的各个部分。<br>NDK提供了一系列的工具，帮助开发者快速开发C（或C++）的动态库，并能自动将so和java应用一起打包成apk。</p>
+<h2 id="JNI（Java-Native-Interface）"><a href="#JNI（Java-Native-Interface）" class="headerlink" title="JNI（Java Native Interface）"></a>JNI（Java Native Interface）</h2><p>从Java1.1开始，jni标准成为Java平台的一部分，允许Java代码和其他语言写的代码进行交互。<br>NDK是开发套件，JNI才是调用的框架。JNI是Java调用Native 语言的一种特性。通过JNI可以使得Java与C&#x2F;C++机型交互。</p>
+<h1 id="ndk中的Log输出"><a href="#ndk中的Log输出" class="headerlink" title="ndk中的Log输出"></a>ndk中的Log输出</h1><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;android/log.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> LOG_TAG <span class="string">&quot;MyApp&quot;</span>  <span class="comment">// 设置日志标签</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> __android_log_print(<span class="type">int</span> priority, <span class="type">const</span> <span class="type">char</span> *tag,  <span class="type">const</span> <span class="type">char</span> *fmt, ...);</span><br><span class="line"></span><br><span class="line"><span class="comment">// priority: 日志的优先级（日志级别），决定日志的严重性。</span></span><br><span class="line"><span class="comment">// tag: 日志标签，用于标识日志来源。通常是应用的名称或功能模块。</span></span><br><span class="line"><span class="comment">// fmt: 格式化字符串，类似于 C 标准库中的 printf 格式。</span></span><br><span class="line"><span class="comment">// ...: 可选的附加参数，用于格式化字符串的内容。</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>示例</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;android/log.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> LOG_TAG <span class="string">&quot;MyNDKApp&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">logExample</span><span class="params">()</span> &#123;</span><br><span class="line">    __android_log_print(ANDROID_LOG_VERBOSE, LOG_TAG, <span class="string">&quot;This is a VERBOSE log&quot;</span>);</span><br><span class="line">    __android_log_print(ANDROID_LOG_DEBUG, LOG_TAG, <span class="string">&quot;This is a DEBUG log&quot;</span>);</span><br><span class="line">    __android_log_print(ANDROID_LOG_INFO, LOG_TAG, <span class="string">&quot;This is an INFO log&quot;</span>);</span><br><span class="line">    __android_log_print(ANDROID_LOG_WARN, LOG_TAG, <span class="string">&quot;This is a WARN log&quot;</span>);</span><br><span class="line">    __android_log_print(ANDROID_LOG_ERROR, LOG_TAG, <span class="string">&quot;This is an ERROR log&quot;</span>);</span><br><span class="line">    __android_log_print(ANDROID_LOG_FATAL, LOG_TAG, <span class="string">&quot;This is a FATAL log&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="ndk初始化函数与构造函数"><a href="#ndk初始化函数与构造函数" class="headerlink" title="ndk初始化函数与构造函数"></a>ndk初始化函数与构造函数</h1><h2 id="init-函数"><a href="#init-函数" class="headerlink" title="_init 函数"></a>_init 函数</h2><p><code>_init</code> 函数与程序初始化有关。它会在动态库被加载时自动调用，通常用于执行一些初始化操作。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">extern</span> <span class="string">&quot;C&quot;</span> <span class="type">void</span> _init() &#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="attribute-constructor-构造函数"><a href="#attribute-constructor-构造函数" class="headerlink" title="attribute((constructor))构造函数"></a><strong>attribute</strong>((constructor))构造函数</h2><p>指定函数为构造函数，使得它们在程序或动态库加载时自动执行。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">__attribute__ ((constructor)) <span class="type">void</span> <span class="title function_">init_function1</span><span class="params">()</span> &#123;</span><br><span class="line">    __android_log_print(ANDROID_LOG_DEBUG, <span class="string">&quot;initTest&quot;</span>, <span class="string">&quot;This is a init_function1 log&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>设置优先级</strong></p>
+<p>当定义多个构造函数时，它们会按优先级顺序执行。如果没有显式指定优先级，则按声明顺序执行。优先级越低的构造函数会先执行，数字越高，执行顺序越靠后。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">__attribute__ ((constructor(<span class="number">300</span>))) <span class="type">void</span> <span class="title function_">init_function2</span><span class="params">()</span>&#123;</span><br><span class="line">    __android_log_print(ANDROID_LOG_DEBUG, <span class="string">&quot;initTest&quot;</span>, <span class="string">&quot;This is a init_function2 log&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">__attribute__ ((constructor(<span class="number">200</span>))) <span class="type">void</span> <span class="title function_">init_function3</span><span class="params">()</span>&#123;</span><br><span class="line">    __android_log_print(ANDROID_LOG_DEBUG, <span class="string">&quot;initTest&quot;</span>, <span class="string">&quot;This is a init_function3 log&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>隐藏函数符号</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">__attribute__ ((constructor, visibility(<span class="string">&quot;hidden&quot;</span>))) <span class="type">void</span> <span class="title function_">init_function4</span><span class="params">()</span> &#123;</span><br><span class="line">    __android_log_print(ANDROID_LOG_DEBUG, <span class="string">&quot;initTest&quot;</span>, <span class="string">&quot;This is a init_function4 log&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="demo测试"><a href="#demo测试" class="headerlink" title="demo测试"></a>demo测试</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">extern</span> <span class="string">&quot;C&quot;</span> <span class="type">void</span> _init()&#123;</span><br><span class="line">    __android_log_print(ANDROID_LOG_DEBUG, <span class="string">&quot;initTest&quot;</span>, <span class="string">&quot;This is a _init log&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">__attribute__ ((constructor)) <span class="type">void</span> <span class="title function_">init_function1</span><span class="params">()</span>&#123;</span><br><span class="line">    __android_log_print(ANDROID_LOG_DEBUG, <span class="string">&quot;initTest&quot;</span>, <span class="string">&quot;This is a init_function1 log&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">__attribute__ ((constructor(<span class="number">300</span>))) <span class="type">void</span> <span class="title function_">init_function2</span><span class="params">()</span>&#123;</span><br><span class="line">    __android_log_print(ANDROID_LOG_DEBUG, <span class="string">&quot;initTest&quot;</span>, <span class="string">&quot;This is a init_function2 log&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">__attribute__ ((constructor(<span class="number">200</span>))) <span class="type">void</span> <span class="title function_">init_function3</span><span class="params">()</span>&#123;</span><br><span class="line">    __android_log_print(ANDROID_LOG_DEBUG, <span class="string">&quot;initTest&quot;</span>, <span class="string">&quot;This is a init_function3 log&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">__attribute__ ((constructor, visibility(<span class="string">&quot;hidden&quot;</span>))) <span class="type">void</span> <span class="title function_">init_function4</span><span class="params">()</span>&#123;</span><br><span class="line">    __android_log_print(ANDROID_LOG_DEBUG, <span class="string">&quot;initTest&quot;</span>, <span class="string">&quot;This is a init_function4 log&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>输出日志</strong></p>
+<p><img src="/2025/01/16/ndk%E5%BC%80%E5%8F%91/1.jpg"></p>
+<p><code>_init</code>函数是最先执行的函数，然后按照构造函数的优先级顺序执行。</p>
+<h2 id="反汇编分析"><a href="#反汇编分析" class="headerlink" title="反汇编分析"></a>反汇编分析</h2><p><code>__init</code>函数经过反编译得到了<code>.init_proc</code>函数</p>
+<p><img src="/2025/01/16/ndk%E5%BC%80%E5%8F%91/2.jpg"></p>
+<p>构造函数出现在<code>.init_array</code>段里</p>
+<p><img src="/2025/01/16/ndk%E5%BC%80%E5%8F%91/3.jpg"></p>
+<h2 id="函数执行顺序"><a href="#函数执行顺序" class="headerlink" title="函数执行顺序"></a>函数执行顺序</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">_init</span><br><span class="line">constructor</span><br><span class="line">JNI_Onload</span><br><span class="line">其他函数</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -1688,244 +1808,10 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/01/06/%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%91/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/android.svg">
-      <meta itemprop="name" content="Bileton">
-      <meta itemprop="description" content="路漫漫其修远夕！">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="白乐天">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2025/01/06/%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%91/" class="post-title-link" itemprop="url">安卓开发</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2025-01-06 01:24:07" itemprop="dateCreated datePublished" datetime="2025-01-06T01:24:07+08:00">2025-01-06</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2025-01-23 14:32:46" itemprop="dateModified" datetime="2025-01-23T14:32:46+08:00">2025-01-23</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">安卓开发</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>11k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>10 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="项目目录结构"><a href="#项目目录结构" class="headerlink" title="项目目录结构"></a>项目目录结构</h1><p>新建一个项目，分析项目目录结构</p>
-<p><img src="/2025/01/06/%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%91/1.jpg"></p>
-<p><strong>1.gradle和.idea</strong></p>
-<p>这两个目录下放置的都是Android Studio 自动生成的一些文件，我们无需关心和编辑。</p>
-<p><strong>2.app</strong></p>
-<p>项目中的代码、资源等内容几乎都是放置在这个目录下的，我们后面的开发工作也都是在这个目录下进行的。</p>
-<p><strong>3.gradle</strong></p>
-<p>这个目录包含了gradle wrapper的配置文件。</p>
-<h2 id="app目录"><a href="#app目录" class="headerlink" title="app目录"></a>app目录</h2><p><img src="/2025/01/06/%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%91/2.jpg"></p>
-<h3 id="build"><a href="#build" class="headerlink" title="build"></a><strong>build</strong></h3><p>包含编译时自动生成的文件。</p>
-<h3 id="src"><a href="#src" class="headerlink" title="src"></a>src</h3><p>存放源代码。</p>
-<h4 id="androidTest"><a href="#androidTest" class="headerlink" title="androidTest"></a>androidTest</h4><p>存放测试代码。</p>
-<h4 id="main"><a href="#main" class="headerlink" title="main"></a>main</h4><p>存放应用核心代码和资源。</p>
-<h5 id="java"><a href="#java" class="headerlink" title="java"></a>java</h5><p>放置java代码。</p>
-<h5 id="res"><a href="#res" class="headerlink" title="res"></a>res</h5><p>存放资源文件，包括布局、图像、字符串等。</p>
-<h5 id="AndroidManifest-xml"><a href="#AndroidManifest-xml" class="headerlink" title="AndroidManifest.xml"></a>AndroidManifest.xml</h5><p>这是整个Android项目的配置文件，在程序中定义的所有四大组件都需要在这个文件里注册，还可以在这个文件中添加权限声明。</p>
-<h4 id="test"><a href="#test" class="headerlink" title="test"></a>test</h4><p>用来编写UnitTest测试用例的，是对项目及逆行自动化测试的另一种方式。</p>
-<h4 id="build-gradle"><a href="#build-gradle" class="headerlink" title="build.gradle"></a>build.gradle</h4><p>app模块的gradle构建脚本，这个文件会指定很多项目构建相关的配置。</p>
-<h1 id="Activity"><a href="#Activity" class="headerlink" title="Activity"></a>Activity</h1><p>Activity 是一种用户界面的组件，是 Android 应用的一个核心部分。每个 Activity 通常代表一个单独的屏幕或界面，用户与应用的互动通常发生在 Activity 中。</p>
-<h2 id="MainActivity"><a href="#MainActivity" class="headerlink" title="MainActivity"></a>MainActivity</h2><p>在使用Android Studio创建项目的时候，它会自动帮我们创建MainActivity。<br>其内容如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">onCreate</span><span class="params">(Bundle savedInstanceState)</span> &#123;</span><br><span class="line">    <span class="built_in">super</span>.onCreate(savedInstanceState);</span><br><span class="line">    <span class="comment">//// 设置布局，接受一个布局文件的资源 ID，并将该布局文件作为当前活动的界面。</span></span><br><span class="line">    setContentView(R.layout.activity_main);  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="布局文件"><a href="#布局文件" class="headerlink" title="布局文件"></a>布局文件</h2><p>布局文件定义了用户界面（UI）的结构和视图元素。</p>
-<p>在res目录里有一个layout目录，展开后可以看到有一个activity_main.xml文件，其内容如下：</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">androidx.constraintlayout.widget.ConstraintLayout</span> <span class="attr">xmlns:android</span>=<span class="string">&quot;http://schemas.android.com/apk/res/android&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:app</span>=<span class="string">&quot;http://schemas.android.com/apk/res-auto&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:tools</span>=<span class="string">&quot;http://schemas.android.com/tools&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:id</span>=<span class="string">&quot;@+id/main&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_width</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_height</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">tools:context</span>=<span class="string">&quot;.MainActivity&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">TextView</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">&quot;wrap_content&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">&quot;wrap_content&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:text</span>=<span class="string">&quot;Hello World!&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">app:layout_constraintBottom_toBottomOf</span>=<span class="string">&quot;parent&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">app:layout_constraintEnd_toEndOf</span>=<span class="string">&quot;parent&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">app:layout_constraintStart_toStartOf</span>=<span class="string">&quot;parent&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">app:layout_constraintTop_toTopOf</span>=<span class="string">&quot;parent&quot;</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">androidx.constraintlayout.widget.ConstraintLayout</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="Activity的注册"><a href="#Activity的注册" class="headerlink" title="Activity的注册"></a>Activity的注册</h2><p>所有的活动都要在AndroidManifest.xml文件中注册才能生效。</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">manifest</span> <span class="attr">xmlns:android</span>=<span class="string">&quot;http://schemas.android.com/apk/res/android&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:tools</span>=<span class="string">&quot;http://schemas.android.com/tools&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">application</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:allowBackup</span>=<span class="string">&quot;true&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:dataExtractionRules</span>=<span class="string">&quot;@xml/data_extraction_rules&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:fullBackupContent</span>=<span class="string">&quot;@xml/backup_rules&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:icon</span>=<span class="string">&quot;@mipmap/ic_launcher&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:label</span>=<span class="string">&quot;@string/app_name&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:roundIcon</span>=<span class="string">&quot;@mipmap/ic_launcher_round&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:supportsRtl</span>=<span class="string">&quot;true&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:theme</span>=<span class="string">&quot;@style/Theme.HelloWorld&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">tools:targetApi</span>=<span class="string">&quot;31&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">activity</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:name</span>=<span class="string">&quot;.MainActivity&quot;</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:exported</span>=<span class="string">&quot;true&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">&quot;android.intent.action.MAIN&quot;</span> /&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">category</span> <span class="attr">android:name</span>=<span class="string">&quot;android.intent.category.LAUNCHER&quot;</span> /&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">activity</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">application</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">manifest</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>活动的注册声明在<code>&lt;application&gt;</code>标签内，通过<code>&lt;activity&gt;</code>标签来进行注册。<br>在<code>&lt;activity&gt;</code>标签中使用<code>android:name</code>指定具体注册的活动，这里<code>.MainActivity</code>是省略了包名。</p>
-<h2 id="程序入口activity"><a href="#程序入口activity" class="headerlink" title="程序入口activity"></a>程序入口activity</h2><p>在程序的actitity中添加如下内容指定程序入口<code>activity</code>。</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">&quot;android.intent.action.MAIN&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">category</span> <span class="attr">android:name</span>=<span class="string">&quot;android.intent.category.LAUNCHER&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p><code>action</code>中的<code>.MAIN</code>动作用于启动一个应用程序的主界面。</p>
-<p><code>category</code>中的<code>LAUNCHER</code>类别意味着这个活动应该在设备的应用程序启动器（应用抽屉）中显示一个图标，允许用户点击图标来启动应用程序。</p>
-<h2 id="Intent"><a href="#Intent" class="headerlink" title="Intent"></a>Intent</h2><p>使用Intent可以从主活动跳转到其他活动。<br>Intent是Android程序中各组件之间进行交互的一种重要方式。</p>
-<h3 id="显式-Intent"><a href="#显式-Intent" class="headerlink" title="显式 Intent"></a>显式 Intent</h3><p>显式 <code>Intent</code> 直接指定了目标组件，通常用于在应用内部启动 <code>Activity</code>、<code>Service</code> 或与之通信。</p>
-<p>启动 <code>Activity</code>：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Intent</span> <span class="variable">secondintent</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Intent</span>(<span class="built_in">this</span>, SecondActivity.class);</span><br><span class="line">startActivity(secondintent)</span><br></pre></td></tr></table></figure>
-
-<h3 id="隐式-Intent"><a href="#隐式-Intent" class="headerlink" title="隐式 Intent"></a>隐式 Intent</h3><p>隐式 <code>Intent</code> 不直接指定目标组件，而是声明一个意图（通常是动作），然后由 Android 系统根据该动作来匹配适合的组件来处理 <code>Intent</code>。这种方式不需要明确指定目标组件，系统会根据设备上所有能够处理该动作的应用来选择合适的组件。</p>
-<h2 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h2><p><img src="/2025/01/06/%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%91/3.jpg"></p>
-<h3 id="四种状态"><a href="#四种状态" class="headerlink" title="四种状态"></a>四种状态</h3><ul>
-<li><strong>运行状态</strong><br>  活动位于栈顶并在前台运行，用户可以与之交互。</li>
-<li><strong>暂停状态</strong><br>  活动部分可见但未完全覆盖用户界面，它仍在前台但无法与用户交互。</li>
-<li><strong>停止状态</strong><br>  活动完全不可见，已被其他活动完全覆盖。</li>
-<li><strong>销毁状态</strong><br>  活动已被系统或用户完全移除，实例不再存在。</li>
-</ul>
-<h3 id="生命周期的回调方法"><a href="#生命周期的回调方法" class="headerlink" title="生命周期的回调方法"></a>生命周期的回调方法</h3><h4 id="onCreate"><a href="#onCreate" class="headerlink" title="onCreate()"></a>onCreate()</h4><p><strong>调用时机</strong>：当 <code>Activity</code> 被创建时，系统会调用此方法。此时 <code>Activity</code> 尚未显示在屏幕上。</p>
-<h4 id="onStart"><a href="#onStart" class="headerlink" title="onStart()"></a>onStart()</h4><p><strong>调用时机</strong>：当 <code>Activity</code> 即将变得可见时，系统会调用此方法。这时 <code>Activity</code> 还没有与用户交互。</p>
-<h4 id="onResume"><a href="#onResume" class="headerlink" title="onResume()"></a>onResume()</h4><p><strong>调用时机</strong>：当 <code>Activity</code> 准备好与用户交互时，系统会调用此方法，表示 <code>Activity</code> 已经位于前台并处于活动状态。</p>
-<h4 id="onPause"><a href="#onPause" class="headerlink" title="onPause()"></a>onPause()</h4><p><strong>调用时机</strong>：当系统即将启动或恢复另一个 <code>Activity</code> 时，当前的 <code>Activity</code> 将被暂停。</p>
-<h4 id="onStop"><a href="#onStop" class="headerlink" title="onStop()"></a>onStop()</h4><p><strong>调用时机</strong>：当 <code>Activity</code> 不再对用户可见时，系统会调用此方法。</p>
-<h4 id="onRestart"><a href="#onRestart" class="headerlink" title="onRestart()"></a>onRestart()</h4><p><strong>调用时机</strong>：当 <code>Activity</code> 从停止状态恢复并重新变得可见时，系统会调用此方法。</p>
-<h4 id="onDestroy"><a href="#onDestroy" class="headerlink" title="onDestroy()"></a>onDestroy()</h4><p><strong>调用时机</strong>：当 <code>Activity</code> 被销毁时（如 <code>finish()</code> 被调用、系统内存不足等），系统会调用此方法。</p>
-<h2 id="启动模式"><a href="#启动模式" class="headerlink" title="启动模式"></a>启动模式</h2><p><code>Activity</code> 的启动模式决定了新的 <code>Activity</code> 如何在任务栈（task stack）中管理和显示。</p>
-<h3 id="standard"><a href="#standard" class="headerlink" title="standard"></a>standard</h3><p>这是 <code>Activity</code> 默认的启动模式。每次启动一个新的 <code>Activity</code> 时，都会在任务栈的顶部创建一个新的 <code>Activity</code> 实例。</p>
-<p>无论栈中是否已经有该 <code>Activity</code> 的实例，都会新建一个 <code>Activity</code> 实例并添加到栈中。</p>
-<p>在standard模式下，每当启动一个新的<code>Activity</code>，它就会在返回栈中入栈，并处于栈顶的位置。</p>
-<h3 id="singleTop"><a href="#singleTop" class="headerlink" title="singleTop"></a>singleTop</h3><p>如果任务栈的顶部已经有该 <code>Activity</code> 的实例，则不会再创建一个新的实例，而是复用栈顶的实例，调用 <code>onNewIntent()</code> 方法来处理新的 <code>Intent</code>。</p>
-<p><strong>使用方式</strong>：在 <code>AndroidManifest.xml</code> 中配置 <code>launchMode</code> 为 <code>singleTop</code>。</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">activity</span> <span class="attr">android:name</span>=<span class="string">&quot;.MainActivity&quot;</span></span></span><br><span class="line"><span class="tag">          <span class="attr">android:launchMode</span>=<span class="string">&quot;singleTop&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>如果 <code>MainActivity</code> 已经在栈顶，则会复用现有实例，并通过 <code>onNewIntent()</code> 接收新的 <code>Intent</code>。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">onNewIntent</span><span class="params">(Intent intent)</span> &#123;</span><br><span class="line">    <span class="built_in">super</span>.onNewIntent(intent);</span><br><span class="line">    <span class="comment">// 处理新的 Intent</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="singleTask"><a href="#singleTask" class="headerlink" title="singleTask"></a>singleTask</h3><p>该模式下，<code>Activity</code> 会被启动为一个新的任务，并且栈中只能有该 <code>Activity</code> 的一个实例。即使栈中已经有该 <code>Activity</code> 的实例，也会先销毁栈中所有的 <code>Activity</code>，然后启动这个新的 <code>Activity</code>。</p>
-<p><strong>使用方式</strong>： 在 <code>AndroidManifest.xml</code> 中配置 <code>launchMode</code> 为 <code>singleTask</code>。</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">activity</span> <span class="attr">android:name</span>=<span class="string">&quot;.MainActivity&quot;</span></span></span><br><span class="line"><span class="tag">          <span class="attr">android:launchMode</span>=<span class="string">&quot;singleTask&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="singleInstance"><a href="#singleInstance" class="headerlink" title="singleInstance"></a>singleInstance</h3><p>这是最严格的启动模式。系统会创建一个新的任务栈，并且栈中只能有该 <code>Activity</code> 的一个实例。即使有其他 <code>Activity</code> 启动该 <code>Activity</code>，也会使用独立的栈，不与其他任务栈共享。</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">activity</span> <span class="attr">android:name</span>=<span class="string">&quot;.MainActivity&quot;</span></span></span><br><span class="line"><span class="tag">          <span class="attr">android:launchMode</span>=<span class="string">&quot;singleInstance&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h1 id="常用控件"><a href="#常用控件" class="headerlink" title="常用控件"></a>常用控件</h1><h2 id="TextView"><a href="#TextView" class="headerlink" title="TextView"></a>TextView</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">TextView</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:id</span>=<span class="string">&quot;@+id/textView&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_width</span>=<span class="string">&quot;wrap_content&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_height</span>=<span class="string">&quot;wrap_content&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:text</span>=<span class="string">&quot;Hello, World!&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:textSize</span>=<span class="string">&quot;20sp&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:textColor</span>=<span class="string">&quot;#FF0000&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="Button"><a href="#Button" class="headerlink" title="Button"></a>Button</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Button</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:id</span>=<span class="string">&quot;@+id/button&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_width</span>=<span class="string">&quot;wrap_content&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_height</span>=<span class="string">&quot;wrap_content&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:text</span>=<span class="string">&quot;Button&quot;</span> /&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="EditText"><a href="#EditText" class="headerlink" title="EditText"></a>EditText</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">EditText</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:id</span>=<span class="string">&quot;@+id/editText&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_width</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_height</span>=<span class="string">&quot;wrap_content&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:hint</span>=<span class="string">&quot;input&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:inputType</span>=<span class="string">&quot;text&quot;</span> /&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="ImageView"><a href="#ImageView" class="headerlink" title="ImageView"></a>ImageView</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ImageView</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:id</span>=<span class="string">&quot;@+id/imageView&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_width</span>=<span class="string">&quot;wrap_content&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_height</span>=<span class="string">&quot;wrap_content&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:src</span>=<span class="string">&quot;@drawable/image&quot;</span> /&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="WebView"><a href="#WebView" class="headerlink" title="WebView"></a>WebView</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">WebView</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:id</span>=<span class="string">&quot;@+id/webView&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_width</span>=<span class="string">&quot;match_parent&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_height</span>=<span class="string">&quot;match_parent&quot;</span> /&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="Broadcast"><a href="#Broadcast" class="headerlink" title="Broadcast"></a>Broadcast</h1><p>广播（Broadcast）是一种消息传递机制，允许应用之间或应用内部的不同组件之间进行通信。</p>
-<h2 id="广播的分类"><a href="#广播的分类" class="headerlink" title="广播的分类"></a>广播的分类</h2><h3 id="标准广播"><a href="#标准广播" class="headerlink" title="标准广播"></a>标准广播</h3><ul>
-<li><p>是一种异步广播，所有接收者几乎在同一时间接收广播。</p>
-</li>
-<li><p>优点：效率高，因为广播是同时分发的。</p>
-</li>
-<li><p>缺点：接收器之间无法中断广播，无法保证接收顺序。</p>
-</li>
-</ul>
-<h3 id="有序广播"><a href="#有序广播" class="headerlink" title="有序广播"></a>有序广播</h3><ul>
-<li><p>是一种同步广播，按接收器的优先级依次接收广播。</p>
-</li>
-<li><p>每个接收器可以处理后终止广播的传递，或者修改广播内容。</p>
-</li>
-<li><p>优点：可控制广播的传播，并允许对广播进行修改。</p>
-</li>
-<li><p>缺点：效率较低，因为接收器按顺序逐个处理广播。</p>
-</li>
-</ul>
-<h2 id="广播的类型"><a href="#广播的类型" class="headerlink" title="广播的类型"></a>广播的类型</h2><p><strong>系统广播</strong></p>
-<p>安卓系统定义了一些广播来通知应用程序系统事件。</p>
-<p><strong>自定义广播</strong></p>
-<p>开发者可以发送自己定义的广播，用于应用内部或多个应用之间的通信。</p>
-<h2 id="广播接收器"><a href="#广播接收器" class="headerlink" title="广播接收器"></a>广播接收器</h2><p>广播接收器可以通过两种方式注册：</p>
-<h3 id="静态注册"><a href="#静态注册" class="headerlink" title="静态注册"></a>静态注册</h3><p>静态注册的广播接收器在应用未运行时也可以接收到广播。</p>
-<h4 id="静态注册广播实现开机启动"><a href="#静态注册广播实现开机启动" class="headerlink" title="静态注册广播实现开机启动"></a>静态注册广播实现开机启动</h4><p>创建广播接收器，右键Java包-&gt;New-&gt;Other-&gt;Broadcast Reveiver</p>
-<p><img src="/2025/01/06/%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%91/4.jpg"></p>
-<p>实现<code>onReceive</code>方法</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">BootCompleteReceiver</span> <span class="keyword">extends</span> <span class="title class_">BroadcastReceiver</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onReceive</span><span class="params">(Context context, Intent intent)</span> &#123;</span><br><span class="line">        Toast.makeText(context,<span class="string">&quot;Boot Complete!&quot;</span>,Toast.LENGTH_SHORT).show();</span><br><span class="line">        Log.d(<span class="string">&quot;Broadcast&quot;</span>,<span class="string">&quot;Boot Complete!&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>在<code>AndroidManifest.xml</code>进行注册和添加权限</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">manifest</span> <span class="attr">xmlns:android</span>=<span class="string">&quot;http://schemas.android.com/apk/res/android&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:tools</span>=<span class="string">&quot;http://schemas.android.com/tools&quot;</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 声明权限：允许应用接收设备启动完成后的广播 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">&quot;android.permission.RECEIVE_BOOT_COMPLETED&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">application</span></span></span><br><span class="line"><span class="tag">    	<span class="attr">...</span></span></span><br><span class="line"><span class="tag">        &lt;<span class="attr">receiver</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:name</span>=<span class="string">&quot;.BootCompleteReceiver&quot;</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:enabled</span>=<span class="string">&quot;true&quot;</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:exported</span>=<span class="string">&quot;true&quot;</span>&gt;</span></span><br><span class="line">    		<span class="comment">&lt;!-- 定义接收器要监听的广播类型 --&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">                <span class="comment">&lt;!-- 接收系统广播：设备启动完成 --&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">&quot;android.intent.action.BOOT_COMPLETED&quot;</span> /&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">receiver</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">activity</span></span></span><br><span class="line"><span class="tag">        	<span class="attr">...</span></span></span><br><span class="line"><span class="tag">        &lt;/<span class="attr">activity</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">application</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">manifest</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>关闭设备，重新启动，就可以看到开机广播。</p>
-<h3 id="动态注册"><a href="#动态注册" class="headerlink" title="动态注册"></a>动态注册</h3><p>动态注册的广播只在应用运行时有效。</p>
-<h4 id="动态注册广播监听网络变化"><a href="#动态注册广播监听网络变化" class="headerlink" title="动态注册广播监听网络变化"></a>动态注册广播监听网络变化</h4><p><strong>声明权限</strong></p>
-<p>需要在 <code>AndroidManifest.xml</code> 文件中添加以下权限：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;uses-permission android:name=&quot;android.permission.ACCESS_NETWORK_STATE&quot; /&gt;</span><br></pre></td></tr></table></figure>
-
-<p><strong>定义广播接收器</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">NetworkReceiver</span> <span class="keyword">extends</span> <span class="title class_">BroadcastReceiver</span> &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onReceive</span><span class="params">(Context context, Intent intent)</span> &#123;</span><br><span class="line">        <span class="type">ConnectivityManager</span> <span class="variable">connectivityManager</span> <span class="operator">=</span></span><br><span class="line">                (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);</span><br><span class="line">        <span class="keyword">if</span>(connectivityManager!=<span class="literal">null</span>)&#123;</span><br><span class="line">            <span class="type">NetworkInfo</span> <span class="variable">activeNetwork</span> <span class="operator">=</span> connectivityManager.getActiveNetworkInfo();</span><br><span class="line">            <span class="keyword">if</span>(activeNetwork!=<span class="literal">null</span> &amp;&amp; activeNetwork.isConnected())&#123;</span><br><span class="line">                <span class="comment">// 网络已连接</span></span><br><span class="line">                <span class="keyword">if</span>(activeNetwork.getType()==ConnectivityManager.TYPE_WIFI)&#123;</span><br><span class="line">                    Toast.makeText(context, <span class="string">&quot;已连接 Wi-Fi&quot;</span>, Toast.LENGTH_SHORT).show();</span><br><span class="line">                &#125;<span class="keyword">else</span> <span class="keyword">if</span> (activeNetwork.getType()==ConnectivityManager.TYPE_MOBILE)&#123;</span><br><span class="line">                    Toast.makeText(context, <span class="string">&quot;已连接移动网络&quot;</span>, Toast.LENGTH_SHORT).show();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="comment">// 网络断开</span></span><br><span class="line">                Toast.makeText(context, <span class="string">&quot;网络已断开&quot;</span>, Toast.LENGTH_SHORT).show();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>动态注册广播</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MainActivity</span> <span class="keyword">extends</span> <span class="title class_">AppCompatActivity</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 定义一个广播接收器，用于监听网络状态变化</span></span><br><span class="line">    <span class="keyword">private</span> NetworkReceiver networkReceiver;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">onCreate</span><span class="params">(Bundle savedInstanceState)</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        EdgeToEdge.enable(<span class="built_in">this</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 设置当前 Activity 的布局文件</span></span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 创建网络状态广播接收器实例</span></span><br><span class="line">        networkReceiver = <span class="keyword">new</span> <span class="title class_">NetworkReceiver</span>();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 创建 IntentFilter，指定接收的广播类型为网络连接状态变化</span></span><br><span class="line">        <span class="type">IntentFilter</span> <span class="variable">intentFilter</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">IntentFilter</span>();</span><br><span class="line">        intentFilter.addAction(ConnectivityManager.CONNECTIVITY_ACTION);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 注册广播接收器，将其绑定到网络状态变化的广播上</span></span><br><span class="line">        registerReceiver(networkReceiver, intentFilter);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">onDestroy</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>.onDestroy();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 在 Activity 销毁时注销广播接收器，避免内存泄漏</span></span><br><span class="line">        unregisterReceiver(networkReceiver);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>在切换网络状态的时候就会看到广播效果。</p>
-<h3 id="使用本地广播"><a href="#使用本地广播" class="headerlink" title="使用本地广播"></a>使用本地广播</h3><p><strong>定义广播接收器</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">LocalBroadcastReceiver</span> <span class="keyword">extends</span> <span class="title class_">BroadcastReceiver</span> &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onReceive</span><span class="params">(Context context, Intent intent)</span> &#123;</span><br><span class="line">        <span class="comment">// 处理广播内容</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">message</span> <span class="operator">=</span> intent.getStringExtra(<span class="string">&quot;message&quot;</span>);</span><br><span class="line">        Toast.makeText(context, <span class="string">&quot;LocalBroadcast: &quot;</span> + message, Toast.LENGTH_SHORT).show();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>发送和接收本地广播</p>
-<p>添加一个按钮，通过按钮触发本地广播的发送</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> LocalBroadcastReceiver localBroadcastReceiver;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> LocalBroadcastManager localBroadcastManager;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">onCreate</span><span class="params">(Bundle savedInstanceState)</span> &#123;</span><br><span class="line">    <span class="built_in">super</span>.onCreate(savedInstanceState);</span><br><span class="line">    EdgeToEdge.enable(<span class="built_in">this</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 初始化广播接收器</span></span><br><span class="line">    localBroadcastReceiver = <span class="keyword">new</span> <span class="title class_">LocalBroadcastReceiver</span>();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 创建 IntentFilter，并设置要监听的 Action</span></span><br><span class="line">    <span class="type">IntentFilter</span> <span class="variable">intentFilter</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">IntentFilter</span>();</span><br><span class="line">    intentFilter.addAction(<span class="string">&quot;com.example.helloworld.LOCAL_BROADCAST&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 注册本地广播接收器</span></span><br><span class="line">    localBroadcastManager = LocalBroadcastManager.getInstance(<span class="built_in">this</span>);</span><br><span class="line">    localBroadcastManager.registerReceiver(localBroadcastReceiver,intentFilter);</span><br><span class="line"></span><br><span class="line">    <span class="type">Button</span> <span class="variable">send_button</span> <span class="operator">=</span> findViewById(R.id.send_broadcast);</span><br><span class="line">    send_button.setOnClickListener(<span class="keyword">new</span> <span class="title class_">View</span>.OnClickListener() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onClick</span><span class="params">(View v)</span> &#123;</span><br><span class="line">            <span class="type">Intent</span> <span class="variable">intent</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Intent</span>(<span class="string">&quot;com.example.helloworld.LOCAL_BROADCAST&quot;</span>);</span><br><span class="line">            intent.putExtra(<span class="string">&quot;message&quot;</span>,<span class="string">&quot;This is a Broadcast message!&quot;</span>);</span><br><span class="line">            localBroadcastManager.sendBroadcast(intent);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">onDestroy</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="built_in">super</span>.onDestroy();</span><br><span class="line">    <span class="comment">// 注销广播接收器，防止内存泄漏</span></span><br><span class="line">    unregisterReceiver(localBroadcastReceiver);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>点击按钮，发送广播。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/default-index/page/2/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/default-index/">1</a><a class="page-number" href="/default-index/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/default-index/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/default-index/page/7/">7</a><a class="extend next" rel="next" href="/default-index/page/4/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/default-index/page/2/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/default-index/">1</a><a class="page-number" href="/default-index/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/default-index/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/default-index/page/8/">8</a><a class="extend next" rel="next" href="/default-index/page/4/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1993,7 +1879,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">70</span>
+          <span class="site-state-item-count">71</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -2006,7 +1892,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">64</span>
+        <span class="site-state-item-count">65</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -2047,13 +1933,13 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">515k</span>
+    <span title="站点总字数">516k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">7:48</span>
+    <span title="站点阅读时长">7:49</span>
 </div>
 
 
