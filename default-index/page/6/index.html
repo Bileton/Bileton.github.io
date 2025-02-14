@@ -6,9 +6,9 @@
 <meta name="theme-color" content="#222">
 <meta name="generator" content="Hexo 7.3.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/wxlog.jpg">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/wxlog.jpg">
+  <link rel="mask-icon" href="/images/wxlog.jpg" color="#222">
 
 <link rel="stylesheet" href="/css/main.css">
 
@@ -124,7 +124,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">65</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">66</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -134,7 +134,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">71</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">72</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -185,6 +185,111 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/12/19/Android%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B%E5%88%86%E6%9E%90/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/android.svg">
+      <meta itemprop="name" content="Bileton">
+      <meta itemprop="description" content="路漫漫其修远夕！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="白乐天">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2024/12/19/Android%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B%E5%88%86%E6%9E%90/" class="post-title-link" itemprop="url">Android启动流程分析</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2024-12-19 00:00:00" itemprop="dateCreated datePublished" datetime="2024-12-19T00:00:00+08:00">2024-12-19</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2025-01-07 18:30:26" itemprop="dateModified" datetime="2025-01-07T18:30:26+08:00">2025-01-07</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index"><span itemprop="name">Android系统</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.2k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>本篇以从按下开机键开始至设备桌面图标出现进行分析。</p>
+<h1 id="Bootloader"><a href="#Bootloader" class="headerlink" title="Bootloader"></a>Bootloader</h1><p>&emsp;​&emsp;长按开机键，设备通电，从Boot ROM开始，Boot ROM是芯片上的一段只读存储器，存储设备的启动代码，一般是固定的，用于检测基本硬件的存在，验证 Bootloader 的完整性和安全性，并加载BootLoader到RAM，将控制权移交给BootLoader。</p>
+<p>&emsp;​&emsp;​BootLoader对硬件进行基本初始化，从存储设备中读取Android系统Linux内核镜像，通常是boot.img文件，将内核加载到内存中，并将控制权移交给内核。</p>
+<h1 id="Linux内核启动"><a href="#Linux内核启动" class="headerlink" title="Linux内核启动"></a>Linux内核启动</h1><p>&emsp;​&emsp;内核启动后会完成复杂的硬件初始化并挂载根文件系统，然后执行第一个用户空间进程<code>init</code>，将控制权移交给<code>init</code>。</p>
+<h1 id="init进程"><a href="#init进程" class="headerlink" title="init进程"></a>init进程</h1><p>&emsp;​&emsp;<code>init</code>是Android的第一个用户空间进程，它的PID为1。<code>init</code>解析<code>init.rc</code>脚本文件，定义系统初始化的行为等。</p>
+<p>&emsp;​&emsp;启动Zygote进程，<code>Zygote</code>在<code>init.rc</code>文件中定义并通过<code>init</code>启动。</p>
+<p>&emsp;​&emsp;<code>init</code>调用<code>/system/bin/app_process</code>可执行文件启动 ART（Android Runtime）或 Dalvik 虚拟机，并执行 <code>ZygoteInit.main()</code>来启动<code>Zygote</code>。</p>
+<p>&emsp;​&emsp;<code>init</code>把控制权移交给了<code>Zygote</code>。</p>
+<h1 id="Zygote进程"><a href="#Zygote进程" class="headerlink" title="Zygote进程"></a>Zygote进程</h1><p>&emsp;​&emsp;Zygote 是 Android 应用运行时环境的核心，加载虚拟机、类、系统资源，启动SystemServer进程。SystemServer进程是Zygote进程孵化的第一个进程。</p>
+<p><strong>Zygote的任务</strong></p>
+<p>&emsp;​&emsp;等待应用启动请求，接收请求后，fork() 创建子进程，所有的App进程都是由Zygote孵化而来的。</p>
+<h1 id="SystemServer"><a href="#SystemServer" class="headerlink" title="SystemServer"></a>SystemServer</h1><p>&emsp;​&emsp;SystemServer是一个很重要的进程，系统里面重要的服务都是在这个进程里面开启的，比如ActivityManagerService、PackageManagerService、WindowManagerService，负责管理应用程序和系统资源。</p>
+<h1 id="Launcher"><a href="#Launcher" class="headerlink" title="Launcher"></a>Launcher</h1><p>&emsp;​&emsp;当 <code>SystemServer</code> 启动完成后，Android 系统会启动第一个前台进程：Launcher。</p>
+<p>&emsp;​&emsp;<code>ActivityManagerService</code> 会根据 <code>AndroidManifest.xml</code> 中的配置，启动标记为 <code>MAIN</code> 和 <code>LAUNCHER</code> 的应用，Launcher 加载桌面布局和图标资源。</p>
+<p>&emsp;​&emsp;Launcher进程是Zygote孵化出来的第一个App进程。</p>
+<p>​	</p>
+<p>​	</p>
+<p>​	</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -2191,143 +2296,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/12/01/%E7%8E%A9%E8%BD%ACWindows/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/android.svg">
-      <meta itemprop="name" content="Bileton">
-      <meta itemprop="description" content="路漫漫其修远夕！">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="白乐天">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2024/12/01/%E7%8E%A9%E8%BD%ACWindows/" class="post-title-link" itemprop="url">玩转Windows</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2024-12-01 00:00:00" itemprop="dateCreated datePublished" datetime="2024-12-01T00:00:00+08:00">2024-12-01</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2025-02-05 11:18:32" itemprop="dateModified" datetime="2025-02-05T11:18:32+08:00">2025-02-05</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Windows/" itemprop="url" rel="index"><span itemprop="name">Windows</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>796</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="新机跳过联网"><a href="#新机跳过联网" class="headerlink" title="新机跳过联网"></a>新机跳过联网</h1><p>在连接网络的界面输入<code>Shift+F10</code>打开命令行，然后输入<code>oobe\bypassnro</code>然后会重启，重启后，在联网的界面会出现跳过的选项。</p>
-<h1 id="关于编码"><a href="#关于编码" class="headerlink" title="关于编码"></a>关于编码</h1><p>在中国大陆Windows使用的编码是GBK编码。</p>
-<h1 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h1><h2 id="Win-R"><a href="#Win-R" class="headerlink" title="Win+R"></a>Win+R</h2><p>打开”运行”对话框</p>
-<h2 id="Win-I"><a href="#Win-I" class="headerlink" title="Win+I"></a>Win+I</h2><p>打开设置</p>
-<h2 id="Win-D"><a href="#Win-D" class="headerlink" title="Win+D"></a>Win+D</h2><p>最小化所有的打开的窗口，显示桌面。</p>
-<p>再次按下可恢复之前最小化的所有窗口。</p>
-<h2 id="Win-E"><a href="#Win-E" class="headerlink" title="Win+E"></a>Win+E</h2><p>打开文件资源管理器。</p>
-<h2 id="Win-Tab"><a href="#Win-Tab" class="headerlink" title="Win+Tab"></a>Win+Tab</h2><p>打开任务视图</p>
-<h2 id="Win-X"><a href="#Win-X" class="headerlink" title="Win+X"></a>Win+X</h2><p>打开高级用户菜单</p>
-<h2 id="WIn-V"><a href="#WIn-V" class="headerlink" title="WIn+V"></a>WIn+V</h2><p>打开剪贴板</p>
-<h1 id="Ctrl-Shift-Esc或Ctrl-Alt-Delete"><a href="#Ctrl-Shift-Esc或Ctrl-Alt-Delete" class="headerlink" title="Ctrl+Shift+Esc或Ctrl+Alt+Delete"></a>Ctrl+Shift+Esc或Ctrl+Alt+Delete</h1><p>打开任务管理器</p>
-<h1 id="“运行”对话框"><a href="#“运行”对话框" class="headerlink" title="“运行”对话框"></a>“运行”对话框</h1><p>通过按下Win（Windows徽标键）和R键的组合来快速打开运行对话框，然后输入特定的命令或程序路径来运行程序或打开文件。</p>
-<ul>
-<li><p><code>cmd</code><br>终端</p>
-</li>
-<li><p><code>winver</code><br>查看系统版本</p>
-</li>
-<li><p><code>control</code><br>控制面板</p>
-</li>
-<li><p><code>calc</code><br>计算器</p>
-</li>
-<li><p><code>mspaint</code></p>
-<p>画图工具</p>
-</li>
-<li><p><code>devmgmt.msc</code></p>
-<p>设备管理器</p>
-</li>
-</ul>
-<h1 id="Terminal（终端）"><a href="#Terminal（终端）" class="headerlink" title="Terminal（终端）"></a>Terminal（终端）</h1><h2 id="关机命令"><a href="#关机命令" class="headerlink" title="关机命令"></a>关机命令</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">shutdown /s 		#关机</span><br><span class="line"></span><br><span class="line">shutdown /r			#重启</span><br><span class="line"></span><br><span class="line">shutdown /s /t &lt;second&gt;	# 延迟关机</span><br><span class="line"></span><br><span class="line">shutdown /a 		#取消关机</span><br><span class="line"></span><br><span class="line">shutdown /s /f		#强制关机</span><br><span class="line"></span><br><span class="line">shutdown /l			#注销</span><br></pre></td></tr></table></figure>
-
-<h1 id="控制面板"><a href="#控制面板" class="headerlink" title="控制面板"></a>控制面板</h1><h2 id="默认程序"><a href="#默认程序" class="headerlink" title="默认程序"></a>默认程序</h2><p>可在这里更改默认程序。</p>
-<h2 id="程序和功能"><a href="#程序和功能" class="headerlink" title="程序和功能"></a>程序和功能</h2><p>查看、修改或卸载已安装的程序。</p>
-<h2 id="设备管理器"><a href="#设备管理器" class="headerlink" title="设备管理器"></a>设备管理器</h2><p>管理计算机硬件设备。</p>
-<h1 id="Windows原生个性化"><a href="#Windows原生个性化" class="headerlink" title="Windows原生个性化"></a>Windows原生个性化</h1><p>右键桌面选择个性化或者在设置里找到个性化</p>
-<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><h3 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h3><p>这个地方可以设置图片的适应模式</p>
-<h3 id="纯色"><a href="#纯色" class="headerlink" title="纯色"></a>纯色</h3><p>可以选择纯色背景，自定义颜色</p>
-<h2 id="颜色"><a href="#颜色" class="headerlink" title="颜色"></a>颜色</h2><ul>
-<li>可以选择Windows和应用中显示的颜色模式，深色和浅色。</li>
-<li>设置透明效果。</li>
-<li>设置主题颜色。</li>
-</ul>
-<h2 id="主题"><a href="#主题" class="headerlink" title="主题"></a>主题</h2><p>选择主题以及获取下载主题。</p>
-<h2 id="文本输入"><a href="#文本输入" class="headerlink" title="文本输入"></a>文本输入</h2><p>可以为输入法编辑器选择主题。</p>
-<h2 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h2><p>可以设置开始菜单的布局以及其他相关设置。</p>
-<h2 id="任务栏"><a href="#任务栏" class="headerlink" title="任务栏"></a>任务栏</h2><ul>
-<li>设置搜索框样式。</li>
-<li>可以隐藏任务栏不常用的按钮。</li>
-<li>可以设置任务栏的行为</li>
-</ul>
-<h2 id="桌面操作"><a href="#桌面操作" class="headerlink" title="桌面操作"></a>桌面操作</h2><p>右键桌面选择查看可以设置桌面图标样式。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -2399,7 +2367,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">71</span>
+          <span class="site-state-item-count">72</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -2412,7 +2380,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">65</span>
+        <span class="site-state-item-count">66</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -2453,13 +2421,13 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">516k</span>
+    <span title="站点总字数">522k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">7:49</span>
+    <span title="站点阅读时长">7:55</span>
 </div>
 
 

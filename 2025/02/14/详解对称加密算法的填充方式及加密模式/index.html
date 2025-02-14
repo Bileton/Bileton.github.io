@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/wxlog.jpg">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/wxlog.jpg">
+  <link rel="mask-icon" href="/images/wxlog.jpg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="填充方式填充方式（Padding）是指在加密过程中，为了使得数据块的长度符合加密算法的要求（通常是固定长度），而对数据进行补充的操作。 PKCS#5用于对8字节块大小的加密算法（如DES）进行填充。 如果数据的长度不是8字节的倍数，则使用填充字节数的值来填充。例如，如果需要填充3个字节，则填充3个字节，其值为 0x03。 PKCS#7是对 PKCS#5 的扩展，适用于块大小为任意字节的加密算法（如">
+<meta property="og:type" content="article">
+<meta property="og:title" content="详解对称加密算法的填充方式及加密模式">
+<meta property="og:url" content="http://example.com/2025/02/14/%E8%AF%A6%E8%A7%A3%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95%E7%9A%84%E5%A1%AB%E5%85%85%E6%96%B9%E5%BC%8F%E5%8F%8A%E5%8A%A0%E5%AF%86%E6%A8%A1%E5%BC%8F/index.html">
+<meta property="og:site_name" content="白乐天">
+<meta property="og:description" content="填充方式填充方式（Padding）是指在加密过程中，为了使得数据块的长度符合加密算法的要求（通常是固定长度），而对数据进行补充的操作。 PKCS#5用于对8字节块大小的加密算法（如DES）进行填充。 如果数据的长度不是8字节的倍数，则使用填充字节数的值来填充。例如，如果需要填充3个字节，则填充3个字节，其值为 0x03。 PKCS#7是对 PKCS#5 的扩展，适用于块大小为任意字节的加密算法（如">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2025/02/14/%E8%AF%A6%E8%A7%A3%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95%E7%9A%84%E5%A1%AB%E5%85%85%E6%96%B9%E5%BC%8F%E5%8F%8A%E5%8A%A0%E5%AF%86%E6%A8%A1%E5%BC%8F/1.jpg">
+<meta property="og:image" content="http://example.com/2025/02/14/%E8%AF%A6%E8%A7%A3%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95%E7%9A%84%E5%A1%AB%E5%85%85%E6%96%B9%E5%BC%8F%E5%8F%8A%E5%8A%A0%E5%AF%86%E6%A8%A1%E5%BC%8F/2.jpg">
+<meta property="article:published_time" content="2025-02-14T07:51:33.000Z">
+<meta property="article:modified_time" content="2025-02-14T09:19:57.615Z">
+<meta property="article:author" content="Bileton">
+<meta property="article:tag" content="填充方式及加密模式">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2025/02/14/%E8%AF%A6%E8%A7%A3%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95%E7%9A%84%E5%A1%AB%E5%85%85%E6%96%B9%E5%BC%8F%E5%8F%8A%E5%8A%A0%E5%AF%86%E6%A8%A1%E5%BC%8F/1.jpg">
+
+<link rel="canonical" href="http://example.com/2025/02/14/%E8%AF%A6%E8%A7%A3%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95%E7%9A%84%E5%A1%AB%E5%85%85%E6%96%B9%E5%BC%8F%E5%8F%8A%E5%8A%A0%E5%AF%86%E6%A8%A1%E5%BC%8F/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>详解对称加密算法的填充方式及加密模式 | 白乐天</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">白乐天</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">道阻且长，行则将至。</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">66</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">29</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">72</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/love.js"></script>
+</div>
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/02/14/%E8%AF%A6%E8%A7%A3%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95%E7%9A%84%E5%A1%AB%E5%85%85%E6%96%B9%E5%BC%8F%E5%8F%8A%E5%8A%A0%E5%AF%86%E6%A8%A1%E5%BC%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/android.svg">
+      <meta itemprop="name" content="Bileton">
+      <meta itemprop="description" content="路漫漫其修远夕！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="白乐天">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          详解对称加密算法的填充方式及加密模式
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2025-02-14 15:51:33 / 修改时间：17:19:57" itemprop="dateCreated datePublished" datetime="2025-02-14T15:51:33+08:00">2025-02-14</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%BC%96%E7%A0%81%E4%B8%8E%E5%8A%A0%E8%A7%A3%E5%AF%86/" itemprop="url" rel="index"><span itemprop="name">编码与加解密</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>613</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="填充方式"><a href="#填充方式" class="headerlink" title="填充方式"></a>填充方式</h1><p>填充方式（Padding）是指在加密过程中，为了使得数据块的长度符合加密算法的要求（通常是固定长度），而对数据进行补充的操作。</p>
+<h2 id="PKCS-5"><a href="#PKCS-5" class="headerlink" title="PKCS#5"></a>PKCS#5</h2><p>用于对8字节块大小的加密算法（如DES）进行填充。</p>
+<p>如果数据的长度不是8字节的倍数，则使用填充字节数的值来填充。例如，如果需要填充3个字节，则填充3个字节，其值为 <code>0x03</code>。</p>
+<h2 id="PKCS-7"><a href="#PKCS-7" class="headerlink" title="PKCS#7"></a>PKCS#7</h2><p>是对 PKCS#5 的扩展，适用于块大小为任意字节的加密算法（如AES的16字节块），它的填充方式与PKCS#5相同，但支持更多的块大小。填充字节的值是填充字节的数量。例如，如果需要填充3个字节，则填充3个字节，其值为 <code>0x03</code>。</p>
+<h2 id="Zero填充"><a href="#Zero填充" class="headerlink" title="Zero填充"></a>Zero填充</h2><p>使用字节值为零（<code>0x00</code>）的填充方式，将数据填充至指定块大小。这种方法在一些情况下容易出错，特别是如果明文本身包含零字节时。</p>
+<h1 id="加密模式"><a href="#加密模式" class="headerlink" title="加密模式"></a>加密模式</h1><p>对称加密算法通常基于分组密码来加密数据。分组密码的基本思想是将数据划分为若干个固定大小的块（如64位、128位等），然后对每个块进行加密。</p>
+<h2 id="ECB模式"><a href="#ECB模式" class="headerlink" title="ECB模式"></a>ECB模式</h2><p>ECB（Electronic Codebook），也就是电子密码本模式。</p>
+<p>原理：将明文分为固定大小的块，对每个块单独加密，生成对应的密文块。</p>
+<p><img src="/2025/02/14/%E8%AF%A6%E8%A7%A3%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95%E7%9A%84%E5%A1%AB%E5%85%85%E6%96%B9%E5%BC%8F%E5%8F%8A%E5%8A%A0%E5%AF%86%E6%A8%A1%E5%BC%8F/1.jpg"></p>
+<h2 id="CBC模式"><a href="#CBC模式" class="headerlink" title="CBC模式"></a>CBC模式</h2><p>CBC（CBC - Cipher Block Chaining），也就是密码分组链接模式。</p>
+<p>每个数据块在加密前都会与前一个密文块进行异或运算，首块数据与初始化向量（IV）进行异或，然后进行加密，使得相同的明文块即使在不同的位置也会生成不同的密文。</p>
+<p><img src="/2025/02/14/%E8%AF%A6%E8%A7%A3%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95%E7%9A%84%E5%A1%AB%E5%85%85%E6%96%B9%E5%BC%8F%E5%8F%8A%E5%8A%A0%E5%AF%86%E6%A8%A1%E5%BC%8F/2.jpg"></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%A1%AB%E5%85%85%E6%96%B9%E5%BC%8F%E5%8F%8A%E5%8A%A0%E5%AF%86%E6%A8%A1%E5%BC%8F/" rel="tag"><svg t="1732789072752" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4858" width="15" height="15"><path d="M229.443715 343.118259l565.172804 0 0 410.010794c0 37.525595-30.237317 67.762912-67.040108 67.762912l-46.319715 0 0 139.742183c0 35.116247-28.249605 63.365852-63.305618 63.365852-35.116247 0-63.546553-28.309839-63.546553-63.365852l0-139.742183-84.809049 0 0 139.742183c0 35.056013-28.430306 63.365852-63.546553 63.365852-34.393443 0-62.763515-28.309839-62.763515-63.365852l-0.542103-139.742183-45.596911 0c-37.465361 0-67.702678-30.177084-67.702678-67.762912l0-410.010794zM141.984383 331.432921c-35.056013 0-63.426086 28.370073-63.426086 62.763515l0 264.787344c0 35.116247 28.370073 63.365852 63.426086 63.365852s62.763515-28.309839 62.763515-63.365852l0-264.787344c0-34.393443-28.189371-62.763515-62.763515-62.763515zM796.42353 320.952257l-569.449397 0c0-97.879762 58.547156-182.869512 145.343917-227.141282l-43.7899-80.59269c-2.469582-4.336826-1.264908-9.878327 3.071919-12.347908 4.276593-1.867245 9.878327-0.662571 12.347908 3.734489l44.271769 81.255261c37.646062-16.684735 79.508484-25.900491 123.780253-25.900491s86.134191 9.215756 123.780253 25.840257l44.271769-81.255261c2.469582-4.336826 8.071316-5.5415 12.347908-3.734489 4.336826 2.469582 5.5415 8.011082 3.071919 12.347908l-43.7899 80.59269c86.254658 44.332003 144.74158 129.321753 144.74158 227.201515zM406.048922 194.160319c0-12.950245-10.42043-24.033246-23.912779-24.033246-13.010479 0-23.430909 11.083001-23.430909 24.033246 0 12.890012 10.42043 23.973012 23.430909 23.973012 13.492349 0.060234 23.912779-11.022767 23.912779-23.973012zM665.294766 194.160319c0-12.950245-10.42043-24.033246-23.430909-24.033246-13.552582 0-23.912779 11.083001-23.912779 24.033246 0 12.890012 10.42043 23.973012 23.912779 23.973012 13.010479 0.060234 23.430909-11.022767 23.430909-23.973012zM882.015617 331.432921c-34.51391 0-62.763515 27.707502-62.763515 62.763515l0 264.787344c0 35.116247 28.249605 63.365852 62.763515 63.365852 35.056013 0 63.426086-28.309839 63.426086-63.365852l0-264.787344c-0.060234-35.056013-28.370073-62.763515-63.426086-62.763515z" fill="#000000" p-id="4859"></path></svg> 填充方式及加密模式</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2025/02/13/%E8%AF%A6%E8%A7%A3DES%E5%8F%8A3DES/" rel="prev" title="详解DES及3DES">
+      <i class="fa fa-chevron-left"></i> 详解DES及3DES
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A1%AB%E5%85%85%E6%96%B9%E5%BC%8F"><span class="nav-number">1.</span> <span class="nav-text">填充方式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#PKCS-5"><span class="nav-number">1.1.</span> <span class="nav-text">PKCS#5</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PKCS-7"><span class="nav-number">1.2.</span> <span class="nav-text">PKCS#7</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Zero%E5%A1%AB%E5%85%85"><span class="nav-number">1.3.</span> <span class="nav-text">Zero填充</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8A%A0%E5%AF%86%E6%A8%A1%E5%BC%8F"><span class="nav-number">2.</span> <span class="nav-text">加密模式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ECB%E6%A8%A1%E5%BC%8F"><span class="nav-number">2.1.</span> <span class="nav-text">ECB模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CBC%E6%A8%A1%E5%BC%8F"><span class="nav-number">2.2.</span> <span class="nav-text">CBC模式</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Bileton"
+      src="/images/android.svg">
+  <p class="site-author-name" itemprop="name">Bileton</p>
+  <div class="site-description" itemprop="description">路漫漫其修远夕！</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">72</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">29</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">66</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Bileton</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">522k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">7:55</span>
+</div>
+
+
+<span id="timeDate">载入天数...</span>
+<span id="times">载入时分秒...</span>
+<script>
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("01/01/2024 00:00:00"); //修改为你的网站开始运行的时间
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+        document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 ";
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒.";
+    }
+setInterval("createtime()",250);
+</script>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
