@@ -124,7 +124,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">66</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">67</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -134,7 +134,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">72</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">73</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -185,6 +185,195 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/02/16/%E8%BD%A6%E6%99%BA%E8%B5%A2app%E7%99%BB%E5%BD%95%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/android.svg">
+      <meta itemprop="name" content="Bileton">
+      <meta itemprop="description" content="路漫漫其修远夕！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="白乐天">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2025/02/16/%E8%BD%A6%E6%99%BA%E8%B5%A2app%E7%99%BB%E5%BD%95%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/" class="post-title-link" itemprop="url">车智赢app登录参数逆向</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2025-02-16 00:23:19 / 修改时间：00:26:01" itemprop="dateCreated datePublished" datetime="2025-02-16T00:23:19+08:00">2025-02-16</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%80%86%E5%90%91%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/" itemprop="url" rel="index"><span itemprop="name">逆向实战案例</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>11k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>10 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="App信息"><a href="#App信息" class="headerlink" title="App信息"></a>App信息</h1><p>包名：com.che168.autotradercloud</p>
+<p><img src="/2025/02/16/%E8%BD%A6%E6%99%BA%E8%B5%A2app%E7%99%BB%E5%BD%95%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/1.jpg"></p>
+<h1 id="抓包分析"><a href="#抓包分析" class="headerlink" title="抓包分析"></a>抓包分析</h1><p>输入手机号和密码进行登录（1888888888,12345678），出现账号和密码错误</p>
+<p>分析数据包</p>
+<p><img src="/2025/02/16/%E8%BD%A6%E6%99%BA%E8%B5%A2app%E7%99%BB%E5%BD%95%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/2.jpg"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">url: https://dealercloudapi.che168.com/tradercloud/sealed/login/login.ashx</span><br><span class="line">method: POST</span><br><span class="line">headers: &#123;</span><br><span class="line">  &quot;:authority&quot;: &quot;dealercloudapi.che168.com&quot;,</span><br><span class="line">  &quot;:method&quot;: &quot;POST&quot;,</span><br><span class="line">  &quot;:path&quot;: &quot;/tradercloud/sealed/login/login.ashx&quot;,</span><br><span class="line">  &quot;:scheme&quot;: &quot;https&quot;,</span><br><span class="line">  &quot;cache-control&quot;: &quot;public, max-age=0&quot;,</span><br><span class="line">  &quot;traceid&quot;: &quot;atc.android_75ca194d-982a-4c62-9c0a-eb647fcfff77&quot;,</span><br><span class="line">  &quot;content-type&quot;: &quot;application/x-www-form-urlencoded&quot;,</span><br><span class="line">  &quot;content-length&quot;: &quot;275&quot;,</span><br><span class="line">  &quot;accept-encoding&quot;: &quot;gzip&quot;,</span><br><span class="line">  &quot;user-agent&quot;: &quot;okhttp/3.14.9&quot;</span><br><span class="line">&#125;</span><br><span class="line">body: &#123;</span><br><span class="line">  &quot;_appid&quot;: &quot;atc.android&quot;,</span><br><span class="line">  &quot;_sign&quot;: &quot;821E3885B2FC914FBFAD687399B650E7&quot;,</span><br><span class="line">  &quot;appversion&quot;: &quot;3.71.0&quot;,</span><br><span class="line">  &quot;channelid&quot;: &quot;csy&quot;,</span><br><span class="line">  &quot;pwd&quot;: &quot;25d55ad283aa400af464c76d713c07ad&quot;,</span><br><span class="line">  &quot;signkey&quot;: &quot;&quot;,</span><br><span class="line">  &quot;type&quot;: &quot;&quot;,</span><br><span class="line">  &quot;udid&quot;: &quot;aYU5PJ/U/aR1iOFu+Rd2HB7mst8DN5YX+4ft9CvXkL/YCpKYH4gg9+MiTNly tCkk7g9hVsWqMGbruaIqoS6K5A==&quot;,</span><br><span class="line">  &quot;username&quot;: &quot;18888888888&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里面需要逆向的参数有<code>_sign</code>、<code>pwd</code>、<code>udid</code></p>
+<h1 id="jadx反编译分析"><a href="#jadx反编译分析" class="headerlink" title="jadx反编译分析"></a>jadx反编译分析</h1><h2 id="pwd参数还原"><a href="#pwd参数还原" class="headerlink" title="pwd参数还原"></a>pwd参数还原</h2><p>搜索接口</p>
+<p><img src="/2025/02/16/%E8%BD%A6%E6%99%BA%E8%B5%A2app%E7%99%BB%E5%BD%95%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/3.jpg"></p>
+<p>双击跳转</p>
+<p><img src="/2025/02/16/%E8%BD%A6%E6%99%BA%E8%B5%A2app%E7%99%BB%E5%BD%95%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/4.jpg"></p>
+<p>它是一个字段，右键字段名查找用例，然后跳转至调用的地方，如下，它是url方法的参数</p>
+<h3 id="loginByPassword"><a href="#loginByPassword" class="headerlink" title="loginByPassword()"></a>loginByPassword()</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">loginByPassword</span><span class="params">(String str, String str2, String str3, String str4, String str5, ResponseCallback&lt;UserBean&gt; responseCallback)</span> &#123;</span><br><span class="line">    HttpUtil.<span class="type">Builder</span> <span class="variable">builder</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">HttpUtil</span>.Builder();</span><br><span class="line">    builder.tag(str).method(HttpUtil.Method.POST).signType(<span class="number">1</span>).url(LOGIN_URL).param(<span class="string">&quot;username&quot;</span>, str2).param(<span class="string">&quot;type&quot;</span>, str4).param(<span class="string">&quot;signkey&quot;</span>, str5).param(<span class="string">&quot;pwd&quot;</span>, SecurityUtil.encodeMD5(str3));</span><br><span class="line">    doRequest(builder, responseCallback, <span class="keyword">new</span> <span class="title class_">TypeToken</span>&lt;BaseResult&lt;UserBean&gt;&gt;() &#123; <span class="comment">// from class: com.che168.autotradercloud.user.model.UserModel.5</span></span><br><span class="line">    &#125;.getType());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在这里就可以看到传递的参数了</p>
+<p>这里出现了一个参数<code>pwd</code>，并进行了MD5哈希算法签名</p>
+<p>可以把输入的密码进行MD5签名，与抓包的数据进行对比，如下，是一样的</p>
+<p><img src="/2025/02/16/%E8%BD%A6%E6%99%BA%E8%B5%A2app%E7%99%BB%E5%BD%95%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/5.jpg"></p>
+<h2 id="sign参数还原"><a href="#sign参数还原" class="headerlink" title="_sign参数还原"></a>_sign参数还原</h2><p>搜索<code>&quot;_sign&quot;</code></p>
+<p><img src="/2025/02/16/%E8%BD%A6%E6%99%BA%E8%B5%A2app%E7%99%BB%E5%BD%95%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/6.jpg"></p>
+<p>当不确定是哪一个的时候，可以点进去看看上下文有没有其他相关的参数，或者可疑性比较大的方法进行hook，打印参数和返回值。</p>
+<p><img src="/2025/02/16/%E8%BD%A6%E6%99%BA%E8%B5%A2app%E7%99%BB%E5%BD%95%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/7.jpg"></p>
+<p>发现这几个sign的值都是通过<code>toSign()</code>方法得到的</p>
+<h3 id="toSign"><a href="#toSign" class="headerlink" title="toSign()"></a>toSign()</h3><p><img src="/2025/02/16/%E8%BD%A6%E6%99%BA%E8%B5%A2app%E7%99%BB%E5%BD%95%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/8.jpg"></p>
+<p>这里面对map中的内容通过字符串进行拼接，然后进行MD5签名，然后转为大写</p>
+<p>可以通过hook toSign()方法查看参数和返回值</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">hook_toSign</span>(<span class="params"></span>)&#123;</span><br><span class="line">	<span class="title class_">Java</span>.<span class="title function_">perform</span>(<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">		<span class="keyword">let</span> <span class="title class_">AHAPIHelper</span> = <span class="title class_">Java</span>.<span class="title function_">use</span>(<span class="string">&quot;com.autohome.ahkit.AHAPIHelper&quot;</span>);</span><br><span class="line">        <span class="title class_">AHAPIHelper</span>[<span class="string">&quot;toSign&quot;</span>].<span class="property">implementation</span> = <span class="keyword">function</span> (<span class="params">context, map</span>) &#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`AHAPIHelper.toSign is called: context=<span class="subst">$&#123;context&#125;</span>, map=<span class="subst">$&#123;map&#125;</span>`</span>);</span><br><span class="line">            <span class="keyword">let</span> result = <span class="variable language_">this</span>[<span class="string">&quot;toSign&quot;</span>](context, map);</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`AHAPIHelper.toSign result=<span class="subst">$&#123;result&#125;</span>`</span>);</span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;;</span><br><span class="line">	&#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>hook 之后点击登录没反应，可能是找错函数了，加密并没有走toSign()函数</p>
+<p>接着找，看这几个函数</p>
+<p><img src="/2025/02/16/%E8%BD%A6%E6%99%BA%E8%B5%A2app%E7%99%BB%E5%BD%95%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/9.jpg"></p>
+<p>如下，这里的参数跟请求体中的参数也对得上</p>
+<p><img src="/2025/02/16/%E8%BD%A6%E6%99%BA%E8%B5%A2app%E7%99%BB%E5%BD%95%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/10.jpg"></p>
+<p><code>_sign</code>的值是<code>signByType</code>，它的值是<code>signByType()</code>方法返回的</p>
+<h3 id="signByType"><a href="#signByType" class="headerlink" title="signByType()"></a>signByType()</h3><p><img src="/2025/02/16/%E8%BD%A6%E6%99%BA%E8%B5%A2app%E7%99%BB%E5%BD%95%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/11.jpg"></p>
+<p>这个方法根据<code>signType</code>的值来设置str的值，然后拼接paraMap的键和值，最后在拼接一个str，然后把字符串进行MD5签名</p>
+<h3 id="hook-signByType"><a href="#hook-signByType" class="headerlink" title="hook signByType()"></a>hook signByType()</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">hook_sign</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="title class_">Java</span>.<span class="title function_">perform</span>(<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="keyword">let</span> <span class="title class_">SignManager</span> = <span class="title class_">Java</span>.<span class="title function_">use</span>(<span class="string">&quot;com.che168.atclibrary.base.SignManager&quot;</span>);</span><br><span class="line">        <span class="title class_">SignManager</span>[<span class="string">&quot;signByType&quot;</span>].<span class="property">implementation</span> = <span class="keyword">function</span> (<span class="params">signType, paramMap</span>) &#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`SignManager.signByType is called: signType=<span class="subst">$&#123;signType&#125;</span>, paramMap=<span class="subst">$&#123;paramMap&#125;</span>`</span>);</span><br><span class="line">            <span class="keyword">let</span> result = <span class="variable language_">this</span>[<span class="string">&quot;signByType&quot;</span>](signType, paramMap);</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`SignManager.signByType result=<span class="subst">$&#123;result&#125;</span>`</span>);</span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>hook结果</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SignManager.signByType is called: signType=1, paramMap=&#123;_appid=atc.android, appversion=3.71.0, channelid=csy, pwd=25d55ad283aa400af464c76d713c07ad, signkey=, type=, udid=aYU5PJ/U/aR1iOFu+Rd2HB7mst8DN5YX+4ft9CvXkL/YCpKYH4gg968SLlht BKxj7FEpfjd4+7OOqUly74+vGQ==, username=18888888888&#125;</span><br><span class="line">SignManager.signByType result=21DD339870BDF9DAE15131F6D01B9BB2</span><br></pre></td></tr></table></figure>
+
+<p><code>signTpe</code>的值是1，在源码中找到对应的<code>str</code>是<code>&quot;W@oC!AH_6Ew1f6%8&quot;</code></p>
+<h3 id="hook-encodeMD5"><a href="#hook-encodeMD5" class="headerlink" title="hook encodeMD5()"></a>hook encodeMD5()</h3><p>可以hook encodeMD5查看MD5签名的参数</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">hook_encodeMD5</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="title class_">Java</span>.<span class="title function_">perform</span>(<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="keyword">let</span> <span class="title class_">SecurityUtil</span> = <span class="title class_">Java</span>.<span class="title function_">use</span>(<span class="string">&quot;com.autohome.ahkit.utils.SecurityUtil&quot;</span>);</span><br><span class="line">        <span class="title class_">SecurityUtil</span>[<span class="string">&quot;encodeMD5&quot;</span>].<span class="property">implementation</span> = <span class="keyword">function</span> (<span class="params">str</span>) &#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`SecurityUtil.encodeMD5 is called: str=<span class="subst">$&#123;str&#125;</span>`</span>);</span><br><span class="line">            <span class="keyword">let</span> result = <span class="variable language_">this</span>[<span class="string">&quot;encodeMD5&quot;</span>](str);</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`SecurityUtil.encodeMD5 result=<span class="subst">$&#123;result&#125;</span>`</span>);</span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>hook 结果</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SecurityUtil.encodeMD5 is called: str=W@oC!AH_6Ew1f6%8_appidatc.androidappversion3.71.0channelidcsypwd25d55ad283aa400af464c76d713c07adsignkeytypeudidaYU5PJ/U/aR1iOFu+Rd2HB7mst8DN5YX+4ft9CvXkL/YCpKYH4gg9/rOGiHZ fplHNBBIgv34WQSSYDABqqyELA==username18888888888W@oC!AH_6Ew1f6%8</span><br><span class="line">SecurityUtil.encodeMD5 result=d0bf664cc12b402592b7bbf926087bcc</span><br></pre></td></tr></table></figure>
+
+<h2 id="udid参数还原"><a href="#udid参数还原" class="headerlink" title="udid参数还原"></a>udid参数还原</h2><p><img src="/2025/02/16/%E8%BD%A6%E6%99%BA%E8%B5%A2app%E7%99%BB%E5%BD%95%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/12.jpg"></p>
+<p><code>udid</code>是通过<code>getUDID()</code>方法获取的</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title function_">getUDID</span><span class="params">(Context context)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> SecurityUtil.encode3Des(context, getIMEI(context) + HiAnalyticsConstant.REPORT_VAL_SEPARATOR + (System.currentTimeMillis() / <span class="number">1000</span>) + <span class="string">&quot;.000000|&quot;</span> + SPUtils.getDeviceId());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>可以看出<code>udid</code>是通过<code>3Des</code>加密得到的</p>
+<p>分析<code>3Des</code>加密的明文，它是由<code>getIMEI(context) + HiAnalyticsConstant.REPORT_VAL_SEPARATOR + (System.currentTimeMillis() / 1000) + &quot;.000000|&quot; + SPUtils.getDeviceId()</code>拼接而成的</p>
+<h3 id="getIMEI"><a href="#getIMEI" class="headerlink" title="getIMEI()"></a>getIMEI()</h3><p>首先分析<code>getIMEI()</code>，我在jadx里反编译不了这个函数，换用Jeb进行反编译</p>
+<p><img src="/2025/02/16/%E8%BD%A6%E6%99%BA%E8%B5%A2app%E7%99%BB%E5%BD%95%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/13.jpg"></p>
+<p>分析代码，生成IMEI有不同的方式</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">1.((TelephonyManager)context0.getSystemService(&quot;phone&quot;)).getDeviceId();</span><br><span class="line">返回DeviceId</span><br><span class="line">2.AppUtils.getIMEIbyAndroidIDandUUID(context0);</span><br><span class="line">返回uuid</span><br><span class="line">3.((WifiManager)context0.getSystemService(&quot;wifi&quot;)).getConnectionInfo().getMacAddress();</span><br><span class="line">UUID.nameUUIDFromBytes(s1.getBytes(&quot;utf8&quot;)).toString();</span><br><span class="line">先获取wifi mac地址，然后根据这个mac地址生成一个uuid，然后返回</span><br></pre></td></tr></table></figure>
+
+<p>这里面最简单的方式就是直接生成uuid的方式了。</p>
+<h3 id="getIMEIbyAndroidIDandUUID"><a href="#getIMEIbyAndroidIDandUUID" class="headerlink" title="getIMEIbyAndroidIDandUUID()"></a>getIMEIbyAndroidIDandUUID()</h3><p><img src="/2025/02/16/%E8%BD%A6%E6%99%BA%E8%B5%A2app%E7%99%BB%E5%BD%95%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/14.jpg"></p>
+<p>直接随机生成一个uuid就可以了。</p>
+<h3 id="REPORT-VAL-SEPARATOR"><a href="#REPORT-VAL-SEPARATOR" class="headerlink" title="REPORT_VAL_SEPARATOR"></a>REPORT_VAL_SEPARATOR</h3><p><img src="/2025/02/16/%E8%BD%A6%E6%99%BA%E8%B5%A2app%E7%99%BB%E5%BD%95%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/15.jpg"></p>
+<p><code>REPORT_VAL_SEPARATOR = &quot;|&quot;</code></p>
+<h3 id="getDeviceId"><a href="#getDeviceId" class="headerlink" title="getDeviceId()"></a>getDeviceId()</h3><p><img src="/2025/02/16/%E8%BD%A6%E6%99%BA%E8%B5%A2app%E7%99%BB%E5%BD%95%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/16.jpg"></p>
+<p>它是从内存中获取的，需要找到这个值是什么时候如何存进去的</p>
+<h3 id="saveDeviceId"><a href="#saveDeviceId" class="headerlink" title="saveDeviceId()"></a>saveDeviceId()</h3><p><img src="/2025/02/16/%E8%BD%A6%E6%99%BA%E8%B5%A2app%E7%99%BB%E5%BD%95%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/17.jpg"></p>
+<p>这个方法里面传入了一个字符串，通过查找用例来找传入的字符串是什么</p>
+<h3 id="regDevice"><a href="#regDevice" class="headerlink" title="regDevice()"></a>regDevice()</h3><p><img src="/2025/02/16/%E8%BD%A6%E6%99%BA%E8%B5%A2app%E7%99%BB%E5%BD%95%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/18.jpg"></p>
+<p>向服务器发送请求返回一个<code>RegDeviceResult</code>对象，然后<code>RegDeviceResult.deviceid</code>字段作为<code>saveDeviceId()</code>的参数</p>
+<p><code>deviceid</code>是从服务器返回的，而且是程序第一次启动的时候设置的。</p>
+<p><img src="/2025/02/16/%E8%BD%A6%E6%99%BA%E8%B5%A2app%E7%99%BB%E5%BD%95%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/19.jpg"></p>
+<p>请求的url是<code>/tradercloud/v100/push/regdevice.ashx</code></p>
+<p>可以通过抓包获取<code>deviceid</code>的值。</p>
+<p><img src="/2025/02/16/%E8%BD%A6%E6%99%BA%E8%B5%A2app%E7%99%BB%E5%BD%95%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/20.jpg"></p>
+<p>返回的<code>deviceid</code>值是<code>436586</code>。</p>
+<h3 id="Python生成加密参数"><a href="#Python生成加密参数" class="headerlink" title="Python生成加密参数"></a>Python生成加密参数</h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> uuid</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">g_imei</span>():</span><br><span class="line">    u4 = uuid.uuid4()</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">str</span>(u4)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">g_data</span>():</span><br><span class="line">    REPORT_VAL_SEPARATOR = <span class="string">&quot;|&quot;</span></span><br><span class="line">    deviceid = <span class="string">&quot;436586&quot;</span></span><br><span class="line">    <span class="keyword">return</span> g_imei()+REPORT_VAL_SEPARATOR+<span class="built_in">str</span>(<span class="built_in">int</span>(time.time()))+<span class="string">&quot;.000000|&quot;</span>+deviceid</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(g_data())</span><br></pre></td></tr></table></figure>
+
+<h3 id="encode3Des"><a href="#encode3Des" class="headerlink" title="encode3Des()"></a>encode3Des()</h3><p><img src="/2025/02/16/%E8%BD%A6%E6%99%BA%E8%B5%A2app%E7%99%BB%E5%BD%95%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/21.jpg"></p>
+<p><strong>获取key</strong></p>
+<h4 id="getDesKey"><a href="#getDesKey" class="headerlink" title="getDesKey()"></a>getDesKey()</h4><p><img src="/2025/02/16/%E8%BD%A6%E6%99%BA%E8%B5%A2app%E7%99%BB%E5%BD%95%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/22.jpg"></p>
+<h4 id="getSignKey"><a href="#getSignKey" class="headerlink" title="getSignKey"></a>getSignKey</h4><p><img src="/2025/02/16/%E8%BD%A6%E6%99%BA%E8%B5%A2app%E7%99%BB%E5%BD%95%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/23.jpg"></p>
+<h4 id="getSignDesKey"><a href="#getSignDesKey" class="headerlink" title="getSignDesKey()"></a>getSignDesKey()</h4><p><img src="/2025/02/16/%E8%BD%A6%E6%99%BA%E8%B5%A2app%E7%99%BB%E5%BD%95%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/24.jpg"></p>
+<h4 id="get3desKey"><a href="#get3desKey" class="headerlink" title="get3desKey()"></a>get3desKey()</h4><p><img src="/2025/02/16/%E8%BD%A6%E6%99%BA%E8%B5%A2app%E7%99%BB%E5%BD%95%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/25.jpg"></p>
+<p><code>get3desKey()</code>是一个native函数，需要到so中分析，它在<code>native-lib.so</code>里</p>
+<p>IDA打开<code>native-lib.so</code>反编译，现在静态函数里找</p>
+<p><img src="/2025/02/16/%E8%BD%A6%E6%99%BA%E8%B5%A2app%E7%99%BB%E5%BD%95%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/26.jpg"></p>
+<p>直接就找到了，跳转过去</p>
+<p><img src="/2025/02/16/%E8%BD%A6%E6%99%BA%E8%B5%A2app%E7%99%BB%E5%BD%95%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/27.jpg"></p>
+<p>分析代码，查看<code>DES3_KEY</code>的值</p>
+<p><img src="/2025/02/16/%E8%BD%A6%E6%99%BA%E8%B5%A2app%E7%99%BB%E5%BD%95%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/28.jpg"></p>
+<p>kei的值是<code>appapiche168comappapiche168comap</code></p>
+<h4 id="hook-get3desKey"><a href="#hook-get3desKey" class="headerlink" title="hook get3desKey()"></a>hook get3desKey()</h4><p>也可以通过hook 获取</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">hook_get3desKey</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="title class_">Java</span>.<span class="title function_">perform</span>(<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="keyword">let</span> <span class="title class_">CheckSignUtil</span> = <span class="title class_">Java</span>.<span class="title function_">use</span>(<span class="string">&quot;com.autohome.ahkit.jni.CheckSignUtil&quot;</span>);</span><br><span class="line">        <span class="title class_">CheckSignUtil</span>.<span class="property">get3desKey</span>.<span class="property">implementation</span> = <span class="keyword">function</span> (<span class="params">context</span>) &#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`CheckSignUtil.get3desKey is called: context=<span class="subst">$&#123;context&#125;</span>`</span>);</span><br><span class="line">            <span class="keyword">let</span> result = <span class="variable language_">this</span>[<span class="string">&quot;get3desKey&quot;</span>](context);</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`CheckSignUtil.get3desKey result=<span class="subst">$&#123;result&#125;</span>`</span>);</span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">hook_get3desKey</span>()</span><br></pre></td></tr></table></figure>
+
+<h4 id="iv向量"><a href="#iv向量" class="headerlink" title="iv向量"></a>iv向量</h4><p><img src="/2025/02/16/%E8%BD%A6%E6%99%BA%E8%B5%A2app%E7%99%BB%E5%BD%95%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/29.jpg"></p>
+<p><code>iv</code>的值为<code>appapich</code></p>
+<h4 id="hook-encode3Des"><a href="#hook-encode3Des" class="headerlink" title="hook encode3Des"></a>hook encode3Des</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">hook_encode3Des</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="title class_">Java</span>.<span class="title function_">perform</span>(<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="keyword">let</span> <span class="title class_">SecurityUtil</span> = <span class="title class_">Java</span>.<span class="title function_">use</span>(<span class="string">&quot;com.autohome.ahkit.utils.SecurityUtil&quot;</span>);</span><br><span class="line">        <span class="title class_">SecurityUtil</span>[<span class="string">&quot;encode3Des&quot;</span>].<span class="property">implementation</span> = <span class="keyword">function</span> (<span class="params">context, str</span>) &#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`SecurityUtil.encode3Des is called: context=<span class="subst">$&#123;context&#125;</span>, str=<span class="subst">$&#123;str&#125;</span>`</span>);</span><br><span class="line">            <span class="keyword">let</span> result = <span class="variable language_">this</span>[<span class="string">&quot;encode3Des&quot;</span>](context, str);</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`SecurityUtil.encode3Des result=<span class="subst">$&#123;result&#125;</span>`</span>);</span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">hook_encode3Des</span>()</span><br></pre></td></tr></table></figure>
+
+<p>hook 结果</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SecurityUtil.encode3Des is called: context=com.che168.autotradercloud.ATCApplication@77f5244, str=01f27aed_7242_412e_80fe_d77895dd8c6c|1739375229.000000|436588</span><br><span class="line">SecurityUtil.encode3Des result=dtRLGew6PDK+XUyKHax77H3+dDRC6VqmOHCbYsmzYEtRxFWu5cuowjF1r6Jy DRO/48UWBBgl5RF4+L8WGxjENg==</span><br></pre></td></tr></table></figure>
+
+<h3 id="Python生成uuid"><a href="#Python生成uuid" class="headerlink" title="Python生成uuid"></a>Python生成uuid</h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> uuid</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">from</span> Crypto.Cipher <span class="keyword">import</span> DES3</span><br><span class="line"><span class="keyword">from</span> Crypto.Util.Padding <span class="keyword">import</span> pad,unpad</span><br><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">g_imei</span>():</span><br><span class="line">    u4 = uuid.uuid4()</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">str</span>(u4)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">g_data</span>():</span><br><span class="line">    REPORT_VAL_SEPARATOR = <span class="string">&quot;|&quot;</span></span><br><span class="line">    deviceid = <span class="string">&quot;436586&quot;</span></span><br><span class="line">    <span class="keyword">return</span> g_imei()+REPORT_VAL_SEPARATOR+<span class="built_in">str</span>(<span class="built_in">int</span>(time.time()))+<span class="string">&quot;.000000|&quot;</span>+deviceid</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">des_encrypt_cbc</span>(<span class="params">plaintext,key,iv</span>):</span><br><span class="line">    cipher = DES3.new(key,DES3.MODE_CBC,iv)</span><br><span class="line">    padded_text = pad(plaintext,DES3.block_size)</span><br><span class="line">    encrypted_data = cipher.encrypt(padded_text)</span><br><span class="line">    <span class="keyword">return</span> encrypted_data</span><br><span class="line"></span><br><span class="line">data =  g_data().encode(<span class="string">&quot;utf-8&quot;</span>)</span><br><span class="line">key = <span class="string">b&quot;appapiche168comappapiche&quot;</span></span><br><span class="line">iv = <span class="string">b&quot;appapich&quot;</span></span><br><span class="line"></span><br><span class="line">udid = base64.b64encode(des_encrypt_cbc(data,key,iv))</span><br><span class="line"><span class="built_in">print</span>(udid)</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="登陆"><a href="#登陆" class="headerlink" title="登陆"></a>登陆</h1><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> hashlib</span><br><span class="line"><span class="keyword">import</span> uuid</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">from</span> Crypto.Cipher <span class="keyword">import</span> DES3</span><br><span class="line"><span class="keyword">from</span> Crypto.Util.Padding <span class="keyword">import</span> pad,unpad</span><br><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">md5_call</span>(<span class="params">data</span>):</span><br><span class="line">    <span class="comment"># 创建md5对象</span></span><br><span class="line">    md5 = hashlib.md5()</span><br><span class="line">    <span class="comment"># 更新要加密的数据，参数要是字节类型</span></span><br><span class="line">    md5.update(data.encode(<span class="string">&quot;utf-8&quot;</span>))</span><br><span class="line">    <span class="comment"># 获取加密后的数据，以16进制表示</span></span><br><span class="line">    md5_hex = md5.hexdigest()</span><br><span class="line">    <span class="keyword">return</span> md5_hex</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">g_pwd</span>(<span class="params">pwd</span>):</span><br><span class="line">    <span class="keyword">return</span> md5_call(pwd)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">g_imei</span>():</span><br><span class="line">    u4 = uuid.uuid4()</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">str</span>(u4)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">g_data</span>():</span><br><span class="line">    REPORT_VAL_SEPARATOR = <span class="string">&quot;|&quot;</span></span><br><span class="line">    deviceid = <span class="string">&quot;436586&quot;</span></span><br><span class="line">    <span class="keyword">return</span> g_imei()+REPORT_VAL_SEPARATOR+<span class="built_in">str</span>(<span class="built_in">int</span>(time.time()))+<span class="string">&quot;.000000|&quot;</span>+deviceid</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">des_encrypt_cbc</span>(<span class="params">plaintext,key,iv</span>):</span><br><span class="line">    cipher = DES3.new(key,DES3.MODE_CBC,iv)</span><br><span class="line">    padded_text = pad(plaintext,DES3.block_size)</span><br><span class="line">    encrypted_data = cipher.encrypt(padded_text)</span><br><span class="line">    <span class="keyword">return</span> encrypted_data</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">g_udid</span>():</span><br><span class="line">    data =  g_data().encode(<span class="string">&quot;utf-8&quot;</span>)</span><br><span class="line">    key = <span class="string">b&quot;appapiche168comappapiche&quot;</span></span><br><span class="line">    iv = <span class="string">b&quot;appapich&quot;</span></span><br><span class="line">    <span class="keyword">return</span> base64.b64encode(des_encrypt_cbc(data,key,iv)).decode(<span class="string">&quot;utf-8&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">g_sign</span>(<span class="params">body</span>):</span><br><span class="line">    <span class="comment"># print(body)</span></span><br><span class="line">    <span class="built_in">str</span> = <span class="string">&quot;W@oC!AH_6Ew1f6%8&quot;</span></span><br><span class="line">    sign_str =<span class="string">&quot;&quot;</span></span><br><span class="line">    sign_str+=<span class="built_in">str</span></span><br><span class="line">    sign_str+=<span class="string">&quot;_appid&quot;</span></span><br><span class="line">    sign_str+=body[<span class="string">&quot;_appid&quot;</span>]</span><br><span class="line">    sign_str+=<span class="string">&quot;appversion&quot;</span></span><br><span class="line">    sign_str+=body[<span class="string">&quot;appversion&quot;</span>]</span><br><span class="line">    sign_str+=<span class="string">&quot;channelid&quot;</span></span><br><span class="line">    sign_str+=body[<span class="string">&quot;channelid&quot;</span>]</span><br><span class="line">    sign_str+=<span class="string">&quot;pwd&quot;</span></span><br><span class="line">    sign_str+=body[<span class="string">&quot;pwd&quot;</span>]</span><br><span class="line">    sign_str+=<span class="string">&quot;signkey&quot;</span></span><br><span class="line">    sign_str+=<span class="string">&quot;type&quot;</span></span><br><span class="line">    sign_str+=<span class="string">&quot;udid&quot;</span></span><br><span class="line">    sign_str+=body[<span class="string">&quot;udid&quot;</span>]</span><br><span class="line">    sign_str+=<span class="string">&quot;username&quot;</span></span><br><span class="line">    sign_str+=body[<span class="string">&quot;username&quot;</span>]</span><br><span class="line">    sign_str+=<span class="built_in">str</span></span><br><span class="line">    <span class="comment"># print(sign_str)</span></span><br><span class="line">    sign = md5_call(sign_str)</span><br><span class="line">    <span class="keyword">return</span> sign.upper()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">url = <span class="string">&quot;https://dealercloudapi.che168.com/tradercloud/sealed/login/login.ashx&quot;</span></span><br><span class="line"></span><br><span class="line">headers = &#123;</span><br><span class="line">  <span class="string">&quot;cache-control&quot;</span>: <span class="string">&quot;public, max-age=0&quot;</span>,</span><br><span class="line">  <span class="string">&quot;traceid&quot;</span>: <span class="string">&quot;atc.android_75ca194d-982a-4c62-9c0a-eb647fcfff77&quot;</span>,</span><br><span class="line">  <span class="string">&quot;content-type&quot;</span>: <span class="string">&quot;application/x-www-form-urlencoded&quot;</span>,</span><br><span class="line">  <span class="string">&quot;content-length&quot;</span>: <span class="string">&quot;275&quot;</span>,</span><br><span class="line">  <span class="string">&quot;accept-encoding&quot;</span>: <span class="string">&quot;gzip&quot;</span>,</span><br><span class="line">  <span class="string">&quot;user-agent&quot;</span>: <span class="string">&quot;okhttp/3.14.9&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">body = &#123;</span><br><span class="line">  <span class="string">&quot;_appid&quot;</span>: <span class="string">&quot;atc.android&quot;</span>,</span><br><span class="line"><span class="comment">#   &quot;_sign&quot;: &quot;821E3885B2FC914FBFAD687399B650E7&quot;,</span></span><br><span class="line">  <span class="string">&quot;appversion&quot;</span>: <span class="string">&quot;3.71.0&quot;</span>,</span><br><span class="line">  <span class="string">&quot;channelid&quot;</span>: <span class="string">&quot;csy&quot;</span>,</span><br><span class="line"><span class="comment">#   &quot;pwd&quot;: &quot;25d55ad283aa400af464c76d713c07ad&quot;,</span></span><br><span class="line">  <span class="string">&quot;signkey&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">  <span class="string">&quot;type&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line"><span class="comment">#   &quot;udid&quot;: &quot;aYU5PJ/U/aR1iOFu+Rd2HB7mst8DN5YX+4ft9CvXkL/YCpKYH4gg9+MiTNly tCkk7g9hVsWqMGbruaIqoS6K5A==&quot;,</span></span><br><span class="line"><span class="comment">#   &quot;username&quot;: &quot;18888888888&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">username = <span class="built_in">input</span>(<span class="string">&quot;Please input username:&quot;</span>)</span><br><span class="line">pwd = <span class="built_in">input</span>(<span class="string">&quot;Please input pwd:&quot;</span>)</span><br><span class="line">body[<span class="string">&quot;username&quot;</span>] = username</span><br><span class="line">body[<span class="string">&quot;pwd&quot;</span>] = g_pwd(pwd)</span><br><span class="line">body[<span class="string">&quot;udid&quot;</span>] = g_udid()</span><br><span class="line">sign = g_sign(body)</span><br><span class="line">body[<span class="string">&quot;_sign&quot;</span>] = sign</span><br><span class="line"></span><br><span class="line">response = requests.post(url=url,headers=headers,data=body)</span><br><span class="line"><span class="built_in">print</span>(response.status_code)</span><br><span class="line"><span class="built_in">print</span>(response.text)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -1650,109 +1839,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/02/06/%E7%B2%BE%E5%8D%8E%E6%96%87%E7%AB%A0%E8%AE%B0%E5%BD%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/android.svg">
-      <meta itemprop="name" content="Bileton">
-      <meta itemprop="description" content="路漫漫其修远夕！">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="白乐天">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2025/02/06/%E7%B2%BE%E5%8D%8E%E6%96%87%E7%AB%A0%E8%AE%B0%E5%BD%95/" class="post-title-link" itemprop="url">精华文章记录</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2025-02-06 21:08:06" itemprop="dateCreated datePublished" datetime="2025-02-06T21:08:06+08:00">2025-02-06</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2025-02-10 23:56:13" itemprop="dateModified" datetime="2025-02-10T23:56:13+08:00">2025-02-10</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%A7%81%E5%A4%9A%E8%AF%86%E5%B9%BF/" itemprop="url" rel="index"><span itemprop="name">见多识广</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>615</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="编程语言教程"><a href="#编程语言教程" class="headerlink" title="编程语言教程"></a>编程语言教程</h1><p><a target="_blank" rel="noopener" href="https://liaoxuefeng.com/">廖雪峰的官方网站</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.runoob.com/">菜鸟教程 - 学的不仅是技术，更是梦想！</a></p>
-<h1 id="安卓逆向这档事"><a href="#安卓逆向这档事" class="headerlink" title="安卓逆向这档事"></a>安卓逆向这档事</h1><p><a target="_blank" rel="noopener" href="https://www.52pojie.cn/thread-1695141-1-1.html">《安卓逆向这档事》一、模拟器环境搭建 - 吾爱破解 - 52pojie.cn</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.52pojie.cn/thread-1695796-1-1.html">《安卓逆向这档事》二、初识APK文件结构、双开、汉化、基础修 - 吾爱破解 - 52pojie.cn</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.52pojie.cn/thread-1701353-1-1.html">《安卓逆向这档事》三、初识smali，vip终结者 - 吾爱破解 - 52pojie.cn</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.52pojie.cn/thread-1706691-1-1.html">《安卓逆向这档事》四、恭喜你获得广告&amp;弹窗静默卡 - 吾爱破解 - 52pojie.cn</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.52pojie.cn/thread-1714727-1-1.html">《安卓逆向这档事》五、1000-7&#x3D;？&amp;动态调试&amp;Log插桩 - 吾爱破解 - 52pojie.cn</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.52pojie.cn/thread-1731181-1-1.html">《安卓逆向这档事》六、校验的N次方-签名校验对抗、PM代{过}{滤}理、IO重定向 - 吾爱破解 - 52pojie.cn</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.52pojie.cn/thread-1740944-1-1.html">《安卓逆向这档事》七、Sorry，会Hook真的可以为所欲为-Xposed快速上手(上)模块编.. - 吾爱破解 - 52pojie.cn</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.52pojie.cn/thread-1748081-1-1.html">《安卓逆向这档事》八、Sorry，会Hook真的可以为所欲为-xposed快速上手(下)快速hook - 吾爱破解 - 52pojie.cn</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.52pojie.cn/thread-1762225-1-1.html">《安卓逆向这档事》九、密码学基础、算法自吐、非标准加密对抗 - 吾爱破解 - 52pojie.cn</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.52pojie.cn/thread-1787667-1-1.html">《安卓逆向这档事》十、不是我说，有了IDA还要什么女朋友？ - 吾爱破解 - 52pojie.cn</a></p>
-<h1 id="可以下载旧版app的应用和网站"><a href="#可以下载旧版app的应用和网站" class="headerlink" title="可以下载旧版app的应用和网站"></a>可以下载旧版app的应用和网站</h1><p>豌豆荚</p>
-<p>360手机助手</p>
-<p><a target="_blank" rel="noopener" href="https://apkpure.com/cn/">https://apkpure.com/cn/</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.apkmirror.com/">https://www.apkmirror.com/</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1824,7 +1910,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">72</span>
+          <span class="site-state-item-count">73</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1837,7 +1923,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">66</span>
+        <span class="site-state-item-count">67</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -1878,13 +1964,13 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">522k</span>
+    <span title="站点总字数">534k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">7:55</span>
+    <span title="站点阅读时长">8:05</span>
 </div>
 
 
