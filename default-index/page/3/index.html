@@ -124,17 +124,17 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">69</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">70</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">30</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">31</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">75</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">76</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -185,6 +185,188 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/01/24/%E7%BC%96%E8%AF%91%E5%99%A8%E8%B0%83%E8%AF%95%E5%99%A8%E7%AD%89%E4%B8%80%E7%B3%BB%E5%88%97%E5%B7%A5%E5%85%B7%E5%90%88%E9%9B%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/android.svg">
+      <meta itemprop="name" content="Bileton">
+      <meta itemprop="description" content="路漫漫其修远夕！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="白乐天">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2025/01/24/%E7%BC%96%E8%AF%91%E5%99%A8%E8%B0%83%E8%AF%95%E5%99%A8%E7%AD%89%E4%B8%80%E7%B3%BB%E5%88%97%E5%B7%A5%E5%85%B7%E5%90%88%E9%9B%86/" class="post-title-link" itemprop="url">编译器调试器等一系列工具合集</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2025-01-24 23:23:15" itemprop="dateCreated datePublished" datetime="2025-01-24T23:23:15+08:00">2025-01-24</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2025-01-26 00:13:38" itemprop="dateModified" datetime="2025-01-26T00:13:38+08:00">2025-01-26</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%80%86%E5%90%91%E5%B7%A5%E5%85%B7%E9%9B%86/" itemprop="url" rel="index"><span itemprop="name">逆向工具集</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>2.3k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Clang"><a href="#Clang" class="headerlink" title="Clang"></a>Clang</h1><p>Clang是一个由LLVM项目开发的开源编译器前端，支持C、C++、Objective-C等编程语言的编译。</p>
+<h2 id="编译命令"><a href="#编译命令" class="headerlink" title="编译命令"></a>编译命令</h2><h3 id="生成可执行文件"><a href="#生成可执行文件" class="headerlink" title="生成可执行文件"></a>生成可执行文件</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">clang -o output_program source_file.c</span><br></pre></td></tr></table></figure>
+
+<h3 id="预处理"><a href="#预处理" class="headerlink" title="预处理"></a>预处理</h3><p>预处理阶段是源代码中所有宏定义、头文件包含以及条件编译指令的处理阶段。在预处理阶段会将源代码中的宏替换为相应的内容，展开头文件，并生成一个预处理结果文件。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">clang -E source_file.c -o output_file.i</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p><code>-E</code>：表示只执行预处理，并生成预处理后的输出。</p>
+</li>
+<li><p><code>source_file.c</code>：输入的源代码文件。</p>
+</li>
+<li><p><code>output_file.i</code>：输出的预处理文件（扩展名通常为<code>.i</code>）。</p>
+</li>
+</ul>
+<h3 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h3><p>编译阶段将预处理过的源代码转化为汇编代码。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">clang -S source_file.c -o output_file.s</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p><code>-S</code>：表示只进行编译，将源代码编译为汇编代码。</p>
+</li>
+<li><p><code>source_file.c</code>：输入的源代码文件。</p>
+</li>
+<li><p><code>output_file.s</code>：输出的汇编代码文件（扩展名通常为<code>.s</code>）。</p>
+</li>
+</ul>
+<h3 id="汇编"><a href="#汇编" class="headerlink" title="汇编"></a>汇编</h3><p>汇编阶段将汇编代码转化为机器码，并生成一个目标文件（通常是<code>.o</code>文件）。该目标文件包含了机器可执行的代码，但还没有完成链接过程。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">clang -c source_file.c -o output_file.o</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p><code>-c</code>：表示只进行汇编，将源代码编译为目标文件（<code>.o</code>文件）。</p>
+</li>
+<li><p><code>source_file.c</code>：输入的源代码文件。</p>
+</li>
+<li><p><code>output_file.o</code>：输出的目标文件（<code>.o</code>文件）。</p>
+</li>
+</ul>
+<h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p>链接阶段将一个或多个目标文件（<code>.o</code>文件）与库文件（静态库、动态库）合并，生成最终的可执行文件。此过程包括符号解析和重定位。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">clang source_file.o -o output_program</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p><code>source_file.o</code>：输入的目标文件（<code>.o</code>文件）。</p>
+</li>
+<li><p><code>output_program</code>：输出的最终可执行文件。</p>
+</li>
+</ul>
+<h3 id="指定目标平台交叉编译"><a href="#指定目标平台交叉编译" class="headerlink" title="指定目标平台交叉编译"></a>指定目标平台交叉编译</h3><p>可以在一个平台上编译出适用于另一个平台的二进制文件。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">clang --target=xxx -o output_program source_file.c</span><br></pre></td></tr></table></figure>
+
+<h1 id="GDB"><a href="#GDB" class="headerlink" title="GDB"></a>GDB</h1><p>GDB（GNU Debugger） 是 GNU 项目提供的一款强大的调试工具，主要用于调试 C、C++ 和其他支持的编程语言编写的程序。</p>
+<h2 id="gdb-multiarch"><a href="#gdb-multiarch" class="headerlink" title="gdb-multiarch"></a>gdb-multiarch</h2><p>gdb-multiarch 是 GDB（GNU Debugger） 的一个变体，专门设计用于调试多种体系结构（architecture）的程序，特别是在交叉编译和嵌入式开发场景中非常有用。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install gdb-multiarch</span><br></pre></td></tr></table></figure>
+
+<h2 id="gef插件"><a href="#gef插件" class="headerlink" title="gef插件"></a>gef插件</h2><p><a target="_blank" rel="noopener" href="https://github.com/hugsy/gef">https://github.com/hugsy/gef</a></p>
+<p>安装完成效果如下</p>
+<p><img src="/2025/01/24/%E7%BC%96%E8%AF%91%E5%99%A8%E8%B0%83%E8%AF%95%E5%99%A8%E7%AD%89%E4%B8%80%E7%B3%BB%E5%88%97%E5%B7%A5%E5%85%B7%E5%90%88%E9%9B%86/1.jpg"></p>
+<h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h3><h4 id="gef-remote"><a href="#gef-remote" class="headerlink" title="gef remote"></a>gef remote</h4><p><code>gef-remote</code> 是对 GDB <code>target remote</code> 命令的增强版。该命令会使用远程目标的 <code>/proc</code> 文件系统，在本地临时目录（默认值存储在 <code>gef.config.tempdir</code> 中）中创建一个远程执行环境的副本，包括目标程序及其加载的所有库。此外，它会获取远程 <code>/proc/PID/maps</code> 的全部信息并加载到本地环境中。如果远程目标不支持 <code>/proc</code> 文件系统，该命令可能会失败。但在这种情况下，仍然可以使用 GDB 原生的 <code>target remote</code> 命令（功能有限）。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gef-remote localhost 1234</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="远程调试"><a href="#远程调试" class="headerlink" title="远程调试"></a>远程调试</h2><p>使用gdbserver，在ndk目录下，push到手机<code>data/local/tmp</code>目录下</p>
+<p>在目标设备上运行程序并启动 <code>gdbserver</code>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gdbserver :1234 ./example</span><br></pre></td></tr></table></figure>
+
+<p>端口转发</p>
+<h2 id="gdb调试命令"><a href="#gdb调试命令" class="headerlink" title="gdb调试命令"></a>gdb调试命令</h2><h3 id="b（break）"><a href="#b（break）" class="headerlink" title="b（break）"></a>b（break）</h3><p>设置断点</p>
+<ul>
+<li><p>设置函数断点</p>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">b main</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>设置地址断点（地址前要加*号）</p>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">b *0xaaaabbbb</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="c（continue）"><a href="#c（continue）" class="headerlink" title="c（continue）"></a>c（continue）</h3><p>继续执行。</p>
+<p>当程序在断点处停止时，使用 <code>c</code> 命令可以让程序继续执行，直到遇到下一个断点或者程序运行完毕。</p>
+<h3 id="n"><a href="#n" class="headerlink" title="n"></a>n</h3><p><code>n</code> (next)：单步执行当前行，不进入函数内部。</p>
+<h3 id="ni"><a href="#ni" class="headerlink" title="ni"></a>ni</h3><p><code>ni</code> 命令会 单步执行当前行的机器指令，如果当前行有函数调用，<code>ni</code> 不会进入函数内部，而是直接跳到下一个机器指令。</p>
+<h3 id="s"><a href="#s" class="headerlink" title="s"></a>s</h3><p><code>s</code> (step)：单步执行当前行，如果有函数调用，会进入函数内部。</p>
+<h3 id="finish"><a href="#finish" class="headerlink" title="finish"></a>finish</h3><p>继续执行直到当前函数返回。</p>
+<h3 id="quit"><a href="#quit" class="headerlink" title="quit"></a>quit</h3><p>退出gdb调试器。</p>
+<h1 id="make"><a href="#make" class="headerlink" title="make"></a>make</h1><p><code>make</code> 是一个经典的构建自动化工具，主要用于编译和管理项目中的代码文件。它根据 <code>Makefile</code> 中定义的规则，自动检测文件依赖关系并生成目标文件，帮助开发者简化和自动化编译工作。</p>
+<h2 id="Makefile-基本结构"><a href="#Makefile-基本结构" class="headerlink" title="Makefile 基本结构"></a>Makefile 基本结构</h2><p>Makefile 是 <code>make</code> 的核心文件，通常用于定义构建目标、依赖关系以及执行命令。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">目标: 依赖</span><br><span class="line">    命令</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>**目标 (Target)**：需要生成的文件（例如可执行程序）。</li>
+<li>**依赖 (Dependencies)**：目标生成所需的文件。</li>
+<li>**命令 (Commands)**：构建目标的具体命令（通常是 shell 命令）。</li>
+</ul>
+<h2 id="常用命令-1"><a href="#常用命令-1" class="headerlink" title="常用命令"></a>常用命令</h2><p>**<code>make</code>**：执行默认目标（通常是第一个目标）。</p>
+<p>**<code>make &lt;目标&gt;</code>**：执行指定的目标。</p>
+<p>**<code>make -f &lt;文件&gt;</code>**：指定 Makefile 文件。</p>
+<p>**<code>make clean</code>**：清理文件（运行 <code>clean</code> 伪目标）。</p>
+<h1 id="cmake"><a href="#cmake" class="headerlink" title="cmake"></a>cmake</h1><p><code>CMake</code> 是一个跨平台的开源构建系统生成工具，主要用于管理复杂项目的构建过程。它通过编写 <strong>CMakeLists.txt</strong> 文件，生成适合不同平台和编译器的构建系统文件，从而简化跨平台项目的构建。</p>
+<p>CMake 不直接编译代码，而是生成构建系统（例如 Makefile），然后使用生成的构建系统（如 <code>make</code>）进行实际的编译和构建。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -1425,104 +1607,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/01/11/Android%E7%B3%BB%E7%BB%9F%E7%9B%B8%E5%85%B3%E5%91%BD%E4%BB%A4/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/android.svg">
-      <meta itemprop="name" content="Bileton">
-      <meta itemprop="description" content="路漫漫其修远夕！">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="白乐天">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2025/01/11/Android%E7%B3%BB%E7%BB%9F%E7%9B%B8%E5%85%B3%E5%91%BD%E4%BB%A4/" class="post-title-link" itemprop="url">Android系统相关命令</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2025-01-11 18:40:52" itemprop="dateCreated datePublished" datetime="2025-01-11T18:40:52+08:00">2025-01-11</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2025-02-10 19:28:34" itemprop="dateModified" datetime="2025-02-10T19:28:34+08:00">2025-02-10</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index"><span itemprop="name">Android系统</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>278</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="getprop"><a href="#getprop" class="headerlink" title="getprop"></a>getprop</h1><p><code>getprop</code> 是 Android 系统中常用的命令，用于获取设备的属性值。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">getprop [属性名]</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p><strong>无参数</strong>: 直接运行 <code>getprop</code>，会列出系统中所有的属性及其值。</p>
-</li>
-<li><p><strong>指定属性名</strong>: 指定某个属性名时，会返回该属性的值。</p>
-</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">getprop ro.debuggable	# 检查当前 Android 设备是否处于可调试模式。（0为不可调试）</span><br><span class="line">getprop ro.serialno		# 获取设备的序列号</span><br><span class="line">getgrop wlan.lge.wifimac	# LG 安卓设备中用于存储 Wi-Fi 网卡 MAC 地址的系统属性。</span><br><span class="line">getprop ro.product.cpu.abi # 查看系统架构</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1594,20 +1678,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">75</span>
+          <span class="site-state-item-count">76</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">30</span>
+        <span class="site-state-item-count">31</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">69</span>
+        <span class="site-state-item-count">70</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -1648,13 +1732,13 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">544k</span>
+    <span title="站点总字数">546k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">8:15</span>
+    <span title="站点阅读时长">8:16</span>
 </div>
 
 

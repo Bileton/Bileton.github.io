@@ -124,17 +124,17 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">69</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">70</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">30</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">31</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">75</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">76</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -185,6 +185,121 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/12/05/%E7%8E%A9%E8%BD%ACPython/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/android.svg">
+      <meta itemprop="name" content="Bileton">
+      <meta itemprop="description" content="路漫漫其修远夕！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="白乐天">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2024/12/05/%E7%8E%A9%E8%BD%ACPython/" class="post-title-link" itemprop="url">玩转Python</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2024-12-05 00:00:00" itemprop="dateCreated datePublished" datetime="2024-12-05T00:00:00+08:00">2024-12-05</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-12-23 13:28:57" itemprop="dateModified" datetime="2024-12-23T13:28:57+08:00">2024-12-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>660</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h1><p>需要配置的环境变量是python的安装路径和它的Scripts目录。<br><img src="/2024/12/05/%E7%8E%A9%E8%BD%ACPython/1.jpg"><br>python的安装路径下有python.exe。<br>Scripts目录下有pip.exe和我们安装的第三方库。</p>
+<h1 id="python-exe"><a href="#python-exe" class="headerlink" title="python.exe"></a>python.exe</h1><h2 id="HTTP服务器"><a href="#HTTP服务器" class="headerlink" title="HTTP服务器"></a>HTTP服务器</h2><p>命令行运行<code>python -m http.server [port]</code>，创建http服务器，默认端口是8000。</p>
+<h1 id="虚拟环境"><a href="#虚拟环境" class="headerlink" title="虚拟环境"></a>虚拟环境</h1><p>使用<code>virtualenv</code>来创建虚拟环境。  </p>
+<h2 id="安装virtualenv"><a href="#安装virtualenv" class="headerlink" title="安装virtualenv"></a>安装virtualenv</h2><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install virtualenv</span><br></pre></td></tr></table></figure>
+<h2 id="创建虚拟环境"><a href="#创建虚拟环境" class="headerlink" title="创建虚拟环境"></a>创建虚拟环境</h2><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">virtualenv &lt;envName&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># &lt;envName&gt;是我们给虚拟环境起的名字</span></span><br></pre></td></tr></table></figure>
+<p>会在当前目录下创建一个文件夹，里面包含了Python解释器的副本和一套标准库。  </p>
+<h2 id="激活虚拟机环境"><a href="#激活虚拟机环境" class="headerlink" title="激活虚拟机环境"></a>激活虚拟机环境</h2><p>在虚拟环境目录下的Scripts目录里，有一个activate.exe，运行它，虚拟环境就生效了。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">activate</span><br></pre></td></tr></table></figure>
+<p>激活虚拟环境后，你会看到命令行提示符前出现环境名称，表明当前是在该虚拟环境中操作。</p>
+<h2 id="退出虚拟环境"><a href="#退出虚拟环境" class="headerlink" title="退出虚拟环境"></a>退出虚拟环境</h2><p>执行<code>deactivate</code>退出虚拟环境。</p>
+<h1 id="pip-exe"><a href="#pip-exe" class="headerlink" title="pip.exe"></a>pip.exe</h1><h2 id="安装第三方库"><a href="#安装第三方库" class="headerlink" title="安装第三方库"></a>安装第三方库</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install xxx</span><br></pre></td></tr></table></figure>
+
+<h2 id="卸载第三方库"><a href="#卸载第三方库" class="headerlink" title="卸载第三方库"></a>卸载第三方库</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip uninstall xxx</span><br></pre></td></tr></table></figure>
+
+<h2 id="更新pip"><a href="#更新pip" class="headerlink" title="更新pip"></a>更新pip</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python -m pip install --upgrade pip</span><br></pre></td></tr></table></figure>
+
+<h2 id="freeze"><a href="#freeze" class="headerlink" title="freeze"></a>freeze</h2><p>列出当前Python环境中已经安装的所有包及其版本。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip freeze</span><br></pre></td></tr></table></figure>
+
+<p><strong>生成依赖文件</strong></p>
+<p>将信息输出保存到一个文件里。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip freeze &gt; requirements.txt</span><br></pre></td></tr></table></figure>
+
+<p><strong>安装依赖</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install -r requirements.txt</span><br></pre></td></tr></table></figure>
+
+
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -2114,346 +2229,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/02/01/C%E8%AF%AD%E8%A8%80/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/android.svg">
-      <meta itemprop="name" content="Bileton">
-      <meta itemprop="description" content="路漫漫其修远夕！">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="白乐天">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2024/02/01/C%E8%AF%AD%E8%A8%80/" class="post-title-link" itemprop="url">C语言</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2024-02-01 00:00:00" itemprop="dateCreated datePublished" datetime="2024-02-01T00:00:00+08:00">2024-02-01</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2025-02-13 22:45:29" itemprop="dateModified" datetime="2025-02-13T22:45:29+08:00">2025-02-13</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/C/" itemprop="url" rel="index"><span itemprop="name">C</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>9.5k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>9 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="C语言基础编程"><a href="#C语言基础编程" class="headerlink" title="C语言基础编程"></a>C语言基础编程</h1><h2 id="Hello-World"><a href="#Hello-World" class="headerlink" title="Hello World"></a>Hello World</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Hello World!&quot;</span>); </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="宏定义"><a href="#宏定义" class="headerlink" title="宏定义"></a>宏定义</h2><p>宏定义是 C&#x2F;C++ 语言中的一种预处理指令，用于在编译之前对代码进行文本替换。通过宏定义，可以定义常量、代码片段或者参数化的宏，以提高代码的可读性、可维护性以及复用性。</p>
-<p>宏定义由 <code>#define</code> 指令实现，属于预处理阶段的内容。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> 宏名 替换文本</span></span><br></pre></td></tr></table></figure>
-
-<p><strong>示例</strong></p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> PI 3.14159</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MAX_SIZE 100</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="基本数据类型"><a href="#基本数据类型" class="headerlink" title="基本数据类型"></a>基本数据类型</h2><ul>
-<li><p>char</p>
-<p>  1字节</p>
-</li>
-<li><p>unsigned char</p>
-</li>
-<li><p>short</p>
-<p>  2字节</p>
-</li>
-<li><p>unsigned short</p>
-</li>
-<li><p>int </p>
-<p>  4字节</p>
-</li>
-<li><p>unsigned int </p>
-</li>
-<li><p>long</p>
-</li>
-<li><p>unsigned long</p>
-</li>
-<li><p>long long</p>
-<p>  8字节</p>
-</li>
-<li><p>unsigned long long</p>
-</li>
-<li><p>float</p>
-<p>  4字节</p>
-<p>  <code>float</code> 类型的变量需要在值后加 <code>f</code> 或 <code>F</code> 后缀，例如：<code>3.14f</code>。</p>
-</li>
-<li><p>double</p>
-<p>  8字节</p>
-</li>
-<li><p>void</p>
-</li>
-</ul>
-<h2 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">算术运算符</span><br><span class="line">+</span><br><span class="line">-</span><br><span class="line">*</span><br><span class="line">/</span><br><span class="line">%</span><br><span class="line">++</span><br><span class="line">--</span><br><span class="line">比较运算符</span><br><span class="line">==</span><br><span class="line">!=</span><br><span class="line">&gt;</span><br><span class="line">&lt;</span><br><span class="line">&gt;=</span><br><span class="line">&lt;=</span><br><span class="line">逻辑运算符</span><br><span class="line">&amp;&amp;</span><br><span class="line">||</span><br><span class="line">!</span><br><span class="line">位运算符</span><br><span class="line">&amp;</span><br><span class="line">|</span><br><span class="line">^</span><br><span class="line">~</span><br><span class="line">&lt;&lt;</span><br><span class="line">&gt;&gt;</span><br><span class="line">赋值运算符</span><br><span class="line">=</span><br><span class="line">+=</span><br><span class="line">-=</span><br><span class="line">*=</span><br><span class="line">/=</span><br><span class="line">%=</span><br><span class="line">&lt;&lt;=</span><br><span class="line">&gt;&gt;=</span><br><span class="line">&amp;=</span><br><span class="line">^=</span><br><span class="line">|=</span><br><span class="line">其他运算符</span><br><span class="line"><span class="keyword">sizeof</span>()  	<span class="comment">// 返回变量或数据类型的大小</span></span><br><span class="line">&amp;			<span class="comment">// 取地址</span></span><br><span class="line">*			<span class="comment">// 解引用</span></span><br><span class="line">?:			<span class="comment">// 三元运算符</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="流程控制"><a href="#流程控制" class="headerlink" title="流程控制"></a>流程控制</h2><h3 id="if"><a href="#if" class="headerlink" title="if"></a>if</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(expression)&#123;</span><br><span class="line">    ...;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
-
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">  <span class="keyword">if</span>(expression)&#123;</span><br><span class="line">...;</span><br><span class="line">  &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">      ...;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">  <span class="keyword">if</span>(expression)&#123;</span><br><span class="line">...;</span><br><span class="line">  &#125;<span class="keyword">else</span> <span class="keyword">if</span>(expression)&#123;</span><br><span class="line">...;</span><br><span class="line">  &#125; <span class="keyword">else</span>&#123;</span><br><span class="line">      ...;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="switch"><a href="#switch" class="headerlink" title="switch"></a>switch</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span> (表达式) &#123;</span><br><span class="line">    <span class="keyword">case</span> 常量表达式<span class="number">1</span>:</span><br><span class="line">        <span class="comment">// 语句块1</span></span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> 常量表达式<span class="number">2</span>:</span><br><span class="line">        <span class="comment">// 语句块2</span></span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    ...</span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">        <span class="comment">// 默认语句块</span></span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="while"><a href="#while" class="headerlink" title="while"></a>while</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> (条件表达式) &#123;</span><br><span class="line">    <span class="comment">// 循环体</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="do-while"><a href="#do-while" class="headerlink" title="do-while"></a>do-while</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line">    <span class="comment">// 循环体</span></span><br><span class="line">&#125; <span class="keyword">while</span> (条件表达式);</span><br></pre></td></tr></table></figure>
-
-<h3 id="for"><a href="#for" class="headerlink" title="for"></a>for</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (初始化语句; 条件表达式; 更新语句) &#123;</span><br><span class="line">    <span class="comment">// 循环体</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="continue"><a href="#continue" class="headerlink" title="continue"></a>continue</h3><p><code>continue</code> 用于跳过当前循环的剩余部分，直接进入下一次迭代。</p>
-<h3 id="break"><a href="#break" class="headerlink" title="break"></a>break</h3><p>用于跳出最近的循环或 <code>switch</code> 语句。</p>
-<h3 id="goto"><a href="#goto" class="headerlink" title="goto"></a>goto</h3><h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><h3 id="一维数组的定义方式"><a href="#一维数组的定义方式" class="headerlink" title="一维数组的定义方式"></a>一维数组的定义方式</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> arr[<span class="number">10</span>];</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> arr[<span class="number">10</span>] = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> arr[] = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>&#125;;</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">return_type <span class="title function_">function_name</span><span class="params">( parameter <span class="built_in">list</span> )</span></span><br><span class="line">&#123;</span><br><span class="line">   body of the function</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="指针"><a href="#指针" class="headerlink" title="指针"></a>指针</h2><h2 id="结构体"><a href="#结构体" class="headerlink" title="结构体"></a>结构体</h2><p>结构体（<code>struct</code>）是一种用户自定义的数据类型，可以将不同类型的数据组合在一起，形成一个更复杂的数据结构。</p>
-<h3 id="结构体的定义与使用"><a href="#结构体的定义与使用" class="headerlink" title="结构体的定义与使用"></a>结构体的定义与使用</h3><p><strong>访问结构体成员</strong></p>
-<p>通过点操作符 (<code>.</code>) 来访问结构体的成员。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Person</span> &#123;</span></span><br><span class="line">    <span class="type">char</span> name[<span class="number">50</span>];</span><br><span class="line">    <span class="type">int</span> age;</span><br><span class="line">    <span class="type">float</span> height;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Person</span> <span class="title">person1</span>;</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 给成员赋值</span></span><br><span class="line">    <span class="built_in">strcpy</span>(person1.name, <span class="string">&quot;Alice&quot;</span>);</span><br><span class="line">    person1.age = <span class="number">30</span>;</span><br><span class="line">    person1.height = <span class="number">5.5</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 打印成员</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Name: %s\n&quot;</span>, person1.name);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Age: %d\n&quot;</span>, person1.age);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Height: %.2f\n&quot;</span>, person1.height);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>结构体指针</strong></p>
-<p>通过指针来访问结构体成员，使用箭头操作符 (<code>-&gt;</code>) 来代替点操作符。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Person</span> &#123;</span></span><br><span class="line">    <span class="type">char</span> name[<span class="number">50</span>];</span><br><span class="line">    <span class="type">int</span> age;</span><br><span class="line">    <span class="type">float</span> height;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Person</span> <span class="title">person1</span>;</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Person</span> *<span class="title">ptr</span> =</span> &amp;person1;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">strcpy</span>(ptr-&gt;name, <span class="string">&quot;Bob&quot;</span>);</span><br><span class="line">    ptr-&gt;age = <span class="number">25</span>;</span><br><span class="line">    ptr-&gt;height = <span class="number">5.9</span>;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Name: %s\n&quot;</span>, ptr-&gt;name);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Age: %d\n&quot;</span>, ptr-&gt;age);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Height: %.2f\n&quot;</span>, ptr-&gt;height);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="文件读写"><a href="#文件读写" class="headerlink" title="文件读写"></a>文件读写</h2><p>C 语言的文件读写操作主要依赖 <strong>标准 I&#x2F;O 库</strong>（<code>stdio.h</code>），通过 <code>FILE *</code> 指针来管理文件。</p>
-<h3 id="fopen"><a href="#fopen" class="headerlink" title="fopen"></a>fopen</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">FILE *<span class="title function_">fopen</span><span class="params">(<span class="type">const</span> <span class="type">char</span> *filename, <span class="type">const</span> <span class="type">char</span> *mode)</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// filename：文件路径</span></span><br><span class="line"><span class="comment">// mode：文件模式（如 r 读取，w 写入等）</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="mode"><a href="#mode" class="headerlink" title="mode"></a>mode</h4><table>
-<thead>
-<tr>
-<th>模式</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>r</td>
-<td>打开一个已有的文本文件，允许读取文件。</td>
-</tr>
-<tr>
-<td>w</td>
-<td>打开一个文本文件，允许写入文件。如果文件不存在，则会创建一个新文件。如果文件存在，则该会被截断为零长度，重新写入，会覆盖原来的内容。</td>
-</tr>
-<tr>
-<td>a</td>
-<td>打开一个文本文件，以追加模式写入文件。如果文件不存在，则会创建一个新文件。</td>
-</tr>
-<tr>
-<td>r+</td>
-<td>打开一个文本文件，允许读写文件。</td>
-</tr>
-<tr>
-<td>w+</td>
-<td>打开一个文本文件，允许读写文件。如果文件已存在，则文件会被截断为零长度，如果文件不存在，则会创建一个新文件。</td>
-</tr>
-<tr>
-<td>a+</td>
-<td>打开一个文本文件，允许读写文件。如果文件不存在，则会创建一个新文件。读取会从文件的开头开始，写入则只能是追加模式。</td>
-</tr>
-</tbody></table>
-<h3 id="write"><a href="#write" class="headerlink" title="write"></a>write</h3><h4 id="fwrite"><a href="#fwrite" class="headerlink" title="fwrite()"></a>fwrite()</h4><p>将数据写入二进制文件</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">size_t</span> <span class="title function_">fwrite</span><span class="params">(<span class="type">const</span> <span class="type">void</span> *ptr, <span class="type">size_t</span> size, <span class="type">size_t</span> count, FILE *stream)</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ptr：指向要写入的数据的指针，通常是一个变量或者数组的地址。</span></span><br><span class="line"><span class="comment">// size：每个数据项的字节数，通常是单个数据类型的大小。例如，sizeof(int)、sizeof(char)、sizeof(struct) 等。</span></span><br><span class="line"><span class="comment">// count：要写入的元素个数。即 ptr 指向的数据的元素个数。</span></span><br><span class="line"><span class="comment">// stream：文件指针，指向已经打开的文件。</span></span><br><span class="line"><span class="comment">// return：返回成功写入的元素数量（即 count），如果出现错误或文件未打开，会返回 0。</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="fputc"><a href="#fputc" class="headerlink" title="fputc()"></a>fputc()</h4><p>向文件写入一个字符。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">fputc</span><span class="params">(<span class="type">int</span> ch, FILE *stream)</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ch：要写入的字符（作为 int 传递）。</span></span><br><span class="line"><span class="comment">// stream：指向已打开的文件的指针。</span></span><br><span class="line"><span class="comment">// return：成功时返回写入的字符，失败时返回 EOF（-1）。</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="fputs"><a href="#fputs" class="headerlink" title="fputs()"></a>fputs()</h4><p>将字符串写入文件。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">fputs</span><span class="params">(<span class="type">const</span> <span class="type">char</span> *str, FILE *stream)</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// str：要写入的字符串（以 \0 结尾）。</span></span><br><span class="line"><span class="comment">// stream：指向已打开的文件的指针。</span></span><br><span class="line"><span class="comment">// return：成功时返回 非负整数（通常为 0），失败时返回 EOF（通常为 -1）</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="fprintf"><a href="#fprintf" class="headerlink" title="fprintf()"></a>fprintf()</h4><p>将格式化数据写入文件。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">fprintf</span><span class="params">(FILE *stream, <span class="type">const</span> <span class="type">char</span> *format, ...)</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// stream：指向已打开的文件的指针。</span></span><br><span class="line"><span class="comment">// format：格式化字符串，与 printf() 用法相同。</span></span><br><span class="line"><span class="comment">// ...：要写入的变量数据。</span></span><br><span class="line"><span class="comment">// 成功时返回写入的字符数，失败时返回负值。</span></span><br></pre></td></tr></table></figure>
-
-
-
-
-
-<h3 id="read"><a href="#read" class="headerlink" title="read"></a>read</h3><h4 id="fread"><a href="#fread" class="headerlink" title="fread()"></a>fread()</h4><p>从二进制文件读取数据</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">size_t</span> <span class="title function_">fread</span><span class="params">(<span class="type">void</span> *ptr, <span class="type">size_t</span> size, <span class="type">size_t</span> count, FILE *stream)</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ptr：指向存储读取数据的内存区域的指针。</span></span><br><span class="line"><span class="comment">// size：每个数据项的字节数，通常是单个数据类型的大小。</span></span><br><span class="line"><span class="comment">// count：要读取的元素个数。</span></span><br><span class="line"><span class="comment">// stream：文件指针，指向已经打开的文件。</span></span><br><span class="line"><span class="comment">// return：返回成功读取的元素个数。如果发生错误或到达文件末尾（EOF），则返回值小于请求的 count。</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="fgetc"><a href="#fgetc" class="headerlink" title="fgetc()"></a>fgetc()</h4><p>从文件读取一个字符。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">fgetc</span><span class="params">(FILE *stream)</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// stream：指向已打开的文件的指针。</span></span><br><span class="line"><span class="comment">// return：成功时返回读取的字符（作为 int 返回），失败时返回 EOF（通常为 -1）。</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="fgets"><a href="#fgets" class="headerlink" title="fgets()"></a>fgets()</h4><p>从文件读取一行字符串。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">char</span> *<span class="title function_">fgets</span><span class="params">(<span class="type">char</span> *str, <span class="type">int</span> n, FILE *stream)</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// str：用于存储读取字符串的字符数组（缓冲区）。</span></span><br><span class="line"><span class="comment">// n：最多读取 n-1 个字符，遇到 换行符 (\n) 或文件结束 (EOF) 停止，最后自动添加 \0 结束符。</span></span><br><span class="line"><span class="comment">// stream：指向已打开的文件的指针。</span></span><br><span class="line"><span class="comment">// return：成功时返回 str（字符串的指针）,失败或到达 EOF 时返回 NULL。</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="fscanf"><a href="#fscanf" class="headerlink" title="fscanf()"></a>fscanf()</h4><p>从文件中读取格式化数据。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">fscanf</span><span class="params">(FILE *stream, <span class="type">const</span> <span class="type">char</span> *format, ...)</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// stream：指向已打开的文件的指针。</span></span><br><span class="line"><span class="comment">// format：格式化字符串，与 scanf() 用法相同。</span></span><br><span class="line"><span class="comment">// ...：指向存储读取数据的变量指针。</span></span><br><span class="line"><span class="comment">// return：成功读取的变量个数，读取失败（如文件结束 EOF）时返回 负值。</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="文件指针操作"><a href="#文件指针操作" class="headerlink" title="文件指针操作"></a>文件指针操作</h3><h4 id="ftell"><a href="#ftell" class="headerlink" title="ftell()"></a>ftell()</h4><p>获取文件指针当前位置。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">long</span> <span class="title function_">ftell</span><span class="params">(FILE *stream)</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// stream：指向已打开文件的指针。</span></span><br><span class="line"><span class="comment">// 成功：返回当前文件指针的位置（从文件开头算起的字节数），失败：返回 -1L，需使用 perror() 或 ferror() 检查错误。</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="fseek"><a href="#fseek" class="headerlink" title="fseek()"></a>fseek()</h4><p>移动文件指针。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">fseek</span><span class="params">(FILE *stream, <span class="type">long</span> offset, <span class="type">int</span> origin)</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// stream：指向已打开文件的指针。</span></span><br><span class="line"><span class="comment">// offset：偏移量（以字节为单位）。</span></span><br><span class="line"><span class="comment">// origin：</span></span><br><span class="line">	<span class="comment">// SEEK_SET：文件开头 + offset（从文件头部定位）。</span></span><br><span class="line">	<span class="comment">// SEEK_CUR：当前文件指针位置 + offset（从当前位置定位）。</span></span><br><span class="line">	<span class="comment">// SEEK_END：文件末尾 + offset（从文件尾部定位，通常 offset 为负数）。</span></span><br><span class="line"><span class="comment">// return：成功：返回 0，失败：返回 -1，可以用 perror() 检查错误。</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="rewind"><a href="#rewind" class="headerlink" title="rewind()"></a>rewind()</h4><p>重置文件指针。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">rewind</span><span class="params">(FILE *stream)</span>;</span><br></pre></td></tr></table></figure>
-
-<p>将文件指针重置到文件开头（相当于 <code>fseek(fp, 0, SEEK_SET);</code>）。</p>
-<p>不会返回错误，也不会返回值。</p>
-<h1 id="内存分区"><a href="#内存分区" class="headerlink" title="内存分区"></a>内存分区</h1><h2 id="代码区"><a href="#代码区" class="headerlink" title="代码区"></a>代码区</h2><p>存放程序的机器指令，也就是程序的可执行代码。</p>
-<h2 id="静态区（全局区）"><a href="#静态区（全局区）" class="headerlink" title="静态区（全局区）"></a>静态区（全局区）</h2><p>用于全局变量、静态变量和常量（全局常量、字符串常量）的存储。这部分内存的生命周期从程序开始直到程序结束。</p>
-<h2 id="栈（stack）"><a href="#栈（stack）" class="headerlink" title="栈（stack）"></a>栈（stack）</h2><p>用于存储局部变量和函数调用时的上下文（如返回地址与参数等）。</p>
-<h2 id="堆（heap）"><a href="#堆（heap）" class="headerlink" title="堆（heap）"></a>堆（heap）</h2><p>动态分配的内存区域，用于存放程序运行时动态创建的数据。</p>
-<h1 id="stdio-h"><a href="#stdio-h" class="headerlink" title="stdio.h"></a>stdio.h</h1><h2 id="占位符"><a href="#占位符" class="headerlink" title="占位符"></a>占位符</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">%d 十进制有符号整数</span><br><span class="line">%u 十进制无符号整数</span><br><span class="line">%f 浮点数</span><br><span class="line">%c 单个字符</span><br><span class="line">%s 字符串</span><br><span class="line">%x 十六进制无符号整数</span><br><span class="line">%X 大写十六进制无符号整数</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="库变量"><a href="#库变量" class="headerlink" title="库变量"></a>库变量</h2><h3 id="size-t"><a href="#size-t" class="headerlink" title="size_t"></a>size_t</h3><p>无符号整数类型，它是 sizeof 关键字的结果。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">unsigned</span> <span class="type">int</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="FILE"><a href="#FILE" class="headerlink" title="FILE"></a>FILE</h3><p>文件流类型，适合存储文件流信息的对象类型。</p>
-<h3 id="fpos-t"><a href="#fpos-t" class="headerlink" title="fpos_t"></a>fpos_t</h3><p>文件位置类型，适合存储文件中任何位置的对象类型。</p>
-<h2 id="库函数"><a href="#库函数" class="headerlink" title="库函数"></a>库函数</h2><h3 id="printf"><a href="#printf" class="headerlink" title="printf()"></a>printf()</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">printf</span><span class="params">(<span class="type">const</span> <span class="type">char</span> *format, ...)</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// format：格式化字符串，用于指定输出的内容和格式。</span></span><br><span class="line"><span class="comment">// ...：可变参数，表示要输出的数据，可以是变量或值。</span></span><br><span class="line"><span class="comment">// 返回值：返回成功打印的字符数量（不包括格式字符串中的额外字符，如 \n、% 等）。如果发生错误，通常返回 -1。</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="sprintf"><a href="#sprintf" class="headerlink" title="sprintf()"></a>sprintf()</h3><p>用于将格式化的数据写入字符串。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">sprintf</span><span class="params">(<span class="type">char</span> *str, <span class="type">const</span> <span class="type">char</span> *format, ...)</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// str: 一个字符数组，用于存储格式化后的输出结果。</span></span><br><span class="line"><span class="comment">// format: 一个格式字符串，指定输出的格式。</span></span><br><span class="line"><span class="comment">// ...: 根据格式字符串提供的其他参数，用于格式化输出。</span></span><br><span class="line"><span class="comment">// 返回值：返回写入 str 中的字符数，不包括结尾的 \0 字符。如果发生错误，返回一个负值。</span></span><br></pre></td></tr></table></figure>
-<p><strong>示例</strong></p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">char</span> buffer[<span class="number">100</span>];</span><br><span class="line">    <span class="type">int</span> n = <span class="number">42</span>;</span><br><span class="line">    <span class="type">float</span> pi = <span class="number">3.14159</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 使用 sprintf 格式化数据并写入 buffer</span></span><br><span class="line">    <span class="type">int</span> written = <span class="built_in">sprintf</span>(buffer, <span class="string">&quot;The answer is %d and pi is approximately %.2f.&quot;</span>, n, pi);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 打印结果</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Formatted string: %s\n&quot;</span>, buffer);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Number of characters written: %d\n&quot;</span>, written);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line">Formatted <span class="built_in">string</span>: The answer is <span class="number">42</span> and pi is approximately <span class="number">3.14</span>.</span><br><span class="line">Number of characters written: <span class="number">46</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="snprintf"><a href="#snprintf" class="headerlink" title="snprintf()"></a>snprintf()</h3><p>用于将格式化的数据写入字符串。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">snprintf</span><span class="params">(<span class="type">char</span> *str, <span class="type">size_t</span> size, <span class="type">const</span> <span class="type">char</span> *format, ...)</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// str: 一个字符数组，用于存储格式化后的输出。</span></span><br><span class="line"><span class="comment">// size: 字符数组的大小，即 str 能容纳的最大字符数（包括终止的 \0 字符）。</span></span><br><span class="line"><span class="comment">// format: 一个格式字符串，指定输出的格式。</span></span><br><span class="line"><span class="comment">// ...: 依据格式字符串提供的其他参数。</span></span><br><span class="line"><span class="comment">// 返回值：返回写入 str 中的字符数，不包括结尾的 \0 字符。如果返回值大于或等于 size，说明输出被截断了。</span></span><br></pre></td></tr></table></figure>
-<p><strong>示例</strong></p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">char</span> buffer[<span class="number">50</span>];</span><br><span class="line">    <span class="type">int</span> n = <span class="number">42</span>;</span><br><span class="line">    <span class="type">float</span> pi = <span class="number">3.14159</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 使用 snprintf 格式化数据并写入 buffer</span></span><br><span class="line">    <span class="type">int</span> written = <span class="built_in">snprintf</span>(buffer, <span class="keyword">sizeof</span>(buffer), <span class="string">&quot;The answer is %d and pi is approximately %.2f.&quot;</span>, n, pi);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 打印结果</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Formatted string: %s\n&quot;</span>, buffer);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Number of characters written: %d\n&quot;</span>, written);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line">Formatted <span class="built_in">string</span>: The answer is <span class="number">42</span> and pi is approximately <span class="number">3.14</span>.</span><br><span class="line">Number of characters written: <span class="number">46</span></span><br></pre></td></tr></table></figure>
-<h1 id="stdlib-h"><a href="#stdlib-h" class="headerlink" title="stdlib.h"></a>stdlib.h</h1><h2 id="库函数-1"><a href="#库函数-1" class="headerlink" title="库函数"></a>库函数</h2><h3 id="calloc"><a href="#calloc" class="headerlink" title="calloc"></a>calloc</h3><p>用于分配一块连续内存，并初始化为零。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span>* <span class="title function_">calloc</span><span class="params">(<span class="type">size_t</span> num, <span class="type">size_t</span> size)</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// num：要分配的元素数量。</span></span><br><span class="line"><span class="comment">// size：每个元素的大小（字节数）。</span></span><br><span class="line"><span class="comment">// 返回值：返回一个 void* 类型的指针，指向分配的内存块。如果分配失败，返回 NULL。</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="malloc"><a href="#malloc" class="headerlink" title="malloc"></a>malloc</h3><p>用于动态分配指定字节数的内存空间，并返回指向这块内存的指针。内存内容未初始化，可能包含任意值（垃圾数据）。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span>* <span class="title function_">malloc</span><span class="params">(<span class="type">size_t</span> size)</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// size：要分配的内存块的字节数。</span></span><br><span class="line"><span class="comment">// 返回值：返回一个 void* 类型的指针，指向分配的内存块。如果分配失败，返回 NULL。</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="realloc"><a href="#realloc" class="headerlink" title="realloc"></a>realloc</h3><p>用于重新调整已经分配内存的大小。它可以增加或减少已分配内存的空间。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span>* <span class="title function_">realloc</span><span class="params">(<span class="type">void</span>* ptr, <span class="type">size_t</span> size)</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ptr：指向已分配内存的指针。可以是 malloc 或 calloc 返回的指针。</span></span><br><span class="line"><span class="comment">// size：新的内存块大小（字节数）。</span></span><br><span class="line"><span class="comment">// 返回值：返回一个指向新分配内存的指针。</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="free"><a href="#free" class="headerlink" title="free()"></a>free()</h3><p>用于释放由 <code>malloc</code>、<code>calloc</code> 或 <code>realloc</code> 分配的动态内存，避免内存泄漏。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">free</span><span class="params">(<span class="type">void</span>* ptr)</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ptr：指向要释放内存块的指针。</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="string-h"><a href="#string-h" class="headerlink" title="string.h"></a>string.h</h1><h2 id="strlen"><a href="#strlen" class="headerlink" title="strlen()"></a>strlen()</h2><p>用于计算字符串的长度。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">size_t</span> <span class="title function_">strlen</span><span class="params">(<span class="type">const</span> <span class="type">char</span> *str)</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// str: 一个指向以 null 结尾的字符串的指针。</span></span><br><span class="line"><span class="comment">// 返回值：返回 str 字符串的长度，不包括末尾的 null 字符（&#x27;\0&#x27;）。</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="memset"><a href="#memset" class="headerlink" title="memset()"></a>memset()</h2><p>用于将一块内存区域的内容设置为指定的值。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span>* <span class="title function_">memset</span><span class="params">(<span class="type">void</span>* ptr, <span class="type">int</span> value, <span class="type">size_t</span> num)</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ptr: 指向要设置的内存块的指针。</span></span><br><span class="line"><span class="comment">// value: 要设置的值（以 int 类型传入，但实际上会转为 unsigned char 类型赋值）。</span></span><br><span class="line"><span class="comment">// num: 要设置的字节数。</span></span><br><span class="line"><span class="comment">// 返回值：memset 返回指向 ptr 的指针，通常用于链式调用。</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="memcmp"><a href="#memcmp" class="headerlink" title="memcmp()"></a>memcmp()</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">memcmp</span><span class="params">(<span class="type">const</span> <span class="type">void</span> *s1, <span class="type">const</span> <span class="type">void</span> *s2, <span class="type">size_t</span> n)</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// s1：指向第一个内存区域的指针。</span></span><br><span class="line"><span class="comment">// s2：指向第二个内存区域的指针。</span></span><br><span class="line"><span class="comment">// n：要比较的字节数。</span></span><br></pre></td></tr></table></figure>
-
-<p>如果返回 <strong>0</strong>，则表示前 <code>n</code> 个字节内的内容相同。</p>
-<p>如果返回非 0 值，则表示存在不同的字节。其具体含义为：</p>
-<ul>
-<li>返回一个 <strong>负值</strong>，表示在第一个不同的字节处，<code>s1</code> 的值小于 <code>s2</code> 中对应字节的值。</li>
-<li>返回一个 <strong>正值</strong>，表示在第一个不同的字节处，<code>s1</code> 的值大于 <code>s2</code> 中对应字节的值。</li>
-</ul>
-<p>比较时，<code>memcmp</code> 会将每个字节当作 <code>unsigned char</code> 来处理，这样可以避免因为符号位的不同而导致的比较问题。</p>
-<h1 id="time-h"><a href="#time-h" class="headerlink" title="time.h"></a>time.h</h1><h2 id="库变量-1"><a href="#库变量-1" class="headerlink" title="库变量"></a>库变量</h2><h3 id="size-t-1"><a href="#size-t-1" class="headerlink" title="size_t"></a>size_t</h3><p>无符号整型，sizeof运算符的结果。 </p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">unsigned</span> <span class="type">int</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="clock-t"><a href="#clock-t" class="headerlink" title="clock_t"></a>clock_t</h3><p>表示处理器的时钟周期数。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="type">long</span> <span class="type">clock_t</span>; <span class="comment">// 或者</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="type">int</span> <span class="type">clock_t</span>;</span><br></pre></td></tr></table></figure>
-
-<h3 id="time-t"><a href="#time-t" class="headerlink" title="time_t"></a>time_t</h3><p>用于存储时间戳</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="type">long</span> <span class="type">time_t</span>; <span class="comment">//或者</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="type">int</span> <span class="type">time_t</span>;</span><br></pre></td></tr></table></figure>
-
-<h3 id="struct-tm"><a href="#struct-tm" class="headerlink" title="struct tm"></a>struct tm</h3><p>tm 是一个结构体类型，用于表示具体的时间信息，通常是通过将时间戳（time_t）转换成更易于理解和操作的日期和时间格式。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">tm</span> &#123;</span></span><br><span class="line">    <span class="type">int</span> tm_sec;   <span class="comment">// 秒 (0-59)</span></span><br><span class="line">    <span class="type">int</span> tm_min;   <span class="comment">// 分 (0-59)</span></span><br><span class="line">    <span class="type">int</span> tm_hour;  <span class="comment">// 小时 (0-23)</span></span><br><span class="line">    <span class="type">int</span> tm_mday;  <span class="comment">// 一个月中的日期 (1-31)</span></span><br><span class="line">    <span class="type">int</span> tm_mon;   <span class="comment">// 月份 (0-11) -&gt; 0 表示 1 月，11 表示 12 月</span></span><br><span class="line">    <span class="type">int</span> tm_year;  <span class="comment">// 从 1900 年开始的年数 (例如，2024 年就是 124)</span></span><br><span class="line">    <span class="type">int</span> tm_wday;  <span class="comment">// 星期几 (0-6)，0 表示星期天</span></span><br><span class="line">    <span class="type">int</span> tm_yday;  <span class="comment">// 一年中的第几天 (0-365)，0 表示 1 月 1 日</span></span><br><span class="line">    <span class="type">int</span> tm_isdst; <span class="comment">// 夏令时标志，正值表示夏令时，0 表示非夏令时，负值表示信息不可用</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h2 id="库函数-2"><a href="#库函数-2" class="headerlink" title="库函数"></a>库函数</h2><h3 id="time"><a href="#time" class="headerlink" title="time()"></a>time()</h3><p><code>time()</code>函数用于获取当前时间戳。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">time_t</span> <span class="title function_">time</span><span class="params">(<span class="type">time_t</span> *timer)</span>;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>如果参数为NULL或0，返回当前时间的time_t值。</li>
-<li>如果传递一个有效指针，函数会将当前时间保存到指针所指向的变量中，并返回相同的值。</li>
-</ul>
-<h3 id="localtime"><a href="#localtime" class="headerlink" title="localtime()"></a>localtime()</h3><p>用于将 time_t 类型的时间值转换为结构化的本地时间格式（struct tm）。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> tm* <span class="title function_">localtime</span><span class="params">(<span class="type">const</span> <span class="type">time_t</span>* timer)</span>;</span><br></pre></td></tr></table></figure>
-<p>将 time_t 类型的时间转换为本地时间，返回一个 struct tm 结构，表示本地时间的各个组成部分（年、月、日、小时、分钟、秒等）。</p>
-<h3 id="localtime-r"><a href="#localtime-r" class="headerlink" title="localtime_r()"></a>localtime_r()</h3><p>用于将 time_t 类型的时间值转换为结构化的本地时间格式（struct tm）。<br>由于它将结果存储在用户提供的缓冲区中，多个线程可以同时调用 localtime_r 而不会发生冲突，因此它是线程安全的。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> tm* <span class="title function_">localtime_r</span><span class="params">(<span class="type">const</span> <span class="type">time_t</span>* timer, <span class="keyword">struct</span> tm* buf)</span>;</span><br></pre></td></tr></table></figure>
-<h3 id="localtime-s"><a href="#localtime-s" class="headerlink" title="localtime_s()"></a>localtime_s()</h3><p>localtime_s 是 C11 标准引入的函数，功能和 localtime_r 类似。它将 time_t 转换为本地时间，并将结果存储在用户提供的缓冲区中。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> tm* <span class="title function_">localtime_s</span><span class="params">(<span class="type">const</span> <span class="type">time_t</span>* <span class="keyword">restrict</span> timer, <span class="keyword">struct</span> tm* <span class="keyword">restrict</span> buf)</span>;</span><br></pre></td></tr></table></figure>
-<p>localtime_s 在 C11 标准中引入时，具有更严格的错误检查。如果出现错误（例如无效的时间值），通常会返回一个错误码，而不是直接返回 NULL。这增加了函数的安全性和可靠性。</p>
-<h1 id="pthread-h"><a href="#pthread-h" class="headerlink" title="pthread.h"></a>pthread.h</h1><h2 id="库函数-3"><a href="#库函数-3" class="headerlink" title="库函数"></a>库函数</h2><h3 id="pthread-create"><a href="#pthread-create" class="headerlink" title="pthread_create()"></a>pthread_create()</h3><p>用于创建一个新的线程。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">pthread_create</span><span class="params">(<span class="type">pthread_t</span> *thread, <span class="type">const</span> <span class="type">pthread_attr_t</span> *attr, <span class="type">void</span> *(*start_routine)(<span class="type">void</span> *), <span class="type">void</span> *arg)</span>;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>pthread_t *thread</code>:<br>  指向 pthread_t 类型的指针，用于存储新创建线程的线程 ID。</li>
-<li><code>const pthread_attr_t *attr</code>:<br>  指向线程属性对象的指针，可以是 NULL，表示使用默认属性。</li>
-<li><code>void *(*start_routine)(void *)</code>:<br>  线程的起始函数，这是一个函数指针，它指向一个函数，该函数接收一个 void * 类型的参数，并返回一个 void * 类型的值。</li>
-<li><code>void *arg</code>:<br>  传递给起始函数的参数。</li>
-<li><code>返回值</code><br>  成功返回0，否则返回错误码。</li>
-</ul>
-<h1 id="sys-ptrace-h"><a href="#sys-ptrace-h" class="headerlink" title="sys&#x2F;ptrace.h"></a>sys&#x2F;ptrace.h</h1><h2 id="ptrace"><a href="#ptrace" class="headerlink" title="ptrace()"></a>ptrace()</h2><p><code>ptrace</code> 是 Unix&#x2F;Linux 系统中用于进程跟踪（tracing）和调试的重要系统调用，它允许一个进程（通常是调试器）控制和监视另一个进程（通常是被调试的子进程）的执行情况，包括读取和修改目标进程的内存、寄存器等信息。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;sys/ptrace.h&gt;</span>       </span></span><br><span class="line"><span class="type">long</span> <span class="title function_">ptrace</span><span class="params">(<span class="keyword">enum</span> __ptrace_request request, <span class="type">pid_t</span> pid, <span class="type">void</span> *addr, <span class="type">void</span> *data)</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// request：要执行的操作类型；</span></span><br><span class="line"><span class="comment">// pid：被追踪的目标进程ID；</span></span><br><span class="line"><span class="comment">// addr：被监控的目标内存地址；</span></span><br><span class="line"><span class="comment">// data：保存读取出或者要写入的数据。</span></span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -2525,20 +2300,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">75</span>
+          <span class="site-state-item-count">76</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">30</span>
+        <span class="site-state-item-count">31</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">69</span>
+        <span class="site-state-item-count">70</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -2579,13 +2354,13 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">544k</span>
+    <span title="站点总字数">546k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">8:15</span>
+    <span title="站点阅读时长">8:16</span>
 </div>
 
 

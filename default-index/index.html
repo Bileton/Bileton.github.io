@@ -124,17 +124,17 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">69</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">70</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">30</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">31</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">75</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">76</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -380,6 +380,97 @@
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">url = <span class="string">&quot;https://sh-api.shihuo.cn/daga/search/goods/v1&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># params = &#123;</span></span><br><span class="line"><span class="comment">#   &quot;minVersion&quot;: &quot;15811&quot;,</span></span><br><span class="line"><span class="comment">#   &quot;clientCode&quot;: &quot;&#123;holder&#125;&quot;,</span></span><br><span class="line"><span class="comment">#   &quot;v&quot;: &quot;7.21.1&quot;,</span></span><br><span class="line"><span class="comment">#   &quot;channel&quot;: &quot;huawei&quot;,</span></span><br><span class="line"><span class="comment">#   &quot;device&quot;: &quot;Pixel 3&quot;,</span></span><br><span class="line"><span class="comment">#   &quot;platform&quot;: &quot;android&quot;,</span></span><br><span class="line"><span class="comment">#   &quot;timestamp&quot;: &quot;1739685881886&quot;,</span></span><br><span class="line"><span class="comment">#   &quot;token&quot;: &quot;63d08c1b7e73f693ae469e496de9115d&quot;</span></span><br><span class="line"><span class="comment"># &#125;</span></span><br><span class="line"></span><br><span class="line">headers = &#123;</span><br><span class="line">  <span class="string">&quot;refer&quot;</span>: <span class="string">&quot;shihuo%3A%2F%2Fwww.shihuo.cn%3Froute%3DhomeSearchList%26keywords%3D%25E8%2580%2590%25E5%2585%258B%2520%25E6%259D%25BF%25E9%259E%258B%26user_input%3D%2525E8%252580%252590%2525E5%252585%25258B%252B%2525E6%25259D%2525BF%2525E9%25259E%25258B%26lspm%3D76e5b1d459b968c2%26auto_spm%3D1%23%257B%2522from%2522%253A%2522shihuo%253A%255C%252F%255C%252Fwww.shihuo.cn%253Froute%253Dhome%2522%252C%2522block%2522%253A%2522search%2522%252C%2522extra%2522%253A%2522%2525E8%252580%252590%2525E5%252585%25258B%252B%2525E6%25259D%2525BF%2525E9%25259E%25258B%2522%252C%2522lspm%2522%253A%252276e5b1d459b968c2%2522%257D&quot;</span>,</span><br><span class="line">  <span class="string">&quot;pid&quot;</span>: <span class="string">&quot;homeSearchList_2C6CF5D74E1ECDB61F481B696DABC4EB&quot;</span>,</span><br><span class="line">  <span class="string">&quot;platform&quot;</span>: <span class="string">&quot;android&quot;</span>,</span><br><span class="line">  <span class="string">&quot;timestamp&quot;</span>: <span class="string">&quot;1739685881886&quot;</span>,</span><br><span class="line">  <span class="string">&quot;app-v&quot;</span>: <span class="string">&quot;7.21.1&quot;</span>,</span><br><span class="line">  <span class="string">&quot;sh-token&quot;</span>: <span class="string">&quot;I94Av9S84fN2NhNWJhOTdkMzY0ZTAzNmUy7n1IN+BhH/apcfLGs3AtbTItTM2aeBQsrmqjaFoIKuwJtiSOimYpEkf5HAQ+DnV2+ax5mFSS7UDffJ7yTDh09DVz8wy2IKAGFLxHn2so4qPnFCM7/bFZvMlxKtdBtpneNu4naDjGaYmmvtn5OiLyGA==&quot;</span>,</span><br><span class="line">  <span class="string">&quot;sh-id&quot;</span>: <span class="string">&quot;6kcbtp547ae55614428f8a183900e404&quot;</span>,</span><br><span class="line">  <span class="string">&quot;sh-sign&quot;</span>: <span class="string">&quot;BF6CBE0C80B13F43B0DF450795B07E5E&quot;</span>,</span><br><span class="line">  <span class="string">&quot;abtest-control&quot;</span>: <span class="string">&quot;r2=3;r3=0;Oq=13;hm=0;HN=3;aJ=1;j4=0;zF=1;HV=0;zH=1;YJ=11;qe=3;QF=11;rK=2;92=0;QP=0;AA=3;af=12;18=32;Ya=0;ZE=1;AM=2;shrec_is_gdetail=12;c8=12;kB=13;ay=3;jc=1;search_wf=2;Ql=0;JG=1;ZW=12;1P=11;zz=12;BE=13;Qv=0;1V=15;S8=11;Ah=12;BK=2;SB=0;9h=2;9k=11;Av=22;cY=2;tK=3;1h=1;SK=0;2O=2;dD=0;Rs=0;t_s=1739685888575;gdetail_brand_rec=11;dQ=1;KY=4;Sa=0;Br=1;3D=12;CV=15;e9=1;By=1;uO=1;v3=0;uR=1;data_community_relate=11;42=1;dc=2;Ss=24;dg=0;tx=19;LR=0;DO=HN_3;lx=1;uc=2;nD=46;w1=1;w3=1;UU=18;EG=0;mp=2;ux=0;data_community_personal=89;UZ=0;fL=0;ev=21;5F=1;vh=34;vj=0;vn=14;NI=1;mainSearchV4=25;nj=2;VR=0;4r=2;ff=35;nn=0;vw=1;shrec_gdetail_bags=11;O4=1;fl=22;data_gdetail_shoes_personal=11;data_gdetail_clothes_personal=11;G2=4;oZ=12;fr=2;Vb=3;wd=25;h6=31;gdetail_shoes_brand_rec=11;5f=2;fx=3;Vi=22;Nc=1;OJ=1;shrec_home_feed=16;gd=11;Fd=2;6V=38;X9=48;xZ=1;ou=3;GN=0;i3=21;hS=1;shrec_cf_mine_v2=11;hW=3;Wg=12;shrec_gdetail_clothes=13;XK=14;XL=1;Od=11;XQ=0;HC=2;hf=44;XW=26&quot;</span>,</span><br><span class="line">  <span class="string">&quot;shreqid&quot;</span>: <span class="string">&quot;0FC60C1C79E118772078BC81A8C5F408&quot;</span>,</span><br><span class="line">  <span class="string">&quot;osv&quot;</span>: <span class="string">&quot;10&quot;</span>,</span><br><span class="line">  <span class="string">&quot;network&quot;</span>: <span class="string">&quot;1&quot;</span>,</span><br><span class="line">  <span class="string">&quot;sh_session&quot;</span>: <span class="string">&quot;bc29dc5aed1745e3a2b5107a51efa2a3_foreground_24728&quot;</span>,</span><br><span class="line">  <span class="string">&quot;sk&quot;</span>: <span class="string">&quot;9RNoP7luDgrcx9TCUPfjbNh8NkZDAyE0Eh92Xn2YrHj29ftrV8byU7I0cndB2Mwhi6IWpNVii1GaAwv0L69US2K9fT1s&quot;</span>,</span><br><span class="line">  <span class="string">&quot;appid&quot;</span>: <span class="string">&quot;app&quot;</span>,</span><br><span class="line">  <span class="string">&quot;cookie&quot;</span>: <span class="string">&quot;acw_tc=1a0c380d17396858923536528e0039b6c0f0fdf49dab56cfa931f2163d400e&quot;</span>,</span><br><span class="line">  <span class="string">&quot;user-agent&quot;</span>: <span class="string">&quot;Android 10 &#123;Z29vZ2xl&#125; CPU_ABI arm64-v8a CPU_ABI2  HARDWARE blueline MODEL &#123;UGl4ZWwgMw&#125; network/WIFI shihuo/7.21.1 sc(&#123;holder&#125;,huawei) minVersion(15811) sh-dv-sign[v1|e9f9a714ae419624528a60f5fbe353070d2751f79b8da0aa]&quot;</span>,</span><br><span class="line">  <span class="string">&quot;daga-ban-personal&quot;</span>: <span class="string">&quot;0&quot;</span>,</span><br><span class="line">  <span class="string">&quot;content-type&quot;</span>: <span class="string">&quot;application/json; charset=UTF-8&quot;</span>,</span><br><span class="line">  <span class="string">&quot;content-length&quot;</span>: <span class="string">&quot;656&quot;</span>,</span><br><span class="line">  <span class="string">&quot;accept-encoding&quot;</span>: <span class="string">&quot;gzip&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">json = &#123;</span><br><span class="line">  <span class="string">&quot;background_word&quot;</span>: <span class="string">&quot;%E8%80%90%E5%85%8B+%E6%9D%BF%E9%9E%8B&quot;</span>,</span><br><span class="line">  <span class="string">&quot;from&quot;</span>: <span class="string">&quot;home&quot;</span>,</span><br><span class="line">  <span class="string">&quot;isHot&quot;</span>: <span class="string">&quot;false&quot;</span>,</span><br><span class="line">  <span class="string">&quot;keywords&quot;</span>: <span class="string">&quot;运动裤&quot;</span>,</span><br><span class="line">  <span class="string">&quot;lspm&quot;</span>: <span class="string">&quot;76e5b1d459b968c2&quot;</span>,</span><br><span class="line">  <span class="string">&quot;needAttrs&quot;</span>: <span class="number">1</span>,</span><br><span class="line">  <span class="string">&quot;page&quot;</span>: <span class="string">&quot;1&quot;</span>,</span><br><span class="line"><span class="comment">#   &quot;pageContext&quot;: &quot;&#123;\&quot;pageId\&quot;:\&quot;homeSearchList_2C6CF5D74E1ECDB61F481B696DABC4EB\&quot;,\&quot;ptiRoot\&quot;:&#123;\&quot;biz\&quot;:\&quot;&#123;\\\&quot;layer\\\&quot;:\\\&quot;1\\\&quot;&#125;\&quot;,\&quot;name\&quot;:\&quot;\&quot;,\&quot;toInfo\&quot;:&#123;\&quot;route\&quot;:\&quot;homeSearch\&quot;,\&quot;back_keywords\&quot;:\&quot;耐克 板鞋\&quot;&#125;,\&quot;id\&quot;:\&quot;home:searchInput\&quot;,\&quot;pageId\&quot;:\&quot;appHome_078418BC23DF560B291D24AFF2FCF9B2\&quot;,\&quot;pageOptions\&quot;:&#123;\&quot;haveSkin\&quot;:\&quot;1\&quot;&#125;&#125;,\&quot;layer\&quot;:\&quot;3\&quot;&#125;&quot;,</span></span><br><span class="line">  <span class="string">&quot;pageSize&quot;</span>: <span class="string">&quot;20&quot;</span>,</span><br><span class="line">  <span class="string">&quot;page_route&quot;</span>: <span class="string">&quot;homeSearchList&quot;</span>,</span><br><span class="line">  <span class="string">&quot;predictSex&quot;</span>: <span class="string">&quot;2&quot;</span>,</span><br><span class="line">  <span class="string">&quot;use_type&quot;</span>: <span class="string">&quot;2&quot;</span>,</span><br><span class="line">  <span class="string">&quot;user_input&quot;</span>: <span class="string">&quot;%E8%80%90%E5%85%8B+%E6%9D%BF%E9%9E%8B&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">response = requests.post(url=url,headers=headers,json=json)</span><br><span class="line"><span class="built_in">print</span>(response.status_code)</span><br><span class="line"><span class="built_in">print</span>(response.text)</span><br></pre></td></tr></table></figure>
 
 <p>直接修改请求体中的<code>keywords</code>进行使用</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/02/16/%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8Bunidbg/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/android.svg">
+      <meta itemprop="name" content="Bileton">
+      <meta itemprop="description" content="路漫漫其修远夕！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="白乐天">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2025/02/16/%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8Bunidbg/" class="post-title-link" itemprop="url">快速上手unidbg</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2025-02-16 16:27:04" itemprop="dateCreated datePublished" datetime="2025-02-16T16:27:04+08:00">2025-02-16</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2025-02-17 01:53:15" itemprop="dateModified" datetime="2025-02-17T01:53:15+08:00">2025-02-17</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Unidbg/" itemprop="url" rel="index"><span itemprop="name">Unidbg</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.4k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>Unidbg是一个轻量级模拟器，支持对Android Native函数的模拟执行。</p>
+<p>Unidbg是一个基于Maven构建的 JAVA 项目，可在 Github 下载源代码，然后在 IDEA&#x2F;VScode 等 IDE 里打开，其依赖下载完成后，测试运行。</p>
+<h1 id="初始化环境"><a href="#初始化环境" class="headerlink" title="初始化环境"></a>初始化环境</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.chezhiying.sign;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.github.unidbg.AndroidEmulator;</span><br><span class="line"><span class="keyword">import</span> com.github.unidbg.Module;</span><br><span class="line"><span class="keyword">import</span> com.github.unidbg.arm.backend.Unicorn2Factory;</span><br><span class="line"><span class="keyword">import</span> com.github.unidbg.linux.android.AndroidEmulatorBuilder;</span><br><span class="line"><span class="keyword">import</span> com.github.unidbg.linux.android.AndroidResolver;</span><br><span class="line"><span class="keyword">import</span> com.github.unidbg.linux.android.dvm.AbstractJni;</span><br><span class="line"><span class="keyword">import</span> com.github.unidbg.linux.android.dvm.DalvikModule;</span><br><span class="line"><span class="keyword">import</span> com.github.unidbg.linux.android.dvm.VM;</span><br><span class="line"><span class="keyword">import</span> com.github.unidbg.memory.Memory;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.File;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MainActivity</span> <span class="keyword">extends</span> <span class="title class_">AbstractJni</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> AndroidEmulator emulator;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Memory memory;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> VM vm;</span><br><span class="line">    <span class="keyword">private</span> Module <span class="keyword">module</span>;</span><br><span class="line">    <span class="keyword">private</span> DalvikModule dalvikModule;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">String</span> <span class="variable">process</span> <span class="operator">=</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">MainActivity</span><span class="params">()</span> &#123;</span><br><span class="line">        emulator = AndroidEmulatorBuilder</span><br><span class="line">                .for64Bit() <span class="comment">// for32Bit()</span></span><br><span class="line">                .setProcessName(process)</span><br><span class="line">                .addBackendFactory(<span class="keyword">new</span> <span class="title class_">Unicorn2Factory</span>(<span class="literal">true</span>))</span><br><span class="line">                .build();</span><br><span class="line">        memory = emulator.getMemory();</span><br><span class="line">        memory.setLibraryResolver(<span class="keyword">new</span> <span class="title class_">AndroidResolver</span>(<span class="number">23</span>));</span><br><span class="line">        vm = emulator.createDalvikVM(<span class="keyword">new</span> <span class="title class_">File</span>(<span class="string">&quot;&quot;</span>));</span><br><span class="line">        vm.setJni(<span class="built_in">this</span>);</span><br><span class="line">        vm.setVerbose(<span class="literal">true</span>);</span><br><span class="line">        dalvikModule = vm.loadLibrary(<span class="string">&quot;&quot;</span>,<span class="literal">true</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">module</span> = dalvikModule.getModule();</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 
       
     </div>
@@ -1279,153 +1370,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/02/09/dex%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/android.svg">
-      <meta itemprop="name" content="Bileton">
-      <meta itemprop="description" content="路漫漫其修远夕！">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="白乐天">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2025/02/09/dex%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/" class="post-title-link" itemprop="url">dex文件结构</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2025-02-09 12:11:45 / 修改时间：15:34:22" itemprop="dateCreated datePublished" datetime="2025-02-09T12:11:45+08:00">2025-02-09</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AF%A6%E8%A7%A3%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/" itemprop="url" rel="index"><span itemprop="name">详解文件结构</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>2.4k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>2 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>dex（Dalvik Executable）是Android平台源代码文件（java，kotlin）经过编译、重构、重排、压缩、混淆后的字节码文件，是对传统的class 文件再处理。和class 文件比，dex的体积更小，dex可以将多个class文件特征进行统一处理，在程序执行过程中可以一次性载入。</p>
-<h2 id="dex文件的生成过程"><a href="#dex文件的生成过程" class="headerlink" title="dex文件的生成过程"></a>dex文件的生成过程</h2><p>通过编译器将源代码编译为.class字节码文件，将所有的.class字节码文件打包成一个Jar文件包，使用<code>d8</code>工具将Jar文件包转为dex格式。</p>
-<h2 id="Leb128"><a href="#Leb128" class="headerlink" title="Leb128"></a>Leb128</h2><p>在 Dex（Dalvik Executable）文件格式中，LEB128（Little Endian Base 128） 是一种变长编码方式，用于紧凑地存储整数。</p>
-<p>它有三种主要形式：</p>
-<ul>
-<li><p>ULEB128（Unsigned LEB128） - 存储无符号整数</p>
-</li>
-<li><p>SLEB128（Signed LEB128） - 存储有符号整数</p>
-</li>
-<li><p>ULEB128P1（ULEB128 + 1） - 变体，适用于存储可为 <code>-1</code> 的索引值</p>
-</li>
-</ul>
-<h1 id="文件格式详解"><a href="#文件格式详解" class="headerlink" title="文件格式详解"></a>文件格式详解</h1><p><strong>文件结构组成</strong></p>
-<p><img src="/2025/02/09/dex%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/1.jpg"></p>
-<h2 id="dex文件中的数据类型"><a href="#dex文件中的数据类型" class="headerlink" title="dex文件中的数据类型"></a>dex文件中的数据类型</h2><table>
-<thead>
-<tr>
-<th>类型</th>
-<th>含义</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>u1</td>
-<td>等同于uint8_t，1字节无符号数</td>
-</tr>
-<tr>
-<td>u2</td>
-<td>等同于uint16_t，2字节无符号数</td>
-</tr>
-<tr>
-<td>u4</td>
-<td>等同于uint32_t，4字节无符号数</td>
-</tr>
-<tr>
-<td>u8</td>
-<td>等同于uint64_t，8字节无符号数</td>
-</tr>
-<tr>
-<td>sleb128</td>
-<td>有符号LEB128，可变长度1~5字节</td>
-</tr>
-<tr>
-<td>uleb128</td>
-<td>无符号LEB128，可变长度1~5字节</td>
-</tr>
-<tr>
-<td>uleb128p1</td>
-<td>无符号LEB128值加1，可变长度1~5字节</td>
-</tr>
-</tbody></table>
-<h2 id="header"><a href="#header" class="headerlink" title="header"></a>header</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">DexHeader</span> &#123;</span></span><br><span class="line">    u1  magic[<span class="number">8</span>];           <span class="comment">// 魔数</span></span><br><span class="line">    u4  checksum;           <span class="comment">// adler 校验值</span></span><br><span class="line">    u1  signature[kSHA1DigestLen]; <span class="comment">// sha1 校验值</span></span><br><span class="line">    u4  fileSize;           <span class="comment">// DEX 文件大小</span></span><br><span class="line">    u4  headerSize;         <span class="comment">// DEX 文件头大小</span></span><br><span class="line">    u4  endianTag;          <span class="comment">// 字节序</span></span><br><span class="line">    u4  linkSize;           <span class="comment">// 链接段大小</span></span><br><span class="line">    u4  linkOff;            <span class="comment">// 链接段的偏移量</span></span><br><span class="line">    u4  mapOff;             <span class="comment">// DexMapList 偏移量</span></span><br><span class="line">    u4  stringIdsSize;      <span class="comment">// DexStringId 个数</span></span><br><span class="line">    u4  stringIdsOff;       <span class="comment">// DexStringId 偏移量</span></span><br><span class="line">    u4  typeIdsSize;        <span class="comment">// DexTypeId 个数</span></span><br><span class="line">    u4  typeIdsOff;         <span class="comment">// DexTypeId 偏移量</span></span><br><span class="line">    u4  protoIdsSize;       <span class="comment">// DexProtoId 个数</span></span><br><span class="line">    u4  protoIdsOff;        <span class="comment">// DexProtoId 偏移量</span></span><br><span class="line">    u4  fieldIdsSize;       <span class="comment">// DexFieldId 个数</span></span><br><span class="line">    u4  fieldIdsOff;        <span class="comment">// DexFieldId 偏移量</span></span><br><span class="line">    u4  methodIdsSize;      <span class="comment">// DexMethodId 个数</span></span><br><span class="line">    u4  methodIdsOff;       <span class="comment">// DexMethodId 偏移量</span></span><br><span class="line">    u4  classDefsSize;      <span class="comment">// DexCLassDef 个数</span></span><br><span class="line">    u4  classDefsOff;       <span class="comment">// DexClassDef 偏移量</span></span><br><span class="line">    u4  dataSize;           <span class="comment">// 数据段大小</span></span><br><span class="line">    u4  dataOff;            <span class="comment">// 数据段偏移量</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<h2 id="string-ids"><a href="#string-ids" class="headerlink" title="string_ids"></a>string_ids</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">struct DexStringId &#123;</span><br><span class="line">    u4 stringDataOff;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<h2 id="type-ids"><a href="#type-ids" class="headerlink" title="type_ids"></a>type_ids</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">struct DexTypeId &#123;</span><br><span class="line">    u4  descriptorIdx;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<h2 id="proto-ids"><a href="#proto-ids" class="headerlink" title="proto_ids"></a>proto_ids</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">struct DexProtoId &#123;</span><br><span class="line">    u4  shortyIdx;          /* index into stringIds for shorty descriptor */</span><br><span class="line">    u4  returnTypeIdx;      /* index into typeIds list for return type */</span><br><span class="line">    u4  parametersOff;      /* file offset to type_list for parameter types */</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="field-ids"><a href="#field-ids" class="headerlink" title="field_ids"></a>field_ids</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">struct DexFieldId &#123;</span><br><span class="line">    u2  classIdx;           /* index into typeIds list for defining class */</span><br><span class="line">    u2  typeIdx;            /* index into typeIds for field type */</span><br><span class="line">    u4  nameIdx;            /* index into stringIds for field name */</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<h2 id="method-ids"><a href="#method-ids" class="headerlink" title="method_ids"></a>method_ids</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">struct DexMethodId &#123;</span><br><span class="line">    u2  classIdx;           /* index into typeIds list for defining class */</span><br><span class="line">    u2  protoIdx;           /* index into protoIds for method prototype */</span><br><span class="line">    u4  nameIdx;            /* index into stringIds for method name */</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<h2 id="class-def"><a href="#class-def" class="headerlink" title="class_def"></a>class_def</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">struct DexClassDef &#123;</span><br><span class="line">    u4  classIdx;           /* index into typeIds for this class */</span><br><span class="line">    u4  accessFlags;</span><br><span class="line">    u4  superclassIdx;      /* index into typeIds for superclass */</span><br><span class="line">    u4  interfacesOff;      /* file offset to DexTypeList */</span><br><span class="line">    u4  sourceFileIdx;      /* index into stringIds for source file name */</span><br><span class="line">    u4  annotationsOff;     /* file offset to annotations_directory_item */</span><br><span class="line">    u4  classDataOff;       /* file offset to class_data_item */</span><br><span class="line">    u4  staticValuesOff;    /* file offset to DexEncodedArray */</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1497,20 +1441,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">75</span>
+          <span class="site-state-item-count">76</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">30</span>
+        <span class="site-state-item-count">31</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">69</span>
+        <span class="site-state-item-count">70</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -1551,13 +1495,13 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">544k</span>
+    <span title="站点总字数">546k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">8:15</span>
+    <span title="站点阅读时长">8:16</span>
 </div>
 
 
