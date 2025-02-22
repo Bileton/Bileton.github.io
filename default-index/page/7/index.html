@@ -124,7 +124,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">73</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">74</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -134,7 +134,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">79</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">80</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -185,6 +185,298 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/12/16/ARM%E6%B1%87%E7%BC%96/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/android.svg">
+      <meta itemprop="name" content="Bileton">
+      <meta itemprop="description" content="路漫漫其修远夕！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="白乐天">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2024/12/16/ARM%E6%B1%87%E7%BC%96/" class="post-title-link" itemprop="url">ARM汇编</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2024-12-16 14:14:08" itemprop="dateCreated datePublished" datetime="2024-12-16T14:14:08+08:00">2024-12-16</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2025-02-07 21:53:51" itemprop="dateModified" datetime="2025-02-07T21:53:51+08:00">2025-02-07</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%B1%87%E7%BC%96/" itemprop="url" rel="index"><span itemprop="name">汇编</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>3.1k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>3 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="ARM架构"><a href="#ARM架构" class="headerlink" title="ARM架构"></a>ARM架构</h1><p>ARM是一种精简指令集计算机架构（处理器架构）。</p>
+<h2 id="ARMv8-A"><a href="#ARMv8-A" class="headerlink" title="ARMv8-A"></a>ARMv8-A</h2><p>Armv8-A架构支持处理器同时运行64位和32位程序，处理器在AArch64执行状态下运行64位程序，在AArch32执行状态下运行32位程序。</p>
+<h2 id="指令集架构"><a href="#指令集架构" class="headerlink" title="指令集架构"></a>指令集架构</h2><h3 id="AArch64（64位模式）"><a href="#AArch64（64位模式）" class="headerlink" title="AArch64（64位模式）"></a>AArch64（64位模式）</h3><p>引入了新的指令集，<strong>A64指令集</strong>，由32位宽的指令组成。</p>
+<h3 id="AArch32（32位模式）"><a href="#AArch32（32位模式）" class="headerlink" title="AArch32（32位模式）"></a>AArch32（32位模式）</h3><p>向后兼容32位的ARMv7-A指令集。</p>
+<p>支持<strong>ARM指令集</strong>（固定32位指令长度）和<strong>Thumb指令集</strong>（16位和32位混合指令长度），称为<strong>A32</strong>和<strong>T32</strong>指令集	。</p>
+<p>ARMv8-A的双模式设计实现了从32位到64位的过渡。</p>
+<h2 id="AArch64执行状态"><a href="#AArch64执行状态" class="headerlink" title="AArch64执行状态"></a>AArch64执行状态</h2><h3 id="寄存器"><a href="#寄存器" class="headerlink" title="寄存器"></a>寄存器</h3><ul>
+<li><p>A64共有32个64位寄存器（X0到X30）。</p>
+</li>
+<li><p>每个寄存器均支持 64 位和 32 位访问（例如 <code>X0</code> 和 <code>W0</code> 分别表示寄存器的高 64 位和低 32 位部分）。</p>
+</li>
+</ul>
+<p><strong>Arm架构程序调用标准</strong></p>
+<ul>
+<li>X0~X7是参数寄存器，传递参数并返回结果。</li>
+<li>X8用于传递间接结果的地址位置。</li>
+<li>X9~X15是调用者保存的临时寄存器。</li>
+<li>X16~X18是子程序内调用临时寄存器。</li>
+<li>X19~X28是被调用者保存的寄存器。</li>
+<li>X29用作栈帧寄存器（FP），跟踪栈帧。</li>
+<li>X30用作链接寄存器（LR），保存函数返回地址。</li>
+</ul>
+<h2 id><a href="#" class="headerlink" title></a></h2><table>
+<thead>
+<tr>
+<th>寄存器</th>
+<th>名称</th>
+<th>寄存器宽度</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>PC</td>
+<td>程序计数器</td>
+<td>64位</td>
+</tr>
+<tr>
+<td>SP</td>
+<td>栈指针寄存器</td>
+<td>64位</td>
+</tr>
+<tr>
+<td>WSP</td>
+<td>栈指针寄存器</td>
+<td>32位</td>
+</tr>
+<tr>
+<td>XZR</td>
+<td>零寄存器</td>
+<td>64位</td>
+</tr>
+<tr>
+<td>WZR</td>
+<td>零寄存器</td>
+<td>32位</td>
+</tr>
+<tr>
+<td>LR（X30）</td>
+<td>链接寄存器</td>
+<td>64位</td>
+</tr>
+<tr>
+<td>ELR</td>
+<td>异常链接寄存器</td>
+<td>64位</td>
+</tr>
+<tr>
+<td>PSTATE</td>
+<td>程序状态寄存器</td>
+<td>64位</td>
+</tr>
+<tr>
+<td>SPSR_ELx</td>
+<td>保存进程状态寄存器</td>
+<td>32位</td>
+</tr>
+</tbody></table>
+<ul>
+<li><strong>程序计数器</strong></li>
+</ul>
+<p>​	PC保存当前指令的地址。所有指令在加载之前都必须从PC引用的内存位置加载。</p>
+<ul>
+<li><strong>栈指针</strong></li>
+</ul>
+<p>​	SP用于跟踪当前线程的栈位置，通常指向该线程栈的逻辑“顶部”。</p>
+<ul>
+<li><strong>零寄存器</strong></li>
+</ul>
+<p>​	它被定义为始终保存0值。</p>
+<ul>
+<li><strong>链接寄存器</strong></li>
+</ul>
+<p>​	它主要用于存储调用函数时的返回地址。</p>
+<ul>
+<li><strong>栈帧指针</strong></li>
+</ul>
+<p>​	跟踪栈帧。</p>
+<h2 id="AArch32执行状态"><a href="#AArch32执行状态" class="headerlink" title="AArch32执行状态"></a>AArch32执行状态</h2><h3 id="寄存器-1"><a href="#寄存器-1" class="headerlink" title="寄存器"></a>寄存器</h3><ul>
+<li><p>16 个 32 位通用寄存器（<code>R0</code> 到 <code>R15</code>）。</p>
+</li>
+<li><p>PC（程序计数器）占用 <code>R15</code>，<code>R14</code> 通常作为链接寄存器（LR），<code>R13</code> 通常作为栈指针（SP）。</p>
+</li>
+</ul>
+<h1 id="数据处理指令"><a href="#数据处理指令" class="headerlink" title="数据处理指令"></a>数据处理指令</h1><p><strong>指令的基本语法</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;操作码&gt; &lt;目标寄存器&gt;, &lt;操作数1&gt;, &lt;操作数2&gt;</span><br><span class="line"></span><br><span class="line">&lt;操作码&gt;：指令的操作代码，决定了具体的功能（如加法、减法、逻辑操作等）。</span><br><span class="line">&lt;目标寄存器&gt;：结果存储的目标寄存器。</span><br><span class="line">&lt;操作数1&gt; 和 &lt;操作数2&gt;：参与运算的两个操作数，可以是寄存器或立即数。</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>在A32&#x2F;T32指令中目标寄存器表示为Rd</li>
+<li>在A64指令中目标寄存器表示为Xd或Wd</li>
+<li>在A32&#x2F;T32指令中输入寄存器表示为Rm、Rn或Ra</li>
+<li>在A64指令中输入寄存器表示为Xn或Xm</li>
+</ul>
+<h2 id="条件标志位"><a href="#条件标志位" class="headerlink" title="条件标志位"></a>条件标志位</h2><ul>
+<li><p><strong>N</strong>(Negative)：</p>
+<p>结果为负数，则值为1；</p>
+<p>结果是正数或零，则值为0。</p>
+</li>
+<li><p><strong>Z</strong>(Zero)：</p>
+<p>结果为 0，则值为1。</p>
+<p>否则，值为0。</p>
+</li>
+<li><p><strong>C</strong>(Carry)：</p>
+<p>如果结果产生了进位条件，则值为1；</p>
+<p>否则，值为0。</p>
+</li>
+<li><p><strong>V</strong>(Overflow)：</p>
+<p>如果指令结果导致溢出条件，则值为1。</p>
+</li>
+</ul>
+<h2 id="算术指令"><a href="#算术指令" class="headerlink" title="算术指令"></a>算术指令</h2><h3 id="add"><a href="#add" class="headerlink" title="add"></a>add</h3><p>加法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">add x0,x1,x2  ;x0=x1+x2</span><br></pre></td></tr></table></figure>
+
+<h3 id="adds"><a href="#adds" class="headerlink" title="adds"></a>adds</h3><p>加法运算并更新条件标志</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adds x0,x1,x2  ;x0=x1+x2 and set flags</span><br></pre></td></tr></table></figure>
+
+<h3 id="sub"><a href="#sub" class="headerlink" title="sub"></a>sub</h3><p>减法</p>
+<h3 id="mul"><a href="#mul" class="headerlink" title="mul"></a>mul</h3><p><code>MUL</code> 指令用于无符号乘法。它将两个寄存器的值相乘，并将结果存储在目标寄存器中。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MUL destination, operand1, operand2</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="muls"><a href="#muls" class="headerlink" title="muls"></a>muls</h3><p><code>MULS</code> 与 <code>MUL</code> 指令类似，但是它还会更新条件码（N, Z, C, V），即用于设置 ARM 标志寄存器的状态。用于无符号乘法，格式和 <code>MUL</code> 类似。</p>
+<h3 id="mla"><a href="#mla" class="headerlink" title="mla"></a>mla</h3><p><code>MLA</code> 指令用于乘法累加操作，即将两个数相乘后将结果加到一个寄存器上。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MLA destination, operand1, operand2, operand3</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="sdiv-udiv"><a href="#sdiv-udiv" class="headerlink" title="sdiv&#x2F;udiv"></a>sdiv&#x2F;udiv</h3><p>除法</p>
+<h2 id="移位和循环移位"><a href="#移位和循环移位" class="headerlink" title="移位和循环移位"></a>移位和循环移位</h2><h3 id="lsl（Logical-Shift-Left）"><a href="#lsl（Logical-Shift-Left）" class="headerlink" title="lsl（Logical Shift Left）"></a>lsl（Logical Shift Left）</h3><p>逻辑左移，左移后相当于乘以 2 的若干次方。</p>
+<p>将一个值的二进制位整体向左移动，用 <strong>0</strong> 填充右边空出的位，丢弃左边溢出的位。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lsl r0,r1,#2  ;r0 = r1 &lt;&lt; 2</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">add r0,r1,r2,lsl #2  ;r0 = r1 + (r2&lt;&lt;2)</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="lsr（Logical-Shift-Right）"><a href="#lsr（Logical-Shift-Right）" class="headerlink" title="lsr（Logical Shift Right）"></a>lsr（Logical Shift Right）</h3><p>逻辑右移，逻辑右移后，每位的值变成原来数值的 <strong>1&#x2F;2</strong>。</p>
+<p>左侧空出的位用 0 填充，右侧移出的位被丢弃。</p>
+<h3 id="asr（Arithmetic-Shift-Left）"><a href="#asr（Arithmetic-Shift-Left）" class="headerlink" title="asr（Arithmetic Shift Left）"></a>asr（Arithmetic Shift Left）</h3><p>算术右移</p>
+<p>将一个值的二进制位整体向右移动。它与逻辑右移的主要区别在于，左侧空出的位用符号位填充（最高位的值，0 或 1），以保持数值的符号不变。</p>
+<h3 id="ror（ROtate-Right）"><a href="#ror（ROtate-Right）" class="headerlink" title="ror（ROtate Right）"></a>ror（ROtate Right）</h3><p>循环右移</p>
+<p>将一个二进制数的位向右移动指定的位数，并将被“移出”的位重新填充到左侧。</p>
+<h3 id="rrx"><a href="#rrx" class="headerlink" title="rrx"></a>rrx</h3><p>带扩展的循环右移</p>
+<p>在普通 <code>ROR</code> 的基础上，利用 <strong>进位标志位（C）</strong> 的值作为循环右移的高位，右移后最右侧的位会填入进位标志位（<code>C</code>）</p>
+<ul>
+<li>始终右移 1 位</li>
+<li>进位标志位参与操作</li>
+</ul>
+<h2 id="逻辑运算"><a href="#逻辑运算" class="headerlink" title="逻辑运算"></a>逻辑运算</h2><h3 id="and"><a href="#and" class="headerlink" title="and"></a>and</h3><p>位与</p>
+<h3 id="orr"><a href="#orr" class="headerlink" title="orr"></a>orr</h3><p>位或</p>
+<h3 id="eor-xor"><a href="#eor-xor" class="headerlink" title="eor&#x2F;xor"></a>eor&#x2F;xor</h3><p>位异或</p>
+<h2 id="条件指令"><a href="#条件指令" class="headerlink" title="条件指令"></a>条件指令</h2><h3 id="cmp"><a href="#cmp" class="headerlink" title="cmp"></a>cmp</h3><p>比较</p>
+<h3 id="tst"><a href="#tst" class="headerlink" title="tst"></a>tst</h3><p>测试位</p>
+<h2 id="移动指令"><a href="#移动指令" class="headerlink" title="移动指令"></a>移动指令</h2><h3 id="mov"><a href="#mov" class="headerlink" title="mov"></a>mov</h3><p>用于将值从一个寄存器传递到另一个寄存器，或者将一个立即数加载到目标寄存器。</p>
+<h3 id="movz"><a href="#movz" class="headerlink" title="movz"></a>movz</h3><p>将一个 16 位立即数 加载到目标寄存器的指定位置，并将其他位清零。</p>
+<h3 id="movk"><a href="#movk" class="headerlink" title="movk"></a>movk</h3><p>将一个 16 位立即数 加载到目标寄存器的指定位置，但保持寄存器中其他位的原值不变。</p>
+<h3 id="movn"><a href="#movn" class="headerlink" title="movn"></a>movn</h3><p>将一个 16 位立即数的按位取反值 加载到目标寄存器的指定位置，并将其他位清零。</p>
+<h1 id="内存访问指令"><a href="#内存访问指令" class="headerlink" title="内存访问指令"></a>内存访问指令</h1><h2 id="加载和存储指令"><a href="#加载和存储指令" class="headerlink" title="加载和存储指令"></a>加载和存储指令</h2><h3 id="LDR"><a href="#LDR" class="headerlink" title="LDR"></a>LDR</h3><p>从内存地址加载一个字（通常是32位）到指定的寄存器中。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">LDR R0, [R1]      ; 将内存地址R1中的值加载到寄存器R0</span><br><span class="line">LDR R2, [R3, #4]  ; 将R3 + 4地址中的值加载到寄存器R2</span><br></pre></td></tr></table></figure>
+
+<h3 id="STR"><a href="#STR" class="headerlink" title="STR"></a>STR</h3><p>将寄存器中的数据存储到内存地址中。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">STR R0, [R1]      ; 将寄存器R0的值存储到R1指向的内存地址</span><br><span class="line">STR R2, [R3, #8]  ; 将R2的值存储到R3 + 8的内存地址</span><br></pre></td></tr></table></figure>
+
+<h1 id="控制流"><a href="#控制流" class="headerlink" title="控制流"></a>控制流</h1><h2 id="分支指令"><a href="#分支指令" class="headerlink" title="分支指令"></a>分支指令</h2><h3 id="B（Branch）"><a href="#B（Branch）" class="headerlink" title="B（Branch）"></a>B（Branch）</h3><p>B指令用于无条件跳转到一个由立即数偏移指定的目标地址。</p>
+<p>执行该指令时，程序计数器（PC）被更新为目标地址，从而实现流程的跳转。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">;无条件跳转到标签label</span><br><span class="line">B label  ; 无条件跳转到标签label指定的 label</span><br></pre></td></tr></table></figure>
+
+<h3 id="BL（Branch-with-Link）"><a href="#BL（Branch-with-Link）" class="headerlink" title="BL（Branch with Link）"></a>BL（Branch with Link）</h3><p>用于调用子程序。</p>
+<p>BL 指令除了进行跳转外，还会将返回地址（即 BL 指令下一条指令的地址）保存到链接寄存器 LR中。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BL function  ; 调用 function 子程序，并将返回地址保存到 LR</span><br></pre></td></tr></table></figure>
+
+<h3 id="BX（Branch-and-Exchange）"><a href="#BX（Branch-and-Exchange）" class="headerlink" title="BX（Branch and Exchange）"></a>BX（Branch and Exchange）</h3><p>BX 指令用于从一个寄存器中取得目标地址并跳转，并且可以用于 ARM 和 Thumb 模式之间的切换。</p>
+<p>它会检查目标地址的最低位：</p>
+<ul>
+<li>如果最低位为 <strong>1</strong>，则表示需要进入 Thumb 模式；</li>
+<li>如果最低位为 <strong>0</strong>，则保持在 ARM 模式。</li>
+</ul>
+<p>常用于子程序返回（例如：<code>BX LR</code>）；</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BX LR  ; 使用链接寄存器 LR 跳转，通常用于返回。</span><br></pre></td></tr></table></figure>
+
+<h3 id="BR"><a href="#BR" class="headerlink" title="BR"></a>BR</h3><p>BR 指令出现在 ARMv8 的 AArch64 指令集中，用于实现从寄存器中取得目标地址进行无条件跳转。</p>
+<p>与 BX 指令类似，BR 指令也是基于寄存器的跳转，但不涉及状态交换（因为 AArch64 不存在 ARM&#x2F;Thumb 模式之分）。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">// 示例1：通过寄存器 X1 中的地址跳转</span><br><span class="line">MOV X1, #0x4000      // 将目标地址 0x4000 存入 X1</span><br><span class="line">BR X1                // 跳转到 X1 中的地址</span><br><span class="line"></span><br><span class="line">// 示例2：从子程序返回（在 AArch64 中常用 RET 指令，但也可使用 BR）</span><br><span class="line">// 假设链接寄存器在 X30 中</span><br><span class="line">BR X30               // 跳转到 X30 保存的返回地址</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -2065,130 +2357,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/11/01/Frida%E6%A3%80%E6%B5%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/android.svg">
-      <meta itemprop="name" content="Bileton">
-      <meta itemprop="description" content="路漫漫其修远夕！">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="白乐天">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2024/11/01/Frida%E6%A3%80%E6%B5%8B/" class="post-title-link" itemprop="url">Frida检测</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2024-11-01 00:00:00" itemprop="dateCreated datePublished" datetime="2024-11-01T00:00:00+08:00">2024-11-01</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2025-01-17 18:01:51" itemprop="dateModified" datetime="2025-01-17T18:01:51+08:00">2025-01-17</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Frida/" itemprop="url" rel="index"><span itemprop="name">Frida</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>7.2k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>7 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="常见检测方式"><a href="#常见检测方式" class="headerlink" title="常见检测方式"></a>常见检测方式</h1><h2 id="进程名检测"><a href="#进程名检测" class="headerlink" title="进程名检测"></a>进程名检测</h2><p>使用如下命令查看进程</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -ef | gerp xxx</span><br></pre></td></tr></table></figure>
-<p>这里我去官网下载一份frida-server<br>启动frida后，查看进程，会发现有frida-sever字样<br><strong>绕过方式</strong><br>修改文件名，把frida-server文件名字改掉<br>进程名字就会变成修改后的名字</p>
-<h2 id="端口检测"><a href="#端口检测" class="headerlink" title="端口检测"></a>端口检测</h2><p>frida默认使用的端口是27042，有些app会检测是否开放了27042端口<br>可以通过如下命令查看端口</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -anp | grep 27042</span><br></pre></td></tr></table></figure>
-<p>注意：以下方式需要手机和电脑互相能Ping通<br><strong>绕过方式</strong><br>更改端口</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./frida-server -l 0.0.0.0:7777</span><br></pre></td></tr></table></figure>
-<p>在电脑上进行端口转发</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb forward tcp:7777 tcp:7777</span><br></pre></td></tr></table></figure>
-<p>脚本运行</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">frida -H 127.0.0.1:7777 -F -l xxx.js</span><br></pre></td></tr></table></figure>
-<p><strong>另一种不需要端口转发的方式</strong><br>在更改端口前查看本机IP地址，然后更改端口</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./frida-server -l 192.168.xx.xx:7777</span><br></pre></td></tr></table></figure>
-<p>脚本运行</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">frida -H 192.168.xx.xx:7777 -F -l xxx.js</span><br></pre></td></tr></table></figure>
-<p><strong>对于Python脚本</strong><br>端口转发后</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">str_host = <span class="string">&quot;127.0.0.1:7777&quot;</span></span><br><span class="line">manager = firda.get_device_manager()</span><br><span class="line">rdev = manager.add_remote_device(str_host)</span><br></pre></td></tr></table></figure>
-<h2 id="D-Bus网络通信协议"><a href="#D-Bus网络通信协议" class="headerlink" title="D-Bus网络通信协议"></a>D-Bus网络通信协议</h2><p>frida-server使用D-Bus网络通信协议，有些app会遍历内部所有端口，向端口发送信息，如果回复了REJECT则表示此端口是frida-server，检测到正在使用frida进行调试。<br><strong>绕过方式</strong><br>hook系统中的 strstr &#x2F; strcmp 函数，如果出现”REJECT”字样，返回false。  </p>
-<h2 id="maps文件"><a href="#maps文件" class="headerlink" title="maps文件"></a>maps文件</h2><p><code>maps</code> 文件通常与进程的内存映射有关。<br>它位于&#x2F;proc&#x2F;pid&#x2F;maps，其中pid是正在运行的进程的PID。<br>通如下命令查看</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /proc/pid/maps | grep frida</span><br></pre></td></tr></table></figure>
-<p>会发现有frida-agent-64.so字样<br><strong>绕过方式</strong><br>hook系统中的 strstr &#x2F; strcmp 函数，如果出现”frida”，”frida-agent”，”tmp”等字样，返回false。</p>
-<h2 id="task目录"><a href="#task目录" class="headerlink" title="task目录"></a>task目录</h2><p>&#x2F;proc&#x2F;pid&#x2F;task目录包含了有关进程中所有线程的信息。<br>task目录下的第一个tid是主线程，其他的是子线程。<br>子线程目录里有一个status文件，里面提供了详细的线程信息。<br>frida-server启动且frida附加到一个app后，在task目录下会生成frida的相关线程文件，包含相关线程信息。<br>查看status文件后发现，存在与frida有关的线程名，可能会被检测。  </p>
-<ul>
-<li>gmain</li>
-<li>gdbus</li>
-<li>gum-js-loop</li>
-<li>pool-frida</li>
-</ul>
-<p><strong>绕过方式</strong><br>hook系统中的 strstr &#x2F; strcmp 函数，如果出现”gmain”，”gdbus”，”gum-js-loop”等字样，返回false。</p>
-<h2 id="fd目录（旧版frida特征）"><a href="#fd目录（旧版frida特征）" class="headerlink" title="fd目录（旧版frida特征）"></a>fd目录（旧版frida特征）</h2><p><code>/proc/&lt;pid&gt;/fd</code> 目录是进程的文件描述符目录，存储了与进程相关的所有文件描述符（file descriptors）的符号链接。提供系统中运行进程的实时信息。<br>frida-server启动且frida附加到一个app后，在fd目录下可能会生成”linjector-1”这个文件，也可能会被检测。<br><strong>绕过方式</strong><br>hook系统中的 strstr &#x2F; strcmp 函数，如果出现”linjector”字样，返回false。</p>
-<h2 id="frida目录（旧版frida特征）"><a href="#frida目录（旧版frida特征）" class="headerlink" title="frida目录（旧版frida特征）"></a>frida目录（旧版frida特征）</h2><p>frida-server运行起来之后，会自动在&#x2F;data&#x2F;local&#x2F;tmp（frida-server放在&#x2F;data&#x2F;local&#x2F;tmp目录下）目录下生成一个re.frida.server目录，在re.frida.server这个目录里就会有包含frida的特征的文件名如frida-agent-64.so、frida-agent-32.so、frida-helper-32、linjector-1<br><strong>绕过方式</strong><br>hook系统中的 strstr &#x2F; strcmp 函数，如果出现”tmp”字样，返回false。</p>
-<h2 id="hook脚本"><a href="#hook脚本" class="headerlink" title="hook脚本"></a>hook脚本</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">replace_str</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> pt_strstr = <span class="title class_">Module</span>.<span class="title function_">findExportByName</span>(<span class="string">&quot;libc.so&quot;</span>,<span class="string">&quot;strstr&quot;</span>);</span><br><span class="line">    <span class="keyword">var</span> pt_strcmp = <span class="title class_">Module</span>.<span class="title function_">findExportByName</span>(<span class="string">&quot;libc.so&quot;</span>,<span class="string">&quot;strstr&quot;</span>);</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;pt_strstr:&quot;</span>,pt_strstr);</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;pt_strcmp:&quot;</span>,pt_strcmp);</span><br><span class="line">    <span class="title class_">Interceptor</span>.<span class="title function_">attach</span>(pt_strstr, &#123;</span><br><span class="line">        <span class="attr">onEnter</span>: <span class="keyword">function</span> (<span class="params">args</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (args[<span class="number">0</span>].<span class="title function_">isNull</span>() || args[<span class="number">1</span>].<span class="title function_">isNull</span>()) &#123;</span><br><span class="line">                <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;strstr: One of the arguments is NULL&quot;</span>);</span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">var</span> str1 = args[<span class="number">0</span>].<span class="title function_">readCString</span>();</span><br><span class="line">            <span class="keyword">var</span> str2 = args[<span class="number">1</span>].<span class="title function_">readCString</span>();</span><br><span class="line">            <span class="comment">// console.log(&quot;str2:&quot;, str2);</span></span><br><span class="line">            <span class="keyword">if</span> (str2.<span class="title function_">indexOf</span>(<span class="string">&quot;REJECT&quot;</span>) &gt;= <span class="number">0</span> || </span><br><span class="line">                str2.<span class="title function_">indexOf</span>(<span class="string">&quot;frida&quot;</span>) &gt;= <span class="number">0</span> || </span><br><span class="line">                str2.<span class="title function_">indexOf</span>(<span class="string">&quot;frida-agent&quot;</span>) &gt;= <span class="number">0</span> || </span><br><span class="line">                str2.<span class="title function_">indexOf</span>(<span class="string">&quot;gmain&quot;</span>) &gt;= <span class="number">0</span> || </span><br><span class="line">                str2.<span class="title function_">indexOf</span>(<span class="string">&quot;gum-js-loop&quot;</span>) &gt;= <span class="number">0</span> ||</span><br><span class="line">                str2.<span class="title function_">indexOf</span>(<span class="string">&quot;tmp&quot;</span>) &gt;= <span class="number">0</span> || </span><br><span class="line">                str2.<span class="title function_">indexOf</span>(<span class="string">&quot;maps&quot;</span>) &gt;= <span class="number">0</span> || </span><br><span class="line">                str2.<span class="title function_">indexOf</span>(<span class="string">&quot;gdbus&quot;</span>) &gt;= <span class="number">0</span> || </span><br><span class="line">                str2.<span class="title function_">indexOf</span>(<span class="string">&quot;linjector&quot;</span>) &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;strstr--&gt;&quot;</span>, str1, str2);</span><br><span class="line">                <span class="variable language_">this</span>.<span class="property">hook</span> = <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">onLeave</span>: <span class="keyword">function</span> (<span class="params">retval</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (<span class="variable language_">this</span>.<span class="property">hook</span>) &#123;</span><br><span class="line">                retval.<span class="title function_">replace</span>(<span class="number">0</span>); <span class="comment">// 也可以指向合法地址</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="title class_">Interceptor</span>.<span class="title function_">attach</span>(pt_strcmp, &#123;</span><br><span class="line">        <span class="attr">onEnter</span>: <span class="keyword">function</span> (<span class="params">args</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (args[<span class="number">0</span>].<span class="title function_">isNull</span>() || args[<span class="number">1</span>].<span class="title function_">isNull</span>()) &#123;</span><br><span class="line">                <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;strcmp: One of the arguments is NULL&quot;</span>);</span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">var</span> str1 = args[<span class="number">0</span>].<span class="title function_">readCString</span>();</span><br><span class="line">            <span class="keyword">var</span> str2 = args[<span class="number">1</span>].<span class="title function_">readCString</span>();</span><br><span class="line">            <span class="keyword">if</span> (str2.<span class="title function_">indexOf</span>(<span class="string">&quot;REJECT&quot;</span>) &gt;= <span class="number">0</span> || </span><br><span class="line">                str2.<span class="title function_">indexOf</span>(<span class="string">&quot;frida&quot;</span>) &gt;= <span class="number">0</span> || </span><br><span class="line">                str2.<span class="title function_">indexOf</span>(<span class="string">&quot;frida-agent&quot;</span>) &gt;= <span class="number">0</span> || </span><br><span class="line">                str2.<span class="title function_">indexOf</span>(<span class="string">&quot;gmain&quot;</span>) &gt;= <span class="number">0</span> || </span><br><span class="line">                str2.<span class="title function_">indexOf</span>(<span class="string">&quot;gum-js-loop&quot;</span>) &gt;= <span class="number">0</span> ||</span><br><span class="line">                str2.<span class="title function_">indexOf</span>(<span class="string">&quot;tmp&quot;</span>) &gt;= <span class="number">0</span> || </span><br><span class="line">                str2.<span class="title function_">indexOf</span>(<span class="string">&quot;maps&quot;</span>) &gt;= <span class="number">0</span> || </span><br><span class="line">                str2.<span class="title function_">indexOf</span>(<span class="string">&quot;gdbus&quot;</span>) &gt;= <span class="number">0</span> || </span><br><span class="line">                str2.<span class="title function_">indexOf</span>(<span class="string">&quot;linjector&quot;</span>) &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;strcmp--&gt;&quot;</span>, str1, str2);</span><br><span class="line">                <span class="variable language_">this</span>.<span class="property">hook</span> = <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">onLeave</span>: <span class="keyword">function</span> (<span class="params">retval</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (<span class="variable language_">this</span>.<span class="property">hook</span>) &#123;</span><br><span class="line">                retval.<span class="title function_">replace</span>(<span class="number">0</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">replace_str</span>();</span><br></pre></td></tr></table></figure>
-<h1 id="线程检测"><a href="#线程检测" class="headerlink" title="线程检测"></a>线程检测</h1><p>检测frida的线程通常不会是主线程，主线程与业务相关，通过创建子线程来检测frida，在此线程中循环检测。<br><strong>检测方式</strong><br>在C语言中有一个pthread_create函数，这个函数的作用是创建线程<br><strong>定位so</strong><br>首先定位检测frida的线程的是在哪个so里通过pthread_create函数创建的。（通过hook dlopen进行判断）<br><strong>替换线程中的函数实现绕过</strong></p>
-<h2 id="hook-pthread"><a href="#hook-pthread" class="headerlink" title="hook pthread"></a>hook pthread</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">hook_dlopen</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="keyword">var</span> android_dlopen_ext = <span class="title class_">Module</span>.<span class="title function_">findExportByName</span>(<span class="literal">null</span>,<span class="string">&quot;android_dlopen_ext&quot;</span>);</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;addr_android_dlopen_ext&quot;</span>,android_dlopen_ext);</span><br><span class="line">    <span class="title class_">Interceptor</span>.<span class="title function_">attach</span>(android_dlopen_ext,&#123;</span><br><span class="line">        <span class="attr">onEnter</span>:<span class="keyword">function</span>(<span class="params">args</span>)&#123;</span><br><span class="line">            <span class="keyword">var</span> pathptr = args[<span class="number">0</span>];</span><br><span class="line">            <span class="keyword">if</span>(pathptr!=<span class="literal">null</span> &amp;&amp; pathptr != <span class="literal">undefined</span>)&#123;</span><br><span class="line">                <span class="keyword">var</span> path = <span class="title function_">ptr</span>(pathptr).<span class="title function_">readCString</span>();</span><br><span class="line">                <span class="keyword">if</span>(path.<span class="title function_">indexOf</span>(<span class="string">&quot;libmsaoaidsec.so&quot;</span>)!=-<span class="number">1</span>)&#123;</span><br><span class="line">                    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;android_dlopen_ext:&quot;</span>,path);</span><br><span class="line">                    <span class="title function_">hook_pthread</span>()</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">onLeave</span>:<span class="keyword">function</span>(<span class="params">retvel</span>)&#123;</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">hook_pthread</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> pth_create = <span class="title class_">Module</span>.<span class="title function_">findExportByName</span>(<span class="string">&quot;libc.so&quot;</span>, <span class="string">&quot;pthread_create&quot;</span>);</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;[pth_create]&quot;</span>, pth_create);</span><br><span class="line">    <span class="title class_">Interceptor</span>.<span class="title function_">attach</span>(pth_create, &#123;</span><br><span class="line">        <span class="attr">onEnter</span>: <span class="keyword">function</span> (<span class="params">args</span>) &#123;</span><br><span class="line">            <span class="keyword">var</span> <span class="variable language_">module</span> = <span class="title class_">Process</span>.<span class="title function_">findModuleByAddress</span>(args[<span class="number">2</span>]);</span><br><span class="line">            <span class="keyword">if</span> (<span class="variable language_">module</span> != <span class="literal">null</span>) &#123;</span><br><span class="line">                <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;address&quot;</span>, <span class="variable language_">module</span>.<span class="property">name</span>, args[<span class="number">2</span>].<span class="title function_">sub</span>(<span class="variable language_">module</span>.<span class="property">base</span>));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">onLeave</span>: <span class="keyword">function</span> (<span class="params">retval</span>) &#123;&#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">main</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="title function_">hook_dlopen</span>()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">main</span>()</span><br></pre></td></tr></table></figure>
-
-<h2 id="替换线程函数"><a href="#替换线程函数" class="headerlink" title="替换线程函数"></a>替换线程函数</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">hook_dlopen</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="keyword">var</span> android_dlopen_ext = <span class="title class_">Module</span>.<span class="title function_">findExportByName</span>(<span class="literal">null</span>,<span class="string">&quot;android_dlopen_ext&quot;</span>);</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;addr_android_dlopen_ext&quot;</span>,android_dlopen_ext);</span><br><span class="line">    <span class="title class_">Interceptor</span>.<span class="title function_">attach</span>(android_dlopen_ext,&#123;</span><br><span class="line">        <span class="attr">onEnter</span>:<span class="keyword">function</span>(<span class="params">args</span>)&#123;</span><br><span class="line">            <span class="keyword">var</span> pathptr = args[<span class="number">0</span>];</span><br><span class="line">            <span class="keyword">if</span>(pathptr!=<span class="literal">null</span> &amp;&amp; pathptr != <span class="literal">undefined</span>)&#123;</span><br><span class="line">                <span class="keyword">var</span> path = <span class="title function_">ptr</span>(pathptr).<span class="title function_">readCString</span>();</span><br><span class="line">                <span class="keyword">if</span>(path.<span class="title function_">indexOf</span>(<span class="string">&quot;libmsaoaidsec.so&quot;</span>)!=-<span class="number">1</span>)&#123;</span><br><span class="line">                    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;android_dlopen_ext:&quot;</span>,path);</span><br><span class="line">                    <span class="title function_">hook_call_constructors</span>()</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">onLeave</span>:<span class="keyword">function</span>(<span class="params">retvel</span>)&#123;</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">hook_pthread</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> pth_create = <span class="title class_">Module</span>.<span class="title function_">findExportByName</span>(<span class="string">&quot;libc.so&quot;</span>, <span class="string">&quot;pthread_create&quot;</span>);</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;[pth_create]&quot;</span>, pth_create);</span><br><span class="line">    <span class="title class_">Interceptor</span>.<span class="title function_">attach</span>(pth_create, &#123;</span><br><span class="line">        <span class="attr">onEnter</span>: <span class="keyword">function</span> (<span class="params">args</span>) &#123;</span><br><span class="line">            <span class="keyword">var</span> <span class="variable language_">module</span> = <span class="title class_">Process</span>.<span class="title function_">findModuleByAddress</span>(args[<span class="number">2</span>]);</span><br><span class="line">            <span class="keyword">if</span> (<span class="variable language_">module</span> != <span class="literal">null</span>) &#123;</span><br><span class="line">                <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;address&quot;</span>, <span class="variable language_">module</span>.<span class="property">name</span>, args[<span class="number">2</span>].<span class="title function_">sub</span>(<span class="variable language_">module</span>.<span class="property">base</span>));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">onLeave</span>: <span class="keyword">function</span> (<span class="params">retval</span>) &#123;&#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">hook_call_constructors</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="keyword">var</span> linker = <span class="title class_">Process</span>.<span class="title function_">findModuleByName</span>(<span class="string">&quot;linker64&quot;</span>);</span><br><span class="line">    <span class="keyword">var</span> symbols = linker.<span class="title function_">enumerateSymbols</span>();</span><br><span class="line">    <span class="keyword">var</span> addr_call_constructors = <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">var</span> symbol = <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> index =<span class="number">0</span>;index&lt;symbols.<span class="property">length</span>;index++)&#123;</span><br><span class="line">        symbol = symbols[index];</span><br><span class="line">        <span class="keyword">if</span>(symbol.<span class="property">name</span>===<span class="string">&quot;__dl__ZN6soinfo17call_constructorsEv&quot;</span>)&#123;</span><br><span class="line">            addr_call_constructors = symbol.<span class="property">address</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">var</span> listener = <span class="title class_">Interceptor</span>.<span class="title function_">attach</span>(addr_call_constructors,&#123;</span><br><span class="line">        <span class="attr">onEnter</span>:<span class="keyword">function</span>(<span class="params">args</span>)&#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;hooked call_constructors&quot;</span>)</span><br><span class="line">            <span class="keyword">var</span> <span class="variable language_">module</span> = <span class="title class_">Process</span>.<span class="title function_">findModuleByName</span>(<span class="string">&quot;libmsaoaidsec.so&quot;</span>)</span><br><span class="line">            <span class="keyword">if</span> (<span class="variable language_">module</span> != <span class="literal">null</span>) &#123;</span><br><span class="line">                <span class="title class_">Interceptor</span>.<span class="title function_">replace</span>(<span class="variable language_">module</span>.<span class="property">base</span>.<span class="title function_">add</span>(<span class="number">0x175f8</span>), <span class="keyword">new</span> <span class="title class_">NativeCallback</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">                    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;0x175f8:替换成功&quot;</span>)</span><br><span class="line">                &#125;, <span class="string">&quot;void&quot;</span>, []))</span><br><span class="line">                <span class="title class_">Interceptor</span>.<span class="title function_">replace</span>(<span class="variable language_">module</span>.<span class="property">base</span>.<span class="title function_">add</span>(<span class="number">0x16d30</span>), <span class="keyword">new</span> <span class="title class_">NativeCallback</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">                    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;0x16d30:替换成功&quot;</span>)</span><br><span class="line">                &#125;, <span class="string">&quot;void&quot;</span>, []))</span><br><span class="line">                listener.<span class="title function_">detach</span>()</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">onLeave</span>:<span class="keyword">function</span>(<span class="params">ret</span>)&#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">main</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="title function_">hook_dlopen</span>()</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">main</span>()</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -2260,7 +2428,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">79</span>
+          <span class="site-state-item-count">80</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -2273,7 +2441,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">73</span>
+        <span class="site-state-item-count">74</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -2314,13 +2482,13 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">598k</span>
+    <span title="站点总字数">629k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">9:03</span>
+    <span title="站点阅读时长">9:32</span>
 </div>
 
 
