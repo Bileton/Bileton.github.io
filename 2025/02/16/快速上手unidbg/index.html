@@ -30,7 +30,7 @@
 <meta property="og:image" content="http://example.com/2025/02/16/%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8Bunidbg/1.jpg">
 <meta property="og:image" content="http://example.com/2025/02/16/%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8Bunidbg/2.jpg">
 <meta property="article:published_time" content="2025-02-16T08:27:04.000Z">
-<meta property="article:modified_time" content="2025-02-19T06:57:36.151Z">
+<meta property="article:modified_time" content="2025-02-25T04:04:02.562Z">
 <meta property="article:author" content="Bileton">
 <meta property="article:tag" content="unidbg">
 <meta name="twitter:card" content="summary">
@@ -130,7 +130,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">74</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">75</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -140,7 +140,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">80</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">81</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -226,7 +226,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2025-02-19 14:57:36" itemprop="dateModified" datetime="2025-02-19T14:57:36+08:00">2025-02-19</time>
+                <time title="修改时间：2025-02-25 12:04:02" itemprop="dateModified" datetime="2025-02-25T12:04:02+08:00">2025-02-25</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -244,14 +244,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>2.1k</span>
+              <span>3.5k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>2 分钟</span>
+              <span>3 分钟</span>
             </span>
 
         </div>
@@ -267,9 +267,26 @@
 <p>Unidbg是一个基于Maven构建的 JAVA 项目，可在 Github 下载源代码，然后在 IDEA&#x2F;VScode 等 IDE 里打开，其依赖下载完成后，测试运行。</p>
 <h1 id="初始化环境"><a href="#初始化环境" class="headerlink" title="初始化环境"></a>初始化环境</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.chezhiying.sign;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.github.unidbg.AndroidEmulator;</span><br><span class="line"><span class="keyword">import</span> com.github.unidbg.Module;</span><br><span class="line"><span class="keyword">import</span> com.github.unidbg.arm.backend.Unicorn2Factory;</span><br><span class="line"><span class="keyword">import</span> com.github.unidbg.linux.android.AndroidEmulatorBuilder;</span><br><span class="line"><span class="keyword">import</span> com.github.unidbg.linux.android.AndroidResolver;</span><br><span class="line"><span class="keyword">import</span> com.github.unidbg.linux.android.dvm.AbstractJni;</span><br><span class="line"><span class="keyword">import</span> com.github.unidbg.linux.android.dvm.DalvikModule;</span><br><span class="line"><span class="keyword">import</span> com.github.unidbg.linux.android.dvm.VM;</span><br><span class="line"><span class="keyword">import</span> com.github.unidbg.memory.Memory;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.File;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MainActivity</span> <span class="keyword">extends</span> <span class="title class_">AbstractJni</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> AndroidEmulator emulator;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">String</span> <span class="variable">process</span> <span class="operator">=</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Memory memory;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> VM vm;</span><br><span class="line">    <span class="keyword">private</span> DalvikModule dm;</span><br><span class="line">    <span class="keyword">private</span> Module <span class="keyword">module</span>;</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">MainActivity</span><span class="params">()</span> &#123;</span><br><span class="line">        emulator = AndroidEmulatorBuilder</span><br><span class="line">                .for64Bit() <span class="comment">// for32Bit()</span></span><br><span class="line">                .setProcessName(process)</span><br><span class="line">            	.setRootDir(<span class="keyword">new</span> <span class="title class_">File</span>(<span class="string">&quot;target/rootfs&quot;</span>))</span><br><span class="line">                .addBackendFactory()</span><br><span class="line">                .build();</span><br><span class="line">        <span class="comment">// 设置执行多少条指令切换一次线程</span></span><br><span class="line">        <span class="comment">// emulator.getBackend().registerEmuCountHook(10000);</span></span><br><span class="line">        <span class="comment">// 开启线程调度器</span></span><br><span class="line">        <span class="comment">// emulator.getSyscallHandler().setEnableThreadDispatcher(true);</span></span><br><span class="line">        memory = emulator.getMemory();</span><br><span class="line">        memory.setLibraryResolver(<span class="keyword">new</span> <span class="title class_">AndroidResolver</span>(<span class="number">23</span>));</span><br><span class="line">        vm = emulator.createDalvikVM(<span class="keyword">new</span> <span class="title class_">File</span>(<span class="string">&quot;&quot;</span>));</span><br><span class="line">        vm.setJni(<span class="built_in">this</span>);</span><br><span class="line">        vm.setVerbose(<span class="literal">true</span>);</span><br><span class="line">        dm = vm.loadLibrary(<span class="string">&quot;&quot;</span>,<span class="literal">true</span>);</span><br><span class="line">        dm.callJNI_OnLoad(emulator);</span><br><span class="line">        <span class="keyword">module</span> = dm.getModule();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h1 id="获取类和对象"><a href="#获取类和对象" class="headerlink" title="获取类和对象"></a>获取类和对象</h1><h2 id="类"><a href="#类" class="headerlink" title="类"></a>类</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">DvmClass</span> <span class="variable">myClass</span> <span class="operator">=</span> vm.resolveClass(<span class="string">&quot;com/example/MyClass&quot;</span>);</span><br></pre></td></tr></table></figure>
+<h1 id="加载动态链接库"><a href="#加载动态链接库" class="headerlink" title="加载动态链接库"></a>加载动态链接库</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">DalvikModule <span class="title function_">loadLibrary</span><span class="params">(String libname, <span class="type">boolean</span> forceCallInit)</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// libname:共享库的名字，不包含路径和扩展名</span></span><br><span class="line"><span class="comment">// forceCallInit:是否强制调用库的初始化函数</span></span><br><span class="line"><span class="comment">// 返回 DalvikModule 对象，它表示已加载的库，并且可以通过该对象调用库中的函数。</span></span><br></pre></td></tr></table></figure>
 
-<h2 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DvmObject mybject= myClass.newObject(<span class="literal">null</span>);</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">DalvikModule <span class="title function_">loadLibrary</span><span class="params">(File elfFile, <span class="type">boolean</span> forceCallInit)</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// elfFile:File 类型的对象，指向共享库的路径</span></span><br><span class="line"><span class="comment">// forceCallInit:是否强制调用库的初始化函数</span></span><br><span class="line"><span class="comment">// 返回 DalvikModule 对象，它表示已加载的库，并且可以通过该对象调用库中的函数。</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="获取类和对象"><a href="#获取类和对象" class="headerlink" title="获取类和对象"></a>获取类和对象</h1><h2 id="类"><a href="#类" class="headerlink" title="类"></a>类</h2><h3 id="resolveClass"><a href="#resolveClass" class="headerlink" title="resolveClass()"></a>resolveClass()</h3><p>方法签名</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DvmClass resolveClass(String className, DvmClass... interfaceClasses);</span><br></pre></td></tr></table></figure>
+
+<p>示例</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">DvmClass</span> <span class="variable">myClass</span> <span class="operator">=</span> vm.resolveClass(<span class="string">&quot;com/example/MyClass&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h2><h3 id="DvmClass-newObject"><a href="#DvmClass-newObject" class="headerlink" title="DvmClass.newObject()"></a>DvmClass.newObject()</h3><p>通过类获取对象</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">DvmObject</span> <span class="variable">myobject</span> <span class="operator">=</span> myClass.newObject(<span class="literal">null</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="ProxyDvmObject-createObject"><a href="#ProxyDvmObject-createObject" class="headerlink" title="ProxyDvmObject.createObject()"></a>ProxyDvmObject.createObject()</h3><p>方法签名</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DvmObject&lt;?&gt; createObject(VM vm, Object value)</span><br></pre></td></tr></table></figure>
+
+<p>示例</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DvmObject myobject = ProxyDvmObject.createObject(vm,value)</span><br></pre></td></tr></table></figure>
 
 <h1 id="调用方法"><a href="#调用方法" class="headerlink" title="调用方法"></a>调用方法</h1><h2 id="调用静态方法与实例方法的区别"><a href="#调用静态方法与实例方法的区别" class="headerlink" title="调用静态方法与实例方法的区别"></a>调用静态方法与实例方法的区别</h2><ul>
 <li><p><strong>静态方法</strong></p>
@@ -284,13 +301,30 @@
 <h2 id="调用实例方法"><a href="#调用实例方法" class="headerlink" title="调用实例方法"></a>调用实例方法</h2><p>根据返回值使用合适的调用方法。</p>
 <p><img src="/2025/02/16/%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8Bunidbg/2.jpg"></p>
 <h1 id="参数传递"><a href="#参数传递" class="headerlink" title="参数传递"></a>参数传递</h1><h2 id="基本类型的参数传递"><a href="#基本类型的参数传递" class="headerlink" title="基本类型的参数传递"></a>基本类型的参数传递</h2><p>Java 中的基本类型（如 <code>int</code>、<code>long</code>、<code>float</code>、<code>double</code> 等）可以直接作为参数传递。</p>
-<p>String类型也可以直接作为参数传递。</p>
+<p>String类型也可以直接作为参数传递（不建议，有时候可能导致错误）。</p>
 <h2 id="对象类型的参数传递"><a href="#对象类型的参数传递" class="headerlink" title="对象类型的参数传递"></a>对象类型的参数传递</h2><p>如果方法的参数是对象类型，需要先创建对象实例，然后将对象实例作为参数传递。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">DvmObject</span> <span class="variable">stringObj</span> <span class="operator">=</span> vm.resolveClass(<span class="string">&quot;java/lang/String&quot;</span>).newObject(<span class="string">&quot;Hello World&quot;</span>);</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">DvmObject</span> <span class="variable">stringObj</span> <span class="operator">=</span> vm.resolveClass(<span class="string">&quot;java/lang/String&quot;</span>).newObject(<span class="string">&quot;Hello World&quot;</span>);</span><br><span class="line"><span class="type">DvmObject</span> <span class="variable">stringObj</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StringObject</span>(vm,<span class="string">&quot;Hello World&quot;</span>);</span><br></pre></td></tr></table></figure>
 
 <h2 id="数组类型的参数传递"><a href="#数组类型的参数传递" class="headerlink" title="数组类型的参数传递"></a>数组类型的参数传递</h2><p>如果方法的参数是数组类型，需要先创建数组对象，然后将数组对象作为参数传递。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DvmObject&lt;?&gt; arrayObj = vm.addLocalObject(<span class="keyword">new</span> <span class="title class_">ArrayObject</span>(<span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>&#125;));</span><br></pre></td></tr></table></figure>
 
+<h1 id="加载依赖"><a href="#加载依赖" class="headerlink" title="加载依赖"></a>加载依赖</h1><h2 id="libandroid-so"><a href="#libandroid-so" class="headerlink" title="libandroid.so"></a>libandroid.so</h2><p>日志内容</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">load dependency libandroid.so failed</span><br></pre></td></tr></table></figure>
+
+<p>提示加载<code>libandroid.so</code>失败。</p>
+<p>原因：<code>libandroid.so</code>是一个系统库，提供大量的安卓相关功能，但是Unidbg的lib目录下并没有包含这个动态库，这是因为它依赖于相当多的类库，其中许多和 Android 系统、软硬件、大量的系统调用紧密相关，Unidbg 很难对它们做妥善、完备的处理。</p>
+<p>处理方式：Unidbg 提供了一种叫做虚拟模块的机制，对这些 SO中 一部分函数的模拟实现。</p>
+<p>在早于目标so加载的时机，添加如下代码:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">new AndroidModule(emulator, vm).register(memory);;</span><br></pre></td></tr></table></figure>
+
+<p>这种方式并非万全之策，AndroidModule里只提供了一部分函数。</p>
+<h1 id="补环境"><a href="#补环境" class="headerlink" title="补环境"></a>补环境</h1><h2 id="系统调用"><a href="#系统调用" class="headerlink" title="系统调用"></a>系统调用</h2><p>系统调用是由<code>svc</code>软中断发起的，依赖与<code>svc</code>后面的数字</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">svc imm</span><br><span class="line">bx lr</span><br></pre></td></tr></table></figure>
+
+<p>在系统调用的调用约定里，<code>imm</code>无实际意义，而且默认使用<code>0</code>，<code>svc 0</code>，Unidbg可以根据<code>imm</code>是否为0来确认模拟的是JNI函数调用还是系统调用。</p>
+<h2 id="JNI调用"><a href="#JNI调用" class="headerlink" title="JNI调用"></a>JNI调用</h2><p>Unidbg构造了<code>JNIEnv</code>和<code>JavaVM</code>这两个JNI中的关键结构，凭借系统调用的处理模块来实现对JNI的代理，在<code>svc imm</code>及<code>bx lr</code>这部分，有意义的是<code>lr</code>，它是<code>svc</code>的返回地址，对应样本发起JNI调用的位置。</p>
+<h2 id="补环境的原因"><a href="#补环境的原因" class="headerlink" title="补环境的原因"></a>补环境的原因</h2><p>对于对样本的Java层数据做访问的一系列JNI函数，由于Unidbg未运行Dex以及Apk，就需要自己去填充外部信息。</p>
+<p>为了减少补环境的负担，Unidbg预处理了常见的JNI函数调用和字段访问，逻辑位于<code>src/main/java/com/github/unidbg/linux/android/dvm/AbstractJni.java</code>类里。</p>
 
     </div>
 
@@ -374,7 +408,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96%E7%8E%AF%E5%A2%83"><span class="nav-number">2.</span> <span class="nav-text">初始化环境</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1"><span class="nav-number">3.</span> <span class="nav-text">获取类和对象</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B1%BB"><span class="nav-number">3.1.</span> <span class="nav-text">类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%B9%E8%B1%A1"><span class="nav-number">3.2.</span> <span class="nav-text">对象</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%B0%83%E7%94%A8%E6%96%B9%E6%B3%95"><span class="nav-number">4.</span> <span class="nav-text">调用方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B0%83%E7%94%A8%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95%E4%B8%8E%E5%AE%9E%E4%BE%8B%E6%96%B9%E6%B3%95%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">4.1.</span> <span class="nav-text">调用静态方法与实例方法的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B0%83%E7%94%A8%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95"><span class="nav-number">4.2.</span> <span class="nav-text">调用静态方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B0%83%E7%94%A8%E5%AE%9E%E4%BE%8B%E6%96%B9%E6%B3%95"><span class="nav-number">4.3.</span> <span class="nav-text">调用实例方法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E6%95%B0%E4%BC%A0%E9%80%92"><span class="nav-number">5.</span> <span class="nav-text">参数传递</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%8F%82%E6%95%B0%E4%BC%A0%E9%80%92"><span class="nav-number">5.1.</span> <span class="nav-text">基本类型的参数传递</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%B9%E8%B1%A1%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%8F%82%E6%95%B0%E4%BC%A0%E9%80%92"><span class="nav-number">5.2.</span> <span class="nav-text">对象类型的参数传递</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E7%BB%84%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%8F%82%E6%95%B0%E4%BC%A0%E9%80%92"><span class="nav-number">5.3.</span> <span class="nav-text">数组类型的参数传递</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96%E7%8E%AF%E5%A2%83"><span class="nav-number">2.</span> <span class="nav-text">初始化环境</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8A%A0%E8%BD%BD%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5%E5%BA%93"><span class="nav-number">3.</span> <span class="nav-text">加载动态链接库</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1"><span class="nav-number">4.</span> <span class="nav-text">获取类和对象</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B1%BB"><span class="nav-number">4.1.</span> <span class="nav-text">类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#resolveClass"><span class="nav-number">4.1.1.</span> <span class="nav-text">resolveClass()</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%B9%E8%B1%A1"><span class="nav-number">4.2.</span> <span class="nav-text">对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#DvmClass-newObject"><span class="nav-number">4.2.1.</span> <span class="nav-text">DvmClass.newObject()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ProxyDvmObject-createObject"><span class="nav-number">4.2.2.</span> <span class="nav-text">ProxyDvmObject.createObject()</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%B0%83%E7%94%A8%E6%96%B9%E6%B3%95"><span class="nav-number">5.</span> <span class="nav-text">调用方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B0%83%E7%94%A8%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95%E4%B8%8E%E5%AE%9E%E4%BE%8B%E6%96%B9%E6%B3%95%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">5.1.</span> <span class="nav-text">调用静态方法与实例方法的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B0%83%E7%94%A8%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95"><span class="nav-number">5.2.</span> <span class="nav-text">调用静态方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B0%83%E7%94%A8%E5%AE%9E%E4%BE%8B%E6%96%B9%E6%B3%95"><span class="nav-number">5.3.</span> <span class="nav-text">调用实例方法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E6%95%B0%E4%BC%A0%E9%80%92"><span class="nav-number">6.</span> <span class="nav-text">参数传递</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%8F%82%E6%95%B0%E4%BC%A0%E9%80%92"><span class="nav-number">6.1.</span> <span class="nav-text">基本类型的参数传递</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%B9%E8%B1%A1%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%8F%82%E6%95%B0%E4%BC%A0%E9%80%92"><span class="nav-number">6.2.</span> <span class="nav-text">对象类型的参数传递</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E7%BB%84%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%8F%82%E6%95%B0%E4%BC%A0%E9%80%92"><span class="nav-number">6.3.</span> <span class="nav-text">数组类型的参数传递</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8A%A0%E8%BD%BD%E4%BE%9D%E8%B5%96"><span class="nav-number">7.</span> <span class="nav-text">加载依赖</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#libandroid-so"><span class="nav-number">7.1.</span> <span class="nav-text">libandroid.so</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%A1%A5%E7%8E%AF%E5%A2%83"><span class="nav-number">8.</span> <span class="nav-text">补环境</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8"><span class="nav-number">8.1.</span> <span class="nav-text">系统调用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JNI%E8%B0%83%E7%94%A8"><span class="nav-number">8.2.</span> <span class="nav-text">JNI调用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A1%A5%E7%8E%AF%E5%A2%83%E7%9A%84%E5%8E%9F%E5%9B%A0"><span class="nav-number">8.3.</span> <span class="nav-text">补环境的原因</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -390,7 +424,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">80</span>
+          <span class="site-state-item-count">81</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -403,7 +437,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">74</span>
+        <span class="site-state-item-count">75</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -444,13 +478,13 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">629k</span>
+    <span title="站点总字数">678k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">9:32</span>
+    <span title="站点阅读时长">10:16</span>
 </div>
 
 

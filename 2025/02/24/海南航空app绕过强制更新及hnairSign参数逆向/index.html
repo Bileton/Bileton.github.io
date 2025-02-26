@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/wxlog.jpg">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/wxlog.jpg">
+  <link rel="mask-icon" href="/images/wxlog.jpg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="App信息包名：com.rytong.hnair  绕过强制更新启动app，出现如下弹窗，强制更新  jadx反编译找到更新弹窗位置搜索字符串立刻更新  双击跳转  这个字符串对应的资源名字是version_update__dialog_btn_confirm_text，搜索它，找到它被调用的位置  双击跳转 如下，在这里设置文本内容  通过查找用例跳转到上层方法   这里面的show()方法就是">
+<meta property="og:type" content="article">
+<meta property="og:title" content="海南航空app绕过强制更新及hnairSign参数逆向">
+<meta property="og:url" content="http://example.com/2025/02/24/%E6%B5%B7%E5%8D%97%E8%88%AA%E7%A9%BAapp%E7%BB%95%E8%BF%87%E5%BC%BA%E5%88%B6%E6%9B%B4%E6%96%B0%E5%8F%8AhnairSign%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/index.html">
+<meta property="og:site_name" content="白乐天">
+<meta property="og:description" content="App信息包名：com.rytong.hnair  绕过强制更新启动app，出现如下弹窗，强制更新  jadx反编译找到更新弹窗位置搜索字符串立刻更新  双击跳转  这个字符串对应的资源名字是version_update__dialog_btn_confirm_text，搜索它，找到它被调用的位置  双击跳转 如下，在这里设置文本内容  通过查找用例跳转到上层方法   这里面的show()方法就是">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2025/02/24/%E6%B5%B7%E5%8D%97%E8%88%AA%E7%A9%BAapp%E7%BB%95%E8%BF%87%E5%BC%BA%E5%88%B6%E6%9B%B4%E6%96%B0%E5%8F%8AhnairSign%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/1.jpg">
+<meta property="og:image" content="http://example.com/2025/02/24/%E6%B5%B7%E5%8D%97%E8%88%AA%E7%A9%BAapp%E7%BB%95%E8%BF%87%E5%BC%BA%E5%88%B6%E6%9B%B4%E6%96%B0%E5%8F%8AhnairSign%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/8.jpg">
+<meta property="og:image" content="http://example.com/2025/02/24/%E6%B5%B7%E5%8D%97%E8%88%AA%E7%A9%BAapp%E7%BB%95%E8%BF%87%E5%BC%BA%E5%88%B6%E6%9B%B4%E6%96%B0%E5%8F%8AhnairSign%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/9.jpg">
+<meta property="og:image" content="http://example.com/2025/02/24/%E6%B5%B7%E5%8D%97%E8%88%AA%E7%A9%BAapp%E7%BB%95%E8%BF%87%E5%BC%BA%E5%88%B6%E6%9B%B4%E6%96%B0%E5%8F%8AhnairSign%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/10.jpg">
+<meta property="og:image" content="http://example.com/2025/02/24/%E6%B5%B7%E5%8D%97%E8%88%AA%E7%A9%BAapp%E7%BB%95%E8%BF%87%E5%BC%BA%E5%88%B6%E6%9B%B4%E6%96%B0%E5%8F%8AhnairSign%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/11.jpg">
+<meta property="og:image" content="http://example.com/2025/02/24/%E6%B5%B7%E5%8D%97%E8%88%AA%E7%A9%BAapp%E7%BB%95%E8%BF%87%E5%BC%BA%E5%88%B6%E6%9B%B4%E6%96%B0%E5%8F%8AhnairSign%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/12.jpg">
+<meta property="og:image" content="http://example.com/2025/02/24/%E6%B5%B7%E5%8D%97%E8%88%AA%E7%A9%BAapp%E7%BB%95%E8%BF%87%E5%BC%BA%E5%88%B6%E6%9B%B4%E6%96%B0%E5%8F%8AhnairSign%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/13.jpg">
+<meta property="og:image" content="http://example.com/2025/02/24/%E6%B5%B7%E5%8D%97%E8%88%AA%E7%A9%BAapp%E7%BB%95%E8%BF%87%E5%BC%BA%E5%88%B6%E6%9B%B4%E6%96%B0%E5%8F%8AhnairSign%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/14.jpg">
+<meta property="og:image" content="http://example.com/2025/02/24/%E6%B5%B7%E5%8D%97%E8%88%AA%E7%A9%BAapp%E7%BB%95%E8%BF%87%E5%BC%BA%E5%88%B6%E6%9B%B4%E6%96%B0%E5%8F%8AhnairSign%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/15.jpg">
+<meta property="og:image" content="http://example.com/2025/02/24/%E6%B5%B7%E5%8D%97%E8%88%AA%E7%A9%BAapp%E7%BB%95%E8%BF%87%E5%BC%BA%E5%88%B6%E6%9B%B4%E6%96%B0%E5%8F%8AhnairSign%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/2.jpg">
+<meta property="og:image" content="http://example.com/2025/02/24/%E6%B5%B7%E5%8D%97%E8%88%AA%E7%A9%BAapp%E7%BB%95%E8%BF%87%E5%BC%BA%E5%88%B6%E6%9B%B4%E6%96%B0%E5%8F%8AhnairSign%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/3.jpg">
+<meta property="og:image" content="http://example.com/2025/02/24/%E6%B5%B7%E5%8D%97%E8%88%AA%E7%A9%BAapp%E7%BB%95%E8%BF%87%E5%BC%BA%E5%88%B6%E6%9B%B4%E6%96%B0%E5%8F%8AhnairSign%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/4.jpg">
+<meta property="og:image" content="http://example.com/2025/02/24/%E6%B5%B7%E5%8D%97%E8%88%AA%E7%A9%BAapp%E7%BB%95%E8%BF%87%E5%BC%BA%E5%88%B6%E6%9B%B4%E6%96%B0%E5%8F%8AhnairSign%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/5.jpg">
+<meta property="og:image" content="http://example.com/2025/02/24/%E6%B5%B7%E5%8D%97%E8%88%AA%E7%A9%BAapp%E7%BB%95%E8%BF%87%E5%BC%BA%E5%88%B6%E6%9B%B4%E6%96%B0%E5%8F%8AhnairSign%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/7.jpg">
+<meta property="og:image" content="http://example.com/2025/02/24/%E6%B5%B7%E5%8D%97%E8%88%AA%E7%A9%BAapp%E7%BB%95%E8%BF%87%E5%BC%BA%E5%88%B6%E6%9B%B4%E6%96%B0%E5%8F%8AhnairSign%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/6.jpg">
+<meta property="og:image" content="http://example.com/2025/02/24/%E6%B5%B7%E5%8D%97%E8%88%AA%E7%A9%BAapp%E7%BB%95%E8%BF%87%E5%BC%BA%E5%88%B6%E6%9B%B4%E6%96%B0%E5%8F%8AhnairSign%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/16.jpg">
+<meta property="og:image" content="http://example.com/2025/02/24/%E6%B5%B7%E5%8D%97%E8%88%AA%E7%A9%BAapp%E7%BB%95%E8%BF%87%E5%BC%BA%E5%88%B6%E6%9B%B4%E6%96%B0%E5%8F%8AhnairSign%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/17.jpg">
+<meta property="og:image" content="http://example.com/2025/02/24/%E6%B5%B7%E5%8D%97%E8%88%AA%E7%A9%BAapp%E7%BB%95%E8%BF%87%E5%BC%BA%E5%88%B6%E6%9B%B4%E6%96%B0%E5%8F%8AhnairSign%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/18.jpg">
+<meta property="og:image" content="http://example.com/2025/02/24/%E6%B5%B7%E5%8D%97%E8%88%AA%E7%A9%BAapp%E7%BB%95%E8%BF%87%E5%BC%BA%E5%88%B6%E6%9B%B4%E6%96%B0%E5%8F%8AhnairSign%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/19.jpg">
+<meta property="og:image" content="http://example.com/2025/02/24/%E6%B5%B7%E5%8D%97%E8%88%AA%E7%A9%BAapp%E7%BB%95%E8%BF%87%E5%BC%BA%E5%88%B6%E6%9B%B4%E6%96%B0%E5%8F%8AhnairSign%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/20.jpg">
+<meta property="article:published_time" content="2025-02-24T04:30:23.000Z">
+<meta property="article:modified_time" content="2025-02-24T05:03:13.745Z">
+<meta property="article:author" content="Bileton">
+<meta property="article:tag" content="海南航空">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2025/02/24/%E6%B5%B7%E5%8D%97%E8%88%AA%E7%A9%BAapp%E7%BB%95%E8%BF%87%E5%BC%BA%E5%88%B6%E6%9B%B4%E6%96%B0%E5%8F%8AhnairSign%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/1.jpg">
+
+<link rel="canonical" href="http://example.com/2025/02/24/%E6%B5%B7%E5%8D%97%E8%88%AA%E7%A9%BAapp%E7%BB%95%E8%BF%87%E5%BC%BA%E5%88%B6%E6%9B%B4%E6%96%B0%E5%8F%8AhnairSign%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>海南航空app绕过强制更新及hnairSign参数逆向 | 白乐天</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">白乐天</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">道阻且长，行则将至。</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">75</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">31</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">81</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/love.js"></script>
+</div>
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/02/24/%E6%B5%B7%E5%8D%97%E8%88%AA%E7%A9%BAapp%E7%BB%95%E8%BF%87%E5%BC%BA%E5%88%B6%E6%9B%B4%E6%96%B0%E5%8F%8AhnairSign%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/android.svg">
+      <meta itemprop="name" content="Bileton">
+      <meta itemprop="description" content="路漫漫其修远夕！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="白乐天">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          海南航空app绕过强制更新及hnairSign参数逆向
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2025-02-24 12:30:23 / 修改时间：13:03:13" itemprop="dateCreated datePublished" datetime="2025-02-24T12:30:23+08:00">2025-02-24</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%80%86%E5%90%91%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/" itemprop="url" rel="index"><span itemprop="name">逆向实战案例</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>18k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>17 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="App信息"><a href="#App信息" class="headerlink" title="App信息"></a>App信息</h1><p>包名：com.rytong.hnair</p>
+<p><img src="/2025/02/24/%E6%B5%B7%E5%8D%97%E8%88%AA%E7%A9%BAapp%E7%BB%95%E8%BF%87%E5%BC%BA%E5%88%B6%E6%9B%B4%E6%96%B0%E5%8F%8AhnairSign%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/1.jpg"></p>
+<h1 id="绕过强制更新"><a href="#绕过强制更新" class="headerlink" title="绕过强制更新"></a>绕过强制更新</h1><p>启动app，出现如下弹窗，强制更新</p>
+<p><img src="/2025/02/24/%E6%B5%B7%E5%8D%97%E8%88%AA%E7%A9%BAapp%E7%BB%95%E8%BF%87%E5%BC%BA%E5%88%B6%E6%9B%B4%E6%96%B0%E5%8F%8AhnairSign%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/8.jpg"></p>
+<h2 id="jadx反编译找到更新弹窗位置"><a href="#jadx反编译找到更新弹窗位置" class="headerlink" title="jadx反编译找到更新弹窗位置"></a>jadx反编译找到更新弹窗位置</h2><p>搜索字符串<code>立刻更新</code></p>
+<p><img src="/2025/02/24/%E6%B5%B7%E5%8D%97%E8%88%AA%E7%A9%BAapp%E7%BB%95%E8%BF%87%E5%BC%BA%E5%88%B6%E6%9B%B4%E6%96%B0%E5%8F%8AhnairSign%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/9.jpg"></p>
+<p>双击跳转</p>
+<p><img src="/2025/02/24/%E6%B5%B7%E5%8D%97%E8%88%AA%E7%A9%BAapp%E7%BB%95%E8%BF%87%E5%BC%BA%E5%88%B6%E6%9B%B4%E6%96%B0%E5%8F%8AhnairSign%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/10.jpg"></p>
+<p>这个字符串对应的资源名字是<code>version_update__dialog_btn_confirm_text</code>，搜索它，找到它被调用的位置</p>
+<p><img src="/2025/02/24/%E6%B5%B7%E5%8D%97%E8%88%AA%E7%A9%BAapp%E7%BB%95%E8%BF%87%E5%BC%BA%E5%88%B6%E6%9B%B4%E6%96%B0%E5%8F%8AhnairSign%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/11.jpg"></p>
+<p>双击跳转</p>
+<p>如下，在这里设置文本内容</p>
+<p><img src="/2025/02/24/%E6%B5%B7%E5%8D%97%E8%88%AA%E7%A9%BAapp%E7%BB%95%E8%BF%87%E5%BC%BA%E5%88%B6%E6%9B%B4%E6%96%B0%E5%8F%8AhnairSign%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/12.jpg"></p>
+<p>通过查找用例跳转到上层方法</p>
+<p><img src="/2025/02/24/%E6%B5%B7%E5%8D%97%E8%88%AA%E7%A9%BAapp%E7%BB%95%E8%BF%87%E5%BC%BA%E5%88%B6%E6%9B%B4%E6%96%B0%E5%8F%8AhnairSign%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/13.jpg"></p>
+<p><img src="/2025/02/24/%E6%B5%B7%E5%8D%97%E8%88%AA%E7%A9%BAapp%E7%BB%95%E8%BF%87%E5%BC%BA%E5%88%B6%E6%9B%B4%E6%96%B0%E5%8F%8AhnairSign%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/14.jpg"></p>
+<p>这里面的<code>show()</code>方法就是显示弹窗的，把它hook掉，弹窗就不会显示了</p>
+<h2 id="hook-show"><a href="#hook-show" class="headerlink" title="hook show()"></a>hook show()</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">hook_show</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="title class_">Java</span>.<span class="title function_">perform</span>(<span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="keyword">let</span> k = <span class="title class_">Java</span>.<span class="title function_">use</span>(<span class="string">&quot;f6.k&quot;</span>);</span><br><span class="line">        k[<span class="string">&quot;show&quot;</span>].<span class="property">implementation</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`k.show is called`</span>);</span><br><span class="line">            <span class="comment">// this[&quot;show&quot;]();</span></span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">hook_show</span>();</span><br></pre></td></tr></table></figure>
+
+<p>如下，弹窗就被hook掉了</p>
+<p><img src="/2025/02/24/%E6%B5%B7%E5%8D%97%E8%88%AA%E7%A9%BAapp%E7%BB%95%E8%BF%87%E5%BC%BA%E5%88%B6%E6%9B%B4%E6%96%B0%E5%8F%8AhnairSign%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/15.jpg"></p>
+<h1 id="抓包分析数据"><a href="#抓包分析数据" class="headerlink" title="抓包分析数据"></a>抓包分析数据</h1><p>点击登录，在通过了验证码校验之后会发送请求，及获取响应，抓取数据包</p>
+<p><img src="/2025/02/24/%E6%B5%B7%E5%8D%97%E8%88%AA%E7%A9%BAapp%E7%BB%95%E8%BF%87%E5%BC%BA%E5%88%B6%E6%9B%B4%E6%96%B0%E5%8F%8AhnairSign%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/2.jpg"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">url=https://app.hnair.com/appum/common/auth/login?hnairSign=0564996701D210B22DBB6F7AAC619C260CA0A114</span><br><span class="line"></span><br><span class="line">params=&#123;</span><br><span class="line">  &quot;hnairSign&quot;: &quot;0564996701D210B22DBB6F7AAC619C260CA0A114&quot;</span><br><span class="line">&#125;</span><br><span class="line">headers = &#123;</span><br><span class="line">  &quot;appver&quot;: &quot;9.0.0&quot;,</span><br><span class="line">  &quot;content-type&quot;: &quot;application/json; charset=UTF-8&quot;,</span><br><span class="line">  &quot;content-length&quot;: &quot;978&quot;,</span><br><span class="line">  &quot;accept-encoding&quot;: &quot;gzip&quot;,</span><br><span class="line">  &quot;user-agent&quot;: &quot;okhttp/4.9.1&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">json = &#123;</span><br><span class="line">  &quot;common&quot;: &#123;</span><br><span class="line">    &quot;akey&quot;: &quot;184C5F04D8BE43DCBD2EE3ABC928F616&quot;,</span><br><span class="line">    &quot;aname&quot;: &quot;com.rytong.hnair&quot;,</span><br><span class="line">    &quot;atarget&quot;: &quot;standard&quot;,</span><br><span class="line">    &quot;aver&quot;: &quot;9.0.0&quot;,</span><br><span class="line">    &quot;did&quot;: &quot;e574bb78db98d8ea&quot;,</span><br><span class="line">    &quot;dname&quot;: &quot;Google_Pixel 3&quot;,</span><br><span class="line">    &quot;gtcid&quot;: &quot;514490d4a99745bba1ee3c67a21e5db6&quot;,</span><br><span class="line">    &quot;mchannel&quot;: &quot;huawei&quot;,</span><br><span class="line">    &quot;schannel&quot;: &quot;AD&quot;,</span><br><span class="line">    &quot;slang&quot;: &quot;zh-CN&quot;,</span><br><span class="line">    &quot;sname&quot;: &quot;google/blueline/blueline:10/QQ3A.200705.002/6506677:user/release-keys&quot;,</span><br><span class="line">    &quot;stime&quot;: &quot;1740304439444&quot;,</span><br><span class="line">    &quot;sver&quot;: &quot;10&quot;,</span><br><span class="line">    &quot;system&quot;: &quot;AD&quot;,</span><br><span class="line">    &quot;szone&quot;: &quot;+0800&quot;,</span><br><span class="line">    &quot;abuild&quot;: &quot;64249&quot;,</span><br><span class="line">    &quot;riskToken&quot;: &quot;67baf03fNy5MXBFAoCK6UHULA4nAOmGMshN11oP3&quot;,</span><br><span class="line">    &quot;captchaToken&quot;: &quot;3037239175221CB99962A4E18B9A763B241E38AEC7657CDE570574B886AB788BAD219143A251B3B95BBEB9D693FDDAEED872D366E0D38095458726DDE75C845A49F1A6FEB95AE56461B44FC60507BA52:67baf0340PiDJ4ft549lxVciFEip4Qz9R8ox1Ra3&quot;,</span><br><span class="line">    &quot;hver&quot;: &quot;9.0.0.35417.7ac793f2e.standard&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;data&quot;: &#123;</span><br><span class="line">    &quot;number&quot;: &quot;18888888888&quot;,</span><br><span class="line">    &quot;pin&quot;: &quot;dNKwvxEU5MhDIHvDxC9W3GkIe9Y9Qgn1GFIL2Rnl3lpIYOAUAHyAfcX7SuEvKD3fZUNb8oHkG2fh\njMktd9dIib489LGK65FO41So6mzRK+mn/5wqHzqSj0oFiBTJOkQ8aPpUNLoNKCLClYrS5q4aWhB6\n7ncdYn8dobgaz7TyjVk=\n&quot;,</span><br><span class="line">    &quot;toSave&quot;: true</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>要逆向分析的是<code>hnairSign</code></p>
+<h1 id="参数分析"><a href="#参数分析" class="headerlink" title="参数分析"></a>参数分析</h1><h2 id="jadx反编译"><a href="#jadx反编译" class="headerlink" title="jadx反编译"></a>jadx反编译</h2><p>搜索<code>hnairSign</code></p>
+<p><img src="/2025/02/24/%E6%B5%B7%E5%8D%97%E8%88%AA%E7%A9%BAapp%E7%BB%95%E8%BF%87%E5%BC%BA%E5%88%B6%E6%9B%B4%E6%96%B0%E5%8F%8AhnairSign%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/3.jpg"></p>
+<h3 id="hnairSign"><a href="#hnairSign" class="headerlink" title="hnairSign"></a>hnairSign</h3><p>在如下位置出现</p>
+<p><img src="/2025/02/24/%E6%B5%B7%E5%8D%97%E8%88%AA%E7%A9%BAapp%E7%BB%95%E8%BF%87%E5%BC%BA%E5%88%B6%E6%9B%B4%E6%96%B0%E5%8F%8AhnairSign%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/4.jpg"></p>
+<p><code>hnairSign</code>它的值是从<code>signRequest()</code>方法返回的</p>
+<h3 id="signRequest"><a href="#signRequest" class="headerlink" title="signRequest()"></a>signRequest()</h3><p><img src="/2025/02/24/%E6%B5%B7%E5%8D%97%E8%88%AA%E7%A9%BAapp%E7%BB%95%E8%BF%87%E5%BC%BA%E5%88%B6%E6%9B%B4%E6%96%B0%E5%8F%8AhnairSign%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/5.jpg"></p>
+<p>这里面从参数<code>aVar</code>里面获取<code>headersForSign</code>、<code>queryForSign</code>、<code>requestBodyForSign</code>及生成参数<code>str</code>和<code>a10</code>，然后把这些参数传递个<code>getHNASignature()</code>方法，其返回值再传递给<code>i.p()</code>方法，<code>i.p()</code>的返回值应该是一个数组类型，然后获取第一个元素。</p>
+<h3 id="getHNASignature"><a href="#getHNASignature" class="headerlink" title="getHNASignature()"></a>getHNASignature()</h3><p><img src="/2025/02/24/%E6%B5%B7%E5%8D%97%E8%88%AA%E7%A9%BAapp%E7%BB%95%E8%BF%87%E5%BC%BA%E5%88%B6%E6%9B%B4%E6%96%B0%E5%8F%8AhnairSign%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/7.jpg"></p>
+<p>这是一个native方法，返回值是一个字符串</p>
+<h3 id="i-p"><a href="#i-p" class="headerlink" title="i.p()"></a>i.p()</h3><p><img src="/2025/02/24/%E6%B5%B7%E5%8D%97%E8%88%AA%E7%A9%BAapp%E7%BB%95%E8%BF%87%E5%BC%BA%E5%88%B6%E6%9B%B4%E6%96%B0%E5%8F%8AhnairSign%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/6.jpg"></p>
+<p>这里面是根据字节数组<code>strArr</code>对<code>charSequence</code>返回一个<code>List</code>，最后通过<code>get(0)</code>获取第0个元素作为<code>signRequest()</code>方法的返回值。</p>
+<h3 id="hook-getHNASignature"><a href="#hook-getHNASignature" class="headerlink" title="hook getHNASignature()"></a>hook getHNASignature()</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">getHNASignature</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="title class_">Java</span>.<span class="title function_">perform</span>(<span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="keyword">let</span> <span class="title class_">HNASignature</span> = <span class="title class_">Java</span>.<span class="title function_">use</span>(<span class="string">&quot;com.rytong.hnair.HNASignature&quot;</span>);</span><br><span class="line">        <span class="title class_">HNASignature</span>[<span class="string">&quot;getHNASignature&quot;</span>].<span class="property">implementation</span> = <span class="keyword">function</span> (<span class="params">str, str2, str3, str4, str5</span>) &#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`HNASignature.getHNASignature is called: str=<span class="subst">$&#123;str&#125;</span>, str2=<span class="subst">$&#123;str2&#125;</span>, str3=<span class="subst">$&#123;str3&#125;</span>, str4=<span class="subst">$&#123;str4&#125;</span>, str5=<span class="subst">$&#123;str5&#125;</span>`</span>);</span><br><span class="line">            <span class="keyword">let</span> result = <span class="variable language_">this</span>[<span class="string">&quot;getHNASignature&quot;</span>](str, str2, str3, str4, str5);</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`HNASignature.getHNASignature result=<span class="subst">$&#123;result&#125;</span>`</span>);</span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">getHNASignature</span>();</span><br></pre></td></tr></table></figure>
+
+<p>hook结果</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">HNASignature.getHNASignature is called: str=&#123;&#125;, str2=&#123;&#125;, str3=&#123;&quot;akey&quot;:&quot;184C5F04D8BE43DCBD2EE3ABC928F616&quot;,&quot;aname&quot;:&quot;com.rytong.hnair&quot;,&quot;atarget&quot;:&quot;standard&quot;,&quot;aver&quot;:&quot;9.0.0&quot;,&quot;did&quot;:&quot;e574bb78db98d8ea&quot;,&quot;dname&quot;:&quot;Google_Pixel 3&quot;,&quot;gtcid&quot;:&quot;f442b091aa961a407165841e3a084147&quot;,&quot;mchannel&quot;:&quot;huawei&quot;,&quot;schannel&quot;:&quot;AD&quot;,&quot;slang&quot;:&quot;zh-CN&quot;,&quot;sname&quot;:&quot;google\/blueline\/blueline:10\/QQ3A.200705.002\/6506677:user\/release-keys&quot;,&quot;stime&quot;:&quot;1740317961228&quot;,&quot;sver&quot;:&quot;10&quot;,&quot;system&quot;:&quot;AD&quot;,&quot;szone&quot;:&quot;+0800&quot;,&quot;abuild&quot;:&quot;64249&quot;,&quot;riskToken&quot;:&quot;67bb2505kRG0Hwidai2tEm3hYFUX1xCXvH8fuOk3&quot;,&quot;hver&quot;:&quot;9.0.0.35417.7ac793f2e.standard&quot;,&quot;number&quot;:&quot;18888888888&quot;,&quot;pin&quot;:&quot;awBta70HBNvOLA+L5Vlaas59trF+M0EI6lOgVDjQhG1QdoY\/6ck1GTaeZOeSXiwFpG3e8vgj6xuq\n1weM+DFKhl8aSi1Lhn7p1s51bdcPmvZ5DW3kYSV\/8DvpnYGjPKgQ79aKEBDo3AvuGZpZ+pg2rHBm\nWAgoyrVfSsBI6KLOsZg=\n&quot;,&quot;toSave&quot;:true&#125;, str4=21047C596EAD45209346AE29F0350491, str5=F6B15ABD66F91951036C955CB25B069F</span><br><span class="line">HNASignature.getHNASignature </span><br><span class="line"></span><br><span class="line">result=E184DAEE44DFA522CE974EAB75EBC60DAAEC321D&gt;&gt;</span><br><span class="line">64249184C5F04D8BE43DCBD2EE3ABC928F616com.rytong.hnairstandard9.0.0e574bb78db98d8eaGoogle_Pixel 3f442b091aa961a407165841e3a0841479.0.0.35417.7ac793f2e.standardhuawei18888888888awBta70HBNvOLA+L5Vlaas59trF+M0EI6lOgVDjQhG1QdoY/6ck1GTaeZOeSXiwFpG3e8vgj6xuq</span><br><span class="line">1weM+DFKhl8aSi1Lhn7p1s51bdcPmvZ5DW3kYSV/8DvpnYGjPKgQ79aKEBDo3AvuGZpZ+pg2rHBm</span><br><span class="line">WAgoyrVfSsBI6KLOsZg=</span><br><span class="line">67bb2505kRG0Hwidai2tEm3hYFUX1xCXvH8fuOk3ADzh-CNgoogle/blueline/blueline:10/QQ3A.200705.002/6506677:user/release-keys174031796122810AD+0800true&gt;&gt;F6B15ABD66F91951036C955CB25B069F</span><br><span class="line"></span><br><span class="line">result=515FCBCF21BD505882222C4898DCA5A13014C134&gt;&gt;</span><br><span class="line">64249184C5F04D8BE43DCBD2EE3ABC928F616com.rytong.hnairstandard9.0.0e574bb78db98d8eaGoogle_Pixel 3f442b091aa961a407165841e3a0841479.0.0.35417.7ac793f2e.standardhuawei18888888888awBta70HBNvOLA+L5Vlaas59trF+M0EI6lOgVDjQhG1QdoY/6ck1GTaeZOeSXiwFpG3e8vgj6xuq</span><br><span class="line">1weM+DFKhl8aSi1Lhn7p1s51bdcPmvZ5DW3kYSV/8DvpnYGjPKgQ79aKEBDo3AvuGZpZ+pg2rHBm</span><br><span class="line">WAgoyrVfSsBI6KLOsZg=</span><br><span class="line">67bb2505kRG0Hwidai2tEm3hYFUX1xCXvH8fuOk3ADzh-CNgoogle/blueline/blueline:10/QQ3A.200705.002/6506677:user/release-keys174031796122810AD+0800true&gt;&gt;F6B15ABD66F91951036C955CB25B069F</span><br></pre></td></tr></table></figure>
+
+<h3 id="hook-signRequest"><a href="#hook-signRequest" class="headerlink" title="hook signRequest()"></a>hook signRequest()</h3><p>两个方法一起hook</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">getHNASignature</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="title class_">Java</span>.<span class="title function_">perform</span>(<span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="keyword">let</span> <span class="title class_">HNASignature</span> = <span class="title class_">Java</span>.<span class="title function_">use</span>(<span class="string">&quot;com.rytong.hnair.HNASignature&quot;</span>);</span><br><span class="line">        <span class="title class_">HNASignature</span>[<span class="string">&quot;getHNASignature&quot;</span>].<span class="property">implementation</span> = <span class="keyword">function</span> (<span class="params">str, str2, str3, str4, str5</span>) &#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`HNASignature.getHNASignature is called: str=<span class="subst">$&#123;str&#125;</span>, str2=<span class="subst">$&#123;str2&#125;</span>, str3=<span class="subst">$&#123;str3&#125;</span>, str4=<span class="subst">$&#123;str4&#125;</span>, str5=<span class="subst">$&#123;str5&#125;</span>`</span>);</span><br><span class="line">            <span class="keyword">let</span> result = <span class="variable language_">this</span>[<span class="string">&quot;getHNASignature&quot;</span>](str, str2, str3, str4, str5);</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`HNASignature.getHNASignature result=<span class="subst">$&#123;result&#125;</span>`</span>);</span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">getHNASignature</span>();</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">hook_signRequest</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="title class_">Java</span>.<span class="title function_">perform</span>(<span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="keyword">let</span> <span class="title class_">ApiSignInterceptor</span> = <span class="title class_">Java</span>.<span class="title function_">use</span>(<span class="string">&quot;com.hnair.airlines.repo.common.ApiSignInterceptor&quot;</span>);</span><br><span class="line">        <span class="title class_">ApiSignInterceptor</span>[<span class="string">&quot;signRequest&quot;</span>].<span class="property">implementation</span> = <span class="keyword">function</span> (<span class="params">aVar</span>) &#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`ApiSignInterceptor.signRequest is called: aVar=<span class="subst">$&#123;aVar&#125;</span>`</span>);</span><br><span class="line">            <span class="keyword">let</span> result = <span class="variable language_">this</span>[<span class="string">&quot;signRequest&quot;</span>](aVar);</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`ApiSignInterceptor.signRequest result=<span class="subst">$&#123;result&#125;</span>`</span>);</span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">hook_signRequest</span>();</span><br></pre></td></tr></table></figure>
+
+<p>hook结果</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ApiSignInterceptor.signRequest is called: aVar=[object Object]</span><br><span class="line">HNASignature.getHNASignature is called: str=&#123;&#125;, str2=&#123;&#125;, str3=&#123;&quot;akey&quot;:&quot;184C5F04D8BE43DCBD2EE3ABC928F616&quot;,&quot;aname&quot;:&quot;com.rytong.hnair&quot;,&quot;atarget&quot;:&quot;standard&quot;,&quot;aver&quot;:&quot;9.0.0&quot;,&quot;did&quot;:&quot;e574bb78db98d8ea&quot;,&quot;dname&quot;:&quot;Google_Pixel 3&quot;,&quot;gtcid&quot;:&quot;f442b091aa961a407165841e3a084147&quot;,&quot;mchannel&quot;:&quot;huawei&quot;,&quot;schannel&quot;:&quot;AD&quot;,&quot;slang&quot;:&quot;zh-CN&quot;,&quot;sname&quot;:&quot;google\/blueline\/blueline:10\/QQ3A.200705.002\/6506677:user\/release-keys&quot;,&quot;stime&quot;:&quot;1740318611305&quot;,&quot;sver&quot;:&quot;10&quot;,&quot;system&quot;:&quot;AD&quot;,&quot;szone&quot;:&quot;+0800&quot;,&quot;abuild&quot;:&quot;64249&quot;,&quot;riskToken&quot;:&quot;67bb278f3kk3a3WeYbgRPyoBNPlIAdRaYordBAp3&quot;,&quot;hver&quot;:&quot;9.0.0.35417.7ac793f2e.standard&quot;,&quot;number&quot;:&quot;18888888888&quot;,&quot;pin&quot;:&quot;YtirjBXqjfmcYkrHpTOw46uZtkKiQTt8RvSVGkZKby025\/m2Yrv1zMUHehUz+sEDkHENCIPyJGuR\nbqKOxirFsWuMr0W4vGizxLnHOOLh9BTxzMpjpPsihKYvEMS0DlRlxp86LsEXmjviAt55e4ByhkEu\nVq5ckk5NVufdx\/u7CFI=\n&quot;,&quot;toSave&quot;:true&#125;, str4=21047C596EAD45209346AE29F0350491, str5=F6B15ABD66F91951036C955CB25B069F</span><br><span class="line">HNASignature.getHNASignature result=E2096151703457F87514E0067262519B8E6F6774&gt;&gt;64249184C5F04D8BE43DCBD2EE3ABC928F616com.rytong.hnairstandard9.0.0e574bb78db98d8eaGoogle_Pixel 3f442b091aa961a407165841e3a0841479.0.0.35417.7ac793f2e.standardhuawei18888888888YtirjBXqjfmcYkrHpTOw46uZtkKiQTt8RvSVGkZKby025/m2Yrv1zMUHehUz+sEDkHENCIPyJGuR</span><br><span class="line">bqKOxirFsWuMr0W4vGizxLnHOOLh9BTxzMpjpPsihKYvEMS0DlRlxp86LsEXmjviAt55e4ByhkEu</span><br><span class="line">Vq5ckk5NVufdx/u7CFI=</span><br><span class="line">67bb278f3kk3a3WeYbgRPyoBNPlIAdRaYordBAp3ADzh-CNgoogle/blueline/blueline:10/QQ3A.200705.002/6506677:user/release-keys174031861130510AD+0800true&gt;&gt;F6B15ABD66F91951036C955CB25B069F</span><br><span class="line">ApiSignInterceptor.signRequest result=E2096151703457F87514E0067262519B8E6F6774</span><br></pre></td></tr></table></figure>
+
+<p>可以看到<code>signRequest</code>最终的返回结果就是<code>&gt;&gt;</code>符号分隔前的内容</p>
+<h2 id="so分析"><a href="#so分析" class="headerlink" title="so分析"></a>so分析</h2><p>在反编译代码里并没有显式的支出加载的so，需要自行定位</p>
+<h3 id="定位so"><a href="#定位so" class="headerlink" title="定位so"></a>定位so</h3><h4 id="动态注册hook-RegisterNatives"><a href="#动态注册hook-RegisterNatives" class="headerlink" title="动态注册hook RegisterNatives()"></a>动态注册hook RegisterNatives()</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">hook_RegisterNatives</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> <span class="title class_">RegisterNatives</span>_addr = <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">var</span> symbols = <span class="title class_">Process</span>.<span class="title function_">findModuleByName</span>(<span class="string">&quot;libart.so&quot;</span>).<span class="title function_">enumerateSymbols</span>();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; symbols.<span class="property">length</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">var</span> symbol = symbols[i].<span class="property">name</span>;</span><br><span class="line">        <span class="keyword">if</span> ((symbol.<span class="title function_">indexOf</span>(<span class="string">&quot;CheckJNI&quot;</span>) == -<span class="number">1</span>) &amp;&amp; (symbol.<span class="title function_">indexOf</span>(<span class="string">&quot;JNI&quot;</span>) &gt;= <span class="number">0</span>)) &#123;</span><br><span class="line">            <span class="keyword">if</span> (symbol.<span class="title function_">indexOf</span>(<span class="string">&quot;RegisterNatives&quot;</span>) &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="title class_">RegisterNatives</span>_addr = symbols[i].<span class="property">address</span>;</span><br><span class="line">                <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;RegisterNatives_addr: &quot;</span>, <span class="title class_">RegisterNatives</span>_addr);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="title class_">Interceptor</span>.<span class="title function_">attach</span>(<span class="title class_">RegisterNatives</span>_addr, &#123;</span><br><span class="line">        <span class="attr">onEnter</span>: <span class="keyword">function</span> (<span class="params">args</span>) &#123;</span><br><span class="line">            <span class="keyword">var</span> env = args[<span class="number">0</span>];</span><br><span class="line">            <span class="keyword">var</span> jclass = args[<span class="number">1</span>];</span><br><span class="line">            <span class="keyword">var</span> class_name = <span class="title class_">Java</span>.<span class="property">vm</span>.<span class="title function_">tryGetEnv</span>().<span class="title function_">getClassName</span>(jclass);</span><br><span class="line">            <span class="keyword">var</span> methods_ptr = <span class="title function_">ptr</span>(args[<span class="number">2</span>]);</span><br><span class="line">            <span class="keyword">var</span> method_count = args[<span class="number">3</span>].<span class="title function_">toInt32</span>();</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;RegisterNatives method counts: &quot;</span>, method_count);</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; method_count; i++) &#123;</span><br><span class="line">                <span class="keyword">var</span> name = methods_ptr.<span class="title function_">add</span>(i * <span class="title class_">Process</span>.<span class="property">pointerSize</span> * <span class="number">3</span>).<span class="title function_">readPointer</span>().<span class="title function_">readCString</span>();</span><br><span class="line">                <span class="keyword">var</span> sig = methods_ptr.<span class="title function_">add</span>(i * <span class="title class_">Process</span>.<span class="property">pointerSize</span> * <span class="number">3</span> + <span class="title class_">Process</span>.<span class="property">pointerSize</span>).<span class="title function_">readPointer</span>().<span class="title function_">readCString</span>();</span><br><span class="line">                <span class="keyword">var</span> fnPtr_ptr = methods_ptr.<span class="title function_">add</span>(i * <span class="title class_">Process</span>.<span class="property">pointerSize</span> * <span class="number">3</span> + <span class="title class_">Process</span>.<span class="property">pointerSize</span> * <span class="number">2</span>).<span class="title function_">readPointer</span>();</span><br><span class="line">                <span class="keyword">var</span> find_module = <span class="title class_">Process</span>.<span class="title function_">findModuleByAddress</span>(fnPtr_ptr);</span><br><span class="line">                <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;ClasssName: &quot;</span>, class_name, <span class="string">&quot;MethodName: &quot;</span>, name, <span class="string">&quot;Sig: &quot;</span>, sig, <span class="string">&quot;Function_addr: &quot;</span>, fnPtr_ptr, <span class="string">&quot;ModuleName: &quot;</span>, find_module.<span class="property">name</span>, <span class="string">&quot;Fun_Offset: &quot;</span>, <span class="title function_">ptr</span>(fnPtr_ptr).<span class="title function_">sub</span>(find_module.<span class="property">base</span>));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">onLeave</span>: <span class="keyword">function</span> (<span class="params">retval</span>) &#123;&#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">hook_RegisterNatives</span>()</span><br></pre></td></tr></table></figure>
+
+<p>在输出的结果中并没有找到，说明不是动态注册的</p>
+<h4 id="静态注册hook-dlsym"><a href="#静态注册hook-dlsym" class="headerlink" title="静态注册hook dlsym()"></a>静态注册hook dlsym()</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">hook_dlsym</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="comment">// 获取dlsym函数的地址</span></span><br><span class="line">    <span class="keyword">let</span> dlsymAddr = <span class="title class_">Module</span>.<span class="title function_">findExportByName</span>(<span class="string">&quot;libdl.so&quot;</span>,<span class="string">&quot;dlsym&quot;</span>);</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(dlsymAddr);</span><br><span class="line">    <span class="comment">// hook dlsym</span></span><br><span class="line">    <span class="title class_">Interceptor</span>.<span class="title function_">attach</span>(dlsymAddr,&#123;</span><br><span class="line">        <span class="attr">onEnter</span>:<span class="keyword">function</span>(<span class="params">args</span>)&#123;</span><br><span class="line">            <span class="variable language_">this</span>.<span class="property">args1</span> = args[<span class="number">1</span>];</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">onLeave</span>:<span class="keyword">function</span>(<span class="params">retval</span>)&#123;</span><br><span class="line">            <span class="keyword">let</span> md= <span class="title class_">Process</span>.<span class="title function_">findModuleByAddress</span>(retval);</span><br><span class="line">            <span class="keyword">if</span>(md==<span class="literal">null</span>)<span class="keyword">return</span>;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;function:&quot;</span>+<span class="variable language_">this</span>.<span class="property">args1</span>.<span class="title function_">readCString</span>(),<span class="string">&quot;module:&quot;</span>+md.<span class="property">name</span>,<span class="string">&quot;address:&quot;</span>+retval,<span class="string">&quot;offset:&quot;</span>+retval.<span class="title function_">sub</span>(md.<span class="property">base</span>));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)  </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">hook_dlsym</span>()</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2025/02/24/%E6%B5%B7%E5%8D%97%E8%88%AA%E7%A9%BAapp%E7%BB%95%E8%BF%87%E5%BC%BA%E5%88%B6%E6%9B%B4%E6%96%B0%E5%8F%8AhnairSign%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/16.jpg"></p>
+<p>找到so为<code>libsignature.so</code></p>
+<h2 id="IDA反编译so"><a href="#IDA反编译so" class="headerlink" title="IDA反编译so"></a>IDA反编译so</h2><p>在静态函数中查找</p>
+<p><img src="/2025/02/24/%E6%B5%B7%E5%8D%97%E8%88%AA%E7%A9%BAapp%E7%BB%95%E8%BF%87%E5%BC%BA%E5%88%B6%E6%9B%B4%E6%96%B0%E5%8F%8AhnairSign%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/17.jpg"></p>
+<p>双击跳转到函数位置，转换为伪代码</p>
+<p><img src="/2025/02/24/%E6%B5%B7%E5%8D%97%E8%88%AA%E7%A9%BAapp%E7%BB%95%E8%BF%87%E5%BC%BA%E5%88%B6%E6%9B%B4%E6%96%B0%E5%8F%8AhnairSign%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/18.jpg"></p>
+<p>显示调用了<code>HNASignature()</code>然后调用了<code>toString()</code></p>
+<h3 id="HNASignature"><a href="#HNASignature" class="headerlink" title="HNASignature()"></a>HNASignature()</h3><p>查看其符号名，先对它进行hook</p>
+<p><img src="/2025/02/24/%E6%B5%B7%E5%8D%97%E8%88%AA%E7%A9%BAapp%E7%BB%95%E8%BF%87%E5%BC%BA%E5%88%B6%E6%9B%B4%E6%96%B0%E5%8F%8AhnairSign%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/19.jpg"></p>
+<h3 id="hook-HNASignature"><a href="#hook-HNASignature" class="headerlink" title="hook HNASignature()"></a>hook HNASignature()</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">hook_HNASignature</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="title class_">HNASignatureAddr</span> = <span class="title class_">Module</span>.<span class="title function_">findExportByName</span>(<span class="string">&quot;libsignature.so&quot;</span>, <span class="string">&quot;_ZN12HNASignatureC2ERKSsS1_S1_S1_S1_&quot;</span>);</span><br><span class="line">    <span class="title class_">Interceptor</span>.<span class="title function_">attach</span>(<span class="title class_">HNASignatureAddr</span>,&#123;</span><br><span class="line">        <span class="attr">onEnter</span>:<span class="keyword">function</span>(<span class="params">args</span>)&#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;HNASignature is called&quot;</span>);</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;HNASignature args[0]:&quot;</span>+args[<span class="number">0</span>]);</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;HNASignature args[1]:&quot;</span>+args[<span class="number">1</span>].<span class="title function_">readPointer</span>().<span class="title function_">readCString</span>());</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;HNASignature args[2]:&quot;</span>+args[<span class="number">2</span>].<span class="title function_">readPointer</span>().<span class="title function_">readCString</span>());</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;HNASignature args[3]:&quot;</span>+args[<span class="number">3</span>].<span class="title function_">readPointer</span>().<span class="title function_">readCString</span>());</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;HNASignature args[4]:&quot;</span>+args[<span class="number">4</span>].<span class="title function_">readPointer</span>().<span class="title function_">readCString</span>());</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;HNASignature args[5]:&quot;</span>+args[<span class="number">5</span>].<span class="title function_">readPointer</span>().<span class="title function_">readCString</span>());</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;HNASignature args[6]:&quot;</span>+args[<span class="number">6</span>]);</span><br><span class="line">            <span class="variable language_">this</span>.<span class="property">args0</span> = args[<span class="number">0</span>];</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">onLeave</span>:<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`HNASignature ret this.args0:<span class="subst">$&#123;<span class="variable language_">this</span>.args0.readPointer().readCString()&#125;</span>`</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>hook 结果</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">HNASignature is called</span><br><span class="line">HNASignature args[0]:0x75d9c78328</span><br><span class="line">HNASignature args[1]:&#123;&#125;</span><br><span class="line">HNASignature args[2]:&#123;&#125;</span><br><span class="line">HNASignature args[3]:&#123;&quot;akey&quot;:&quot;184C5F04D8BE43DCBD2EE3ABC928F616&quot;,&quot;aname&quot;:&quot;com.rytong.hnair&quot;,&quot;atarget&quot;:&quot;standard&quot;,&quot;aver&quot;:&quot;9.0.0&quot;,&quot;did&quot;:&quot;e574bb78db98d8ea&quot;,&quot;dname&quot;:&quot;Google_Pixel 3&quot;,&quot;gtcid&quot;:&quot;f442b091aa961a407165841e3a084147&quot;,&quot;mchannel&quot;:&quot;huawei&quot;,&quot;schannel&quot;:&quot;AD&quot;,&quot;slang&quot;:&quot;zh-CN&quot;,&quot;sname&quot;:&quot;google\/blueline\/blueline:10\/QQ3A.200705.002\/6506677:user\/release-keys&quot;,&quot;stime&quot;:&quot;1740326030547&quot;,&quot;sver&quot;:&quot;10&quot;,&quot;system&quot;:&quot;AD&quot;,&quot;szone&quot;:&quot;+0800&quot;,&quot;abuild&quot;:&quot;64249&quot;,&quot;riskToken&quot;:&quot;67bb4453hhA1OpIQxuFTcxvxY25l6alW4VgMhK73&quot;,&quot;hver&quot;:&quot;9.0.0.35417.7ac793f2e.standard&quot;,&quot;number&quot;:&quot;18888888888&quot;,&quot;pin&quot;:&quot;qWIFqA0ywqaZqFsywFiTmniXYBKU8WpXlGexYUIhmKAXxOwf7\/z6NRN+sBj5d36igmPekmcESPWS\n4EbGmGLkCDM3al7NzoWqhucFcxl6n8gE6wfN83kqoS\/mJjQXis5WwixL\/wUpmYH8UzRaFunSsKsg\nW5WUx1CgTWdBpYUH3d0=\n&quot;,&quot;toSave&quot;:true&#125;</span><br><span class="line">HNASignature args[4]:21047C596EAD45209346AE29F0350491</span><br><span class="line">HNASignature args[5]:F6B15ABD66F91951036C955CB25B069F</span><br><span class="line">HNASignature args[6]:0xfefefefefefefeff</span><br><span class="line">HNASignature ret this.args0:2FD7C67C2ED04DE229D9D5C6B41534975DED3324&gt;&gt;64249184C5F04D8BE43DCBD2EE3ABC928F616com.rytong.hnairstandard9.0.0e574bb78db98d8eaGoogle_Pixel 3f442b091aa961a407165841e3a0841479.0.0.35417.7ac793f2e.standardhuawei18888888888qWIFqA0ywqaZqFsywFiTmniXYBKU8WpXlGexYUIhmKAXxOwf7/z6NRN+sBj5d36igmPekmcESPWS</span><br><span class="line">4EbGmGLkCDM3al7NzoWqhucFcxl6n8gE6wfN83kqoS/mJjQXis5WwixL/wUpmYH8UzRaFunSsKsg</span><br><span class="line">W5WUx1CgTWdBpYUH3d0=</span><br><span class="line">67bb4453hhA1OpIQxuFTcxvxY25l6alW4VgMhK73ADzh-CNgoogle/blueline/blueline:10/QQ3A.200705.002/6506677:user/release-keys174032603054710AD+0800true&gt;&gt;F6B15ABD66F91951036C955CB25B069F</span><br></pre></td></tr></table></figure>
+
+<p>在<code>HNASignature()</code>函数里出现了一堆函数</p>
+<p><img src="/2025/02/24/%E6%B5%B7%E5%8D%97%E8%88%AA%E7%A9%BAapp%E7%BB%95%E8%BF%87%E5%BC%BA%E5%88%B6%E6%9B%B4%E6%96%B0%E5%8F%8AhnairSign%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/20.jpg"></p>
+<p>有尝试hook这些函数，信息量较大，后面有时间了分析，这里直接unidbg模拟执行了 </p>
+<h2 id="unidbg模拟执行"><a href="#unidbg模拟执行" class="headerlink" title="unidbg模拟执行"></a>unidbg模拟执行</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">HNASignature</span> <span class="keyword">extends</span> <span class="title class_">AbstractJni</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> AndroidEmulator emulator;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Memory memory;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> VM vm;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">HNASignature</span><span class="params">()</span> &#123;</span><br><span class="line">        emulator = AndroidEmulatorBuilder</span><br><span class="line">                .for64Bit() <span class="comment">// for32Bit()</span></span><br><span class="line">                .build();</span><br><span class="line">        memory = emulator.getMemory();</span><br><span class="line">        memory.setLibraryResolver(<span class="keyword">new</span> <span class="title class_">AndroidResolver</span>(<span class="number">23</span>));</span><br><span class="line">        vm = emulator.createDalvikVM(<span class="keyword">new</span> <span class="title class_">File</span>(<span class="string">&quot;unidbg-android/src/test/java/com/rytong/hnair/Hainan Airlines_9.0.0.apk&quot;</span>));</span><br><span class="line">        vm.setJni(<span class="built_in">this</span>);</span><br><span class="line">        vm.setVerbose(<span class="literal">true</span>);</span><br><span class="line">        vm.loadLibrary(<span class="string">&quot;signature&quot;</span>,<span class="literal">true</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getHNASignature</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="type">DvmClass</span> <span class="variable">HNASignatureClass</span> <span class="operator">=</span> vm.resolveClass(<span class="string">&quot;com.rytong.hnair.HNASignature&quot;</span>);</span><br><span class="line">        <span class="type">DvmClass</span> <span class="variable">stringClass</span> <span class="operator">=</span> vm.resolveClass(<span class="string">&quot;java.lang.String&quot;</span>);</span><br><span class="line">        <span class="type">StringObject</span> <span class="variable">stringObject</span> <span class="operator">=</span> HNASignatureClass.callStaticJniMethodObject(emulator,</span><br><span class="line">                <span class="string">&quot;getHNASignature(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;&quot;</span>,</span><br><span class="line">                stringClass.newObject(<span class="string">&quot;&#123;&#125;&quot;</span>).getValue(),</span><br><span class="line">                stringClass.newObject(<span class="string">&quot;&#123;&#125;&quot;</span>).getValue(),</span><br><span class="line">                stringClass.newObject(<span class="string">&quot;&#123;\&quot;akey\&quot;:\&quot;184C5F04D8BE43DCBD2EE3ABC928F616\&quot;,\&quot;aname\&quot;:\&quot;com.rytong.hnair\&quot;,\&quot;atarget\&quot;:\&quot;standard\&quot;,\&quot;aver\&quot;:\&quot;9.0.0\&quot;,\&quot;did\&quot;:\&quot;e574bb78db98d8ea\&quot;,\&quot;dname\&quot;:\&quot;Google_Pixel 3\&quot;,\&quot;gtcid\&quot;:\&quot;f442b091aa961a407165841e3a084147\&quot;,\&quot;mchannel\&quot;:\&quot;huawei\&quot;,\&quot;schannel\&quot;:\&quot;AD\&quot;,\&quot;slang\&quot;:\&quot;zh-CN\&quot;,\&quot;sname\&quot;:\&quot;google\\/blueline\\/blueline:10\\/QQ3A.200705.002\\/6506677:user\\/release-keys\&quot;,\&quot;stime\&quot;:\&quot;1740317961228\&quot;,\&quot;sver\&quot;:\&quot;10\&quot;,\&quot;system\&quot;:\&quot;AD\&quot;,\&quot;szone\&quot;:\&quot;+0800\&quot;,\&quot;abuild\&quot;:\&quot;64249\&quot;,\&quot;riskToken\&quot;:\&quot;67bb2505kRG0Hwidai2tEm3hYFUX1xCXvH8fuOk3\&quot;,\&quot;hver\&quot;:\&quot;9.0.0.35417.7ac793f2e.standard\&quot;,\&quot;number\&quot;:\&quot;18888888888\&quot;,\&quot;pin\&quot;:\&quot;awBta70HBNvOLA+L5Vlaas59trF+M0EI6lOgVDjQhG1QdoY\\/6ck1GTaeZOeSXiwFpG3e8vgj6xuq\\n1weM+DFKhl8aSi1Lhn7p1s51bdcPmvZ5DW3kYSV\\/8DvpnYGjPKgQ79aKEBDo3AvuGZpZ+pg2rHBm\\nWAgoyrVfSsBI6KLOsZg=\\n\&quot;,\&quot;toSave\&quot;:true&#125;&quot;</span>).getValue(),</span><br><span class="line">                stringClass.newObject(<span class="string">&quot;21047C596EAD45209346AE29F0350491&quot;</span>).getValue(),</span><br><span class="line">                stringClass.newObject(<span class="string">&quot;F6B15ABD66F91951036C955CB25B069F&quot;</span>).getValue());</span><br><span class="line">        <span class="type">String</span> <span class="variable">ret</span> <span class="operator">=</span> stringObject.getValue();</span><br><span class="line">        <span class="keyword">return</span> ret;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">HNASignature</span> <span class="variable">hnaSignature</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">HNASignature</span>();</span><br><span class="line">        ArrayList&lt;String&gt; list = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;(Arrays.asList(hnaSignature.getHNASignature().split(<span class="string">&quot;&gt;&gt;&quot;</span>)));</span><br><span class="line">        System.out.println(<span class="string">&quot;getHNASignature(): &quot;</span>+hnaSignature.getHNASignature());</span><br><span class="line">        System.out.println(<span class="string">&quot;get(0): &quot;</span>+list.get(<span class="number">0</span>));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>结果</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">getHNASignature(): E184DAEE44DFA522CE974EAB75EBC60DAAEC321D&gt;&gt;64249184C5F04D8BE43DCBD2EE3ABC928F616com.rytong.hnairstandard9.0.0e574bb78db98d8eaGoogle_Pixel 3f442b091aa961a407165841e3a0841479.0.0.35417.7ac793f2e.standardhuawei18888888888awBta70HBNvOLA+L5Vlaas59trF+M0EI6lOgVDjQhG1QdoY/6ck1GTaeZOeSXiwFpG3e8vgj6xuq</span><br><span class="line">1weM+DFKhl8aSi1Lhn7p1s51bdcPmvZ5DW3kYSV/8DvpnYGjPKgQ79aKEBDo3AvuGZpZ+pg2rHBm</span><br><span class="line">WAgoyrVfSsBI6KLOsZg=</span><br><span class="line">67bb2505kRG0Hwidai2tEm3hYFUX1xCXvH8fuOk3ADzh-CNgoogle/blueline/blueline:10/QQ3A.200705.002/6506677:user/release-keys174031796122810AD+0800true&gt;&gt;F6B15ABD66F91951036C955CB25B069F</span><br><span class="line"></span><br><span class="line">get(0): E184DAEE44DFA522CE974EAB75EBC60DAAEC321D</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%B5%B7%E5%8D%97%E8%88%AA%E7%A9%BA/" rel="tag"><svg t="1732789072752" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4858" width="15" height="15"><path d="M229.443715 343.118259l565.172804 0 0 410.010794c0 37.525595-30.237317 67.762912-67.040108 67.762912l-46.319715 0 0 139.742183c0 35.116247-28.249605 63.365852-63.305618 63.365852-35.116247 0-63.546553-28.309839-63.546553-63.365852l0-139.742183-84.809049 0 0 139.742183c0 35.056013-28.430306 63.365852-63.546553 63.365852-34.393443 0-62.763515-28.309839-62.763515-63.365852l-0.542103-139.742183-45.596911 0c-37.465361 0-67.702678-30.177084-67.702678-67.762912l0-410.010794zM141.984383 331.432921c-35.056013 0-63.426086 28.370073-63.426086 62.763515l0 264.787344c0 35.116247 28.370073 63.365852 63.426086 63.365852s62.763515-28.309839 62.763515-63.365852l0-264.787344c0-34.393443-28.189371-62.763515-62.763515-62.763515zM796.42353 320.952257l-569.449397 0c0-97.879762 58.547156-182.869512 145.343917-227.141282l-43.7899-80.59269c-2.469582-4.336826-1.264908-9.878327 3.071919-12.347908 4.276593-1.867245 9.878327-0.662571 12.347908 3.734489l44.271769 81.255261c37.646062-16.684735 79.508484-25.900491 123.780253-25.900491s86.134191 9.215756 123.780253 25.840257l44.271769-81.255261c2.469582-4.336826 8.071316-5.5415 12.347908-3.734489 4.336826 2.469582 5.5415 8.011082 3.071919 12.347908l-43.7899 80.59269c86.254658 44.332003 144.74158 129.321753 144.74158 227.201515zM406.048922 194.160319c0-12.950245-10.42043-24.033246-23.912779-24.033246-13.010479 0-23.430909 11.083001-23.430909 24.033246 0 12.890012 10.42043 23.973012 23.430909 23.973012 13.492349 0.060234 23.912779-11.022767 23.912779-23.973012zM665.294766 194.160319c0-12.950245-10.42043-24.033246-23.430909-24.033246-13.552582 0-23.912779 11.083001-23.912779 24.033246 0 12.890012 10.42043 23.973012 23.912779 23.973012 13.010479 0.060234 23.430909-11.022767 23.430909-23.973012zM882.015617 331.432921c-34.51391 0-62.763515 27.707502-62.763515 62.763515l0 264.787344c0 35.116247 28.249605 63.365852 62.763515 63.365852 35.056013 0 63.426086-28.309839 63.426086-63.365852l0-264.787344c-0.060234-35.056013-28.370073-62.763515-63.426086-62.763515z" fill="#000000" p-id="4859"></path></svg> 海南航空</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2025/02/22/%E6%82%A6%E9%87%8E%E5%9C%88app%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91%E5%8F%8A%E8%8E%B7%E5%8F%96%E8%AF%9D%E9%A2%98%E4%BF%A1%E6%81%AF/" rel="prev" title="悦野圈app参数逆向及获取话题信息">
+      <i class="fa fa-chevron-left"></i> 悦野圈app参数逆向及获取话题信息
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#App%E4%BF%A1%E6%81%AF"><span class="nav-number">1.</span> <span class="nav-text">App信息</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%95%E8%BF%87%E5%BC%BA%E5%88%B6%E6%9B%B4%E6%96%B0"><span class="nav-number">2.</span> <span class="nav-text">绕过强制更新</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#jadx%E5%8F%8D%E7%BC%96%E8%AF%91%E6%89%BE%E5%88%B0%E6%9B%B4%E6%96%B0%E5%BC%B9%E7%AA%97%E4%BD%8D%E7%BD%AE"><span class="nav-number">2.1.</span> <span class="nav-text">jadx反编译找到更新弹窗位置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hook-show"><span class="nav-number">2.2.</span> <span class="nav-text">hook show()</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8A%93%E5%8C%85%E5%88%86%E6%9E%90%E6%95%B0%E6%8D%AE"><span class="nav-number">3.</span> <span class="nav-text">抓包分析数据</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E6%95%B0%E5%88%86%E6%9E%90"><span class="nav-number">4.</span> <span class="nav-text">参数分析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#jadx%E5%8F%8D%E7%BC%96%E8%AF%91"><span class="nav-number">4.1.</span> <span class="nav-text">jadx反编译</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#hnairSign"><span class="nav-number">4.1.1.</span> <span class="nav-text">hnairSign</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#signRequest"><span class="nav-number">4.1.2.</span> <span class="nav-text">signRequest()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#getHNASignature"><span class="nav-number">4.1.3.</span> <span class="nav-text">getHNASignature()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#i-p"><span class="nav-number">4.1.4.</span> <span class="nav-text">i.p()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#hook-getHNASignature"><span class="nav-number">4.1.5.</span> <span class="nav-text">hook getHNASignature()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#hook-signRequest"><span class="nav-number">4.1.6.</span> <span class="nav-text">hook signRequest()</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#so%E5%88%86%E6%9E%90"><span class="nav-number">4.2.</span> <span class="nav-text">so分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E4%BD%8Dso"><span class="nav-number">4.2.1.</span> <span class="nav-text">定位so</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8A%A8%E6%80%81%E6%B3%A8%E5%86%8Chook-RegisterNatives"><span class="nav-number">4.2.1.1.</span> <span class="nav-text">动态注册hook RegisterNatives()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%9D%99%E6%80%81%E6%B3%A8%E5%86%8Chook-dlsym"><span class="nav-number">4.2.1.2.</span> <span class="nav-text">静态注册hook dlsym()</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IDA%E5%8F%8D%E7%BC%96%E8%AF%91so"><span class="nav-number">4.3.</span> <span class="nav-text">IDA反编译so</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#HNASignature"><span class="nav-number">4.3.1.</span> <span class="nav-text">HNASignature()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#hook-HNASignature"><span class="nav-number">4.3.2.</span> <span class="nav-text">hook HNASignature()</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#unidbg%E6%A8%A1%E6%8B%9F%E6%89%A7%E8%A1%8C"><span class="nav-number">4.4.</span> <span class="nav-text">unidbg模拟执行</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Bileton"
+      src="/images/android.svg">
+  <p class="site-author-name" itemprop="name">Bileton</p>
+  <div class="site-description" itemprop="description">路漫漫其修远夕！</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">81</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">31</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">75</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Bileton</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">678k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">10:16</span>
+</div>
+
+
+<span id="timeDate">载入天数...</span>
+<span id="times">载入时分秒...</span>
+<script>
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("01/01/2024 00:00:00"); //修改为你的网站开始运行的时间
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+        document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 ";
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒.";
+    }
+setInterval("createtime()",250);
+</script>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
