@@ -1342,7 +1342,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2025-02-25 12:04:02" itemprop="dateModified" datetime="2025-02-25T12:04:02+08:00">2025-02-25</time>
+                <time title="修改时间：2025-02-26 18:43:34" itemprop="dateModified" datetime="2025-02-26T18:43:34+08:00">2025-02-26</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1360,14 +1360,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>3.5k</span>
+              <span>4k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>3 分钟</span>
+              <span>4 分钟</span>
             </span>
 
         </div>
@@ -1416,6 +1416,10 @@
 <p><img src="/2025/02/16/%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8Bunidbg/1.jpg"></p>
 <h2 id="调用实例方法"><a href="#调用实例方法" class="headerlink" title="调用实例方法"></a>调用实例方法</h2><p>根据返回值使用合适的调用方法。</p>
 <p><img src="/2025/02/16/%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8Bunidbg/2.jpg"></p>
+<h2 id="通过module调用so中方法"><a href="#通过module调用so中方法" class="headerlink" title="通过module调用so中方法"></a>通过module调用so中方法</h2><h3 id="通过符号名调用"><a href="#通过符号名调用" class="headerlink" title="通过符号名调用"></a>通过符号名调用</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Number <span class="title function_">callFunction</span><span class="params">(Emulator&lt;?&gt; emulator, String symbolName, Object... args)</span>; </span><br></pre></td></tr></table></figure>
+
+<h3 id="通过地址调用"><a href="#通过地址调用" class="headerlink" title="通过地址调用"></a>通过地址调用</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Number <span class="title function_">callFunction</span><span class="params">(Emulator&lt;?&gt; emulator, <span class="type">long</span> offset, Object... args)</span>;</span><br></pre></td></tr></table></figure>
+
 <h1 id="参数传递"><a href="#参数传递" class="headerlink" title="参数传递"></a>参数传递</h1><h2 id="基本类型的参数传递"><a href="#基本类型的参数传递" class="headerlink" title="基本类型的参数传递"></a>基本类型的参数传递</h2><p>Java 中的基本类型（如 <code>int</code>、<code>long</code>、<code>float</code>、<code>double</code> 等）可以直接作为参数传递。</p>
 <p>String类型也可以直接作为参数传递（不建议，有时候可能导致错误）。</p>
 <h2 id="对象类型的参数传递"><a href="#对象类型的参数传递" class="headerlink" title="对象类型的参数传递"></a>对象类型的参数传递</h2><p>如果方法的参数是对象类型，需要先创建对象实例，然后将对象实例作为参数传递。</p>
@@ -1424,16 +1428,6 @@
 <h2 id="数组类型的参数传递"><a href="#数组类型的参数传递" class="headerlink" title="数组类型的参数传递"></a>数组类型的参数传递</h2><p>如果方法的参数是数组类型，需要先创建数组对象，然后将数组对象作为参数传递。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DvmObject&lt;?&gt; arrayObj = vm.addLocalObject(<span class="keyword">new</span> <span class="title class_">ArrayObject</span>(<span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>&#125;));</span><br></pre></td></tr></table></figure>
 
-<h1 id="加载依赖"><a href="#加载依赖" class="headerlink" title="加载依赖"></a>加载依赖</h1><h2 id="libandroid-so"><a href="#libandroid-so" class="headerlink" title="libandroid.so"></a>libandroid.so</h2><p>日志内容</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">load dependency libandroid.so failed</span><br></pre></td></tr></table></figure>
-
-<p>提示加载<code>libandroid.so</code>失败。</p>
-<p>原因：<code>libandroid.so</code>是一个系统库，提供大量的安卓相关功能，但是Unidbg的lib目录下并没有包含这个动态库，这是因为它依赖于相当多的类库，其中许多和 Android 系统、软硬件、大量的系统调用紧密相关，Unidbg 很难对它们做妥善、完备的处理。</p>
-<p>处理方式：Unidbg 提供了一种叫做虚拟模块的机制，对这些 SO中 一部分函数的模拟实现。</p>
-<p>在早于目标so加载的时机，添加如下代码:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">new AndroidModule(emulator, vm).register(memory);;</span><br></pre></td></tr></table></figure>
-
-<p>这种方式并非万全之策，AndroidModule里只提供了一部分函数。</p>
 <h1 id="补环境"><a href="#补环境" class="headerlink" title="补环境"></a>补环境</h1><h2 id="系统调用"><a href="#系统调用" class="headerlink" title="系统调用"></a>系统调用</h2><p>系统调用是由<code>svc</code>软中断发起的，依赖与<code>svc</code>后面的数字</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">svc imm</span><br><span class="line">bx lr</span><br></pre></td></tr></table></figure>
 
@@ -1441,6 +1435,26 @@
 <h2 id="JNI调用"><a href="#JNI调用" class="headerlink" title="JNI调用"></a>JNI调用</h2><p>Unidbg构造了<code>JNIEnv</code>和<code>JavaVM</code>这两个JNI中的关键结构，凭借系统调用的处理模块来实现对JNI的代理，在<code>svc imm</code>及<code>bx lr</code>这部分，有意义的是<code>lr</code>，它是<code>svc</code>的返回地址，对应样本发起JNI调用的位置。</p>
 <h2 id="补环境的原因"><a href="#补环境的原因" class="headerlink" title="补环境的原因"></a>补环境的原因</h2><p>对于对样本的Java层数据做访问的一系列JNI函数，由于Unidbg未运行Dex以及Apk，就需要自己去填充外部信息。</p>
 <p>为了减少补环境的负担，Unidbg预处理了常见的JNI函数调用和字段访问，逻辑位于<code>src/main/java/com/github/unidbg/linux/android/dvm/AbstractJni.java</code>类里。</p>
+<h1 id="打包及Python调用"><a href="#打包及Python调用" class="headerlink" title="打包及Python调用"></a>打包及Python调用</h1><h2 id="路径问题"><a href="#路径问题" class="headerlink" title="路径问题"></a>路径问题</h2><p>这里我在<code>unidbg</code>的根目录下创建了一个文件夹<code>apks</code>，在这里面放apk文件，在java文件里写apk路径的时候可以直接<code>apks/.../example.apk</code>，就可以了。</p>
+<p><img src="/2025/02/16/%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8Bunidbg/3.jpg"></p>
+<h2 id="打包"><a href="#打包" class="headerlink" title="打包"></a>打包</h2><p>点击菜单中的<code>File</code>-&gt;<code>Project Structure</code>，然后在<code>Project Settings</code>里点击<code>Artifacts</code>，依次点击如下内容</p>
+<p><img src="/2025/02/16/%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8Bunidbg/4.jpg"></p>
+<p>然后会弹出如下的窗口，在Main Class里选择要打包的类，勾选下图中的选项，并指定META-INF&#x2F;MANIFEST.MF目录</p>
+<p><img src="/2025/02/16/%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8Bunidbg/5.jpg"></p>
+<p>然后点击OK-&gt;Apply-&gt;OK </p>
+<h2 id="Build"><a href="#Build" class="headerlink" title="Build"></a>Build</h2><p>菜单栏点击Build-&gt;<code>Build Artifacts</code>-&gt;<code>unidbg:jar</code>-&gt;<code>Build</code></p>
+<p>完成之后会在<code>unidbg</code>根目录下生成一个<code>out</code>文件夹，打包的文件就在<code>unidbg_jar</code>里，如下。</p>
+<p><img src="/2025/02/16/%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8Bunidbg/6.jpg"></p>
+<p>但是这个文件夹里没有apk文件，还需要手动把apk文件及其目录一起移动到这里面</p>
+<p>直接把apks目录赋值到<code>unidbg_jar</code>里，如下</p>
+<p><img src="/2025/02/16/%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8Bunidbg/7.jpg"></p>
+<h2 id="终端运行"><a href="#终端运行" class="headerlink" title="终端运行"></a>终端运行</h2><p>进入到<code>unidbg_jar</code>目录下，打开终端，执行命令，就可以了</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -jar unidbg.jar</span><br></pre></td></tr></table></figure>
+
+<h2 id="Python调用"><a href="#Python调用" class="headerlink" title="Python调用"></a>Python调用</h2><p>使用<code>subprocess</code>调用</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import subprocess</span><br><span class="line"></span><br><span class="line">cmd = &quot;java -jar unidbg.jar&quot;</span><br><span class="line">signature = subprocess.check_output(cmd, shell=True,cwd=&quot;unidbg_jar&quot;).decode(&quot;utf-8&quot;)</span><br><span class="line">print(signature)</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2025/02/16/%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8Bunidbg/8.jpg"></p>
 
       
     </div>
@@ -1491,7 +1505,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2025-02-21 13:35:01" itemprop="dateModified" datetime="2025-02-21T13:35:01+08:00">2025-02-21</time>
+                <time title="修改时间：2025-02-26 18:51:26" itemprop="dateModified" datetime="2025-02-26T18:51:26+08:00">2025-02-26</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1878,13 +1892,13 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">678k</span>
+    <span title="站点总字数">686k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">10:16</span>
+    <span title="站点阅读时长">10:24</span>
 </div>
 
 
