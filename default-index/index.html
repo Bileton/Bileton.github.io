@@ -124,17 +124,17 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">75</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">76</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">31</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">32</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">81</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">82</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -185,6 +185,132 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/02/27/Git%E6%8C%87%E5%8D%97/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/android.svg">
+      <meta itemprop="name" content="Bileton">
+      <meta itemprop="description" content="路漫漫其修远夕！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="白乐天">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2025/02/27/Git%E6%8C%87%E5%8D%97/" class="post-title-link" itemprop="url">Git指南</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2025-02-27 11:09:19 / 修改时间：11:44:04" itemprop="dateCreated datePublished" datetime="2025-02-27T11:09:19+08:00">2025-02-27</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Git/" itemprop="url" rel="index"><span itemprop="name">Git</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>809</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="安装配置"><a href="#安装配置" class="headerlink" title="安装配置"></a>安装配置</h1><h2 id="Win"><a href="#Win" class="headerlink" title="Win"></a>Win</h2><p>官网下载安装</p>
+<p><a target="_blank" rel="noopener" href="https://git-scm.com/downloads/win">Git - Downloading Package</a></p>
+<h2 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h2><p>命令安装</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt install git</span><br></pre></td></tr></table></figure>
+
+<p>验证安装</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git --version</span><br></pre></td></tr></table></figure>
+
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><p><strong>关于配置文件</strong></p>
+<ul>
+<li><p>系统配置文件<code>/etc/gitconfig</code></p>
+<p>  在使用<code>git config</code>时使用<code>--system</code>选项</p>
+</li>
+<li><p>用户配置文件<code>~/.gitconfig</code></p>
+<p>  在使用<code>git config</code>时使用<code>--global</code>选项</p>
+</li>
+<li><p>当前目录配置文件<code>.git/congfig</code></p>
+</li>
+</ul>
+<h3 id="配置用户信息"><a href="#配置用户信息" class="headerlink" title="配置用户信息"></a>配置用户信息</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &quot;bileton&quot;</span><br><span class="line">git config --global user.email xxx@xxx.com</span><br></pre></td></tr></table></figure>
+
+<p>查看配置信息</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --list</span><br></pre></td></tr></table></figure>
+
+<h3 id="生成SSH密钥"><a href="#生成SSH密钥" class="headerlink" title="生成SSH密钥"></a>生成SSH密钥</h3><p>如果需要通过 SSH 进行 Git 操作，可以生成 SSH 密钥并添加到 Git 托管服务（如 GitHub、GitLab 等）上。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;email&quot;</span><br></pre></td></tr></table></figure>
+
+<h1 id="创建仓库"><a href="#创建仓库" class="headerlink" title="创建仓库"></a>创建仓库</h1><p>创建一个目录，用来作为仓库</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir my-project</span><br><span class="line">cd my-project</span><br></pre></td></tr></table></figure>
+
+<p><strong>git init</strong></p>
+<p>使用当前目录作为 Git 仓库，只需使它初始化。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure>
+
+<p>该命令执行完后会在当前目录生成一个 .git 目录。</p>
+<p>如果想指定目录作为git仓库，使用如下命令</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init newrepo</span><br></pre></td></tr></table></figure>
+
+<p>初始化后，会在 newrepo 目录下会出现一个名为 .git 的目录，所有 Git 需要的数据和资源都存放在这个目录中。</p>
+<h1 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h1><h2 id="克隆项目（下载项目）"><a href="#克隆项目（下载项目）" class="headerlink" title="克隆项目（下载项目）"></a>克隆项目（下载项目）</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone xxx</span><br></pre></td></tr></table></figure>
+
+<h2 id="切换分支"><a href="#切换分支" class="headerlink" title="切换分支"></a>切换分支</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout xxx</span><br></pre></td></tr></table></figure>
+
+<h2 id="管理包含其他-Git-仓库的项目"><a href="#管理包含其他-Git-仓库的项目" class="headerlink" title="管理包含其他 Git 仓库的项目"></a>管理包含其他 Git 仓库的项目</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">列出子模块</span><br><span class="line">git submodule</span><br><span class="line"></span><br><span class="line">初始化子模块</span><br><span class="line">git submodule init</span><br><span class="line"></span><br><span class="line">更新子模块</span><br><span class="line">git submodule update</span><br><span class="line"></span><br><span class="line">更新所有子模块</span><br><span class="line">git submodule update --recursive --remote</span><br><span class="line"></span><br><span class="line">查看子模块状态</span><br><span class="line">git submodule status</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -1674,99 +1800,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/02/14/%E8%AF%A6%E8%A7%A3%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95%E7%9A%84%E5%A1%AB%E5%85%85%E6%96%B9%E5%BC%8F%E5%8F%8A%E5%8A%A0%E5%AF%86%E6%A8%A1%E5%BC%8F/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/android.svg">
-      <meta itemprop="name" content="Bileton">
-      <meta itemprop="description" content="路漫漫其修远夕！">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="白乐天">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2025/02/14/%E8%AF%A6%E8%A7%A3%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95%E7%9A%84%E5%A1%AB%E5%85%85%E6%96%B9%E5%BC%8F%E5%8F%8A%E5%8A%A0%E5%AF%86%E6%A8%A1%E5%BC%8F/" class="post-title-link" itemprop="url">详解对称加密算法的填充方式及加密模式</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2025-02-14 15:51:33 / 修改时间：17:19:57" itemprop="dateCreated datePublished" datetime="2025-02-14T15:51:33+08:00">2025-02-14</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%BC%96%E7%A0%81%E4%B8%8E%E5%8A%A0%E8%A7%A3%E5%AF%86/" itemprop="url" rel="index"><span itemprop="name">编码与加解密</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>613</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="填充方式"><a href="#填充方式" class="headerlink" title="填充方式"></a>填充方式</h1><p>填充方式（Padding）是指在加密过程中，为了使得数据块的长度符合加密算法的要求（通常是固定长度），而对数据进行补充的操作。</p>
-<h2 id="PKCS-5"><a href="#PKCS-5" class="headerlink" title="PKCS#5"></a>PKCS#5</h2><p>用于对8字节块大小的加密算法（如DES）进行填充。</p>
-<p>如果数据的长度不是8字节的倍数，则使用填充字节数的值来填充。例如，如果需要填充3个字节，则填充3个字节，其值为 <code>0x03</code>。</p>
-<h2 id="PKCS-7"><a href="#PKCS-7" class="headerlink" title="PKCS#7"></a>PKCS#7</h2><p>是对 PKCS#5 的扩展，适用于块大小为任意字节的加密算法（如AES的16字节块），它的填充方式与PKCS#5相同，但支持更多的块大小。填充字节的值是填充字节的数量。例如，如果需要填充3个字节，则填充3个字节，其值为 <code>0x03</code>。</p>
-<h2 id="Zero填充"><a href="#Zero填充" class="headerlink" title="Zero填充"></a>Zero填充</h2><p>使用字节值为零（<code>0x00</code>）的填充方式，将数据填充至指定块大小。这种方法在一些情况下容易出错，特别是如果明文本身包含零字节时。</p>
-<h1 id="加密模式"><a href="#加密模式" class="headerlink" title="加密模式"></a>加密模式</h1><p>对称加密算法通常基于分组密码来加密数据。分组密码的基本思想是将数据划分为若干个固定大小的块（如64位、128位等），然后对每个块进行加密。</p>
-<h2 id="ECB模式"><a href="#ECB模式" class="headerlink" title="ECB模式"></a>ECB模式</h2><p>ECB（Electronic Codebook），也就是电子密码本模式。</p>
-<p>原理：将明文分为固定大小的块，对每个块单独加密，生成对应的密文块。</p>
-<p><img src="/2025/02/14/%E8%AF%A6%E8%A7%A3%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95%E7%9A%84%E5%A1%AB%E5%85%85%E6%96%B9%E5%BC%8F%E5%8F%8A%E5%8A%A0%E5%AF%86%E6%A8%A1%E5%BC%8F/1.jpg"></p>
-<h2 id="CBC模式"><a href="#CBC模式" class="headerlink" title="CBC模式"></a>CBC模式</h2><p>CBC（CBC - Cipher Block Chaining），也就是密码分组链接模式。</p>
-<p>每个数据块在加密前都会与前一个密文块进行异或运算，首块数据与初始化向量（IV）进行异或，然后进行加密，使得相同的明文块即使在不同的位置也会生成不同的密文。</p>
-<p><img src="/2025/02/14/%E8%AF%A6%E8%A7%A3%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95%E7%9A%84%E5%A1%AB%E5%85%85%E6%96%B9%E5%BC%8F%E5%8F%8A%E5%8A%A0%E5%AF%86%E6%A8%A1%E5%BC%8F/2.jpg"></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1838,20 +1871,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">81</span>
+          <span class="site-state-item-count">82</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">31</span>
+        <span class="site-state-item-count">32</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">75</span>
+        <span class="site-state-item-count">76</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -1892,7 +1925,7 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">686k</span>
+    <span title="站点总字数">687k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
