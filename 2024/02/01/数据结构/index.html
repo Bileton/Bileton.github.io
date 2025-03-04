@@ -27,11 +27,14 @@
 <meta property="og:site_name" content="白乐天">
 <meta property="og:description" content="线性表线性表（Linear List）是由一组数据元素按一定的顺序排列组成的集合。线性表的基本操作    初始化：初始化线性表为空。 插入：在指定位置插入元素。 删除：删除指定位置的元素。 查找：查找某个元素的位置。 访问：通过索引访问指定位置的元素。 遍历：从头到尾依次访问线性表中的每个元素。 长度：获取线性表中的元素个数。  顺序表顺序表是一种线性表的实现方式，其核心思想是将线性表中的元素存储">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2024/02/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/1.jpg">
+<meta property="og:image" content="http://example.com/2024/02/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/2.jpg">
 <meta property="article:published_time" content="2024-01-31T16:00:00.000Z">
-<meta property="article:modified_time" content="2025-01-24T06:48:25.912Z">
+<meta property="article:modified_time" content="2025-03-01T18:13:18.341Z">
 <meta property="article:author" content="Bileton">
 <meta property="article:tag" content="数据结构">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2024/02/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/1.jpg">
 
 <link rel="canonical" href="http://example.com/2024/02/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
 
@@ -127,17 +130,17 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">76</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">79</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">32</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">34</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">82</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">85</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -223,7 +226,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2025-01-24 14:48:25" itemprop="dateModified" datetime="2025-01-24T14:48:25+08:00">2025-01-24</time>
+                <time title="修改时间：2025-03-02 02:13:18" itemprop="dateModified" datetime="2025-03-02T02:13:18+08:00">2025-03-02</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -241,14 +244,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>21k</span>
+              <span>22k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>19 分钟</span>
+              <span>20 分钟</span>
             </span>
 
         </div>
@@ -306,6 +309,48 @@
 
 <h3 id="链式结构-1"><a href="#链式结构-1" class="headerlink" title="链式结构"></a>链式结构</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;stdio.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;stdlib.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="type">int</span> E; <span class="comment">// 定义队列元素类型为 int</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义节点结构体</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">Node</span> &#123;</span></span><br><span class="line">    E element;        <span class="comment">// 节点存储的元素</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Node</span>* <span class="title">next</span>;</span> <span class="comment">// 指向下一个节点的指针</span></span><br><span class="line">&#125; Node;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义队列结构体</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">Queue</span> &#123;</span></span><br><span class="line">    Node *front; <span class="comment">// 队头指针</span></span><br><span class="line">    Node *rear;  <span class="comment">// 队尾指针</span></span><br><span class="line">&#125; Queue;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 初始化队列</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">initQueue</span><span class="params">(Queue* <span class="built_in">queue</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">queue</span>-&gt;rear = <span class="literal">NULL</span>;  <span class="comment">// 队尾指针初始化为 NULL</span></span><br><span class="line">    <span class="built_in">queue</span>-&gt;front = <span class="literal">NULL</span>; <span class="comment">// 队头指针初始化为 NULL</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 判断队列是否为空</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">isEmpty</span><span class="params">(Queue* <span class="built_in">queue</span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> (<span class="built_in">queue</span>-&gt;front == <span class="literal">NULL</span>); <span class="comment">// 如果队头指针为 NULL，说明队列为空</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建新节点</span></span><br><span class="line">Node *<span class="title function_">createNode</span><span class="params">(E element)</span> &#123;</span><br><span class="line">    Node *newNode = (Node*) <span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(Node)); <span class="comment">// 动态分配新节点内存</span></span><br><span class="line">    newNode-&gt;next = <span class="literal">NULL</span>;       <span class="comment">// 新节点的 next 指针初始化为 NULL</span></span><br><span class="line">    newNode-&gt;element = element; <span class="comment">// 将传入的元素赋值给节点</span></span><br><span class="line">    <span class="keyword">return</span> newNode;             <span class="comment">// 返回新创建的节点</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 入队操作</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">enQueue</span><span class="params">(Queue* <span class="built_in">queue</span>, E element)</span> &#123;</span><br><span class="line">    Node *newNode = createNode(element); <span class="comment">// 创建新节点</span></span><br><span class="line">    <span class="keyword">if</span> (isEmpty(<span class="built_in">queue</span>)) &#123;                <span class="comment">// 如果队列为空</span></span><br><span class="line">        <span class="built_in">queue</span>-&gt;front = newNode;          <span class="comment">// 队头指针指向新节点</span></span><br><span class="line">        <span class="built_in">queue</span>-&gt;rear = newNode;           <span class="comment">// 队尾指针指向新节点</span></span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">queue</span>-&gt;rear-&gt;next = newNode; <span class="comment">// 队尾指针的 next 指向新节点</span></span><br><span class="line">    <span class="built_in">queue</span>-&gt;rear = newNode;       <span class="comment">// 更新队尾指针为新节点</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 出队操作</span></span><br><span class="line">E <span class="title function_">deQueue</span><span class="params">(Queue* <span class="built_in">queue</span>)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (isEmpty(<span class="built_in">queue</span>)) &#123; <span class="comment">// 如果队列为空</span></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;Queue is NULL\n&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>; <span class="comment">// 返回一个错误值</span></span><br><span class="line">    &#125;</span><br><span class="line">    E e = <span class="built_in">queue</span>-&gt;front-&gt;element;  <span class="comment">// 获取队头元素</span></span><br><span class="line">    Node *deNode = <span class="built_in">queue</span>-&gt;front;  <span class="comment">// 暂存队头节点</span></span><br><span class="line">    <span class="built_in">queue</span>-&gt;front = deNode-&gt;next;  <span class="comment">// 更新队头指针</span></span><br><span class="line">    <span class="built_in">free</span>(deNode);                 <span class="comment">// 释放队头节点内存</span></span><br><span class="line">    <span class="keyword">return</span> e;                      <span class="comment">// 返回出队的元素</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 释放队列内存</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">freeQueue</span><span class="params">(Queue* <span class="built_in">queue</span>)</span> &#123;</span><br><span class="line">    Node *temp = <span class="built_in">queue</span>-&gt;front; <span class="comment">// 从队头开始</span></span><br><span class="line">    <span class="keyword">while</span> (temp != <span class="literal">NULL</span>) &#123;      <span class="comment">// 遍历所有节点</span></span><br><span class="line">        <span class="built_in">queue</span>-&gt;front = <span class="built_in">queue</span>-&gt;front-&gt;next; <span class="comment">// 更新队头指针</span></span><br><span class="line">        <span class="built_in">free</span>(temp);             <span class="comment">// 释放当前节点的内存</span></span><br><span class="line">        temp = <span class="built_in">queue</span>-&gt;front;    <span class="comment">// 移动到下一个节点</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">free</span>(<span class="built_in">queue</span>); <span class="comment">// 释放队列结构体内存</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;free Queue!\n&quot;</span>); <span class="comment">// 输出释放提示信息</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    Queue *<span class="built_in">queue</span> = (Queue *)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(Queue)); <span class="comment">// 动态分配队列内存</span></span><br><span class="line">    initQueue(<span class="built_in">queue</span>); <span class="comment">// 初始化队列</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 测试入队和出队操作</span></span><br><span class="line">    enQueue(<span class="built_in">queue</span>, <span class="number">7</span>); <span class="comment">// 入队 7</span></span><br><span class="line">    enQueue(<span class="built_in">queue</span>, <span class="number">8</span>); <span class="comment">// 入队 8</span></span><br><span class="line"></span><br><span class="line">    E e = deQueue(<span class="built_in">queue</span>); <span class="comment">// 出队</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Dequeued: %d\n&quot;</span>, e); <span class="comment">// 输出：Dequeued: 7</span></span><br><span class="line"></span><br><span class="line">    e = deQueue(<span class="built_in">queue</span>); <span class="comment">// 再次出队</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Dequeued: %d\n&quot;</span>, e); <span class="comment">// 输出：Dequeued: 8</span></span><br><span class="line"></span><br><span class="line">    e = deQueue(<span class="built_in">queue</span>); <span class="comment">// 出队空队列</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Dequeued: %d\n&quot;</span>, e); <span class="comment">// 输出：Queue is NULL, Dequeued: -1</span></span><br><span class="line"></span><br><span class="line">    freeQueue(<span class="built_in">queue</span>); <span class="comment">// 释放队列内存，输出：free Queue!</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<h1 id="树"><a href="#树" class="headerlink" title="树"></a>树</h1><h2 id="树的定义"><a href="#树的定义" class="headerlink" title="树的定义"></a>树的定义</h2><p>树（Tree）是有n个节点的有限集，它或为空树（n&#x3D;0），或为非空树（n&gt;0）。</p>
+<p>有且只有一个根节点。</p>
+<p>除根节点以外的节点可以分为m个互不相交的有限集，其中每一个集合本身又是一棵树，称为根的子树。</p>
+<p><img src="/2024/02/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/1.jpg"></p>
+<h2 id="树的基本术语"><a href="#树的基本术语" class="headerlink" title="树的基本术语"></a>树的基本术语</h2><p><strong>结点</strong></p>
+<p>树中的一个独立单元。包含一个数据元素及若干指向其子树的分支。</p>
+<p><strong>结点的度</strong></p>
+<p>结点拥有的子树数称为结点的度。</p>
+<p><strong>树的度</strong></p>
+<p>树的度是树内各结点度的最大值。</p>
+<p><strong>叶子</strong></p>
+<p>度为0的结点称为叶子或终端结点。</p>
+<p><strong>非终端结点</strong></p>
+<p>度不为0的结点称为非终端结点或分支结点。</p>
+<p><strong>双亲和孩子</strong></p>
+<p>结点的子树的根称为该结点的孩子,相应地,该结点称为孩子的双亲。</p>
+<p><strong>兄弟</strong></p>
+<p>同一个双亲的孩子之间互称兄弟。</p>
+<p><strong>祖先</strong></p>
+<p>从根到该结点所经分支上的所有结点。</p>
+<p><strong>子孙</strong></p>
+<p>以某结点为根的子树中的任一结点都称为该结点的子孙。</p>
+<p><strong>层次</strong></p>
+<p>结点的层次从根开始定义起，根为第一层,根的孩子为第二层。</p>
+<p>树中任一结点的层次等于其双亲结点的层次加1。</p>
+<p><strong>堂兄弟</strong></p>
+<p>双亲在同一层的结点互为堂兄弟。</p>
+<p><strong>树的深度</strong></p>
+<p>树中结点的最大层次称为树的深度或高度。</p>
+<p><strong>有序数和无序树</strong></p>
+<p>如果将树中结点的各子树看成从左至右是有次序的(即不能互换), 则称该树为有序树,否则称为无序树。</p>
+<p>在有序树中最左边的子树的根称为第一个孩子,最右边的称为最后一个孩子。</p>
+<p><strong>森林</strong></p>
+<p>是m (m≥0) 棵互不相交的树的集合。对树中每个结点而言,其子树的集合即 为森林。</p>
+<h2 id="二叉树的定义"><a href="#二叉树的定义" class="headerlink" title="二叉树的定义"></a>二叉树的定义</h2><p>二叉树（Binary Tree）是n个结点所构成的集合，它或为空树，或为非空树。</p>
+<p>有且仅有一个称之为根的节点。</p>
+<p>除根结点以外的其余结点分为两个互不相交的子集T1和T2，分别称为T的左子树和右子树,且T1和T2本身又都是二叉树。</p>
+<p><strong>二叉树与树的区别：</strong></p>
+<p>二叉树每个结点至多只有两棵子树(即二叉树中不存在度大于2的结点);</p>
+<p>二叉树的子树有左右之分,其次序不能任意颠倒。</p>
+<p>二叉树的递归定义表明二叉树或为空,或是由一个根结点加上两棵分别称为左子树和右子树 的、互不相交的二叉树组成。由于这两棵子树也是二叉树,则由二叉树的定义,它们也可以是空树。</p>
+<p><img src="/2024/02/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/2.jpg"></p>
 
     </div>
 
@@ -389,7 +434,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E8%A1%A8"><span class="nav-number">1.</span> <span class="nav-text">线性表</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A1%BA%E5%BA%8F%E8%A1%A8"><span class="nav-number">1.1.</span> <span class="nav-text">顺序表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%93%BE%E8%A1%A8"><span class="nav-number">1.2.</span> <span class="nav-text">链表</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%95%E9%93%BE%E8%A1%A8"><span class="nav-number">1.2.1.</span> <span class="nav-text">单链表</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%97%A0%E9%93%BE%E8%A1%A8%E5%A4%B4"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">无链表头</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9C%89%E9%93%BE%E8%A1%A8%E5%A4%B4"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">有链表头</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8"><span class="nav-number">1.2.2.</span> <span class="nav-text">双向链表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BE%AA%E7%8E%AF%E9%93%BE%E8%A1%A8"><span class="nav-number">1.2.3.</span> <span class="nav-text">循环链表</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A0%88%E4%B8%8E%E9%98%9F%E5%88%97"><span class="nav-number">2.</span> <span class="nav-text">栈与队列</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%88"><span class="nav-number">2.1.</span> <span class="nav-text">栈</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A1%BA%E5%BA%8F%E7%BB%93%E6%9E%84"><span class="nav-number">2.1.1.</span> <span class="nav-text">顺序结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%93%BE%E5%BC%8F%E7%BB%93%E6%9E%84"><span class="nav-number">2.1.2.</span> <span class="nav-text">链式结构</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%98%9F%E5%88%97"><span class="nav-number">2.2.</span> <span class="nav-text">队列</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A1%BA%E5%BA%8F%E7%BB%93%E6%9E%84-1"><span class="nav-number">2.2.1.</span> <span class="nav-text">顺序结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%93%BE%E5%BC%8F%E7%BB%93%E6%9E%84-1"><span class="nav-number">2.2.2.</span> <span class="nav-text">链式结构</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E8%A1%A8"><span class="nav-number">1.</span> <span class="nav-text">线性表</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A1%BA%E5%BA%8F%E8%A1%A8"><span class="nav-number">1.1.</span> <span class="nav-text">顺序表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%93%BE%E8%A1%A8"><span class="nav-number">1.2.</span> <span class="nav-text">链表</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%95%E9%93%BE%E8%A1%A8"><span class="nav-number">1.2.1.</span> <span class="nav-text">单链表</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%97%A0%E9%93%BE%E8%A1%A8%E5%A4%B4"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">无链表头</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9C%89%E9%93%BE%E8%A1%A8%E5%A4%B4"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">有链表头</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8"><span class="nav-number">1.2.2.</span> <span class="nav-text">双向链表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BE%AA%E7%8E%AF%E9%93%BE%E8%A1%A8"><span class="nav-number">1.2.3.</span> <span class="nav-text">循环链表</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A0%88%E4%B8%8E%E9%98%9F%E5%88%97"><span class="nav-number">2.</span> <span class="nav-text">栈与队列</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%88"><span class="nav-number">2.1.</span> <span class="nav-text">栈</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A1%BA%E5%BA%8F%E7%BB%93%E6%9E%84"><span class="nav-number">2.1.1.</span> <span class="nav-text">顺序结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%93%BE%E5%BC%8F%E7%BB%93%E6%9E%84"><span class="nav-number">2.1.2.</span> <span class="nav-text">链式结构</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%98%9F%E5%88%97"><span class="nav-number">2.2.</span> <span class="nav-text">队列</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A1%BA%E5%BA%8F%E7%BB%93%E6%9E%84-1"><span class="nav-number">2.2.1.</span> <span class="nav-text">顺序结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%93%BE%E5%BC%8F%E7%BB%93%E6%9E%84-1"><span class="nav-number">2.2.2.</span> <span class="nav-text">链式结构</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A0%91"><span class="nav-number">3.</span> <span class="nav-text">树</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%91%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="nav-number">3.1.</span> <span class="nav-text">树的定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%91%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%9C%AF%E8%AF%AD"><span class="nav-number">3.2.</span> <span class="nav-text">树的基本术语</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="nav-number">3.3.</span> <span class="nav-text">二叉树的定义</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -405,20 +450,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">82</span>
+          <span class="site-state-item-count">85</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">32</span>
+        <span class="site-state-item-count">34</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">76</span>
+        <span class="site-state-item-count">79</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -459,13 +504,13 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">687k</span>
+    <span title="站点总字数">698k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">10:24</span>
+    <span title="站点阅读时长">10:35</span>
 </div>
 
 

@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/wxlog.jpg">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/wxlog.jpg">
+  <link rel="mask-icon" href="/images/wxlog.jpg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="花指令去除无法解析的跳转地址1 转换为汇编代码如下 通过BR指令跳转到X5存储的地址处 1234567891011121314151617181920212223LOAD:0000000000028C48 FF 83 01 D1                 SUB             SP, SP, #0x60LOAD:0000000000028C4C FB 1B 00 F9">
+<meta property="og:type" content="article">
+<meta property="og:title" content="混淆">
+<meta property="og:url" content="http://example.com/2025/03/03/%E6%B7%B7%E6%B7%86/index.html">
+<meta property="og:site_name" content="白乐天">
+<meta property="og:description" content="花指令去除无法解析的跳转地址1 转换为汇编代码如下 通过BR指令跳转到X5存储的地址处 1234567891011121314151617181920212223LOAD:0000000000028C48 FF 83 01 D1                 SUB             SP, SP, #0x60LOAD:0000000000028C4C FB 1B 00 F9">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2025/03/03/%E6%B7%B7%E6%B7%86/1.jpg">
+<meta property="og:image" content="http://example.com/2025/03/03/%E6%B7%B7%E6%B7%86/2.jpg">
+<meta property="og:image" content="http://example.com/2025/03/03/%E6%B7%B7%E6%B7%86/3.jpg">
+<meta property="og:image" content="http://example.com/2025/03/03/%E6%B7%B7%E6%B7%86/4.jpg">
+<meta property="og:image" content="http://example.com/2025/03/03/%E6%B7%B7%E6%B7%86/5.jpg">
+<meta property="og:image" content="http://example.com/2025/03/03/%E6%B7%B7%E6%B7%86/6.jpg">
+<meta property="og:image" content="http://example.com/2025/03/03/%E6%B7%B7%E6%B7%86/7.jpg">
+<meta property="og:image" content="http://example.com/2025/03/03/%E6%B7%B7%E6%B7%86/8.jpg">
+<meta property="og:image" content="http://example.com/2025/03/03/%E6%B7%B7%E6%B7%86/9.jpg">
+<meta property="og:image" content="http://example.com/2025/03/03/%E6%B7%B7%E6%B7%86/10.jpg">
+<meta property="og:image" content="http://example.com/2025/03/03/%E6%B7%B7%E6%B7%86/11.jpg">
+<meta property="og:image" content="http://example.com/2025/03/03/%E6%B7%B7%E6%B7%86/12.jpg">
+<meta property="og:image" content="http://example.com/2025/03/03/%E6%B7%B7%E6%B7%86/13.jpg">
+<meta property="og:image" content="http://example.com/2025/03/03/%E6%B7%B7%E6%B7%86/14.jpg">
+<meta property="og:image" content="http://example.com/2025/03/03/%E6%B7%B7%E6%B7%86/15.jpg">
+<meta property="og:image" content="http://example.com/2025/03/03/%E6%B7%B7%E6%B7%86/16.jpg">
+<meta property="og:image" content="http://example.com/2025/03/03/%E6%B7%B7%E6%B7%86/17.jpg">
+<meta property="article:published_time" content="2025-03-03T08:54:32.000Z">
+<meta property="article:modified_time" content="2025-03-04T06:28:08.408Z">
+<meta property="article:author" content="Bileton">
+<meta property="article:tag" content="混淆">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2025/03/03/%E6%B7%B7%E6%B7%86/1.jpg">
+
+<link rel="canonical" href="http://example.com/2025/03/03/%E6%B7%B7%E6%B7%86/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>混淆 | 白乐天</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">白乐天</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">道阻且长，行则将至。</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">79</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">34</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">85</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/love.js"></script>
+</div>
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/03/03/%E6%B7%B7%E6%B7%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/android.svg">
+      <meta itemprop="name" content="Bileton">
+      <meta itemprop="description" content="路漫漫其修远夕！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="白乐天">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          混淆
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2025-03-03 16:54:32" itemprop="dateCreated datePublished" datetime="2025-03-03T16:54:32+08:00">2025-03-03</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2025-03-04 14:28:08" itemprop="dateModified" datetime="2025-03-04T14:28:08+08:00">2025-03-04</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%B7%B7%E6%B7%86/" itemprop="url" rel="index"><span itemprop="name">混淆</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>2.7k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="花指令去除"><a href="#花指令去除" class="headerlink" title="花指令去除"></a>花指令去除</h1><h2 id="无法解析的跳转地址1"><a href="#无法解析的跳转地址1" class="headerlink" title="无法解析的跳转地址1"></a>无法解析的跳转地址1</h2><p><img src="/2025/03/03/%E6%B7%B7%E6%B7%86/1.jpg"></p>
+<p>转换为汇编代码如下</p>
+<p>通过BR指令跳转到X5存储的地址处</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">LOAD:0000000000028C48 FF 83 01 D1                 SUB             SP, SP, #0x60</span><br><span class="line">LOAD:0000000000028C4C FB 1B 00 F9                 STR             X27, [SP,#0x50+var_20]</span><br><span class="line">LOAD:0000000000028C50 F4 4F 04 A9                 STP             X20, X19, [SP,#0x50+var_10]</span><br><span class="line">LOAD:0000000000028C54 FD 7B 05 A9                 STP             X29, X30, [SP,#0x50+var_s0]</span><br><span class="line">LOAD:0000000000028C58 FD 43 01 91                 ADD             X29, SP, #0x50</span><br><span class="line">LOAD:0000000000028C5C 54 D0 3B D5                 MRS             X20, TPIDR_EL0</span><br><span class="line">LOAD:0000000000028C60 88 16 40 F9                 LDR             X8, [X20,#0x28]</span><br><span class="line">LOAD:0000000000028C64 69 05 80 52                 MOV             W9, #0x2B ; &#x27;+&#x27;</span><br><span class="line">LOAD:0000000000028C68 EA 93 00 91                 ADD             X10, SP, #0x50+var_2C</span><br><span class="line">LOAD:0000000000028C6C F3 03 00 AA                 MOV             X19, X0</span><br><span class="line">LOAD:0000000000028C70 E8 17 00 F9                 STR             X8, [SP,#0x50+var_28]</span><br><span class="line">LOAD:0000000000028C74 E9 27 00 B9                 STR             W9, [SP,#0x50+var_2C]</span><br><span class="line">LOAD:0000000000028C78 25 00 00 10                 ADR             X5, loc_28C7C</span><br><span class="line">LOAD:0000000000028C7C</span><br><span class="line">LOAD:0000000000028C7C             loc_28C7C                               ; DATA XREF: JNI_OnLoad+30↑o</span><br><span class="line">LOAD:0000000000028C7C FB 00 00 98                 LDRSW           X27, =0xFFFFFFFA</span><br><span class="line">LOAD:0000000000028C80 FB 03 3B AA                 MVN             X27, X27</span><br><span class="line">LOAD:0000000000028C84 46 01 80 B9                 LDRSW           X6, [X10]</span><br><span class="line">LOAD:0000000000028C88 7B 03 06 8B                 ADD             X27, X27, X6</span><br><span class="line">LOAD:0000000000028C8C A5 00 1B 8B                 ADD             X5, X5, X27</span><br><span class="line">LOAD:0000000000028C90 08 0C 80 D2                 MOV             X8, #0x60 ; &#x27;`&#x27;</span><br><span class="line">LOAD:0000000000028C94 A0 00 1F D6                 BR              X5</span><br><span class="line">LOAD:0000000000028C94             ; End of function JNI_OnLoad</span><br></pre></td></tr></table></figure>
+
+<p>经计算X5的值为<code>0x28CAC</code></p>
+<p><img src="/2025/03/03/%E6%B7%B7%E6%B7%86/2.jpg"></p>
+<p><code>0x28CAC</code>地址处是一堆数据，是IDA未能正确分析所致</p>
+<p>使用<code>U</code>取消定义，光标移动到<code>0x28CAC</code>地址处，使用<code>C</code>重新识别为代码</p>
+<p><img src="/2025/03/03/%E6%B7%B7%E6%B7%86/3.jpg"></p>
+<p>回到BR指令处进行patch</p>
+<p><img src="/2025/03/03/%E6%B7%B7%E6%B7%86/4.jpg"></p>
+<p>patch完成之后重新反编译，如下还是出现了无法识别的指令</p>
+<p><img src="/2025/03/03/%E6%B7%B7%E6%B7%86/5.jpg"></p>
+<p>这里把<code>BR</code>指令改为<code>B</code>指令后面跟上跳转的地址</p>
+<p><img src="/2025/03/03/%E6%B7%B7%E6%B7%86/6.jpg"></p>
+<p>后面出现很多<code>BR 寄存器</code>的指令，重复同样的操作进行修正，就可以看到正常的函数逻辑。</p>
+<h2 id="无法解析的跳转地址2"><a href="#无法解析的跳转地址2" class="headerlink" title="无法解析的跳转地址2"></a>无法解析的跳转地址2</h2><p><img src="/2025/03/03/%E6%B7%B7%E6%B7%86/7.jpg"></p>
+<p>这里的<code>JUMPOUT</code>是在patch修正之后出现的，这时候可以通过重新分析程序或者保存patch文件重新用IDA打开。</p>
+<h2 id="无法解析的跳转地址3"><a href="#无法解析的跳转地址3" class="headerlink" title="无法解析的跳转地址3"></a>无法解析的跳转地址3</h2><p><img src="/2025/03/03/%E6%B7%B7%E6%B7%86/8.jpg"></p>
+<p>这里的<code>JUMPOUT</code>是重新分析程序后出现的，转换为汇编代码之后，取消定义，重新生成代码失败了</p>
+<p>那么可能是这里本身就是数据，IDA出错了</p>
+<p>这里看到数据上方有一个<code>CBZ</code>指令</p>
+<p><img src="/2025/03/03/%E6%B7%B7%E6%B7%86/9.jpg"></p>
+<p>这里的<code>CBZ</code>指令从逻辑上来看是会跳转到<code>loc_3640C</code>的，程序是不会执行到这一块存放数据的内存的，却能影响到IDA的分析。</p>
+<p>把<code>CBZ</code>指令改为<code>B</code>指令</p>
+<h2 id="堆栈不平衡"><a href="#堆栈不平衡" class="headerlink" title="堆栈不平衡"></a>堆栈不平衡</h2><p><img src="/2025/03/03/%E6%B7%B7%E6%B7%86/10.jpg"></p>
+<p>在汇编代码中观察SP</p>
+<p><img src="/2025/03/03/%E6%B7%B7%E6%B7%86/11.jpg"></p>
+<p>这里栈出错了，在函数内部出现栈增加，而且这里增加的长度要大于栈本身的长度，导致出错了。</p>
+<p>把这行汇编指令nop掉，后面还会有很多这样的影响栈的指令，全都要手动nop掉，nop完了之后重新分析程序，函数就恢复正常了。</p>
+<h1 id="反虚假控制流"><a href="#反虚假控制流" class="headerlink" title="反虚假控制流"></a>反虚假控制流</h1><p>分析如下方法<code>jiance_xp_frida()</code></p>
+<p><img src="/2025/03/03/%E6%B7%B7%E6%B7%86/12.jpg"></p>
+<p>在IDA中是如下样子</p>
+<p><img src="/2025/03/03/%E6%B7%B7%E6%B7%86/13.jpg"></p>
+<h2 id="unidbg模拟执行函数"><a href="#unidbg模拟执行函数" class="headerlink" title="unidbg模拟执行函数"></a>unidbg模拟执行函数</h2><p>根据函数的地址范围，打印指令的偏移地址并存入文件中</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">emulator.getBackend().hook_add_new(<span class="keyword">new</span> <span class="title class_">CodeHook</span>() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">hook</span><span class="params">(Backend backend, <span class="type">long</span> address, <span class="type">int</span> size, Object user)</span> &#123;</span><br><span class="line">        System.out.println(String.format(<span class="string">&quot;0x%x&quot;</span>,address-<span class="number">0x12000000</span>));</span><br><span class="line">        content+=String.format(<span class="string">&quot;0x%x&quot;</span>,address-<span class="number">0x12000000</span>)+<span class="string">&quot;\r\n&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onAttach</span><span class="params">(UnHook unHook)</span> &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">detach</span><span class="params">()</span> &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;,<span class="number">0x12015608</span>,<span class="number">0x12015608</span>+<span class="number">0xAC0</span>,<span class="literal">null</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="type">String</span> <span class="variable">fileName</span> <span class="operator">=</span> <span class="string">&quot;ollvm_bcf_new.log&quot;</span>;</span><br><span class="line">    <span class="type">File</span> <span class="variable">file</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">File</span>(fileName);</span><br><span class="line">    <span class="type">FileWriter</span> <span class="variable">writer</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileWriter</span>(file);</span><br><span class="line">    writer.write(content);</span><br><span class="line">    writer.close();</span><br><span class="line">    System.out.println(<span class="string">&quot;File saved to &quot;</span> + file.getAbsolutePath());</span><br><span class="line"></span><br><span class="line">&#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">RuntimeException</span>(e);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后可以使用IDAPython脚本把这些地址添加高亮。</p>
+<h1 id="手动还原控制流平坦化"><a href="#手动还原控制流平坦化" class="headerlink" title="手动还原控制流平坦化"></a>手动还原控制流平坦化</h1><p>demo中的目标函数</p>
+<p><img src="/2025/03/03/%E6%B7%B7%E6%B7%86/14.jpg"></p>
+<p>转换为汇编代码，找出所有真实块以及对应的汇编地址，标准的ollvm虚假块中一般只有简单的修改v6的值，其他的基本都是真实块，</p>
+<p><img src="/2025/03/03/%E6%B7%B7%E6%B7%86/15.jpg"></p>
+<p>通过汇编代码查看每个真实块的label标签，在每个真实块后面进行注释，如下</p>
+<p><img src="/2025/03/03/%E6%B7%B7%E6%B7%86/16.jpg"></p>
+<p>找出所有真实块的地址后，接着就是顺着逻辑将他们全部串联起来。</p>
+<p>从函数开始的地方往下分析，通过patch修改函数流程</p>
+<p>如下是修正之后的流程图</p>
+<p><img src="/2025/03/03/%E6%B7%B7%E6%B7%86/17.jpg"></p>
+<h1 id="Unidbg还原控制流平坦化"><a href="#Unidbg还原控制流平坦化" class="headerlink" title="Unidbg还原控制流平坦化"></a>Unidbg还原控制流平坦化</h1>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%B7%B7%E6%B7%86/" rel="tag"><svg t="1732789072752" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4858" width="15" height="15"><path d="M229.443715 343.118259l565.172804 0 0 410.010794c0 37.525595-30.237317 67.762912-67.040108 67.762912l-46.319715 0 0 139.742183c0 35.116247-28.249605 63.365852-63.305618 63.365852-35.116247 0-63.546553-28.309839-63.546553-63.365852l0-139.742183-84.809049 0 0 139.742183c0 35.056013-28.430306 63.365852-63.546553 63.365852-34.393443 0-62.763515-28.309839-62.763515-63.365852l-0.542103-139.742183-45.596911 0c-37.465361 0-67.702678-30.177084-67.702678-67.762912l0-410.010794zM141.984383 331.432921c-35.056013 0-63.426086 28.370073-63.426086 62.763515l0 264.787344c0 35.116247 28.370073 63.365852 63.426086 63.365852s62.763515-28.309839 62.763515-63.365852l0-264.787344c0-34.393443-28.189371-62.763515-62.763515-62.763515zM796.42353 320.952257l-569.449397 0c0-97.879762 58.547156-182.869512 145.343917-227.141282l-43.7899-80.59269c-2.469582-4.336826-1.264908-9.878327 3.071919-12.347908 4.276593-1.867245 9.878327-0.662571 12.347908 3.734489l44.271769 81.255261c37.646062-16.684735 79.508484-25.900491 123.780253-25.900491s86.134191 9.215756 123.780253 25.840257l44.271769-81.255261c2.469582-4.336826 8.071316-5.5415 12.347908-3.734489 4.336826 2.469582 5.5415 8.011082 3.071919 12.347908l-43.7899 80.59269c86.254658 44.332003 144.74158 129.321753 144.74158 227.201515zM406.048922 194.160319c0-12.950245-10.42043-24.033246-23.912779-24.033246-13.010479 0-23.430909 11.083001-23.430909 24.033246 0 12.890012 10.42043 23.973012 23.430909 23.973012 13.492349 0.060234 23.912779-11.022767 23.912779-23.973012zM665.294766 194.160319c0-12.950245-10.42043-24.033246-23.430909-24.033246-13.552582 0-23.912779 11.083001-23.912779 24.033246 0 12.890012 10.42043 23.973012 23.912779 23.973012 13.010479 0.060234 23.430909-11.022767 23.430909-23.973012zM882.015617 331.432921c-34.51391 0-62.763515 27.707502-62.763515 62.763515l0 264.787344c0 35.116247 28.249605 63.365852 62.763515 63.365852 35.056013 0 63.426086-28.309839 63.426086-63.365852l0-264.787344c-0.060234-35.056013-28.370073-62.763515-63.426086-62.763515z" fill="#000000" p-id="4859"></path></svg> 混淆</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2025/03/02/8086%E6%B1%87%E7%BC%96/" rel="prev" title="8086汇编">
+      <i class="fa fa-chevron-left"></i> 8086汇编
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%8A%B1%E6%8C%87%E4%BB%A4%E5%8E%BB%E9%99%A4"><span class="nav-number">1.</span> <span class="nav-text">花指令去除</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%97%A0%E6%B3%95%E8%A7%A3%E6%9E%90%E7%9A%84%E8%B7%B3%E8%BD%AC%E5%9C%B0%E5%9D%801"><span class="nav-number">1.1.</span> <span class="nav-text">无法解析的跳转地址1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%97%A0%E6%B3%95%E8%A7%A3%E6%9E%90%E7%9A%84%E8%B7%B3%E8%BD%AC%E5%9C%B0%E5%9D%802"><span class="nav-number">1.2.</span> <span class="nav-text">无法解析的跳转地址2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%97%A0%E6%B3%95%E8%A7%A3%E6%9E%90%E7%9A%84%E8%B7%B3%E8%BD%AC%E5%9C%B0%E5%9D%803"><span class="nav-number">1.3.</span> <span class="nav-text">无法解析的跳转地址3</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A0%86%E6%A0%88%E4%B8%8D%E5%B9%B3%E8%A1%A1"><span class="nav-number">1.4.</span> <span class="nav-text">堆栈不平衡</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%8D%E8%99%9A%E5%81%87%E6%8E%A7%E5%88%B6%E6%B5%81"><span class="nav-number">2.</span> <span class="nav-text">反虚假控制流</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#unidbg%E6%A8%A1%E6%8B%9F%E6%89%A7%E8%A1%8C%E5%87%BD%E6%95%B0"><span class="nav-number">2.1.</span> <span class="nav-text">unidbg模拟执行函数</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%89%8B%E5%8A%A8%E8%BF%98%E5%8E%9F%E6%8E%A7%E5%88%B6%E6%B5%81%E5%B9%B3%E5%9D%A6%E5%8C%96"><span class="nav-number">3.</span> <span class="nav-text">手动还原控制流平坦化</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Unidbg%E8%BF%98%E5%8E%9F%E6%8E%A7%E5%88%B6%E6%B5%81%E5%B9%B3%E5%9D%A6%E5%8C%96"><span class="nav-number">4.</span> <span class="nav-text">Unidbg还原控制流平坦化</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Bileton"
+      src="/images/android.svg">
+  <p class="site-author-name" itemprop="name">Bileton</p>
+  <div class="site-description" itemprop="description">路漫漫其修远夕！</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">85</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">34</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">79</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Bileton</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">698k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">10:35</span>
+</div>
+
+
+<span id="timeDate">载入天数...</span>
+<span id="times">载入时分秒...</span>
+<script>
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("01/01/2024 00:00:00"); //修改为你的网站开始运行的时间
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+        document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 ";
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒.";
+    }
+setInterval("createtime()",250);
+</script>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
