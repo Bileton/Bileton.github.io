@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/wxlog.jpg">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/wxlog.jpg">
+  <link rel="mask-icon" href="/images/wxlog.jpg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="ollvm9.apk Jadx反编译分析 通过UUIDCheckSum()方法生成签名，参数是随机生成的长度36的字母数字字符串。 frida主动调用 12345678function call_UUIDCheckSum() &#123;    Java.perform(function()&#123;        let MainActivity &#x3D; Java.use(&quot;com.ka">
+<meta property="og:type" content="article">
+<meta property="og:title" content="看雪3w20_9题目ollvm9.apk复现">
+<meta property="og:url" content="http://example.com/2025/03/06/%E7%9C%8B%E9%9B%AA3w20-9%E9%A2%98%E7%9B%AEollvm9-apk%E5%A4%8D%E7%8E%B0/index.html">
+<meta property="og:site_name" content="白乐天">
+<meta property="og:description" content="ollvm9.apk Jadx反编译分析 通过UUIDCheckSum()方法生成签名，参数是随机生成的长度36的字母数字字符串。 frida主动调用 12345678function call_UUIDCheckSum() &#123;    Java.perform(function()&#123;        let MainActivity &#x3D; Java.use(&quot;com.ka">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2025/03/06/%E7%9C%8B%E9%9B%AA3w20-9%E9%A2%98%E7%9B%AEollvm9-apk%E5%A4%8D%E7%8E%B0/13.jpg">
+<meta property="og:image" content="http://example.com/2025/03/06/%E7%9C%8B%E9%9B%AA3w20-9%E9%A2%98%E7%9B%AEollvm9-apk%E5%A4%8D%E7%8E%B0/14.jpg">
+<meta property="og:image" content="http://example.com/2025/03/06/%E7%9C%8B%E9%9B%AA3w20-9%E9%A2%98%E7%9B%AEollvm9-apk%E5%A4%8D%E7%8E%B0/15.jpg">
+<meta property="og:image" content="http://example.com/2025/03/06/%E7%9C%8B%E9%9B%AA3w20-9%E9%A2%98%E7%9B%AEollvm9-apk%E5%A4%8D%E7%8E%B0/16.jpg">
+<meta property="og:image" content="http://example.com/2025/03/06/%E7%9C%8B%E9%9B%AA3w20-9%E9%A2%98%E7%9B%AEollvm9-apk%E5%A4%8D%E7%8E%B0/17.jpg">
+<meta property="og:image" content="http://example.com/2025/03/06/%E7%9C%8B%E9%9B%AA3w20-9%E9%A2%98%E7%9B%AEollvm9-apk%E5%A4%8D%E7%8E%B0/18.jpg">
+<meta property="og:image" content="http://example.com/2025/03/06/%E7%9C%8B%E9%9B%AA3w20-9%E9%A2%98%E7%9B%AEollvm9-apk%E5%A4%8D%E7%8E%B0/19.jpg">
+<meta property="og:image" content="http://example.com/2025/03/06/%E7%9C%8B%E9%9B%AA3w20-9%E9%A2%98%E7%9B%AEollvm9-apk%E5%A4%8D%E7%8E%B0/20.jpg">
+<meta property="og:image" content="http://example.com/2025/03/06/%E7%9C%8B%E9%9B%AA3w20-9%E9%A2%98%E7%9B%AEollvm9-apk%E5%A4%8D%E7%8E%B0/21.jpg">
+<meta property="article:published_time" content="2025-03-06T05:44:35.000Z">
+<meta property="article:modified_time" content="2025-03-06T05:53:20.002Z">
+<meta property="article:author" content="Bileton">
+<meta property="article:tag" content="ollvm9">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2025/03/06/%E7%9C%8B%E9%9B%AA3w20-9%E9%A2%98%E7%9B%AEollvm9-apk%E5%A4%8D%E7%8E%B0/13.jpg">
+
+<link rel="canonical" href="http://example.com/2025/03/06/%E7%9C%8B%E9%9B%AA3w20-9%E9%A2%98%E7%9B%AEollvm9-apk%E5%A4%8D%E7%8E%B0/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>看雪3w20_9题目ollvm9.apk复现 | 白乐天</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">白乐天</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">道阻且长，行则将至。</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">82</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">35</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">89</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/love.js"></script>
+</div>
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/03/06/%E7%9C%8B%E9%9B%AA3w20-9%E9%A2%98%E7%9B%AEollvm9-apk%E5%A4%8D%E7%8E%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/android.svg">
+      <meta itemprop="name" content="Bileton">
+      <meta itemprop="description" content="路漫漫其修远夕！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="白乐天">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          看雪3w20_9题目ollvm9.apk复现
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2025-03-06 13:44:35 / 修改时间：13:53:20" itemprop="dateCreated datePublished" datetime="2025-03-06T13:44:35+08:00">2025-03-06</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%80%86%E5%90%91%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/" itemprop="url" rel="index"><span itemprop="name">逆向实战案例</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>15k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>14 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="ollvm9-apk"><a href="#ollvm9-apk" class="headerlink" title="ollvm9.apk"></a>ollvm9.apk</h1><p><img src="/2025/03/06/%E7%9C%8B%E9%9B%AA3w20-9%E9%A2%98%E7%9B%AEollvm9-apk%E5%A4%8D%E7%8E%B0/13.jpg"></p>
+<h1 id="Jadx反编译分析"><a href="#Jadx反编译分析" class="headerlink" title="Jadx反编译分析"></a>Jadx反编译分析</h1><p><img src="/2025/03/06/%E7%9C%8B%E9%9B%AA3w20-9%E9%A2%98%E7%9B%AEollvm9-apk%E5%A4%8D%E7%8E%B0/14.jpg"></p>
+<p>通过<code>UUIDCheckSum()</code>方法生成签名，参数是随机生成的长度36的字母数字字符串。</p>
+<p>frida主动调用</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">call_UUIDCheckSum</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="title class_">Java</span>.<span class="title function_">perform</span>(<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="keyword">let</span> <span class="title class_">MainActivity</span> = <span class="title class_">Java</span>.<span class="title function_">use</span>(<span class="string">&quot;com.kanxue.ollvm_ndk.MainActivity&quot;</span>);</span><br><span class="line">        <span class="keyword">let</span> result = <span class="title class_">MainActivity</span>.<span class="title class_">UUIDCheckSum</span>(<span class="string">&quot;0123456789abcdef0123456789abcdef1111&quot;</span>); </span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;result:&quot;</span>,result);</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>结果</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">call_UUIDCheckSum()</span><br><span class="line">result: ah0NaxiObNmHc61xmwOOnN4K_h8Pb3qT_hvumQ9zn6qKa6aN</span><br></pre></td></tr></table></figure>
+
+<h1 id="so分析"><a href="#so分析" class="headerlink" title="so分析"></a>so分析</h1><p>使用IDA打开so文件，跳转到<code>UUIDCheckSum</code>函数处</p>
+<p><code>UUIDCheckSum</code>函数里又调用了三个函数</p>
+<p><img src="/2025/03/06/%E7%9C%8B%E9%9B%AA3w20-9%E9%A2%98%E7%9B%AEollvm9-apk%E5%A4%8D%E7%8E%B0/15.jpg"></p>
+<h2 id="hook-sub-FCB4"><a href="#hook-sub-FCB4" class="headerlink" title="hook_sub_FCB4()"></a>hook_sub_FCB4()</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">hook_sub_FCB4</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> funcaddr = <span class="title class_">Module</span>.<span class="title function_">findBaseAddress</span>(<span class="string">&quot;libnative-lib.so&quot;</span>).<span class="title function_">add</span>(<span class="number">0xFCB4</span>);</span><br><span class="line">    <span class="title class_">Interceptor</span>.<span class="title function_">attach</span>(funcaddr,&#123;</span><br><span class="line">        <span class="attr">onEnter</span>:<span class="keyword">function</span>(<span class="params">args</span>)&#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;arg0:&quot;</span>,args[<span class="number">0</span>].<span class="title function_">readCString</span>());</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;arg1:&quot;</span>,args[<span class="number">1</span>]);</span><br><span class="line">            <span class="variable language_">this</span>.<span class="property">arg0</span> = args[<span class="number">0</span>];</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">onLeave</span>:<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;ret this.arg0:&quot;</span>,<span class="variable language_">this</span>.<span class="property">arg0</span>.<span class="title function_">readCString</span>());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">hook_sub_FCB4</span>()</span><br></pre></td></tr></table></figure>
+
+<p>hook结果</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">arg0: 0123456789abcdef0123456789abcdef1111</span><br><span class="line">arg1: 0x24</span><br><span class="line">ret this.arg0: 10325476-8`cb-4g10-25479-8`cbedg00c3</span><br></pre></td></tr></table></figure>
+
+<h2 id="hook-sub-1029C"><a href="#hook-sub-1029C" class="headerlink" title="hook_sub_1029C()"></a>hook_sub_1029C()</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">hook_sub_1029C</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> funcaddr = <span class="title class_">Module</span>.<span class="title function_">findBaseAddress</span>(<span class="string">&quot;libnative-lib.so&quot;</span>).<span class="title function_">add</span>(<span class="number">0x1029C</span>);</span><br><span class="line">    <span class="title class_">Interceptor</span>.<span class="title function_">attach</span>(funcaddr,&#123;</span><br><span class="line">        <span class="attr">onEnter</span>:<span class="keyword">function</span>(<span class="params">args</span>)&#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;1029C arg0:&quot;</span>,args[<span class="number">0</span>].<span class="title function_">readCString</span>());</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;1029C arg1:&quot;</span>,args[<span class="number">1</span>].<span class="title function_">readCString</span>());</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;1029C arg2:&quot;</span>,args[<span class="number">2</span>]);</span><br><span class="line">            <span class="variable language_">this</span>.<span class="property">arg0</span> = args[<span class="number">0</span>];</span><br><span class="line">            <span class="variable language_">this</span>.<span class="property">arg1</span> = args[<span class="number">1</span>];</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">onLeave</span>:<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;1029C ret this.arg0:&quot;</span>,<span class="variable language_">this</span>.<span class="property">arg0</span>.<span class="title function_">readCString</span>());</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;1029C ret this.arg1:&quot;</span>,<span class="variable language_">this</span>.<span class="property">arg1</span>.<span class="title function_">readCString</span>());</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">hook_sub_1029C</span>()</span><br></pre></td></tr></table></figure>
+
+<p>hook结果，它被调用了两次，在其他地方也被调用了</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">1029C arg0: </span><br><span class="line">1029C arg1: 10325476-8`cb-4g10-25479-8`cbedg00c3</span><br><span class="line">1029C arg2: 0x24</span><br><span class="line">1029C ret this.arg0: 1</span><br><span class="line">1029C ret this.arg1: 10325476-8`cb-4g10-25479-8`cbedg00c3</span><br><span class="line"></span><br><span class="line">1029C arg0:</span><br><span class="line">1029C arg1: 10325476-8`cb-4g10-25479-8`cbedg00c3</span><br><span class="line">1029C arg2: 0x24</span><br><span class="line">1029C ret this.arg0: 1</span><br><span class="line">1029C ret this.arg1: 10325476-8`cb-4g10-25479-8`cbedg00c3</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="hook-sub-F9B8"><a href="#hook-sub-F9B8" class="headerlink" title="hook_sub_F9B8()"></a>hook_sub_F9B8()</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">hook_sub_F9B8</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> funcaddr = <span class="title class_">Module</span>.<span class="title function_">findBaseAddress</span>(<span class="string">&quot;libnative-lib.so&quot;</span>).<span class="title function_">add</span>(<span class="number">0xF9B8</span>);</span><br><span class="line">    <span class="title class_">Interceptor</span>.<span class="title function_">attach</span>(funcaddr,&#123;</span><br><span class="line">        <span class="attr">onEnter</span>:<span class="keyword">function</span>(<span class="params">args</span>)&#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;F9B8 arg0:&quot;</span>,args[<span class="number">0</span>].<span class="title function_">readCString</span>());</span><br><span class="line">            <span class="variable language_">this</span>.<span class="property">arg0</span> = args[<span class="number">0</span>];</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">onLeave</span>:<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;F9B8 ret this.arg0:&quot;</span>,<span class="variable language_">this</span>.<span class="property">arg0</span>.<span class="title function_">readCString</span>());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">hook_sub_F9B8</span>()</span><br></pre></td></tr></table></figure>
+
+<p>hook 结果</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">F9B8 arg0: 1</span><br><span class="line">F9B8 ret this.arg0: 1</span><br></pre></td></tr></table></figure>
+
+<p>这两个函数好像没有做什么事情</p>
+<p>在函数<code>F9B8()</code>里看到还调用了其他函数</p>
+<p><img src="/2025/03/06/%E7%9C%8B%E9%9B%AA3w20-9%E9%A2%98%E7%9B%AEollvm9-apk%E5%A4%8D%E7%8E%B0/16.jpg"></p>
+<h2 id="hook-sub-F04C"><a href="#hook-sub-F04C" class="headerlink" title="hook_sub_F04C()"></a>hook_sub_F04C()</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">hook_sub_F04C</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> funcaddr = <span class="title class_">Module</span>.<span class="title function_">findBaseAddress</span>(<span class="string">&quot;libnative-lib.so&quot;</span>).<span class="title function_">add</span>(<span class="number">0xF04C</span>);</span><br><span class="line">    <span class="title class_">Interceptor</span>.<span class="title function_">attach</span>(funcaddr,&#123;</span><br><span class="line">        <span class="attr">onEnter</span>:<span class="keyword">function</span>(<span class="params">args</span>)&#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;F04C arg0:&quot;</span>,args[<span class="number">0</span>].<span class="title function_">readCString</span>());</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;F04C arg1:&quot;</span>,args[<span class="number">1</span>]);</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;F04C arg2:&quot;</span>,args[<span class="number">2</span>]);</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;F04C arg3:&quot;</span>,args[<span class="number">3</span>]);</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;F04C arg4:&quot;</span>,args[<span class="number">4</span>].<span class="title function_">readCString</span>());</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;F04C arg5:&quot;</span>,args[<span class="number">5</span>].<span class="title function_">readCString</span>());</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">onLeave</span>:<span class="keyword">function</span>(<span class="params">retval</span>)&#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;F04C ret:&quot;</span>,retval);</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">hook_sub_F04C</span>()</span><br></pre></td></tr></table></figure>
+
+<p>hook结果</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">F04C arg0: 10325476-8`cb-4g10-25479-8`cbedg00c3</span><br><span class="line">F04C arg1: 0x24</span><br><span class="line">F04C arg2: 0x24</span><br><span class="line">F04C arg3: 0xdde4659c</span><br><span class="line">F04C arg4: </span><br><span class="line">F04C arg5: </span><br><span class="line">F04C ret: 0xfd39fea0</span><br></pre></td></tr></table></figure>
+
+<p>这里的两个地址无法访问</p>
+<h1 id="UnidbgTrace-FCB4"><a href="#UnidbgTrace-FCB4" class="headerlink" title="UnidbgTrace FCB4"></a>UnidbgTrace FCB4</h1><p>先把函数模拟执行了，不需要补环境</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MainActivity</span> <span class="keyword">extends</span> <span class="title class_">AbstractJni</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> AndroidEmulator emulator;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">String</span> <span class="variable">process</span> <span class="operator">=</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Memory memory;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> VM vm;</span><br><span class="line">    <span class="keyword">private</span> DalvikModule dm;</span><br><span class="line">    <span class="keyword">private</span> Module <span class="keyword">module</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">MainActivity</span><span class="params">()</span> &#123;</span><br><span class="line">        emulator = AndroidEmulatorBuilder</span><br><span class="line">                .for64Bit() <span class="comment">// for32Bit()</span></span><br><span class="line">                .setProcessName(process)</span><br><span class="line">                .setRootDir(<span class="keyword">new</span> <span class="title class_">File</span>(<span class="string">&quot;target/rootfs&quot;</span>))</span><br><span class="line">                .addBackendFactory(<span class="keyword">new</span> <span class="title class_">Unicorn2Factory</span>(<span class="literal">true</span>))</span><br><span class="line">                .build();</span><br><span class="line">        memory = emulator.getMemory();</span><br><span class="line">        memory.setLibraryResolver(<span class="keyword">new</span> <span class="title class_">AndroidResolver</span>(<span class="number">23</span>));</span><br><span class="line">        vm = emulator.createDalvikVM(<span class="keyword">new</span> <span class="title class_">File</span>(<span class="string">&quot;apktest/ollvm9.apk&quot;</span>));</span><br><span class="line">        vm.setJni(<span class="built_in">this</span>);</span><br><span class="line"><span class="comment">//        vm.setVerbose(true);</span></span><br><span class="line">        dm = vm.loadLibrary(<span class="string">&quot;native-lib&quot;</span>,<span class="literal">true</span>);</span><br><span class="line">        dm.callJNI_OnLoad(emulator);</span><br><span class="line">        <span class="keyword">module</span> = dm.getModule();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">UUIDCheckSum</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="type">DvmClass</span> <span class="variable">dvmClass</span> <span class="operator">=</span> vm.resolveClass(<span class="string">&quot;com.kanxue.ollvm_ndk.MainActivity&quot;</span>);</span><br><span class="line">        <span class="type">StringObject</span> <span class="variable">stringObject</span> <span class="operator">=</span> dvmClass.callStaticJniMethodObject(emulator,<span class="string">&quot;UUIDCheckSum(Ljava/lang/String;)Ljava/lang/String;&quot;</span>,<span class="string">&quot;0123456789abcdef0123456789abcdef1111&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> stringObject.getValue();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">MainActivity</span> <span class="variable">main</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">MainActivity</span>();</span><br><span class="line">        System.out.println(main.UUIDCheckSum());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在<code>UUIDCheckSum()</code>里添加trace代码</p>
+<p>这里trace <code>FCB4()</code>函数的地址范围</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">String</span> <span class="variable">traceFile</span> <span class="operator">=</span> <span class="string">&quot;myTraceCodeFile_FCB4.txt&quot;</span>;</span><br><span class="line"><span class="type">PrintStream</span> <span class="variable">traceStream</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    traceStream = <span class="keyword">new</span> <span class="title class_">PrintStream</span>(<span class="keyword">new</span> <span class="title class_">FileOutputStream</span>(traceFile));</span><br><span class="line">&#125; <span class="keyword">catch</span> (FileNotFoundException e) &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">RuntimeException</span>(e);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">emulator.traceCode(<span class="number">0x1200FCB4</span>,<span class="number">0x1200FCB4</span>+<span class="number">0x27C</span>).setRedirect(traceStream);</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2025/03/06/%E7%9C%8B%E9%9B%AA3w20-9%E9%A2%98%E7%9B%AEollvm9-apk%E5%A4%8D%E7%8E%B0/17.jpg"></p>
+<h2 id="分析trace"><a href="#分析trace" class="headerlink" title="分析trace"></a>分析trace</h2><p>使用notepad++助力分析日志文件</p>
+<p>函数返回值会存放在X0寄存器里，找到它的地址</p>
+<p><img src="/2025/03/06/%E7%9C%8B%E9%9B%AA3w20-9%E9%A2%98%E7%9B%AEollvm9-apk%E5%A4%8D%E7%8E%B0/18.jpg"></p>
+<p><code>X0</code>为<code>0x12353030</code></p>
+<p>搜索<code>0x12353030</code>，先分析一段数据</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">0x1200fe18: &quot;ldrb w20, [x0, x22]&quot; x0=0x12353030 x22=0x0 =&gt; w20=0x30  ;从x22加载一个字节到w20</span><br><span class="line">0x1200fe1c: &quot;ldrb w21, [sp, #0xc]&quot; sp=0xe4fff620 =&gt; w21=0xff</span><br><span class="line">0x1200fe20: &quot;ldr w23, [sp, #0x1c]&quot; sp=0xe4fff620 =&gt; w23=0x0</span><br><span class="line">0x1200fe24: &quot;eor w24, w20, #1&quot; w20=0x30 =&gt; w24=0x31 ;w20与1异或后存入w24</span><br><span class="line">0x1200fe28: &quot;strb w24, [x0, x22]&quot; w24=0x31 x0=0x12353030 x22=0x0 =&gt; w24=0x31 ;w24存入x22</span><br></pre></td></tr></table></figure>
+
+<p>我们传入的参数转16进制</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">0123456789abcdef0123456789abcdef1111</span><br><span class="line">30 31 32 33 34 35 36 37 38 39 61 62 63 64 65 66 30 31 32 33 34 35 36 37 38 39 61 62 63 64 65 66 31 31 31 31</span><br></pre></td></tr></table></figure>
+
+<p>把<code>FCB4()</code>的返回值转为16进制</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">10325476-8`cb-4g10-25479-8`cbedg00c3</span><br><span class="line">31 30 33 32 35 34 37 36 2d 38 60 63 62 2d 34 67 31 30 2d 32 35 34 37 39 2d 38 60 63 62 65 64 67 30 30 63 33</span><br></pre></td></tr></table></figure>
+
+<p>初步猜想通过异或处理的，用C语言实现一下</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;stdio.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;string.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;stdlib.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">sub_FCB4</span><span class="params">(<span class="type">char</span>* input,<span class="type">int</span> length,<span class="type">char</span>* result)</span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; length; ++i) &#123;</span><br><span class="line">        <span class="type">unsigned</span> <span class="type">char</span> w20 = input[i];</span><br><span class="line">        <span class="type">unsigned</span> <span class="type">char</span> w24 = w20 ^ <span class="number">1</span>;</span><br><span class="line">        result[i] = w24;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; length; ++i) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%0x &quot;</span>,result[i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="type">char</span> *input = <span class="string">&quot;0123456789abcdef0123456789abcdef1111&quot;</span>;</span><br><span class="line">    <span class="type">int</span> length = <span class="built_in">strlen</span>(input);</span><br><span class="line">    <span class="type">int</span> *result = (<span class="type">int</span>*) <span class="built_in">malloc</span>(length);</span><br><span class="line">    sub_FCB4(input,length,result);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 31 30 33 32 35 34 37 36 39 38 60 63 62 65 64 67 31 30 33 32 35 34 37 36 39 38 60 63 62 65 64 67 30 30 30 30</span></span><br></pre></td></tr></table></figure>
+
+<p>这里输出结果与真实结果还是有差异的，对比分析</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">31 30 33 32 35 34 37 36 39 38 60 63 62 65 64 67 31 30 33 32 35 34 37 36 39 38 60 63 62 65 64 67 30 30 30 30  //输出结果</span><br><span class="line">31 30 33 32 35 34 37 36 2d 38 60 63 62 2d 34 67 31 30 2d 32 35 34 37 39 2d 38 60 63 62 65 64 67 30 30 63 33  //真实结果</span><br></pre></td></tr></table></figure>
+
+<p>到trace中查找分析</p>
+<p>发现如下这几种情况没有进行异或，而是直接传的固定的值</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&quot;strb w7, [x0, x20]&quot; w7=0x2d x0=0x12353030 x20=0x8 =&gt; w7=0x2d</span><br><span class="line">&quot;strb w7, [x0, x20]&quot; w7=0x2d x0=0x12353030 x20=0xd =&gt; w7=0x2d</span><br><span class="line">&quot;strb w7, [x0, x20]&quot; w7=0x2d x0=0x12353030 x20=0x12 =&gt; w7=0x2d</span><br><span class="line">&quot;strb w7, [x0, x20]&quot; w7=0x2d x0=0x12353030 x20=0x18 =&gt; w7=0x2d</span><br><span class="line">&quot;strb w6, [x0, x20]&quot; w6=0x34 x0=0x12353030 x20=0xe =&gt; w6=0x34</span><br><span class="line">&quot;strb w8, [x0, #0x23]&quot; w8=0x33 x0=0x12353030 =&gt; w8=0x33</span><br><span class="line">&quot;strb w8, [x0, #0x22]&quot; w8=0x63 x0=0x12353030 =&gt; w8=0x63</span><br></pre></td></tr></table></figure>
+
+<p>重新使用C语言实现</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;stdio.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;string.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;stdlib.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">sub_FCB4</span><span class="params">(<span class="type">char</span>* input,<span class="type">int</span> length,<span class="type">char</span>* result)</span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; length; ++i) &#123;</span><br><span class="line">        <span class="type">unsigned</span> <span class="type">char</span> w20 = input[i];</span><br><span class="line">        <span class="keyword">if</span>(i==<span class="number">0x8</span> || i==<span class="number">0xd</span> || i==<span class="number">0x12</span> || i==<span class="number">0x18</span>)&#123;</span><br><span class="line">            result[i] = <span class="number">0x2d</span>;</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(i==<span class="number">0xe</span>)&#123;</span><br><span class="line">            result[i] = <span class="number">0x34</span>;</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(i==<span class="number">0x22</span>)&#123;</span><br><span class="line">            result[i] = <span class="number">0x63</span>;</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(i==<span class="number">0x23</span>)&#123;</span><br><span class="line">            result[i] = <span class="number">0x33</span>;</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="type">unsigned</span> <span class="type">char</span> w24 = w20 ^ <span class="number">1</span>;</span><br><span class="line">        result[i] = w24;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; length; ++i) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%0x &quot;</span>,result[i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="type">char</span> *input = <span class="string">&quot;0123456789abcdef0123456789abcdef1111&quot;</span>;</span><br><span class="line">    <span class="type">int</span> length = <span class="built_in">strlen</span>(input);</span><br><span class="line">    <span class="type">int</span> *result = (<span class="type">int</span>*) <span class="built_in">malloc</span>(length);</span><br><span class="line">    sub_FCB4(input,length,result);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//  31 30 33 32 35 34 37 36 2d 38 60 63 62 2d 34 67 31 30 2d 32 35 34 37 36 2d 38 60 63 62 65 64 67 30 30 63 33</span></span><br></pre></td></tr></table></figure>
+
+<p>再次对比</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">31 30 33 32 35 34 37 36 2d 38 60 63 62 2d 34 67 31 30 2d 32 35 34 37 36 2d 38 60 63 62 65 64 67 30 30 63 33 // 输出结果</span><br><span class="line">31 30 33 32 35 34 37 36 2d 38 60 63 62 2d 34 67 31 30 2d 32 35 34 37 39 2d 38 60 63 62 65 64 67 30 30 63 33  //真实结果</span><br></pre></td></tr></table></figure>
+
+<p>发现还是有一个地方不一样</p>
+<p>到trace日志中查看</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">0x1200fcc8: &quot;ldrb w22, [x0, #0x18]&quot; x0=0x12353030 =&gt; w22=0x38</span><br><span class="line">...</span><br><span class="line">0x1200fd44: &quot;strb w22, [x0, #0x17]&quot; w22=0x38 x0=0x12353030 =&gt; w22=0x38</span><br><span class="line">...</span><br><span class="line">0x1200fe14: &quot;ldrsw x22, [sp, #0x18]&quot; x22=0x8f61219b sp=0xe4fff620 =&gt; x22=0x17</span><br><span class="line">0x1200fe18: &quot;ldrb w20, [x0, x22]&quot; x0=0x12353030 x22=0x17 =&gt; w20=0x38</span><br><span class="line">0x1200fe1c: &quot;ldrb w21, [sp, #0xc]&quot; sp=0xe4fff620 =&gt; w21=0xc5</span><br><span class="line">0x1200fe20: &quot;ldr w23, [sp, #0x1c]&quot; sp=0xe4fff620 =&gt; w23=0x494</span><br><span class="line">0x1200fe24: &quot;eor w24, w20, #1&quot; w20=0x38 =&gt; w24=0x39</span><br><span class="line">0x1200fe28: &quot;strb w24, [x0, x22]&quot; w24=0x39 x0=0x12353030 x22=0x17 =&gt; w24=0x39</span><br></pre></td></tr></table></figure>
+
+<p>修改C</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;stdio.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;string.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;stdlib.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">sub_FCB4</span><span class="params">(<span class="type">char</span>* input,<span class="type">int</span> length,<span class="type">char</span>* result)</span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; length; ++i) &#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(i==<span class="number">0x8</span> || i==<span class="number">0xd</span> || i==<span class="number">0x12</span> || i==<span class="number">0x18</span>)&#123;</span><br><span class="line">            result[i] = <span class="number">0x2d</span>;</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(i==<span class="number">0xe</span>)&#123;</span><br><span class="line">            result[i] = <span class="number">0x34</span>;</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(i==<span class="number">0x22</span>)&#123;</span><br><span class="line">            result[i] = <span class="number">0x63</span>;</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(i==<span class="number">0x23</span>)&#123;</span><br><span class="line">            result[i] = <span class="number">0x33</span>;</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(i==<span class="number">0x17</span>)&#123;</span><br><span class="line">            result[i]=input[i+<span class="number">1</span>] ^<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">unsigned</span> <span class="type">char</span> w20 = input[i];</span><br><span class="line"></span><br><span class="line">        <span class="type">unsigned</span> <span class="type">char</span> w24 = w20 ^ <span class="number">1</span>;</span><br><span class="line">        result[i] = w24;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; length; ++i) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%0x &quot;</span>,result[i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="type">char</span> *input = <span class="string">&quot;0123456789abcdef0123456789abcdef1111&quot;</span>;</span><br><span class="line">    <span class="type">int</span> length = <span class="built_in">strlen</span>(input);</span><br><span class="line">    <span class="type">int</span> *result = (<span class="type">int</span>*) <span class="built_in">malloc</span>(length);</span><br><span class="line">    sub_FCB4(input,length,result);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这次的结果就与真实结果是一样的</p>
+<h1 id="UnidbgTrace-F04C"><a href="#UnidbgTrace-F04C" class="headerlink" title="UnidbgTrace F04C"></a>UnidbgTrace F04C</h1><p>修改trace代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">String</span> <span class="variable">traceFile</span> <span class="operator">=</span> <span class="string">&quot;myTraceCodeFile_F04C.txt&quot;</span>;</span><br><span class="line"><span class="type">PrintStream</span> <span class="variable">traceStream</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    traceStream = <span class="keyword">new</span> <span class="title class_">PrintStream</span>(<span class="keyword">new</span> <span class="title class_">FileOutputStream</span>(traceFile));</span><br><span class="line">&#125; <span class="keyword">catch</span> (FileNotFoundException e) &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">RuntimeException</span>(e);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">emulator.traceCode(<span class="number">0x1200F04C</span>,<span class="number">0x1200F04c</span>+<span class="number">0x224</span>).setRedirect(traceStream);</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2025/03/06/%E7%9C%8B%E9%9B%AA3w20-9%E9%A2%98%E7%9B%AEollvm9-apk%E5%A4%8D%E7%8E%B0/19.jpg"></p>
+<p>把返回值转为16进制</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ah0NaxiObNmHc61xmwOOnN4K_h8Pb3qT_hvumQ9zn6qKa6aN</span><br><span class="line">61 68 30 4e 61 78 69 4f 62 4e 6d 48 63 36 31 78 6d 77 4f 4f 6e 4e 34 4b 5f 68 38 50 62 33 71 54 5f 68 76 75 6d 51 39 7a 6e 36 71 4b 61 36 61 4e</span><br></pre></td></tr></table></figure>
+
+<p>搜索<code>x0</code>，跳转到最开始的<code>x0</code>的地址<code>0x12353090</code></p>
+<p>然后搜索<code>0x12353090</code></p>
+<p><img src="/2025/03/06/%E7%9C%8B%E9%9B%AA3w20-9%E9%A2%98%E7%9B%AEollvm9-apk%E5%A4%8D%E7%8E%B0/20.jpg"></p>
+<p>分析第一个值</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&quot;ldrb w8, [x21, x24]&quot; x21=0x12353090 x24=0x0 =&gt; w8=0x31</span><br><span class="line">&quot;lsr x8, x8, #2&quot; x8=0x31 =&gt; x8=0xc</span><br><span class="line">&quot;ldrb w1, [x23, x8]&quot; x23=0x12037010 x8=0xc =&gt; w1=0x61</span><br><span class="line">&quot;ldrb w8, [x21, x24]&quot; x21=0x12353090 x24=0x0 =&gt; w8=0x31</span><br><span class="line"></span><br><span class="line">1.把地址0x12353090偏移0x0处的值放入w8，w8=0x31</span><br><span class="line">2.将寄存器x8里的值逻辑右移2位，x8=0xc</span><br><span class="line">3.把地址0x12037010偏移为0xc处的值存入w1,w1=0x61</span><br><span class="line">4.把地址0x12353090偏移0x0处的值再次放入w8，w8=0x31</span><br></pre></td></tr></table></figure>
+
+<p>这里出现的<code>0x12037010</code>这个地址指向的应该是一个表</p>
+<p>用unidbg来找这个表，在函数地址<code>0xF04C</code>处下断点</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">emulator.attach().addBreakPoint(dm.getModule().base+<span class="number">0x0FF30</span>);</span><br></pre></td></tr></table></figure>
+
+<p>运行起来之后，用<code>m0x12037010</code>查看改地址处的数据为<code>0123456789-_abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ</code></p>
+<p>用C语言实现这个过程</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;stdio.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;string.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;stdlib.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">sub_FCB4</span><span class="params">(<span class="type">char</span>* input,<span class="type">int</span> length,<span class="type">char</span>* result)</span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; length; ++i) &#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(i==<span class="number">0x8</span> || i==<span class="number">0xd</span> || i==<span class="number">0x12</span> || i==<span class="number">0x18</span>)&#123;</span><br><span class="line">            result[i] = <span class="number">0x2d</span>;</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(i==<span class="number">0xe</span>)&#123;</span><br><span class="line">            result[i] = <span class="number">0x34</span>;</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(i==<span class="number">0x22</span>)&#123;</span><br><span class="line">            result[i] = <span class="number">0x63</span>;</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(i==<span class="number">0x23</span>)&#123;</span><br><span class="line">            result[i] = <span class="number">0x33</span>;</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(i==<span class="number">0x17</span>)&#123;</span><br><span class="line">            result[i]=input[i+<span class="number">1</span>] ^<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">unsigned</span> <span class="type">char</span> w20 = input[i];</span><br><span class="line"></span><br><span class="line">        <span class="type">unsigned</span> <span class="type">char</span> w24 = w20 ^ <span class="number">1</span>;</span><br><span class="line">        result[i] = w24;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">//    for (int i = 0; i &lt; length; ++i) &#123;</span></span><br><span class="line"><span class="comment">//        printf(&quot;%0x &quot;,result[i]);</span></span><br><span class="line"><span class="comment">//    &#125;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">sub_F04C</span><span class="params">(<span class="type">char</span>* input,<span class="type">int</span> length,<span class="type">char</span>* char_table,<span class="type">char</span> *result)</span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; length; ++i) &#123;</span><br><span class="line">        <span class="type">int</span> x8 = input[i]&gt;&gt;<span class="number">2</span>;</span><br><span class="line">        result[i] = char_table[x8];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; length; ++i) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%0x &quot;</span>,result[i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="type">char</span> *input = <span class="string">&quot;0123456789abcdef0123456789abcdef1111&quot;</span>;</span><br><span class="line">    <span class="type">int</span> input_length = <span class="built_in">strlen</span>(input);</span><br><span class="line">    <span class="type">int</span> *FCB4_result = (<span class="type">int</span>*) <span class="built_in">malloc</span>(input_length);</span><br><span class="line">    sub_FCB4(input,input_length,FCB4_result);</span><br><span class="line">    <span class="type">char</span> *char_table = <span class="string">&quot;0123456789-_abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ&quot;</span>;</span><br><span class="line"><span class="comment">//    int char_table_length = strlen(char_table);</span></span><br><span class="line">    <span class="type">char</span> *F04C_result = (<span class="type">int</span>*) <span class="built_in">malloc</span>(<span class="number">48</span>);</span><br><span class="line">    sub_F04C(FCB4_result,<span class="number">48</span>,char_table,F04C_result);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 61 61 61 61 62 62 62 62 5f 63 6d 6d 6d 5f 62 6e 61 61 5f 61 62 62 62 63 5f 63 6d 6d 6d 6e 6e 6e 61 61 6d 61 30 30 30 30</span></span><br></pre></td></tr></table></figure>
+
+<p>与真实答案对比</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">61 61 61 61 62 62 62 62 5f 63 6d 6d 6d 5f 62 6e 61 61 5f 61 62 62 62 63 5f 63 6d 6d 6d 6e 6e 6e 61 61 6d 61 30 30 30 30 // 输出</span><br><span class="line">61 68 30 4e 61 78 69 4f 62 4e 6d 48 63 36 31 78 6d 77 4f 4f 6e 4e 34 4b 5f 68 38 50 62 33 71 54 5f 68 76 75 6d 51 39 7a 6e 36 71 4b 61 36 61 4e // 真实结果</span><br></pre></td></tr></table></figure>
+
+<p>第一位是相同的，但是后面的还要继续分析</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&quot;ldrb w9, [x21, x24]&quot; x21=0x12353090 x24=0x1 =&gt; w9=0x30</span><br><span class="line">&quot;orr x8, x8, x9, lsr #4&quot; x8=0x10 x9=0x30 =&gt; x8=0x13</span><br><span class="line">0x1200f14c: &quot;ldrb w1, [x23, x8]&quot; x23=0x12037010 x8=0x13 =&gt; w1=0x68</span><br><span class="line">&quot;ldrb w8, [x21, x24]&quot; x21=0x12353090 x24=0x1 =&gt; w8=0x30</span><br><span class="line"></span><br><span class="line">1.把0x12353090地址偏移为1处的值加载到w9寄存器里</span><br><span class="line">2.将 x9 的值逻辑右移 4 位后，与 x8 的值按位或（OR），结果存回 x8，这里的x8来源于上次计算的结果</span><br><span class="line">3.把地址0x12037010偏移为0x13处的值存入w1,w1=0x68</span><br><span class="line">4.把0x12353090地址偏移为1处的值加载到w8寄存器里</span><br></pre></td></tr></table></figure>
+
+<p>往后看第三个参数和第四个参数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">0x1200f16c: &quot;ldrb w9, [x21, x24]&quot; x21=0x12353090 x24=0x2 =&gt; w9=0x33 # 从地址(x21 + x24)加载一个字节到w9</span><br><span class="line">0x1200f170: &quot;orr x8, x8, x9, lsr #6&quot; x8=0x0 x9=0x33 =&gt; x8=0x0  		# 将w9右移6位后与x8进行OR操作</span><br><span class="line">0x1200f174: &quot;ldrb w1, [x23, x8]&quot; x23=0x12037010 x8=0x0 =&gt; w1=0x30	# 从地址(x23 + x8)加载一个字节到w1</span><br><span class="line">0x1200f180: &quot;ldrb w8, [x21, x24]&quot; x21=0x12353090 x24=0x2 =&gt; w8=0x33 # 从地址(x21 + x24)加载一个字节到w8</span><br><span class="line"></span><br><span class="line">0x1200f184: &quot;and x8, x8, #0x3f&quot; x8=0x33 =&gt; x8=0x33					# 把x8同0x3f进行与操作，结果放入x8</span><br><span class="line">0x1200f188: &quot;ldrb w1, [x23, x8]&quot; x23=0x12037010 x8=0x33 =&gt; w1=0x4e	# 从地址(x23 + x8)加载一个字节到w1</span><br><span class="line"></span><br><span class="line">0x1200f11c: &quot;ldrb w8, [x21, x24]&quot; x21=0x12353090 x24=0x3 =&gt; w8=0x32	# 从地址(x21 + x24)加载一个字节到w8</span><br><span class="line">0x1200f120: &quot;lsr x8, x8, #2&quot; x8=0x32 =&gt; x8=0xc						# 将x8右移2位</span><br><span class="line">0x1200f124: &quot;ldrb w1, [x23, x8]&quot; x23=0x12037010 x8=0xc =&gt; w1=0x61	# 从地址(x23 + x8)加载一个字节到w1</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>猜测这是循环操作的，每三个是一组，每组后面会加一步操作添加一个数</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;stdio.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;string.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;stdlib.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">sub_FCB4</span><span class="params">(<span class="type">char</span>* input,<span class="type">int</span> length,<span class="type">char</span>* result)</span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; length; ++i) &#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(i==<span class="number">0x8</span> || i==<span class="number">0xd</span> || i==<span class="number">0x12</span> || i==<span class="number">0x18</span>)&#123;</span><br><span class="line">            result[i] = <span class="number">0x2d</span>;</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(i==<span class="number">0xe</span>)&#123;</span><br><span class="line">            result[i] = <span class="number">0x34</span>;</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(i==<span class="number">0x22</span>)&#123;</span><br><span class="line">            result[i] = <span class="number">0x63</span>;</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(i==<span class="number">0x23</span>)&#123;</span><br><span class="line">            result[i] = <span class="number">0x33</span>;</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(i==<span class="number">0x17</span>)&#123;</span><br><span class="line">            result[i]=input[i+<span class="number">1</span>] ^<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">unsigned</span> <span class="type">char</span> w20 = input[i];</span><br><span class="line"></span><br><span class="line">        <span class="type">unsigned</span> <span class="type">char</span> w24 = w20 ^ <span class="number">1</span>;</span><br><span class="line">        result[i] = w24;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">sub_F04C</span><span class="params">(<span class="type">char</span>* input,<span class="type">int</span> length,<span class="type">char</span> *result)</span>&#123;</span><br><span class="line">    <span class="type">char</span> *char_table = <span class="string">&quot;0123456789-_abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ&quot;</span>;</span><br><span class="line">    <span class="type">int</span> x8;</span><br><span class="line">    <span class="type">int</span> count =<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; length; ++i) &#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(i%<span class="number">3</span>==<span class="number">0</span>)&#123;</span><br><span class="line">            x8 = input[i]&gt;&gt;<span class="number">2</span>;</span><br><span class="line">            result[count] = char_table[x8];</span><br><span class="line">            count++;</span><br><span class="line">            x8 = input[i];</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(i%<span class="number">3</span>==<span class="number">1</span>)&#123;</span><br><span class="line">            x8 = ((x8&amp;<span class="number">0b11</span>)&lt;&lt;<span class="number">4</span>);</span><br><span class="line">            x8 = (input[i]&gt;&gt;<span class="number">4</span>)^x8;</span><br><span class="line">            result[count] = char_table[x8];</span><br><span class="line">            count++;</span><br><span class="line">            x8 = input[i];</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(i%<span class="number">3</span>==<span class="number">2</span>)&#123;</span><br><span class="line">            x8 = ((x8&amp;<span class="number">0b1111</span>)&lt;&lt;<span class="number">2</span>);</span><br><span class="line">            x8 = (input[i]&gt;&gt;<span class="number">6</span>)^x8;</span><br><span class="line">            result[count] = char_table[x8];</span><br><span class="line">            count++;</span><br><span class="line">            x8 = input[i];</span><br><span class="line">            result[count] = char_table[x8&amp;<span class="number">0x3f</span>];</span><br><span class="line">            count++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">48</span>; ++i) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%0x &quot;</span>,result[i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="type">char</span> *input = <span class="string">&quot;0123456789abcdef0123456789abcdef1111&quot;</span>;</span><br><span class="line">    <span class="type">int</span> input_length = <span class="built_in">strlen</span>(input);</span><br><span class="line">    <span class="type">char</span> *FCB4_result = (<span class="type">char</span>*) <span class="built_in">malloc</span>(input_length);</span><br><span class="line">    sub_FCB4(input,input_length,FCB4_result);</span><br><span class="line">    <span class="type">char</span> *F04C_result = (<span class="type">char</span>*) <span class="built_in">malloc</span>(<span class="number">48</span>);</span><br><span class="line">    sub_F04C(FCB4_result,input_length,F04C_result);</span><br><span class="line">    <span class="built_in">free</span>(FCB4_result);</span><br><span class="line">    <span class="built_in">free</span>(F04C_result);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">61 68 30 4e 61 78 69 4f 62 4e 6d 48 63 36 31 78 6d 77 4f 4f 6e 4e 34 4b 5f 68 38 50 62 33 71 54 5f 68 76 75 6d 51 39 7a 6e 36 71 4b 61 36 61 4e // 输出内容</span><br><span class="line">61 68 30 4e 61 78 69 4f 62 4e 6d 48 63 36 31 78 6d 77 4f 4f 6e 4e 34 4b 5f 68 38 50 62 33 71 54 5f 68 76 75 6d 51 39 7a 6e 36 71 4b 61 36 61 4e // 真实结果</span><br></pre></td></tr></table></figure>
+
+<p>根据这个运算过程，可以猜测它是base64了</p>
+<p>最终确定它是魔改的base64</p>
+<p><img src="/2025/03/06/%E7%9C%8B%E9%9B%AA3w20-9%E9%A2%98%E7%9B%AEollvm9-apk%E5%A4%8D%E7%8E%B0/21.jpg"></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/ollvm9/" rel="tag"><svg t="1732789072752" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4858" width="15" height="15"><path d="M229.443715 343.118259l565.172804 0 0 410.010794c0 37.525595-30.237317 67.762912-67.040108 67.762912l-46.319715 0 0 139.742183c0 35.116247-28.249605 63.365852-63.305618 63.365852-35.116247 0-63.546553-28.309839-63.546553-63.365852l0-139.742183-84.809049 0 0 139.742183c0 35.056013-28.430306 63.365852-63.546553 63.365852-34.393443 0-62.763515-28.309839-62.763515-63.365852l-0.542103-139.742183-45.596911 0c-37.465361 0-67.702678-30.177084-67.702678-67.762912l0-410.010794zM141.984383 331.432921c-35.056013 0-63.426086 28.370073-63.426086 62.763515l0 264.787344c0 35.116247 28.370073 63.365852 63.426086 63.365852s62.763515-28.309839 62.763515-63.365852l0-264.787344c0-34.393443-28.189371-62.763515-62.763515-62.763515zM796.42353 320.952257l-569.449397 0c0-97.879762 58.547156-182.869512 145.343917-227.141282l-43.7899-80.59269c-2.469582-4.336826-1.264908-9.878327 3.071919-12.347908 4.276593-1.867245 9.878327-0.662571 12.347908 3.734489l44.271769 81.255261c37.646062-16.684735 79.508484-25.900491 123.780253-25.900491s86.134191 9.215756 123.780253 25.840257l44.271769-81.255261c2.469582-4.336826 8.071316-5.5415 12.347908-3.734489 4.336826 2.469582 5.5415 8.011082 3.071919 12.347908l-43.7899 80.59269c86.254658 44.332003 144.74158 129.321753 144.74158 227.201515zM406.048922 194.160319c0-12.950245-10.42043-24.033246-23.912779-24.033246-13.010479 0-23.430909 11.083001-23.430909 24.033246 0 12.890012 10.42043 23.973012 23.430909 23.973012 13.492349 0.060234 23.912779-11.022767 23.912779-23.973012zM665.294766 194.160319c0-12.950245-10.42043-24.033246-23.430909-24.033246-13.552582 0-23.912779 11.083001-23.912779 24.033246 0 12.890012 10.42043 23.973012 23.912779 23.973012 13.010479 0.060234 23.430909-11.022767 23.430909-23.973012zM882.015617 331.432921c-34.51391 0-62.763515 27.707502-62.763515 62.763515l0 264.787344c0 35.116247 28.249605 63.365852 62.763515 63.365852 35.056013 0 63.426086-28.309839 63.426086-63.365852l0-264.787344c-0.060234-35.056013-28.370073-62.763515-63.426086-62.763515z" fill="#000000" p-id="4859"></path></svg> ollvm9</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2025/03/05/%E5%85%B3%E4%BA%8E%E9%9D%A2%E8%AF%95%E6%9D%82%E8%AE%B0/" rel="prev" title="关于面试杂记">
+      <i class="fa fa-chevron-left"></i> 关于面试杂记
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2025/03/06/%E8%AF%A6%E8%A7%A3MD5/" rel="next" title="详解MD5">
+      详解MD5 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ollvm9-apk"><span class="nav-number">1.</span> <span class="nav-text">ollvm9.apk</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Jadx%E5%8F%8D%E7%BC%96%E8%AF%91%E5%88%86%E6%9E%90"><span class="nav-number">2.</span> <span class="nav-text">Jadx反编译分析</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#so%E5%88%86%E6%9E%90"><span class="nav-number">3.</span> <span class="nav-text">so分析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#hook-sub-FCB4"><span class="nav-number">3.1.</span> <span class="nav-text">hook_sub_FCB4()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hook-sub-1029C"><span class="nav-number">3.2.</span> <span class="nav-text">hook_sub_1029C()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hook-sub-F9B8"><span class="nav-number">3.3.</span> <span class="nav-text">hook_sub_F9B8()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hook-sub-F04C"><span class="nav-number">3.4.</span> <span class="nav-text">hook_sub_F04C()</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#UnidbgTrace-FCB4"><span class="nav-number">4.</span> <span class="nav-text">UnidbgTrace FCB4</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E6%9E%90trace"><span class="nav-number">4.1.</span> <span class="nav-text">分析trace</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#UnidbgTrace-F04C"><span class="nav-number">5.</span> <span class="nav-text">UnidbgTrace F04C</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Bileton"
+      src="/images/android.svg">
+  <p class="site-author-name" itemprop="name">Bileton</p>
+  <div class="site-description" itemprop="description">路漫漫其修远夕！</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">89</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">35</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">82</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Bileton</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">718k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">10:53</span>
+</div>
+
+
+<span id="timeDate">载入天数...</span>
+<span id="times">载入时分秒...</span>
+<script>
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("01/01/2024 00:00:00"); //修改为你的网站开始运行的时间
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+        document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 ";
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒.";
+    }
+setInterval("createtime()",250);
+</script>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
