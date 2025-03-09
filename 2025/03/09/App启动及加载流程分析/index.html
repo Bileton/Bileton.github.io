@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/wxlog.jpg">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/wxlog.jpg">
+  <link rel="mask-icon" href="/images/wxlog.jpg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="流程图12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐第">
+<meta property="og:type" content="article">
+<meta property="og:title" content="App启动及加载流程分析">
+<meta property="og:url" content="http://example.com/2025/03/09/App%E5%90%AF%E5%8A%A8%E5%8F%8A%E5%8A%A0%E8%BD%BD%E6%B5%81%E7%A8%8B%E5%88%86%E6%9E%90/index.html">
+<meta property="og:site_name" content="白乐天">
+<meta property="og:description" content="流程图12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐第">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2025/03/09/App%E5%90%AF%E5%8A%A8%E5%8F%8A%E5%8A%A0%E8%BD%BD%E6%B5%81%E7%A8%8B%E5%88%86%E6%9E%90/1.jpg">
+<meta property="og:image" content="http://example.com/2025/03/09/App%E5%90%AF%E5%8A%A8%E5%8F%8A%E5%8A%A0%E8%BD%BD%E6%B5%81%E7%A8%8B%E5%88%86%E6%9E%90/2.jpg">
+<meta property="og:image" content="http://example.com/2025/03/09/App%E5%90%AF%E5%8A%A8%E5%8F%8A%E5%8A%A0%E8%BD%BD%E6%B5%81%E7%A8%8B%E5%88%86%E6%9E%90/3.jpg">
+<meta property="article:published_time" content="2025-03-09T08:21:26.000Z">
+<meta property="article:modified_time" content="2025-03-09T11:01:43.336Z">
+<meta property="article:author" content="Bileton">
+<meta property="article:tag" content="App启动及加载流程分析">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2025/03/09/App%E5%90%AF%E5%8A%A8%E5%8F%8A%E5%8A%A0%E8%BD%BD%E6%B5%81%E7%A8%8B%E5%88%86%E6%9E%90/1.jpg">
+
+<link rel="canonical" href="http://example.com/2025/03/09/App%E5%90%AF%E5%8A%A8%E5%8F%8A%E5%8A%A0%E8%BD%BD%E6%B5%81%E7%A8%8B%E5%88%86%E6%9E%90/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>App启动及加载流程分析 | 白乐天</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">白乐天</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">道阻且长，行则将至。</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">85</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">35</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">92</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/love.js"></script>
+</div>
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/03/09/App%E5%90%AF%E5%8A%A8%E5%8F%8A%E5%8A%A0%E8%BD%BD%E6%B5%81%E7%A8%8B%E5%88%86%E6%9E%90/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/android.svg">
+      <meta itemprop="name" content="Bileton">
+      <meta itemprop="description" content="路漫漫其修远夕！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="白乐天">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          App启动及加载流程分析
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2025-03-09 16:21:26 / 修改时间：19:01:43" itemprop="dateCreated datePublished" datetime="2025-03-09T16:21:26+08:00">2025-03-09</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index"><span itemprop="name">Android系统</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>16k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>14 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="流程图"><a href="#流程图" class="headerlink" title="流程图"></a>流程图</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line">┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐</span><br><span class="line">第一阶段：Launcher 处理</span><br><span class="line">Launcher.startActivity()</span><br><span class="line">↓</span><br><span class="line">ActivityTaskManager.startActivity()</span><br><span class="line">↓ (Binder 跨进程)</span><br><span class="line">ActivityManagerService.startActivity()</span><br><span class="line">└ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┘</span><br><span class="line">↓</span><br><span class="line">┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐</span><br><span class="line">第二阶段：进程创建</span><br><span class="line">Process.start()</span><br><span class="line">↓</span><br><span class="line">ZygoteProcess.start()</span><br><span class="line">↓</span><br><span class="line">Zygote.fork()</span><br><span class="line">↓</span><br><span class="line">ActivityThread.main()</span><br><span class="line">└ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┘</span><br><span class="line">↓</span><br><span class="line">┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐</span><br><span class="line">第三阶段：SO 加载</span><br><span class="line">LoadedApk.loadLibrary()</span><br><span class="line">↓</span><br><span class="line">System.loadLibrary()</span><br><span class="line">↓</span><br><span class="line">Runtime.loadLibrary0()</span><br><span class="line">↓</span><br><span class="line">DexPathList.findLibrary()</span><br><span class="line">└ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┘</span><br><span class="line">↓</span><br><span class="line">┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐</span><br><span class="line">第四阶段：DEX 加载</span><br><span class="line">PathClassLoader.loadClass()</span><br><span class="line">↓</span><br><span class="line">BaseDexClassLoader.loadClass()</span><br><span class="line">↓</span><br><span class="line">DexPathList.findClass()</span><br><span class="line">↓</span><br><span class="line">DexFile.loadClassBinaryName()</span><br><span class="line">└ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┘</span><br><span class="line">↓</span><br><span class="line">┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐</span><br><span class="line">第五阶段：Application 创建</span><br><span class="line">LoadedApk.makeApplication()</span><br><span class="line">↓</span><br><span class="line">Instrumentation.newApplication()</span><br><span class="line">↓</span><br><span class="line">Application.attach()</span><br><span class="line">↓</span><br><span class="line">Application.onCreate()</span><br><span class="line">└ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┘</span><br><span class="line">↓</span><br><span class="line">┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐</span><br><span class="line">第六阶段：Activity 启动</span><br><span class="line">ActivityThread.handleLaunchActivity()</span><br><span class="line">↓</span><br><span class="line">ActivityThread.performLaunchActivity()</span><br><span class="line">↓</span><br><span class="line">Instrumentation.newActivity()</span><br><span class="line">↓</span><br><span class="line">Activity.onCreate()</span><br><span class="line">└ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┘</span><br><span class="line">↓</span><br><span class="line">┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐</span><br><span class="line">第七阶段：视图绘制</span><br><span class="line">Activity.setContentView()</span><br><span class="line">↓</span><br><span class="line">PhoneWindow.setContentView()</span><br><span class="line">↓</span><br><span class="line">LayoutInflater.inflate()</span><br><span class="line">↓</span><br><span class="line">ViewRootImpl.performTraversals()</span><br><span class="line">↓</span><br><span class="line">measure() → layout() → draw()</span><br><span class="line">└ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┘</span><br></pre></td></tr></table></figure>
+
+<h1 id="so加载深入分析"><a href="#so加载深入分析" class="headerlink" title="so加载深入分析"></a>so加载深入分析</h1><h2 id="Java层"><a href="#Java层" class="headerlink" title="Java层"></a>Java层</h2><p>Android 在 java 层加载 so 的接口是 System.loadLibrary()</p>
+<p><img src="/2025/03/09/App%E5%90%AF%E5%8A%A8%E5%8F%8A%E5%8A%A0%E8%BD%BD%E6%B5%81%E7%A8%8B%E5%88%86%E6%9E%90/1.jpg"></p>
+<h3 id="System-loadLibrary"><a href="#System-loadLibrary" class="headerlink" title="System.loadLibrary()"></a>System.loadLibrary()</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">loadLibrary</span><span class="params">(String libName)</span> &#123;</span><br><span class="line">	Runtime.getRuntime().loadLibrary(libName, VMStack.getCallingClassLoader());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>它是调用了 Runtime 类的 loadLibrary()</p>
+<h3 id="loadLibrary"><a href="#loadLibrary" class="headerlink" title="loadLibrary()"></a>loadLibrary()</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">loadLibrary</span><span class="params">(String nickname)</span> &#123;</span><br><span class="line">	loadLibrary(nickname, VMStack.getCallingClassLoader());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>loadLibrary(String nickname) 调 用 了 它 的 一 个 重 载 函 数 loadLibrary(String libraryName, ClassLoader loader)</p>
+<h3 id="loadLibrary-1"><a href="#loadLibrary-1" class="headerlink" title="loadLibrary()"></a>loadLibrary()</h3><p>其关键代码如下</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> <span class="title function_">loadLibrary</span><span class="params">(String libraryName, ClassLoader loader)</span> &#123;</span><br><span class="line">	<span class="keyword">if</span> (loader != <span class="literal">null</span>) &#123;</span><br><span class="line">		<span class="type">String</span> <span class="variable">filename</span> <span class="operator">=</span> loader.findLibrary(libraryName);<span class="comment">//so 路径</span></span><br><span class="line">		...</span><br><span class="line">		<span class="type">String</span> <span class="variable">error</span> <span class="operator">=</span> doLoad(filename, loader);<span class="comment">//加载</span></span><br><span class="line">		...</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>获得 so 文件的绝对路径 filename，调用 doLoad()来加载 so 文件。</p>
+<h3 id="doLoad"><a href="#doLoad" class="headerlink" title="doLoad()"></a>doLoad()</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> String <span class="title function_">doLoad</span><span class="params">(String name, ClassLoader loader)</span> &#123;</span><br><span class="line">	<span class="type">String</span> <span class="variable">ldLibraryPath</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">if</span> (loader != <span class="literal">null</span> &amp;&amp; loader <span class="keyword">instanceof</span> BaseDexClassLoader) &#123;</span><br><span class="line">		ldLibraryPath = ((BaseDexClassLoader) loader).getLdLibraryPath();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">synchronized</span> (<span class="built_in">this</span>) &#123;</span><br><span class="line">		<span class="keyword">return</span> nativeLoad(name, loader, ldLibraryPath);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>调用 nativeLoad()来加载 name 指向的.so 文件，nativeLoad()是 Runtime类的一个 native 函数，在 native 层对应的函数为 Runtime_nativeLoad()。</p>
+<h2 id="Native层"><a href="#Native层" class="headerlink" title="Native层"></a>Native层</h2><h3 id="Runtime-nativeLoad"><a href="#Runtime-nativeLoad" class="headerlink" title="Runtime_nativeLoad()"></a>Runtime_nativeLoad()</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">static</span> jstring <span class="title">Runtime_nativeLoad</span><span class="params">(JNIEnv* env, jclass, jstring javaFilename, </span></span></span><br><span class="line"><span class="params"><span class="function">                                  jobject javaLoader, jstring javaLdLibraryPath)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 将 Java 字符串转换为 C++ 字符串</span></span><br><span class="line">    <span class="function">ScopedUtfChars <span class="title">filename</span><span class="params">(env, javaFilename)</span></span>;</span><br><span class="line">    <span class="keyword">if</span> (filename.<span class="built_in">c_str</span>() == <span class="literal">nullptr</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">nullptr</span>; <span class="comment">// 转换失败，返回 null</span></span><br><span class="line">    &#125;</span><br><span class="line">    std::string detail; <span class="comment">// 用于存储加载库时的详细信息</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// 获取当前线程的访问权限</span></span><br><span class="line">        <span class="function">ScopedObjectAccess <span class="title">soa</span><span class="params">(env)</span></span>;</span><br><span class="line">        <span class="comment">// 创建一个 HandleScope 用于管理局部引用</span></span><br><span class="line">        <span class="function">StackHandleScope&lt;1&gt; <span class="title">hs</span><span class="params">(soa.Self())</span></span>;</span><br><span class="line">        <span class="comment">// 将 Java 的 ClassLoader 对象解码为 C++ 的 mirror::ClassLoader 对象</span></span><br><span class="line">        <span class="function">Handle&lt;mirror::ClassLoader&gt; <span class="title">classLoader</span><span class="params">(</span></span></span><br><span class="line"><span class="params"><span class="function">            hs.NewHandle(soa.Decode&lt;mirror::ClassLoader*&gt;(javaLoader)))</span></span>;</span><br><span class="line">        <span class="comment">// 获取当前的 JavaVM 实例</span></span><br><span class="line">        JavaVMExt* vm = Runtime::<span class="built_in">Current</span>()-&gt;<span class="built_in">GetJavaVM</span>();</span><br><span class="line">        <span class="comment">// 加载本地库</span></span><br><span class="line">        <span class="type">bool</span> success = vm-&gt;<span class="built_in">LoadNativeLibrary</span>(filename.<span class="built_in">c_str</span>(), classLoader, &amp;detail);</span><br><span class="line">        <span class="keyword">if</span> (success) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">nullptr</span>; <span class="comment">// 加载成功，返回 null</span></span><br><span class="line">        &#125; </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>调用 JavaVMExt 类的 LoadNativeLibrary()函数来加载.so 文件，filename 是.so 文件的路径，detail 用于存储加载过程中的 log 信息。</p>
+<h3 id="LoadNativeLibrary"><a href="#LoadNativeLibrary" class="headerlink" title="LoadNativeLibrary()"></a>LoadNativeLibrary()</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">bool</span> <span class="title">JavaVMExt::LoadNativeLibrary</span><span class="params">(<span class="type">const</span> std::string&amp; path,</span></span></span><br><span class="line"><span class="params"><span class="function">                                  Handle&lt;mirror::ClassLoader&gt; class_loader,</span></span></span><br><span class="line"><span class="params"><span class="function">                                  std::string* detail)</span> </span>&#123;</span><br><span class="line">    detail-&gt;<span class="built_in">clear</span>();</span><br><span class="line">    <span class="comment">// 首先检查是否加载过该.so，加载过就不需要重复加载</span></span><br><span class="line">    SharedLibrary* library;</span><br><span class="line">    Thread* self = Thread::<span class="built_in">Current</span>();</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function">MutexLock <span class="title">mu</span><span class="params">(self, libraries_lock)</span></span>;</span><br><span class="line">        library = libraries-&gt;<span class="built_in">Get</span>(path);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (library != <span class="literal">nullptr</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (library-&gt;<span class="built_in">GetClassLoader</span>() != class_loader.<span class="built_in">Get</span>()) &#123;</span><br><span class="line">            <span class="built_in">StringAppendF</span>(detail, <span class="string">&quot;Shared library \&quot;%s\&quot; already opened by &quot;</span></span><br><span class="line">                          <span class="string">&quot;ClassLoader %p; can&#x27;t open in ClassLoader %p&quot;</span>,</span><br><span class="line">                          path.<span class="built_in">c_str</span>(), library-&gt;<span class="built_in">GetClassLoader</span>(), class_loader.<span class="built_in">Get</span>());</span><br><span class="line">            <span class="built_in">LOG</span>(WARNING) &lt;&lt; detail;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        ... </span><br><span class="line">        <span class="keyword">if</span> (!library-&gt;<span class="built_in">CheckOnLoadResult</span>()) &#123;</span><br><span class="line">            <span class="built_in">StringAppendF</span>(detail, <span class="string">&quot;JNI_OnLoad failed on a previous attempt &quot;</span></span><br><span class="line">                          <span class="string">&quot;to load \&quot;%s\&quot;&quot;</span>, path.<span class="built_in">c_str</span>());</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 之前没有加载过</span></span><br><span class="line">    self-&gt;<span class="built_in">TransitionFromRunnableToSuspended</span>(kWaitingForJniOnLoad);</span><br><span class="line">    <span class="type">const</span> <span class="type">char</span>* path_str = path.<span class="built_in">empty</span>() ? <span class="literal">nullptr</span> : path.<span class="built_in">c_str</span>();</span><br><span class="line">    <span class="type">void</span>* handle = <span class="built_in">dlopen</span>(path_str, RTLD_LAZY); <span class="comment">// 用 dlopen 加载.so 文件</span></span><br><span class="line">    ...</span><br><span class="line">    self-&gt;<span class="built_in">TransitionFromSuspendedToRunnable</span>();</span><br><span class="line">	...</span><br><span class="line">    <span class="type">bool</span> created_library = <span class="literal">false</span>;</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function">MutexLock <span class="title">mu</span><span class="params">(self, libraries_lock)</span></span>;</span><br><span class="line">        library = libraries-&gt;<span class="built_in">Get</span>(path);</span><br><span class="line">        <span class="keyword">if</span> (library == <span class="literal">nullptr</span>) &#123;</span><br><span class="line">            <span class="comment">// 加载完成后，新建 SharedLibrary 对象，并以 path 为键值将其存入 libraries</span></span><br><span class="line">            library = <span class="keyword">new</span> <span class="built_in">SharedLibrary</span>(path, handle, class_loader.<span class="built_in">Get</span>());</span><br><span class="line">            libraries-&gt;<span class="built_in">Put</span>(path, library);</span><br><span class="line">            created_library = <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">	...</span><br><span class="line">    <span class="type">bool</span> was_successful = <span class="literal">false</span>;</span><br><span class="line">    <span class="type">void</span>* sym = <span class="literal">nullptr</span>;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">UNLIKELY</span>(needs_native_bridge)) &#123;</span><br><span class="line">        library-&gt;<span class="built_in">SetNeedsNativeBridge</span>();</span><br><span class="line">        sym = library-&gt;<span class="built_in">FindSymbolWithNativeBridge</span>(<span class="string">&quot;JNI_OnLoad&quot;</span>, <span class="literal">nullptr</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        sym = <span class="built_in">dlsym</span>(handle, <span class="string">&quot;JNI_OnLoad&quot;</span>); <span class="comment">// 找到 JNI_OnLoad 函数</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (sym == <span class="literal">nullptr</span>) &#123;</span><br><span class="line">        <span class="built_in">VLOG</span>(jni) &lt;&lt; <span class="string">&quot;[No JNI_OnLoad found in \&quot;&quot;</span> &lt;&lt; path &lt;&lt; <span class="string">&quot;\&quot;]&quot;</span>;</span><br><span class="line">        was_successful = <span class="literal">true</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">typedef</span> <span class="built_in">int</span> (*JNI_OnLoadFn)(JavaVM*, <span class="type">void</span>*);</span><br><span class="line">        JNI_OnLoadFn jni_on_load = <span class="built_in">reinterpret_cast</span>&lt;JNI_OnLoadFn&gt;(sym);</span><br><span class="line">		...</span><br><span class="line">        <span class="type">int</span> version = <span class="number">0</span>;</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="function">ScopedThreadStateChange <span class="title">tsc</span><span class="params">(self, kNative)</span></span>;</span><br><span class="line">            <span class="built_in">VLOG</span>(jni) &lt;&lt; <span class="string">&quot;[Calling JNI_OnLoad in \&quot;&quot;</span> &lt;&lt; path &lt;&lt; <span class="string">&quot;\&quot;]&quot;</span>;</span><br><span class="line">            version = (*jni_on_load)(<span class="keyword">this</span>, <span class="literal">nullptr</span>); <span class="comment">// 调用 JNI_OnLoad 函数</span></span><br><span class="line">        &#125;</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> was_successful;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>从上可知，LoadNativeLibrary()函数执行的主要流程为：判断该.so 文件是否已经加载了</p>
+<ul>
+<li>如果已经加载了，检查class_loader 是否一样；</li>
+<li>如果没有加载，调用 dlopen()函数加载该.so 文件；</li>
+<li>调用 dlsym()找到 JNI_OnLoad 函数的地址；</li>
+<li>调用 JNI_OnLoad 函数。</li>
+<li>至此，一个.so 文件就加载完成了。</li>
+</ul>
+<p>接下来了解一个.so 文件是如何载入内存、如何链接的。</p>
+<h3 id="dlopen"><a href="#dlopen" class="headerlink" title="dlopen()"></a>dlopen()</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span>* <span class="title">dlopen</span><span class="params">(<span class="type">const</span> <span class="type">char</span>* filename, <span class="type">int</span> flags)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">dlopen_ext</span>(filename, flags, <span class="literal">nullptr</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p> dlopen()调用了dlopen_ext()。</p>
+<h3 id="dlopen-ext"><a href="#dlopen-ext" class="headerlink" title="dlopen_ext()"></a>dlopen_ext()</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">static</span> <span class="type">void</span>* <span class="title">dlopen_ext</span><span class="params">(<span class="type">const</span> <span class="type">char</span>* filename, <span class="type">int</span> flags, <span class="type">const</span> android_dlextinfo* extinfo)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 使用互斥锁保护全局状态，防止多线程竞争</span></span><br><span class="line">    <span class="function">ScopedPthreadMutexLocker <span class="title">locker</span><span class="params">(&amp;g_dl_mutex)</span></span>;</span><br><span class="line">    <span class="comment">// 调用 do_dlopen 实际加载动态库</span></span><br><span class="line">    soinfo* result = <span class="built_in">do_dlopen</span>(filename, flags, extinfo);</span><br><span class="line">    <span class="comment">// 如果加载失败，格式化错误信息并返回 nullptr</span></span><br><span class="line">    <span class="keyword">if</span> (result == <span class="literal">nullptr</span>) &#123;</span><br><span class="line">        __bionic_format_dlerror(<span class="string">&quot;dlopen failed&quot;</span>, <span class="built_in">linker_get_error_buffer</span>());</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">nullptr</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 返回加载成功的库句柄</span></span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>调用 do_dlopen() 来加载 filename 指向的.so 文件，返回值为 soinfo 对象的指针，因而 dlopen()函数的返回的指针指向一个 soinfo 对象。</p>
+<h3 id="do-dlopen"><a href="#do-dlopen" class="headerlink" title="do_dlopen()"></a>do_dlopen()</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">soinfo* <span class="title">do_dlopen</span><span class="params">(<span class="type">const</span> <span class="type">char</span>* name, <span class="type">int</span> flags, <span class="type">const</span> android_dlextinfo* extinfo)</span> </span>&#123;</span><br><span class="line">    ...</span><br><span class="line">    <span class="comment">// 设置数据段为可读写，以便修改全局状态</span></span><br><span class="line">    <span class="built_in">protect_data</span>(PROT_READ | PROT_WRITE);</span><br><span class="line">    <span class="comment">// 查找并加载指定的动态库</span></span><br><span class="line">    soinfo* si = <span class="built_in">find_library</span>(name, flags, extinfo);</span><br><span class="line">    <span class="comment">// 如果加载成功，调用库的构造函数</span></span><br><span class="line">    <span class="keyword">if</span> (si != <span class="literal">nullptr</span>) &#123;</span><br><span class="line">        si-&gt;<span class="built_in">CallConstructors</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 恢复数据段的只读保护</span></span><br><span class="line">    <span class="built_in">protect_data</span>(PROT_READ);</span><br><span class="line">    <span class="comment">// 返回加载的库信息</span></span><br><span class="line">    <span class="keyword">return</span> si;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>调用 find_library()函数得到 soinfo 的对象，然后调用si-&gt;CallConstructors()进行初始化。</p>
+<p>先分析find_library()。</p>
+<h3 id="find-library"><a href="#find-library" class="headerlink" title="find_library()"></a>find_library()</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">static</span> soinfo* <span class="title">find_library</span><span class="params">(<span class="type">const</span> <span class="type">char</span>* name, <span class="type">int</span> dlflags, <span class="type">const</span> android_dlextinfo* extinfo)</span> </span>&#123;</span><br><span class="line">    ...</span><br><span class="line">    soinfo* si;</span><br><span class="line">    <span class="comment">// 调用 find_libraries 查找并加载指定的库</span></span><br><span class="line">    <span class="keyword">if</span> (!<span class="built_in">find_libraries</span>(&amp;name, <span class="number">1</span>, &amp;si, <span class="literal">nullptr</span>, <span class="number">0</span>, dlflags, extinfo)) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">nullptr</span>; <span class="comment">// 如果加载失败，返回 nullptr</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 返回加载成功的库信息</span></span><br><span class="line">    <span class="keyword">return</span> si;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里面调用了find_libraries()</p>
+<h3 id="find-libraries"><a href="#find-libraries" class="headerlink" title="find_libraries()"></a>find_libraries()</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">static</span> <span class="type">bool</span> <span class="title">find_libraries</span><span class="params">(<span class="type">const</span> <span class="type">char</span>* <span class="type">const</span> library_names[], <span class="type">size_t</span> library_names_size,</span></span></span><br><span class="line"><span class="params"><span class="function">                           soinfo* soinfos[], soinfo* ld_preloads[], <span class="type">size_t</span> ld_preloads_size,</span></span></span><br><span class="line"><span class="params"><span class="function">                           <span class="type">int</span> dlflags, <span class="type">const</span> android_dlextinfo* extinfo)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//library_names 是.so 文件名的数组，当然这里它只有一个元素</span></span><br><span class="line">    <span class="comment">//library_names_size=1</span></span><br><span class="line">    <span class="comment">//soinfos 也只有一个 soinfo 对象的指针,将加载 library_names 中 so 的结果存入 soinfos</span></span><br><span class="line">    <span class="comment">//ld_preloads=null</span></span><br><span class="line">    <span class="comment">//ld_preloads_size=0</span></span><br><span class="line">    <span class="comment">//extinfo=null</span></span><br><span class="line">    <span class="comment">// Step 0: 准备工作</span></span><br><span class="line">    LoadTaskList load_tasks;</span><br><span class="line">    <span class="comment">// 将待加载的库名添加到任务队列中</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">size_t</span> i = <span class="number">0</span>; i &lt; library_names_size; ++i) &#123;</span><br><span class="line">        <span class="type">const</span> <span class="type">char</span>* name = library_names[i];</span><br><span class="line">        load_tasks.<span class="built_in">push_back</span>(LoadTask::<span class="built_in">create</span>(name, <span class="literal">nullptr</span>));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 用于存储加载的库及其依赖库的链表</span></span><br><span class="line">    SoinfoLinkedList found_libs;</span><br><span class="line">    <span class="type">size_t</span> soinfos_size = <span class="number">0</span>;</span><br><span class="line">    ...</span><br><span class="line">    <span class="comment">// Step 1: 使用广度优先搜索加载库及其依赖库</span></span><br><span class="line">    <span class="keyword">for</span> (LoadTask::unique_ptr <span class="built_in">task</span>(load_tasks.<span class="built_in">pop_front</span>()); task.<span class="built_in">get</span>() != <span class="literal">nullptr</span>; task.<span class="built_in">reset</span>(load_tasks.<span class="built_in">pop_front</span>())) &#123;</span><br><span class="line">        <span class="comment">// 加载库</span></span><br><span class="line">        soinfo* si = <span class="built_in">find_library_internal</span>(load_tasks, task-&gt;<span class="built_in">get_name</span>(), dlflags, extinfo);</span><br><span class="line">        <span class="comment">// 检查递归依赖</span></span><br><span class="line">        ...</span><br><span class="line">        soinfo* needed_by = task-&gt;<span class="built_in">get_needed_by</span>();</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">is_recursive</span>(si, needed_by)) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 更新引用计数和依赖关系</span></span><br><span class="line">        si-&gt;ref_count++;</span><br><span class="line">        <span class="keyword">if</span> (needed_by != <span class="literal">nullptr</span>) &#123;</span><br><span class="line">            needed_by-&gt;<span class="built_in">add_child</span>(si);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 将加载的库添加到链表中</span></span><br><span class="line">        found_libs.<span class="built_in">push_front</span>(si);</span><br><span class="line">        ...</span><br><span class="line">        <span class="comment">// 如果当前库是待加载的库，则将其存入 soinfos 数组</span></span><br><span class="line">        <span class="keyword">if</span> (soinfos_size &lt; library_names_size) &#123;</span><br><span class="line">            soinfos[soinfos_size++] = si;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// Step 2: 链接所有加载的库</span></span><br><span class="line">    soinfo* si;</span><br><span class="line">    <span class="keyword">while</span> ((si = found_libs.<span class="built_in">pop_front</span>()) != <span class="literal">nullptr</span>) &#123;</span><br><span class="line">        <span class="comment">// 如果库尚未链接，则进行链接</span></span><br><span class="line">        <span class="keyword">if</span> ((si-&gt;flags &amp; FLAG_LINKED) == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (!si-&gt;<span class="built_in">LinkImage</span>(extinfo)) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            si-&gt;flags |= FLAG_LINKED;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    ...</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>find_libraries()将数组 library_names[]中的 so 文件加载到内存，并进行链接。这里将 find_libraries()分为三个部分来进行分析。第一部分：初始化阶段；第二部分：采用宽度优先搜索加载 so；第三部分：对加载的 so 进行链接。</p>
+<h3 id="初始化阶段"><a href="#初始化阶段" class="headerlink" title="初始化阶段"></a>初始化阶段</h3><p>要加载的 so 可能依赖于其他库，linker 采用宽度优先搜索依次加载 so 及其依赖库。搜索树中父节点的依赖库为其子节点，根节点是待加载的.so 文件。</p>
+<p>load_tasks 是用于宽度优先搜索的栈，对其进行初始化。found_libs 是.so 文件和其依赖库的列表。</p>
+<h3 id="载入-so-到内存"><a href="#载入-so-到内存" class="headerlink" title="载入 so 到内存"></a>载入 so 到内存</h3><p>这部分对.so 文件及其依赖库按照宽度优先的顺序依次进行加载，最关键的是调用 find_library_internal()函数，用于加载 so。</p>
+<h3 id="find-library-internal"><a href="#find-library-internal" class="headerlink" title="find_library_internal()"></a>find_library_internal()</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">static</span> soinfo* <span class="title">find_library_internal</span><span class="params">(LoadTaskList&amp; load_tasks, <span class="type">const</span> <span class="type">char</span>* name,</span></span></span><br><span class="line"><span class="params"><span class="function">                                     <span class="type">int</span> dlflags, <span class="type">const</span> android_dlextinfo* extinfo)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 检查库是否已经加载</span></span><br><span class="line">    soinfo* si = <span class="built_in">find_loaded_library_by_name</span>(name);</span><br><span class="line">    <span class="comment">// 如果库未加载，则尝试加载</span></span><br><span class="line">    <span class="keyword">if</span> (si == <span class="literal">nullptr</span>) &#123;</span><br><span class="line">        <span class="built_in">TRACE</span>(<span class="string">&quot;[ &#x27;%s&#x27; has not been found by name. Trying harder...]&quot;</span>, name);</span><br><span class="line">        si = <span class="built_in">load_library</span>(load_tasks, name, dlflags, extinfo);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 返回加载的库信息</span></span><br><span class="line">    <span class="keyword">return</span> si;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>find_library_internal()首先会检查 name 指向的.so 是否已经加载，如果没有，就调用 load_library()加载。</p>
+<h3 id="load-library"><a href="#load-library" class="headerlink" title="load_library()"></a>load_library()</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">static</span> soinfo* <span class="title">load_library</span><span class="params">(LoadTaskList&amp; load_tasks, <span class="type">const</span> <span class="type">char</span>* name, <span class="type">int</span> dlflags,</span></span></span><br><span class="line"><span class="params"><span class="function">                            <span class="type">const</span> android_dlextinfo* extinfo)</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> fd = <span class="number">-1</span>; <span class="comment">// .so 文件的文件描述符</span></span><br><span class="line">    <span class="type">off64_t</span> file_offset = <span class="number">0</span>;</span><br><span class="line">    <span class="function">ScopedFd <span class="title">file_guard</span><span class="params">(<span class="number">-1</span>)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Part 1: 打开 .so 文件</span></span><br><span class="line">    <span class="keyword">if</span> (extinfo != <span class="literal">nullptr</span> &amp;&amp; (extinfo-&gt;flags &amp; ANDROID_DLEXT_USE_LIBRARY_FD) != <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="comment">// 如果提供了文件描述符，则直接使用</span></span><br><span class="line">        ...</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">// 打开 .so 文件</span></span><br><span class="line">        fd = <span class="built_in">open_library</span>(name);</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 文件偏移必须是 PAGE_SIZE 的整数倍，这里 file_offset=0</span></span><br><span class="line">    <span class="keyword">if</span> ((file_offset % PAGE_SIZE) != <span class="number">0</span>) &#123;</span><br><span class="line">        ...</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">nullptr</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 获取 .so 文件的状态信息</span></span><br><span class="line">    <span class="keyword">struct</span> <span class="title class_">stat</span> file_stat;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">TEMP_FAILURE_RETRY</span>(<span class="built_in">fstat</span>(fd, &amp;file_stat)) != <span class="number">0</span>) &#123;</span><br><span class="line">        ...</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">nullptr</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 检查是否已经以不同的名称加载了该库（例如符号链接）</span></span><br><span class="line">    <span class="keyword">for</span> (soinfo* si = solist; si != <span class="literal">nullptr</span>; si = si-&gt;next) &#123;</span><br><span class="line">        <span class="keyword">if</span> (si-&gt;<span class="built_in">get_st_dev</span>() != <span class="number">0</span> &amp;&amp;</span><br><span class="line">            si-&gt;<span class="built_in">get_st_ino</span>() != <span class="number">0</span> &amp;&amp;</span><br><span class="line">            si-&gt;<span class="built_in">get_st_dev</span>() == file_stat.st_dev &amp;&amp;</span><br><span class="line">            si-&gt;<span class="built_in">get_st_ino</span>() == file_stat.st_ino &amp;&amp;</span><br><span class="line">            si-&gt;<span class="built_in">get_file_offset</span>() == file_offset) &#123;</span><br><span class="line">            <span class="built_in">TRACE</span>(<span class="string">&quot;library \&quot;%s\&quot; is already loaded under different name/path \&quot;%s\&quot; - will return existing soinfo&quot;</span>, name, si-&gt;name);</span><br><span class="line">            <span class="keyword">return</span> si;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Part 2: 读取 ELF 头并加载段</span></span><br><span class="line">    <span class="function">ElfReader <span class="title">elf_reader</span><span class="params">(name, fd, file_offset)</span></span>; <span class="comment">// file_offset=0</span></span><br><span class="line">    <span class="keyword">if</span> (!elf_reader.<span class="built_in">Load</span>(extinfo)) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">nullptr</span>;</span><br><span class="line">    &#125;</span><br><span class="line">	...</span><br><span class="line">    <span class="comment">// Part 3: 分配 soinfo 并初始化</span></span><br><span class="line">    soinfo* si = <span class="built_in">soinfo_alloc</span>(<span class="built_in">SEARCH_NAME</span>(name), &amp;file_stat, file_offset);</span><br><span class="line">    <span class="keyword">if</span> (si == <span class="literal">nullptr</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">nullptr</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 设置 soinfo 的加载信息</span></span><br><span class="line">    si-&gt;base = elf_reader.<span class="built_in">load_start</span>(); <span class="comment">// 加载 .so 文件时 mmap 得到的空间的首地址</span></span><br><span class="line">    si-&gt;size = elf_reader.<span class="built_in">load_size</span>();  <span class="comment">// ReserveAddressSpace 中开辟的内存空间的大小</span></span><br><span class="line">    si-&gt;load_bias = elf_reader.<span class="built_in">load_bias</span>(); <span class="comment">// 加载段时的基址，load_bias + p_vaddr 为段的实际内存地址</span></span><br><span class="line">    si-&gt;phnum = elf_reader.<span class="built_in">phdr_count</span>(); <span class="comment">// program header 的个数</span></span><br><span class="line">    si-&gt;phdr = elf_reader.<span class="built_in">loaded_phdr</span>(); <span class="comment">// program header table 在内存中的起始地址</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 预链接库（解析 .dynamic section）</span></span><br><span class="line">    <span class="keyword">if</span> (!si-&gt;<span class="built_in">PrelinkImage</span>()) &#123;</span><br><span class="line">        <span class="built_in">soinfo_free</span>(si);</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">nullptr</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 将该 .so 文件依赖的库添加到待加载队列中</span></span><br><span class="line">    for_each_dt_needed(si, [&amp;] (<span class="type">const</span> <span class="type">char</span>* name) &#123;</span><br><span class="line">        load_tasks.<span class="built_in">push_back</span>(LoadTask::<span class="built_in">create</span>(name, si)); <span class="comment">// si 依赖于名为 name 的库</span></span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 返回加载的库信息</span></span><br><span class="line">    <span class="keyword">return</span> si;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>将 load_library()分为三个部分来进行分析。第一部分：主要作用是打开.so 文件，并判断是否已经加载；第二部分：加载.so文件的可加载段；第三部分：创建 soinfo 对象，解析.dynamicsection，并将该.so 文件的依赖库添加到待加载的队列中。</p>
+<h3 id="打开-so-文件"><a href="#打开-so-文件" class="headerlink" title="打开 so 文件"></a>打开 so 文件</h3><p>内存 页 的 大 小 PAGE_SIZE 为 4096 ， 定 义 位 于 头文件&#x2F;bionic&#x2F;libc&#x2F;include&#x2F;limits.h，现在最好通过 sysconf(_SC_PAGE_SIZE)来获取 PAGE_SIZE 的值，sysconf()位于&#x2F;bionic&#x2F;libc&#x2F;bionic&#x2F;sysconf.cpp，从sysconf 的实现可以知道，sysconf(_SC_PAGESIZE)也可以用来获取 PAGE_SIZE 的值。然后检查.so 文件是否以不同的文件名被加载过了。Linux 下一个文件可以有多个链接文件，因而不同的文件名可能指向的是同一个文件。</p>
+<h3 id="映射-so-文件到内存"><a href="#映射-so-文件到内存" class="headerlink" title="映射 so 文件到内存"></a>映射 so 文件到内存</h3><p>用 ElfReader 类解析 ELF 头，并根据 program header table加载段。其成员函数 Load()实现如下：</p>
+<p>Load()</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">bool</span> <span class="title">ElfReader::Load</span><span class="params">(<span class="type">const</span> android_dlextinfo* extinfo)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">ReadElfHeader</span>() &amp;&amp;</span><br><span class="line">           <span class="built_in">VerifyElfHeader</span>() &amp;&amp;</span><br><span class="line">           <span class="built_in">ReadProgramHeader</span>() &amp;&amp;</span><br><span class="line">           <span class="built_in">ReserveAddressSpace</span>(extinfo) &amp;&amp;</span><br><span class="line">           <span class="built_in">LoadSegments</span>() &amp;&amp;</span><br><span class="line">           <span class="built_in">FindPhdr</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>**ReadElfHeader()**用于读取 ELF 的头，并将结果赋给 ElfReader 的成员变量Elf32_Ehdr header_，Elf32_Ehdr 的定义可以在&#x2F;art&#x2F;runtime&#x2F;elf.h 中找到,自动生成的文件&#x2F;bionic&#x2F;libc&#x2F;kernel&#x2F;uapi&#x2F;linux&#x2F;elf.h 中也有相关 elf 的定义。</p>
+</li>
+<li><p>**VerifyElfHeader()**用于检查 ELF 头某些字段是否合法。</p>
+</li>
+<li><p>**ReadProgramHeader()**将 program header table 从.so 文件通过 mmap64 映射到只读私有匿名内存。</p>
+</li>
+<li><p>**ReserveAddressSpace()**通过 mmap 创建足够大的匿名内存空间，以便能够容纳所有可以加载的段</p>
+</li>
+<li><p><strong>LoadSegments()</strong></p>
+<p>  遍历 program header table，找到可加载段，并通过 mmap 将可加载段从文件映射到内存。</p>
+</li>
+<li><p><strong>FindPhdr()</strong></p>
+<p>  检查 program header table 是否已经在内存中了，即检查可加载段中是否包含 program header table。</p>
+</li>
+</ul>
+<h3 id="解析-dynamic-section"><a href="#解析-dynamic-section" class="headerlink" title="解析 dynamic section"></a>解析 dynamic section</h3><p>load_library()函数中创建一个了 soinfo 对象，并对相关字段进行赋值：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">si-&gt;base：加载 so 文件时，mmap 得到的内存空间的首地址。</span><br><span class="line">si-&gt;size：ReserveAddressSpace 中开启的内存空间的大小；</span><br><span class="line">si-&gt;load_bias ： 加载的偏移地址， 对 于 一个可加载段来说，si-&gt;load_bias+p_vaddr 是它在内存中的地址；</span><br><span class="line">si-&gt;phnum：program header 的个数；</span><br><span class="line">si-&gt;phdr：program header table 在内存中的起始地址。</span><br></pre></td></tr></table></figure>
+
+<p>调用 PrelinkImage()解析.so 文件的.dynamic section；将该.so 文件依赖的库添加到待加载的队列中。</p>
+<p>在分析 PrelinkImage()之前，先看一下.dynamic section 中 entry 的数据结构，如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Dynamic table entry for ELF32.</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Elf32_Dyn</span> &#123;</span><br><span class="line">    Elf32_Sword d_tag; <span class="comment">// Type of dynamic table entry.</span></span><br><span class="line">    <span class="keyword">union</span> &#123;</span><br><span class="line">        Elf32_Word d_val; <span class="comment">// Integer value of entry.</span></span><br><span class="line">        Elf32_Addr d_ptr; <span class="comment">// Pointer value of entry.</span></span><br><span class="line">    &#125; d_un;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>略写</p>
+<h3 id="链接阶段"><a href="#链接阶段" class="headerlink" title="链接阶段"></a>链接阶段</h3><p>对加载的 so 进行链接操作，链接的顺序与加载的顺序刚好相反。</p>
+<p>调用 LinkImage()进行链接</p>
+<h3 id="LinkImage"><a href="#LinkImage" class="headerlink" title="LinkImage()"></a>LinkImage()</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">bool</span> <span class="title">soinfo::LinkImage</span><span class="params">(<span class="type">const</span> android_dlextinfo* extinfo)</span> </span>&#123;</span><br><span class="line"><span class="meta">#<span class="keyword">if</span> !defined(__LP64__)</span></span><br><span class="line">    <span class="comment">// 如果存在文本重定位，则需要解除段的写保护</span></span><br><span class="line">    <span class="keyword">if</span> (has_text_relocations) &#123;</span><br><span class="line">        <span class="built_in">DL_WARN</span>(<span class="string">&quot;%s has text relocations. This is wasting memory and prevents &quot;</span></span><br><span class="line">                <span class="string">&quot;security hardening. Please fix.&quot;</span>, name);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 解除段的写保护，使其可读写</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">phdr_table_unprotect_segments</span>(phdr, phnum, load_bias) &lt; <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="built_in">DL_ERR</span>(<span class="string">&quot;can&#x27;t unprotect loadable segments for \&quot;%s\&quot;: %s&quot;</span>,</span><br><span class="line">                   name, <span class="built_in">strerror</span>(errno));</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">if</span> defined(USE_RELA)</span></span><br><span class="line">    <span class="comment">// 处理 RELA 重定位表（64 位架构）</span></span><br><span class="line">    ...</span><br><span class="line"><span class="meta">#<span class="keyword">else</span></span></span><br><span class="line">    <span class="comment">// 处理 REL 重定位表（32 位架构）</span></span><br><span class="line">    <span class="keyword">if</span> (rel != <span class="literal">nullptr</span>) &#123;</span><br><span class="line">        <span class="built_in">DEBUG</span>(<span class="string">&quot;[ relocating %s ]&quot;</span>, name);</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">Relocate</span>(rel, rel_count)) &#123; <span class="comment">// 对重定位表中所指的符号进行重定位</span></span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 处理 PLT 重定位表（与调用导入函数相关）</span></span><br><span class="line">    <span class="keyword">if</span> (plt_rel != <span class="literal">nullptr</span>) &#123;</span><br><span class="line">        <span class="built_in">DEBUG</span>(<span class="string">&quot;[ relocating %s plt ]&quot;</span>, name);</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">Relocate</span>(plt_rel, plt_rel_count)) &#123; <span class="comment">// 对重定位表中所指的符号进行重定位</span></span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">DEBUG</span>(<span class="string">&quot;[ finished linking %s ]&quot;</span>, name);</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">if</span> !defined(__LP64__)</span></span><br><span class="line">    <span class="comment">// 如果存在文本重定位，重新保护段为只读</span></span><br><span class="line">    <span class="keyword">if</span> (has_text_relocations) &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">phdr_table_protect_segments</span>(phdr, phnum, load_bias) &lt; <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="built_in">DL_ERR</span>(<span class="string">&quot;can&#x27;t protect segments for \&quot;%s\&quot;: %s&quot;</span>,</span><br><span class="line">                   name, <span class="built_in">strerror</span>(errno));</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 启用 GNU RELRO 保护</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">phdr_table_protect_gnu_relro</span>(phdr, phnum, load_bias) &lt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="built_in">DL_ERR</span>(<span class="string">&quot;can&#x27;t enable GNU RELRO protection for \&quot;%s\&quot;: %s&quot;</span>,</span><br><span class="line">               name, <span class="built_in">strerror</span>(errno));</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>对.rel.dyn 和.rel.plt 两个重定位表都是调用Relocate()来进行重定位的。在分析 Relocate()之前，先看一下重定位表项的数</p>
+<p>据结构</p>
+<p>略写</p>
+<h3 id="链接完成后"><a href="#链接完成后" class="headerlink" title="链接完成后"></a>链接完成后</h3><p>so 文件加载到内存，并链接完成后，就开始调用 so 中的初始化函数。</p>
+<p>回到 do_dlopen()继续分析：</p>
+<p>在do_dlopen()中调用 CallConstructors()进行初始化操作。</p>
+<h3 id="CallConstructors"><a href="#CallConstructors" class="headerlink" title="CallConstructors()"></a>CallConstructors()</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">soinfo::CallConstructors</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 如果构造函数已经调用过，则直接返回</span></span><br><span class="line">    <span class="keyword">if</span> (constructors_called) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">	...</span><br><span class="line">    <span class="comment">// 递归调用所有依赖库的构造函数</span></span><br><span class="line">    <span class="built_in">get_children</span>().for_each([] (soinfo* si) &#123;</span><br><span class="line">        si-&gt;<span class="built_in">CallConstructors</span>();</span><br><span class="line">    &#125;);</span><br><span class="line">	...</span><br><span class="line">    <span class="comment">// DT_INIT 应该先于 DT_INIT_ARRAY 调用（如果两者都存在）</span></span><br><span class="line">    <span class="built_in">CallFunction</span>(<span class="string">&quot;DT_INIT&quot;</span>, init_func); <span class="comment">// 调用 init_func 函数</span></span><br><span class="line">    <span class="built_in">CallArray</span>(<span class="string">&quot;DT_INIT_ARRAY&quot;</span>, init_array, init_array_count, <span class="literal">false</span>); <span class="comment">// 调用 init_array 数组中的函数</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>CallConstructors() 主 要 是 执 行 了 两 段 初 始 化 代 码 ： init_func 和init_array,这两个变量是在 PrelinkImage()中解析 dynamic section 时赋值的。通常加壳逻辑就放在 init_func 或 init_array 中，它们先于 jni_onLoad 执行。</p>
+<p>至此，完成了 so 的加载分析。</p>
+<h2 id="native-层函数调用关系图"><a href="#native-层函数调用关系图" class="headerlink" title="native 层函数调用关系图"></a>native 层函数调用关系图</h2><p><img src="/2025/03/09/App%E5%90%AF%E5%8A%A8%E5%8F%8A%E5%8A%A0%E8%BD%BD%E6%B5%81%E7%A8%8B%E5%88%86%E6%9E%90/2.jpg"></p>
+<p><img src="/2025/03/09/App%E5%90%AF%E5%8A%A8%E5%8F%8A%E5%8A%A0%E8%BD%BD%E6%B5%81%E7%A8%8B%E5%88%86%E6%9E%90/3.jpg"></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/App%E5%90%AF%E5%8A%A8%E5%8F%8A%E5%8A%A0%E8%BD%BD%E6%B5%81%E7%A8%8B%E5%88%86%E6%9E%90/" rel="tag"><svg t="1732789072752" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4858" width="15" height="15"><path d="M229.443715 343.118259l565.172804 0 0 410.010794c0 37.525595-30.237317 67.762912-67.040108 67.762912l-46.319715 0 0 139.742183c0 35.116247-28.249605 63.365852-63.305618 63.365852-35.116247 0-63.546553-28.309839-63.546553-63.365852l0-139.742183-84.809049 0 0 139.742183c0 35.056013-28.430306 63.365852-63.546553 63.365852-34.393443 0-62.763515-28.309839-62.763515-63.365852l-0.542103-139.742183-45.596911 0c-37.465361 0-67.702678-30.177084-67.702678-67.762912l0-410.010794zM141.984383 331.432921c-35.056013 0-63.426086 28.370073-63.426086 62.763515l0 264.787344c0 35.116247 28.370073 63.365852 63.426086 63.365852s62.763515-28.309839 62.763515-63.365852l0-264.787344c0-34.393443-28.189371-62.763515-62.763515-62.763515zM796.42353 320.952257l-569.449397 0c0-97.879762 58.547156-182.869512 145.343917-227.141282l-43.7899-80.59269c-2.469582-4.336826-1.264908-9.878327 3.071919-12.347908 4.276593-1.867245 9.878327-0.662571 12.347908 3.734489l44.271769 81.255261c37.646062-16.684735 79.508484-25.900491 123.780253-25.900491s86.134191 9.215756 123.780253 25.840257l44.271769-81.255261c2.469582-4.336826 8.071316-5.5415 12.347908-3.734489 4.336826 2.469582 5.5415 8.011082 3.071919 12.347908l-43.7899 80.59269c86.254658 44.332003 144.74158 129.321753 144.74158 227.201515zM406.048922 194.160319c0-12.950245-10.42043-24.033246-23.912779-24.033246-13.010479 0-23.430909 11.083001-23.430909 24.033246 0 12.890012 10.42043 23.973012 23.430909 23.973012 13.492349 0.060234 23.912779-11.022767 23.912779-23.973012zM665.294766 194.160319c0-12.950245-10.42043-24.033246-23.430909-24.033246-13.552582 0-23.912779 11.083001-23.912779 24.033246 0 12.890012 10.42043 23.973012 23.912779 23.973012 13.010479 0.060234 23.430909-11.022767 23.430909-23.973012zM882.015617 331.432921c-34.51391 0-62.763515 27.707502-62.763515 62.763515l0 264.787344c0 35.116247 28.249605 63.365852 62.763515 63.365852 35.056013 0 63.426086-28.309839 63.426086-63.365852l0-264.787344c-0.060234-35.056013-28.370073-62.763515-63.426086-62.763515z" fill="#000000" p-id="4859"></path></svg> App启动及加载流程分析</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2025/03/09/%E8%AF%A6%E8%A7%A3SHA2-256/" rel="prev" title="详解SHA2-256">
+      <i class="fa fa-chevron-left"></i> 详解SHA2-256
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="nav-number">1.</span> <span class="nav-text">流程图</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#so%E5%8A%A0%E8%BD%BD%E6%B7%B1%E5%85%A5%E5%88%86%E6%9E%90"><span class="nav-number">2.</span> <span class="nav-text">so加载深入分析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Java%E5%B1%82"><span class="nav-number">2.1.</span> <span class="nav-text">Java层</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#System-loadLibrary"><span class="nav-number">2.1.1.</span> <span class="nav-text">System.loadLibrary()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#loadLibrary"><span class="nav-number">2.1.2.</span> <span class="nav-text">loadLibrary()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#loadLibrary-1"><span class="nav-number">2.1.3.</span> <span class="nav-text">loadLibrary()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#doLoad"><span class="nav-number">2.1.4.</span> <span class="nav-text">doLoad()</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Native%E5%B1%82"><span class="nav-number">2.2.</span> <span class="nav-text">Native层</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Runtime-nativeLoad"><span class="nav-number">2.2.1.</span> <span class="nav-text">Runtime_nativeLoad()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LoadNativeLibrary"><span class="nav-number">2.2.2.</span> <span class="nav-text">LoadNativeLibrary()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dlopen"><span class="nav-number">2.2.3.</span> <span class="nav-text">dlopen()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dlopen-ext"><span class="nav-number">2.2.4.</span> <span class="nav-text">dlopen_ext()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#do-dlopen"><span class="nav-number">2.2.5.</span> <span class="nav-text">do_dlopen()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#find-library"><span class="nav-number">2.2.6.</span> <span class="nav-text">find_library()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#find-libraries"><span class="nav-number">2.2.7.</span> <span class="nav-text">find_libraries()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96%E9%98%B6%E6%AE%B5"><span class="nav-number">2.2.8.</span> <span class="nav-text">初始化阶段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%BD%E5%85%A5-so-%E5%88%B0%E5%86%85%E5%AD%98"><span class="nav-number">2.2.9.</span> <span class="nav-text">载入 so 到内存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#find-library-internal"><span class="nav-number">2.2.10.</span> <span class="nav-text">find_library_internal()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#load-library"><span class="nav-number">2.2.11.</span> <span class="nav-text">load_library()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%93%E5%BC%80-so-%E6%96%87%E4%BB%B6"><span class="nav-number">2.2.12.</span> <span class="nav-text">打开 so 文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%98%A0%E5%B0%84-so-%E6%96%87%E4%BB%B6%E5%88%B0%E5%86%85%E5%AD%98"><span class="nav-number">2.2.13.</span> <span class="nav-text">映射 so 文件到内存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E6%9E%90-dynamic-section"><span class="nav-number">2.2.14.</span> <span class="nav-text">解析 dynamic section</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%93%BE%E6%8E%A5%E9%98%B6%E6%AE%B5"><span class="nav-number">2.2.15.</span> <span class="nav-text">链接阶段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LinkImage"><span class="nav-number">2.2.16.</span> <span class="nav-text">LinkImage()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%93%BE%E6%8E%A5%E5%AE%8C%E6%88%90%E5%90%8E"><span class="nav-number">2.2.17.</span> <span class="nav-text">链接完成后</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CallConstructors"><span class="nav-number">2.2.18.</span> <span class="nav-text">CallConstructors()</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#native-%E5%B1%82%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8%E5%85%B3%E7%B3%BB%E5%9B%BE"><span class="nav-number">2.3.</span> <span class="nav-text">native 层函数调用关系图</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Bileton"
+      src="/images/android.svg">
+  <p class="site-author-name" itemprop="name">Bileton</p>
+  <div class="site-description" itemprop="description">路漫漫其修远夕！</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">92</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">35</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">85</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Bileton</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">737k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">11:10</span>
+</div>
+
+
+<span id="timeDate">载入天数...</span>
+<span id="times">载入时分秒...</span>
+<script>
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("01/01/2024 00:00:00"); //修改为你的网站开始运行的时间
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+        document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 ";
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒.";
+    }
+setInterval("createtime()",250);
+</script>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
