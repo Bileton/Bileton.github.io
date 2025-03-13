@@ -27,11 +27,13 @@
 <meta property="og:site_name" content="白乐天">
 <meta property="og:description" content="Xposed介绍xp是一种针对 Android 系统的模块化框架，通过模块的方式修改应用程序的行为，主要通过修改 Android 系统的运行时环境来实现动态插桩。 xp注入机制 Xposed 的注入是通过修改 Android 系统的 Zygote 进程实现的  Zygote 是 Android 系统中所有应用程序进程的父进程  工作原理：  Xposed 在系统启动时修改 &#x2F;system">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2025/03/05/%E5%85%B3%E4%BA%8E%E9%9D%A2%E8%AF%95%E6%9D%82%E8%AE%B0/1.jpg">
 <meta property="article:published_time" content="2025-03-05T10:22:56.000Z">
-<meta property="article:modified_time" content="2025-03-09T15:54:59.574Z">
+<meta property="article:modified_time" content="2025-03-10T13:35:11.535Z">
 <meta property="article:author" content="Bileton">
 <meta property="article:tag" content="面试">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2025/03/05/%E5%85%B3%E4%BA%8E%E9%9D%A2%E8%AF%95%E6%9D%82%E8%AE%B0/1.jpg">
 
 <link rel="canonical" href="http://example.com/2025/03/05/%E5%85%B3%E4%BA%8E%E9%9D%A2%E8%AF%95%E6%9D%82%E8%AE%B0/">
 
@@ -122,7 +124,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">85</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">87</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -132,7 +134,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">92</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">95</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -218,7 +220,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2025-03-09 23:54:59" itemprop="dateModified" datetime="2025-03-09T23:54:59+08:00">2025-03-09</time>
+                <time title="修改时间：2025-03-10 21:35:11" itemprop="dateModified" datetime="2025-03-10T21:35:11+08:00">2025-03-10</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -236,14 +238,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>2.7k</span>
+              <span>3.3k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>2 分钟</span>
+              <span>3 分钟</span>
             </span>
 
         </div>
@@ -286,6 +288,8 @@
 </ul>
 </li>
 </ul>
+<h1 id="EdXposed"><a href="#EdXposed" class="headerlink" title="EdXposed"></a>EdXposed</h1><p>EdXposed 是一款基于 Xposed 框架的增强工具，基于Riru框架开发，使用 yahfa (Yet Another Hook Framework for ART) 和 SandHook 作为 Hook 框架，它的出现是为了解决 Xposed 在 ART 环境下的兼容性问题。</p>
+<p>注入方式：在 Android 系统启动时，所有应用进程均由 Zygote 进程 fork 而来。EdXposed 通过注入 Zygote 进程，确保所有应用进程都能加载 EdXposed 的功能。</p>
 <h1 id="LSPosed"><a href="#LSPosed" class="headerlink" title="LSPosed"></a>LSPosed</h1><h2 id="注入机制的改进"><a href="#注入机制的改进" class="headerlink" title="注入机制的改进"></a>注入机制的改进</h2><ul>
 <li><p>采用 Riru&#x2F;Zygisk 作为注入框架</p>
 </li>
@@ -316,7 +320,8 @@
 <li><p>是 Riru 的继任者</p>
 </li>
 </ul>
-<h2 id="工作原理"><a href="#工作原理" class="headerlink" title="工作原理"></a>工作原理</h2><p>启动流程：</p>
+<h2 id="工作原理"><a href="#工作原理" class="headerlink" title="工作原理"></a>工作原理</h2><p>注入原理：Zygisk加载是通过替换app_process，修改LD_PRELOAD，再执行原app_process实现的，用LD_PRELOAD注入的。</p>
+<p>启动流程：</p>
 <ol>
 <li>Magisk 守护进程启动</li>
 <li>Zygisk 模块加载</li>
@@ -456,6 +461,8 @@
 <li>frida-trace：函数追踪</li>
 <li>frida-discover：API 发现</li>
 </ul>
+<h2 id="javahook"><a href="#javahook" class="headerlink" title="javahook"></a>javahook</h2><p>hook java要借助libart.so</p>
+<p>frida hook java的时候会修改ArtMethod::PrettyMethod，在内存中检测该字段是否一致即可判断是否被hook了。</p>
 <h2 id="inlinehook原理"><a href="#inlinehook原理" class="headerlink" title="inlinehook原理"></a>inlinehook原理</h2><p>Inline hook的核心思想是在目标函数的覆盖入口处写入跳转指令，将执行流程重定向到我们的hook处理函数。</p>
 <p><strong>备份原始指令</strong></p>
 <ul>
@@ -468,6 +475,8 @@
 <ul>
 <li>在目标函数开头写入跳转指令(JMP&#x2F;B)，指向我们的hook处理函数</li>
 </ul>
+<p><img src="/2025/03/05/%E5%85%B3%E4%BA%8E%E9%9D%A2%E8%AF%95%E6%9D%82%E8%AE%B0/1.jpg"></p>
+<h3 id="检测"><a href="#检测" class="headerlink" title="检测"></a>检测</h3><p>inline hook实现会修改.text段内容，crc32比较对比。</p>
 <h1 id="Xp与Frida"><a href="#Xp与Frida" class="headerlink" title="Xp与Frida"></a>Xp与Frida</h1><h2 id="主要区别"><a href="#主要区别" class="headerlink" title="主要区别"></a>主要区别</h2><ul>
 <li><p>注入时机：</p>
 <ul>
@@ -517,7 +526,10 @@
 <li><p>如果需要灵活的动态分析和调试，选择 Frida</p>
 </li>
 </ul>
-<h1 id="Android系统启动流程"><a href="#Android系统启动流程" class="headerlink" title="Android系统启动流程"></a>Android系统启动流程</h1><h1 id="App启动流程"><a href="#App启动流程" class="headerlink" title="App启动流程"></a>App启动流程</h1><h1 id="加解密"><a href="#加解密" class="headerlink" title="加解密"></a>加解密</h1><h1 id="抓包"><a href="#抓包" class="headerlink" title="抓包"></a>抓包</h1>
+<h1 id="Android系统启动流程"><a href="#Android系统启动流程" class="headerlink" title="Android系统启动流程"></a>Android系统启动流程</h1><h1 id="App启动流程"><a href="#App启动流程" class="headerlink" title="App启动流程"></a>App启动流程</h1><h1 id="加解密"><a href="#加解密" class="headerlink" title="加解密"></a>加解密</h1><h1 id="抓包"><a href="#抓包" class="headerlink" title="抓包"></a>抓包</h1><h1 id="混淆"><a href="#混淆" class="headerlink" title="混淆"></a>混淆</h1><h1 id="改机"><a href="#改机" class="headerlink" title="改机"></a>改机</h1><h2 id="改机ROM"><a href="#改机ROM" class="headerlink" title="改机ROM"></a>改机ROM</h2><p>一般都是定制ROM实现改机效果，但是改机操作一般需要借助manager app，一般检测这个为主，其次会配合大数据筛选系统中特定的文件，诸如framework、libc.so等md5值。</p>
+<p>收集设备型号、品牌、android版本、内核版本、内核libc文件md5值，收集后交由后端做数据模型分析。</p>
+<h2 id="软改机"><a href="#软改机" class="headerlink" title="软改机"></a>软改机</h2><p>一般是xposed插件Hook实现改机效果，所以检测xposed相关信息，以及相应的模块名，并且需要结合Java API返回值与native 获取相应值进行比对。</p>
+
     </div>
 
     
@@ -600,7 +612,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Xposed"><span class="nav-number">1.</span> <span class="nav-text">Xposed</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%8B%E7%BB%8D"><span class="nav-number">2.</span> <span class="nav-text">介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#xp%E6%B3%A8%E5%85%A5%E6%9C%BA%E5%88%B6"><span class="nav-number">2.1.</span> <span class="nav-text">xp注入机制</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#LSPosed"><span class="nav-number">3.</span> <span class="nav-text">LSPosed</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B3%A8%E5%85%A5%E6%9C%BA%E5%88%B6%E7%9A%84%E6%94%B9%E8%BF%9B"><span class="nav-number">3.1.</span> <span class="nav-text">注入机制的改进</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%BC%E5%AE%B9%E6%80%A7%E6%94%B9%E8%BF%9B"><span class="nav-number">3.2.</span> <span class="nav-text">兼容性改进</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Zygisk"><span class="nav-number">4.</span> <span class="nav-text">Zygisk</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%8B%E7%BB%8D-1"><span class="nav-number">4.1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="nav-number">4.2.</span> <span class="nav-text">工作原理</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Frida"><span class="nav-number">5.</span> <span class="nav-text">Frida</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%8B%E7%BB%8D-2"><span class="nav-number">5.1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#frida%E6%B3%A8%E5%85%A5%E6%9C%BA%E5%88%B6"><span class="nav-number">5.2.</span> <span class="nav-text">frida注入机制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B3%A8%E5%85%A5%E8%BF%9B%E7%A8%8B%E7%9A%84%E4%B8%A4%E7%A7%8D%E6%96%B9%E5%BC%8F"><span class="nav-number">5.3.</span> <span class="nav-text">注入进程的两种方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#attach"><span class="nav-number">5.3.1.</span> <span class="nav-text">attach</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#spawn"><span class="nav-number">5.3.2.</span> <span class="nav-text">spawn</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Frida%E6%A0%B8%E5%BF%83%E7%BB%84%E4%BB%B6"><span class="nav-number">5.4.</span> <span class="nav-text">Frida核心组件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Frida-core%EF%BC%88%E6%A0%B8%E5%BF%83%E5%BC%95%E6%93%8E%EF%BC%89"><span class="nav-number">5.4.1.</span> <span class="nav-text">Frida-core（核心引擎）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Frida-server%EF%BC%88%E6%9C%8D%E5%8A%A1%E7%AB%AF%EF%BC%89"><span class="nav-number">5.4.2.</span> <span class="nav-text">Frida-server（服务端）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Frida-agent%EF%BC%88%E6%B3%A8%E5%85%A5%E6%A8%A1%E5%9D%97%EF%BC%89"><span class="nav-number">5.4.3.</span> <span class="nav-text">Frida-agent（注入模块）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Frida-client%EF%BC%88%E5%AE%A2%E6%88%B7%E7%AB%AF%EF%BC%89"><span class="nav-number">5.4.4.</span> <span class="nav-text">Frida-client（客户端）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#inlinehook%E5%8E%9F%E7%90%86"><span class="nav-number">5.5.</span> <span class="nav-text">inlinehook原理</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Xp%E4%B8%8EFrida"><span class="nav-number">6.</span> <span class="nav-text">Xp与Frida</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BB%E8%A6%81%E5%8C%BA%E5%88%AB"><span class="nav-number">6.1.</span> <span class="nav-text">主要区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E5%85%A8%E6%80%A7%E8%80%83%E8%99%91"><span class="nav-number">6.2.</span> <span class="nav-text">安全性考虑</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Android%E7%B3%BB%E7%BB%9F%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B"><span class="nav-number">7.</span> <span class="nav-text">Android系统启动流程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#App%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B"><span class="nav-number">8.</span> <span class="nav-text">App启动流程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8A%A0%E8%A7%A3%E5%AF%86"><span class="nav-number">9.</span> <span class="nav-text">加解密</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8A%93%E5%8C%85"><span class="nav-number">10.</span> <span class="nav-text">抓包</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Xposed"><span class="nav-number">1.</span> <span class="nav-text">Xposed</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%8B%E7%BB%8D"><span class="nav-number">2.</span> <span class="nav-text">介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#xp%E6%B3%A8%E5%85%A5%E6%9C%BA%E5%88%B6"><span class="nav-number">2.1.</span> <span class="nav-text">xp注入机制</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#EdXposed"><span class="nav-number">3.</span> <span class="nav-text">EdXposed</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#LSPosed"><span class="nav-number">4.</span> <span class="nav-text">LSPosed</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B3%A8%E5%85%A5%E6%9C%BA%E5%88%B6%E7%9A%84%E6%94%B9%E8%BF%9B"><span class="nav-number">4.1.</span> <span class="nav-text">注入机制的改进</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%BC%E5%AE%B9%E6%80%A7%E6%94%B9%E8%BF%9B"><span class="nav-number">4.2.</span> <span class="nav-text">兼容性改进</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Zygisk"><span class="nav-number">5.</span> <span class="nav-text">Zygisk</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%8B%E7%BB%8D-1"><span class="nav-number">5.1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="nav-number">5.2.</span> <span class="nav-text">工作原理</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Frida"><span class="nav-number">6.</span> <span class="nav-text">Frida</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%8B%E7%BB%8D-2"><span class="nav-number">6.1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#frida%E6%B3%A8%E5%85%A5%E6%9C%BA%E5%88%B6"><span class="nav-number">6.2.</span> <span class="nav-text">frida注入机制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B3%A8%E5%85%A5%E8%BF%9B%E7%A8%8B%E7%9A%84%E4%B8%A4%E7%A7%8D%E6%96%B9%E5%BC%8F"><span class="nav-number">6.3.</span> <span class="nav-text">注入进程的两种方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#attach"><span class="nav-number">6.3.1.</span> <span class="nav-text">attach</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#spawn"><span class="nav-number">6.3.2.</span> <span class="nav-text">spawn</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Frida%E6%A0%B8%E5%BF%83%E7%BB%84%E4%BB%B6"><span class="nav-number">6.4.</span> <span class="nav-text">Frida核心组件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Frida-core%EF%BC%88%E6%A0%B8%E5%BF%83%E5%BC%95%E6%93%8E%EF%BC%89"><span class="nav-number">6.4.1.</span> <span class="nav-text">Frida-core（核心引擎）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Frida-server%EF%BC%88%E6%9C%8D%E5%8A%A1%E7%AB%AF%EF%BC%89"><span class="nav-number">6.4.2.</span> <span class="nav-text">Frida-server（服务端）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Frida-agent%EF%BC%88%E6%B3%A8%E5%85%A5%E6%A8%A1%E5%9D%97%EF%BC%89"><span class="nav-number">6.4.3.</span> <span class="nav-text">Frida-agent（注入模块）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Frida-client%EF%BC%88%E5%AE%A2%E6%88%B7%E7%AB%AF%EF%BC%89"><span class="nav-number">6.4.4.</span> <span class="nav-text">Frida-client（客户端）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#javahook"><span class="nav-number">6.5.</span> <span class="nav-text">javahook</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#inlinehook%E5%8E%9F%E7%90%86"><span class="nav-number">6.6.</span> <span class="nav-text">inlinehook原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A3%80%E6%B5%8B"><span class="nav-number">6.6.1.</span> <span class="nav-text">检测</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Xp%E4%B8%8EFrida"><span class="nav-number">7.</span> <span class="nav-text">Xp与Frida</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BB%E8%A6%81%E5%8C%BA%E5%88%AB"><span class="nav-number">7.1.</span> <span class="nav-text">主要区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E5%85%A8%E6%80%A7%E8%80%83%E8%99%91"><span class="nav-number">7.2.</span> <span class="nav-text">安全性考虑</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Android%E7%B3%BB%E7%BB%9F%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B"><span class="nav-number">8.</span> <span class="nav-text">Android系统启动流程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#App%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B"><span class="nav-number">9.</span> <span class="nav-text">App启动流程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8A%A0%E8%A7%A3%E5%AF%86"><span class="nav-number">10.</span> <span class="nav-text">加解密</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8A%93%E5%8C%85"><span class="nav-number">11.</span> <span class="nav-text">抓包</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B7%B7%E6%B7%86"><span class="nav-number">12.</span> <span class="nav-text">混淆</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%94%B9%E6%9C%BA"><span class="nav-number">13.</span> <span class="nav-text">改机</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%94%B9%E6%9C%BAROM"><span class="nav-number">13.1.</span> <span class="nav-text">改机ROM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BD%AF%E6%94%B9%E6%9C%BA"><span class="nav-number">13.2.</span> <span class="nav-text">软改机</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -616,7 +628,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">92</span>
+          <span class="site-state-item-count">95</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -629,7 +641,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">85</span>
+        <span class="site-state-item-count">87</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -670,13 +682,13 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">739k</span>
+    <span title="站点总字数">795k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">11:12</span>
+    <span title="站点阅读时长">12:03</span>
 </div>
 
 

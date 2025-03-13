@@ -119,7 +119,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">85</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">87</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -129,7 +129,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">92</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">95</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -180,6 +180,532 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/12/22/%E8%87%AA%E6%AF%81%E7%A8%8B%E5%BA%8F%E5%AF%86%E7%A0%81%E2%80%94%E9%98%BF%E9%87%8C%E8%81%9A%E5%AE%89%E5%85%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/android.svg">
+      <meta itemprop="name" content="Bileton">
+      <meta itemprop="description" content="路漫漫其修远夕！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="白乐天">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2024/12/22/%E8%87%AA%E6%AF%81%E7%A8%8B%E5%BA%8F%E5%AF%86%E7%A0%81%E2%80%94%E9%98%BF%E9%87%8C%E8%81%9A%E5%AE%89%E5%85%A8/" class="post-title-link" itemprop="url">自毁程序密码—阿里聚安全</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2024-12-22 00:40:22" itemprop="dateCreated datePublished" datetime="2024-12-22T00:40:22+08:00">2024-12-22</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2025-01-11 20:06:16" itemprop="dateModified" datetime="2025-01-11T20:06:16+08:00">2025-01-11</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%80%86%E5%90%91%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/" itemprop="url" rel="index"><span itemprop="name">逆向实战案例</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>3.3k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>3 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="App信息"><a href="#App信息" class="headerlink" title="App信息"></a>App信息</h1><p>包名：com.yaotong.crackme</p>
+<p><img src="/2024/12/22/%E8%87%AA%E6%AF%81%E7%A8%8B%E5%BA%8F%E5%AF%86%E7%A0%81%E2%80%94%E9%98%BF%E9%87%8C%E8%81%9A%E5%AE%89%E5%85%A8/1.jpg"></p>
+<h2 id="Java层分析"><a href="#Java层分析" class="headerlink" title="Java层分析"></a>Java层分析</h2><h3 id="MainActivity"><a href="#MainActivity" class="headerlink" title="MainActivity"></a>MainActivity</h3><p><img src="/2024/12/22/%E8%87%AA%E6%AF%81%E7%A8%8B%E5%BA%8F%E5%AF%86%E7%A0%81%E2%80%94%E9%98%BF%E9%87%8C%E8%81%9A%E5%AE%89%E5%85%A8/2.jpg"></p>
+<p>很容易就能看出来是在securityCheck函数里进行安全校验。securityCheck是一个native函数，到so中进行分析。</p>
+<h1 id="SO层分析"><a href="#SO层分析" class="headerlink" title="SO层分析"></a>SO层分析</h1><h2 id="定位函数位置"><a href="#定位函数位置" class="headerlink" title="定位函数位置"></a>定位函数位置</h2><p>在导出函数里搜索</p>
+<p><img src="/2024/12/22/%E8%87%AA%E6%AF%81%E7%A8%8B%E5%BA%8F%E5%AF%86%E7%A0%81%E2%80%94%E9%98%BF%E9%87%8C%E8%81%9A%E5%AE%89%E5%85%A8/3.jpg"></p>
+<h2 id="securityCheck"><a href="#securityCheck" class="headerlink" title="securityCheck"></a>securityCheck</h2><p>数据类型修复和重命名后的securityCheck</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> __fastcall <span class="title function_">Java_com_yaotong_crackme_MainActivity_securityCheck</span><span class="params">(JNIEnv *a1, jobject a2, <span class="type">char</span> *str)</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">const</span> <span class="type">char</span> *inputStr; <span class="comment">// r0</span></span><br><span class="line">  <span class="type">char</span> *wojiushidaan; <span class="comment">// r2</span></span><br><span class="line">  <span class="type">int</span> tempResult; <span class="comment">// r3</span></span><br><span class="line">  <span class="type">int</span> v8; <span class="comment">// r1</span></span><br><span class="line">​</span><br><span class="line">  <span class="keyword">if</span> ( !byte_6359 )</span><br><span class="line">  &#123;</span><br><span class="line">    sub_2494(byte_6304, <span class="number">8</span>, &amp;unk_446B, &amp;unk_4468, <span class="number">2</span>, <span class="number">7</span>);</span><br><span class="line">    byte_6359 = <span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> ( !byte_635A )</span><br><span class="line">  &#123;</span><br><span class="line">    sub_24F4(byte_636C, <span class="number">25</span>, &amp;unk_4530, &amp;unk_4474, <span class="number">3</span>, <span class="number">117</span>);</span><br><span class="line">    byte_635A = <span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  _android_log_print(<span class="number">4</span>, byte_6304, byte_636C);</span><br><span class="line">  inputStr = (*a1)-&gt;GetStringUTFChars(a1, str, <span class="number">0</span>);</span><br><span class="line">  wojiushidaan = off_628C;</span><br><span class="line">  <span class="keyword">while</span> ( <span class="number">1</span> )</span><br><span class="line">  &#123;</span><br><span class="line">    tempResult = *wojiushidaan;</span><br><span class="line">    <span class="keyword">if</span> ( tempResult != *inputStr )</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    ++wojiushidaan;</span><br><span class="line">    ++inputStr;</span><br><span class="line">    v8 = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span> ( !tempResult )</span><br><span class="line">      <span class="keyword">return</span> v8;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="off-628C"><a href="#off-628C" class="headerlink" title="off_628C"></a>off_628C</h3><p>进入off_628C偏移查看，它的内容是”wojiushidaan”</p>
+<p><img src="/2024/12/22/%E8%87%AA%E6%AF%81%E7%A8%8B%E5%BA%8F%E5%AF%86%E7%A0%81%E2%80%94%E9%98%BF%E9%87%8C%E8%81%9A%E5%AE%89%E5%85%A8/4.jpg"></p>
+<p>数据查看</p>
+<p><img src="/2024/12/22/%E8%87%AA%E6%AF%81%E7%A8%8B%E5%BA%8F%E5%AF%86%E7%A0%81%E2%80%94%E9%98%BF%E9%87%8C%E8%81%9A%E5%AE%89%E5%85%A8/5.jpg"></p>
+<p>结合securityCheck函数分析，我觉得这就是正确答案了。</p>
+<p>可是输入之后，还是校验失败。</p>
+<p><img src="/2024/12/22/%E8%87%AA%E6%AF%81%E7%A8%8B%E5%BA%8F%E5%AF%86%E7%A0%81%E2%80%94%E9%98%BF%E9%87%8C%E8%81%9A%E5%AE%89%E5%85%A8/6.jpg"></p>
+<p>无奈只能动态调试</p>
+<h1 id="动态调试"><a href="#动态调试" class="headerlink" title="动态调试"></a>动态调试</h1><p>IDA动态调试环境配置这里不再介绍。</p>
+<h2 id="附加进程"><a href="#附加进程" class="headerlink" title="附加进程"></a>附加进程</h2><p>重新启动程序</p>
+<p>在IDA里选择附加到进程</p>
+<p><img src="/2024/12/22/%E8%87%AA%E6%AF%81%E7%A8%8B%E5%BA%8F%E5%AF%86%E7%A0%81%E2%80%94%E9%98%BF%E9%87%8C%E8%81%9A%E5%AE%89%E5%85%A8/7.jpg"></p>
+<p>附加进程之后，我们运行一下，会发现，程序崩了，IDA也崩了，说明这个so是有反调试的。</p>
+<h2 id="反调试绕过"><a href="#反调试绕过" class="headerlink" title="反调试绕过"></a>反调试绕过</h2><p>猜测反调试是通过线程进行循环检测的。</p>
+<p>打开线程窗口</p>
+<p><img src="/2024/12/22/%E8%87%AA%E6%AF%81%E7%A8%8B%E5%BA%8F%E5%AF%86%E7%A0%81%E2%80%94%E9%98%BF%E9%87%8C%E8%81%9A%E5%AE%89%E5%85%A8/8.jpg"></p>
+<p>发现一个线程<code>yaotong.crackme</code>，有点可疑，右键这个线程，将状态改为suspend，暂停这个线程。</p>
+<p><img src="/2024/12/22/%E8%87%AA%E6%AF%81%E7%A8%8B%E5%BA%8F%E5%AF%86%E7%A0%81%E2%80%94%E9%98%BF%E9%87%8C%E8%81%9A%E5%AE%89%E5%85%A8/9.jpg"></p>
+<p>然后运行，程序没有挂掉，可以进行调试。</p>
+<h2 id="断点调试"><a href="#断点调试" class="headerlink" title="断点调试"></a>断点调试</h2><p>打开Modules窗口，找到libcrackme.so，双击进去，找到securityCheck函数，双击该函数跳转到函数的位置。</p>
+<p><img src="/2024/12/22/%E8%87%AA%E6%AF%81%E7%A8%8B%E5%BA%8F%E5%AF%86%E7%A0%81%E2%80%94%E9%98%BF%E9%87%8C%E8%81%9A%E5%AE%89%E5%85%A8/10.jpg"></p>
+<p>在这个函数起始的位置下一个断点，将光标移动到断点位置，按下快捷键F，然后在输入框输入任意数据，点击输入密码，程序就会运行到断点位置。</p>
+<p>F5查看反汇编，找到原来的变量偏移地址处，发现数据变了，变成了<code>aiyou,bucuoo</code></p>
+<p><img src="/2024/12/22/%E8%87%AA%E6%AF%81%E7%A8%8B%E5%BA%8F%E5%AF%86%E7%A0%81%E2%80%94%E9%98%BF%E9%87%8C%E8%81%9A%E5%AE%89%E5%85%A8/11.jpg"></p>
+<p><img src="/2024/12/22/%E8%87%AA%E6%AF%81%E7%A8%8B%E5%BA%8F%E5%AF%86%E7%A0%81%E2%80%94%E9%98%BF%E9%87%8C%E8%81%9A%E5%AE%89%E5%85%A8/12.jpg"></p>
+<h2 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h2><p>将<code>aiyou,bucuoo</code>放进输入框，点击输入密码，跳转到成功界面。</p>
+<p><img src="/2024/12/22/%E8%87%AA%E6%AF%81%E7%A8%8B%E5%BA%8F%E5%AF%86%E7%A0%81%E2%80%94%E9%98%BF%E9%87%8C%E8%81%9A%E5%AE%89%E5%85%A8/13.jpg"></p>
+<h1 id="使用frida-hook内存"><a href="#使用frida-hook内存" class="headerlink" title="使用frida hook内存"></a>使用frida hook内存</h1><p>找到存储答案的变量的内存地址</p>
+<p><img src="/2024/12/22/%E8%87%AA%E6%AF%81%E7%A8%8B%E5%BA%8F%E5%AF%86%E7%A0%81%E2%80%94%E9%98%BF%E9%87%8C%E8%81%9A%E5%AE%89%E5%85%A8/14.jpg"></p>
+<p>在程序启动之后，使用frida直接对内存进行hook</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">hook_yaotong</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="keyword">var</span> soAddr = <span class="title class_">Module</span>.<span class="title function_">findBaseAddress</span>(<span class="string">&quot;libcrackme.so&quot;</span>);</span><br><span class="line">    <span class="keyword">var</span> hookAddr = soAddr.<span class="title function_">add</span>(<span class="number">0x4450</span>)</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(hookAddr.<span class="title function_">readCString</span>())</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2024/12/22/%E8%87%AA%E6%AF%81%E7%A8%8B%E5%BA%8F%E5%AF%86%E7%A0%81%E2%80%94%E9%98%BF%E9%87%8C%E8%81%9A%E5%AE%89%E5%85%A8/15.jpg"></p>
+<h1 id="使用unidbg模拟执行"><a href="#使用unidbg模拟执行" class="headerlink" title="使用unidbg模拟执行"></a>使用unidbg模拟执行</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.yaotong.crackme;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.github.unidbg.AndroidEmulator;</span><br><span class="line"><span class="keyword">import</span> com.github.unidbg.Module;</span><br><span class="line"><span class="keyword">import</span> com.github.unidbg.arm.backend.DynarmicFactory;</span><br><span class="line"><span class="keyword">import</span> com.github.unidbg.linux.android.AndroidEmulatorBuilder;</span><br><span class="line"><span class="keyword">import</span> com.github.unidbg.linux.android.AndroidResolver;</span><br><span class="line"><span class="keyword">import</span> com.github.unidbg.linux.android.dvm.*;</span><br><span class="line"><span class="keyword">import</span> com.github.unidbg.memory.Memory;</span><br><span class="line"><span class="keyword">import</span> java.io.File;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MainActivity</span> <span class="keyword">extends</span> <span class="title class_">AbstractJni</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> AndroidEmulator emulator;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Memory memory;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> VM vm;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> DalvikModule dalvikModule;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Module <span class="keyword">module</span>;</span><br><span class="line"></span><br><span class="line">    MainActivity() &#123;</span><br><span class="line">        emulator = AndroidEmulatorBuilder.for32Bit().setProcessName(<span class="string">&quot;com.yaotong.crackme&quot;</span>).addBackendFactory(<span class="keyword">new</span> <span class="title class_">DynarmicFactory</span>(<span class="literal">true</span>)).build();</span><br><span class="line">        memory = emulator.getMemory();</span><br><span class="line">        memory.setLibraryResolver(<span class="keyword">new</span> <span class="title class_">AndroidResolver</span>(<span class="number">23</span>));</span><br><span class="line">        vm = emulator.createDalvikVM(<span class="keyword">new</span> <span class="title class_">File</span>(<span class="string">&quot;unidbg-android/src/test/java/com/yaotong/crackme/alijuanquan.apk&quot;</span>));</span><br><span class="line">        vm.setJni(<span class="built_in">this</span>);</span><br><span class="line">        vm.setVerbose(<span class="literal">true</span>);</span><br><span class="line">        dalvikModule = vm.loadLibrary(<span class="string">&quot;crackme&quot;</span>,<span class="literal">true</span>);</span><br><span class="line">        <span class="keyword">module</span> = dalvikModule.getModule();</span><br><span class="line">        vm.callJNI_OnLoad(emulator,<span class="keyword">module</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">MainActivity</span> <span class="variable">test</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">MainActivity</span>();</span><br><span class="line">        System.out.println(test.Check());</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> Boolean <span class="title function_">Check</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="type">DvmClass</span> <span class="variable">dvmClass</span> <span class="operator">=</span> vm.resolveClass(<span class="string">&quot;com.yaotong.crackme.MainActivity&quot;</span>);</span><br><span class="line">        <span class="type">DvmObject</span> <span class="variable">dvmObject</span> <span class="operator">=</span> dvmClass.newObject(<span class="literal">null</span>);</span><br><span class="line">        <span class="type">String</span> <span class="variable">input</span> <span class="operator">=</span> <span class="string">&quot;aiyou,bucuoo&quot;</span>;</span><br><span class="line">        <span class="type">boolean</span> <span class="variable">result</span> <span class="operator">=</span> dvmObject.callJniMethodBoolean(emulator,<span class="string">&quot;securityCheck(Ljava.lang.sring;)Z&quot;</span>,input);</span><br><span class="line">        System.out.println(<span class="string">&quot;result=&quot;</span> + result);</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="/2024/12/22/%E8%87%AA%E6%AF%81%E7%A8%8B%E5%BA%8F%E5%AF%86%E7%A0%81%E2%80%94%E9%98%BF%E9%87%8C%E8%81%9A%E5%AE%89%E5%85%A8/16.jpg"></p>
+<p>待完善…</p>
+<p>参考文章：<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/r-XXZQImgRc-Lce5B7x60w">https://mp.weixin.qq.com/s/r-XXZQImgRc-Lce5B7x60w</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/12/21/%E8%85%BE%E8%AE%AF%E6%B8%B8%E6%88%8F%E5%AE%89%E5%85%A8%E7%A7%BB%E5%8A%A8%E8%B5%9B%E9%A2%98Tencent2016A/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/android.svg">
+      <meta itemprop="name" content="Bileton">
+      <meta itemprop="description" content="路漫漫其修远夕！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="白乐天">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2024/12/21/%E8%85%BE%E8%AE%AF%E6%B8%B8%E6%88%8F%E5%AE%89%E5%85%A8%E7%A7%BB%E5%8A%A8%E8%B5%9B%E9%A2%98Tencent2016A/" class="post-title-link" itemprop="url">腾讯游戏安全移动赛题Tencent2016A</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2024-12-21 14:02:11" itemprop="dateCreated datePublished" datetime="2024-12-21T14:02:11+08:00">2024-12-21</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-12-22 00:44:48" itemprop="dateModified" datetime="2024-12-22T00:44:48+08:00">2024-12-22</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%80%86%E5%90%91%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/" itemprop="url" rel="index"><span itemprop="name">逆向实战案例</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>8.8k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>8 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="App信息"><a href="#App信息" class="headerlink" title="App信息"></a>App信息</h1><p>包名：com.tencent.tencent2016a</p>
+<p><img src="/2024/12/21/%E8%85%BE%E8%AE%AF%E6%B8%B8%E6%88%8F%E5%AE%89%E5%85%A8%E7%A7%BB%E5%8A%A8%E8%B5%9B%E9%A2%98Tencent2016A/1.jpg"></p>
+<h1 id="Java层分析"><a href="#Java层分析" class="headerlink" title="Java层分析"></a>Java层分析</h1><h2 id="MainActivity"><a href="#MainActivity" class="headerlink" title="MainActivity"></a>MainActivity</h2><p><img src="/2024/12/21/%E8%85%BE%E8%AE%AF%E6%B8%B8%E6%88%8F%E5%AE%89%E5%85%A8%E7%A7%BB%E5%8A%A8%E8%B5%9B%E9%A2%98Tencent2016A/2.jpg"></p>
+<h2 id="c"><a href="#c" class="headerlink" title="c"></a>c</h2><p><img src="/2024/12/21/%E8%85%BE%E8%AE%AF%E6%B8%B8%E6%88%8F%E5%AE%89%E5%85%A8%E7%A7%BB%E5%8A%A8%E8%B5%9B%E9%A2%98Tencent2016A/3.jpg"></p>
+<h2 id="NativeCheckRegister"><a href="#NativeCheckRegister" class="headerlink" title="NativeCheckRegister"></a>NativeCheckRegister</h2><p><img src="/2024/12/21/%E8%85%BE%E8%AE%AF%E6%B8%B8%E6%88%8F%E5%AE%89%E5%85%A8%E7%A7%BB%E5%8A%A8%E8%B5%9B%E9%A2%98Tencent2016A/4.jpg"></p>
+<h1 id="so分析"><a href="#so分析" class="headerlink" title="so分析"></a>so分析</h1><h2 id="定位NativeCheckRegister函数位置"><a href="#定位NativeCheckRegister函数位置" class="headerlink" title="定位NativeCheckRegister函数位置"></a>定位NativeCheckRegister函数位置</h2><p><img src="/2024/12/21/%E8%85%BE%E8%AE%AF%E6%B8%B8%E6%88%8F%E5%AE%89%E5%85%A8%E7%A7%BB%E5%8A%A8%E8%B5%9B%E9%A2%98Tencent2016A/5.jpg"></p>
+<h2 id="NativeCheckRegister-1"><a href="#NativeCheckRegister-1" class="headerlink" title="NativeCheckRegister"></a>NativeCheckRegister</h2><p>类型修复及函数重命名之后的NativeCheckRegister函数如下</p>
+<p><img src="/2024/12/21/%E8%85%BE%E8%AE%AF%E6%B8%B8%E6%88%8F%E5%AE%89%E5%85%A8%E7%A7%BB%E5%8A%A8%E8%B5%9B%E9%A2%98Tencent2016A/6.jpg"></p>
+<h2 id="check"><a href="#check" class="headerlink" title="check"></a>check</h2><p>类型修复及函数重命名后的check函数</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">bool</span> __fastcall <span class="title function_">check</span><span class="params">(<span class="type">const</span> <span class="type">char</span> *name, <span class="type">char</span> *code)</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">signed</span> <span class="type">int</span> namelength; <span class="comment">// r5</span></span><br><span class="line">  _BOOL4 result; <span class="comment">// r0</span></span><br><span class="line">  <span class="type">int</span> i; <span class="comment">// r4</span></span><br><span class="line">  _DWORD *nametempaddr; <span class="comment">// r7</span></span><br><span class="line">  <span class="type">int</span> nametempresult; <span class="comment">// r3</span></span><br><span class="line">  <span class="type">int</span> j; <span class="comment">// r4</span></span><br><span class="line">  <span class="type">int</span> codetemp; <span class="comment">// r1</span></span><br><span class="line">  _DWORD nameresultarray[<span class="number">5</span>]; <span class="comment">// [sp+18h] [bp-458h] BYREF</span></span><br><span class="line">  _DWORD coderesultarray[<span class="number">5</span>]; <span class="comment">// [sp+2Ch] [bp-444h] BYREF</span></span><br><span class="line">  _BYTE namemix[<span class="number">20</span>]; <span class="comment">// [sp+40h] [bp-430h] BYREF</span></span><br><span class="line">  _BYTE codeResult[<span class="number">1052</span>]; <span class="comment">// [sp+54h] [bp-41Ch] BYREF</span></span><br><span class="line"></span><br><span class="line">  namelength = j_strlen(name);</span><br><span class="line">  <span class="keyword">if</span> ( (namelength - <span class="number">6</span>) &gt; <span class="number">0xE</span> )                 <span class="comment">// 校验name长度范围[6:20]</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">  j_memset(namemix, <span class="number">0</span>, <span class="keyword">sizeof</span>(namemix));</span><br><span class="line">  <span class="keyword">for</span> ( i = <span class="number">0</span>; i != <span class="number">16</span>; ++i )                   <span class="comment">// 基于name生成一个混淆数据</span></span><br><span class="line">  &#123;</span><br><span class="line">    nametempaddr = &amp;namemix[i];</span><br><span class="line">    nametempresult = name[i % namelength] * (i + <span class="number">20160126</span>) * namelength;<span class="comment">// 基于 name 的字符生成一个与 name 相关的混淆数据，存入namemix</span></span><br><span class="line">    *nametempaddr += nametempresult;</span><br><span class="line">  &#125;</span><br><span class="line">  j_memset(codeResult, <span class="number">0</span>, <span class="number">0x400</span>u);</span><br><span class="line">  <span class="keyword">if</span> ( codeEnc1(code) &gt; <span class="number">1024</span> || codeEnc2(codeResult, code) != <span class="number">20</span> )</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">  j_memset(nameresultarray, <span class="number">0</span>, <span class="keyword">sizeof</span>(nameresultarray));</span><br><span class="line">  j_memset(coderesultarray, <span class="number">0</span>, <span class="keyword">sizeof</span>(coderesultarray));</span><br><span class="line">  <span class="keyword">for</span> ( j = <span class="number">0</span>; j != <span class="number">5</span>; ++j )</span><br><span class="line">  &#123;</span><br><span class="line">    codetemp = *&amp;codeResult[j * <span class="number">4</span>];</span><br><span class="line">    nameresultarray[j] = *&amp;namemix[j * <span class="number">4</span>] / <span class="number">10</span>;</span><br><span class="line">    coderesultarray[j] = codetemp;</span><br><span class="line">  &#125;</span><br><span class="line">  result = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">if</span> ( coderesultarray[<span class="number">4</span>] + nameresultarray[<span class="number">0</span>] == coderesultarray[<span class="number">2</span>]</span><br><span class="line">    &amp;&amp; coderesultarray[<span class="number">4</span>] + nameresultarray[<span class="number">0</span>] + nameresultarray[<span class="number">1</span>] == <span class="number">2</span> * coderesultarray[<span class="number">4</span>]</span><br><span class="line">    &amp;&amp; nameresultarray[<span class="number">2</span>] + coderesultarray[<span class="number">3</span>] == coderesultarray[<span class="number">0</span>]</span><br><span class="line">    &amp;&amp; nameresultarray[<span class="number">2</span>] + coderesultarray[<span class="number">3</span>] + nameresultarray[<span class="number">3</span>] == <span class="number">2</span> * coderesultarray[<span class="number">3</span>] )</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">return</span> nameresultarray[<span class="number">4</span>] + coderesultarray[<span class="number">1</span>] == <span class="number">3</span> * nameresultarray[<span class="number">2</span>];  <span class="comment">// 返回值为1则验证成功</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>根据以上信息，当满足以下条件，程序验证成功</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">coderesultarray[4] + nameresultarray[0] == coderesultarray[2]</span><br><span class="line">coderesultarray[4] + nameresultarray[0] + nameresultarray[1] == 2 * coderesultarray[4]</span><br><span class="line">nameresultarray[2] + coderesultarray[3] == coderesultarray[0]</span><br><span class="line">nameresultarray[2] + coderesultarray[3] + nameresultarray[3] == 2 * coderesultarray[3]</span><br><span class="line">nameresultarray[4] + coderesultarray[1] == 3 * nameresultarray[2]</span><br></pre></td></tr></table></figure>
+
+<p>变换，整理得到如下内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">coderesultarray[4] + nameresultarray[0] == coderesultarray[2]</span><br><span class="line">nameresultarray[0] + nameresultarray[1] == coderesultarray[4]</span><br><span class="line">nameresultarray[2] + coderesultarray[3] == coderesultarray[0]</span><br><span class="line">nameresultarray[2] + nameresultarray[3] == coderesultarray[3]</span><br><span class="line">nameresultarray[4] + coderesultarray[1] == 3 * nameresultarray[2]</span><br></pre></td></tr></table></figure>
+
+<p>由此可知：</p>
+<ul>
+<li>coderesultarray[0]可由nameresultarray[2]+nameresultarray[2]+nameresultarray[3]得到</li>
+<li>coderesultarray[1]可由3 * nameresultarray[2]-nameresultarray[4]]得到</li>
+<li>coderesultarray[2]可由nameresultarray[0] + nameresultarray[1]+nameresultarray[0]]得到</li>
+<li>coderesultarray[3]可由nameresultarray[2] + nameresultarray[3]]得到</li>
+<li>coderesultarray[4]可由nameresultarray[0] + nameresultarray[1]]得到</li>
+</ul>
+<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>由以上信息，我们可以知道，由<code>name-&gt;namemix-&gt;nameresultarray-&gt;coderesultarray</code></p>
+<p>还知道<code>code-&gt;codeResult-&gt;coderesultarray</code></p>
+<p>猜测可通过coderesultarray还原code</p>
+<p>接下来分析code的两个处理函数codeEnc1和codeEnc2</p>
+<h2 id="codeEnc1"><a href="#codeEnc1" class="headerlink" title="codeEnc1"></a>codeEnc1</h2><p><img src="/2024/12/21/%E8%85%BE%E8%AE%AF%E6%B8%B8%E6%88%8F%E5%AE%89%E5%85%A8%E7%A7%BB%E5%8A%A8%E8%B5%9B%E9%A2%98Tencent2016A/7.jpg"></p>
+<h3 id="a456789"><a href="#a456789" class="headerlink" title="a456789"></a>a456789</h3><p><img src="/2024/12/21/%E8%85%BE%E8%AE%AF%E6%B8%B8%E6%88%8F%E5%AE%89%E5%85%A8%E7%A7%BB%E5%8A%A8%E8%B5%9B%E9%A2%98Tencent2016A/8.jpg"></p>
+<p><strong>观察数据窗口</strong></p>
+<p>发现末尾有一串Base64表，盲猜会出现Base64编码</p>
+<p><img src="/2024/12/21/%E8%85%BE%E8%AE%AF%E6%B8%B8%E6%88%8F%E5%AE%89%E5%85%A8%E7%A7%BB%E5%8A%A8%E8%B5%9B%E9%A2%98Tencent2016A/9.jpg"></p>
+<p>经过分析，codeEnc1函数的功能是对输入的code进行校验，返回一个与字符串长度和规则相关的值，然后与1024进行比较。</p>
+<h2 id="codeEnc2"><a href="#codeEnc2" class="headerlink" title="codeEnc2"></a>codeEnc2</h2><p>处理过后的codeEnc2函数如下</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> __fastcall <span class="title function_">codeEnc2</span><span class="params">(<span class="type">char</span> *codeResult, <span class="type">char</span> *code)</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">char</span> *Cocode; <span class="comment">// r3</span></span><br><span class="line">  <span class="type">int</span> Cocode_code; <span class="comment">// r3</span></span><br><span class="line">  <span class="type">int</span> v4; <span class="comment">// r2</span></span><br><span class="line">  <span class="type">int</span> v5; <span class="comment">// r5</span></span><br><span class="line">  <span class="type">char</span> *codeResultTemp; <span class="comment">// r3</span></span><br><span class="line">  <span class="type">int</span> v7; <span class="comment">// r3</span></span><br><span class="line">  <span class="type">int</span> v8; <span class="comment">// r6</span></span><br><span class="line"></span><br><span class="line">  Cocode = code;</span><br><span class="line">  <span class="keyword">do</span></span><br><span class="line">    ++Cocode;</span><br><span class="line">  <span class="keyword">while</span> ( a456789[*(Cocode - <span class="number">1</span>)] &lt;= <span class="number">63u</span> );</span><br><span class="line">  Cocode_code = Cocode - code;                  <span class="comment">// Cocode_code是Cocode-code</span></span><br><span class="line">  v4 = Cocode_code - <span class="number">1</span>;</span><br><span class="line">  v5 = <span class="number">3</span> * ((Cocode_code + <span class="number">2</span>) / <span class="number">4</span>);</span><br><span class="line">  <span class="keyword">while</span> ( <span class="number">1</span> )</span><br><span class="line">  &#123;</span><br><span class="line">    codeResultTemp = codeResult;</span><br><span class="line">    <span class="keyword">if</span> ( v4 &lt;= <span class="number">4</span> )                              <span class="comment">// 判断剩余字符是否小于4字节</span></span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    v4 -= <span class="number">4</span>;</span><br><span class="line">    *codeResult = (a456789[code[<span class="number">1</span>]] &gt;&gt; <span class="number">4</span>) | (<span class="number">4</span> * a456789[*code]);</span><br><span class="line">    codeResult[<span class="number">1</span>] = (a456789[code[<span class="number">2</span>]] &gt;&gt; <span class="number">2</span>) | (<span class="number">16</span> * a456789[code[<span class="number">1</span>]]);</span><br><span class="line">    v7 = code[<span class="number">2</span>];</span><br><span class="line">    v8 = code[<span class="number">3</span>];</span><br><span class="line">    code += <span class="number">4</span>;</span><br><span class="line">    codeResult[<span class="number">2</span>] = (a456789[v7] &lt;&lt; <span class="number">6</span>) | a456789[v8];</span><br><span class="line">    codeResult += <span class="number">3</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> ( v4 &gt; <span class="number">1</span> )</span><br><span class="line">  &#123;</span><br><span class="line">    *codeResult = (a456789[code[<span class="number">1</span>]] &gt;&gt; <span class="number">4</span>) | (<span class="number">4</span> * a456789[*code]);</span><br><span class="line">    <span class="keyword">if</span> ( v4 == <span class="number">2</span> )</span><br><span class="line">    &#123;</span><br><span class="line">      codeResultTemp = codeResult + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">      codeResult[<span class="number">1</span>] = (a456789[code[<span class="number">2</span>]] &gt;&gt; <span class="number">2</span>) | (<span class="number">16</span> * a456789[code[<span class="number">1</span>]]);</span><br><span class="line">      <span class="keyword">if</span> ( v4 == <span class="number">4</span> )</span><br><span class="line">      &#123;</span><br><span class="line">        codeResultTemp = codeResult + <span class="number">3</span>;</span><br><span class="line">        codeResult[<span class="number">2</span>] = (a456789[code[<span class="number">2</span>]] &lt;&lt; <span class="number">6</span>) | a456789[code[<span class="number">3</span>]];</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">else</span></span><br><span class="line">      &#123;</span><br><span class="line">        codeResultTemp = codeResult + <span class="number">2</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;                                             <span class="comment">// 自实现过Base64编码的人在这里就不难看出来这里是Base64解码算法</span></span><br><span class="line">  *codeResultTemp = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">return</span> v5 - (-v4 &amp; <span class="number">3</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这是一个Base64解码算法</p>
+<h3 id="hook验证"><a href="#hook验证" class="headerlink" title="hook验证"></a>hook验证</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">hook_native</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="keyword">var</span> soAddr = <span class="title class_">Module</span>.<span class="title function_">findBaseAddress</span>(<span class="string">&quot;libCheckRegister.so&quot;</span>);</span><br><span class="line">    <span class="keyword">var</span> codeEnc2 = soAddr.<span class="title function_">add</span>(<span class="number">0x1499</span>)</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(codeEnc2)</span><br><span class="line">    <span class="title class_">Memory</span>.<span class="title function_">protect</span>(codeEnc2, <span class="number">0x1000</span>, <span class="string">&#x27;rwx&#x27;</span>);</span><br><span class="line">    <span class="title class_">Interceptor</span>.<span class="title function_">attach</span>(codeEnc2,&#123;</span><br><span class="line">        <span class="attr">onEnter</span>:<span class="keyword">function</span>(<span class="params">args</span>)&#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;arg0:&quot;</span>,<span class="title function_">hexdump</span>(args[<span class="number">0</span>]));</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;arg1:&quot;</span>,<span class="title function_">hexdump</span>(args[<span class="number">1</span>]));</span><br><span class="line">            <span class="variable language_">this</span>.<span class="property">codeResult</span> = args[<span class="number">0</span>];</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">onLeave</span>:<span class="keyword">function</span>(<span class="params">ret</span>)&#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;codeResult:&quot;</span>,<span class="title function_">hexdump</span>(<span class="variable language_">this</span>.<span class="property">codeResult</span>));</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;ret:&quot;</span>,ret)</span><br><span class="line">            <span class="variable language_">this</span>.<span class="property">ret</span>=<span class="number">1</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">hook_native</span>()</span><br></pre></td></tr></table></figure>
+
+<p><strong>输出</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">arg0:            </span><br><span class="line">0  1  2  3  4  5  6  7  8  9  A  B  C  D  E  F  0123456789ABCDEF</span><br><span class="line">ffdc62f4  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................</span><br><span class="line">ffdc6304  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................</span><br><span class="line">ffdc6314  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................</span><br><span class="line">arg1:</span><br><span class="line">0  1  2  3  4  5  6  7  8  9  A  B  C  D  E  F  0123456789ABCDEF</span><br><span class="line">deb247a0  31 32 33 34 35 36 37 38 00 00 00 00 00 00 00 00  12345678........</span><br><span class="line">deb247b0  00 00 00 00 28 00 00 00 00 00 00 00 00 00 00 00  ....(...........</span><br><span class="line">codeResult: </span><br><span class="line">0  1  2  3  4  5  6  7  8  9  A  B  C  D  E  F  0123456789ABCDEF</span><br><span class="line">ffdc62f4  d7 6d f8 e7 ae fc 00 00 00 00 00 00 00 00 00 00  .m..............</span><br><span class="line">ffdc6304  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................</span><br><span class="line">ffdc6314  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................</span><br><span class="line">ret: 0x6</span><br></pre></td></tr></table></figure>
+
+<p>如下证明codeEnc2是标准的Base64解码算法</p>
+<p><img src="/2024/12/21/%E8%85%BE%E8%AE%AF%E6%B8%B8%E6%88%8F%E5%AE%89%E5%85%A8%E7%A7%BB%E5%8A%A8%E8%B5%9B%E9%A2%98Tencent2016A/10.jpg"></p>
+<h2 id="分析-1"><a href="#分析-1" class="headerlink" title="分析"></a>分析</h2><p>这里弄明白了，code经过Base64解码得到codeResult，codeResult部分数据经过Base64解码得到coderesultarray。</p>
+<h3 id="重新捋一遍流程"><a href="#重新捋一遍流程" class="headerlink" title="重新捋一遍流程"></a>重新捋一遍流程</h3><p>首先，我们输入name，name经过混淆得到namemix，namemix的前20字节经过处理得到nameresultarray，然后由nameresultarray推导出coderesultarray，coderesultarray经过Base64编码得到code。</p>
+<h1 id="C-还原"><a href="#C-还原" class="headerlink" title="C++还原"></a>C++还原</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义 Base64 编码字符表</span></span><br><span class="line">string base64_chars =</span><br><span class="line">        <span class="string">&quot;ABCDEFGHIJKLMNOPQRSTUVWXYZ&quot;</span></span><br><span class="line">        <span class="string">&quot;abcdefghijklmnopqrstuvwxyz&quot;</span></span><br><span class="line">        <span class="string">&quot;0123456789+/&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Base64 编码函数，将字节数组编码为 Base64 格式的字符串</span></span><br><span class="line"><span class="function">string <span class="title">base64_encode</span><span class="params">(<span class="type">unsigned</span> <span class="type">char</span>* bytes_to_encode, <span class="type">unsigned</span> <span class="type">int</span> in_len)</span> </span>&#123;</span><br><span class="line">    std::string ret; <span class="comment">// 存储编码后的结果</span></span><br><span class="line">    <span class="type">int</span> i = <span class="number">0</span>;</span><br><span class="line">    <span class="type">int</span> j = <span class="number">0</span>;</span><br><span class="line">    <span class="type">unsigned</span> <span class="type">char</span> char_array_3[<span class="number">3</span>]; <span class="comment">// 临时存储3个字节</span></span><br><span class="line">    <span class="type">unsigned</span> <span class="type">char</span> char_array_4[<span class="number">4</span>]; <span class="comment">// 临时存储4个编码后的字符</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 处理输入数据，3个字节一组进行编码</span></span><br><span class="line">    <span class="keyword">while</span> (in_len--) &#123;</span><br><span class="line">        char_array_3[i++] = *(bytes_to_encode++);</span><br><span class="line">        <span class="keyword">if</span> (i == <span class="number">3</span>) &#123;</span><br><span class="line">            <span class="comment">// 将3个字节转换为4个6位的Base64字符索引</span></span><br><span class="line">            char_array_4[<span class="number">0</span>] = (char_array_3[<span class="number">0</span>] &amp; <span class="number">0xfc</span>) &gt;&gt; <span class="number">2</span>;</span><br><span class="line">            char_array_4[<span class="number">1</span>] = ((char_array_3[<span class="number">0</span>] &amp; <span class="number">0x03</span>) &lt;&lt; <span class="number">4</span>) + ((char_array_3[<span class="number">1</span>] &amp; <span class="number">0xf0</span>) &gt;&gt; <span class="number">4</span>);</span><br><span class="line">            char_array_4[<span class="number">2</span>] = ((char_array_3[<span class="number">1</span>] &amp; <span class="number">0x0f</span>) &lt;&lt; <span class="number">2</span>) + ((char_array_3[<span class="number">2</span>] &amp; <span class="number">0xc0</span>) &gt;&gt; <span class="number">6</span>);</span><br><span class="line">            char_array_4[<span class="number">3</span>] = char_array_3[<span class="number">2</span>] &amp; <span class="number">0x3f</span>;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 根据索引从Base64字符表中获取字符</span></span><br><span class="line">            <span class="keyword">for</span> (i = <span class="number">0</span>; (i &lt; <span class="number">4</span>); i++)</span><br><span class="line">                ret += base64_chars[char_array_4[i]];</span><br><span class="line">            i = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 处理剩余的不足3字节的数据</span></span><br><span class="line">    <span class="keyword">if</span> (i) &#123;</span><br><span class="line">        <span class="keyword">for</span> (j = i; j &lt; <span class="number">3</span>; j++)</span><br><span class="line">            char_array_3[j] = <span class="string">&#x27;\0&#x27;</span>; <span class="comment">// 用\0填充</span></span><br><span class="line"></span><br><span class="line">        char_array_4[<span class="number">0</span>] = (char_array_3[<span class="number">0</span>] &amp; <span class="number">0xfc</span>) &gt;&gt; <span class="number">2</span>;</span><br><span class="line">        char_array_4[<span class="number">1</span>] = ((char_array_3[<span class="number">0</span>] &amp; <span class="number">0x03</span>) &lt;&lt; <span class="number">4</span>) + ((char_array_3[<span class="number">1</span>] &amp; <span class="number">0xf0</span>) &gt;&gt; <span class="number">4</span>);</span><br><span class="line">        char_array_4[<span class="number">2</span>] = ((char_array_3[<span class="number">1</span>] &amp; <span class="number">0x0f</span>) &lt;&lt; <span class="number">2</span>) + ((char_array_3[<span class="number">2</span>] &amp; <span class="number">0xc0</span>) &gt;&gt; <span class="number">6</span>);</span><br><span class="line">        char_array_4[<span class="number">3</span>] = char_array_3[<span class="number">2</span>] &amp; <span class="number">0x3f</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (j = <span class="number">0</span>; (j &lt; i + <span class="number">1</span>); j++)</span><br><span class="line">            ret += base64_chars[char_array_4[j]];</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> ((i++ &lt; <span class="number">3</span>))</span><br><span class="line">            ret += <span class="string">&#x27;=&#x27;</span>; <span class="comment">// 用=填充</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">char</span> name[<span class="number">20</span>] = &#123;<span class="number">0</span>&#125;; <span class="comment">// 用于存储用户输入的姓名</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Please input name:&quot;</span>);</span><br><span class="line">    cin &gt;&gt; name; <span class="comment">// 输入姓名</span></span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> namelength = <span class="built_in">strlen</span>(name); <span class="comment">// 计算姓名长度</span></span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;namelength:&quot;</span> &lt;&lt; namelength &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">    <span class="type">char</span>* temppointer = <span class="literal">NULL</span>; <span class="comment">// 临时指针</span></span><br><span class="line">    <span class="type">int</span> namemix[<span class="number">5</span>] = &#123;<span class="number">0</span>&#125;; <span class="comment">// 混淆后的结果数组</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 生成混淆数据</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">16</span>; i++) &#123;</span><br><span class="line">        temppointer = (<span class="type">char</span>*)namemix + i; <span class="comment">// 将指针指向namemix数组中的第i字节</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 根据姓名字符和索引计算一个混淆数</span></span><br><span class="line">        <span class="type">int</span> tempnumber = name[i % namelength] * (i + <span class="number">20160126</span>) * namelength;</span><br><span class="line"></span><br><span class="line">        *(<span class="type">int</span>*)temppointer += tempnumber; <span class="comment">// 将计算结果写入对应位置</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 输出混淆数据</span></span><br><span class="line">    <span class="comment">//cout &lt;&lt; &quot;namemix:&quot; &lt;&lt; endl;</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i != <span class="number">5</span>; i++) &#123;</span><br><span class="line">        <span class="comment">//cout &lt;&lt; namemix[i] &lt;&lt; endl;</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 对混淆数据进一步处理，生成结果数组</span></span><br><span class="line">    <span class="type">int</span> nameresultarray[<span class="number">5</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</span><br><span class="line">        nameresultarray[i] = namemix[i] / <span class="number">10</span>; <span class="comment">// 每个值缩小10倍</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 输出结果数组</span></span><br><span class="line">    <span class="comment">//cout &lt;&lt; &quot;nameresultarrat&quot; &lt;&lt; endl;</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</span><br><span class="line">        <span class="comment">//cout &lt;&lt; nameresultarray[i] &lt;&lt; endl;</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 根据结果数组生成编码数组</span></span><br><span class="line">    <span class="type">int</span> coderesultarray[<span class="number">5</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">    coderesultarray[<span class="number">0</span>] = nameresultarray[<span class="number">2</span>] + nameresultarray[<span class="number">2</span>] + nameresultarray[<span class="number">3</span>];</span><br><span class="line">    coderesultarray[<span class="number">1</span>] = <span class="number">3</span> * nameresultarray[<span class="number">2</span>] - nameresultarray[<span class="number">4</span>];</span><br><span class="line">    coderesultarray[<span class="number">2</span>] = nameresultarray[<span class="number">0</span>] + nameresultarray[<span class="number">1</span>] + nameresultarray[<span class="number">0</span>];</span><br><span class="line">    coderesultarray[<span class="number">3</span>] = nameresultarray[<span class="number">2</span>] + nameresultarray[<span class="number">3</span>];</span><br><span class="line">    coderesultarray[<span class="number">4</span>] = nameresultarray[<span class="number">0</span>] + nameresultarray[<span class="number">1</span>];</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 输出编码数组</span></span><br><span class="line">    <span class="comment">//cout &lt;&lt; &quot;coderesultarray:&quot; &lt;&lt; endl;</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</span><br><span class="line">        <span class="comment">// 输出为16进制格式</span></span><br><span class="line">        <span class="comment">//printf(&quot;%x\n&quot;, coderesultarray[i]);</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 使用 Base64 对编码数组进行编码</span></span><br><span class="line">    string encodeStr = <span class="built_in">base64_encode</span>((<span class="type">unsigned</span> <span class="type">char</span>*)coderesultarray, <span class="number">20</span>);</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;Code is :&quot;</span> &lt;&lt; encodeStr;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="验证成功"><a href="#验证成功" class="headerlink" title="验证成功"></a>验证成功</h2><p><img src="/2024/12/21/%E8%85%BE%E8%AE%AF%E6%B8%B8%E6%88%8F%E5%AE%89%E5%85%A8%E7%A7%BB%E5%8A%A8%E8%B5%9B%E9%A2%98Tencent2016A/11.jpg"></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/12/20/FRIDA-JSAPI/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/android.svg">
+      <meta itemprop="name" content="Bileton">
+      <meta itemprop="description" content="路漫漫其修远夕！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="白乐天">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2024/12/20/FRIDA-JSAPI/" class="post-title-link" itemprop="url">FRIDA-JSAPI</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2024-12-20 00:00:00" itemprop="dateCreated datePublished" datetime="2024-12-20T00:00:00+08:00">2024-12-20</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2025-03-13 17:45:24" itemprop="dateModified" datetime="2025-03-13T17:45:24+08:00">2025-03-13</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Frida/" itemprop="url" rel="index"><span itemprop="name">Frida</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>7.1k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>6 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h1><h2 id="perform"><a href="#perform" class="headerlink" title="perform()"></a>perform()</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Java</span>.<span class="title function_">perform</span>(<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;This is Java.perform!&quot;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="use-className"><a href="#use-className" class="headerlink" title="use(className)"></a>use(className)</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Java</span>.<span class="title function_">perform</span>(<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;This is Java.perform!&quot;</span>);</span><br><span class="line">    <span class="keyword">var</span> <span class="keyword">class</span> = <span class="title class_">Java</span>.<span class="title function_">use</span>(className);</span><br><span class="line">    <span class="keyword">class</span>.<span class="property">method</span>.<span class="property">implementation</span> = <span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;This is class.method!&quot;</span>);</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="Java-choose-className-callbacks"><a href="#Java-choose-className-callbacks" class="headerlink" title="Java.choose(className, callbacks)"></a>Java.choose(className, callbacks)</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Java</span>.<span class="title function_">perform</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="title class_">Java</span>.<span class="title function_">choose</span>(<span class="string">&quot;com.example.SomeClass&quot;</span>, &#123;</span><br><span class="line">        <span class="attr">onMatch</span>: <span class="keyword">function</span>(<span class="params">instance</span>) &#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;找到一个实例: &quot;</span> + instance);</span><br><span class="line">            <span class="comment">// 可以在这里对 instance 进行操作，比如调用其方法或修改属性</span></span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">onComplete</span>: <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;实例枚举完成！&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="Java-enumerateLoadedClasses-callbacks"><a href="#Java-enumerateLoadedClasses-callbacks" class="headerlink" title="Java.enumerateLoadedClasses(callbacks)"></a>Java.enumerateLoadedClasses(callbacks)</h2><p>枚举已加载的类</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Java</span>.<span class="title function_">perform</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="title class_">Java</span>.<span class="title function_">enumerateLoadedClasses</span>(&#123;</span><br><span class="line">        <span class="attr">onMatch</span>: <span class="keyword">function</span> (<span class="params">className</span>) &#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Loaded class: &quot;</span> + className);</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">onComplete</span>: <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Class enumeration complete&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="Java-enumerateLoadedClassesSync"><a href="#Java-enumerateLoadedClassesSync" class="headerlink" title="Java.enumerateLoadedClassesSync()"></a>Java.enumerateLoadedClassesSync()</h2><p>枚举当前 Java 虚拟机中已经加载的所有类，返回一个包含所有类名的数组。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Java</span>.<span class="title function_">perform</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="comment">// 获取所有已加载的类</span></span><br><span class="line">    <span class="keyword">var</span> loadedClasses = <span class="title class_">Java</span>.<span class="title function_">enumerateLoadedClassesSync</span>();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 输出所有类名</span></span><br><span class="line">    loadedClasses.<span class="title function_">forEach</span>(<span class="keyword">function</span>(<span class="params">className</span>) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(className);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="Java-enumerateClassLoaders-callbacks"><a href="#Java-enumerateClassLoaders-callbacks" class="headerlink" title="Java.enumerateClassLoaders(callbacks)"></a>Java.enumerateClassLoaders(callbacks)</h2><p>枚举所有的类加载器</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Java</span>.<span class="title function_">perform</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="title class_">Java</span>.<span class="title function_">enumerateClassLoaders</span>(&#123;</span><br><span class="line">        <span class="attr">onMatch</span>: <span class="keyword">function</span> (<span class="params">loader</span>) &#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Found ClassLoader: &quot;</span> + loader);</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">onComplete</span>: <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;ClassLoader enumeration complete&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="Java-enumerateClassLoadersSync"><a href="#Java-enumerateClassLoadersSync" class="headerlink" title="Java.enumerateClassLoadersSync()"></a>Java.enumerateClassLoadersSync()</h2><p>枚举当前 Java 虚拟机中所有活跃的类加载器（ClassLoader）实例，返回一个数组。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Java</span>.<span class="title function_">perform</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="comment">// 枚举所有已加载的类加载器</span></span><br><span class="line">    <span class="keyword">var</span> classLoaders = <span class="title class_">Java</span>.<span class="title function_">enumerateClassLoadersSync</span>();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 遍历并输出每个类加载器的信息</span></span><br><span class="line">    classLoaders.<span class="title function_">forEach</span>(<span class="keyword">function</span>(<span class="params">classLoader, index</span>) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;ClassLoader[&quot;</span> + index + <span class="string">&quot;]: &quot;</span> + classLoader);</span><br><span class="line">        <span class="comment">// 如果需要，可以调用 classLoader 的方法，或者进一步分析其属性</span></span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="Java-enumerateMethods-query"><a href="#Java-enumerateMethods-query" class="headerlink" title="Java.enumerateMethods(query)"></a>Java.enumerateMethods(query)</h2><p>根据 <code>query</code> 参数筛选符合特定名称模式的类，并返回这些类中的所有方法。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Java</span>.<span class="title function_">enumerateMethods</span>(query)</span><br><span class="line">    .<span class="title function_">then</span>(<span class="keyword">function</span>(<span class="params">methods</span>) &#123;</span><br><span class="line">        <span class="comment">// 处理返回的 methods 数组</span></span><br><span class="line">    &#125;)</span><br><span class="line">    .<span class="title function_">catch</span>(<span class="keyword">function</span>(<span class="params">error</span>) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">error</span>(error);</span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="cast-object-targetClass"><a href="#cast-object-targetClass" class="headerlink" title="cast(object, targetClass)"></a>cast(object, targetClass)</h2><p>将一个 Java 对象转换为特定的类类型。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Java</span>.<span class="title function_">perform</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> <span class="title class_">MainActivity</span> = <span class="title class_">Java</span>.<span class="title function_">use</span>(<span class="string">&quot;com.example.app.MainActivity&quot;</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">var</span> someObject = <span class="title class_">MainActivity</span>.<span class="title function_">getSomeObject</span>(); <span class="comment">// 返回类型可能是 Object</span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;原始类型: &quot;</span> + someObject.<span class="property">$className</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 强制转换为 MyClass</span></span><br><span class="line">    <span class="keyword">var</span> <span class="title class_">MyClass</span> = <span class="title class_">Java</span>.<span class="title function_">use</span>(<span class="string">&quot;com.example.app.MyClass&quot;</span>);</span><br><span class="line">    <span class="keyword">var</span> castedObject = <span class="title class_">Java</span>.<span class="title function_">cast</span>(someObject, <span class="title class_">MyClass</span>);</span><br><span class="line"></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;转换后类型: &quot;</span> + castedObject.<span class="property">$className</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 现在可以调用 MyClass 的方法</span></span><br><span class="line">    castedObject.<span class="title function_">someMethod</span>();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="classFactory"><a href="#classFactory" class="headerlink" title="classFactory"></a>classFactory</h2><p>Frida 中用于操作 Java 类的一个工厂类，它提供了一系列方法来与 Java 类进行交互。默认情况下，<code>Java.ClassFactory</code> 使用应用程序的主类加载器，但也可以通过指定其他类加载器来创建不同的类工厂实例。</p>
+<h3 id="loader"><a href="#loader" class="headerlink" title="loader"></a>loader</h3><p>当前的类加载器。<code>Java.use()</code> 依赖它来 Hook Java 类。</p>
+<h2 id="array"><a href="#array" class="headerlink" title="array()"></a>array()</h2><p>用于动态创建 Java 数组对象</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Java.array(type, elements)</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="Process"><a href="#Process" class="headerlink" title="Process"></a>Process</h1><h2 id="pointerSize"><a href="#pointerSize" class="headerlink" title="pointerSize"></a>pointerSize</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Process.pointerSize</span><br></pre></td></tr></table></figure>
+
+<p>以字节为单位获取指针的大小。</p>
+<h2 id="getCurrentThreadId"><a href="#getCurrentThreadId" class="headerlink" title="getCurrentThreadId()"></a>getCurrentThreadId()</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Process.getCurrentThreadId()</span><br></pre></td></tr></table></figure>
+
+<p>获取当前线程Id。</p>
+<h2 id="findModuleByName-name"><a href="#findModuleByName-name" class="headerlink" title="findModuleByName(name)"></a>findModuleByName(name)</h2><p>根据模块名称查找并返回对应的模块对象。</p>
+<p>如果没有找到匹配的模块，则返回一个空值（根据具体实现，可能是 <code>null</code> 或 <code>undefined</code>）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Process.findModuleByName(name)</span><br></pre></td></tr></table></figure>
+
+<h1 id="Module"><a href="#Module" class="headerlink" title="Module"></a>Module</h1><h2 id="Module属性"><a href="#Module属性" class="headerlink" title="Module属性"></a>Module属性</h2><ul>
+<li><p><strong>name</strong></p>
+<p>  模块名</p>
+</li>
+<li><p><strong>base</strong></p>
+<p>  模块基地址</p>
+</li>
+<li><p><strong>size</strong></p>
+<p>  模块的字节大小</p>
+</li>
+<li><p><strong>path</strong></p>
+<p>  模块的路径</p>
+</li>
+</ul>
+<h2 id="enumerateSymbols"><a href="#enumerateSymbols" class="headerlink" title="enumerateSymbols()"></a>enumerateSymbols()</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var symbols = ModuleName.enumerateSymbols()</span><br></pre></td></tr></table></figure>
+
+<p>枚举指定模块中的所以符号。</p>
+<h3 id="枚举的符号symbol的属性"><a href="#枚举的符号symbol的属性" class="headerlink" title="枚举的符号symbol的属性"></a>枚举的符号symbol的属性</h3><ul>
+<li><p><strong>isGlobal</strong></p>
+</li>
+<li><p><strong>type</strong></p>
+</li>
+<li><p><strong>section</strong></p>
+</li>
+<li><p><strong>name</strong></p>
+<p>  符号的名字</p>
+</li>
+<li><p><strong>address</strong></p>
+<p>  符号的地址，指针</p>
+</li>
+<li><p><strong>size</strong></p>
+</li>
+</ul>
+<h2 id="findExportByName-exportName"><a href="#findExportByName-exportName" class="headerlink" title="findExportByName(exportName)"></a>findExportByName(exportName)</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var addr = Module.findExportByName(moduleName|null,exportName)</span><br></pre></td></tr></table></figure>
+
+<p>查找指定模块中导出的符号（通常是函数）的地址。</p>
+<h2 id="findBaseAddress-name"><a href="#findBaseAddress-name" class="headerlink" title="findBaseAddress(name)"></a>findBaseAddress(name)</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var addr = Module.findBaseAddress(name)</span><br></pre></td></tr></table></figure>
+
+<p>获取指定模块的基地址。</p>
+<h1 id="Memory"><a href="#Memory" class="headerlink" title="Memory"></a>Memory</h1><h2 id="protect-address-size-protection"><a href="#protect-address-size-protection" class="headerlink" title="protect(address, size, protection)"></a>protect(address, size, protection)</h2><p>更新一块内存区域的保护属性，其中 <code>protection</code> 是一个字符串。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Memory</span>.<span class="title function_">protect</span>(address,size,<span class="string">&#x27;rwx&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="alloc-size"><a href="#alloc-size" class="headerlink" title="alloc(size)"></a>alloc(size)</h2><p>在目标进程的内存中分配一块指定大小的内存。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> ptr = <span class="title class_">Memory</span>.<span class="title function_">alloc</span>(size);</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="allocUtf8String-str"><a href="#allocUtf8String-str" class="headerlink" title="allocUtf8String(str)"></a>allocUtf8String(str)</h2><p>在目标进程的内存中分配一段 UTF-8 编码的字符串。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> ptr = <span class="title class_">Memory</span>.<span class="title function_">allocUtf8String</span>(str);</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="Native"><a href="#Native" class="headerlink" title="Native"></a>Native</h1><h2 id="NativePointer"><a href="#NativePointer" class="headerlink" title="NativePointer"></a>NativePointer</h2><h3 id="new-NativePointer-s"><a href="#new-NativePointer-s" class="headerlink" title="new NativePointer(s)"></a>new NativePointer(s)</h3><p>从包含内存地址的字符串 s 创建一个新的 NativePointer 对象。</p>
+<p>字符串可以是十进制的，也可以是以 0x 开头的十六进制表示。</p>
+<h3 id="ptr-s"><a href="#ptr-s" class="headerlink" title="ptr(s)"></a>ptr(s)</h3><p>NativePointer 对象也可以通过ptr(s)这种简写方式进行创建。</p>
+<h3 id="toInt32"><a href="#toInt32" class="headerlink" title="toInt32()"></a>toInt32()</h3><p>将当前 NativePointer 转换为有符号的 32 位整数。</p>
+<h3 id="add-rhs-sub-rhs-and-rhs-or-rhs-xor-rhs"><a href="#add-rhs-sub-rhs-and-rhs-or-rhs-xor-rhs" class="headerlink" title="add(rhs), sub(rhs), and(rhs), or(rhs), xor(rhs)"></a>add(rhs), sub(rhs), and(rhs), or(rhs), xor(rhs)</h3><p>创建一个新的 <strong>NativePointer</strong>，它是将当前的 <strong>NativePointer</strong> 与 <code>rhs</code> 相加、相减、按位与、按位或或按位异或后的结果，其中 <code>rhs</code> 可以是一个数字或另一个 <strong>NativePointer</strong>。</p>
+<h3 id="readCString-size-1"><a href="#readCString-size-1" class="headerlink" title="readCString([size &#x3D; -1])"></a>readCString([size &#x3D; -1])</h3><p>从当前内存位置读取 ASCII字符串的字节。如果知道字符串的字节数，可以提供可选的 size 参数；如果字符串以 NULL 结尾，可以省略该参数或指定为 -1。</p>
+<p>如果地址中读取的任何 size &#x2F; length 字节不可读，将抛出一个 JavaScript 异常。</p>
+<h2 id="NativeFunction"><a href="#NativeFunction" class="headerlink" title="NativeFunction"></a>NativeFunction</h2><ul>
+<li><p><strong>new NativeFunction(address, returnType, argTypes)</strong></p>
+<ul>
+<li><code>address</code>：用<code>NativePointer</code>指定的函数地址。</li>
+<li><code>returnType</code>：指定返回值类型。</li>
+<li><code>argTypes</code>：一个数组，指定参数类型。</li>
+</ul>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title class_">FunctionName</span> = <span class="keyword">new</span> <span class="title class_">NativeFunction</span>(functionAddr, <span class="string">&quot;int&quot;</span>, [<span class="string">&quot;pointer&quot;</span>, <span class="string">&quot;pointer&quot;</span>, <span class="string">&quot;pointer&quot;</span>, <span class="string">&quot;pointer&quot;</span>]);</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p><code>NativeFunction</code> 用于调用目标进程中指定内存地址处的原生函数。</p>
+<h2 id="NativeCallback"><a href="#NativeCallback" class="headerlink" title="NativeCallback"></a>NativeCallback</h2><ul>
+<li><p><strong>new NativeCallback(func, returnType, argTypes)</strong></p>
+<ul>
+<li><code>func</code>: 创建一个新的由JavaScript function实现的NativeCallback</li>
+<li><code>returnType</code>: 指定返回类型。</li>
+<li><code>argTypes</code>: 数组，指定参数类型。</li>
+</ul>
+<p>返回的对象是<code>NativeFunction</code>，可以传递给<code>Interceptor.replace</code>。</p>
+</li>
+</ul>
+<p><code>NativeCallback</code> 用于在目标进程中创建一个自定义的原生函数（回调函数），以便在目标进程的上下文中被调用，它的主要用途是模拟或替换目标函数的实现。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Interceptor</span>.<span class="title function_">replace</span>(functionAddr, <span class="keyword">new</span> <span class="title class_">NativeCallback</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;This is a NativeCallback!&quot;</span>)</span><br><span class="line">&#125;, <span class="string">&quot;void&quot;</span>, []))</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="Interceptor"><a href="#Interceptor" class="headerlink" title="Interceptor"></a>Interceptor</h1><h2 id="Interceptor-attach-target-callbacks"><a href="#Interceptor-attach-target-callbacks" class="headerlink" title="Interceptor.attach(target, callbacks)"></a>Interceptor.attach(target, callbacks)</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> functionAddr = <span class="title function_">ptr</span>(<span class="number">0x7777</span>);</span><br><span class="line"><span class="title class_">Interceptor</span>.<span class="title function_">attach</span>(functionAddr,&#123;</span><br><span class="line">    <span class="title class_">OnEnter</span>:<span class="keyword">function</span>(<span class="params">args</span>)&#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(args[<span class="number">0</span>]);</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(args[<span class="number">1</span>]);</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(args[<span class="number">2</span>]);</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="title class_">OnLeave</span>:<span class="keyword">function</span>(<span class="params">ret</span>)&#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(ret);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>注意：在32位ARM架构中，地址参数target的最低有效位必须为0（对于ARM函数）或1（对于Thumb函数）。如果通过Frida API（例如Module.getExportByName()）获取地址，Frida会自动处理这个细节。</p>
+<h2 id="Interceptor-replace-target-replacement"><a href="#Interceptor-replace-target-replacement" class="headerlink" title="Interceptor.replace(target, replacement)"></a>Interceptor.replace(target, replacement)</h2><p>使用 replacement 替换 target 处的函数。<br>可以使用 NativeCallback 在 JavaScript 中实现替换。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Interceptor</span>.<span class="title function_">replace</span>(functionAddr, <span class="keyword">new</span> <span class="title class_">NativeCallback</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;This is a NativeCallback!&quot;</span>)</span><br><span class="line">&#125;, <span class="string">&quot;void&quot;</span>, []))</span><br></pre></td></tr></table></figure>
+
+<h1 id="Stalker"><a href="#Stalker" class="headerlink" title="Stalker"></a>Stalker</h1><p>Stalker是基于动态重新编译的代码跟踪器。 它将代码指令复制到内存中的另一个位置，在该位置对其进行调整以适应新位置并包括其他跟踪指令。 如果应用程序在原始位置检查其代码，则会发现该代码是完整无缺的，因为它是被篡改的代码的副本。</p>
+<h2 id="follow"><a href="#follow" class="headerlink" title="follow()"></a>follow()</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Stalker</span>.<span class="title function_">follow</span>(threadId, options);</span><br><span class="line"><span class="comment">// threadId 要追踪的线程 ID。可通过 Process.getCurrentThreadId() 或其他方式获取目标线程 ID。</span></span><br><span class="line"><span class="comment">// options 一个对象，用于配置追踪时的行为。</span></span><br></pre></td></tr></table></figure>
+
+<p>Frida 对目标线程进行监控，捕获它执行过程中发生的事件（例如函数调用、返回、基本块边界等），从而进行动态分析、调试或者行为记录。</p>
+<h3 id="options详解"><a href="#options详解" class="headerlink" title="options详解"></a>options详解</h3><p><code>options</code> 参数是一个对象，可以配置多种选项来控制跟踪行为。</p>
+<p><code>options</code> 参数的详细说明：</p>
+<h4 id="transform"><a href="#transform" class="headerlink" title="transform"></a>transform</h4><p>自定义代码转换函数，允许对跟踪的代码进行动态修改（如插入日志、过滤指令等）。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Stalker</span>.<span class="title function_">follow</span>(tid, &#123;</span><br><span class="line">    <span class="attr">transform</span>: <span class="keyword">function</span>(<span class="params">iterator</span>) &#123;</span><br><span class="line">        <span class="keyword">while</span> (<span class="literal">true</span>)&#123;</span><br><span class="line">            <span class="keyword">const</span> instruction = iterator.<span class="title function_">next</span>()</span><br><span class="line">            <span class="keyword">if</span> (instruction === <span class="literal">null</span>)&#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            iterator.<span class="title function_">keep</span>();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>优化版本</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Stalker</span>.<span class="title function_">follow</span>(tid, &#123;</span><br><span class="line">    <span class="attr">transform</span>: <span class="keyword">function</span>(<span class="params">iterator</span>) &#123;</span><br><span class="line">        <span class="comment">// 使用 while 循环，直接判断 iterator.next() 的返回值</span></span><br><span class="line">        <span class="keyword">let</span> instruction;</span><br><span class="line">        <span class="keyword">while</span> ((instruction = iterator.<span class="title function_">next</span>()) !== <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="comment">// 对每条指令执行保留操作，不进行修改</span></span><br><span class="line">            iterator.<span class="title function_">keep</span>();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="unfollow"><a href="#unfollow" class="headerlink" title="unfollow()"></a>unfollow()</h2><p>终止在该线程上通过 <code>Stalker.follow()</code> 启动的追踪操作。</p>
+<h2 id="flush"><a href="#flush" class="headerlink" title="flush()"></a>flush()</h2><p>刷新缓冲区。</p>
+<h2 id="garbageCollect"><a href="#garbageCollect" class="headerlink" title="garbageCollect()"></a>garbageCollect()</h2><p>用于垃圾回收和清理资源，释放由 Stalker 模块在追踪过程中使用的内存和系统资源。</p>
+<h1 id="CPU-Instruction"><a href="#CPU-Instruction" class="headerlink" title="CPU Instruction"></a>CPU Instruction</h1><h2 id="Instruction"><a href="#Instruction" class="headerlink" title="Instruction"></a>Instruction</h2><h3 id="Instruction-parse-target"><a href="#Instruction-parse-target" class="headerlink" title="Instruction.parse(target)"></a>Instruction.parse(target)</h3><p>解析内存中 target 地址处的指令，返回一个<code>Instruction</code>对象。</p>
+<p><code>Instruction</code>对象包含如下字段：</p>
+<ul>
+<li><code>address</code>: 此指令的地址（EIP），类型为 <code>NativePointer</code></li>
+<li><code>next</code>: 指向下一条指令的指针，您可以使用 <code>parse()</code> 解析它</li>
+<li><code>size</code>: 此指令的大小</li>
+<li><code>mnemonic</code>: 指令助记符的字符串表示</li>
+<li><code>opStr</code>: 指令操作数的字符串表示</li>
+<li><code>operands</code>: 描述每个操作数的对象数组，每个对象至少指定类型和值，但可能还包含取决于架构的其他属性</li>
+<li><code>regsRead</code>: 此指令隐式读取的寄存器名称数组</li>
+<li><code>regsWritten</code>: 此指令隐式写入的寄存器名称数组</li>
+<li><code>groups</code>: 此指令所属的组名称数组</li>
+<li><code>toString()</code>: 转换为人类可读的字符串</li>
+</ul>
+<h2 id="Arm64Writer"><a href="#Arm64Writer" class="headerlink" title="Arm64Writer"></a>Arm64Writer</h2><h3 id="new-Arm64Writer-codeAddress-pc-ptr-‘0x1234’"><a href="#new-Arm64Writer-codeAddress-pc-ptr-‘0x1234’" class="headerlink" title="new Arm64Writer(codeAddress[, { pc: ptr(‘0x1234’) }])"></a>new Arm64Writer(codeAddress[, { pc: ptr(‘0x1234’) }])</h3><p>创建一个用于生成 ARM 机器码的代码写入器，该代码会直接写入 <code>codeAddress</code> 指定的内存位置，<code>codeAddress</code> 是一个 <code>NativePointer</code> 类型，第二个参数是可选的选项对象，可以通过其中的 <code>pc</code> 属性指定初始程序计数器（Program Counter, PC）。</p>
+<p>返回一个<code>ArmWriter</code>对象。</p>
+<h3 id="dispose"><a href="#dispose" class="headerlink" title="dispose()"></a>dispose()</h3><p>释放 <code>Arm64Writer</code> 对象，清理内存。</p>
+<h3 id="flush-1"><a href="#flush-1" class="headerlink" title="flush()"></a>flush()</h3><p>用于将已生成或修改的指令刷新到内存中，以确保这些指令可以被正确执行。</p>
+<h3 id="putRet"><a href="#putRet" class="headerlink" title="putRet()"></a>putRet()</h3><p>在生成的代码末尾插入一个返回指令，确保动态生成的代码块或函数能够正确返回。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -1767,663 +2293,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/12/04/JavaScript/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/android.svg">
-      <meta itemprop="name" content="Bileton">
-      <meta itemprop="description" content="路漫漫其修远夕！">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="白乐天">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2024/12/04/JavaScript/" class="post-title-link" itemprop="url">JavaScript</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2024-12-04 00:00:00" itemprop="dateCreated datePublished" datetime="2024-12-04T00:00:00+08:00">2024-12-04</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2025-02-09 20:57:51" itemprop="dateModified" datetime="2025-02-09T20:57:51+08:00">2025-02-09</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>2k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>2 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h1><h2 id="声明变量"><a href="#声明变量" class="headerlink" title="声明变量"></a>声明变量</h2><p>在JavaScript中，使用<code>var</code>关键字来声明变量，声明块级作用域变量使用<code>let</code>。</p>
-<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><ul>
-<li><p><strong>null</strong></p>
-<p>空值。</p>
-</li>
-<li><p><strong>undefined</strong></p>
-<p>未定义，即变量在声明时没有被初始化。</p>
-</li>
-<li><p><strong>boolean</strong></p>
-<p><code>true</code>表示真，<code>false</code>表示假。</p>
-</li>
-<li><p><strong>number</strong></p>
-<p>整数和浮点数。</p>
-</li>
-<li><p><strong>string</strong></p>
-<p>字符串。</p>
-</li>
-<li><p><strong>object</strong></p>
-<p>在JavaScript中，object是一种用于存储键值对（属性和方法）的集合。</p>
-</li>
-<li><p><strong>function</strong></p>
-<p>函数。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">fun</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;this is a function!&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h2><h3 id="比较运算符"><a href="#比较运算符" class="headerlink" title="比较运算符"></a>比较运算符</h3><ul>
-<li><p><strong>&#x3D;&#x3D;</strong></p>
-<p>相等运算符</p>
-<p>如果两个值不是同一类型，相等运算符（<code>==</code>）会将它们转换成同一个类型，再用严格相等运算符进行比较。</p>
-</li>
-<li><p><strong>&#x3D;&#x3D;&#x3D;</strong></p>
-<p>严格相等运算符</p>
-<p>比较两个值是否为“同一个值”。如果两个值不是同一类型，严格相等运算符（<code>===</code>）直接返回<code>false</code>。</p>
-</li>
-</ul>
-<h2 id="流程控制"><a href="#流程控制" class="headerlink" title="流程控制"></a>流程控制</h2><h3 id="if"><a href="#if" class="headerlink" title="if"></a>if</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (expression)&#123;</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (expression)&#123;</span><br><span class="line">	...</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (expression)&#123;</span><br><span class="line">	...</span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (expression) &#123;</span><br><span class="line">	...</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="for"><a href="#for" class="headerlink" title="for"></a>for</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> i;</span><br><span class="line"><span class="keyword">for</span> (i=<span class="number">0</span>;i&lt;<span class="number">100</span>;i++)&#123;</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="for-…-in"><a href="#for-…-in" class="headerlink" title="for … in"></a>for … in</h3><p><code>for</code>循环的一个变体是<code>for ... in</code>循环，它可以把一个对象的所有属性依次循环出来。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> stu = &#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;Jack&#x27;</span>,</span><br><span class="line">    <span class="attr">age</span>: <span class="number">20</span>,</span><br><span class="line">    <span class="attr">city</span>: <span class="string">&#x27;Beijing&#x27;</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> s <span class="keyword">in</span> stu) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(s); <span class="comment">// &#x27;name&#x27;, &#x27;age&#x27;, &#x27;city&#x27;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="while"><a href="#while" class="headerlink" title="while"></a>while</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> (expression) &#123;</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="do-…-while"><a href="#do-…-while" class="headerlink" title="do … while"></a>do … while</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line">	...</span><br><span class="line">&#125; <span class="keyword">while</span>(expression)</span><br></pre></td></tr></table></figure>
-
-<h2 id="typeof"><a href="#typeof" class="headerlink" title="typeof"></a>typeof</h2><p><code>typeof</code> 是一个操作符，用于检测变量的数据类型，返回一个表示类型的字符串。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typeof</span> variable;       <span class="comment">// 写法1</span></span><br><span class="line"><span class="title function_">typeof</span>(variable);      <span class="comment">// 写法2（括号可省略，但在复杂表达式时可能需要）</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">FuncName</span>(<span class="params"></span>)&#123;</span><br><span class="line">	<span class="comment">//函数体</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h2><p>JavaScript的对象是一种无序的集合数据类型，它由若干键值对组成。</p>
-<h1 id="标准对象"><a href="#标准对象" class="headerlink" title="标准对象"></a>标准对象</h1><h2 id="String"><a href="#String" class="headerlink" title="String"></a>String</h2><h3 id="new"><a href="#new" class="headerlink" title="new"></a>new</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> aaa = <span class="keyword">new</span> <span class="title class_">String</span>(<span class="string">&quot;123&quot;</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(aaa)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(aaa.<span class="title function_">valueOf</span>())</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line">[<span class="title class_">String</span>: <span class="string">&#x27;123&#x27;</span>]</span><br><span class="line"><span class="number">123</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="length"><a href="#length" class="headerlink" title="length"></a>length</h3><p>字符串的长度。</p>
-<h3 id="concat"><a href="#concat" class="headerlink" title="concat()"></a>concat()</h3><p>连接两个字符串，返回一个新字符串，不改变原字符串。</p>
-<h3 id="indexOf"><a href="#indexOf" class="headerlink" title="indexOf()"></a>indexOf()</h3><p>用于确定一个字符串在另一个字符串中第一次出现的位置，返回结果是匹配开始的位置。如果返回<code>-1</code>，就表示不匹配。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#x27;hello world&#x27;</span>.<span class="title function_">indexOf</span>(<span class="string">&#x27;o&#x27;</span>) <span class="comment">// 4</span></span><br><span class="line"><span class="string">&#x27;JavaScript&#x27;</span>.<span class="title function_">indexOf</span>(<span class="string">&#x27;script&#x27;</span>) <span class="comment">// -1</span></span><br><span class="line"></span><br><span class="line"><span class="string">&#x27;hello world&#x27;</span>.<span class="title function_">indexOf</span>(<span class="string">&#x27;o&#x27;</span>, <span class="number">6</span>) <span class="comment">// 7，可以接受第二个参数，表示从该位置开始向后匹配。</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="split"><a href="#split" class="headerlink" title="split()"></a>split()</h3><p>按照给定规则分割字符串，返回一个由分割出来的子字符串组成的数组。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#x27;a|b|c&#x27;</span>.<span class="title function_">split</span>(<span class="string">&#x27;|&#x27;</span>) <span class="comment">// [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;]</span></span><br><span class="line"></span><br><span class="line"><span class="string">&#x27;a|b|c&#x27;</span>.<span class="title function_">split</span>(<span class="string">&#x27;&#x27;</span>) <span class="comment">// [&quot;a&quot;, &quot;|&quot;, &quot;b&quot;, &quot;|&quot;, &quot;c&quot;]，如果分割规则为空字符串，则返回数组的成员是原字符串的每一个字符。</span></span><br><span class="line"></span><br><span class="line"><span class="string">&#x27;a|b|c&#x27;</span>.<span class="title function_">split</span>() <span class="comment">// [&quot;a|b|c&quot;]，如果省略参数，则返回数组的唯一成员就是原字符串。</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="valueOf-NaN"><a href="#valueOf-NaN" class="headerlink" title="valueOf()"></a>valueOf()</h3><p>返回对象的原始值。</p>
-<h3 id="obj-toString"><a href="#obj-toString" class="headerlink" title="obj.toString()"></a>obj.toString()</h3><p>用于将对象转换为字符串。</p>
-<p>不同对象类型通过重写该方法提供特定的字符串输出。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/12/02/%E6%8A%93%E5%8C%85/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/android.svg">
-      <meta itemprop="name" content="Bileton">
-      <meta itemprop="description" content="路漫漫其修远夕！">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="白乐天">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2024/12/02/%E6%8A%93%E5%8C%85/" class="post-title-link" itemprop="url">抓包</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2024-12-02 00:00:00" itemprop="dateCreated datePublished" datetime="2024-12-02T00:00:00+08:00">2024-12-02</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2025-03-10 00:21:35" itemprop="dateModified" datetime="2025-03-10T00:21:35+08:00">2025-03-10</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%8A%93%E5%8C%85/" itemprop="url" rel="index"><span itemprop="name">抓包</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>6.2k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>6 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="HTTP抓包"><a href="#HTTP抓包" class="headerlink" title="HTTP抓包"></a>HTTP抓包</h1><p>对于HTTP的包是可以通过抓包工具+配置手机代理直接抓取的。</p>
-<h2 id="demo测试"><a href="#demo测试" class="headerlink" title="demo测试"></a>demo测试</h2><p>访问<code>&quot;http://www.httpbin.org/get&quot;</code></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">OkhttpTest</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">http_get</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="type">OkHttpClient</span> <span class="variable">client</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">OkHttpClient</span>();</span><br><span class="line"></span><br><span class="line">        <span class="type">Request</span> <span class="variable">request</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Request</span>.Builder()</span><br><span class="line">                .url(<span class="string">&quot;http://www.httpbin.org/get&quot;</span>)</span><br><span class="line">                .build();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">new</span> <span class="title class_">Thread</span>(<span class="keyword">new</span> <span class="title class_">Runnable</span>() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">run</span><span class="params">()</span> &#123;</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    <span class="type">Response</span> <span class="variable">response</span> <span class="operator">=</span> client.newCall(request).execute();</span><br><span class="line">                    <span class="keyword">if</span>(response.isSuccessful())&#123;</span><br><span class="line">                        <span class="type">String</span> <span class="variable">responseBody</span> <span class="operator">=</span> response.body().string();</span><br><span class="line">                        Log.d(<span class="string">&quot;Response:&quot;</span>,responseBody);</span><br><span class="line">                    &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                        Log.d(<span class="string">&quot;Request failed&quot;</span>,String.valueOf(response.code()));</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">                    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">RuntimeException</span>(e);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;).start();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>通过点击按钮进行访问</p>
-<p><img src="/2024/12/02/%E6%8A%93%E5%8C%85/1.jpg"></p>
-<p>点击按钮，输出日志，如下，访问成功</p>
-<p><img src="/2024/12/02/%E6%8A%93%E5%8C%85/2.jpg"></p>
-<p>通过Charles配置代理进行抓包，如下，成功抓取数据</p>
-<p><img src="/2024/12/02/%E6%8A%93%E5%8C%85/3.jpg"></p>
-<h1 id="HTTPS抓包"><a href="#HTTPS抓包" class="headerlink" title="HTTPS抓包"></a>HTTPS抓包</h1><p>HTTPS是有系统证书校验的，需要安装证书之后通过抓包工具+配置手机代理来进行抓包。<br>在安卓上，Android8.0之后，浏览器默认信任用户目录下的证书，而APP默认不再信任用户目录下的证书了，所以需要手动把用户目录下的证书移动到系统目录下（通过面具移动或者手动移动）。</p>
-<h2 id="demo测试-1"><a href="#demo测试-1" class="headerlink" title="demo测试"></a>demo测试</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">https_get</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="type">OkHttpClient</span> <span class="variable">client</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">OkHttpClient</span>();</span><br><span class="line"></span><br><span class="line">    <span class="type">Request</span> <span class="variable">request</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Request</span>.Builder()</span><br><span class="line">            .url(<span class="string">&quot;https://www.httpbin.org/get&quot;</span>)</span><br><span class="line">            .build();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">new</span> <span class="title class_">Thread</span>(<span class="keyword">new</span> <span class="title class_">Runnable</span>() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">run</span><span class="params">()</span> &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                <span class="type">Response</span> <span class="variable">response</span> <span class="operator">=</span> client.newCall(request).execute();</span><br><span class="line">                <span class="keyword">if</span>(response.isSuccessful())&#123;</span><br><span class="line">                    <span class="type">String</span> <span class="variable">responseBody</span> <span class="operator">=</span> response.body().string();</span><br><span class="line">                    Log.d(<span class="string">&quot;Response:&quot;</span>,responseBody);</span><br><span class="line">                &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                    Log.d(<span class="string">&quot;Request failed&quot;</span>,String.valueOf(response.code()));</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">RuntimeException</span>(e);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;).start();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>通过点击按钮进行访问</p>
-<p><img src="/2024/12/02/%E6%8A%93%E5%8C%85/4.jpg"></p>
-<p>点击按钮，输出日志，如下，访问成功</p>
-<p><img src="/2024/12/02/%E6%8A%93%E5%8C%85/5.jpg"></p>
-<p>通过Charles配置证书和代理进行抓包，如下，成功抓取数据</p>
-<p><img src="/2024/12/02/%E6%8A%93%E5%8C%85/6.jpg"></p>
-<h1 id="检测代理"><a href="#检测代理" class="headerlink" title="检测代理"></a>检测代理</h1><h2 id="检测是否设置代理"><a href="#检测是否设置代理" class="headerlink" title="检测是否设置代理"></a>检测是否设置代理</h2><p>APP在发起网络请求前会检测系统是否设置了代理，如果发现有代理，就不发起请求。</p>
-<h3 id="demo测试-2"><a href="#demo测试-2" class="headerlink" title="demo测试"></a>demo测试</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="type">boolean</span> <span class="title function_">isProxySet</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="type">String</span> <span class="variable">proxyHost</span> <span class="operator">=</span> System.getProperty(<span class="string">&quot;http.proxyHost&quot;</span>);</span><br><span class="line">    <span class="type">String</span> <span class="variable">proxyPort</span> <span class="operator">=</span> System.getProperty(<span class="string">&quot;http.proxyPort&quot;</span>);</span><br><span class="line">    Log.d(<span class="string">&quot;Proxy&quot;</span>,<span class="string">&quot;proxyHost:&quot;</span>+proxyHost);</span><br><span class="line">    Log.d(<span class="string">&quot;Proxy&quot;</span>,<span class="string">&quot;proxyPort:&quot;</span>+proxyPort);</span><br><span class="line">    <span class="keyword">return</span> proxyHost!=<span class="literal">null</span> || proxyPort!=<span class="literal">null</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>通过点击按钮进行访问</p>
-<p><img src="/2024/12/02/%E6%8A%93%E5%8C%85/7.jpg"></p>
-<p>点击按钮，输出日志</p>
-<p>未设置代理时如下</p>
-<p><img src="/2024/12/02/%E6%8A%93%E5%8C%85/8.jpg"></p>
-<p>设置代理时如下</p>
-<p><img src="/2024/12/02/%E6%8A%93%E5%8C%85/9.jpg"></p>
-<h2 id="禁用代理"><a href="#禁用代理" class="headerlink" title="禁用代理"></a>禁用代理</h2><p>APP 用了NO_PROXY参数发起网络请求，指明不使用代理服务器，即使系统设置了代理，也会被直接绕过，APP依然能正常获取网络数据，但抓包工具无法抓到该APP的数据包。  </p>
-<h3 id="demo测试-3"><a href="#demo测试-3" class="headerlink" title="demo测试"></a>demo测试</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">no_proxy</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="type">OkHttpClient</span> <span class="variable">client</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">OkHttpClient</span>.Builder()</span><br><span class="line">            .proxy(Proxy.NO_PROXY)</span><br><span class="line">            .build();</span><br><span class="line"></span><br><span class="line">    <span class="type">Request</span> <span class="variable">request</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Request</span>.Builder()</span><br><span class="line">            .url(<span class="string">&quot;https://www.httpbin.org/get&quot;</span>)</span><br><span class="line"></span><br><span class="line">            .build();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">new</span> <span class="title class_">Thread</span>(<span class="keyword">new</span> <span class="title class_">Runnable</span>() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">run</span><span class="params">()</span> &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                <span class="type">Response</span> <span class="variable">response</span> <span class="operator">=</span> client.newCall(request).execute();</span><br><span class="line">                <span class="keyword">if</span>(response.isSuccessful())&#123;</span><br><span class="line">                    <span class="type">String</span> <span class="variable">responseBody</span> <span class="operator">=</span> response.body().string();</span><br><span class="line">                    Log.d(<span class="string">&quot;Response:&quot;</span>,responseBody);</span><br><span class="line">                &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                    Log.d(<span class="string">&quot;Request failed&quot;</span>,String.valueOf(response.code()));</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">RuntimeException</span>(e);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;).start();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>配置一下抓包代理，然后点击按钮进行访问</p>
-<p><img src="/2024/12/02/%E6%8A%93%E5%8C%85/10.jpg"></p>
-<p>日志里面可以正常输出内容，但是抓包看不到传输数据</p>
-<p><img src="/2024/12/02/%E6%8A%93%E5%8C%85/11.jpg"></p>
-<p>这种情况下可以在Charles里配置SOCKS，然后关闭手机端的系统代理，使用第三方代理转发工具如SocksDroid来进行转发流量（通过VPN劫持流量）</p>
-<p><img src="/2024/12/02/%E6%8A%93%E5%8C%85/12.jpg"></p>
-<p>就可以抓取数据了</p>
-<p><img src="/2024/12/02/%E6%8A%93%E5%8C%85/13.jpg"></p>
-<h2 id="VPN检测"><a href="#VPN检测" class="headerlink" title="VPN检测"></a>VPN检测</h2><p><strong>介绍</strong></p>
-<p>VPN检测是指应用程序或系统检查用户是否正在使用虚拟专用网络（Virtual Private Network, VPN）的一种技术。当用户使用VPN时，他们的网络流量会被加密并通过一个远程服务器路由，这可以隐藏用户的实际IP地址和位置信息，同时保护数据的安全性和隐私。</p>
-<p><strong>原理</strong></p>
-<p>当客户端运行VPN虚拟隧道协议时，会在当前节点创建基于 eth 之上的<code> tun0</code> 接口或 <code>ppp0</code> 接口。这些接口是用于建立虚拟网络连接的特殊网络接口。</p>
-<h3 id="demo测试-4"><a href="#demo测试-4" class="headerlink" title="demo测试"></a>demo测试</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="type">boolean</span> <span class="title function_">vpn_check</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="comment">// 获取所有网络接口的枚举对象</span></span><br><span class="line">        Enumeration&lt;NetworkInterface&gt; networkInterfaces =</span><br><span class="line">                NetworkInterface.getNetworkInterfaces();</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 如果没有可用的网络接口，则返回 false</span></span><br><span class="line">        <span class="keyword">if</span> (networkInterfaces == <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 将枚举类型转换为列表并通过迭代器遍历</span></span><br><span class="line">        <span class="type">Iterator</span> <span class="variable">it</span> <span class="operator">=</span> Collections.list(networkInterfaces).iterator();</span><br><span class="line">        <span class="keyword">while</span> (it.hasNext()) &#123;</span><br><span class="line">            <span class="comment">// 获取当前网络接口</span></span><br><span class="line">            <span class="type">NetworkInterface</span> <span class="variable">networkInterface</span> <span class="operator">=</span> (NetworkInterface) it.next();</span><br><span class="line">            </span><br><span class="line">            <span class="comment">// 检查网络接口是否处于活动状态（isUp()）且其绑定的接口地址不为空</span></span><br><span class="line">            <span class="keyword">if</span> (networkInterface.isUp() &amp;&amp;</span><br><span class="line">                    !networkInterface.getInterfaceAddresses().isEmpty()) &#123;</span><br><span class="line">                <span class="comment">// 打印网络接口名称用于调试</span></span><br><span class="line">                Log.d(<span class="string">&quot;GaGa===&gt;&quot;</span>,</span><br><span class="line">                        <span class="string">&quot;端口名称: &quot;</span> + networkInterface.getName());</span><br><span class="line">                </span><br><span class="line">                <span class="comment">// 检查网络接口名称是否为 VPN 特有的名称</span></span><br><span class="line">                <span class="comment">// 常见的 VPN 接口名称包括 tun0, ppp0, p2p0, 和 ccmni0</span></span><br><span class="line">                <span class="keyword">if</span> (Intrinsics.areEqual(networkInterface.getName(), <span class="string">&quot;tun0&quot;</span>)</span><br><span class="line">                        || Intrinsics.areEqual(networkInterface.getName(), <span class="string">&quot;ppp0&quot;</span>) ||</span><br><span class="line">                        Intrinsics.areEqual(networkInterface.getName(), <span class="string">&quot;p2p0&quot;</span>) ||</span><br><span class="line">                        Intrinsics.areEqual(networkInterface.getName(), <span class="string">&quot;ccmni0&quot;</span>)) &#123;</span><br><span class="line">                    <span class="comment">// 如果找到匹配的接口名称，说明 VPN 处于活动状态，返回 true</span></span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 如果遍历完所有网络接口，没有检测到 VPN，返回 false</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125; <span class="keyword">catch</span> (Throwable th) &#123;</span><br><span class="line">        <span class="comment">// 捕获并打印任何可能的异常</span></span><br><span class="line">        th.printStackTrace();</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>通过点击按钮进行访问</p>
-<p><img src="/2024/12/02/%E6%8A%93%E5%8C%85/14.jpg"></p>
-<p>点击按钮输出如下日志，说明检测到了vpn</p>
-<p><img src="/2024/12/02/%E6%8A%93%E5%8C%85/15.jpg"></p>
-<h1 id="通过安装证书实现抓包的原理"><a href="#通过安装证书实现抓包的原理" class="headerlink" title="通过安装证书实现抓包的原理"></a>通过安装证书实现抓包的原理</h1><p>它的原理是基于HTTPS中间人攻击和证书信任链机制的。</p>
-<p>HTTPS 使用 <strong>SSL&#x2F;TLS 协议</strong> 对通信进行加密，确保数据在传输过程中不被窃听或篡改。其核心步骤如下：</p>
-<ol>
-<li><strong>证书验证</strong>：客户端（如安卓应用）与服务器建立连接时，服务器会发送其 <strong>数字证书</strong>，证书包含公钥和颁发机构（CA）的签名。</li>
-<li><strong>信任链校验</strong>：客户端检查证书是否由受信任的根证书颁发机构（CA）签发，并验证证书的有效性（如域名匹配、未过期等）。</li>
-<li><strong>密钥协商</strong>：验证通过后，客户端使用服务器的公钥加密一个随机生成的对称密钥（Session Key），双方后续使用该密钥加密通信数据。</li>
-</ol>
-<p><strong>中间人攻击的漏洞</strong>：<br>若攻击者（如抓包工具）能伪造服务器的证书，并让客户端信任攻击者的根证书，即可拦截和解密 HTTPS 流量。</p>
-<ul>
-<li>抓包工具（如 Charles、Fiddler）会生成一个 <strong>伪造的服务器证书</strong>，并使用自己的根证书（CA）签名。</li>
-<li>若客户端信任攻击者的根证书，则会接受伪造的证书，攻击者即可解密流量。</li>
-</ul>
-<p><strong>中间人攻击的关键：伪造信任链</strong></p>
-<ul>
-<li><strong>抓包工具的角色</strong>：<br>  抓包工具（如 Charles、Fiddler）会生成一个 ​<strong>自签名的根证书（Self-Signed Root CA）​</strong>，并手动将其安装到客户端（安卓系统）的信任存储中。<br>  此时，客户端会将抓包工具的根证书视为合法根 CA。</li>
-<li><strong>伪造服务器证书</strong>：<br>  当客户端发起 HTTPS 请求时，抓包工具会拦截请求，并动态生成一个 ​<strong>伪造的服务器证书</strong>，该证书由抓包工具的根证书签名。<br>  由于客户端信任抓包工具的根证书，因此会接受伪造的服务器证书。</li>
-</ul>
-<h1 id="单向证书校验"><a href="#单向证书校验" class="headerlink" title="单向证书校验"></a>单向证书校验</h1><p>单向证书校验是指在客户端与服务器之间的通信中，只有服务器需要提供证书，客户端通过验证服务器的证书来确认服务器的身份。<br><strong>原理</strong></p>
-<ul>
-<li>客户端发起连接请求（如通过HTTPS）。  </li>
-<li>服务器将其数字证书发送给客户端，数字证书中包含了服务器的公钥和其他信息（如证书的有效期、签发者等）。  </li>
-<li>客户端收到证书后，通过信任的证书颁发机构（CA）的公钥来验证证书的有效性。如果证书有效，客户端就信任这个服务器，继续进行后续的加密通信。  </li>
-<li>客户端不需要提供任何证书或身份验证。</li>
-</ul>
-<h1 id="双向证书校验"><a href="#双向证书校验" class="headerlink" title="双向证书校验"></a>双向证书校验</h1><p>双向证书校验则要求客户端和服务器都提供证书，并且相互验证对方的身份。这样不仅服务器要验证客户端的身份，客户端也要验证服务器的身份。<br><strong>原理</strong>  </p>
-<ul>
-<li>客户端发起连接请求。  </li>
-<li>服务器发送其数字证书给客户端，客户端用CA公钥验证服务器证书的合法性。  </li>
-<li>服务器要求客户端也提供数字证书。客户端向服务器提供自己的证书，服务器同样使用CA公钥验证客户端证书的合法性。  </li>
-<li>双方都确认对方的身份后，开始建立加密通道进行安全通信。</li>
-</ul>
-<h1 id="SSL-pinning"><a href="#SSL-pinning" class="headerlink" title="SSL pinning"></a>SSL pinning</h1><p>SSL Pinning（SSL证书绑定）是为了增强应用程序对中间人攻击（MITM攻击）的防御的一种技术。它将特定的证书或公钥绑定到客户端应用程序中，使得客户端在建立SSL连接时，仅信任与该证书或公钥匹配的服务器证书，从而确保通信的安全性。</p>
-<p>其核心原理是预先将服务器证书的特定信息嵌入客户端应用，并在建立连接时验证服务器证书是否与预设信息一致。</p>
-<p>应用开发阶段，将服务器证书的 公钥哈希（Public Key Hash）、证书指纹（Certificate Fingerprint） 或完整证书 嵌入客户端代码或配置文件。</p>
-<p>客户端与服务器建立 TLS 连接后，获取服务器证书链。</p>
-<p>检查服务器证书的公钥哈希或指纹是否与预设值匹配。</p>
-<h2 id="Certificate-Pinning"><a href="#Certificate-Pinning" class="headerlink" title="Certificate Pinning"></a>Certificate Pinning</h2><p>证书绑定是指将服务器的证书（通常是公钥）内置到客户端应用中。客户端在建立SSL连接时，会验证服务器的证书与客户端预定义的证书是否匹配。如果不匹配，连接会被拒绝，防止攻击者使用伪造的证书进行中间人攻击。  </p>
-<h2 id="Public-Key-Pinning"><a href="#Public-Key-Pinning" class="headerlink" title="Public Key Pinning"></a>Public Key Pinning</h2><p>公钥绑定是SSL Pinning的一种形式，客户端不直接绑定证书，而是绑定服务器证书中的公钥。这种方式可以避免证书过期或更新时造成的连接问题，因为即便证书发生变化，只要公钥保持不变，客户端仍然可以信任新的证书。  </p>
-<h2 id="绕过方式"><a href="#绕过方式" class="headerlink" title="绕过方式"></a>绕过方式</h2><h3 id="使用frida进行hook"><a href="#使用frida进行hook" class="headerlink" title="使用frida进行hook"></a>使用frida进行hook</h3><p>frida官方提供的客户端校验绕过脚本如下<br><a target="_blank" rel="noopener" href="https://codeshare.frida.re/@akabe1/frida-multiple-unpinning/">https:&#x2F;&#x2F;codeshare.frida.re&#x2F;@akabe1&#x2F;frida-multiple-unpinning&#x2F;</a></p>
-<h3 id="JustTrustMe"><a href="#JustTrustMe" class="headerlink" title="JustTrustMe"></a>JustTrustMe</h3><p>利用面具刷入LSPosed框架，然后安装JustTrustMe插件。<br>在LSPosed的模块里打开JustTrustMe，在要选择绕过的App后面方框勾选上即可。</p>
-<h1 id="证书信息"><a href="#证书信息" class="headerlink" title="证书信息"></a>证书信息</h1><p><img src="/2024/12/02/%E6%8A%93%E5%8C%85/16.jpg"></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/12/01/IDA%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/android.svg">
-      <meta itemprop="name" content="Bileton">
-      <meta itemprop="description" content="路漫漫其修远夕！">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="白乐天">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2024/12/01/IDA%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/" class="post-title-link" itemprop="url">IDA使用指南</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2024-12-01 23:25:02" itemprop="dateCreated datePublished" datetime="2024-12-01T23:25:02+08:00">2024-12-01</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2025-03-04 17:58:29" itemprop="dateModified" datetime="2025-03-04T17:58:29+08:00">2025-03-04</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E9%80%86%E5%90%91%E5%B7%A5%E5%85%B7%E9%9B%86/" itemprop="url" rel="index"><span itemprop="name">逆向工具集</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>5.8k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>5 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="界面"><a href="#界面" class="headerlink" title="界面"></a>界面</h1><h2 id="工具栏（Toolbars）"><a href="#工具栏（Toolbars）" class="headerlink" title="工具栏（Toolbars）"></a>工具栏（Toolbars）</h2><p>工具栏包含常用操作工具。<br>可在<code>View-&gt;Toobars</code>里显示或隐藏工具栏。</p>
-<h2 id="导航栏"><a href="#导航栏" class="headerlink" title="导航栏"></a>导航栏</h2><p>导航栏是被加载⽂件地址空间的线性视图。</p>
-<h2 id="菜单栏"><a href="#菜单栏" class="headerlink" title="菜单栏"></a>菜单栏</h2><h3 id="Edit"><a href="#Edit" class="headerlink" title="Edit"></a>Edit</h3><h4 id="保存patch文件"><a href="#保存patch文件" class="headerlink" title="保存patch文件"></a>保存patch文件</h4><p><code>Edit-&gt;Patch Program-&gt;Apply patches to input file</code></p>
-<h3 id="Options"><a href="#Options" class="headerlink" title="Options"></a>Options</h3><h4 id="在文本模式下显示机器指令："><a href="#在文本模式下显示机器指令：" class="headerlink" title="在文本模式下显示机器指令："></a>在文本模式下显示机器指令：</h4><p>在菜单栏找到Options-&gt;General，有一个选项<code>Number of opcode bytes</code>即操作码字节数，根据汇编指令长度来设置，如Arm指令长度是4字节，Thumb指令长度是2字节。</p>
-<p><img src="/2024/12/01/IDA%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/13.jpg"></p>
-<h4 id="重新分析程序"><a href="#重新分析程序" class="headerlink" title="重新分析程序"></a>重新分析程序</h4><p>在菜单栏找到Options-&gt;General-&gt;Analysis</p>
-<p>点击如下选项重新分析程序</p>
-<p><img src="/2024/12/01/IDA%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/15.jpg"></p>
-<p>在IDA底部边框右键也会出现<code>Reanalyze program</code>选项</p>
-<p><img src="/2024/12/01/IDA%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/16.jpg"></p>
-<h1 id="窗口"><a href="#窗口" class="headerlink" title="窗口"></a>窗口</h1><h2 id="反汇编窗口（IDA-View）"><a href="#反汇编窗口（IDA-View）" class="headerlink" title="反汇编窗口（IDA-View）"></a>反汇编窗口（IDA-View）</h2><p>反汇编窗口有两种显示模式，文本模式和图形模式，通过<code>空格键</code>来切换。  </p>
-<ul>
-<li><strong>文本模式</strong><br>显示指令地址、机器码。  </li>
-<li><strong>图形模式</strong><br>观察控制流。<br>可通过<code>Ctrl+鼠标滚轮</code>进行缩放。</li>
-</ul>
-<p>在文本模式下显示机器指令：</p>
-<h2 id="伪代码窗口（Pseudocode）"><a href="#伪代码窗口（Pseudocode）" class="headerlink" title="伪代码窗口（Pseudocode）"></a>伪代码窗口（Pseudocode）</h2><ul>
-<li>将反汇编代码转换为伪代码，按下<code>Tab键</code>或<code>F5</code>。</li>
-<li>将伪代码转换为反汇编代码，按下<code>Tab键</code>。</li>
-<li>在伪代码中根据光标位置按下<code>Tab键</code>可以快速定位到对应语句的汇编代码。</li>
-</ul>
-<h2 id="函数窗口（Functions）"><a href="#函数窗口（Functions）" class="headerlink" title="函数窗口（Functions）"></a>函数窗口（Functions）</h2><p>显示了当前分析的二进制文件中被识别的所有函数。</p>
-<h2 id="输出窗口（Output）"><a href="#输出窗口（Output）" class="headerlink" title="输出窗口（Output）"></a>输出窗口（Output）</h2><p>显⽰的是 IDA 输出的信息。</p>
-<ul>
-<li><code>Ctrl+X</code>：这个快捷键在<code>output</code>窗口中的作用是清空当前窗口的内容。</li>
-</ul>
-<h2 id="字符串表（Strings）"><a href="#字符串表（Strings）" class="headerlink" title="字符串表（Strings）"></a>字符串表（Strings）</h2><p>字符串表会显示IDA所识别出的字符串。</p>
-<ul>
-<li>打开字符串表窗口的快捷键<code>Shift+F12</code>。</li>
-<li>在菜单中打开 <code>View</code>-&gt;<code>Open Subviews</code>-&gt;<code>Strings</code>。</li>
-<li>双击字符串会跳转到字符串所在的数据窗口的位置或反汇编窗口的位置（取决于上一步打开的窗口）。</li>
-</ul>
-<h2 id="数据窗口（Hex-View）"><a href="#数据窗口（Hex-View）" class="headerlink" title="数据窗口（Hex View）"></a>数据窗口（Hex View）</h2><p>以hexdump形式显示程序的数据。</p>
-<ul>
-<li>菜单中的位置 <code>View</code>-&gt;<code>Open subviews</code>-&gt;<code>Hex dump</code>。</li>
-<li>通过<code>F2</code>可以进入编辑模式修改数据，再次按下<code>F2</code>退出编辑模式。</li>
-</ul>
-<h2 id="交叉引用（XREF）"><a href="#交叉引用（XREF）" class="headerlink" title="交叉引用（XREF）"></a>交叉引用（XREF）</h2><p>交叉引用（XREF，Cross Reference）是一个非常重要的工具，用于追踪某个地址、变量或函数在程序中的使用情况。它可以帮助我们快速找到某个符号、数据或函数是如何以及在何处被引用的。</p>
-<ul>
-<li>将光标定位到要进行交叉引用的符号，按下<code>x</code>键打开交叉引用的窗口。</li>
-</ul>
-<p><strong>交叉引用分类</strong></p>
-<ul>
-<li>代码交叉引用  </li>
-<li>数据交叉引用</li>
-</ul>
-<h2 id="Xref-Graph"><a href="#Xref-Graph" class="headerlink" title="Xref Graph"></a>Xref Graph</h2><p>函数调用关系及引用流向</p>
-<h3 id="Xref-graph-to"><a href="#Xref-graph-to" class="headerlink" title="Xref graph to"></a>Xref graph to</h3><ul>
-<li>显示当前函数或地址 “被哪些位置调用或引用” 的关系图。</li>
-<li>用于追踪调用者（Callers），即谁调用了当前函数或谁引用了该地址。</li>
-</ul>
-<p><strong>使用方式</strong><br>选中一个函数或地址后，右键在菜单中选择<code>Xrefs graph to...</code>。</p>
-<h3 id="Xref-graph-from"><a href="#Xref-graph-from" class="headerlink" title="Xref graph from"></a>Xref graph from</h3><ul>
-<li>显示当前函数或地址 “调用或引用了哪些目标” 的关系图。</li>
-<li>用于追踪被调用者（Callees），即当前函数或代码引用了哪些其他函数或地址。</li>
-</ul>
-<p><strong>使用方式</strong><br>选中一个函数或地址后，右键在菜单中选择 <code>Xrefs graph from...</code>。</p>
-<h1 id="常用快捷键"><a href="#常用快捷键" class="headerlink" title="常用快捷键"></a>常用快捷键</h1><h2 id="常用操作"><a href="#常用操作" class="headerlink" title="常用操作"></a>常用操作</h2><ul>
-<li><code>F5</code>：生成伪代码，刷新伪代码</li>
-<li><code>ESC</code>：后退，回到上一步操作的视图</li>
-</ul>
-<h2 id="窗口打开"><a href="#窗口打开" class="headerlink" title="窗口打开"></a>窗口打开</h2><ul>
-<li><code>x</code>：交叉引用窗口</li>
-<li><code>Shift + f12</code>：字符串窗口</li>
-<li><code>alt + T</code>：文本搜索窗口（速度慢）</li>
-<li><code>G</code>：地址跳转窗口</li>
-<li><code>Alt + I</code>：快速查找二进制文件中与某个特定值相关的指令或数据</li>
-<li><code>Alt + B</code>：直接在二进制文件中查找特定的字节序列</li>
-<li><code>Ctrl+S</code>：打开<code>Segments</code>窗口</li>
-<li><code>Shift+F7</code>：打开<code>Segments</code>窗口</li>
-</ul>
-<h2 id="代码转换"><a href="#代码转换" class="headerlink" title="代码转换"></a>代码转换</h2><ul>
-<li><code>N</code>：修改变量名</li>
-<li><code>Y</code>：修改变量的类型</li>
-<li><code>Shift + Del</code>： 删除返回值</li>
-<li><code>\</code> ：隐藏与显示casts（类型）</li>
-<li><code>-</code> ：代码折叠（Collapse declarations）</li>
-<li><code>+</code> ：代码展开（Collapse declarations）</li>
-<li><code>/</code> ：行注释</li>
-<li><code>Ctrl+Alt+num</code>：Lock highlight，添加高亮标记（注意：<code>num</code>是一个数字）</li>
-</ul>
-<h2 id="数据转换"><a href="#数据转换" class="headerlink" title="数据转换"></a>数据转换</h2><ul>
-<li><p><code>A</code>：把数据转换为<code>&quot;\0&quot;</code>结尾的字符串</p>
-</li>
-<li><p><code>U</code>：取消定义（Undefine）<br>可取消函数、代码或数据的定义。取消定义后，其基础字节将作为原始字节值重新格式化。</p>
-</li>
-<li><p><code>C</code>：反汇编一组未定义的字节</p>
-</li>
-<li><p><code>D</code>：将代码转换为数据  </p>
-<p><strong>整数的数据类型</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">db // 1字节</span><br><span class="line">dw // 2字节</span><br><span class="line">dd // 4字节</span><br><span class="line">dq // 8字节</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><code>P</code>：在代码数据起始位置，按下<code>P</code>键，识别函数（注意光标需要位于起始位置）。</p>
-</li>
-<li><p><code>H</code>：在十进制数据和十六进制数据之间切换</p>
-</li>
-<li><p><code>R</code>：将数据切换为char类型</p>
-</li>
-</ul>
-<h1 id="动态调试"><a href="#动态调试" class="headerlink" title="动态调试"></a>动态调试</h1><h2 id="调试器"><a href="#调试器" class="headerlink" title="调试器"></a>调试器</h2><h3 id="配置调试信息"><a href="#配置调试信息" class="headerlink" title="配置调试信息"></a>配置调试信息</h3><p>调试器选择完毕，打开Debugger菜单，选择<code>Process options</code><br>配置调试器在加载目标程序时的运行参数和环境  </p>
-<ul>
-<li><code>Application</code>：指定要调试的目标程序路径</li>
-<li><code>Input file</code>：指定程序运行时需要的输入文件路径</li>
-<li><code>Parameters</code>：为目标程序提供运行时的命令行参数。</li>
-<li><code>Hostname</code>和<code>Port</code>：填写主机名和端口</li>
-</ul>
-<p><img src="/2024/12/01/IDA%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/5.jpg"></p>
-<h3 id="Win本地调试"><a href="#Win本地调试" class="headerlink" title="Win本地调试"></a>Win本地调试</h3><p>本地调试无需配置server文件。</p>
-<h3 id="远程调试"><a href="#远程调试" class="headerlink" title="远程调试"></a>远程调试</h3><p>在IDA的安装目录下，有一个dbgsrv文件夹，里面是各个系统架构的远程调试server文件。</p>
-<p><img src="/2024/12/01/IDA%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/3.jpg"></p>
-<h4 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h4><p>把linux_server拷贝到Linux主机上，添加可执行权限，然后启动</p>
-<p><img src="/2024/12/01/IDA%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/4.jpg"></p>
-<h4 id="Android"><a href="#Android" class="headerlink" title="Android"></a>Android</h4><p>把android_server远程调试文件push到手机上的&#x2F;data&#x2F;local&#x2F;tmp目录下，改名字为as  </p>
-<ul>
-<li><p>添加可执行权限</p>
-  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod +x as</span><br></pre></td></tr></table></figure></li>
-<li><p>启动as</p>
-  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./as -p 1234  //-p选项用于设置端口</span><br></pre></td></tr></table></figure>
-<p>  <img src="/2024/12/01/IDA%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/6.jpg"></p>
-</li>
-<li><p>端口转发</p>
-  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb forward tcp:1234 tcp:1234</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="调试模式"><a href="#调试模式" class="headerlink" title="调试模式"></a>调试模式</h2><h3 id="Start-Process"><a href="#Start-Process" class="headerlink" title="Start Process"></a>Start Process</h3><p>Start Process 是指直接从 IDA 中启动一个可执行文件（如 .exe 程序）进行调试。IDA 会加载目标文件，并启动一个新的调试会话。</p>
-<h3 id="Attach-to-Process"><a href="#Attach-to-Process" class="headerlink" title="Attach to Process"></a>Attach to Process</h3><p>Attach to Process 是指将调试器附加到一个已经运行的进程。IDA 不会启动新的程序，而是连接到当前运行中的目标进程，实时分析其运行状态。</p>
-<h2 id="调试窗口"><a href="#调试窗口" class="headerlink" title="调试窗口"></a>调试窗口</h2><h3 id="General-registers窗口（寄存器）"><a href="#General-registers窗口（寄存器）" class="headerlink" title="General registers窗口（寄存器）"></a>General registers窗口（寄存器）</h3><p>&emsp;&emsp;寄存器内容在相关寄存器右边显示，后面显示对每个寄存器的说明，最右边的列中显示CPU标志位。  </p>
-<ul>
-<li>鼠标右键单击一个寄存器或标志位，会出现一个modify选项，可以更改寄存器或CPU标志位的值。  </li>
-<li>如果一个寄存器指向一个有效的地址，那么该寄存器值右侧会出现一个直角箭头并有突出显示，单击箭头，会跳转到相应的内存位置。<br><img src="/2024/12/01/IDA%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/2.jpg"></li>
-</ul>
-<h3 id="Modules窗口（模块）"><a href="#Modules窗口（模块）" class="headerlink" title="Modules窗口（模块）"></a>Modules窗口（模块）</h3><p>Modules窗⼝显⽰所有加载到进程内存空间中的可执⾏⽂件和动态链接库。  </p>
-<ul>
-<li>双击任何模块名称，将打开该模块导出的符号列表，双击符号，进行跳转。</li>
-</ul>
-<h3 id="Threads窗口（线程）"><a href="#Threads窗口（线程）" class="headerlink" title="Threads窗口（线程）"></a>Threads窗口（线程）</h3><p>Threads 窗口会列出当前进程中所有活动的线程，并显示每个线程的详细信息。</p>
-<h3 id="Stack-view窗口（堆栈）"><a href="#Stack-view窗口（堆栈）" class="headerlink" title="Stack view窗口（堆栈）"></a>Stack view窗口（堆栈）</h3><p>显示当前线程调用堆栈的内容，用于观察函数调用之间的堆栈数据变化。</p>
-<h2 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h2><ul>
-<li><code>F2</code>：设置断点</li>
-<li><code>F7</code>：步入</li>
-<li><code>F8</code>：步过</li>
-<li><code>F9</code>：启动调试，及运行至下一断点</li>
-<li><code>Ctrl+F7</code>：指定到当前函数的返回后位置</li>
-<li><code>F4</code>：运行至光标处</li>
-<li><code>Ctrl+N</code>：set IP，可以直接修改程序的执行路径。强制代码从光标位置开始执行</li>
-</ul>
-<h2 id="硬件断点"><a href="#硬件断点" class="headerlink" title="硬件断点"></a>硬件断点</h2><p>&emsp;&emsp;硬件断点用于在调试过程中实时监控内存区域的访问，硬件断点不会修改目标程序的代码，而是通过硬件的调试功能直接监控特定的内存地址或代码区域。</p>
-<h3 id="设置硬件断点"><a href="#设置硬件断点" class="headerlink" title="设置硬件断点"></a>设置硬件断点</h3><p>先设置普通断点，右键选择<code>Breakpoint settints</code>，勾选<code>Hardware</code>，选择硬件断点模式，勾选<code>Execute</code></p>
-<p>硬件断点模式</p>
-<ul>
-<li><code>Read</code>：断点地址被读取时命中</li>
-<li><code>Write</code>：断点地址被写入时命中</li>
-<li><code>Execute</code>：断点地址被执行时命中</li>
-<li><code>Size</code>：地址范围的大小</li>
-</ul>
-<p><img src="/2024/12/01/IDA%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/7.jpg"></p>
-<h2 id="内存断点"><a href="#内存断点" class="headerlink" title="内存断点"></a>内存断点</h2><p>&emsp;&emsp;内存断点（也称为 <strong>memory breakpoint</strong> 或数据断点）是用于监控特定内存区域访问的工具。它可以捕获对目标内存地址的 <strong>读取</strong>、<strong>写入</strong> 或 <strong>执行</strong> 操作。</p>
-<h3 id="设置内存断点"><a href="#设置内存断点" class="headerlink" title="设置内存断点"></a>设置内存断点</h3><p>设置普通断点，右键选择<code>Breakpoint settints</code>，勾选<code>Hardware</code>，选择硬件断点模式，勾选<code>Read</code>和<code>Write</code></p>
-<h2 id="API-断点"><a href="#API-断点" class="headerlink" title="API 断点"></a>API 断点</h2><p>&emsp;&emsp;API 断点是设置在目标程序调用的 API 函数入口或关键位置的断点，目的是拦截程序调用该函数时的执行流程。</p>
-<h3 id="设置API断点"><a href="#设置API断点" class="headerlink" title="设置API断点"></a>设置API断点</h3><p>设置方式与设置普通断点一致。</p>
-<h1 id="IDA-Trace"><a href="#IDA-Trace" class="headerlink" title="IDA-Trace"></a>IDA-Trace</h1><h2 id="Trace"><a href="#Trace" class="headerlink" title="Trace"></a>Trace</h2><p>用于记录程序在运行过程中执行的指令、访问的内存、调用的函数或其他关键事件。</p>
-<h3 id="启用trace"><a href="#启用trace" class="headerlink" title="启用trace"></a>启用trace</h3><p>启动动态调试之后进行trace</p>
-<p>打开<code>Debugger-&gt;Tracing-&gt;Tracing Options</code>，配置trace选项。</p>
-<p><img src="/2024/12/01/IDA%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/9.jpg"></p>
-<p>选择trace方式</p>
-<ul>
-<li>Instruction tracing：跟踪指令执行。</li>
-<li>Function tracing：跟踪函数调用。</li>
-<li>Basic block tracing：跟踪基本块。</li>
-</ul>
-<p><img src="/2024/12/01/IDA%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/10.jpg"></p>
-<p>打开Tracing window，可查看trace到的内容。</p>
-<h1 id="IDA插件"><a href="#IDA插件" class="headerlink" title="IDA插件"></a>IDA插件</h1><h2 id="LazyIDA-py"><a href="#LazyIDA-py" class="headerlink" title="LazyIDA.py"></a>LazyIDA.py</h2><p><a target="_blank" rel="noopener" href="https://github.com/P4nda0s/LazyIDA">https://github.com/P4nda0s/LazyIDA</a>  </p>
-<h3 id="提取数据"><a href="#提取数据" class="headerlink" title="提取数据"></a>提取数据</h3><ul>
-<li>将数据转换为python&#x2F;C的数组形式</li>
-<li>选中数据后，右键，选择Convert，然后选择相应的格式。（注意：这里选中的地址要包含所需地址范围的下一地址）</li>
-</ul>
-<p><img src="/2024/12/01/IDA%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/1.jpg"></p>
-<h3 id="Paste-Data"><a href="#Paste-Data" class="headerlink" title="Paste Data"></a>Paste Data</h3><p>插件修改数据，光标定位到数据窗口中要修改的数据的位置，右键，选择<code>Paste Data</code>，然后输入要修改的内容。</p>
-<h3 id="dump内存"><a href="#dump内存" class="headerlink" title="dump内存"></a>dump内存</h3><p>将光标定位到需要dump的数据的起始地址，右键，选择<code>Lazy Dumper</code></p>
-<p><img src="/2024/12/01/IDA%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/8.jpg"></p>
-<h2 id="Keypatch"><a href="#Keypatch" class="headerlink" title="Keypatch"></a>Keypatch</h2><p><a target="_blank" rel="noopener" href="https://github.com/keystone-engine/keypatch">GitHub - keystone-engine&#x2F;keypatch: Multi-architecture assembler for IDA Pro. Powered by Keystone Engine.</a></p>
-<p>安装python库</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pip install keystone-engine</span><br><span class="line">pip install six</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="Patcher"><a href="#Patcher" class="headerlink" title="Patcher"></a>Patcher</h3><p>在 IDA 反汇编视图中，跳转到需要修改的地址-&gt;右键在<code>Keypatch</code>子目录下选择合适的选项</p>
-<p><img src="/2024/12/01/IDA%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/14.jpg"></p>
-<h1 id="IDA脚本编程"><a href="#IDA脚本编程" class="headerlink" title="IDA脚本编程"></a>IDA脚本编程</h1><h2 id="脚本智能提示，自动补全"><a href="#脚本智能提示，自动补全" class="headerlink" title="脚本智能提示，自动补全"></a>脚本智能提示，自动补全</h2><p>在环境变量里添加<code>IDAPYTHONPATH</code>，值为IDA的python目录的完整路径</p>
-<p><img src="/2024/12/01/IDA%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/11.jpg"></p>
-<p>添加到环境变量</p>
-<p><img src="/2024/12/01/IDA%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/12.jpg"></p>
-<p><strong>另一种方式</strong></p>
-<p>在vscode的settings(json)中把本地IDA Python库的位置添加进去例如我的是 <code>E:\IDA9.0\python</code>, 则settings中添加的项为:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&quot;python.autoComplete.extraPaths&quot;: [&quot;E:\\IDA9.0\\python&quot;],</span><br><span class="line">&quot;python.analysis.extraPaths&quot;: [&quot;E:\\IDA9.0\\python&quot;],</span><br></pre></td></tr></table></figure>
-
-<p>然后导入ida相关的包就可以自动补全了</p>
-<p>参考文章：<a target="_blank" rel="noopener" href="https://blog.itewqq.cn/vscode-idapython-%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">VSCode IDAPython 开发环境配置 – itewqq’s blog</a></p>
-<h2 id="IDA-Python"><a href="#IDA-Python" class="headerlink" title="IDA Python"></a>IDA Python</h2><h3 id="寄存器"><a href="#寄存器" class="headerlink" title="寄存器"></a>寄存器</h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">idc.get_reg_value(<span class="string">&#x27;rax&#x27;</span>)</span><br><span class="line">idaapi.set_reg_val(<span class="string">&quot;rax&quot;</span>,<span class="number">1234</span>)</span><br></pre></td></tr></table></figure>
-
-<h3 id="调试内存"><a href="#调试内存" class="headerlink" title="调试内存"></a>调试内存</h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">idc.read_dbg_byte(addr)</span><br><span class="line">idc.read_dbg_dword(addr)</span><br><span class="line">idc.read_dbg_qword(addr)</span><br><span class="line">idc.read_dbg_memory(addr, size)</span><br><span class="line">idc.patch_dbg_byte(addr, val)  <span class="comment"># 只能单字节patch，可对这个api进行封装</span></span><br></pre></td></tr></table></figure>
-
-
-
-<p><strong>封装idc.patch_dbg_byte(addr, val)</strong></p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">patch_dbg_mem</span>(<span class="params">addr, data</span>):</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(data)):</span><br><span class="line">  		idc.patch_dbg_byte(addr + i, data[i])</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">read_dbg_mem</span>(<span class="params">addr, size</span>):</span><br><span class="line">    dd = []</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(size):</span><br><span class="line">    	dd.append(idc.read_dbg_byte(addr + i))</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">bytes</span>(dd)</span><br></pre></td></tr></table></figure>
-
-<h3 id="本地内存"><a href="#本地内存" class="headerlink" title="本地内存"></a>本地内存</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">idc.get_qword(addr)</span><br><span class="line">idc.patch_qword(addr, val)</span><br><span class="line">idc.patch_dword(addr, val)</span><br><span class="line">idc.patch_word(addr, val)</span><br><span class="line">idc.patch_byte(addr, val)</span><br><span class="line">idc.get_db_byte(addr)</span><br><span class="line">idc.get_bytes(addr, size)</span><br></pre></td></tr></table></figure>
-
-<h3 id="反汇编"><a href="#反汇编" class="headerlink" title="反汇编"></a>反汇编</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">GetDisasm(addr) <span class="comment"># 获取反汇编文本</span></span><br><span class="line">idc.next_head(ea) <span class="comment"># 获取下一条指令地址</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="交叉引用"><a href="#交叉引用" class="headerlink" title="交叉引用"></a>交叉引用</h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> ref <span class="keyword">in</span> idautils.XrefsTo(ea):</span><br><span class="line">	<span class="built_in">print</span>(<span class="built_in">hex</span>(ref.frm)) <span class="comment"># frm是交叉引用的来源地址</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="其他常用接口"><a href="#其他常用接口" class="headerlink" title="其他常用接口"></a>其他常用接口</h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">idc.add_bpt(addr) <span class="comment"># 添加断点</span></span><br><span class="line">idaapi.get_imagebase() <span class="comment"># 获取基地址</span></span><br><span class="line">idc.create_insn(addr) <span class="comment"># C, Make Code</span></span><br><span class="line">ida_funcs.add_func(addr) <span class="comment"># P , create function</span></span><br><span class="line">ida_bytes.create_strlit(addr) <span class="comment"># 创建字符串，A键效果</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="函数遍历"><a href="#函数遍历" class="headerlink" title="函数遍历"></a>函数遍历</h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> func <span class="keyword">in</span> idautils.Functions():</span><br><span class="line">	<span class="built_in">print</span>(<span class="string">&quot;0x%x,%s&quot;</span> % (func,idc.get_func_name(func)))</span><br></pre></td></tr></table></figure>
-
-<h3 id="基本块的遍历"><a href="#基本块的遍历" class="headerlink" title="基本块的遍历"></a>基本块的遍历</h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">fn = addr</span><br><span class="line">f_blocks = idaapi.FlowChart(idaapi.get_func(fn), flags = idaapi.FC_PREDS)</span><br><span class="line"><span class="keyword">for</span> block <span class="keyword">in</span> f_blocks:</span><br><span class="line">	<span class="built_in">print</span> <span class="built_in">hex</span>(block.start_ea)</span><br></pre></td></tr></table></figure>
-
-<h3 id="基本块的前驱"><a href="#基本块的前驱" class="headerlink" title="基本块的前驱"></a>基本块的前驱</h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> pred <span class="keyword">in</span> block.preds():</span><br><span class="line">	<span class="built_in">print</span> <span class="built_in">hex</span>(pred.start_ea)</span><br></pre></td></tr></table></figure>
-
-<h3 id="基本块的后继"><a href="#基本块的后继" class="headerlink" title="基本块的后继"></a>基本块的后继</h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> succ <span class="keyword">in</span> block.succs():</span><br><span class="line">	<span class="built_in">print</span> <span class="built_in">hex</span>(succ.start_ea)</span><br></pre></td></tr></table></figure>
-
-<h3 id="指令遍历"><a href="#指令遍历" class="headerlink" title="指令遍历"></a>指令遍历</h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> ins <span class="keyword">in</span> idautils.FuncItems(addr):</span><br><span class="line">	<span class="built_in">print</span>(<span class="built_in">hex</span>(ins))</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -2495,7 +2364,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">92</span>
+          <span class="site-state-item-count">95</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -2508,7 +2377,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">85</span>
+        <span class="site-state-item-count">87</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -2549,13 +2418,13 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">739k</span>
+    <span title="站点总字数">795k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">11:12</span>
+    <span title="站点阅读时长">12:03</span>
 </div>
 
 

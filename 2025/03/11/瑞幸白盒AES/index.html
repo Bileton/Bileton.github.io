@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/wxlog.jpg">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/wxlog.jpg">
+  <link rel="mask-icon" href="/images/wxlog.jpg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="App信息包名：com.lucky.luckyclient  过检测root检测使用狐妖面具隐藏 frida检测使用小工具绕过 脱壳使用脱壳网站进行脱壳 56.al 抓包 12345678910111213141516171819202122url:https:&#x2F;&#x2F;capi.lkcoffee.com&#x2F;resource&#x2F;m&#x2F;sys&#x2F;base&#x2F;validcodeheaders:x-lk-akv	526">
+<meta property="og:type" content="article">
+<meta property="og:title" content="瑞幸白盒AES">
+<meta property="og:url" content="http://example.com/2025/03/11/%E7%91%9E%E5%B9%B8%E7%99%BD%E7%9B%92AES/index.html">
+<meta property="og:site_name" content="白乐天">
+<meta property="og:description" content="App信息包名：com.lucky.luckyclient  过检测root检测使用狐妖面具隐藏 frida检测使用小工具绕过 脱壳使用脱壳网站进行脱壳 56.al 抓包 12345678910111213141516171819202122url:https:&#x2F;&#x2F;capi.lkcoffee.com&#x2F;resource&#x2F;m&#x2F;sys&#x2F;base&#x2F;validcodeheaders:x-lk-akv	526">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2025/03/11/%E7%91%9E%E5%B9%B8%E7%99%BD%E7%9B%92AES/1.jpg">
+<meta property="og:image" content="http://example.com/2025/03/11/%E7%91%9E%E5%B9%B8%E7%99%BD%E7%9B%92AES/2.jpg">
+<meta property="og:image" content="http://example.com/2025/03/11/%E7%91%9E%E5%B9%B8%E7%99%BD%E7%9B%92AES/3.jpg">
+<meta property="og:image" content="http://example.com/2025/03/11/%E7%91%9E%E5%B9%B8%E7%99%BD%E7%9B%92AES/4.jpg">
+<meta property="og:image" content="http://example.com/2025/03/11/%E7%91%9E%E5%B9%B8%E7%99%BD%E7%9B%92AES/5.jpg">
+<meta property="og:image" content="http://example.com/2025/03/11/%E7%91%9E%E5%B9%B8%E7%99%BD%E7%9B%92AES/6.jpg">
+<meta property="og:image" content="http://example.com/2025/03/11/%E7%91%9E%E5%B9%B8%E7%99%BD%E7%9B%92AES/7.jpg">
+<meta property="og:image" content="http://example.com/2025/03/11/%E7%91%9E%E5%B9%B8%E7%99%BD%E7%9B%92AES/8.jpg">
+<meta property="og:image" content="http://example.com/2025/03/11/%E7%91%9E%E5%B9%B8%E7%99%BD%E7%9B%92AES/9.jpg">
+<meta property="og:image" content="http://example.com/2025/03/11/%E7%91%9E%E5%B9%B8%E7%99%BD%E7%9B%92AES/10.jpg">
+<meta property="og:image" content="http://example.com/2025/03/11/%E7%91%9E%E5%B9%B8%E7%99%BD%E7%9B%92AES/11.jpg">
+<meta property="og:image" content="http://example.com/2025/03/11/%E7%91%9E%E5%B9%B8%E7%99%BD%E7%9B%92AES/12.jpg">
+<meta property="og:image" content="http://example.com/2025/03/11/%E7%91%9E%E5%B9%B8%E7%99%BD%E7%9B%92AES/13.jpg">
+<meta property="og:image" content="http://example.com/2025/03/11/%E7%91%9E%E5%B9%B8%E7%99%BD%E7%9B%92AES/14.jpg">
+<meta property="og:image" content="http://example.com/2025/03/11/%E7%91%9E%E5%B9%B8%E7%99%BD%E7%9B%92AES/15.jpg">
+<meta property="og:image" content="http://example.com/2025/03/11/%E7%91%9E%E5%B9%B8%E7%99%BD%E7%9B%92AES/16.jpg">
+<meta property="og:image" content="http://example.com/2025/03/11/%E7%91%9E%E5%B9%B8%E7%99%BD%E7%9B%92AES/17.jpg">
+<meta property="og:image" content="http://example.com/2025/03/11/%E7%91%9E%E5%B9%B8%E7%99%BD%E7%9B%92AES/18.jpg">
+<meta property="og:image" content="http://example.com/2025/03/11/%E7%91%9E%E5%B9%B8%E7%99%BD%E7%9B%92AES/19.jpg">
+<meta property="og:image" content="http://example.com/2025/03/11/%E7%91%9E%E5%B9%B8%E7%99%BD%E7%9B%92AES/20.jpg">
+<meta property="og:image" content="http://example.com/2025/03/11/%E7%91%9E%E5%B9%B8%E7%99%BD%E7%9B%92AES/21.jpg">
+<meta property="og:image" content="http://example.com/2025/03/11/%E7%91%9E%E5%B9%B8%E7%99%BD%E7%9B%92AES/22.jpg">
+<meta property="og:image" content="http://example.com/2025/03/11/%E7%91%9E%E5%B9%B8%E7%99%BD%E7%9B%92AES/23.jpg">
+<meta property="og:image" content="http://example.com/2025/03/11/%E7%91%9E%E5%B9%B8%E7%99%BD%E7%9B%92AES/24.jpg">
+<meta property="article:published_time" content="2025-03-11T08:02:53.000Z">
+<meta property="article:modified_time" content="2025-03-12T16:19:42.633Z">
+<meta property="article:author" content="Bileton">
+<meta property="article:tag" content="识货app">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2025/03/11/%E7%91%9E%E5%B9%B8%E7%99%BD%E7%9B%92AES/1.jpg">
+
+<link rel="canonical" href="http://example.com/2025/03/11/%E7%91%9E%E5%B9%B8%E7%99%BD%E7%9B%92AES/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>瑞幸白盒AES | 白乐天</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">白乐天</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">道阻且长，行则将至。</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">87</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">35</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">95</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/love.js"></script>
+</div>
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/03/11/%E7%91%9E%E5%B9%B8%E7%99%BD%E7%9B%92AES/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/android.svg">
+      <meta itemprop="name" content="Bileton">
+      <meta itemprop="description" content="路漫漫其修远夕！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="白乐天">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          瑞幸白盒AES
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2025-03-11 16:02:53" itemprop="dateCreated datePublished" datetime="2025-03-11T16:02:53+08:00">2025-03-11</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2025-03-13 00:19:42" itemprop="dateModified" datetime="2025-03-13T00:19:42+08:00">2025-03-13</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%80%86%E5%90%91%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/" itemprop="url" rel="index"><span itemprop="name">逆向实战案例</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>39k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>35 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="App信息"><a href="#App信息" class="headerlink" title="App信息"></a>App信息</h1><p>包名：com.lucky.luckyclient</p>
+<p><img src="/2025/03/11/%E7%91%9E%E5%B9%B8%E7%99%BD%E7%9B%92AES/1.jpg"></p>
+<h1 id="过检测"><a href="#过检测" class="headerlink" title="过检测"></a>过检测</h1><h2 id="root检测"><a href="#root检测" class="headerlink" title="root检测"></a>root检测</h2><p>使用狐妖面具隐藏</p>
+<h2 id="frida检测"><a href="#frida检测" class="headerlink" title="frida检测"></a>frida检测</h2><p>使用小工具绕过</p>
+<h2 id="脱壳"><a href="#脱壳" class="headerlink" title="脱壳"></a>脱壳</h2><p>使用脱壳网站进行脱壳</p>
+<p><a target="_blank" rel="noopener" href="https://56.al/">56.al</a></p>
+<h1 id="抓包"><a href="#抓包" class="headerlink" title="抓包"></a>抓包</h1><p><img src="/2025/03/11/%E7%91%9E%E5%B9%B8%E7%99%BD%E7%9B%92AES/2.jpg"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">url:</span><br><span class="line">https://capi.lkcoffee.com/resource/m/sys/base/validcode</span><br><span class="line"></span><br><span class="line">headers:</span><br><span class="line">x-lk-akv	5260</span><br><span class="line">x-lk-mid	</span><br><span class="line">x-lk-sid	</span><br><span class="line">event_id	1741678678079</span><br><span class="line">x-lk-csid	08065795-7d98-4363-9c02-30d73c9f252e</span><br><span class="line">sentry-trace	2ea1d59760394ecd9ea18fab48820ffb-a39c080332b849f9-1</span><br><span class="line">baggage	sentry-environment=release,sentry-public_key=d4365939f7c346a4b0c6ee50a412c050,sentry-release=com.lucky.luckyclient%405.2.60%2B200,sentry-sample_rate=1,sentry-trace_id=2ea1d59760394ecd9ea18fab48820ffb,sentry-transaction=LoginActivity.tvReqAuthCode</span><br><span class="line">content-type	application/x-www-form-urlencoded</span><br><span class="line">content-length	228</span><br><span class="line">accept-encoding	gzip</span><br><span class="line">cookie	uid=</span><br><span class="line">user-agent	okhttp/4.9.3</span><br><span class="line"></span><br><span class="line">form:</span><br><span class="line">sign	7979560225808340751212263377520956346</span><br><span class="line">q	DURM6YZm8EJjngxNSvqLuaCpyTbBaQ1RNCfPIJl6_JATi85kT_JO5bo-nYuFGfCYknf1KQDtj0IXDItKNgs2ehphXU_Y0FeSA9JBPnZAggLlJK1fwwruC4J8vDz17ovkHjqEZp7bh3iAQYZY22P_NQ==</span><br><span class="line">t	1741680800108</span><br><span class="line">cid	210101</span><br></pre></td></tr></table></figure>
+
+<p><strong>又抓了个登录包</strong></p>
+<p><img src="/2025/03/11/%E7%91%9E%E5%B9%B8%E7%99%BD%E7%9B%92AES/3.jpg"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">url:</span><br><span class="line">https://capi.lkcoffee.com/resource/m/user/login</span><br><span class="line"></span><br><span class="line">headers:</span><br><span class="line">x-lk-akv	5260</span><br><span class="line">x-lk-mid	</span><br><span class="line">x-lk-sid	</span><br><span class="line">event_id	1741678678079</span><br><span class="line">x-lk-csid	08065795-7d98-4363-9c02-30d73c9f252e</span><br><span class="line">sentry-trace	7a99181659144d6fb9c42a30c0da15af-c53cfa10e78b4b98-1</span><br><span class="line">baggage	sentry-environment=release,sentry-public_key=d4365939f7c346a4b0c6ee50a412c050,sentry-release=com.lucky.luckyclient%405.2.60%2B200,sentry-sample_rate=1,sentry-trace_id=7a99181659144d6fb9c42a30c0da15af,sentry-transaction=LoginActivity.btnConfirm</span><br><span class="line">content-type	application/x-www-form-urlencoded</span><br><span class="line">content-length	685</span><br><span class="line">accept-encoding	gzip</span><br><span class="line">cookie	uid=e208b39d-8f40-4e93-ab22-430698abc6821741681516422</span><br><span class="line">user-agent	okhttp/4.9.3</span><br><span class="line"></span><br><span class="line">form:</span><br><span class="line">sign	5893325431374183456150891639716307865</span><br><span class="line">q	mOD2mwoFGDWinNSdsn9lI0tvoAQhA0e3_boidwfb61WKbU4LjgnSja-3Ynxdslq_rNFXWN49AcmYjkCEqBG7TCjDzT556tyHhu6wVtv1Kr-QAaK-RRvpSO0nqled_vXMwxgpjUWE2FvF-FfUZNfY8dVfEt7SpOlNsfiKHCWxwPOII5xpWmt4WZawpkq3dPnS5AP3ncMj8MctnB6Z2o2Wu9_s2BEfhweLyBoV8eYgVet8hvp2m_UfiZifKR3_FwD3q6x-iVVECbSjGYXyk-1JaYpcQUQZv8PMLtHfQ7CsfKCtkMlFETWuGNTNDy4kmiAjrFFDGen8D8yJ4-2rJAzsTzRsQI2hI1nvLcPKdoeObzl-C9-kLugMoKrecLKjIKtM0cwbqeGaSuo6F87GTbhmgh2lY85Jbc521efoup-KhMeHzApRp0TaofSDkO_ykmYiN_GsIr77RpT7tTu3a84FV-GfkjX_LgWbZhnPwFyx5boJ41xq7gZLF92ejvlFou4I6vKIfxxYn4-4e96gbbgW9eUepOub_ThVPyIGgrx_KVc=</span><br><span class="line">uid	e208b39d-8f40-4e93-ab22-430698abc6821741681516422</span><br><span class="line">t	1741681608374</span><br><span class="line">cid	210101</span><br><span class="line"></span><br><span class="line">response:</span><br><span class="line">vaTaFF5L8jW_LFnfCuwtZGulP6wG3s-O__HUjYaf8swfjrR3WG3qoYY5X8Gk_nN52wNx5lYRD4GsXuZWopXQ-SxeK58cf_zVpelAhEpcD_zuavE12lvsriUjHspxgNszHjcK9XTN3jT3S6xNKM8nqbadCDGMS1RQJAc5GTiNyBAqgx6y-P0CNYjDfc5iGXVuwIUBR3WoxJM1Yyfdvk8pvALlMMkF-ja2j63TioNTyKaBrCFJtDbYhQROjKSF7tjk6MQVbFyhHocTm7wBl54h4JzbhdatBO2wRaaym9fYUygUqaZTvhMxF11CWw1sPk5a</span><br></pre></td></tr></table></figure>
+
+<p>请求参数<code>sign</code>，<code>q</code>，响应体都是加密的</p>
+<p>又抓了个包</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">utl:</span><br><span class="line">https://capi.lkcoffee.com/resource/m/user/login</span><br><span class="line"></span><br><span class="line">headers=&#123;</span><br><span class="line">  &quot;:authority&quot;: &quot;capi.lkcoffee.com&quot;,</span><br><span class="line">  &quot;:method&quot;: &quot;POST&quot;,</span><br><span class="line">  &quot;:path&quot;: &quot;/resource/m/user/login&quot;,</span><br><span class="line">  &quot;:scheme&quot;: &quot;https&quot;,</span><br><span class="line">  &quot;x-lk-akv&quot;: &quot;5265&quot;,</span><br><span class="line">  &quot;x-lk-mid&quot;: &quot;&quot;,</span><br><span class="line">  &quot;x-lk-sid&quot;: &quot;&quot;,</span><br><span class="line">  &quot;event_id&quot;: &quot;1741773373890&quot;,</span><br><span class="line">  &quot;x-lk-csid&quot;: &quot;b23ee6cb-c0f2-4e43-9580-727ce47f7b73&quot;,</span><br><span class="line">  &quot;sentry-trace&quot;: &quot;5d4028a1977c401da7dc5299c9fe942f-11ad2f67d12f4343-0&quot;,</span><br><span class="line">  &quot;baggage&quot;: &quot;sentry-environment=release,sentry-public_key=d4365939f7c346a4b0c6ee50a412c050,sentry-release=com.lucky.luckyclient%405.2.65%2B201,sentry-sample_rate=0,sentry-trace_id=5d4028a1977c401da7dc5299c9fe942f,sentry-transaction=LoginActivity.btnConfirm&quot;,</span><br><span class="line">  &quot;content-type&quot;: &quot;application/x-www-form-urlencoded&quot;,</span><br><span class="line">  &quot;content-length&quot;: &quot;684&quot;,</span><br><span class="line">  &quot;accept-encoding&quot;: &quot;gzip&quot;,</span><br><span class="line">  &quot;cookie&quot;: &quot;uid=ede6c26f-85eb-4f41-b103-051605ae1c821741773364713&quot;,</span><br><span class="line">  &quot;user-agent&quot;: &quot;okhttp/4.9.3&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">body=&#123;</span><br><span class="line">  &quot;sign&quot;: &quot;7964953862091852252935269275418960748&quot;,</span><br><span class="line">  &quot;q&quot;: &quot;-YqmJeyS17YrIsczlOeETZzPH0DbB-Hyhw09ZJUl9kZ4SZ_KkVh07uBqj8ejykTw1bl02vu1dt67BbIKA-1FqlTuFGh8VoJemyEkmhqnf6w9u98dKvCdpFPDiRktU-PGDtnD9Y8rBYgBHuPyfnMR15jTMaF0HV4SMw6qU_S_3p771jHSE9Kl8Yx6zKgkBv71qLhQP68VNsifnmQFbtEBdQt5hK1-9WLGzrhB1jLiL1EJTtmqGymT21ymquQHXcDudPQ7clgzz0Xzjt_NO-L5mbbklzohRwsDO0eQtHxD58zL6QlQoWsRTqvlVMkUz2wSNPsApVb2hq30D4x9RSvDE3sKJBGAzFqDG_XwE6yoojDNPn2wH0H0o3-wtCso0hRJXlvPTHz_zMYdTcMNKTwccWgu0mmbH5NKcVCxrZ6R2MeCfUb8ACp7PKjZeAecaHq_REu3Kkoi3xXPPK_MU_eLl5A1MFw_d7azTSHHUFmL3RdiC15vvA1bajH1NDbLEAxMV8nUOJVfuWxXDGS0Diknyj0V95At_KBG4y7Ylo-4fv4=&quot;,</span><br><span class="line">  &quot;uid&quot;: &quot;ede6c26f-85eb-4f41-b103-051605ae1c821741773364713&quot;,</span><br><span class="line">  &quot;t&quot;: &quot;1741773407429&quot;,</span><br><span class="line">  &quot;cid&quot;: &quot;210101&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="定位"><a href="#定位" class="headerlink" title="定位"></a>定位</h1><p>jadx打开脱壳后的dex</p>
+<p>Java通过System.load()和System.loadLibrary()来加载动态库，直接搜索<code>System.loadLibrary</code></p>
+<p>发现一个可疑类</p>
+<p><img src="/2025/03/11/%E7%91%9E%E5%B9%B8%E7%99%BD%E7%9B%92AES/4.jpg"></p>
+<p>双击进去看到so的名字是加密的，还有四个native方法和三个用于加解密的方法</p>
+<p><img src="/2025/03/11/%E7%91%9E%E5%B9%B8%E7%99%BD%E7%9B%92AES/5.jpg"></p>
+<p><img src="/2025/03/11/%E7%91%9E%E5%B9%B8%E7%99%BD%E7%9B%92AES/6.jpg"></p>
+<p>主动调用getString2()方法来解密so名字</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">call_getString2</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="title class_">Java</span>.<span class="title function_">perform</span>(<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="keyword">let</span> <span class="title class_">StubApp</span> = <span class="title class_">Java</span>.<span class="title function_">use</span>(<span class="string">&quot;com.stub.StubApp&quot;</span>);</span><br><span class="line">        <span class="keyword">let</span> soName = <span class="title class_">StubApp</span>.<span class="title function_">getString2</span>(<span class="string">&quot;32264&quot;</span>);</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;so:&quot;</span>,soName);</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>调用了，但是输出结果是乱码</p>
+<p>用hook_RegisterNatives打印动态注册函数及其所在的so</p>
+<p>然后找到了<code>libcryptoDD.so</code></p>
+<p><img src="/2025/03/11/%E7%91%9E%E5%B9%B8%E7%99%BD%E7%9B%92AES/7.jpg"></p>
+<h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><p>看了源码这几个native方法中只有<code>localAESWork</code>和<code>md5_crypt</code>被调用了</p>
+<p>猜测sign是由<code>md5_crypt</code>生成的</p>
+<p><code>q</code>和响应体是由<code>localAESWork</code>生成的</p>
+<p>接下来对<code>localAESWork</code>、<code>md5_crypt</code>、<code>a</code>、<code>b</code>、<code>c</code>进行hook</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">bArrToString</span>(<span class="params">bArr</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="title class_">Java</span>.<span class="title function_">use</span>(<span class="string">&quot;java.lang.String&quot;</span>).$new(bArr);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">hook_localAESWork</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="title class_">Java</span>.<span class="title function_">perform</span>(<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="keyword">let</span> <span class="title class_">CryptoHelper</span> = <span class="title class_">Java</span>.<span class="title function_">use</span>(<span class="string">&quot;com.luckincoffee.safeboxlib.CryptoHelper&quot;</span>);</span><br><span class="line">        <span class="title class_">CryptoHelper</span>[<span class="string">&quot;localAESWork&quot;</span>].<span class="property">implementation</span> = <span class="keyword">function</span> (<span class="params">bArr, i10, bArr2</span>) &#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`CryptoHelper.localAESWork is called!`</span>);</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`bArr=<span class="subst">$&#123;bArr&#125;</span>`</span>);</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`bArr=<span class="subst">$&#123;bArrToString(bArr)&#125;</span>`</span>);</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`i10=<span class="subst">$&#123;i10&#125;</span>`</span>);</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`bArr2=<span class="subst">$&#123;bArr2&#125;</span>`</span>);</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`bArr2=<span class="subst">$&#123;bArrToString(bArr2)&#125;</span>`</span>);</span><br><span class="line">            <span class="keyword">let</span> result = <span class="variable language_">this</span>[<span class="string">&quot;localAESWork&quot;</span>](bArr, i10, bArr2);</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`CryptoHelper.localAESWork result=<span class="subst">$&#123;result&#125;</span>`</span>);</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`CryptoHelper.localAESWork result=<span class="subst">$&#123;bArrToString(result)&#125;</span>`</span>);</span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">hook_localAESWork</span>()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">hook_md5_crypt</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="title class_">Java</span>.<span class="title function_">perform</span>(<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="keyword">let</span> <span class="title class_">CryptoHelper</span> = <span class="title class_">Java</span>.<span class="title function_">use</span>(<span class="string">&quot;com.luckincoffee.safeboxlib.CryptoHelper&quot;</span>);</span><br><span class="line">        <span class="title class_">CryptoHelper</span>[<span class="string">&quot;md5_crypt&quot;</span>].<span class="property">implementation</span> = <span class="keyword">function</span> (<span class="params">bArr, i10, bArr2</span>) &#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`CryptoHelper.md5_crypt is called!`</span>);</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`bArr=<span class="subst">$&#123;bArr&#125;</span>`</span>);</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`bArr=<span class="subst">$&#123;bArrToString(bArr)&#125;</span>`</span>);</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`i10=<span class="subst">$&#123;i10&#125;</span>`</span>);</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`bArr2=<span class="subst">$&#123;bArr2&#125;</span>`</span>);</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`bArr2=<span class="subst">$&#123;bArrToString(bArr2)&#125;</span>`</span>);</span><br><span class="line">            <span class="keyword">let</span> result = <span class="variable language_">this</span>[<span class="string">&quot;md5_crypt&quot;</span>](bArr, i10, bArr2);</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`CryptoHelper.md5_crypt result=<span class="subst">$&#123;result&#125;</span>`</span>);</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`CryptoHelper.md5_crypt result=<span class="subst">$&#123;bArrToString(result)&#125;</span>`</span>);</span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">hook_md5_crypt</span>()</span><br></pre></td></tr></table></figure>
+
+<p>结果</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">CryptoHelper.md5_crypt is called!</span><br><span class="line">bArr=99,105,100,61,50,49,48,49,48,49,59,113,61,88,122,48,82,56,50,102,83,52,56,53,98,50,51,98,97,56,49,55,101,52,74,122,80,72,48,68,98,66,45,72,121,104,119,48,57,90,74,85,108,57,107,90,52,83,90,95,75,107,86,104,48,55,117,66,113,106,56,101,106,121,107,84,119,49,98,108,48,50,118,117,49,100,116,54,55,66,98,73,75,65,45,49,70,113,108,84,117,70,71,104,56,86,111,74,101,109,121,69,107,109,104,113,110,102,54,119,57,117,57,56,100,75,118,67,100,112,70,80,68,105,82,107,116,85,45,80,71,68,116,110,68,57,89,56,114,66,89,103,66,72,117,80,121,102,110,77,82,49,53,106,84,77,97,70,48,72,86,52,83,77,119,54,113,85,95,83,95,51,112,55,55,49,106,72,83,69,57,75,108,56,89,120,54,122,75,103,107,66,118,55,49,113,76,104,81,80,54,56,86,78,115,105,102,110,109,81,70,98,116,69,66,100,81,116,53,104,75,49,45,57,87,76,71,122,114,104,66,49,106,76,105,76,49,69,74,84,116,109,113,71,121,109,84,50,49,121,109,113,117,81,72,88,99,68,117,107,45,121,81,81,79,69,86,81,104,77,118,78,56,112,95,100,69,107,68,50,51,88,54,110,68,86,110,116,84,51,70,84,67,57,48,100,109,77,73,116,80,68,76,54,81,108,81,111,87,115,82,84,113,118,108,86,77,107,85,122,50,119,83,78,80,115,65,112,86,98,50,104,113,51,48,68,52,120,57,82,83,118,68,69,51,115,75,74,66,71,65,122,70,113,68,71,95,88,119,69,54,121,111,111,106,68,78,80,110,50,119,72,48,72,48,111,51,45,119,116,67,115,111,48,104,82,74,88,108,118,80,84,72,122,95,122,77,89,100,84,99,77,78,75,84,119,99,99,87,103,117,48,109,109,98,72,53,78,75,99,86,67,120,114,90,54,82,50,77,101,67,102,85,98,56,65,67,112,55,80,75,106,90,101,65,101,99,97,72,113,95,82,69,117,51,75,107,111,105,51,120,88,80,80,75,95,77,85,95,101,76,108,53,65,49,77,70,119,95,100,55,97,122,84,83,72,72,85,70,109,76,51,82,100,105,67,49,53,118,118,65,49,98,97,106,72,49,78,68,98,76,69,65,120,77,86,56,110,85,79,74,86,102,117,87,120,88,68,71,83,48,68,105,107,110,121,106,48,86,57,53,65,116,95,75,66,71,52,121,55,89,108,111,45,52,102,118,52,61,59,116,61,49,55,52,49,54,57,57,53,50,52,55,56,57,59,117,105,100,61,49,102,48,48,56,48,102,56,45,50,51,56,102,45,52,56,51,97,45,98,101,48,52,45,57,97,55,101,50,99,97,52,99,48,101,54,49,55,52,49,54,56,56,52,49,51,55,57,49</span><br><span class="line">bArr=cid=210101;q=Xz0R82fS485b23ba817e4JzPH0DbB-Hyhw09ZJUl9kZ4SZ_KkVh07uBqj8ejykTw1bl02vu1dt67BbIKA-1FqlTuFGh8VoJemyEkmhqnf6w9u98dKvCdpFPDiRktU-PGDtnD9Y8rBYgBHuPyfnMR15jTMaF0HV4SMw6qU_S_3p771jHSE9Kl8Yx6zKgkBv71qLhQP68VNsifnmQFbtEBdQt5hK1-9WLGzrhB1jLiL1EJTtmqGymT21ymquQHXcDuk-yQQOEVQhMvN8p_dEkD23X6nDVntT3FTC90dmMItPDL6QlQoWsRTqvlVMkUz2wSNPsApVb2hq30D4x9RSvDE3sKJBGAzFqDG_XwE6yoojDNPn2wH0H0o3-wtCso0hRJXlvPTHz_zMYdTcMNKTwccWgu0mmbH5NKcVCxrZ6R2MeCfUb8ACp7PKjZeAecaHq_REu3Kkoi3xXPPK_MU_eLl5A1MFw_d7azTSHHUFmL3RdiC15vvA1bajH1NDbLEAxMV8nUOJVfuWxXDGS0Diknyj0V95At_KBG4y7Ylo-4fv4=;t=1741699524789;uid=1f0080f8-238f-483a-be04-9a7e2ca4c0e61741688413791</span><br><span class="line">i10=1</span><br><span class="line">bArr2=-87,-114,-67,121,108,-104,-58,66,-48,15,40,31,112,-58,-81,116,73,9,-6,80,-38,87,98,16,114,-89,108,124,97,-82,52,59</span><br><span class="line">bArr2=���yl��B�(pƯtI   �P�Wbr�l|a�4;</span><br><span class="line">CryptoHelper.md5_crypt</span><br><span class="line">result=49,53,55,50,54,49,52,51,49,49,53,50,55,54,56,53,54,49,50,53,53,52,48,48,53,56,51,49,49,52,49,55,49,51,48,53,53,50</span><br><span class="line">CryptoHelper.md5_crypt result=15726143115276856125540058311417130552</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">bArrToString</span>(<span class="params">bArr</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="title class_">Java</span>.<span class="title function_">use</span>(<span class="string">&quot;java.lang.String&quot;</span>).$new(bArr);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">hook_localAESWork</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="title class_">Java</span>.<span class="title function_">perform</span>(<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="keyword">let</span> <span class="title class_">CryptoHelper</span> = <span class="title class_">Java</span>.<span class="title function_">use</span>(<span class="string">&quot;com.luckincoffee.safeboxlib.CryptoHelper&quot;</span>);</span><br><span class="line">        <span class="title class_">CryptoHelper</span>[<span class="string">&quot;localAESWork&quot;</span>].<span class="property">implementation</span> = <span class="keyword">function</span> (<span class="params">bArr, i10, bArr2</span>) &#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`CryptoHelper.localAESWork is called!`</span>);</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`bArr=<span class="subst">$&#123;bArr&#125;</span>`</span>);</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`bArr=<span class="subst">$&#123;bArrToString(bArr)&#125;</span>`</span>);</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`i10=<span class="subst">$&#123;i10&#125;</span>`</span>);</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`bArr2=<span class="subst">$&#123;bArr2&#125;</span>`</span>);</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`bArr2=<span class="subst">$&#123;bArrToString(bArr2)&#125;</span>`</span>);</span><br><span class="line">            <span class="keyword">let</span> result = <span class="variable language_">this</span>[<span class="string">&quot;localAESWork&quot;</span>](bArr, i10, bArr2);</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`CryptoHelper.localAESWork result=<span class="subst">$&#123;result&#125;</span>`</span>);</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`CryptoHelper.localAESWork result=<span class="subst">$&#123;bArrToString(result)&#125;</span>`</span>);</span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">hook_localAESWork</span>()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">hook_md5_crypt</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="title class_">Java</span>.<span class="title function_">perform</span>(<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="keyword">let</span> <span class="title class_">CryptoHelper</span> = <span class="title class_">Java</span>.<span class="title function_">use</span>(<span class="string">&quot;com.luckincoffee.safeboxlib.CryptoHelper&quot;</span>);</span><br><span class="line">        <span class="title class_">CryptoHelper</span>[<span class="string">&quot;md5_crypt&quot;</span>].<span class="property">implementation</span> = <span class="keyword">function</span> (<span class="params">bArr, i10, bArr2</span>) &#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`CryptoHelper.md5_crypt is called!`</span>);</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`bArr=<span class="subst">$&#123;bArr&#125;</span>`</span>);</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`bArr=<span class="subst">$&#123;bArrToString(bArr)&#125;</span>`</span>);</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`i10=<span class="subst">$&#123;i10&#125;</span>`</span>);</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`bArr2=<span class="subst">$&#123;bArr2&#125;</span>`</span>);</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`bArr2=<span class="subst">$&#123;bArrToString(bArr2)&#125;</span>`</span>);</span><br><span class="line">            <span class="keyword">let</span> result = <span class="variable language_">this</span>[<span class="string">&quot;md5_crypt&quot;</span>](bArr, i10, bArr2);</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`CryptoHelper.md5_crypt result=<span class="subst">$&#123;result&#125;</span>`</span>);</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`CryptoHelper.md5_crypt result=<span class="subst">$&#123;bArrToString(result)&#125;</span>`</span>);</span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">hook_md5_crypt</span>()</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">hook_a</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="title class_">Java</span>.<span class="title function_">perform</span>(<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="keyword">let</span> <span class="title class_">CryptoHelper</span> = <span class="title class_">Java</span>.<span class="title function_">use</span>(<span class="string">&quot;com.luckincoffee.safeboxlib.CryptoHelper&quot;</span>);</span><br><span class="line">        <span class="title class_">CryptoHelper</span>[<span class="string">&quot;a&quot;</span>].<span class="property">implementation</span> = <span class="keyword">function</span> (<span class="params">str, i10</span>) &#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`CryptoHelper.a is called: str=<span class="subst">$&#123;str&#125;</span>, i10=<span class="subst">$&#123;i10&#125;</span>`</span>);</span><br><span class="line">            <span class="keyword">let</span> result = <span class="variable language_">this</span>[<span class="string">&quot;a&quot;</span>](str, i10);</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`CryptoHelper.a result=<span class="subst">$&#123;result&#125;</span>`</span>);</span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">hook_a</span>()</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">hook_b</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="title class_">Java</span>.<span class="title function_">perform</span>(<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="keyword">let</span> <span class="title class_">CryptoHelper</span> = <span class="title class_">Java</span>.<span class="title function_">use</span>(<span class="string">&quot;com.luckincoffee.safeboxlib.CryptoHelper&quot;</span>);</span><br><span class="line">        <span class="title class_">CryptoHelper</span>[<span class="string">&quot;b&quot;</span>].<span class="property">implementation</span> = <span class="keyword">function</span> (<span class="params">str</span>) &#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`CryptoHelper.b is called: str=<span class="subst">$&#123;str&#125;</span>`</span>);</span><br><span class="line">            <span class="keyword">let</span> result = <span class="variable language_">this</span>[<span class="string">&quot;b&quot;</span>](str);</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`CryptoHelper.b result=<span class="subst">$&#123;result&#125;</span>`</span>);</span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">hook_b</span>()</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">hook_c</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="title class_">Java</span>.<span class="title function_">perform</span>(<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="keyword">let</span> <span class="title class_">CryptoHelper</span> = <span class="title class_">Java</span>.<span class="title function_">use</span>(<span class="string">&quot;com.luckincoffee.safeboxlib.CryptoHelper&quot;</span>);</span><br><span class="line">        <span class="title class_">CryptoHelper</span>[<span class="string">&quot;c&quot;</span>].<span class="property">implementation</span> = <span class="keyword">function</span> (<span class="params">str</span>) &#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`CryptoHelper.c is called: str=<span class="subst">$&#123;str&#125;</span>`</span>);</span><br><span class="line">            <span class="keyword">let</span> result = <span class="variable language_">this</span>[<span class="string">&quot;c&quot;</span>](str);</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`CryptoHelper.c result=<span class="subst">$&#123;result&#125;</span>`</span>);</span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">hook_c</span>()</span><br></pre></td></tr></table></figure>
+
+<p>结果</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">CryptoHelper.c is called: str=&#123;&quot;mobile&quot;:&quot;17888888888&quot;,&quot;countryNo&quot;:&quot;86&quot;,&quot;validateCode&quot;:&quot;123456&quot;,&quot;appversion&quot;:&quot;5265&quot;,&quot;type&quot;:1,&quot;deviceId&quot;:&quot;android_lucky_ef5722c5-96ff-4521-8096-27530a0365b2&quot;,&quot;systemVersion&quot;:&quot;29&quot;,&quot;blackBox&quot;:&quot;oGPHE1741688414xYaSQkj72m7&quot;,&quot;uniqueCode&quot;:&quot;DUQKlOhFPQSnh57_KB6erjHdTADHhPk26j60RFVRS2xPaEZQUVNuaDU3X0tCNmVyakhkVEFESGhQazI2ajYwc2h1&quot;,&quot;regionId&quot;:&quot;CO0001&quot;,&quot;regId&quot;:&quot;&quot;,&quot;deviceBrand&quot;:&quot;google&quot;,&quot;isSecurityVerify&quot;:false&#125;</span><br><span class="line">CryptoHelper.c result=Xz0R82fS485b23ba817e4JzPH0DbB-Hyhw09ZJUl9kZ4SZ_KkVh07uBqj8ejykTw1bl02vu1dt67BbIKA-1FqlTuFGh8VoJemyEkmhqnf6w9u98dKvCdpFPDiRktU-PGDtnD9Y8rBYgBHuPyfnMR15jTMaF0HV4SMw6qU_S_3p771jHSE9Kl8Yx6zKgkBv71qLhQP68VNsifnmQFbtEBdQt5hK1-9WLGzrhB1jLiL1EJTtmqGymT21ymquQHXcDuk-yQQOEVQhMvN8p_dEkD23X6nDVntT3FTC90dmMItPDL6QlQoWsRTqvlVMkUz2wSNPsApVb2hq30D4x9RSvDE3sKJBGAzFqDG_XwE6yoojDNPn2wH0H0o3-wtCso0hRJXlvPTHz_zMYdTcMNKTwccWgu0mmbH5NKcVCxrZ6R2MeCfUb8ACp7PKjZeAecaHq_REu3Kkoi3xXPPK_MU_eLl5A1MFw_d7azTSHHUFmL3RdiC15vvA1bajH1NDbLEAxMV8nUOJVfuWxXDGS0Diknyj0V95At_KBG4y7Ylo-4fv4=</span><br><span class="line">CryptoHelper.md5_crypt is called!</span><br><span class="line">bArr=99,105,100,61,50,49,48,49,48,49,59,113,61,88,122,48,82,56,50,102,83,52,56,53,98,50,51,98,97,56,49,55,101,52,74,122,80,72,48,68,98,66,45,72,121,104,119,48,57,90,74,85,108,57,107,90,52,83,90,95,75,107,86,104,48,55,117,66,113,106,56,101,106,121,107,84,119,49,98,108,48,50,118,117,49,100,116,54,55,66,98,73,75,65,45,49,70,113,108,84,117,70,71,104,56,86,111,74,101,109,121,69,107,109,104,113,110,102,54,119,57,117,57,56,100,75,118,67,100,112,70,80,68,105,82,107,116,85,45,80,71,68,116,110,68,57,89,56,114,66,89,103,66,72,117,80,121,102,110,77,82,49,53,106,84,77,97,70,48,72,86,52,83,77,119,54,113,85,95,83,95,51,112,55,55,49,106,72,83,69,57,75,108,56,89,120,54,122,75,103,107,66,118,55,49,113,76,104,81,80,54,56,86,78,115,105,102,110,109,81,70,98,116,69,66,100,81,116,53,104,75,49,45,57,87,76,71,122,114,104,66,49,106,76,105,76,49,69,74,84,116,109,113,71,121,109,84,50,49,121,109,113,117,81,72,88,99,68,117,107,45,121,81,81,79,69,86,81,104,77,118,78,56,112,95,100,69,107,68,50,51,88,54,110,68,86,110,116,84,51,70,84,67,57,48,100,109,77,73,116,80,68,76,54,81,108,81,111,87,115,82,84,113,118,108,86,77,107,85,122,50,119,83,78,80,115,65,112,86,98,50,104,113,51,48,68,52,120,57,82,83,118,68,69,51,115,75,74,66,71,65,122,70,113,68,71,95,88,119,69,54,121,111,111,106,68,78,80,110,50,119,72,48,72,48,111,51,45,119,116,67,115,111,48,104,82,74,88,108,118,80,84,72,122,95,122,77,89,100,84,99,77,78,75,84,119,99,99,87,103,117,48,109,109,98,72,53,78,75,99,86,67,120,114,90,54,82,50,77,101,67,102,85,98,56,65,67,112,55,80,75,106,90,101,65,101,99,97,72,113,95,82,69,117,51,75,107,111,105,51,120,88,80,80,75,95,77,85,95,101,76,108,53,65,49,77,70,119,95,100,55,97,122,84,83,72,72,85,70,109,76,51,82,100,105,67,49,53,118,118,65,49,98,97,106,72,49,78,68,98,76,69,65,120,77,86,56,110,85,79,74,86,102,117,87,120,88,68,71,83,48,68,105,107,110,121,106,48,86,57,53,65,116,95,75,66,71,52,121,55,89,108,111,45,52,102,118,52,61,59,116,61,49,55,52,49,55,48,48,51,49,50,53,53,50,59,117,105,100,61,49,102,48,48,56,48,102,56,45,50,51,56,102,45,52,56,51,97,45,98,101,48,52,45,57,97,55,101,50,99,97,52,99,48,101,54,49,55,52,49,54,56,56,52,49,51,55,57,49</span><br><span class="line">bArr=cid=210101;q=Xz0R82fS485b23ba817e4JzPH0DbB-Hyhw09ZJUl9kZ4SZ_KkVh07uBqj8ejykTw1bl02vu1dt67BbIKA-1FqlTuFGh8VoJemyEkmhqnf6w9u98dKvCdpFPDiRktU-PGDtnD9Y8rBYgBHuPyfnMR15jTMaF0HV4SMw6qU_S_3p771jHSE9Kl8Yx6zKgkBv71qLhQP68VNsifnmQFbtEBdQt5hK1-9WLGzrhB1jLiL1EJTtmqGymT21ymquQHXcDuk-yQQOEVQhMvN8p_dEkD23X6nDVntT3FTC90dmMItPDL6QlQoWsRTqvlVMkUz2wSNPsApVb2hq30D4x9RSvDE3sKJBGAzFqDG_XwE6yoojDNPn2wH0H0o3-wtCso0hRJXlvPTHz_zMYdTcMNKTwccWgu0mmbH5NKcVCxrZ6R2MeCfUb8ACp7PKjZeAecaHq_REu3Kkoi3xXPPK_MU_eLl5A1MFw_d7azTSHHUFmL3RdiC15vvA1bajH1NDbLEAxMV8nUOJVfuWxXDGS0Diknyj0V95At_KBG4y7Ylo-4fv4=;t=1741700312552;uid=1f0080f8-238f-483a-be04-9a7e2ca4c0e61741688413791</span><br><span class="line">i10=1</span><br><span class="line">bArr2=-87,-114,-67,121,108,-104,-58,66,-48,15,40,31,112,-58,-81,116,73,9,-6,80,-38,87,98,16,114,-89,108,124,97,-82,52,59</span><br><span class="line">bArr2=���yl��B�(pƯtI   �P�Wbr�l|a�4;</span><br><span class="line">CryptoHelper.md5_crypt result=56,53,56,57,53,48,53,49,49,55,50,50,48,53,48,50,52,49,48,57,49,48,51,48,53,48,56,49,54,52,55,52,50,53,53,53,52</span><br><span class="line">CryptoHelper.md5_crypt result=8589505117220502410910305081647425554</span><br><span class="line">CryptoHelper.b is called: str=Xz0R82fS485b23ba817e4JzPH0DbB-Hyhw09ZJUl9kZ4SZ_KkVh07uBqj8ejykTw1bl02vu1dt67BbIKA-1FqlTuFGh8VoJemyEkmhqnf6w9u98dKvCdpFPDiRktU-PGDtnD9Y8rBYgBHuPyfnMR15jTMaF0HV4SMw6qU_S_3p771jHSE9Kl8Yx6zKgkBv71qLhQP68VNsifnmQFbtEBdQt5hK1-9WLGzrhB1jLiL1EJTtmqGymT21ymquQHXcDuk-yQQOEVQhMvN8p_dEkD23X6nDVntT3FTC90dmMItPDL6QlQoWsRTqvlVMkUz2wSNPsApVb2hq30D4x9RSvDE3sKJBGAzFqDG_XwE6yoojDNPn2wH0H0o3-wtCso0hRJXlvPTHz_zMYdTcMNKTwccWgu0mmbH5NKcVCxrZ6R2MeCfUb8ACp7PKjZeAecaHq_REu3Kkoi3xXPPK_MU_eLl5A1MFw_d7azTSHHUFmL3RdiC15vvA1bajH1NDbLEAxMV8nUOJVfuWxXDGS0Diknyj0V95At_KBG4y7Ylo-4fv4=</span><br><span class="line">CryptoHelper.b result=&#123;&quot;mobile&quot;:&quot;17888888888&quot;,&quot;countryNo&quot;:&quot;86&quot;,&quot;validateCode&quot;:&quot;123456&quot;,&quot;appversion&quot;:&quot;5265&quot;,&quot;type&quot;:1,&quot;deviceId&quot;:&quot;android_lucky_ef5722c5-96ff-4521-8096-27530a0365b2&quot;,&quot;systemVersion&quot;:&quot;29&quot;,&quot;blackBox&quot;:&quot;oGPHE1741688414xYaSQkj72m7&quot;,&quot;uniqueCode&quot;:&quot;DUQKlOhFPQSnh57_KB6erjHdTADHhPk26j60RFVRS2xPaEZQUVNuaDU3X0tCNmVyakhkVEFESGhQazI2ajYwc2h1&quot;,&quot;regionId&quot;:&quot;CO0001&quot;,&quot;regId&quot;:&quot;&quot;,&quot;deviceBrand&quot;:&quot;google&quot;,&quot;isSecurityVerify&quot;:false&#125;</span><br><span class="line">CryptoHelper.b is called: str=nMymqvoWI5UzuGSsfOyxWS9E0JQYtcev4A_O1LXSr_HosyYfsqRmenMCcYf7-mdZjZ8LUfNc6HbRD89pGuGxJhYP475VhWKSXmkD7eAkTSmxA1MpUjQQHOjueGL1F_YWGExcwjd3N-sOHxEfeB59eTF1vGH9C_S6Q5TrXqrOg1R0yv5lrZ0CUyVHr38KtyytHyv4ip5jmin3q-HoLrMNZgkywRFi2RKOdxa8F-I1PLBhIOxZmtNm7IBiSVPvc8q2fnKJLbxMfM680Zr9YwRrxe_XcuzE1YLdSXTc2cmy5cq8M0xQ12eMbJo1sZhGPGs7</span><br><span class="line">CryptoHelper.b result=&#123;&quot;busiCode&quot;:&quot;BASE001&quot;,&quot;code&quot;:7,&quot;content&quot;:null,&quot;handler&quot;:&quot;USER&quot;,&quot;msg&quot;:&quot;验证码无效&quot;,&quot;status&quot;:&quot;BASE_ERROR&quot;,&quot;uid&quot;:&quot;1f0080f8-238f-483a-be04-9a7e2ca4c0e61741688413791&quot;,&quot;version&quot;:&quot;101&quot;,&quot;zeusId&quot;:&quot;luckycapiproxy-0ade0957-483805-214303&quot;&#125;</span><br><span class="line">CryptoHelper.b is called: str=nMymqvoWI5UzuGSsfOyxWS9E0JQYtcev4A_O1LXSr_HosyYfsqRmenMCcYf7-mdZjZ8LUfNc6HbRD89pGuGxJhYP475VhWKSXmkD7eAkTSmxA1MpUjQQHOjueGL1F_YWGExcwjd3N-sOHxEfeB59eTF1vGH9C_S6Q5TrXqrOg1R0yv5lrZ0CUyVHr38KtyytHyv4ip5jmin3q-HoLrMNZgkywRFi2RKOdxa8F-I1PLBhIOxZmtNm7IBiSVPvc8q2fnKJLbxMfM680Zr9YwRrxe_XcuzE1YLdSXTc2cmy5cq8M0xQ12eMbJo1sZhGPGs7</span><br><span class="line">CryptoHelper.b result=&#123;&quot;busiCode&quot;:&quot;BASE001&quot;,&quot;code&quot;:7,&quot;content&quot;:null,&quot;handler&quot;:&quot;USER&quot;,&quot;msg&quot;:&quot;验证码无效&quot;,&quot;status&quot;:&quot;BASE_ERROR&quot;,&quot;uid&quot;:&quot;1f0080f8-238f-483a-be04-9a7e2ca4c0e61741688413791&quot;,&quot;version&quot;:&quot;101&quot;,&quot;zeusId&quot;:&quot;luckycapiproxy-0ade0957-483805-214303&quot;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>c方法对一堆参数加密，加密结果为q值，md5_crypt对q及其他内容进行签名，b方法对响应体和q解密</p>
+<h2 id="c方法"><a href="#c方法" class="headerlink" title="c方法"></a>c方法</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">synchronized</span> String <span class="title function_">c</span><span class="params">(String str)</span> &#123;</span><br><span class="line">    <span class="type">c</span> <span class="variable">cVar</span> <span class="operator">=</span> <span class="built_in">this</span>.f93097a;</span><br><span class="line">    <span class="keyword">if</span> (cVar == <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">RuntimeException</span>(StubApp.getString2(<span class="string">&quot;32267&quot;</span>));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">String</span> <span class="variable">str2</span> <span class="operator">=</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line">    <span class="type">String</span> <span class="variable">a10</span> <span class="operator">=</span> cVar.a();</span><br><span class="line">    <span class="keyword">if</span> (TextUtils.isEmpty(a10)) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        str2 = <span class="keyword">new</span> <span class="title class_">String</span>(Base64.encode(localAESWork(str.getBytes(), <span class="number">2</span>, Base64.decode(a10.replace(org.objectweb.asm.signature.b.f127225c, org.objectweb.asm.signature.b.f127224b).replace(<span class="string">&#x27;_&#x27;</span>, <span class="string">&#x27;/&#x27;</span>).getBytes(), <span class="number">2</span>)), <span class="number">2</span>));</span><br><span class="line">    &#125; <span class="keyword">catch</span> (Exception e10) &#123;</span><br><span class="line">        e10.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> str2.replace(org.objectweb.asm.signature.b.f127224b, org.objectweb.asm.signature.b.f127225c).replace(<span class="string">&#x27;/&#x27;</span>, <span class="string">&#x27;_&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="title function_">CryptoHelper</span><span class="params">(c cVar)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.f93097a = cVar;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里面有一个字段<code>a10</code>需要找它的来源，它来源于a方法，而它是个接口方法</p>
+<p><img src="/2025/03/11/%E7%91%9E%E5%B9%B8%E7%99%BD%E7%9B%92AES/8.jpg"></p>
+<p>找它的实现类<code>com.lucky.lib.http2.b</code></p>
+<p>这里面实现了<code>a</code>方法</p>
+<p><img src="/2025/03/11/%E7%91%9E%E5%B9%B8%E7%99%BD%E7%9B%92AES/9.jpg"></p>
+<p>接下来通过主动调用获取它的值</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">function <span class="title function_">get_a10</span><span class="params">()</span>&#123;</span><br><span class="line">    Java.perform(function()&#123;</span><br><span class="line">        <span class="type">let</span> <span class="variable">a</span> <span class="operator">=</span> Java.use(<span class="string">&quot;com.lucky.lib.http2.b$a&quot;</span>).$<span class="keyword">new</span>();</span><br><span class="line">        <span class="type">let</span> <span class="variable">result</span> <span class="operator">=</span> a.a();</span><br><span class="line">        console.log(<span class="string">&quot;a10:&quot;</span>,result);</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a10: qY69eWyYxkLQDygfcMavdEkJ+lDaV2IQcqdsfGGuNDs=</span><br></pre></td></tr></table></figure>
+
+<p>接下来看这部分代码，弄清楚这里面的值和逻辑</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">str2 = new String(Base64.encode(localAESWork(str.getBytes(), 2, Base64.decode(a10.replace(&#x27;-&#x27;, &#x27;+&#x27;).replace(&#x27;_&#x27;, &#x27;/&#x27;).getBytes(), 2)), 2));</span><br></pre></td></tr></table></figure>
+
+<p>看我们hook到的结果协助分析</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">CryptoHelper.c is called: str=&#123;&quot;mobile&quot;:&quot;17888888888&quot;,&quot;countryNo&quot;:&quot;86&quot;,&quot;validateCode&quot;:&quot;123456&quot;,&quot;appversion&quot;:&quot;5265&quot;,&quot;type&quot;:1,&quot;deviceId&quot;:&quot;android_lucky_ef5722c5-96ff-4521-8096-27530a0365b2&quot;,&quot;systemVersion&quot;:&quot;29&quot;,&quot;blackBox&quot;:&quot;oGPHE1741688414xYaSQkj72m7&quot;,&quot;uniqueCode&quot;:&quot;DUQKlOhFPQSnh57_KB6erjHdTADHhPk26j60RFVRS2xPaEZQUVNuaDU3X0tCNmVyakhkVEFESGhQazI2ajYwc2h1&quot;,&quot;regionId&quot;:&quot;CO0001&quot;,&quot;regId&quot;:&quot;&quot;,&quot;deviceBrand&quot;:&quot;google&quot;,&quot;isSecurityVerify&quot;:false&#125;</span><br><span class="line">CryptoHelper.c result=Xz0R82fS485b23ba817e4JzPH0DbB-Hyhw09ZJUl9kZ4SZ_KkVh07uBqj8ejykTw1bl02vu1dt67BbIKA-1FqlTuFGh8VoJemyEkmhqnf6w9u98dKvCdpFPDiRktU-PGDtnD9Y8rBYgBHuPyfnMR15jTMaF0HV4SMw6qU_S_3p771jHSE9Kl8Yx6zKgkBv71qLhQP68VNsifnmQFbtEBdQt5hK1-9WLGzrhB1jLiL1EJTtmqGymT21ymquQHXcDuk-yQQOEVQhMvN8p_dEkD23X6nDVntT3FTC90dmMItPDL6QlQoWsRTqvlVMkUz2wSNPsApVb2hq30D4x9RSvDE3sKJBGAzFqDG_XwE6yoojDNPn2wH0H0o3-wtCso0hRJXlvPTHz_zMYdTcMNKTwccWgu0mmbH5NKcVCxrZ6R2MeCfUb8ACp7PKjZeAecaHq_REu3Kkoi3xXPPK_MU_eLl5A1MFw_d7azTSHHUFmL3RdiC15vvA1bajH1NDbLEAxMV8nUOJVfuWxXDGS0Diknyj0V95At_KBG4y7Ylo-4fv4=</span><br></pre></td></tr></table></figure>
+
+<h1 id="unidbg调用"><a href="#unidbg调用" class="headerlink" title="unidbg调用"></a>unidbg调用</h1><h2 id="初始环境搭建"><a href="#初始环境搭建" class="headerlink" title="初始环境搭建"></a>初始环境搭建</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.luckincoffee.safeboxlib;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.github.unidbg.AndroidEmulator;</span><br><span class="line"><span class="keyword">import</span> com.github.unidbg.Module;</span><br><span class="line"><span class="keyword">import</span> com.github.unidbg.arm.backend.Unicorn2Factory;</span><br><span class="line"><span class="keyword">import</span> com.github.unidbg.linux.android.AndroidEmulatorBuilder;</span><br><span class="line"><span class="keyword">import</span> com.github.unidbg.linux.android.AndroidResolver;</span><br><span class="line"><span class="keyword">import</span> com.github.unidbg.linux.android.dvm.*;</span><br><span class="line"><span class="keyword">import</span> com.github.unidbg.memory.Memory;</span><br><span class="line"><span class="keyword">import</span> com.github.unidbg.virtualmodule.android.AndroidModule;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.File;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.util.Base64;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">CryptoHelper</span> <span class="keyword">extends</span> <span class="title class_">AbstractJni</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> AndroidEmulator emulator;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">String</span> <span class="variable">process</span> <span class="operator">=</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Memory memory;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> VM vm;</span><br><span class="line">    <span class="keyword">private</span> DalvikModule dm;</span><br><span class="line">    <span class="keyword">private</span> Module <span class="keyword">module</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">CryptoHelper</span><span class="params">()</span> &#123;</span><br><span class="line">        emulator = AndroidEmulatorBuilder</span><br><span class="line">                .for64Bit() <span class="comment">// for32Bit()</span></span><br><span class="line">                .setProcessName(process)</span><br><span class="line">                .setRootDir(<span class="keyword">new</span> <span class="title class_">File</span>(<span class="string">&quot;target/rootfs&quot;</span>))</span><br><span class="line">                .addBackendFactory(<span class="keyword">new</span> <span class="title class_">Unicorn2Factory</span>(<span class="literal">true</span>))</span><br><span class="line">                .build();</span><br><span class="line">        <span class="comment">// 设置执行多少条指令切换一次线程</span></span><br><span class="line">        <span class="comment">// emulator.getBackend().registerEmuCountHook(10000);</span></span><br><span class="line">        <span class="comment">// 开启线程调度器</span></span><br><span class="line">        <span class="comment">// emulator.getSyscallHandler().setEnableThreadDispatcher(true);</span></span><br><span class="line">        memory = emulator.getMemory();</span><br><span class="line">        memory.setLibraryResolver(<span class="keyword">new</span> <span class="title class_">AndroidResolver</span>(<span class="number">23</span>));</span><br><span class="line">        vm = emulator.createDalvikVM(<span class="keyword">new</span> <span class="title class_">File</span>(<span class="string">&quot;apktest/ruixingcoffee_5.2.65.apk&quot;</span>));</span><br><span class="line">        vm.setJni(<span class="built_in">this</span>);</span><br><span class="line">        vm.setVerbose(<span class="literal">true</span>);</span><br><span class="line">        <span class="keyword">new</span> <span class="title class_">AndroidModule</span>(emulator,vm).register(memory);</span><br><span class="line">        dm = vm.loadLibrary(<span class="string">&quot;cryptoDD&quot;</span>,<span class="literal">true</span>);</span><br><span class="line">        dm.callJNI_OnLoad(emulator);</span><br><span class="line">        <span class="keyword">module</span> = dm.getModule();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">localAESWork</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="type">DvmClass</span> <span class="variable">CryptoHelperClass</span> <span class="operator">=</span> vm.resolveClass(<span class="string">&quot;com.luckincoffee.safeboxlib.CryptoHelper&quot;</span>);</span><br><span class="line">        <span class="type">ByteArray</span> <span class="variable">byteValues</span> <span class="operator">=</span> CryptoHelperClass.callStaticJniMethodObject(emulator, <span class="string">&quot;localAESWork([BI[B)[B&quot;</span>,</span><br><span class="line">                <span class="string">&quot;&#123;\&quot;mobile\&quot;:\&quot;17888888888\&quot;,\&quot;countryNo\&quot;:\&quot;86\&quot;,\&quot;validateCode\&quot;:\&quot;123456\&quot;,\&quot;appversion\&quot;:\&quot;5265\&quot;,\&quot;type\&quot;:1,\&quot;deviceId\&quot;:\&quot;android_lucky_ef5722c5-96ff-4521-8096-27530a0365b2\&quot;,\&quot;systemVersion\&quot;:\&quot;29\&quot;,\&quot;blackBox\&quot;:\&quot;oGPHE1741688414xYaSQkj72m7\&quot;,\&quot;uniqueCode\&quot;:\&quot;DUQKlOhFPQSnh57_KB6erjHdTADHhPk26j60RFVRS2xPaEZQUVNuaDU3X0tCNmVyakhkVEFESGhQazI2ajYwc2h1\&quot;,\&quot;regionId\&quot;:\&quot;CO0001\&quot;,\&quot;regId\&quot;:\&quot;\&quot;,\&quot;deviceBrand\&quot;:\&quot;google\&quot;,\&quot;isSecurityVerify\&quot;:false&#125;&quot;</span>.getBytes(),</span><br><span class="line">                <span class="number">2</span>,</span><br><span class="line">                Base64.getDecoder().decode(<span class="string">&quot;qY69eWyYxkLQDygfcMavdEkJ+lDaV2IQcqdsfGGuNDs=&quot;</span>.replace(<span class="string">&#x27;-&#x27;</span>, <span class="string">&#x27;+&#x27;</span>).replace(<span class="string">&#x27;_&#x27;</span>, <span class="string">&#x27;/&#x27;</span>).getBytes()));</span><br><span class="line">        <span class="type">String</span> <span class="variable">ret</span> <span class="operator">=</span> bytesTohexString(byteValues.getValue());</span><br><span class="line">        System.out.println(<span class="string">&quot;ret=&quot;</span>+ret);</span><br><span class="line">        <span class="type">String</span> <span class="variable">b64encoded</span> <span class="operator">=</span> Base64.getEncoder().encodeToString(byteValues.getValue());</span><br><span class="line">        System.out.println(b64encoded);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">CryptoHelper</span> <span class="variable">cryptoHelper</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">CryptoHelper</span>();</span><br><span class="line">        cryptoHelper.localAESWork();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行一下，报错了，看打印的信息</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">JNIEnv-&gt;NewByteArray(416) was called from RX@0x12043ae4[libcryptoDD.so]0x43ae4</span><br><span class="line">JNIEnv-&gt;SetByteArrayRegion([B@72a7c7e0, 0, 416, RW@0x123991c0) was called from RX@0x12043b08[libcryptoDD.so]0x43b08</span><br><span class="line">[10:38:44 101]  WARN [com.github.unidbg.arm.AbstractARM64Emulator] (AbstractARM64Emulator$1:66) - Write memory failed: address=0x0, size=8, value=0x12057000</span><br></pre></td></tr></table></figure>
+
+<p>在<code>0x43b08</code>这个地方报错了，IDA分析一下</p>
+<p>在下面这个地方，内存无法写入</p>
+<p><img src="/2025/03/11/%E7%91%9E%E5%B9%B8%E7%99%BD%E7%9B%92AES/10.jpg"></p>
+<p><img src="/2025/03/11/%E7%91%9E%E5%B9%B8%E7%99%BD%E7%9B%92AES/11.jpg"></p>
+<p>用unidbg处理一下</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">patchFreeByConsoleDebugger</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="type">Symbol</span> <span class="variable">free</span> <span class="operator">=</span> emulator.getMemory().findModule(<span class="string">&quot;libc.so&quot;</span>).findSymbolByName(<span class="string">&quot;free&quot;</span>);</span><br><span class="line"></span><br><span class="line">    emulator.attach().addBreakPoint(free.getAddress(), <span class="keyword">new</span> <span class="title class_">BreakPointCallback</span>() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">onHit</span><span class="params">(Emulator&lt;?&gt; emulator, <span class="type">long</span> address)</span> &#123;</span><br><span class="line">            emulator.getBackend().reg_write(Arm64Const.UC_ARM64_REG_W0,<span class="number">0</span>);</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后可以输出正确结果了</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ret=5f3d11f367d2e3ce5bdb76daf35edee03b1b6ce1b3c1846a175a1ec87bc6c9ddc66d65a239b38f7b7727befc6a17c44a3fa7921c901c66596ca7cedacc48a08db0cb0931efcbb9a7afbf9ab379d992ba66f84c3e529d4e2f96072db2212bc9ab4225a162ee55d4ea0e9648d49d532735fe628c175e6b81163b05bf97bd030634c09dc45f0e536b75dd1f29f8ea328eb60907c08ff1c309d7ea64257aad490fe7a50f06c86d33a6cfcd1494ec5ae0b07fc4d1dc5094a6161985ebee8bac53057e07603836b0bcc15b34dcaa4f8ff361b5df5855e5f5f9d4c8b8c5c0f9c936f697c37795ac6ef7fb66513216f2019d08fd477ef712b4cf4036441a0a56e429f3fc440bbfce851936683e74024fc1abcfeb50480f747fcaabf346eebca3d5881ecbbaf639c96a6db5f22d362223bc766e39fc0a4472b197a5be78f2bf947afe15660b97c9b496d0e39103ed77672327ab36c7920e6d763f1271bb017615c49afcb50429218b6f3d76156129095eb1082f33bbc2f732f7ba76584b04cd388aadc16e0faaf872eecb1810a6bb25ae9532a600bf2b597e2e50bb97d0df5fa4a7457f53</span><br><span class="line">Xz0R82fS485b23ba817e4DsbbOGzwYRqF1oeyHvGyd3GbWWiObOPe3cnvvxqF8RKP6eSHJAcZllsp87azEigjbDLCTHvy7mnr7+as3nZkrpm+Ew+Up1OL5YHLbIhK8mrQiWhYu5V1OoOlkjUnVMnNf5ijBdea4EWOwW/l70DBjTAncRfDlNrdd0fKfjqMo62CQfAj/HDCdfqZCV6rUkP56UPBshtM6bPzRSU7FrgsH/E0dxQlKYWGYXr7ousUwV+B2A4NrC8wVs03KpPj/Nhtd9YVeX1+dTIuMXA+ck29pfDd5Wsbvf7ZlEyFvIBnQj9R373ErTPQDZEGgpW5Cnz/EQLv86FGTZoPnQCT8Grz+tQSA90f8qr80buvKPViB7LuvY5yWpttfItNiIjvHZuOfwKRHKxl6W+ePK/lHr+FWYLl8m0ltDjkQPtd2cjJ6s2x5IObXY/EnG7AXYVxJr8tQQpIYtvPXYVYSkJXrEILzO7wvcy97p2WEsEzTiKrcFuD6r4cu7LGBCmuyWulTKmAL8rWX4uULuX0N9fpKdFf1M=</span><br></pre></td></tr></table></figure>
+
+<h2 id="打印详细日志信息"><a href="#打印详细日志信息" class="headerlink" title="打印详细日志信息"></a>打印详细日志信息</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.apache.log4j.Level;</span><br><span class="line"><span class="keyword">import</span> org.apache.log4j.Logger;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// ARM64 JNI 详细日志</span></span><br><span class="line">        Logger.getLogger(DalvikVM64.class).setLevel(Level.DEBUG);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// ARM32 JNI 详细日志</span></span><br><span class="line">        Logger.getLogger(DalvikVM.class).setLevel(Level.DEBUG);</span><br></pre></td></tr></table></figure>
+
+<p>把<code>Logger.getLogger(DalvikVM64.class).setLevel(Level.DEBUG);</code>添加到<code>localAESWork()</code>方法里</p>
+<h2 id="使用简单的明文测试"><a href="#使用简单的明文测试" class="headerlink" title="使用简单的明文测试"></a>使用简单的明文测试</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">明文用：bileton</span><br><span class="line">hex:fd2bd308e45a3d24b2c715b54b92713f</span><br><span class="line">base64:/SvTCORaPSSyxxW1S5JxPw==</span><br></pre></td></tr></table></figure>
+
+<p>输出</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">JNIEnv-&gt;NewByteArray(16) was called from RX@0x12043ae4[libcryptoDD.so]0x43ae4</span><br><span class="line">JNIEnv-&gt;SetByteArrayRegion([B@0x00000000000000000000000000000000, 0, 16, RW@0x12399010) was called from RX@0x12043b08[libcryptoDD.so]0x43b08</span><br><span class="line"></span><br><span class="line">&gt;-----------------------------------------------------------------------------&lt;</span><br><span class="line">[11:59:10 243]SetByteArrayRegion array=[B@0x00000000000000000000000000000000, start=0, length=16, buf=RW@0x12399010, md5=f640f07e317bb73715399251206b7cdd, hex=fd2bd308e45a3d24b2c715b54b92713f</span><br><span class="line">size: 16</span><br><span class="line">0000: FD 2B D3 08 E4 5A 3D 24 B2 C7 15 B5 4B 92 71 3F    .+...Z=$....K.q?</span><br><span class="line">^-----------------------------------------------------------------------------^</span><br><span class="line">[11:59:10 243] DEBUG [com.github.unidbg.linux.android.dvm.DalvikVM64] (DalvikVM64$189:3075) - ReleaseByteArrayElements arrayPointer=unidbg@0x3e92efc3, pointer=RW@0x12056000, mode=0</span><br><span class="line">ret=fd2bd308e45a3d24b2c715b54b92713f</span><br><span class="line">/SvTCORaPSSyxxW1S5JxPw==</span><br></pre></td></tr></table></figure>
+
+<p>根据日志看到结果是在<code>0x12399010</code>这个地方来的</p>
+<h2 id="trace-0x12399010"><a href="#trace-0x12399010" class="headerlink" title="trace 0x12399010"></a>trace 0x12399010</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">emulator.traceWrite(<span class="number">0x12399010</span>,<span class="number">0x12399010</span>+<span class="number">0x10</span>);</span><br></pre></td></tr></table></figure>
+
+<p>这是trace下俩的数据</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[12:07:18 602] Memory WRITE at 0x12399010, data size = 8, data value = 0x0000000000000000, PC=RX@0x121bc688[libc.so]0x1c688, LR=RX@0x12043970[libcryptoDD.so]0x43970</span><br><span class="line">[12:07:18 603] Memory WRITE at 0x12399018, data size = 8, data value = 0x0000000000000000, PC=RX@0x121bc688[libc.so]0x1c688, LR=RX@0x12043970[libcryptoDD.so]0x43970</span><br><span class="line">[12:07:18 603] Memory WRITE at 0x12399010, data size = 8, data value = 0x0000000000000000, PC=RX@0x121bc694[libc.so]0x1c694, LR=RX@0x12043970[libcryptoDD.so]0x43970</span><br><span class="line">[12:07:18 603] Memory WRITE at 0x12399018, data size = 8, data value = 0x0000000000000000, PC=RX@0x121bc694[libc.so]0x1c694, LR=RX@0x12043970[libcryptoDD.so]0x43970</span><br><span class="line">[12:07:18 608] Memory WRITE at 0x12399010, data size = 8, data value = 0x243d5ae408d32bfd, PC=RX@0x12018940[libcryptoDD.so]0x18940, LR=RX@0x1201892c[libcryptoDD.so]0x1892c</span><br><span class="line">[12:07:18 608] Memory WRITE at 0x12399018, data size = 8, data value = 0x3f71924bb515c7b2, PC=RX@0x12018940[libcryptoDD.so]0x18940, LR=RX@0x1201892c[libcryptoDD.so]0x1892c</span><br></pre></td></tr></table></figure>
+
+<p>这里看到数据写入的位置是在<code>0x18940</code>，数据是以小端存储的LR寄存器的值是<code>0x1892c</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">0x243d5ae408d32bfd</span><br><span class="line">0x3f71924bb515c7b2</span><br></pre></td></tr></table></figure>
+
+<h2 id="使用IDA分析0x1892c"><a href="#使用IDA分析0x1892c" class="headerlink" title="使用IDA分析0x1892c"></a>使用IDA分析0x1892c</h2><p><img src="/2025/03/11/%E7%91%9E%E5%B9%B8%E7%99%BD%E7%9B%92AES/12.jpg"></p>
+<p>反汇编</p>
+<p><img src="/2025/03/11/%E7%91%9E%E5%B9%B8%E7%99%BD%E7%9B%92AES/13.jpg"></p>
+<h2 id="分析sub-189C4"><a href="#分析sub-189C4" class="headerlink" title="分析sub_189C4()"></a>分析<code>sub_189C4()</code></h2><p>下断点打印参数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">emulator.attach().addBreakPoint(module.base+0x189C4);</span><br></pre></td></tr></table></figure>
+
+<p>打印X0寄存器的值</p>
+<p>如下是输入的明文</p>
+<p><img src="/2025/03/11/%E7%91%9E%E5%B9%B8%E7%99%BD%E7%9B%92AES/14.jpg"></p>
+<p>打印X1寄存器的值</p>
+<p>如下是一段空值</p>
+<p><img src="/2025/03/11/%E7%91%9E%E5%B9%B8%E7%99%BD%E7%9B%92AES/15.jpg"></p>
+<p>根据入参的值，看它被传进了哪个函数里找到AES加密的位置</p>
+<p>找到一个函数<code>sub_21BEC()</code></p>
+<p>它的内容比较可疑</p>
+<p><img src="/2025/03/11/%E7%91%9E%E5%B9%B8%E7%99%BD%E7%9B%92AES/16.jpg"></p>
+<p>对这个函数进行hook</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">emulator.attach().addBreakPoint(<span class="keyword">module</span>.base + <span class="number">0x21BEC</span>, <span class="keyword">new</span> <span class="title class_">BreakPointCallback</span>() &#123;</span><br><span class="line">    <span class="type">int</span> <span class="variable">count</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">onHit</span><span class="params">(Emulator&lt;?&gt; emulator, <span class="type">long</span> address)</span> &#123;</span><br><span class="line">        count++;</span><br><span class="line">        System.out.println(count);</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>如下打印了10次</p>
+<p><img src="/2025/03/11/%E7%91%9E%E5%B9%B8%E7%99%BD%E7%9B%92AES/17.jpg"></p>
+<p>先保留一份正确的密文</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fd2bd308e45a3d24b2c715b54b92713f</span><br></pre></td></tr></table></figure>
+
+<p>然后在第九轮的时候进行故障注入</p>
+<p><img src="/2025/03/11/%E7%91%9E%E5%B9%B8%E7%99%BD%E7%9B%92AES/18.jpg"></p>
+<h1 id="故障注入差分"><a href="#故障注入差分" class="headerlink" title="故障注入差分"></a>故障注入差分</h1><h2 id="故障注入1"><a href="#故障注入1" class="headerlink" title="故障注入1"></a>故障注入1</h2><p>对这几个寄存器进行故障注入</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">emulator.attach().addBreakPoint(<span class="keyword">module</span>.base + <span class="number">0x21E8C</span>, <span class="keyword">new</span> <span class="title class_">BreakPointCallback</span>() &#123;</span><br><span class="line">    <span class="type">int</span> <span class="variable">count</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">onHit</span><span class="params">(Emulator&lt;?&gt; emulator, <span class="type">long</span> address)</span> &#123;</span><br><span class="line">        count++;</span><br><span class="line">        <span class="keyword">if</span>(count==<span class="number">9</span>)&#123;</span><br><span class="line">            <span class="type">Random</span> <span class="variable">random</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Random</span>();</span><br><span class="line">            emulator.getBackend().reg_write(Arm64Const.UC_ARM64_REG_W9,random.nextInt(<span class="number">255</span>));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>循环10次</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">    <span class="type">CryptoHelper</span> <span class="variable">cryptoHelper</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">CryptoHelper</span>();</span><br><span class="line">    cryptoHelper.patchFreeByConsoleDebugger();</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">        cryptoHelper.localAESWork();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>循环10次，输出密文</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">fd2bbc08e43b3d24eec715b54b927120</span><br><span class="line">fd2b2c08e48c3d246dc715b54b9271e1</span><br><span class="line">fd2bb208e49f3d2496c715b54b927197</span><br><span class="line">fd2b7f08e4873d24b8c715b54b9271fa</span><br><span class="line">fd2b4e08e4573d24efc715b54b927118</span><br><span class="line">fd2b2608e4eb3d247ec715b54b9271d2</span><br><span class="line">fd2b6708e4963d2442c715b54b927180</span><br><span class="line">fd2b4508e4ea3d2443c715b54b927153</span><br><span class="line">fd2b1908e4c93d24e4c715b54b927166</span><br><span class="line">fd2b5408e4943d246fc715b54b92717c</span><br></pre></td></tr></table></figure>
+
+<h2 id="差分1"><a href="#差分1" class="headerlink" title="差分1"></a>差分1</h2><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> phoenixAES</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&quot;tracefile&quot;</span>,<span class="string">&quot;wb&quot;</span>) <span class="keyword">as</span> t:</span><br><span class="line">    t.write(<span class="string">&quot;&quot;&quot;fd2bd308e45a3d24b2c715b54b92713f</span></span><br><span class="line"><span class="string">fd2bbc08e43b3d24eec715b54b927120</span></span><br><span class="line"><span class="string">fd2b2c08e48c3d246dc715b54b9271e1</span></span><br><span class="line"><span class="string">fd2bb208e49f3d2496c715b54b927197</span></span><br><span class="line"><span class="string">fd2b7f08e4873d24b8c715b54b9271fa</span></span><br><span class="line"><span class="string">fd2b4e08e4573d24efc715b54b927118</span></span><br><span class="line"><span class="string">fd2b2608e4eb3d247ec715b54b9271d2</span></span><br><span class="line"><span class="string">fd2b6708e4963d2442c715b54b927180</span></span><br><span class="line"><span class="string">fd2b4508e4ea3d2443c715b54b927153</span></span><br><span class="line"><span class="string">fd2b1908e4c93d24e4c715b54b927166</span></span><br><span class="line"><span class="string">fd2b5408e4943d246fc715b54b92717c</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span>.encode(<span class="string">&#x27;utf8&#x27;</span>))</span><br><span class="line">    </span><br><span class="line">phoenixAES.crack_file(<span class="string">&#x27;tracefile&#x27;</span>, [], <span class="literal">True</span>, <span class="literal">False</span>, <span class="number">3</span>)</span><br></pre></td></tr></table></figure>
+
+<p>输出</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Round key bytes recovered:</span><br><span class="line">....ED....D2....C0............C0</span><br></pre></td></tr></table></figure>
+
+<h2 id="故障注入2"><a href="#故障注入2" class="headerlink" title="故障注入2"></a>故障注入2</h2><p>换一个寄存器</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">emulator.attach().addBreakPoint(<span class="keyword">module</span>.base + <span class="number">0x21E90</span>, <span class="keyword">new</span> <span class="title class_">BreakPointCallback</span>() &#123;</span><br><span class="line">    <span class="type">int</span> <span class="variable">count</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">onHit</span><span class="params">(Emulator&lt;?&gt; emulator, <span class="type">long</span> address)</span> &#123;</span><br><span class="line">        count++;</span><br><span class="line">        <span class="keyword">if</span>(count==<span class="number">9</span>)&#123;</span><br><span class="line">            <span class="type">Random</span> <span class="variable">random</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Random</span>();</span><br><span class="line">            emulator.getBackend().reg_write(Arm64Const.UC_ARM64_REG_W10,random.nextInt(<span class="number">255</span>));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>输出</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">fd2bd34ae45afb24b22315b5a192713f</span><br><span class="line">fd2bd375e45aae24b2b515b5b892713f</span><br><span class="line">fd2bd3aae45abe24b2af15b55a92713f</span><br><span class="line">fd2bd3bbe45ad424b24515b57b92713f</span><br><span class="line">fd2bd38be45a6e24b2a615b56192713f</span><br><span class="line">fd2bd344e45aba24b29515b5f692713f</span><br><span class="line">fd2bd306e45ac324b23a15b5dd92713f</span><br><span class="line">fd2bd3d5e45a4424b24a15b53792713f</span><br><span class="line">fd2bd3bae45a9a24b2e615b51592713f</span><br><span class="line">fd2bd33de45a4724b2a515b51692713f</span><br></pre></td></tr></table></figure>
+
+<h2 id="差分2"><a href="#差分2" class="headerlink" title="差分2"></a>差分2</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">import phoenixAES</span><br><span class="line"></span><br><span class="line">with open(&quot;tracefile&quot;,&quot;wb&quot;) as t:</span><br><span class="line">    t.write(&quot;&quot;&quot;fd2bd308e45a3d24b2c715b54b92713f</span><br><span class="line">fd2bbc08e43b3d24eec715b54b927120</span><br><span class="line">fd2b2c08e48c3d246dc715b54b9271e1</span><br><span class="line">fd2bb208e49f3d2496c715b54b927197</span><br><span class="line">fd2b7f08e4873d24b8c715b54b9271fa</span><br><span class="line">fd2b4e08e4573d24efc715b54b927118</span><br><span class="line">fd2b2608e4eb3d247ec715b54b9271d2</span><br><span class="line">fd2b6708e4963d2442c715b54b927180</span><br><span class="line">fd2b4508e4ea3d2443c715b54b927153</span><br><span class="line">fd2b1908e4c93d24e4c715b54b927166</span><br><span class="line">fd2b5408e4943d246fc715b54b92717c</span><br><span class="line">fd2bd34ae45afb24b22315b5a192713f</span><br><span class="line">fd2bd375e45aae24b2b515b5b892713f</span><br><span class="line">fd2bd3aae45abe24b2af15b55a92713f</span><br><span class="line">fd2bd3bbe45ad424b24515b57b92713f</span><br><span class="line">fd2bd38be45a6e24b2a615b56192713f</span><br><span class="line">fd2bd344e45aba24b29515b5f692713f</span><br><span class="line">fd2bd306e45ac324b23a15b5dd92713f</span><br><span class="line">fd2bd3d5e45a4424b24a15b53792713f</span><br><span class="line">fd2bd3bae45a9a24b2e615b51592713f</span><br><span class="line">fd2bd33de45a4724b2a515b51692713f</span><br><span class="line">&quot;&quot;&quot;.encode(&#x27;utf8&#x27;))</span><br><span class="line">    </span><br><span class="line">phoenixAES.crack_file(&#x27;tracefile&#x27;, [], True, False, 3)</span><br></pre></td></tr></table></figure>
+
+<p>输出</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Round key bytes recovered:</span><br><span class="line">....EDFD..D27D..C0D0....4E....C0</span><br></pre></td></tr></table></figure>
+
+<h2 id="故障注入3"><a href="#故障注入3" class="headerlink" title="故障注入3"></a>故障注入3</h2><p>修改hook地址和寄存器</p>
+<p>输出</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">fa2bd308e45a3dc7b2c737b54b48713f</span><br><span class="line">132bd308e45a3d96b2c7afb54b72713f</span><br><span class="line">aa2bd308e45a3d7db2c798b54bee713f</span><br><span class="line">7d2bd308e45a3de9b2c708b54ba6713f</span><br><span class="line">252bd308e45a3dd4b2c79db54bb8713f</span><br><span class="line">f92bd308e45a3d40b2c704b54b3f713f</span><br><span class="line">c62bd308e45a3d60b2c782b54b0b713f</span><br><span class="line">022bd308e45a3d7eb2c738b54b5d713f</span><br><span class="line">5a2bd308e45a3d3db2c7b6b54bd0713f</span><br><span class="line">152bd308e45a3d0db2c7c9b54bbc713f</span><br></pre></td></tr></table></figure>
+
+<h2 id="差分3"><a href="#差分3" class="headerlink" title="差分3"></a>差分3</h2><p>输出</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Round key bytes recovered:</span><br><span class="line">A3..EDFD..D27DD1C0D010..4EFC..C0</span><br></pre></td></tr></table></figure>
+
+<h2 id="故障注入4"><a href="#故障注入4" class="headerlink" title="故障注入4"></a>故障注入4</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">fdd7d308275a3d24b2c715bf4b929d3f</span><br><span class="line">fd41d308e75a3d24b2c715b14b92d73f</span><br><span class="line">fdb8d308f15a3d24b2c715954b92fe3f</span><br><span class="line">fd69d3089a5a3d24b2c715094b92823f</span><br><span class="line">fdd4d308b85a3d24b2c7156b4b92cd3f</span><br><span class="line">fd2dd308b45a3d24b2c715254b921c3f</span><br><span class="line">fdd8d308035a3d24b2c715934b927d3f</span><br><span class="line">fd03d308a65a3d24b2c715274b92303f</span><br><span class="line">fdc0d308d35a3d24b2c715674b927b3f</span><br><span class="line">fd98d3087a5a3d24b2c715eb4b92783f</span><br></pre></td></tr></table></figure>
+
+<h2 id="差分4"><a href="#差分4" class="headerlink" title="差分4"></a>差分4</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Round key bytes recovered:</span><br><span class="line">A3AEEDFD2DD27DD1C0D010724EFCCBC0</span><br></pre></td></tr></table></figure>
+
+<p>好了，这就是第10轮的轮密钥</p>
+<h1 id="由第10轮的轮密钥推算初始密钥"><a href="#由第10轮的轮密钥推算初始密钥" class="headerlink" title="由第10轮的轮密钥推算初始密钥"></a>由第10轮的轮密钥推算初始密钥</h1><p><img src="/2025/03/11/%E7%91%9E%E5%B9%B8%E7%99%BD%E7%9B%92AES/19.jpg"></p>
+<p>推出初始密钥为：32395842753445546A487830596E6643</p>
+<p>验证下，如下加密结果正确</p>
+<p><img src="/2025/03/11/%E7%91%9E%E5%B9%B8%E7%99%BD%E7%9B%92AES/20.jpg"></p>
+<p>CyberChef中处理不了字符串的replace，如下</p>
+<p><img src="/2025/03/11/%E7%91%9E%E5%B9%B8%E7%99%BD%E7%9B%92AES/21.jpg"></p>
+<h1 id="Python实现响应体解密"><a href="#Python实现响应体解密" class="headerlink" title="Python实现响应体解密"></a>Python实现响应体解密</h1><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> Crypto.Cipher <span class="keyword">import</span> AES</span><br><span class="line"><span class="keyword">from</span> Crypto.Util.Padding <span class="keyword">import</span> pad, unpad</span><br><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">aes_decrypted_ecb</span>(<span class="params">encrypted_data,key</span>):</span><br><span class="line">    cipher = AES.new(key,AES.MODE_ECB)</span><br><span class="line">    decrypted_data = cipher.decrypt(encrypted_data)</span><br><span class="line">    unpadded_data = unpad(decrypted_data,AES.block_size)</span><br><span class="line">    <span class="keyword">return</span> unpadded_data</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">toStandardB64</span>(<span class="params">data</span>):</span><br><span class="line">    <span class="keyword">return</span> data.replace(<span class="string">&quot;-&quot;</span>,<span class="string">&quot;+&quot;</span>).replace(<span class="string">&quot;_&quot;</span>,<span class="string">&quot;/&quot;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">ciphertext = <span class="string">&quot;nMymqvoWI5UzuGSsfOyxWS9E0JQYtcev4A_O1LXSr_HosyYfsqRmenMCcYf7-mdZjZ8LUfNc6HbRD89pGuGxJhYP475VhWKSXmkD7eAkTSmxA1MpUjQQHOjueGL1F_YWGExcwjd3N-sOHxEfeB59eTF1vGH9C_S6Q5TrXqrOg1R0yv5lrZ0CUyVHr38KtyytHyv4ip5jmin3q-HoLrMNZgkywRFi2RKOdxa8F-I1PLBhIOxZmtNm7IBiSVPvc8q2fnKJLbxMfM680Zr9YwRrxe_XcuzE1YLdSXTc2cmy5cq8M0xQ12eMbJo1sZhGPGs7&quot;</span></span><br><span class="line"></span><br><span class="line">standardb64 = toStandardB64(ciphertext).encode(<span class="string">&quot;utf-8&quot;</span>)</span><br><span class="line">plaintext = aes_decrypted_ecb(base64.b64decode(standardb64),<span class="string">b&quot;29XBu4ETjHx0YnfC&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(plaintext)</span><br></pre></td></tr></table></figure>
+
+<p>输出</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&quot;busiCode&quot;:&quot;BASE001&quot;,&quot;code&quot;:7,&quot;content&quot;:null,&quot;handler&quot;:&quot;USER&quot;,&quot;msg&quot;:&quot;验证码无效&quot;,&quot;status&quot;:&quot;BASE_ERROR&quot;,&quot;uid&quot;:&quot;1f0080f8-238f-483a-be04-9a7e2ca4c0e61741688413791&quot;,&quot;version&quot;:&quot;101&quot;,&quot;zeusId&quot;:&quot;luckycapiproxy-0ade0957-483805-214303&quot;&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="unidbg调用md5-crypt"><a href="#unidbg调用md5-crypt" class="headerlink" title="unidbg调用md5_crypt"></a>unidbg调用md5_crypt</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">md5_crypt</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="type">DvmClass</span> <span class="variable">CryptoHelperClass</span> <span class="operator">=</span> vm.resolveClass(<span class="string">&quot;com.luckincoffee.safeboxlib.CryptoHelper&quot;</span>);</span><br><span class="line">    <span class="type">String</span> <span class="variable">bArr</span> <span class="operator">=</span> <span class="string">&quot;cid=210101;q=Xz0R82fS485b23ba817e4JzPH0DbB-Hyhw09ZJUl9kZ4SZ_KkVh07uBqj8ejykTw1bl02vu1dt67BbIKA-1FqlTuFGh8VoJemyEkmhqnf6w9u98dKvCdpFPDiRktU-PGDtnD9Y8rBYgBHuPyfnMR15jTMaF0HV4SMw6qU_S_3p771jHSE9Kl8Yx6zKgkBv71qLhQP68VNsifnmQFbtEBdQt5hK1-9WLGzrhB1jLiL1EJTtmqGymT21ymquQHXcDuk-yQQOEVQhMvN8p_dEkD23X6nDVntT3FTC90dmMItPDL6QlQoWsRTqvlVMkUz2wSNPsApVb2hq30D4x9RSvDE3sKJBGAzFqDG_XwE6yoojDNPn2wH0H0o3-wtCso0hRJXlvPTHz_zMYdTcMNKTwccWgu0mmbH5NKcVCxrZ6R2MeCfUb8ACp7PKjZeAecaHq_REu3Kkoi3xXPPK_MU_eLl5A1MFw_d7azTSHHUFmL3RdiC15vvA1bajH1NDbLEAxMV8nUOJVfuWxXDGS0Diknyj0V95At_KBG4y7Ylo-4fv4=;t=1741699524789;uid=1f0080f8-238f-483a-be04-9a7e2ca4c0e61741688413791&quot;</span>;</span><br><span class="line">    <span class="type">byte</span>[] bArr2 = &#123;-<span class="number">87</span>,-<span class="number">114</span>,-<span class="number">67</span>,<span class="number">121</span>,<span class="number">108</span>,-<span class="number">104</span>,-<span class="number">58</span>,<span class="number">66</span>,-<span class="number">48</span>,<span class="number">15</span>,<span class="number">40</span>,<span class="number">31</span>,<span class="number">112</span>,-<span class="number">58</span>,-<span class="number">81</span>,<span class="number">116</span>,<span class="number">73</span>,<span class="number">9</span>,-<span class="number">6</span>,<span class="number">80</span>,-<span class="number">38</span>,<span class="number">87</span>,<span class="number">98</span>,<span class="number">16</span>,<span class="number">114</span>,-<span class="number">89</span>,<span class="number">108</span>,<span class="number">124</span>,<span class="number">97</span>,-<span class="number">82</span>,<span class="number">52</span>,<span class="number">59</span>&#125;;</span><br><span class="line">    <span class="type">ByteArray</span> <span class="variable">byteValues</span> <span class="operator">=</span> CryptoHelperClass.callStaticJniMethodObject(emulator, <span class="string">&quot;md5_crypt([BI[B)[B&quot;</span>,</span><br><span class="line">            bArr.getBytes(),</span><br><span class="line">            <span class="number">1</span>,</span><br><span class="line">            bArr2);</span><br><span class="line">    <span class="type">String</span> <span class="variable">ret</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">String</span>(byteValues.getValue());</span><br><span class="line">    System.out.println(ret);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出并打印详细日志</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">JNIEnv-&gt;SetByteArrayRegion([B@0x0000000000000000000000000000000000000000000000000000000000000000000000000000, 0, 38, RW@0x12393030) was called from RX@0x120441a8[libcryptoDD.so]0x441a8</span><br><span class="line">&gt;-----------------------------------------------------------------------------&lt;</span><br><span class="line">[21:08:40 131]SetByteArrayRegion array=[B@0x0000000000000000000000000000000000000000000000000000000000000000000000000000, start=0, length=38, buf=RW@0x12393030, md5=05dca414c8058fff5156a7ec4d10303f, hex=3135373236313433313135323736383536313235353430303538333131343137313330353532</span><br><span class="line">size: 38</span><br><span class="line">0000: 31 35 37 32 36 31 34 33 31 31 35 32 37 36 38 35    1572614311527685</span><br><span class="line">0010: 36 31 32 35 35 34 30 30 35 38 33 31 31 34 31 37    6125540058311417</span><br><span class="line">0020: 31 33 30 35 35 32                                  130552</span><br><span class="line">^-----------------------------------------------------------------------------^</span><br><span class="line">[21:08:40 132] DEBUG [com.github.unidbg.linux.android.dvm.DalvikVM64] (DalvikVM64$189:3075) - ReleaseByteArrayElements arrayPointer=unidbg@0x659a969b, pointer=RW@0x12056000, mode=0</span><br><span class="line">15726143115276856125540058311417130552</span><br></pre></td></tr></table></figure>
+
+<p>使用简单明文参数<code>bileton</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">76453193612323879985881527471282403340</span><br></pre></td></tr></table></figure>
+
+<p>根据可以看出数据来源于<code>0x441a8</code>这个地址处，到IDA里找到这个地址</p>
+<p><img src="/2025/03/11/%E7%91%9E%E5%B9%B8%E7%99%BD%E7%9B%92AES/22.jpg"></p>
+<p>到IDA里看没发现什么</p>
+<p>反汇编后，看传入的明文参数的传递过程，到了<code>sub_4095C()</code></p>
+<p><img src="/2025/03/11/%E7%91%9E%E5%B9%B8%E7%99%BD%E7%9B%92AES/23.jpg"></p>
+<p>通过断点调试查看参数，发现数据后面加了盐<code>XBu4ETjHx0YnfC</code></p>
+<p><img src="/2025/03/11/%E7%91%9E%E5%B9%B8%E7%99%BD%E7%9B%92AES/24.jpg"></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E8%AF%86%E8%B4%A7app/" rel="tag"><svg t="1732789072752" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4858" width="15" height="15"><path d="M229.443715 343.118259l565.172804 0 0 410.010794c0 37.525595-30.237317 67.762912-67.040108 67.762912l-46.319715 0 0 139.742183c0 35.116247-28.249605 63.365852-63.305618 63.365852-35.116247 0-63.546553-28.309839-63.546553-63.365852l0-139.742183-84.809049 0 0 139.742183c0 35.056013-28.430306 63.365852-63.546553 63.365852-34.393443 0-62.763515-28.309839-62.763515-63.365852l-0.542103-139.742183-45.596911 0c-37.465361 0-67.702678-30.177084-67.702678-67.762912l0-410.010794zM141.984383 331.432921c-35.056013 0-63.426086 28.370073-63.426086 62.763515l0 264.787344c0 35.116247 28.370073 63.365852 63.426086 63.365852s62.763515-28.309839 62.763515-63.365852l0-264.787344c0-34.393443-28.189371-62.763515-62.763515-62.763515zM796.42353 320.952257l-569.449397 0c0-97.879762 58.547156-182.869512 145.343917-227.141282l-43.7899-80.59269c-2.469582-4.336826-1.264908-9.878327 3.071919-12.347908 4.276593-1.867245 9.878327-0.662571 12.347908 3.734489l44.271769 81.255261c37.646062-16.684735 79.508484-25.900491 123.780253-25.900491s86.134191 9.215756 123.780253 25.840257l44.271769-81.255261c2.469582-4.336826 8.071316-5.5415 12.347908-3.734489 4.336826 2.469582 5.5415 8.011082 3.071919 12.347908l-43.7899 80.59269c86.254658 44.332003 144.74158 129.321753 144.74158 227.201515zM406.048922 194.160319c0-12.950245-10.42043-24.033246-23.912779-24.033246-13.010479 0-23.430909 11.083001-23.430909 24.033246 0 12.890012 10.42043 23.973012 23.430909 23.973012 13.492349 0.060234 23.912779-11.022767 23.912779-23.973012zM665.294766 194.160319c0-12.950245-10.42043-24.033246-23.430909-24.033246-13.552582 0-23.912779 11.083001-23.912779 24.033246 0 12.890012 10.42043 23.973012 23.912779 23.973012 13.010479 0.060234 23.430909-11.022767 23.430909-23.973012zM882.015617 331.432921c-34.51391 0-62.763515 27.707502-62.763515 62.763515l0 264.787344c0 35.116247 28.249605 63.365852 62.763515 63.365852 35.056013 0 63.426086-28.309839 63.426086-63.365852l0-264.787344c-0.060234-35.056013-28.370073-62.763515-63.426086-62.763515z" fill="#000000" p-id="4859"></path></svg> 识货app</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2025/03/11/%E8%AF%A6%E8%A7%A3RSA/" rel="prev" title="详解RSA">
+      <i class="fa fa-chevron-left"></i> 详解RSA
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#App%E4%BF%A1%E6%81%AF"><span class="nav-number">1.</span> <span class="nav-text">App信息</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BF%87%E6%A3%80%E6%B5%8B"><span class="nav-number">2.</span> <span class="nav-text">过检测</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#root%E6%A3%80%E6%B5%8B"><span class="nav-number">2.1.</span> <span class="nav-text">root检测</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#frida%E6%A3%80%E6%B5%8B"><span class="nav-number">2.2.</span> <span class="nav-text">frida检测</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%84%B1%E5%A3%B3"><span class="nav-number">2.3.</span> <span class="nav-text">脱壳</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8A%93%E5%8C%85"><span class="nav-number">3.</span> <span class="nav-text">抓包</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%9A%E4%BD%8D"><span class="nav-number">4.</span> <span class="nav-text">定位</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%86%E6%9E%90"><span class="nav-number">5.</span> <span class="nav-text">分析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#c%E6%96%B9%E6%B3%95"><span class="nav-number">5.1.</span> <span class="nav-text">c方法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#unidbg%E8%B0%83%E7%94%A8"><span class="nav-number">6.</span> <span class="nav-text">unidbg调用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9D%E5%A7%8B%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA"><span class="nav-number">6.1.</span> <span class="nav-text">初始环境搭建</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%89%93%E5%8D%B0%E8%AF%A6%E7%BB%86%E6%97%A5%E5%BF%97%E4%BF%A1%E6%81%AF"><span class="nav-number">6.2.</span> <span class="nav-text">打印详细日志信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E7%AE%80%E5%8D%95%E7%9A%84%E6%98%8E%E6%96%87%E6%B5%8B%E8%AF%95"><span class="nav-number">6.3.</span> <span class="nav-text">使用简单的明文测试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#trace-0x12399010"><span class="nav-number">6.4.</span> <span class="nav-text">trace 0x12399010</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8IDA%E5%88%86%E6%9E%900x1892c"><span class="nav-number">6.5.</span> <span class="nav-text">使用IDA分析0x1892c</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E6%9E%90sub-189C4"><span class="nav-number">6.6.</span> <span class="nav-text">分析sub_189C4()</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%85%E9%9A%9C%E6%B3%A8%E5%85%A5%E5%B7%AE%E5%88%86"><span class="nav-number">7.</span> <span class="nav-text">故障注入差分</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%85%E9%9A%9C%E6%B3%A8%E5%85%A51"><span class="nav-number">7.1.</span> <span class="nav-text">故障注入1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B7%AE%E5%88%861"><span class="nav-number">7.2.</span> <span class="nav-text">差分1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%85%E9%9A%9C%E6%B3%A8%E5%85%A52"><span class="nav-number">7.3.</span> <span class="nav-text">故障注入2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B7%AE%E5%88%862"><span class="nav-number">7.4.</span> <span class="nav-text">差分2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%85%E9%9A%9C%E6%B3%A8%E5%85%A53"><span class="nav-number">7.5.</span> <span class="nav-text">故障注入3</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B7%AE%E5%88%863"><span class="nav-number">7.6.</span> <span class="nav-text">差分3</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%85%E9%9A%9C%E6%B3%A8%E5%85%A54"><span class="nav-number">7.7.</span> <span class="nav-text">故障注入4</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B7%AE%E5%88%864"><span class="nav-number">7.8.</span> <span class="nav-text">差分4</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%94%B1%E7%AC%AC10%E8%BD%AE%E7%9A%84%E8%BD%AE%E5%AF%86%E9%92%A5%E6%8E%A8%E7%AE%97%E5%88%9D%E5%A7%8B%E5%AF%86%E9%92%A5"><span class="nav-number">8.</span> <span class="nav-text">由第10轮的轮密钥推算初始密钥</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Python%E5%AE%9E%E7%8E%B0%E5%93%8D%E5%BA%94%E4%BD%93%E8%A7%A3%E5%AF%86"><span class="nav-number">9.</span> <span class="nav-text">Python实现响应体解密</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#unidbg%E8%B0%83%E7%94%A8md5-crypt"><span class="nav-number">10.</span> <span class="nav-text">unidbg调用md5_crypt</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Bileton"
+      src="/images/android.svg">
+  <p class="site-author-name" itemprop="name">Bileton</p>
+  <div class="site-description" itemprop="description">路漫漫其修远夕！</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">95</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">35</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">87</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Bileton</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">795k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">12:03</span>
+</div>
+
+
+<span id="timeDate">载入天数...</span>
+<span id="times">载入时分秒...</span>
+<script>
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("01/01/2024 00:00:00"); //修改为你的网站开始运行的时间
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+        document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 ";
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒.";
+    }
+setInterval("createtime()",250);
+</script>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
