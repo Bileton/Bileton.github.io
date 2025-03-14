@@ -364,7 +364,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2025-03-14 01:50:35" itemprop="dateModified" datetime="2025-03-14T01:50:35+08:00">2025-03-14</time>
+                <time title="修改时间：2025-03-14 08:50:03" itemprop="dateModified" datetime="2025-03-14T08:50:03+08:00">2025-03-14</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -382,7 +382,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>8.6k</span>
+              <span>8.9k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -483,7 +483,7 @@
 <p>示例</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在地址 0x1000 处设置断点，并绑定一个自定义回调</span></span><br><span class="line"><span class="type">BreakPoint</span> <span class="variable">bp</span> <span class="operator">=</span> emulator.addBreakPoint(<span class="number">0x1000</span>, <span class="keyword">new</span> <span class="title class_">BreakPointCallback</span>() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onHit</span><span class="params">(Emulator&lt;?&gt; emulator, <span class="type">long</span> address)</span> &#123;</span><br><span class="line">        <span class="comment">// 当断点命中时，打印相关信息</span></span><br><span class="line">        System.out.println(<span class="string">&quot;断点命中，地址：&quot;</span> + Long.toHexString(address));</span><br><span class="line">        <span class="comment">// 此处可以添加更多调试操作，比如查看寄存器或内存状态</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
-<h2 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">c: continue</span><br><span class="line">// 可以让程序继续运行，直到遇到下一个断点或程序执行结束。</span><br><span class="line">n: step over</span><br><span class="line">// 单步执行当前指令，但不会进入函数内部。</span><br><span class="line">bt: back trace</span><br><span class="line">// 打印当前的调用栈信息，也就是从当前执行点一直追溯到程序入口的函数调用链。</span><br><span class="line">m(op) [size]: show memory, default size is 0x70, size may hex or decimal</span><br><span class="line">// 显示从某个起始地址开始的内存内容。</span><br><span class="line">// 默认显示的内存大小为 0x70 字节（约112字节）。</span><br><span class="line">// [size] 参数可选，可以以十六进制（例如 0x50）或十进制（例如 80）的形式提供</span><br><span class="line">mx0-mx28, mfp, mip, msp [size]: show memory of specified register</span><br><span class="line">// 显示某个寄存器所存储地址处的内存数据。</span><br><span class="line">m(address) [size]: show memory of specified address, address must start with 0x</span><br><span class="line">// 查看该地址处的数据</span><br><span class="line">b(address): add temporarily breakpoint, address must start with 0x, can be module offset</span><br><span class="line">// 在指定地址处添加一个临时断点</span><br><span class="line">b: add breakpoint of register PC</span><br><span class="line">// 在当前程序计数器（PC）指向的地址设置断点。</span><br><span class="line">r: remove breakpoint of register PC</span><br><span class="line">// 命令 r 用于移除之前通过 b 命令设置的 PC 断点。</span><br><span class="line">blr: add temporarily breakpoint of register LR</span><br><span class="line">// 在链接寄存器（LR）所指向的地址上添加一个临时断点。</span><br></pre></td></tr></table></figure>
+<h2 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">c: continue</span><br><span class="line">// 可以让程序继续运行，直到遇到下一个断点或程序执行结束。</span><br><span class="line">n: step over</span><br><span class="line">// 单步执行当前指令，但不会进入函数内部。</span><br><span class="line">bt: back trace</span><br><span class="line">// 打印当前的调用栈信息，也就是从当前执行点一直追溯到程序入口的函数调用链。</span><br><span class="line">nb: break at next block</span><br><span class="line">// 在下一个基本块（Basic Block） 开始执行时自动暂停。</span><br><span class="line">s|si: step into</span><br><span class="line">// 单步执行，如果下一条指令是函数调用，它会进入该函数内部执行。</span><br><span class="line">s[decimal]: execute specified amount instruction</span><br><span class="line">// 允许一次性执行多条指令，然后暂停，而不是一条一条手动执行。</span><br><span class="line">s(bl): execute util BL mnemonic, low performance</span><br><span class="line">// 执行直到遇到 BL 指令</span><br><span class="line">m(op) [size]: show memory, default size is 0x70, size may hex or decimal</span><br><span class="line">// 显示从某个起始地址开始的内存内容。</span><br><span class="line">// 默认显示的内存大小为 0x70 字节（约112字节）。</span><br><span class="line">// [size] 参数可选，可以以十六进制（例如 0x50）或十进制（例如 80）的形式提供</span><br><span class="line">mx0-mx28, mfp, mip, msp [size]: show memory of specified register</span><br><span class="line">// 显示某个寄存器所存储地址处的内存数据。</span><br><span class="line">m(address) [size]: show memory of specified address, address must start with 0x</span><br><span class="line">// 查看该地址处的数据</span><br><span class="line">b(address): add temporarily breakpoint, address must start with 0x, can be module offset</span><br><span class="line">// 在指定地址处添加一个临时断点</span><br><span class="line">b: add breakpoint of register PC</span><br><span class="line">// 在当前程序计数器（PC）指向的地址设置断点。</span><br><span class="line">r: remove breakpoint of register PC</span><br><span class="line">// 命令 r 用于移除之前通过 b 命令设置的 PC 断点。</span><br><span class="line">blr: add temporarily breakpoint of register LR</span><br><span class="line">// 在链接寄存器（LR）所指向的地址上添加一个临时断点。</span><br></pre></td></tr></table></figure>
 
 
 
@@ -1700,13 +1700,13 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">795k</span>
+    <span title="站点总字数">804k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">12:03</span>
+    <span title="站点阅读时长">12:10</span>
 </div>
 
 
