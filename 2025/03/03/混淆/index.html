@@ -20,13 +20,17 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="花指令去除无法解析的跳转地址1 转换为汇编代码如下 通过BR指令跳转到X5存储的地址处 1234567891011121314151617181920212223LOAD:0000000000028C48 FF 83 01 D1                 SUB             SP, SP, #0x60LOAD:0000000000028C4C FB 1B 00 F9">
+  <meta name="description" content="LLVM了解简单来说，可以将 LLVM 理解为一个现代化、可拓展的编译器。 so混淆有代表性的就是ollvm，它是基于LLVM诞生的一款工具。 LLVM广义上是包含了很多模块的编译器框架。 在这里狭义上指的是llvm项目中的llvm core和clang子模块。 GCC与LLVM编译流程对比GCC分为三个模块：前端、优化器和后端  LLVM 本质上也是三段式：  示例  相对于 GCC ，LLVM">
 <meta property="og:type" content="article">
 <meta property="og:title" content="混淆">
 <meta property="og:url" content="http://example.com/2025/03/03/%E6%B7%B7%E6%B7%86/index.html">
 <meta property="og:site_name" content="白乐天">
-<meta property="og:description" content="花指令去除无法解析的跳转地址1 转换为汇编代码如下 通过BR指令跳转到X5存储的地址处 1234567891011121314151617181920212223LOAD:0000000000028C48 FF 83 01 D1                 SUB             SP, SP, #0x60LOAD:0000000000028C4C FB 1B 00 F9">
+<meta property="og:description" content="LLVM了解简单来说，可以将 LLVM 理解为一个现代化、可拓展的编译器。 so混淆有代表性的就是ollvm，它是基于LLVM诞生的一款工具。 LLVM广义上是包含了很多模块的编译器框架。 在这里狭义上指的是llvm项目中的llvm core和clang子模块。 GCC与LLVM编译流程对比GCC分为三个模块：前端、优化器和后端  LLVM 本质上也是三段式：  示例  相对于 GCC ，LLVM">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2025/03/03/%E6%B7%B7%E6%B7%86/18.jpg">
+<meta property="og:image" content="http://example.com/2025/03/03/%E6%B7%B7%E6%B7%86/19.jpg">
+<meta property="og:image" content="http://example.com/2025/03/03/%E6%B7%B7%E6%B7%86/20.jpg">
+<meta property="og:image" content="http://example.com/2025/03/03/%E6%B7%B7%E6%B7%86/21.jpg">
 <meta property="og:image" content="http://example.com/2025/03/03/%E6%B7%B7%E6%B7%86/1.jpg">
 <meta property="og:image" content="http://example.com/2025/03/03/%E6%B7%B7%E6%B7%86/2.jpg">
 <meta property="og:image" content="http://example.com/2025/03/03/%E6%B7%B7%E6%B7%86/3.jpg">
@@ -45,11 +49,11 @@
 <meta property="og:image" content="http://example.com/2025/03/03/%E6%B7%B7%E6%B7%86/16.jpg">
 <meta property="og:image" content="http://example.com/2025/03/03/%E6%B7%B7%E6%B7%86/17.jpg">
 <meta property="article:published_time" content="2025-03-03T08:54:32.000Z">
-<meta property="article:modified_time" content="2025-03-10T09:54:32.606Z">
+<meta property="article:modified_time" content="2025-03-15T15:29:47.997Z">
 <meta property="article:author" content="Bileton">
 <meta property="article:tag" content="混淆">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/2025/03/03/%E6%B7%B7%E6%B7%86/1.jpg">
+<meta name="twitter:image" content="http://example.com/2025/03/03/%E6%B7%B7%E6%B7%86/18.jpg">
 
 <link rel="canonical" href="http://example.com/2025/03/03/%E6%B7%B7%E6%B7%86/">
 
@@ -140,7 +144,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">87</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">88</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -150,7 +154,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">95</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">96</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -236,7 +240,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2025-03-10 17:54:32" itemprop="dateModified" datetime="2025-03-10T17:54:32+08:00">2025-03-10</time>
+                <time title="修改时间：2025-03-15 23:29:47" itemprop="dateModified" datetime="2025-03-15T23:29:47+08:00">2025-03-15</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -254,14 +258,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>2.7k</span>
+              <span>4.3k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>2 分钟</span>
+              <span>4 分钟</span>
             </span>
 
         </div>
@@ -273,7 +277,53 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="花指令去除"><a href="#花指令去除" class="headerlink" title="花指令去除"></a>花指令去除</h1><h2 id="无法解析的跳转地址1"><a href="#无法解析的跳转地址1" class="headerlink" title="无法解析的跳转地址1"></a>无法解析的跳转地址1</h2><p><img src="/2025/03/03/%E6%B7%B7%E6%B7%86/1.jpg"></p>
+        <h1 id="LLVM"><a href="#LLVM" class="headerlink" title="LLVM"></a>LLVM</h1><h2 id="了解"><a href="#了解" class="headerlink" title="了解"></a>了解</h2><p>简单来说，可以将 LLVM 理解为一个现代化、可拓展的编译器。</p>
+<p>so混淆有代表性的就是ollvm，它是基于LLVM诞生的一款工具。</p>
+<p>LLVM广义上是包含了很多模块的编译器框架。</p>
+<p>在这里狭义上指的是llvm项目中的llvm core和clang子模块。</p>
+<h2 id="GCC与LLVM编译流程对比"><a href="#GCC与LLVM编译流程对比" class="headerlink" title="GCC与LLVM编译流程对比"></a>GCC与LLVM编译流程对比</h2><p>GCC分为三个模块：前端、优化器和后端</p>
+<p><img src="/2025/03/03/%E6%B7%B7%E6%B7%86/18.jpg"></p>
+<p>LLVM 本质上也是三段式：</p>
+<p><img src="/2025/03/03/%E6%B7%B7%E6%B7%86/19.jpg"></p>
+<p>示例</p>
+<p><img src="/2025/03/03/%E6%B7%B7%E6%B7%86/20.jpg"></p>
+<p>相对于 GCC ，LLVM 有如下优势：</p>
+<ul>
+<li>模块化：LLVM 是高度模块化设计的，每一个模块都可以从 LLVM 项目中抽离出来单独使用。而 GCC 虽然也是三段式编译，但各个模块之间是难以抽离出来单独使用的。</li>
+<li>可拓展：LLVM 为开发者提供了丰富的 API ，例如开发者可以通过 LLVM Pass 框架干预中间代码优化过程，并且配备了完善的文档。虽然 GCC 是开源的，但要在 GCC 的基础上进行拓展门槛很高、难度很大。</li>
+</ul>
+<h1 id="OLLVM"><a href="#OLLVM" class="headerlink" title="OLLVM"></a>OLLVM</h1><p>OLLVM（Obfuscator-LLVM）是一个基于LLVM框架的开源代码混淆工具，旨在通过修改程序的中间表示（IR）增加代码的复杂性，从而提升逆向工程的难度。</p>
+<p>OLLVM是LLVM编译器框架的一个分支，通过插入混淆逻辑到编译过程中，生成难以理解和分析的二进制代码。</p>
+<p>原理：在LLVM的中间表示（IR）层面进行代码转换，保留程序功能但改变代码结构，适用于C&#x2F;C++等LLVM支持的语言。</p>
+<h2 id="代码混淆"><a href="#代码混淆" class="headerlink" title="代码混淆"></a>代码混淆</h2><p>代码混淆的主要目的是防止或至少是阻碍对代码的未授权分析和修改。</p>
+<p>代码混淆可以提高代码的安全性，但它不能提供绝对的保护。</p>
+<h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><p>函数是代码混淆的基本单位。一个函数由若干基本块组成，有且仅有一个入口块，可能有多个出口块。</p>
+<p>一个函数可以用一个控制流程图（Control Flow Graph）表示。</p>
+<h3 id="基本块"><a href="#基本块" class="headerlink" title="基本块"></a>基本块</h3><p>基本块由一组线性指令组成，每一个基本块都有一个入口点（第一条执行的指令）和一个出口点（最后一条执行的指令，即终结指令）。</p>
+<p>终结指令要么跳转到下一个基本块，要么从函数返回。</p>
+<h3 id="指令"><a href="#指令" class="headerlink" title="指令"></a>指令</h3><p>指令（Instruction）是LLVM中间表示（IR）的最小执行单元，对应程序中的原子操作（如算术运算、内存访问、控制流跳转等）。每条指令属于某个基本块，并严格按顺序执行（除非被终结指令中断）。</p>
+<h3 id="控制流"><a href="#控制流" class="headerlink" title="控制流"></a>控制流</h3><p>控制流代表了一个程序执行过程中可能遍历到的所有路径。</p>
+<p>通常情况下，程序的控制流很清晰地反映了程序的逻辑，但经过混淆的控制流会使得人们难以分辨正常逻辑。</p>
+<h2 id="常见混淆"><a href="#常见混淆" class="headerlink" title="常见混淆"></a>常见混淆</h2><h3 id="不透明谓词"><a href="#不透明谓词" class="headerlink" title="不透明谓词"></a>不透明谓词</h3><p>不透明谓词是一种在编译时即可确定结果（真或假）的条件表达式，但其逻辑对逆向分析者而言是“不透明”的（难以静态推断）。它被插入到代码中，用于生成虚假控制流分支，干扰逆向工程。</p>
+<p><strong>特点</strong></p>
+<p>静态确定性：编译时即可计算结果（如 <code>1 &gt; 0</code> 永真，<code>2 + 2 = 5</code> 永假）。</p>
+<p>动态隐蔽性：通过复杂计算或依赖上下文数据，伪装成动态条件。</p>
+<p>不可达路径：插入与程序逻辑无关的分支，增加分析复杂度。</p>
+<h3 id="控制流平坦化"><a href="#控制流平坦化" class="headerlink" title="控制流平坦化"></a>控制流平坦化</h3><p>通过破坏代码的原始控制流结构，将其转换为“平坦化”的状态机形式。</p>
+<p>其核心目标是隐藏程序逻辑的跳转关系，使逆向工程难以恢复原始执行流程。</p>
+<p><strong>特点</strong></p>
+<p>统一入口&#x2F;出口：所有基本块通过一个“分发块”（Dispatcher）调度。</p>
+<p>状态驱动：通过变量（状态值）决定下一个执行的基本块。</p>
+<p>消除结构化特征：原始分支（如<code>if-else</code>、循环）被替换为跳转表或状态切换。</p>
+<p><img src="/2025/03/03/%E6%B7%B7%E6%B7%86/21.jpg"></p>
+<h3 id="虚假控制流"><a href="#虚假控制流" class="headerlink" title="虚假控制流"></a>虚假控制流</h3><p>虚假控制流是一种通过插入永真永假条件分支或冗余跳转来干扰控制流分析的代码混淆技术。其核心目标是增加控制流图（CFG）的复杂度，使得逆向工程难以区分真实逻辑与无效代码。</p>
+<p>以基本块为单位，通过一个主分发器来控制程序的执行流程。</p>
+<p><strong>特点</strong></p>
+<p>无效分支：插入的条件分支在运行时永远不会被执行（如 <code>if (1 &gt; 0)</code> 永真分支）。</p>
+<p>逻辑干扰：破坏基本块之间的直接跳转关系，生成“蜘蛛网”式CFG。</p>
+<p>低开销：相比控制流平坦化，性能影响较小。</p>
+<h3 id="指令替换"><a href="#指令替换" class="headerlink" title="指令替换"></a>指令替换</h3><p>指令替换是一种通过将简单指令替换为等效但更复杂的指令序列的代码混淆技术。其核心目标是增加代码的语义复杂度，使得逆向工程难以理解程序逻辑，同时保持功能不变。</p>
+<h1 id="花指令去除"><a href="#花指令去除" class="headerlink" title="花指令去除"></a>花指令去除</h1><h2 id="无法解析的跳转地址1"><a href="#无法解析的跳转地址1" class="headerlink" title="无法解析的跳转地址1"></a>无法解析的跳转地址1</h2><p><img src="/2025/03/03/%E6%B7%B7%E6%B7%86/1.jpg"></p>
 <p>转换为汇编代码如下</p>
 <p>通过BR指令跳转到X5存储的地址处</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">LOAD:0000000000028C48 FF 83 01 D1                 SUB             SP, SP, #0x60</span><br><span class="line">LOAD:0000000000028C4C FB 1B 00 F9                 STR             X27, [SP,#0x50+var_20]</span><br><span class="line">LOAD:0000000000028C50 F4 4F 04 A9                 STP             X20, X19, [SP,#0x50+var_10]</span><br><span class="line">LOAD:0000000000028C54 FD 7B 05 A9                 STP             X29, X30, [SP,#0x50+var_s0]</span><br><span class="line">LOAD:0000000000028C58 FD 43 01 91                 ADD             X29, SP, #0x50</span><br><span class="line">LOAD:0000000000028C5C 54 D0 3B D5                 MRS             X20, TPIDR_EL0</span><br><span class="line">LOAD:0000000000028C60 88 16 40 F9                 LDR             X8, [X20,#0x28]</span><br><span class="line">LOAD:0000000000028C64 69 05 80 52                 MOV             W9, #0x2B ; &#x27;+&#x27;</span><br><span class="line">LOAD:0000000000028C68 EA 93 00 91                 ADD             X10, SP, #0x50+var_2C</span><br><span class="line">LOAD:0000000000028C6C F3 03 00 AA                 MOV             X19, X0</span><br><span class="line">LOAD:0000000000028C70 E8 17 00 F9                 STR             X8, [SP,#0x50+var_28]</span><br><span class="line">LOAD:0000000000028C74 E9 27 00 B9                 STR             W9, [SP,#0x50+var_2C]</span><br><span class="line">LOAD:0000000000028C78 25 00 00 10                 ADR             X5, loc_28C7C</span><br><span class="line">LOAD:0000000000028C7C</span><br><span class="line">LOAD:0000000000028C7C             loc_28C7C                               ; DATA XREF: JNI_OnLoad+30↑o</span><br><span class="line">LOAD:0000000000028C7C FB 00 00 98                 LDRSW           X27, =0xFFFFFFFA</span><br><span class="line">LOAD:0000000000028C80 FB 03 3B AA                 MVN             X27, X27</span><br><span class="line">LOAD:0000000000028C84 46 01 80 B9                 LDRSW           X6, [X10]</span><br><span class="line">LOAD:0000000000028C88 7B 03 06 8B                 ADD             X27, X27, X6</span><br><span class="line">LOAD:0000000000028C8C A5 00 1B 8B                 ADD             X5, X5, X27</span><br><span class="line">LOAD:0000000000028C90 08 0C 80 D2                 MOV             X8, #0x60 ; &#x27;`&#x27;</span><br><span class="line">LOAD:0000000000028C94 A0 00 1F D6                 BR              X5</span><br><span class="line">LOAD:0000000000028C94             ; End of function JNI_OnLoad</span><br></pre></td></tr></table></figure>
@@ -405,7 +455,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%8A%B1%E6%8C%87%E4%BB%A4%E5%8E%BB%E9%99%A4"><span class="nav-number">1.</span> <span class="nav-text">花指令去除</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%97%A0%E6%B3%95%E8%A7%A3%E6%9E%90%E7%9A%84%E8%B7%B3%E8%BD%AC%E5%9C%B0%E5%9D%801"><span class="nav-number">1.1.</span> <span class="nav-text">无法解析的跳转地址1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%97%A0%E6%B3%95%E8%A7%A3%E6%9E%90%E7%9A%84%E8%B7%B3%E8%BD%AC%E5%9C%B0%E5%9D%802"><span class="nav-number">1.2.</span> <span class="nav-text">无法解析的跳转地址2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%97%A0%E6%B3%95%E8%A7%A3%E6%9E%90%E7%9A%84%E8%B7%B3%E8%BD%AC%E5%9C%B0%E5%9D%803"><span class="nav-number">1.3.</span> <span class="nav-text">无法解析的跳转地址3</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A0%86%E6%A0%88%E4%B8%8D%E5%B9%B3%E8%A1%A1"><span class="nav-number">1.4.</span> <span class="nav-text">堆栈不平衡</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%8D%E8%99%9A%E5%81%87%E6%8E%A7%E5%88%B6%E6%B5%81"><span class="nav-number">2.</span> <span class="nav-text">反虚假控制流</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#unidbg%E6%A8%A1%E6%8B%9F%E6%89%A7%E8%A1%8C%E5%87%BD%E6%95%B0"><span class="nav-number">2.1.</span> <span class="nav-text">unidbg模拟执行函数</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%89%8B%E5%8A%A8%E8%BF%98%E5%8E%9F%E6%8E%A7%E5%88%B6%E6%B5%81%E5%B9%B3%E5%9D%A6%E5%8C%96"><span class="nav-number">3.</span> <span class="nav-text">手动还原控制流平坦化</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#LLVM"><span class="nav-number">1.</span> <span class="nav-text">LLVM</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%86%E8%A7%A3"><span class="nav-number">1.1.</span> <span class="nav-text">了解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GCC%E4%B8%8ELLVM%E7%BC%96%E8%AF%91%E6%B5%81%E7%A8%8B%E5%AF%B9%E6%AF%94"><span class="nav-number">1.2.</span> <span class="nav-text">GCC与LLVM编译流程对比</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#OLLVM"><span class="nav-number">2.</span> <span class="nav-text">OLLVM</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E6%B7%B7%E6%B7%86"><span class="nav-number">2.1.</span> <span class="nav-text">代码混淆</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%BD%E6%95%B0"><span class="nav-number">2.1.1.</span> <span class="nav-text">函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E5%9D%97"><span class="nav-number">2.1.2.</span> <span class="nav-text">基本块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4"><span class="nav-number">2.1.3.</span> <span class="nav-text">指令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8E%A7%E5%88%B6%E6%B5%81"><span class="nav-number">2.1.4.</span> <span class="nav-text">控制流</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E6%B7%B7%E6%B7%86"><span class="nav-number">2.2.</span> <span class="nav-text">常见混淆</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8D%E9%80%8F%E6%98%8E%E8%B0%93%E8%AF%8D"><span class="nav-number">2.2.1.</span> <span class="nav-text">不透明谓词</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8E%A7%E5%88%B6%E6%B5%81%E5%B9%B3%E5%9D%A6%E5%8C%96"><span class="nav-number">2.2.2.</span> <span class="nav-text">控制流平坦化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%99%9A%E5%81%87%E6%8E%A7%E5%88%B6%E6%B5%81"><span class="nav-number">2.2.3.</span> <span class="nav-text">虚假控制流</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E6%9B%BF%E6%8D%A2"><span class="nav-number">2.2.4.</span> <span class="nav-text">指令替换</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%8A%B1%E6%8C%87%E4%BB%A4%E5%8E%BB%E9%99%A4"><span class="nav-number">3.</span> <span class="nav-text">花指令去除</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%97%A0%E6%B3%95%E8%A7%A3%E6%9E%90%E7%9A%84%E8%B7%B3%E8%BD%AC%E5%9C%B0%E5%9D%801"><span class="nav-number">3.1.</span> <span class="nav-text">无法解析的跳转地址1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%97%A0%E6%B3%95%E8%A7%A3%E6%9E%90%E7%9A%84%E8%B7%B3%E8%BD%AC%E5%9C%B0%E5%9D%802"><span class="nav-number">3.2.</span> <span class="nav-text">无法解析的跳转地址2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%97%A0%E6%B3%95%E8%A7%A3%E6%9E%90%E7%9A%84%E8%B7%B3%E8%BD%AC%E5%9C%B0%E5%9D%803"><span class="nav-number">3.3.</span> <span class="nav-text">无法解析的跳转地址3</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A0%86%E6%A0%88%E4%B8%8D%E5%B9%B3%E8%A1%A1"><span class="nav-number">3.4.</span> <span class="nav-text">堆栈不平衡</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%8D%E8%99%9A%E5%81%87%E6%8E%A7%E5%88%B6%E6%B5%81"><span class="nav-number">4.</span> <span class="nav-text">反虚假控制流</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#unidbg%E6%A8%A1%E6%8B%9F%E6%89%A7%E8%A1%8C%E5%87%BD%E6%95%B0"><span class="nav-number">4.1.</span> <span class="nav-text">unidbg模拟执行函数</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%89%8B%E5%8A%A8%E8%BF%98%E5%8E%9F%E6%8E%A7%E5%88%B6%E6%B5%81%E5%B9%B3%E5%9D%A6%E5%8C%96"><span class="nav-number">5.</span> <span class="nav-text">手动还原控制流平坦化</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -421,7 +471,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">95</span>
+          <span class="site-state-item-count">96</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -434,7 +484,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">87</span>
+        <span class="site-state-item-count">88</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -475,13 +525,13 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">804k</span>
+    <span title="站点总字数">828k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">12:10</span>
+    <span title="站点阅读时长">12:32</span>
 </div>
 
 
