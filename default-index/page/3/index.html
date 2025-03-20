@@ -119,7 +119,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">88</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">90</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -129,7 +129,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">96</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">98</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -180,6 +180,307 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/02/18/DYM%E7%99%BB%E5%BD%95%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/android.svg">
+      <meta itemprop="name" content="Bileton">
+      <meta itemprop="description" content="路漫漫其修远夕！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="白乐天">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2025/02/18/DYM%E7%99%BB%E5%BD%95%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/" class="post-title-link" itemprop="url">DYM登录参数逆向</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2025-02-18 21:41:48 / 修改时间：21:59:56" itemprop="dateCreated datePublished" datetime="2025-02-18T21:41:48+08:00">2025-02-18</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%80%86%E5%90%91%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/" itemprop="url" rel="index"><span itemprop="name">逆向实战案例</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>12k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>11 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="App信息"><a href="#App信息" class="headerlink" title="App信息"></a>App信息</h1><p>包名：com.yoloho.dayima</p>
+<p><img src="/2025/02/18/DYM%E7%99%BB%E5%BD%95%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/1.jpg"></p>
+<h1 id="root检测"><a href="#root检测" class="headerlink" title="root检测"></a>root检测</h1><p><img src="/2025/02/18/DYM%E7%99%BB%E5%BD%95%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/3.jpg"></p>
+<h2 id="狐妖面具"><a href="#狐妖面具" class="headerlink" title="狐妖面具"></a>狐妖面具</h2><p>使用狐妖面具配置排除列表</p>
+<h2 id="脚本绕过"><a href="#脚本绕过" class="headerlink" title="脚本绕过"></a>脚本绕过</h2><p>开源项目脚本：<a target="_blank" rel="noopener" href="https://github.com/AshenOneYe/FridaAntiRootDetection">https://github.com/AshenOneYe/FridaAntiRootDetection</a></p>
+<p><img src="/2025/02/18/DYM%E7%99%BB%E5%BD%95%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/2.jpg"></p>
+<h3 id="反编译Apk找root检测逻辑"><a href="#反编译Apk找root检测逻辑" class="headerlink" title="反编译Apk找root检测逻辑"></a>反编译Apk找root检测逻辑</h3><p>Jadx搜索<code>Root设备</code></p>
+<p><img src="/2025/02/18/DYM%E7%99%BB%E5%BD%95%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/4.jpg"></p>
+<p>双击跳转</p>
+<p><img src="/2025/02/18/DYM%E7%99%BB%E5%BD%95%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/5.jpg"></p>
+<h3 id="isRooted"><a href="#isRooted" class="headerlink" title="isRooted()"></a>isRooted()</h3><p><img src="/2025/02/18/DYM%E7%99%BB%E5%BD%95%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/6.jpg"></p>
+<p>这里直接返回<code>false</code>就可以了</p>
+<h3 id="isSimulater"><a href="#isSimulater" class="headerlink" title="isSimulater()"></a>isSimulater()</h3><p>获取<code>build.prop</code>文件中的属性进行检测，返回<code>false</code>即可。</p>
+<h3 id="hook-root"><a href="#hook-root" class="headerlink" title="hook_root"></a>hook_root</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">hook_root</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="title class_">Java</span>.<span class="title function_">perform</span>(<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="keyword">let</span> <span class="title class_">MiscUtil</span> = <span class="title class_">Java</span>.<span class="title function_">use</span>(<span class="string">&quot;com.yoloho.libcore.util.MiscUtil&quot;</span>);</span><br><span class="line">        <span class="title class_">MiscUtil</span>[<span class="string">&quot;isRooted&quot;</span>].<span class="property">implementation</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`MiscUtil.isRooted is called`</span>);</span><br><span class="line">            <span class="keyword">let</span> result = <span class="variable language_">this</span>[<span class="string">&quot;isRooted&quot;</span>]();</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`MiscUtil.isRooted result=<span class="subst">$&#123;result&#125;</span>`</span>);</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>就可以进入app了</p>
+<h1 id="登录抓包分析"><a href="#登录抓包分析" class="headerlink" title="登录抓包分析"></a>登录抓包分析</h1><p>输入账号密码：18888888888 12345678</p>
+<p><img src="/2025/02/18/DYM%E7%99%BB%E5%BD%95%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/7.jpg"></p>
+<h2 id="抓包数据"><a href="#抓包数据" class="headerlink" title="抓包数据"></a>抓包数据</h2><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">url<span class="punctuation">:</span> https<span class="punctuation">:</span><span class="comment">//uicapi.yoloho.com/user/login</span></span><br><span class="line">params<span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;device&quot;</span><span class="punctuation">:</span> <span class="string">&quot;63122cb8da575c7e71ace0dccb1e35b0f2a43758&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;ver&quot;</span><span class="punctuation">:</span> <span class="string">&quot;900&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;screen_width&quot;</span><span class="punctuation">:</span> <span class="string">&quot;1080&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;screen_height&quot;</span><span class="punctuation">:</span> <span class="string">&quot;2028&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;model&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Pixel 3&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;sdkver&quot;</span><span class="punctuation">:</span> <span class="string">&quot;29&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;platform&quot;</span><span class="punctuation">:</span> <span class="string">&quot;android&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;releasever&quot;</span><span class="punctuation">:</span> <span class="string">&quot;10&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;channel&quot;</span><span class="punctuation">:</span> <span class="string">&quot;vivobbg&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;latt&quot;</span><span class="punctuation">:</span> <span class="string">&quot;0&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;lngt&quot;</span><span class="punctuation">:</span> <span class="string">&quot;0&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;networkType&quot;</span><span class="punctuation">:</span> <span class="string">&quot;0&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;token&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;userStatus&quot;</span><span class="punctuation">:</span> <span class="string">&quot;0&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;oaid&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;installDate&quot;</span><span class="punctuation">:</span> <span class="string">&quot;0&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br><span class="line"></span><br><span class="line">headers<span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;Accept-Encoding&quot;</span><span class="punctuation">:</span> <span class="string">&quot;gzip&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;User-Agent&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Mozilla/5.0 (Linux; Android 10; Pixel 3 Build/QQ3A.200705.002; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/74.0.3729.186 Mobile Safari/537.36&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;Content-Length&quot;</span><span class="punctuation">:</span> <span class="string">&quot;211&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;Content-Type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;application/x-www-form-urlencoded&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;Host&quot;</span><span class="punctuation">:</span> <span class="string">&quot;uicapi.yoloho.com&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;Connection&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Keep-Alive&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br><span class="line"></span><br><span class="line">body<span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;username&quot;</span><span class="punctuation">:</span> <span class="string">&quot;18888888888&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;password&quot;</span><span class="punctuation">:</span> <span class="string">&quot;ET4Sdfjs+/VkbhxXerUBFg==&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;sign&quot;</span><span class="punctuation">:</span> <span class="string">&quot;c6337760363ed264b287178c340f9cb8&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;androidid&quot;</span><span class="punctuation">:</span> <span class="string">&quot;9000290bea7be29b&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;mac&quot;</span><span class="punctuation">:</span> <span class="string">&quot;EE:9E:96:57:AB:FD&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;imei&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;density&quot;</span><span class="punctuation">:</span> <span class="string">&quot;2.75&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;brand&quot;</span><span class="punctuation">:</span> <span class="string">&quot;google&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;oaid&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;installDate&quot;</span><span class="punctuation">:</span> <span class="string">&quot;0&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>这里面需要解的参数有<code>device</code>、<code>password</code>、<code>sign</code></p>
+<h1 id="逆向"><a href="#逆向" class="headerlink" title="逆向"></a>逆向</h1><h2 id="device参数"><a href="#device参数" class="headerlink" title="device参数"></a>device参数</h2><p>jadx搜索<code>device</code>，出现很多结果，可以双击每个结果查看他们的上下文中的其他参数与接口中的参数进行比较，定位到<code>device</code>参数的位置。也可以搜索接口中其他参数，在其他参数的上下文中可以找到<code>device</code>。</p>
+<p>定位到如下位置。</p>
+<p><img src="/2025/02/18/DYM%E7%99%BB%E5%BD%95%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/8.jpg"></p>
+<p><code>device</code>的值是经过URL编码后的<code>getDeviceCode()</code>的值</p>
+<h3 id="getDeviceCode"><a href="#getDeviceCode" class="headerlink" title="getDeviceCode()"></a>getDeviceCode()</h3><p><img src="/2025/02/18/DYM%E7%99%BB%E5%BD%95%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/9.jpg"></p>
+<p>这里面通过<code>setDeviceCode</code>方法来设置device的值</p>
+<h3 id="setDeviceCode"><a href="#setDeviceCode" class="headerlink" title="setDeviceCode()"></a>setDeviceCode()</h3><p>如下是源码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setDeviceCode</span><span class="params">()</span> &#123;</span><br><span class="line">    String str;</span><br><span class="line">    String str2;</span><br><span class="line">    String str3;</span><br><span class="line">    <span class="keyword">if</span> (NetUtil.getSharedPreferences(SettingsConfig.KEY_USER_PERMISSION, <span class="literal">false</span>) &amp;&amp; deviceCode == <span class="literal">null</span>) &#123;</span><br><span class="line">        deviceCode = <span class="string">&quot;NotFound&quot;</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                str = Build.BOARD + Build.BRAND + Build.CPU_ABI + Build.DEVICE + Build.DISPLAY + Build.HOST + Build.ID + Build.MANUFACTURER + Build.MODEL + Build.PRODUCT + Build.TAGS + Build.TYPE + Build.USER;</span><br><span class="line">            &#125; <span class="keyword">catch</span> (Exception e2) &#123;</span><br><span class="line">                e2.printStackTrace();</span><br><span class="line">                str = <span class="literal">null</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                str2 = AppInfo.getAndroidId();</span><br><span class="line">            &#125; <span class="keyword">catch</span> (Exception e3) &#123;</span><br><span class="line">                e3.printStackTrace();</span><br><span class="line">                str2 = <span class="literal">null</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                str3 = DayimaUtil.getPhoneMac();</span><br><span class="line">            &#125; <span class="keyword">catch</span> (Exception e4) &#123;</span><br><span class="line">                e4.printStackTrace();</span><br><span class="line">                str3 = <span class="literal">null</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="type">String</span> <span class="variable">str4</span> <span class="operator">=</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line">            <span class="keyword">if</span> (!Build.MODEL.equals(<span class="string">&quot;vivo X1w&quot;</span>) || !Build.VERSION.RELEASE.equals(FaceEnvironment.SDK_VERSION)) &#123;</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    <span class="type">BluetoothAdapter</span> <span class="variable">defaultAdapter</span> <span class="operator">=</span> BluetoothAdapter.getDefaultAdapter();</span><br><span class="line">                    <span class="keyword">if</span> (defaultAdapter != <span class="literal">null</span>) &#123;</span><br><span class="line">                        str4 = defaultAdapter.getAddress();</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="type">String</span> <span class="variable">str5</span> <span class="operator">=</span> ((String) <span class="literal">null</span>) + str2 + str + str3 + str4;</span><br><span class="line">            <span class="type">MessageDigest</span> <span class="variable">messageDigest</span> <span class="operator">=</span> MessageDigest.getInstance(<span class="string">&quot;sha-1&quot;</span>);</span><br><span class="line">            messageDigest.update(str5.getBytes());</span><br><span class="line">            <span class="type">byte</span>[] digest = messageDigest.digest();</span><br><span class="line">            <span class="type">StringBuffer</span> <span class="variable">stringBuffer</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StringBuffer</span>();</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">byte</span> b : digest) &#123;</span><br><span class="line">                <span class="type">String</span> <span class="variable">lowerCase</span> <span class="operator">=</span> Integer.toHexString(b &amp; <span class="number">255</span>).toLowerCase(Locale.getDefault());</span><br><span class="line">                <span class="keyword">if</span> (lowerCase.length() &lt; <span class="number">2</span>) &#123;</span><br><span class="line">                    lowerCase = <span class="string">&quot;0&quot;</span> + lowerCase;</span><br><span class="line">                &#125;</span><br><span class="line">                stringBuffer.append(lowerCase);</span><br><span class="line">            &#125;</span><br><span class="line">            deviceCode = stringBuffer.toString();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>分析</strong></p>
+<p>这里面先是拼接了一个字符串<code>String str5 = ((String) null) + str2 + str + str3 + str4;</code>然后对这个字符串进行了<code>sha1</code>签名</p>
+<p><strong>str2</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">str2 = AppInfo.getAndroidId(); </span><br></pre></td></tr></table></figure>
+
+<p>获取AndroidId</p>
+<p><strong>str</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">str = Build.BOARD + Build.BRAND + Build.CPU_ABI + Build.DEVICE + Build.DISPLAY + Build.HOST + Build.ID + Build.MANUFACTURER + Build.MODEL + Build.PRODUCT + Build.TAGS + Build.TYPE + Build.USER;</span><br></pre></td></tr></table></figure>
+
+<p>设备指纹信息</p>
+<p><strong>str3</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">str3 = DayimaUtil.getPhoneMac();</span><br></pre></td></tr></table></figure>
+
+<p>获取设备Mac地址</p>
+<p><strong>str4</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">str4 = defaultAdapter.getAddress();</span><br></pre></td></tr></table></figure>
+
+<p>获取的是蓝牙地址</p>
+<p>把这些内容拼接起来进行SHA1签名，然后全小写就是deviceid值</p>
+<h3 id="hook-setDeviceCode"><a href="#hook-setDeviceCode" class="headerlink" title="hook setDeviceCode"></a>hook setDeviceCode</h3><p>通过hook查看传入的参数</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">hook_device</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> flag = <span class="literal">false</span>;</span><br><span class="line">    <span class="title class_">Java</span>.<span class="title function_">perform</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">        <span class="keyword">let</span> <span class="title class_">PeriodAPIV2</span> = <span class="title class_">Java</span>.<span class="title function_">use</span>(<span class="string">&quot;com.yoloho.controller.api.PeriodAPIV2&quot;</span>);</span><br><span class="line">        <span class="title class_">PeriodAPIV2</span>[<span class="string">&quot;setDeviceCode&quot;</span>].<span class="property">implementation</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">            flag = <span class="literal">true</span>;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`========== PeriodAPIV2.setDeviceCode is called ==========`</span>);</span><br><span class="line">            <span class="variable language_">this</span>[<span class="string">&quot;setDeviceCode&quot;</span>]();</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">var</span> messageDigest = <span class="title class_">Java</span>.<span class="title function_">use</span>(<span class="string">&quot;java.security.MessageDigest&quot;</span>);</span><br><span class="line">        <span class="keyword">var</span> <span class="title class_">ByteString</span> = <span class="title class_">Java</span>.<span class="title function_">use</span>(<span class="string">&quot;com.android.okhttp.okio.ByteString&quot;</span>);</span><br><span class="line">        messageDigest.<span class="property">update</span>.<span class="title function_">overload</span>(<span class="string">&#x27;[B&#x27;</span>).<span class="property">implementation</span> = <span class="keyword">function</span> (<span class="params">data</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (flag) &#123;</span><br><span class="line">                <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;MessageDigest.update(&#x27;[B&#x27;) is called!&quot;</span>);</span><br><span class="line">                <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">ByteString</span>.<span class="title function_">of</span>(data).<span class="title function_">utf8</span>());</span><br><span class="line">                <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;-------------------------------------------------------&quot;</span>);</span><br><span class="line">                flag = <span class="literal">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="title function_">update</span>(data);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">hook_device</span>();</span><br></pre></td></tr></table></figure>
+
+<p>hook 结果</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">========== PeriodAPIV2.setDeviceCode is called ==========</span><br><span class="line">MessageDigest.update(&#x27;[B&#x27;) is called! </span><br><span class="line">null9000290bea7be29bbluelinegooglearm64-v8abluelineQQ3A.200705.002abfarm836QQ3A.200705.002GooglePixel 3bluelinerelease-keysuserandroid-buildEE:9E:96:57:AB:FD02:00:00:00:00:00</span><br><span class="line">-------------------------------------------------------</span><br></pre></td></tr></table></figure>
+
+<h2 id="password参数"><a href="#password参数" class="headerlink" title="password参数"></a>password参数</h2><p>搜索<code>password</code></p>
+<p><img src="/2025/02/18/DYM%E7%99%BB%E5%BD%95%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/10.jpg"></p>
+<p><code>privateStrHandle</code>的值是通过<code>privateStrHandle()</code>方法返回的，它传入的参数是密码和用户名</p>
+<h3 id="privateStrHandle"><a href="#privateStrHandle" class="headerlink" title="privateStrHandle()"></a>privateStrHandle()</h3><p><img src="/2025/02/18/DYM%E7%99%BB%E5%BD%95%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/11.jpg"></p>
+<p>通过AES加密返回一个<code>encrypt</code></p>
+<p>这里的三个参数，第一个参数明文是密码，第二个参数密钥是用户名进行MD5后取前16字节然后转小写，第三个参数iv向量是<code>yoloho_dayima!%_</code></p>
+<h3 id="hook-privateStrHandle"><a href="#hook-privateStrHandle" class="headerlink" title="hook privateStrHandle()"></a>hook privateStrHandle()</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">hook_aes</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="title class_">Java</span>.<span class="title function_">perform</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;<span class="keyword">let</span> <span class="title class_">DayimaPrivateUtil</span> = <span class="title class_">Java</span>.<span class="title function_">use</span>(<span class="string">&quot;com.yoloho.libcore.util.DayimaPrivateUtil&quot;</span>);</span><br><span class="line">        <span class="title class_">DayimaPrivateUtil</span>[<span class="string">&quot;privateStrHandle&quot;</span>].<span class="property">implementation</span> = <span class="keyword">function</span> (<span class="params">str, str2</span>) &#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`DayimaPrivateUtil.privateStrHandle is called: str=<span class="subst">$&#123;str&#125;</span>, str2=<span class="subst">$&#123;str2&#125;</span>`</span>);</span><br><span class="line">            <span class="keyword">let</span> result = <span class="variable language_">this</span>[<span class="string">&quot;privateStrHandle&quot;</span>](str, str2);</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`DayimaPrivateUtil.privateStrHandle result=<span class="subst">$&#123;result&#125;</span>`</span>);</span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">hook_aes</span>();</span><br></pre></td></tr></table></figure>
+
+<p>hook 结果</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">DayimaPrivateUtil.privateStrHandle is called: str=12345678, str2=18888888888</span><br><span class="line">DayimaPrivateUtil.privateStrHandle result=ET4Sdfjs+/VkbhxXerUBFg==</span><br></pre></td></tr></table></figure>
+
+<h3 id="测试验证"><a href="#测试验证" class="headerlink" title="测试验证"></a>测试验证</h3><p><img src="/2025/02/18/DYM%E7%99%BB%E5%BD%95%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/12.jpg"></p>
+<p><img src="/2025/02/18/DYM%E7%99%BB%E5%BD%95%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/13.jpg"></p>
+<p>没问题</p>
+<h2 id="sign参数还原"><a href="#sign参数还原" class="headerlink" title="sign参数还原"></a>sign参数还原</h2><p>找到<code>sign</code>的生成位置</p>
+<p><img src="/2025/02/18/DYM%E7%99%BB%E5%BD%95%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/14.jpg"></p>
+<p>它是通过<code>Crypt.encrypt_data()</code>方法生成的，它里面的参数是由<code>DeviceCode</code>、<code>&quot;user/login&quot;</code>、<code>str</code>、<code>str2</code>拼接而成的</p>
+<h3 id="encrypt-data"><a href="#encrypt-data" class="headerlink" title="encrypt_data()"></a>encrypt_data()</h3><p><img src="/2025/02/18/DYM%E7%99%BB%E5%BD%95%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/15.jpg"></p>
+<p>这是一个native方法</p>
+<h3 id="IDA分析"><a href="#IDA分析" class="headerlink" title="IDA分析"></a>IDA分析</h3><p>找到静态函数</p>
+<p><img src="/2025/02/18/DYM%E7%99%BB%E5%BD%95%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/16.jpg"></p>
+<p>双击跳转</p>
+<p><img src="/2025/02/18/DYM%E7%99%BB%E5%BD%95%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/17.jpg"></p>
+<h4 id="sub-1DA0"><a href="#sub-1DA0" class="headerlink" title="sub_1DA0()"></a>sub_1DA0()</h4><p><img src="/2025/02/18/DYM%E7%99%BB%E5%BD%95%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/18.jpg"></p>
+<p>接下来使用rpc调用</p>
+<h3 id="hook-encrypt-data"><a href="#hook-encrypt-data" class="headerlink" title="hook encrypt_data()"></a>hook encrypt_data()</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">hook_encrypt_data</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="title class_">Java</span>.<span class="title function_">perform</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">        <span class="keyword">let</span> <span class="title class_">Crypt</span> = <span class="title class_">Java</span>.<span class="title function_">use</span>(<span class="string">&quot;com.yoloho.libcore.util.Crypt&quot;</span>);</span><br><span class="line">        <span class="title class_">Crypt</span>[<span class="string">&quot;encrypt_data&quot;</span>].<span class="property">implementation</span> = <span class="keyword">function</span> (<span class="params">j2, str, j3</span>) &#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`Crypt.encrypt_data is called: j2=<span class="subst">$&#123;j2&#125;</span>, str=<span class="subst">$&#123;str&#125;</span>, j3=<span class="subst">$&#123;j3&#125;</span>`</span>);</span><br><span class="line">            <span class="keyword">let</span> result = <span class="variable language_">this</span>[<span class="string">&quot;encrypt_data&quot;</span>](j2, str, j3);</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`Crypt.encrypt_data result=<span class="subst">$&#123;result&#125;</span>`</span>);</span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">hook_encrypt_data</span>();</span><br></pre></td></tr></table></figure>
+
+<p>hook 结果</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Crypt.encrypt_data is called: j2=0, str=63122cb8da575c7e71ace0dccb1e35b0f2a43758user/login18888888888ET4Sdfjs+/VkbhxXerUBFg==, j3=85</span><br><span class="line">Crypt.encrypt_data result=c6337760363ed264b287178c340f9cb8</span><br></pre></td></tr></table></figure>
+
+<h3 id="rpc"><a href="#rpc" class="headerlink" title="rpc"></a>rpc</h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> frida</span><br><span class="line"></span><br><span class="line">device = frida.get_remote_device()</span><br><span class="line">process = device.attach(<span class="string">&quot;大姨妈&quot;</span>)</span><br><span class="line"></span><br><span class="line">js_code = <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">rpc.exports = &#123;</span></span><br><span class="line"><span class="string">    endata: function (j2,str,j3) &#123;</span></span><br><span class="line"><span class="string">        var res;</span></span><br><span class="line"><span class="string">        Java.perform(function () &#123;</span></span><br><span class="line"><span class="string">            let Crypt = Java.use(&quot;com.yoloho.libcore.util.Crypt&quot;);</span></span><br><span class="line"><span class="string">            let encrypted_data = Crypt.encrypt_data(j2,str,j3);</span></span><br><span class="line"><span class="string">            res = encrypted_data;</span></span><br><span class="line"><span class="string">        &#125;);</span></span><br><span class="line"><span class="string">        return res;</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">script = process.create_script(js_code)</span><br><span class="line">script.load()</span><br><span class="line">en_data = script.exports_sync.endata(<span class="number">0</span>, <span class="string">&quot;63122cb8da575c7e71ace0dccb1e35b0f2a43758user/login18888888888ET4Sdfjs+/VkbhxXerUBFg==&quot;</span>, <span class="number">85</span>)</span><br><span class="line"><span class="built_in">print</span>(en_data) <span class="comment"># c6337760363ed264b287178c340f9cb8</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="Python实现登录"><a href="#Python实现登录" class="headerlink" title="Python实现登录"></a>Python实现登录</h1><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">url = <span class="string">&quot;https://uicapi.yoloho.com/user/login&quot;</span></span><br><span class="line"></span><br><span class="line">params = &#123;</span><br><span class="line">  <span class="string">&quot;device&quot;</span>: <span class="string">&quot;63122cb8da575c7e71ace0dccb1e35b0f2a43758&quot;</span>,</span><br><span class="line">  <span class="string">&quot;ver&quot;</span>: <span class="string">&quot;900&quot;</span>,</span><br><span class="line">  <span class="string">&quot;screen_width&quot;</span>: <span class="string">&quot;1080&quot;</span>,</span><br><span class="line">  <span class="string">&quot;screen_height&quot;</span>: <span class="string">&quot;2028&quot;</span>,</span><br><span class="line">  <span class="string">&quot;model&quot;</span>: <span class="string">&quot;Pixel 3&quot;</span>,</span><br><span class="line">  <span class="string">&quot;sdkver&quot;</span>: <span class="string">&quot;29&quot;</span>,</span><br><span class="line">  <span class="string">&quot;platform&quot;</span>: <span class="string">&quot;android&quot;</span>,</span><br><span class="line">  <span class="string">&quot;releasever&quot;</span>: <span class="string">&quot;10&quot;</span>,</span><br><span class="line">  <span class="string">&quot;channel&quot;</span>: <span class="string">&quot;vivobbg&quot;</span>,</span><br><span class="line">  <span class="string">&quot;latt&quot;</span>: <span class="string">&quot;0&quot;</span>,</span><br><span class="line">  <span class="string">&quot;lngt&quot;</span>: <span class="string">&quot;0&quot;</span>,</span><br><span class="line">  <span class="string">&quot;networkType&quot;</span>: <span class="string">&quot;0&quot;</span>,</span><br><span class="line">  <span class="string">&quot;token&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">  <span class="string">&quot;userStatus&quot;</span>: <span class="string">&quot;0&quot;</span>,</span><br><span class="line">  <span class="string">&quot;oaid&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">  <span class="string">&quot;installDate&quot;</span>: <span class="string">&quot;0&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">headers = &#123;</span><br><span class="line">  <span class="string">&quot;Accept-Encoding&quot;</span>: <span class="string">&quot;gzip&quot;</span>,</span><br><span class="line">  <span class="string">&quot;User-Agent&quot;</span>: <span class="string">&quot;Mozilla/5.0 (Linux; Android 10; Pixel 3 Build/QQ3A.200705.002; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/74.0.3729.186 Mobile Safari/537.36&quot;</span>,</span><br><span class="line">  <span class="string">&quot;Content-Length&quot;</span>: <span class="string">&quot;211&quot;</span>,</span><br><span class="line">  <span class="string">&quot;Content-Type&quot;</span>: <span class="string">&quot;application/x-www-form-urlencoded&quot;</span>,</span><br><span class="line">  <span class="string">&quot;Host&quot;</span>: <span class="string">&quot;uicapi.yoloho.com&quot;</span>,</span><br><span class="line">  <span class="string">&quot;Connection&quot;</span>: <span class="string">&quot;Keep-Alive&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">body = &#123;</span><br><span class="line">  <span class="string">&quot;username&quot;</span>: <span class="string">&quot;18888888888&quot;</span>,</span><br><span class="line">  <span class="string">&quot;password&quot;</span>: <span class="string">&quot;ET4Sdfjs+/VkbhxXerUBFg==&quot;</span>,</span><br><span class="line">  <span class="string">&quot;sign&quot;</span>: <span class="string">&quot;c6337760363ed264b287178c340f9cb8&quot;</span>,</span><br><span class="line">  <span class="string">&quot;androidid&quot;</span>: <span class="string">&quot;9000290bea7be29b&quot;</span>,</span><br><span class="line">  <span class="string">&quot;mac&quot;</span>: <span class="string">&quot;EE:9E:96:57:AB:FD&quot;</span>,</span><br><span class="line">  <span class="string">&quot;imei&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">  <span class="string">&quot;density&quot;</span>: <span class="string">&quot;2.75&quot;</span>,</span><br><span class="line">  <span class="string">&quot;brand&quot;</span>: <span class="string">&quot;google&quot;</span>,</span><br><span class="line">  <span class="string">&quot;oaid&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">  <span class="string">&quot;installDate&quot;</span>: <span class="string">&quot;0&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">response = requests.post(url, params=params, headers=headers, data=body)</span><br><span class="line"><span class="built_in">print</span>(response.status_code)</span><br><span class="line"><span class="built_in">print</span>(response.text)</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="Unidbg调用encrypt-data"><a href="#Unidbg调用encrypt-data" class="headerlink" title="Unidbg调用encrypt_data()"></a>Unidbg调用encrypt_data()</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MainActivity</span> <span class="keyword">extends</span> <span class="title class_">AbstractJni</span> &#123;</span><br><span class="line">    <span class="comment">// 声明模拟器、内存和虚拟机（VM）实例</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> AndroidEmulator emulator;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Memory memory;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> VM vm;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// MainActivity 的构造函数</span></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">MainActivity</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="comment">// 初始化 64 位架构的 Android 模拟器</span></span><br><span class="line">        emulator = AndroidEmulatorBuilder</span><br><span class="line">                .for64Bit()</span><br><span class="line">                .build();</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 从模拟器获取内存实例</span></span><br><span class="line">        memory = emulator.getMemory();</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 设置模拟器的库解析器，API 级别为 23</span></span><br><span class="line">        memory.setLibraryResolver(<span class="keyword">new</span> <span class="title class_">AndroidResolver</span>(<span class="number">23</span>));</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 使用指定的 APK 文件创建 Dalvik VM 实例</span></span><br><span class="line">        vm = emulator.createDalvikVM(<span class="keyword">new</span> <span class="title class_">File</span>(<span class="string">&quot;unidbg-android/src/test/java/com/dym/encryptdata/DYM_8.9.0.apk&quot;</span>));</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 为 VM 设置 JNI（Java Native Interface）</span></span><br><span class="line">        vm.setJni(<span class="built_in">this</span>);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 启用 VM 的详细日志记录</span></span><br><span class="line">        vm.setVerbose(<span class="literal">true</span>);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 将本地库 &quot;Crypt&quot; 加载到 VM 中</span></span><br><span class="line">        vm.loadLibrary(<span class="string">&quot;Crypt&quot;</span>, <span class="literal">true</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 使用 Crypt 类加密数据的方法</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">encrypt_data</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="comment">// 从 VM 中解析 Crypt 类</span></span><br><span class="line">        <span class="type">DvmClass</span> <span class="variable">Crypt</span> <span class="operator">=</span> vm.resolveClass(<span class="string">&quot;com.yoloho.libcore.util.Crypt&quot;</span>);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 调用 Crypt 类中的静态 JNI 方法 &quot;encrypt_data&quot;</span></span><br><span class="line">        <span class="type">StringObject</span> <span class="variable">stringObject</span> <span class="operator">=</span> Crypt.callStaticJniMethodObject(emulator, </span><br><span class="line">            <span class="string">&quot;encrypt_data(JLjava/lang/String;J)Ljava/lang/String;&quot;</span>, </span><br><span class="line">            <span class="number">0</span>, </span><br><span class="line">            <span class="string">&quot;63122cb8da575c7e71ace0dccb1e35b0f2a43758user/login18888888888ET4Sdfjs+/VkbhxXerUBFg==&quot;</span>, </span><br><span class="line">            <span class="number">85</span>);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 从 StringObject 中获取结果</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">result</span> <span class="operator">=</span> stringObject.getValue();</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 将结果打印到控制台</span></span><br><span class="line">        System.out.println(<span class="string">&quot;result=&quot;</span> + result); <span class="comment">// c6337760363ed264b287178c340f9cb8</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 运行应用程序的主方法</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="comment">// 创建 MainActivity 的实例并调用 encrypt_data 方法</span></span><br><span class="line">        <span class="keyword">new</span> <span class="title class_">MainActivity</span>().encrypt_data(); </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h1 id="在安卓项目中调用别人的so中的函数"><a href="#在安卓项目中调用别人的so中的函数" class="headerlink" title="在安卓项目中调用别人的so中的函数"></a>在安卓项目中调用别人的so中的函数</h1><h2 id="新建安卓项目"><a href="#新建安卓项目" class="headerlink" title="新建安卓项目"></a>新建安卓项目</h2><p>在app目录下新建一个<code>libs</code>目录，把<code>libCrypt.so</code>放到<code>libs</code>目录下</p>
+<p><img src="/2025/02/18/DYM%E7%99%BB%E5%BD%95%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/19.jpg"></p>
+<p>在<code>build.gradle.kts</code>中的<code>android</code>里添加如下内容</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sourceSets &#123;</span><br><span class="line">    getByName(&quot;main&quot;) &#123;</span><br><span class="line">        jniLibs.srcDirs(&quot;libs&quot;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>新建一个包，包名必须要与方法所在的包一致，<code>com.yoloho.libcore.util</code></p>
+<p>新建一个类，类名也要与方法所在的类一致，<code>DayimaPrivateUtil</code></p>
+<p>添加代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.yoloho.libcore.util;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Crypt</span> &#123;</span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        System.loadLibrary(<span class="string">&quot;Crypt&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">native</span> String <span class="title function_">encrypt_data</span><span class="params">(<span class="type">long</span> j2, String str, <span class="type">long</span> j3)</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>调用</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">String</span> <span class="variable">sign</span> <span class="operator">=</span> Crypt.encrypt_data(<span class="number">0</span>,<span class="string">&quot;63122cb8da575c7e71ace0dccb1e35b0f2a43758user/login18888888888ET4Sdfjs+/VkbhxXerUBFg==&quot;</span>,<span class="number">85</span>);</span><br><span class="line"><span class="type">TextView</span> <span class="variable">tv</span> <span class="operator">=</span> findViewById(R.id.textview);</span><br><span class="line">tv.setText(sign);</span><br></pre></td></tr></table></figure>
+
+<p>效果</p>
+<p><img src="/2025/02/18/DYM%E7%99%BB%E5%BD%95%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/20.jpg"></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/02/18/ssh%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%8E%B0%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/android.svg">
+      <meta itemprop="name" content="Bileton">
+      <meta itemprop="description" content="路漫漫其修远夕！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="白乐天">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2025/02/18/ssh%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%8E%B0%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93/" class="post-title-link" itemprop="url">ssh服务实现文件传输</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2025-02-18 16:15:49 / 修改时间：16:21:45" itemprop="dateCreated datePublished" datetime="2025-02-18T16:15:49+08:00">2025-02-18</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%AB%98%E6%95%88%E7%8E%87%E5%B7%A5%E5%85%B7%E5%90%88%E9%9B%86/" itemprop="url" rel="index"><span itemprop="name">高效率工具合集</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>545</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>ssh 是一种网络协议，用于加密方式远程登录到其他计算机。它提供了一种安全的方式来访问远程服务器，传输数据，以及运行远程命令。</p>
+<h1 id="配置ssh服务"><a href="#配置ssh服务" class="headerlink" title="配置ssh服务"></a>配置ssh服务</h1><p>虚拟机安装openssh-server</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install openssh-server</span><br></pre></td></tr></table></figure>
+
+<p>启动ssh服务</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">systemctl enable ssh.service</span><br><span class="line"></span><br><span class="line">sudo systemctl start ssh // 手动启动ssh服务</span><br><span class="line">sudo systemctl enable ssh // 配置服务在系统引导时启动</span><br></pre></td></tr></table></figure>
+
+<p>查看ssh服务状态</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl status ssh</span><br></pre></td></tr></table></figure>
+
+<p>停止ssh服务</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl stop ssh // 手动停止</span><br><span class="line">sudo systemctl disable ssh // 防止服务在系统启动时自动运行</span><br></pre></td></tr></table></figure>
+
+<p>验证连接</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh username@192.168.1.100</span><br></pre></td></tr></table></figure>
+
+<h1 id="传输文件"><a href="#传输文件" class="headerlink" title="传输文件"></a>传输文件</h1><p>将文件从主机传输到虚拟机：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp /path/to/local/file** username@192.168.1.100:/path/to/remote/directory</span><br></pre></td></tr></table></figure>
+
+<p>将文件从虚拟机传输到主机：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp username@192.168.1.100:/path/to/remote/file /path/to/local/directory</span><br></pre></td></tr></table></figure>
+
+<p>如果要传输文件夹，加上<code>-r</code>选项</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -468,7 +769,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2025-03-14 08:50:03" itemprop="dateModified" datetime="2025-03-14T08:50:03+08:00">2025-03-14</time>
+                <time title="修改时间：2025-03-18 12:03:08" itemprop="dateModified" datetime="2025-03-18T12:03:08+08:00">2025-03-18</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -486,7 +787,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>8.9k</span>
+              <span>9.1k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -507,7 +808,7 @@
       
           <h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>Unidbg是一个轻量级模拟器，支持对Android Native函数的模拟执行。</p>
 <p>Unidbg是一个基于Maven构建的 JAVA 项目，可在 Github 下载源代码，然后在 IDEA&#x2F;VScode 等 IDE 里打开，其依赖下载完成后，测试运行。</p>
-<h1 id="初始化环境"><a href="#初始化环境" class="headerlink" title="初始化环境"></a>初始化环境</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> com.github.unidbg.AndroidEmulator;</span><br><span class="line"><span class="keyword">import</span> com.github.unidbg.Emulator;</span><br><span class="line"><span class="keyword">import</span> com.github.unidbg.Module;</span><br><span class="line"><span class="keyword">import</span> com.github.unidbg.arm.backend.Unicorn2Factory;</span><br><span class="line"><span class="keyword">import</span> com.github.unidbg.file.FileResult;</span><br><span class="line"><span class="keyword">import</span> com.github.unidbg.file.IOResolver;</span><br><span class="line"><span class="keyword">import</span> com.github.unidbg.linux.android.AndroidEmulatorBuilder;</span><br><span class="line"><span class="keyword">import</span> com.github.unidbg.linux.android.AndroidResolver;</span><br><span class="line"><span class="keyword">import</span> com.github.unidbg.linux.android.dvm.AbstractJni;</span><br><span class="line"><span class="keyword">import</span> com.github.unidbg.linux.android.dvm.DalvikModule;</span><br><span class="line"><span class="keyword">import</span> com.github.unidbg.linux.android.dvm.VM;</span><br><span class="line"><span class="keyword">import</span> com.github.unidbg.memory.Memory;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.File;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MainActivity</span> <span class="keyword">extends</span> <span class="title class_">AbstractJni</span> <span class="keyword">implements</span> <span class="title class_">IOResolver</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> AndroidEmulator emulator;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">String</span> <span class="variable">process</span> <span class="operator">=</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Memory memory;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> VM vm;</span><br><span class="line">    <span class="keyword">private</span> DalvikModule dm;</span><br><span class="line">    <span class="keyword">private</span> Module <span class="keyword">module</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">MainActivity</span><span class="params">()</span> &#123;</span><br><span class="line">        emulator = AndroidEmulatorBuilder</span><br><span class="line">                .for64Bit() <span class="comment">// for32Bit()</span></span><br><span class="line">                .setProcessName(process)</span><br><span class="line">                .setRootDir(<span class="keyword">new</span> <span class="title class_">File</span>(<span class="string">&quot;target/rootfs&quot;</span>))</span><br><span class="line">                .addBackendFactory(<span class="keyword">new</span> <span class="title class_">Unicorn2Factory</span>(<span class="literal">false</span>))</span><br><span class="line">                .build();</span><br><span class="line">        <span class="comment">// 设置执行多少条指令切换一次线程</span></span><br><span class="line"><span class="comment">//        emulator.getBackend().registerEmuCountHook(10000);</span></span><br><span class="line">        <span class="comment">// 启用系统调用的详细日志输出。</span></span><br><span class="line"><span class="comment">//        emulator.getSyscallHandler().setVerbose(true);</span></span><br><span class="line">        <span class="comment">// 开启线程调度器</span></span><br><span class="line"><span class="comment">//        emulator.getSyscallHandler().setEnableThreadDispatcher(true);</span></span><br><span class="line">        memory = emulator.getMemory();</span><br><span class="line">        memory.setLibraryResolver(<span class="keyword">new</span> <span class="title class_">AndroidResolver</span>(<span class="number">23</span>));</span><br><span class="line">        vm = emulator.createDalvikVM(<span class="keyword">new</span> <span class="title class_">File</span>(<span class="string">&quot;&quot;</span>));</span><br><span class="line">        vm.setJni(<span class="built_in">this</span>);</span><br><span class="line">        vm.setVerbose(<span class="literal">true</span>);</span><br><span class="line">        dm = vm.loadLibrary(<span class="string">&quot;&quot;</span>,<span class="literal">true</span>);</span><br><span class="line">        dm.callJNI_OnLoad(emulator);</span><br><span class="line">        <span class="keyword">module</span> = dm.getModule();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> FileResult <span class="title function_">resolve</span><span class="params">(Emulator emulator, String pathname, <span class="type">int</span> oflags)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h1 id="初始化环境"><a href="#初始化环境" class="headerlink" title="初始化环境"></a>初始化环境</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> com.github.unidbg.AndroidEmulator;</span><br><span class="line"><span class="keyword">import</span> com.github.unidbg.Emulator;</span><br><span class="line"><span class="keyword">import</span> com.github.unidbg.Module;</span><br><span class="line"><span class="keyword">import</span> com.github.unidbg.arm.backend.Unicorn2Factory;</span><br><span class="line"><span class="keyword">import</span> com.github.unidbg.file.FileResult;</span><br><span class="line"><span class="keyword">import</span> com.github.unidbg.file.IOResolver;</span><br><span class="line"><span class="keyword">import</span> com.github.unidbg.linux.android.AndroidEmulatorBuilder;</span><br><span class="line"><span class="keyword">import</span> com.github.unidbg.linux.android.AndroidResolver;</span><br><span class="line"><span class="keyword">import</span> com.github.unidbg.linux.android.dvm.AbstractJni;</span><br><span class="line"><span class="keyword">import</span> com.github.unidbg.linux.android.dvm.DalvikModule;</span><br><span class="line"><span class="keyword">import</span> com.github.unidbg.linux.android.dvm.VM;</span><br><span class="line"><span class="keyword">import</span> com.github.unidbg.memory.Memory;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.File;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MainActivity</span> <span class="keyword">extends</span> <span class="title class_">AbstractJni</span> <span class="keyword">implements</span> <span class="title class_">IOResolver</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> AndroidEmulator emulator;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">String</span> <span class="variable">process</span> <span class="operator">=</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Memory memory;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> VM vm;</span><br><span class="line">    <span class="keyword">private</span> DalvikModule dm;</span><br><span class="line">    <span class="keyword">private</span> Module <span class="keyword">module</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">MainActivity</span><span class="params">()</span> &#123;</span><br><span class="line">        emulator = AndroidEmulatorBuilder</span><br><span class="line">                .for64Bit() <span class="comment">// for32Bit()</span></span><br><span class="line">                .setProcessName(process)</span><br><span class="line">                .setRootDir(<span class="keyword">new</span> <span class="title class_">File</span>(<span class="string">&quot;target/rootfs&quot;</span>))</span><br><span class="line">                .addBackendFactory(<span class="keyword">new</span> <span class="title class_">Unicorn2Factory</span>(<span class="literal">false</span>))</span><br><span class="line">                .build();</span><br><span class="line">        <span class="comment">// 设置执行多少条指令切换一次线程</span></span><br><span class="line"><span class="comment">//        emulator.getBackend().registerEmuCountHook(10000);</span></span><br><span class="line">        <span class="comment">// 启用系统调用的详细日志输出。</span></span><br><span class="line"><span class="comment">//        emulator.getSyscallHandler().setVerbose(true);</span></span><br><span class="line">        <span class="comment">// 开启线程调度器</span></span><br><span class="line"><span class="comment">//        emulator.getSyscallHandler().setEnableThreadDispatcher(true);</span></span><br><span class="line">        memory = emulator.getMemory();</span><br><span class="line">        memory.setLibraryResolver(<span class="keyword">new</span> <span class="title class_">AndroidResolver</span>(<span class="number">23</span>));</span><br><span class="line">        vm = emulator.createDalvikVM(<span class="keyword">new</span> <span class="title class_">File</span>(<span class="string">&quot;&quot;</span>));</span><br><span class="line">        vm.setJni(<span class="built_in">this</span>);</span><br><span class="line">        vm.setVerbose(<span class="literal">true</span>);</span><br><span class="line">        dm = vm.loadLibrary(<span class="string">&quot;&quot;</span>,<span class="literal">true</span>);</span><br><span class="line">        dm.callJNI_OnLoad(emulator);</span><br><span class="line">        <span class="keyword">module</span> = dm.getModule();</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// </span></span><br><span class="line">        emulator.getSyscallHandler().addIOResolver(<span class="built_in">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> FileResult <span class="title function_">resolve</span><span class="params">(Emulator emulator, String pathname, <span class="type">int</span> oflags)</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;pathname:&quot;</span> + pathname);</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <h1 id="加载动态链接库"><a href="#加载动态链接库" class="headerlink" title="加载动态链接库"></a>加载动态链接库</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">DalvikModule <span class="title function_">loadLibrary</span><span class="params">(String libname, <span class="type">boolean</span> forceCallInit)</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// libname:共享库的名字，不包含路径和扩展名</span></span><br><span class="line"><span class="comment">// forceCallInit:是否强制调用库的初始化函数</span></span><br><span class="line"><span class="comment">// 返回 DalvikModule 对象，它表示已加载的库，并且可以通过该对象调用库中的函数。</span></span><br></pre></td></tr></table></figure>
 
@@ -607,6 +908,14 @@
 <p>  如下</p>
   <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">memory.addModuleListener(<span class="keyword">new</span> <span class="title class_">ModuleListener</span>() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onLoaded</span><span class="params">(Emulator&lt;?&gt; emulator, Module <span class="keyword">module</span>)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="keyword">module</span>.name.equals(<span class="string">&quot;lib.so&quot;</span>))&#123;</span><br><span class="line">            emulator.traceCode(<span class="keyword">module</span>.base, <span class="keyword">module</span>.base+<span class="keyword">module</span>.size);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="type">DalvikModule</span> <span class="variable">dm</span> <span class="operator">=</span> vm.loadLibrary(<span class="string">&quot;xxx&quot;</span>, <span class="literal">true</span>);</span><br><span class="line">dm.callJNI_OnLoad(emulator);</span><br></pre></td></tr></table></figure></li>
 </ul>
+<h1 id="AndroidEmulator"><a href="#AndroidEmulator" class="headerlink" title="AndroidEmulator"></a>AndroidEmulator</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">AndroidEmulator emulator;</span><br><span class="line"></span><br><span class="line">emulator.getSyscallHandler().addIOResolver(<span class="built_in">this</span>);</span><br><span class="line"><span class="comment">// 注册一个自定义的IO解析器，用于处理模拟执行期间的文件系统操作。</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
 <h1 id="打包及Python调用"><a href="#打包及Python调用" class="headerlink" title="打包及Python调用"></a>打包及Python调用</h1><h2 id="路径问题"><a href="#路径问题" class="headerlink" title="路径问题"></a>路径问题</h2><p>这里我在<code>unidbg</code>的根目录下创建了一个文件夹<code>apks</code>，在这里面放apk文件，在java文件里写apk路径的时候可以直接<code>apks/.../example.apk</code>，就可以了。</p>
 <p><img src="/2025/02/16/%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8Bunidbg/3.jpg"></p>
 <h2 id="打包"><a href="#打包" class="headerlink" title="打包"></a>打包</h2><p>点击菜单中的<code>File</code>-&gt;<code>Project Structure</code>，然后在<code>Project Settings</code>里点击<code>Artifacts</code>，依次点击如下内容</p>
@@ -1316,222 +1625,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/02/09/%E5%B0%8F%E7%B1%B3%E6%89%8B%E6%9C%BA%E7%BA%BF%E5%88%B7%E6%8C%87%E5%8D%97/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/android.svg">
-      <meta itemprop="name" content="Bileton">
-      <meta itemprop="description" content="路漫漫其修远夕！">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="白乐天">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2025/02/09/%E5%B0%8F%E7%B1%B3%E6%89%8B%E6%9C%BA%E7%BA%BF%E5%88%B7%E6%8C%87%E5%8D%97/" class="post-title-link" itemprop="url">小米手机线刷指南</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2025-02-09 15:03:46 / 修改时间：22:22:20" itemprop="dateCreated datePublished" datetime="2025-02-09T15:03:46+08:00">2025-02-09</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%88%B7%E6%9C%BA/" itemprop="url" rel="index"><span itemprop="name">刷机</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>1.3k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h1><p>线刷方式刷机会清除手机数据。</p>
-<p>线刷需要手机已完成 BL 解锁，否则无法操作。</p>
-<h1 id="解BL锁"><a href="#解BL锁" class="headerlink" title="解BL锁"></a>解BL锁</h1><p>在解锁前确认小米账号是否可以解锁（即每月最多解锁 1 台手机，每年最多 4 台，超过需要更换帐号）。</p>
-<p>需要插入SIM卡。</p>
-<h2 id="打开开发者模式"><a href="#打开开发者模式" class="headerlink" title="打开开发者模式"></a>打开开发者模式</h2><p>进入设置-&gt;我的设备-&gt;全部参数-&gt;连点”MIUI版本” 即可打开开发者模式</p>
-<h2 id="OEM解锁"><a href="#OEM解锁" class="headerlink" title="OEM解锁"></a>OEM解锁</h2><p>进入设置-&gt;更多设置-&gt;开发者选项-&gt;勾选”OEM解锁”</p>
-<h2 id="绑定账号和设备"><a href="#绑定账号和设备" class="headerlink" title="绑定账号和设备"></a>绑定账号和设备</h2><p>进入设置-&gt;更多设置-&gt;开发者选项-&gt;设备解锁状态-&gt;绑定账号和设备</p>
-<h2 id="解锁"><a href="#解锁" class="headerlink" title="解锁"></a>解锁</h2><p>下载小米BL解锁工具，解压后运行<code>miflash.unlock.exe</code>程序，登录小米账号。</p>
-<p><a target="_blank" rel="noopener" href="https://www.miui.com/unlock/index.html">小米BL解锁工具</a></p>
-<p>进入 Fastboot 模式，用数据线连接电脑，识别手机连接后，点击“解锁”按钮，稍等片刻就会看到 BL 解锁结果，然后重启手机，BL 解锁就完成了。</p>
-<h1 id="刷机"><a href="#刷机" class="headerlink" title="刷机"></a>刷机</h1><p>设备预先保持充足的电量。</p>
-<p>下载MIUI版本线刷包和MiFlash线刷工具。</p>
-<p><a target="_blank" rel="noopener" href="https://xiaomirom.com/">小米刷机包</a></p>
-<p><a target="_blank" rel="noopener" href="https://miuiver.com/miflash/">MiFlash 线刷工具下载合集</a></p>
-<p>进入fastboot模式，用数据线连接电脑。</p>
-<p>在线刷工具文件夹里找到 <code>XiaoMiFlash.exe</code> 双击运行，如果电脑没有驱动会提示安装，然后软件界面点击“选择”按钮，选中之前解压的线刷包文件夹（留意路径不要选错了，选择线刷包解压的根目录，也就是 <code>images</code> 上一级目录）。</p>
-<p><img src="/2025/02/09/%E5%B0%8F%E7%B1%B3%E6%89%8B%E6%9C%BA%E7%BA%BF%E5%88%B7%E6%8C%87%E5%8D%97/1.jpg"></p>
-<p>选择刷机模式</p>
-<p><img src="/2025/02/09/%E5%B0%8F%E7%B1%B3%E6%89%8B%E6%9C%BA%E7%BA%BF%E5%88%B7%E6%8C%87%E5%8D%97/2.jpg"></p>
-<p>点击“加载设备”，识别到手机设备后就可以点击刷机。刷机过程大约需时十几分钟，完成后手机会自动重启进入系统。</p>
-<p><img src="/2025/02/09/%E5%B0%8F%E7%B1%B3%E6%89%8B%E6%9C%BA%E7%BA%BF%E5%88%B7%E6%8C%87%E5%8D%97/3.jpg"></p>
-<h2 id="error"><a href="#error" class="headerlink" title="error"></a>error</h2><ul>
-<li><p>如果出现Not catch checkpoint </p>
-<p>  <img src="/2025/02/09/%E5%B0%8F%E7%B1%B3%E6%89%8B%E6%9C%BA%E7%BA%BF%E5%88%B7%E6%8C%87%E5%8D%97/4.jpg"></p>
-<p>  导致这个问题的原因是，新版 MiFlash 在刷机完成后会检测手机是否已上 BL 锁。由于这个检查是在刷机完成后进行的，所以实际上对手机并没有影响，这是 MiFlash 本身的问题。</p>
-<p>  <strong>解决办法</strong></p>
-<p>  在菜单栏点击“Configuration”，点击“MiFlash Configuration”，在弹出窗口删除 CheckPoint 里的 <code>\$fastboot -s .*lock</code> 文本。</p>
-<p>  <img src="/2025/02/09/%E5%B0%8F%E7%B1%B3%E6%89%8B%E6%9C%BA%E7%BA%BF%E5%88%B7%E6%8C%87%E5%8D%97/5.jpg"></p>
-<p>  保持设置后再次刷机就不会遇到 <code>error:Not catch checkpoint (\$fastboot -s .*lock), flash is not done</code> 问题了。</p>
-</li>
-</ul>
-<h1 id="root"><a href="#root" class="headerlink" title="root"></a>root</h1><p>在系统设置里打开开发者模式，然后找到开发者选项，勾选USB调试</p>
-<p>打开刷机包，在<code>images</code>文件夹里找到<code>boot.img</code>文件</p>
-<p>利用adb工具将其push到<code>/sdcard/Download</code>目录下</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"> adb push /sdcard/Download</span><br></pre></td></tr></table></figure>
-
-<p>安装面具Magisk</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb install magisk.apk</span><br></pre></td></tr></table></figure>
-
-<p>打开Magisk，找到Magisk的安装，点击选择并修补一个文件，找到<code>/sdcard/Download</code>目录下的<code>boot.img</code>文件，然后进行修补，修补完成后找到<code>/sdcard/Download</code>目录下生成的修补文件<code>magisk...xxx.img</code>，把它导出到电脑端</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb pull /sdcard/Download/magisk...xxx.img</span><br></pre></td></tr></table></figure>
-
-<p>然后进入fastboot模式</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb reboot bootloader</span><br></pre></td></tr></table></figure>
-
-<p>把<code>magisk...xxx.img</code>镜像刷入到boot分区</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fastboot flash boot magisk...xxx.img</span><br></pre></td></tr></table></figure>
-
-<p>然后重启</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fastboot reboot</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/02/09/elf%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/android.svg">
-      <meta itemprop="name" content="Bileton">
-      <meta itemprop="description" content="路漫漫其修远夕！">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="白乐天">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2025/02/09/elf%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/" class="post-title-link" itemprop="url">elf文件结构</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2025-02-09 12:11:55 / 修改时间：15:35:35" itemprop="dateCreated datePublished" datetime="2025-02-09T12:11:55+08:00">2025-02-09</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AF%A6%E8%A7%A3%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/" itemprop="url" rel="index"><span itemprop="name">详解文件结构</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>206</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>可执行与可链接格式（Executable and Linkable Format，ELF），常被称为 ELF格式，是一种用于可执行文件、目标代码、共享库和核心转储（core dump）的标准文件格式。</p>
-<p>ELF文件格式在链接和程序的运行阶段的格式不同。链接阶段每个.o文件都是一个独立的ELF文件，为了效率和便利性将他们的节合并为段才能生成对应的可执行文件。<br>一个ELF文件包含的内容有：ELF文件头，程序头表，节头表和节。</p>
-<p><img src="/2025/02/09/elf%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/1.jpg"></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1603,7 +1696,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">96</span>
+          <span class="site-state-item-count">98</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1616,7 +1709,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">88</span>
+        <span class="site-state-item-count">90</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -1657,13 +1750,13 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">828k</span>
+    <span title="站点总字数">833k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">12:32</span>
+    <span title="站点阅读时长">12:37</span>
 </div>
 
 

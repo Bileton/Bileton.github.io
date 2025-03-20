@@ -119,7 +119,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">88</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">90</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -129,7 +129,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">96</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">98</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -180,6 +180,569 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/03/06/%E7%9C%8B%E9%9B%AA3w20-9%E9%A2%98%E7%9B%AEollvm9-apk%E5%A4%8D%E7%8E%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/android.svg">
+      <meta itemprop="name" content="Bileton">
+      <meta itemprop="description" content="路漫漫其修远夕！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="白乐天">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2025/03/06/%E7%9C%8B%E9%9B%AA3w20-9%E9%A2%98%E7%9B%AEollvm9-apk%E5%A4%8D%E7%8E%B0/" class="post-title-link" itemprop="url">看雪3w20_9题目ollvm9.apk复现</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2025-03-06 13:44:35 / 修改时间：13:53:20" itemprop="dateCreated datePublished" datetime="2025-03-06T13:44:35+08:00">2025-03-06</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%80%86%E5%90%91%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/" itemprop="url" rel="index"><span itemprop="name">逆向实战案例</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>15k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>14 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="ollvm9-apk"><a href="#ollvm9-apk" class="headerlink" title="ollvm9.apk"></a>ollvm9.apk</h1><p><img src="/2025/03/06/%E7%9C%8B%E9%9B%AA3w20-9%E9%A2%98%E7%9B%AEollvm9-apk%E5%A4%8D%E7%8E%B0/13.jpg"></p>
+<h1 id="Jadx反编译分析"><a href="#Jadx反编译分析" class="headerlink" title="Jadx反编译分析"></a>Jadx反编译分析</h1><p><img src="/2025/03/06/%E7%9C%8B%E9%9B%AA3w20-9%E9%A2%98%E7%9B%AEollvm9-apk%E5%A4%8D%E7%8E%B0/14.jpg"></p>
+<p>通过<code>UUIDCheckSum()</code>方法生成签名，参数是随机生成的长度36的字母数字字符串。</p>
+<p>frida主动调用</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">call_UUIDCheckSum</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="title class_">Java</span>.<span class="title function_">perform</span>(<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="keyword">let</span> <span class="title class_">MainActivity</span> = <span class="title class_">Java</span>.<span class="title function_">use</span>(<span class="string">&quot;com.kanxue.ollvm_ndk.MainActivity&quot;</span>);</span><br><span class="line">        <span class="keyword">let</span> result = <span class="title class_">MainActivity</span>.<span class="title class_">UUIDCheckSum</span>(<span class="string">&quot;0123456789abcdef0123456789abcdef1111&quot;</span>); </span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;result:&quot;</span>,result);</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>结果</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">call_UUIDCheckSum()</span><br><span class="line">result: ah0NaxiObNmHc61xmwOOnN4K_h8Pb3qT_hvumQ9zn6qKa6aN</span><br></pre></td></tr></table></figure>
+
+<h1 id="so分析"><a href="#so分析" class="headerlink" title="so分析"></a>so分析</h1><p>使用IDA打开so文件，跳转到<code>UUIDCheckSum</code>函数处</p>
+<p><code>UUIDCheckSum</code>函数里又调用了三个函数</p>
+<p><img src="/2025/03/06/%E7%9C%8B%E9%9B%AA3w20-9%E9%A2%98%E7%9B%AEollvm9-apk%E5%A4%8D%E7%8E%B0/15.jpg"></p>
+<h2 id="hook-sub-FCB4"><a href="#hook-sub-FCB4" class="headerlink" title="hook_sub_FCB4()"></a>hook_sub_FCB4()</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">hook_sub_FCB4</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> funcaddr = <span class="title class_">Module</span>.<span class="title function_">findBaseAddress</span>(<span class="string">&quot;libnative-lib.so&quot;</span>).<span class="title function_">add</span>(<span class="number">0xFCB4</span>);</span><br><span class="line">    <span class="title class_">Interceptor</span>.<span class="title function_">attach</span>(funcaddr,&#123;</span><br><span class="line">        <span class="attr">onEnter</span>:<span class="keyword">function</span>(<span class="params">args</span>)&#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;arg0:&quot;</span>,args[<span class="number">0</span>].<span class="title function_">readCString</span>());</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;arg1:&quot;</span>,args[<span class="number">1</span>]);</span><br><span class="line">            <span class="variable language_">this</span>.<span class="property">arg0</span> = args[<span class="number">0</span>];</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">onLeave</span>:<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;ret this.arg0:&quot;</span>,<span class="variable language_">this</span>.<span class="property">arg0</span>.<span class="title function_">readCString</span>());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">hook_sub_FCB4</span>()</span><br></pre></td></tr></table></figure>
+
+<p>hook结果</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">arg0: 0123456789abcdef0123456789abcdef1111</span><br><span class="line">arg1: 0x24</span><br><span class="line">ret this.arg0: 10325476-8`cb-4g10-25479-8`cbedg00c3</span><br></pre></td></tr></table></figure>
+
+<h2 id="hook-sub-1029C"><a href="#hook-sub-1029C" class="headerlink" title="hook_sub_1029C()"></a>hook_sub_1029C()</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">hook_sub_1029C</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> funcaddr = <span class="title class_">Module</span>.<span class="title function_">findBaseAddress</span>(<span class="string">&quot;libnative-lib.so&quot;</span>).<span class="title function_">add</span>(<span class="number">0x1029C</span>);</span><br><span class="line">    <span class="title class_">Interceptor</span>.<span class="title function_">attach</span>(funcaddr,&#123;</span><br><span class="line">        <span class="attr">onEnter</span>:<span class="keyword">function</span>(<span class="params">args</span>)&#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;1029C arg0:&quot;</span>,args[<span class="number">0</span>].<span class="title function_">readCString</span>());</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;1029C arg1:&quot;</span>,args[<span class="number">1</span>].<span class="title function_">readCString</span>());</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;1029C arg2:&quot;</span>,args[<span class="number">2</span>]);</span><br><span class="line">            <span class="variable language_">this</span>.<span class="property">arg0</span> = args[<span class="number">0</span>];</span><br><span class="line">            <span class="variable language_">this</span>.<span class="property">arg1</span> = args[<span class="number">1</span>];</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">onLeave</span>:<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;1029C ret this.arg0:&quot;</span>,<span class="variable language_">this</span>.<span class="property">arg0</span>.<span class="title function_">readCString</span>());</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;1029C ret this.arg1:&quot;</span>,<span class="variable language_">this</span>.<span class="property">arg1</span>.<span class="title function_">readCString</span>());</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">hook_sub_1029C</span>()</span><br></pre></td></tr></table></figure>
+
+<p>hook结果，它被调用了两次，在其他地方也被调用了</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">1029C arg0: </span><br><span class="line">1029C arg1: 10325476-8`cb-4g10-25479-8`cbedg00c3</span><br><span class="line">1029C arg2: 0x24</span><br><span class="line">1029C ret this.arg0: 1</span><br><span class="line">1029C ret this.arg1: 10325476-8`cb-4g10-25479-8`cbedg00c3</span><br><span class="line"></span><br><span class="line">1029C arg0:</span><br><span class="line">1029C arg1: 10325476-8`cb-4g10-25479-8`cbedg00c3</span><br><span class="line">1029C arg2: 0x24</span><br><span class="line">1029C ret this.arg0: 1</span><br><span class="line">1029C ret this.arg1: 10325476-8`cb-4g10-25479-8`cbedg00c3</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="hook-sub-F9B8"><a href="#hook-sub-F9B8" class="headerlink" title="hook_sub_F9B8()"></a>hook_sub_F9B8()</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">hook_sub_F9B8</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> funcaddr = <span class="title class_">Module</span>.<span class="title function_">findBaseAddress</span>(<span class="string">&quot;libnative-lib.so&quot;</span>).<span class="title function_">add</span>(<span class="number">0xF9B8</span>);</span><br><span class="line">    <span class="title class_">Interceptor</span>.<span class="title function_">attach</span>(funcaddr,&#123;</span><br><span class="line">        <span class="attr">onEnter</span>:<span class="keyword">function</span>(<span class="params">args</span>)&#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;F9B8 arg0:&quot;</span>,args[<span class="number">0</span>].<span class="title function_">readCString</span>());</span><br><span class="line">            <span class="variable language_">this</span>.<span class="property">arg0</span> = args[<span class="number">0</span>];</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">onLeave</span>:<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;F9B8 ret this.arg0:&quot;</span>,<span class="variable language_">this</span>.<span class="property">arg0</span>.<span class="title function_">readCString</span>());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">hook_sub_F9B8</span>()</span><br></pre></td></tr></table></figure>
+
+<p>hook 结果</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">F9B8 arg0: 1</span><br><span class="line">F9B8 ret this.arg0: 1</span><br></pre></td></tr></table></figure>
+
+<p>这两个函数好像没有做什么事情</p>
+<p>在函数<code>F9B8()</code>里看到还调用了其他函数</p>
+<p><img src="/2025/03/06/%E7%9C%8B%E9%9B%AA3w20-9%E9%A2%98%E7%9B%AEollvm9-apk%E5%A4%8D%E7%8E%B0/16.jpg"></p>
+<h2 id="hook-sub-F04C"><a href="#hook-sub-F04C" class="headerlink" title="hook_sub_F04C()"></a>hook_sub_F04C()</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">hook_sub_F04C</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> funcaddr = <span class="title class_">Module</span>.<span class="title function_">findBaseAddress</span>(<span class="string">&quot;libnative-lib.so&quot;</span>).<span class="title function_">add</span>(<span class="number">0xF04C</span>);</span><br><span class="line">    <span class="title class_">Interceptor</span>.<span class="title function_">attach</span>(funcaddr,&#123;</span><br><span class="line">        <span class="attr">onEnter</span>:<span class="keyword">function</span>(<span class="params">args</span>)&#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;F04C arg0:&quot;</span>,args[<span class="number">0</span>].<span class="title function_">readCString</span>());</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;F04C arg1:&quot;</span>,args[<span class="number">1</span>]);</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;F04C arg2:&quot;</span>,args[<span class="number">2</span>]);</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;F04C arg3:&quot;</span>,args[<span class="number">3</span>]);</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;F04C arg4:&quot;</span>,args[<span class="number">4</span>].<span class="title function_">readCString</span>());</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;F04C arg5:&quot;</span>,args[<span class="number">5</span>].<span class="title function_">readCString</span>());</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">onLeave</span>:<span class="keyword">function</span>(<span class="params">retval</span>)&#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;F04C ret:&quot;</span>,retval);</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">hook_sub_F04C</span>()</span><br></pre></td></tr></table></figure>
+
+<p>hook结果</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">F04C arg0: 10325476-8`cb-4g10-25479-8`cbedg00c3</span><br><span class="line">F04C arg1: 0x24</span><br><span class="line">F04C arg2: 0x24</span><br><span class="line">F04C arg3: 0xdde4659c</span><br><span class="line">F04C arg4: </span><br><span class="line">F04C arg5: </span><br><span class="line">F04C ret: 0xfd39fea0</span><br></pre></td></tr></table></figure>
+
+<p>这里的两个地址无法访问</p>
+<h1 id="UnidbgTrace-FCB4"><a href="#UnidbgTrace-FCB4" class="headerlink" title="UnidbgTrace FCB4"></a>UnidbgTrace FCB4</h1><p>先把函数模拟执行了，不需要补环境</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MainActivity</span> <span class="keyword">extends</span> <span class="title class_">AbstractJni</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> AndroidEmulator emulator;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">String</span> <span class="variable">process</span> <span class="operator">=</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Memory memory;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> VM vm;</span><br><span class="line">    <span class="keyword">private</span> DalvikModule dm;</span><br><span class="line">    <span class="keyword">private</span> Module <span class="keyword">module</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">MainActivity</span><span class="params">()</span> &#123;</span><br><span class="line">        emulator = AndroidEmulatorBuilder</span><br><span class="line">                .for64Bit() <span class="comment">// for32Bit()</span></span><br><span class="line">                .setProcessName(process)</span><br><span class="line">                .setRootDir(<span class="keyword">new</span> <span class="title class_">File</span>(<span class="string">&quot;target/rootfs&quot;</span>))</span><br><span class="line">                .addBackendFactory(<span class="keyword">new</span> <span class="title class_">Unicorn2Factory</span>(<span class="literal">true</span>))</span><br><span class="line">                .build();</span><br><span class="line">        memory = emulator.getMemory();</span><br><span class="line">        memory.setLibraryResolver(<span class="keyword">new</span> <span class="title class_">AndroidResolver</span>(<span class="number">23</span>));</span><br><span class="line">        vm = emulator.createDalvikVM(<span class="keyword">new</span> <span class="title class_">File</span>(<span class="string">&quot;apktest/ollvm9.apk&quot;</span>));</span><br><span class="line">        vm.setJni(<span class="built_in">this</span>);</span><br><span class="line"><span class="comment">//        vm.setVerbose(true);</span></span><br><span class="line">        dm = vm.loadLibrary(<span class="string">&quot;native-lib&quot;</span>,<span class="literal">true</span>);</span><br><span class="line">        dm.callJNI_OnLoad(emulator);</span><br><span class="line">        <span class="keyword">module</span> = dm.getModule();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">UUIDCheckSum</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="type">DvmClass</span> <span class="variable">dvmClass</span> <span class="operator">=</span> vm.resolveClass(<span class="string">&quot;com.kanxue.ollvm_ndk.MainActivity&quot;</span>);</span><br><span class="line">        <span class="type">StringObject</span> <span class="variable">stringObject</span> <span class="operator">=</span> dvmClass.callStaticJniMethodObject(emulator,<span class="string">&quot;UUIDCheckSum(Ljava/lang/String;)Ljava/lang/String;&quot;</span>,<span class="string">&quot;0123456789abcdef0123456789abcdef1111&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> stringObject.getValue();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">MainActivity</span> <span class="variable">main</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">MainActivity</span>();</span><br><span class="line">        System.out.println(main.UUIDCheckSum());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在<code>UUIDCheckSum()</code>里添加trace代码</p>
+<p>这里trace <code>FCB4()</code>函数的地址范围</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">String</span> <span class="variable">traceFile</span> <span class="operator">=</span> <span class="string">&quot;myTraceCodeFile_FCB4.txt&quot;</span>;</span><br><span class="line"><span class="type">PrintStream</span> <span class="variable">traceStream</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    traceStream = <span class="keyword">new</span> <span class="title class_">PrintStream</span>(<span class="keyword">new</span> <span class="title class_">FileOutputStream</span>(traceFile));</span><br><span class="line">&#125; <span class="keyword">catch</span> (FileNotFoundException e) &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">RuntimeException</span>(e);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">emulator.traceCode(<span class="number">0x1200FCB4</span>,<span class="number">0x1200FCB4</span>+<span class="number">0x27C</span>).setRedirect(traceStream);</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2025/03/06/%E7%9C%8B%E9%9B%AA3w20-9%E9%A2%98%E7%9B%AEollvm9-apk%E5%A4%8D%E7%8E%B0/17.jpg"></p>
+<h2 id="分析trace"><a href="#分析trace" class="headerlink" title="分析trace"></a>分析trace</h2><p>使用notepad++助力分析日志文件</p>
+<p>函数返回值会存放在X0寄存器里，找到它的地址</p>
+<p><img src="/2025/03/06/%E7%9C%8B%E9%9B%AA3w20-9%E9%A2%98%E7%9B%AEollvm9-apk%E5%A4%8D%E7%8E%B0/18.jpg"></p>
+<p><code>X0</code>为<code>0x12353030</code></p>
+<p>搜索<code>0x12353030</code>，先分析一段数据</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">0x1200fe18: &quot;ldrb w20, [x0, x22]&quot; x0=0x12353030 x22=0x0 =&gt; w20=0x30  ;从x22加载一个字节到w20</span><br><span class="line">0x1200fe1c: &quot;ldrb w21, [sp, #0xc]&quot; sp=0xe4fff620 =&gt; w21=0xff</span><br><span class="line">0x1200fe20: &quot;ldr w23, [sp, #0x1c]&quot; sp=0xe4fff620 =&gt; w23=0x0</span><br><span class="line">0x1200fe24: &quot;eor w24, w20, #1&quot; w20=0x30 =&gt; w24=0x31 ;w20与1异或后存入w24</span><br><span class="line">0x1200fe28: &quot;strb w24, [x0, x22]&quot; w24=0x31 x0=0x12353030 x22=0x0 =&gt; w24=0x31 ;w24存入x22</span><br></pre></td></tr></table></figure>
+
+<p>我们传入的参数转16进制</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">0123456789abcdef0123456789abcdef1111</span><br><span class="line">30 31 32 33 34 35 36 37 38 39 61 62 63 64 65 66 30 31 32 33 34 35 36 37 38 39 61 62 63 64 65 66 31 31 31 31</span><br></pre></td></tr></table></figure>
+
+<p>把<code>FCB4()</code>的返回值转为16进制</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">10325476-8`cb-4g10-25479-8`cbedg00c3</span><br><span class="line">31 30 33 32 35 34 37 36 2d 38 60 63 62 2d 34 67 31 30 2d 32 35 34 37 39 2d 38 60 63 62 65 64 67 30 30 63 33</span><br></pre></td></tr></table></figure>
+
+<p>初步猜想通过异或处理的，用C语言实现一下</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;stdio.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;string.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;stdlib.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">sub_FCB4</span><span class="params">(<span class="type">char</span>* input,<span class="type">int</span> length,<span class="type">char</span>* result)</span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; length; ++i) &#123;</span><br><span class="line">        <span class="type">unsigned</span> <span class="type">char</span> w20 = input[i];</span><br><span class="line">        <span class="type">unsigned</span> <span class="type">char</span> w24 = w20 ^ <span class="number">1</span>;</span><br><span class="line">        result[i] = w24;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; length; ++i) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%0x &quot;</span>,result[i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="type">char</span> *input = <span class="string">&quot;0123456789abcdef0123456789abcdef1111&quot;</span>;</span><br><span class="line">    <span class="type">int</span> length = <span class="built_in">strlen</span>(input);</span><br><span class="line">    <span class="type">int</span> *result = (<span class="type">int</span>*) <span class="built_in">malloc</span>(length);</span><br><span class="line">    sub_FCB4(input,length,result);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 31 30 33 32 35 34 37 36 39 38 60 63 62 65 64 67 31 30 33 32 35 34 37 36 39 38 60 63 62 65 64 67 30 30 30 30</span></span><br></pre></td></tr></table></figure>
+
+<p>这里输出结果与真实结果还是有差异的，对比分析</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">31 30 33 32 35 34 37 36 39 38 60 63 62 65 64 67 31 30 33 32 35 34 37 36 39 38 60 63 62 65 64 67 30 30 30 30  //输出结果</span><br><span class="line">31 30 33 32 35 34 37 36 2d 38 60 63 62 2d 34 67 31 30 2d 32 35 34 37 39 2d 38 60 63 62 65 64 67 30 30 63 33  //真实结果</span><br></pre></td></tr></table></figure>
+
+<p>到trace中查找分析</p>
+<p>发现如下这几种情况没有进行异或，而是直接传的固定的值</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&quot;strb w7, [x0, x20]&quot; w7=0x2d x0=0x12353030 x20=0x8 =&gt; w7=0x2d</span><br><span class="line">&quot;strb w7, [x0, x20]&quot; w7=0x2d x0=0x12353030 x20=0xd =&gt; w7=0x2d</span><br><span class="line">&quot;strb w7, [x0, x20]&quot; w7=0x2d x0=0x12353030 x20=0x12 =&gt; w7=0x2d</span><br><span class="line">&quot;strb w7, [x0, x20]&quot; w7=0x2d x0=0x12353030 x20=0x18 =&gt; w7=0x2d</span><br><span class="line">&quot;strb w6, [x0, x20]&quot; w6=0x34 x0=0x12353030 x20=0xe =&gt; w6=0x34</span><br><span class="line">&quot;strb w8, [x0, #0x23]&quot; w8=0x33 x0=0x12353030 =&gt; w8=0x33</span><br><span class="line">&quot;strb w8, [x0, #0x22]&quot; w8=0x63 x0=0x12353030 =&gt; w8=0x63</span><br></pre></td></tr></table></figure>
+
+<p>重新使用C语言实现</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;stdio.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;string.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;stdlib.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">sub_FCB4</span><span class="params">(<span class="type">char</span>* input,<span class="type">int</span> length,<span class="type">char</span>* result)</span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; length; ++i) &#123;</span><br><span class="line">        <span class="type">unsigned</span> <span class="type">char</span> w20 = input[i];</span><br><span class="line">        <span class="keyword">if</span>(i==<span class="number">0x8</span> || i==<span class="number">0xd</span> || i==<span class="number">0x12</span> || i==<span class="number">0x18</span>)&#123;</span><br><span class="line">            result[i] = <span class="number">0x2d</span>;</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(i==<span class="number">0xe</span>)&#123;</span><br><span class="line">            result[i] = <span class="number">0x34</span>;</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(i==<span class="number">0x22</span>)&#123;</span><br><span class="line">            result[i] = <span class="number">0x63</span>;</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(i==<span class="number">0x23</span>)&#123;</span><br><span class="line">            result[i] = <span class="number">0x33</span>;</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="type">unsigned</span> <span class="type">char</span> w24 = w20 ^ <span class="number">1</span>;</span><br><span class="line">        result[i] = w24;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; length; ++i) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%0x &quot;</span>,result[i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="type">char</span> *input = <span class="string">&quot;0123456789abcdef0123456789abcdef1111&quot;</span>;</span><br><span class="line">    <span class="type">int</span> length = <span class="built_in">strlen</span>(input);</span><br><span class="line">    <span class="type">int</span> *result = (<span class="type">int</span>*) <span class="built_in">malloc</span>(length);</span><br><span class="line">    sub_FCB4(input,length,result);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//  31 30 33 32 35 34 37 36 2d 38 60 63 62 2d 34 67 31 30 2d 32 35 34 37 36 2d 38 60 63 62 65 64 67 30 30 63 33</span></span><br></pre></td></tr></table></figure>
+
+<p>再次对比</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">31 30 33 32 35 34 37 36 2d 38 60 63 62 2d 34 67 31 30 2d 32 35 34 37 36 2d 38 60 63 62 65 64 67 30 30 63 33 // 输出结果</span><br><span class="line">31 30 33 32 35 34 37 36 2d 38 60 63 62 2d 34 67 31 30 2d 32 35 34 37 39 2d 38 60 63 62 65 64 67 30 30 63 33  //真实结果</span><br></pre></td></tr></table></figure>
+
+<p>发现还是有一个地方不一样</p>
+<p>到trace日志中查看</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">0x1200fcc8: &quot;ldrb w22, [x0, #0x18]&quot; x0=0x12353030 =&gt; w22=0x38</span><br><span class="line">...</span><br><span class="line">0x1200fd44: &quot;strb w22, [x0, #0x17]&quot; w22=0x38 x0=0x12353030 =&gt; w22=0x38</span><br><span class="line">...</span><br><span class="line">0x1200fe14: &quot;ldrsw x22, [sp, #0x18]&quot; x22=0x8f61219b sp=0xe4fff620 =&gt; x22=0x17</span><br><span class="line">0x1200fe18: &quot;ldrb w20, [x0, x22]&quot; x0=0x12353030 x22=0x17 =&gt; w20=0x38</span><br><span class="line">0x1200fe1c: &quot;ldrb w21, [sp, #0xc]&quot; sp=0xe4fff620 =&gt; w21=0xc5</span><br><span class="line">0x1200fe20: &quot;ldr w23, [sp, #0x1c]&quot; sp=0xe4fff620 =&gt; w23=0x494</span><br><span class="line">0x1200fe24: &quot;eor w24, w20, #1&quot; w20=0x38 =&gt; w24=0x39</span><br><span class="line">0x1200fe28: &quot;strb w24, [x0, x22]&quot; w24=0x39 x0=0x12353030 x22=0x17 =&gt; w24=0x39</span><br></pre></td></tr></table></figure>
+
+<p>修改C</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;stdio.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;string.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;stdlib.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">sub_FCB4</span><span class="params">(<span class="type">char</span>* input,<span class="type">int</span> length,<span class="type">char</span>* result)</span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; length; ++i) &#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(i==<span class="number">0x8</span> || i==<span class="number">0xd</span> || i==<span class="number">0x12</span> || i==<span class="number">0x18</span>)&#123;</span><br><span class="line">            result[i] = <span class="number">0x2d</span>;</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(i==<span class="number">0xe</span>)&#123;</span><br><span class="line">            result[i] = <span class="number">0x34</span>;</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(i==<span class="number">0x22</span>)&#123;</span><br><span class="line">            result[i] = <span class="number">0x63</span>;</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(i==<span class="number">0x23</span>)&#123;</span><br><span class="line">            result[i] = <span class="number">0x33</span>;</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(i==<span class="number">0x17</span>)&#123;</span><br><span class="line">            result[i]=input[i+<span class="number">1</span>] ^<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">unsigned</span> <span class="type">char</span> w20 = input[i];</span><br><span class="line"></span><br><span class="line">        <span class="type">unsigned</span> <span class="type">char</span> w24 = w20 ^ <span class="number">1</span>;</span><br><span class="line">        result[i] = w24;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; length; ++i) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%0x &quot;</span>,result[i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="type">char</span> *input = <span class="string">&quot;0123456789abcdef0123456789abcdef1111&quot;</span>;</span><br><span class="line">    <span class="type">int</span> length = <span class="built_in">strlen</span>(input);</span><br><span class="line">    <span class="type">int</span> *result = (<span class="type">int</span>*) <span class="built_in">malloc</span>(length);</span><br><span class="line">    sub_FCB4(input,length,result);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这次的结果就与真实结果是一样的</p>
+<h1 id="UnidbgTrace-F04C"><a href="#UnidbgTrace-F04C" class="headerlink" title="UnidbgTrace F04C"></a>UnidbgTrace F04C</h1><p>修改trace代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">String</span> <span class="variable">traceFile</span> <span class="operator">=</span> <span class="string">&quot;myTraceCodeFile_F04C.txt&quot;</span>;</span><br><span class="line"><span class="type">PrintStream</span> <span class="variable">traceStream</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    traceStream = <span class="keyword">new</span> <span class="title class_">PrintStream</span>(<span class="keyword">new</span> <span class="title class_">FileOutputStream</span>(traceFile));</span><br><span class="line">&#125; <span class="keyword">catch</span> (FileNotFoundException e) &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">RuntimeException</span>(e);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">emulator.traceCode(<span class="number">0x1200F04C</span>,<span class="number">0x1200F04c</span>+<span class="number">0x224</span>).setRedirect(traceStream);</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2025/03/06/%E7%9C%8B%E9%9B%AA3w20-9%E9%A2%98%E7%9B%AEollvm9-apk%E5%A4%8D%E7%8E%B0/19.jpg"></p>
+<p>把返回值转为16进制</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ah0NaxiObNmHc61xmwOOnN4K_h8Pb3qT_hvumQ9zn6qKa6aN</span><br><span class="line">61 68 30 4e 61 78 69 4f 62 4e 6d 48 63 36 31 78 6d 77 4f 4f 6e 4e 34 4b 5f 68 38 50 62 33 71 54 5f 68 76 75 6d 51 39 7a 6e 36 71 4b 61 36 61 4e</span><br></pre></td></tr></table></figure>
+
+<p>搜索<code>x0</code>，跳转到最开始的<code>x0</code>的地址<code>0x12353090</code></p>
+<p>然后搜索<code>0x12353090</code></p>
+<p><img src="/2025/03/06/%E7%9C%8B%E9%9B%AA3w20-9%E9%A2%98%E7%9B%AEollvm9-apk%E5%A4%8D%E7%8E%B0/20.jpg"></p>
+<p>分析第一个值</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&quot;ldrb w8, [x21, x24]&quot; x21=0x12353090 x24=0x0 =&gt; w8=0x31</span><br><span class="line">&quot;lsr x8, x8, #2&quot; x8=0x31 =&gt; x8=0xc</span><br><span class="line">&quot;ldrb w1, [x23, x8]&quot; x23=0x12037010 x8=0xc =&gt; w1=0x61</span><br><span class="line">&quot;ldrb w8, [x21, x24]&quot; x21=0x12353090 x24=0x0 =&gt; w8=0x31</span><br><span class="line"></span><br><span class="line">1.把地址0x12353090偏移0x0处的值放入w8，w8=0x31</span><br><span class="line">2.将寄存器x8里的值逻辑右移2位，x8=0xc</span><br><span class="line">3.把地址0x12037010偏移为0xc处的值存入w1,w1=0x61</span><br><span class="line">4.把地址0x12353090偏移0x0处的值再次放入w8，w8=0x31</span><br></pre></td></tr></table></figure>
+
+<p>这里出现的<code>0x12037010</code>这个地址指向的应该是一个表</p>
+<p>用unidbg来找这个表，在函数地址<code>0xF04C</code>处下断点</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">emulator.attach().addBreakPoint(dm.getModule().base+<span class="number">0x0FF30</span>);</span><br></pre></td></tr></table></figure>
+
+<p>运行起来之后，用<code>m0x12037010</code>查看改地址处的数据为<code>0123456789-_abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ</code></p>
+<p>用C语言实现这个过程</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;stdio.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;string.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;stdlib.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">sub_FCB4</span><span class="params">(<span class="type">char</span>* input,<span class="type">int</span> length,<span class="type">char</span>* result)</span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; length; ++i) &#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(i==<span class="number">0x8</span> || i==<span class="number">0xd</span> || i==<span class="number">0x12</span> || i==<span class="number">0x18</span>)&#123;</span><br><span class="line">            result[i] = <span class="number">0x2d</span>;</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(i==<span class="number">0xe</span>)&#123;</span><br><span class="line">            result[i] = <span class="number">0x34</span>;</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(i==<span class="number">0x22</span>)&#123;</span><br><span class="line">            result[i] = <span class="number">0x63</span>;</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(i==<span class="number">0x23</span>)&#123;</span><br><span class="line">            result[i] = <span class="number">0x33</span>;</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(i==<span class="number">0x17</span>)&#123;</span><br><span class="line">            result[i]=input[i+<span class="number">1</span>] ^<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">unsigned</span> <span class="type">char</span> w20 = input[i];</span><br><span class="line"></span><br><span class="line">        <span class="type">unsigned</span> <span class="type">char</span> w24 = w20 ^ <span class="number">1</span>;</span><br><span class="line">        result[i] = w24;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">//    for (int i = 0; i &lt; length; ++i) &#123;</span></span><br><span class="line"><span class="comment">//        printf(&quot;%0x &quot;,result[i]);</span></span><br><span class="line"><span class="comment">//    &#125;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">sub_F04C</span><span class="params">(<span class="type">char</span>* input,<span class="type">int</span> length,<span class="type">char</span>* char_table,<span class="type">char</span> *result)</span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; length; ++i) &#123;</span><br><span class="line">        <span class="type">int</span> x8 = input[i]&gt;&gt;<span class="number">2</span>;</span><br><span class="line">        result[i] = char_table[x8];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; length; ++i) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%0x &quot;</span>,result[i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="type">char</span> *input = <span class="string">&quot;0123456789abcdef0123456789abcdef1111&quot;</span>;</span><br><span class="line">    <span class="type">int</span> input_length = <span class="built_in">strlen</span>(input);</span><br><span class="line">    <span class="type">int</span> *FCB4_result = (<span class="type">int</span>*) <span class="built_in">malloc</span>(input_length);</span><br><span class="line">    sub_FCB4(input,input_length,FCB4_result);</span><br><span class="line">    <span class="type">char</span> *char_table = <span class="string">&quot;0123456789-_abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ&quot;</span>;</span><br><span class="line"><span class="comment">//    int char_table_length = strlen(char_table);</span></span><br><span class="line">    <span class="type">char</span> *F04C_result = (<span class="type">int</span>*) <span class="built_in">malloc</span>(<span class="number">48</span>);</span><br><span class="line">    sub_F04C(FCB4_result,<span class="number">48</span>,char_table,F04C_result);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 61 61 61 61 62 62 62 62 5f 63 6d 6d 6d 5f 62 6e 61 61 5f 61 62 62 62 63 5f 63 6d 6d 6d 6e 6e 6e 61 61 6d 61 30 30 30 30</span></span><br></pre></td></tr></table></figure>
+
+<p>与真实答案对比</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">61 61 61 61 62 62 62 62 5f 63 6d 6d 6d 5f 62 6e 61 61 5f 61 62 62 62 63 5f 63 6d 6d 6d 6e 6e 6e 61 61 6d 61 30 30 30 30 // 输出</span><br><span class="line">61 68 30 4e 61 78 69 4f 62 4e 6d 48 63 36 31 78 6d 77 4f 4f 6e 4e 34 4b 5f 68 38 50 62 33 71 54 5f 68 76 75 6d 51 39 7a 6e 36 71 4b 61 36 61 4e // 真实结果</span><br></pre></td></tr></table></figure>
+
+<p>第一位是相同的，但是后面的还要继续分析</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&quot;ldrb w9, [x21, x24]&quot; x21=0x12353090 x24=0x1 =&gt; w9=0x30</span><br><span class="line">&quot;orr x8, x8, x9, lsr #4&quot; x8=0x10 x9=0x30 =&gt; x8=0x13</span><br><span class="line">0x1200f14c: &quot;ldrb w1, [x23, x8]&quot; x23=0x12037010 x8=0x13 =&gt; w1=0x68</span><br><span class="line">&quot;ldrb w8, [x21, x24]&quot; x21=0x12353090 x24=0x1 =&gt; w8=0x30</span><br><span class="line"></span><br><span class="line">1.把0x12353090地址偏移为1处的值加载到w9寄存器里</span><br><span class="line">2.将 x9 的值逻辑右移 4 位后，与 x8 的值按位或（OR），结果存回 x8，这里的x8来源于上次计算的结果</span><br><span class="line">3.把地址0x12037010偏移为0x13处的值存入w1,w1=0x68</span><br><span class="line">4.把0x12353090地址偏移为1处的值加载到w8寄存器里</span><br></pre></td></tr></table></figure>
+
+<p>往后看第三个参数和第四个参数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">0x1200f16c: &quot;ldrb w9, [x21, x24]&quot; x21=0x12353090 x24=0x2 =&gt; w9=0x33 # 从地址(x21 + x24)加载一个字节到w9</span><br><span class="line">0x1200f170: &quot;orr x8, x8, x9, lsr #6&quot; x8=0x0 x9=0x33 =&gt; x8=0x0  		# 将w9右移6位后与x8进行OR操作</span><br><span class="line">0x1200f174: &quot;ldrb w1, [x23, x8]&quot; x23=0x12037010 x8=0x0 =&gt; w1=0x30	# 从地址(x23 + x8)加载一个字节到w1</span><br><span class="line">0x1200f180: &quot;ldrb w8, [x21, x24]&quot; x21=0x12353090 x24=0x2 =&gt; w8=0x33 # 从地址(x21 + x24)加载一个字节到w8</span><br><span class="line"></span><br><span class="line">0x1200f184: &quot;and x8, x8, #0x3f&quot; x8=0x33 =&gt; x8=0x33					# 把x8同0x3f进行与操作，结果放入x8</span><br><span class="line">0x1200f188: &quot;ldrb w1, [x23, x8]&quot; x23=0x12037010 x8=0x33 =&gt; w1=0x4e	# 从地址(x23 + x8)加载一个字节到w1</span><br><span class="line"></span><br><span class="line">0x1200f11c: &quot;ldrb w8, [x21, x24]&quot; x21=0x12353090 x24=0x3 =&gt; w8=0x32	# 从地址(x21 + x24)加载一个字节到w8</span><br><span class="line">0x1200f120: &quot;lsr x8, x8, #2&quot; x8=0x32 =&gt; x8=0xc						# 将x8右移2位</span><br><span class="line">0x1200f124: &quot;ldrb w1, [x23, x8]&quot; x23=0x12037010 x8=0xc =&gt; w1=0x61	# 从地址(x23 + x8)加载一个字节到w1</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>猜测这是循环操作的，每三个是一组，每组后面会加一步操作添加一个数</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;stdio.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;string.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;stdlib.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">sub_FCB4</span><span class="params">(<span class="type">char</span>* input,<span class="type">int</span> length,<span class="type">char</span>* result)</span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; length; ++i) &#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(i==<span class="number">0x8</span> || i==<span class="number">0xd</span> || i==<span class="number">0x12</span> || i==<span class="number">0x18</span>)&#123;</span><br><span class="line">            result[i] = <span class="number">0x2d</span>;</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(i==<span class="number">0xe</span>)&#123;</span><br><span class="line">            result[i] = <span class="number">0x34</span>;</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(i==<span class="number">0x22</span>)&#123;</span><br><span class="line">            result[i] = <span class="number">0x63</span>;</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(i==<span class="number">0x23</span>)&#123;</span><br><span class="line">            result[i] = <span class="number">0x33</span>;</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(i==<span class="number">0x17</span>)&#123;</span><br><span class="line">            result[i]=input[i+<span class="number">1</span>] ^<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">unsigned</span> <span class="type">char</span> w20 = input[i];</span><br><span class="line"></span><br><span class="line">        <span class="type">unsigned</span> <span class="type">char</span> w24 = w20 ^ <span class="number">1</span>;</span><br><span class="line">        result[i] = w24;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">sub_F04C</span><span class="params">(<span class="type">char</span>* input,<span class="type">int</span> length,<span class="type">char</span> *result)</span>&#123;</span><br><span class="line">    <span class="type">char</span> *char_table = <span class="string">&quot;0123456789-_abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ&quot;</span>;</span><br><span class="line">    <span class="type">int</span> x8;</span><br><span class="line">    <span class="type">int</span> count =<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; length; ++i) &#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(i%<span class="number">3</span>==<span class="number">0</span>)&#123;</span><br><span class="line">            x8 = input[i]&gt;&gt;<span class="number">2</span>;</span><br><span class="line">            result[count] = char_table[x8];</span><br><span class="line">            count++;</span><br><span class="line">            x8 = input[i];</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(i%<span class="number">3</span>==<span class="number">1</span>)&#123;</span><br><span class="line">            x8 = ((x8&amp;<span class="number">0b11</span>)&lt;&lt;<span class="number">4</span>);</span><br><span class="line">            x8 = (input[i]&gt;&gt;<span class="number">4</span>)^x8;</span><br><span class="line">            result[count] = char_table[x8];</span><br><span class="line">            count++;</span><br><span class="line">            x8 = input[i];</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(i%<span class="number">3</span>==<span class="number">2</span>)&#123;</span><br><span class="line">            x8 = ((x8&amp;<span class="number">0b1111</span>)&lt;&lt;<span class="number">2</span>);</span><br><span class="line">            x8 = (input[i]&gt;&gt;<span class="number">6</span>)^x8;</span><br><span class="line">            result[count] = char_table[x8];</span><br><span class="line">            count++;</span><br><span class="line">            x8 = input[i];</span><br><span class="line">            result[count] = char_table[x8&amp;<span class="number">0x3f</span>];</span><br><span class="line">            count++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">48</span>; ++i) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%0x &quot;</span>,result[i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="type">char</span> *input = <span class="string">&quot;0123456789abcdef0123456789abcdef1111&quot;</span>;</span><br><span class="line">    <span class="type">int</span> input_length = <span class="built_in">strlen</span>(input);</span><br><span class="line">    <span class="type">char</span> *FCB4_result = (<span class="type">char</span>*) <span class="built_in">malloc</span>(input_length);</span><br><span class="line">    sub_FCB4(input,input_length,FCB4_result);</span><br><span class="line">    <span class="type">char</span> *F04C_result = (<span class="type">char</span>*) <span class="built_in">malloc</span>(<span class="number">48</span>);</span><br><span class="line">    sub_F04C(FCB4_result,input_length,F04C_result);</span><br><span class="line">    <span class="built_in">free</span>(FCB4_result);</span><br><span class="line">    <span class="built_in">free</span>(F04C_result);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">61 68 30 4e 61 78 69 4f 62 4e 6d 48 63 36 31 78 6d 77 4f 4f 6e 4e 34 4b 5f 68 38 50 62 33 71 54 5f 68 76 75 6d 51 39 7a 6e 36 71 4b 61 36 61 4e // 输出内容</span><br><span class="line">61 68 30 4e 61 78 69 4f 62 4e 6d 48 63 36 31 78 6d 77 4f 4f 6e 4e 34 4b 5f 68 38 50 62 33 71 54 5f 68 76 75 6d 51 39 7a 6e 36 71 4b 61 36 61 4e // 真实结果</span><br></pre></td></tr></table></figure>
+
+<p>根据这个运算过程，可以猜测它是base64了</p>
+<p>最终确定它是魔改的base64</p>
+<p><img src="/2025/03/06/%E7%9C%8B%E9%9B%AA3w20-9%E9%A2%98%E7%9B%AEollvm9-apk%E5%A4%8D%E7%8E%B0/21.jpg"></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/03/05/%E5%85%B3%E4%BA%8E%E9%9D%A2%E8%AF%95%E6%9D%82%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/android.svg">
+      <meta itemprop="name" content="Bileton">
+      <meta itemprop="description" content="路漫漫其修远夕！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="白乐天">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2025/03/05/%E5%85%B3%E4%BA%8E%E9%9D%A2%E8%AF%95%E6%9D%82%E8%AE%B0/" class="post-title-link" itemprop="url">关于面试杂记</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2025-03-05 18:22:56" itemprop="dateCreated datePublished" datetime="2025-03-05T18:22:56+08:00">2025-03-05</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2025-03-10 21:35:11" itemprop="dateModified" datetime="2025-03-10T21:35:11+08:00">2025-03-10</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%9D%A2%E8%AF%95/" itemprop="url" rel="index"><span itemprop="name">面试</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>3.3k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>3 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Xposed"><a href="#Xposed" class="headerlink" title="Xposed"></a>Xposed</h1><h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>xp是一种针对 Android 系统的模块化框架，通过模块的方式修改应用程序的行为，主要通过修改 Android 系统的运行时环境来实现动态插桩。</p>
+<h2 id="xp注入机制"><a href="#xp注入机制" class="headerlink" title="xp注入机制"></a>xp注入机制</h2><ul>
+<li><p>Xposed 的注入是通过修改 Android 系统的 Zygote 进程实现的</p>
+</li>
+<li><p>Zygote 是 Android 系统中所有应用程序进程的父进程</p>
+</li>
+<li><p>工作原理：</p>
+<ul>
+<li><p>Xposed 在系统启动时修改 &#x2F;system&#x2F;bin&#x2F;app_process 文件，将其替换为自己的版本，使其加载Xposed的核心模块<code>XposedBridge.jar</code></p>
+</li>
+<li><p>当 Zygote 进程启动时，会加载 Xposed 框架</p>
+</li>
+<li><p>所有从 Zygote fork 出来的应用进程都会包含 Xposed 框架</p>
+</li>
+<li><p>Xposed 通过修改 ART&#x2F;Dalvik 虚拟机，实现了对 Java 方法的 hook</p>
+</li>
+</ul>
+</li>
+<li><p>特点</p>
+<ul>
+<li><p>需要 ROOT 权限</p>
+</li>
+<li><p>系统级别的注入，稳定性好</p>
+</li>
+<li><p>只能 hook Java 层代码</p>
+</li>
+<li><p>需要重启设备才能生效</p>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="EdXposed"><a href="#EdXposed" class="headerlink" title="EdXposed"></a>EdXposed</h1><p>EdXposed 是一款基于 Xposed 框架的增强工具，基于Riru框架开发，使用 yahfa (Yet Another Hook Framework for ART) 和 SandHook 作为 Hook 框架，它的出现是为了解决 Xposed 在 ART 环境下的兼容性问题。</p>
+<p>注入方式：在 Android 系统启动时，所有应用进程均由 Zygote 进程 fork 而来。EdXposed 通过注入 Zygote 进程，确保所有应用进程都能加载 EdXposed 的功能。</p>
+<h1 id="LSPosed"><a href="#LSPosed" class="headerlink" title="LSPosed"></a>LSPosed</h1><h2 id="注入机制的改进"><a href="#注入机制的改进" class="headerlink" title="注入机制的改进"></a>注入机制的改进</h2><ul>
+<li><p>采用 Riru&#x2F;Zygisk 作为注入框架</p>
+</li>
+<li><p>不需要修改系统文件</p>
+</li>
+<li><p>支持 Zygote 重启生效（软重启）</p>
+</li>
+<li><p>通过 Magisk 模块方式安装，更加安全和灵活</p>
+</li>
+</ul>
+<h2 id="兼容性改进"><a href="#兼容性改进" class="headerlink" title="兼容性改进"></a>兼容性改进</h2><ul>
+<li><p>完整支持 Android 8.0-14</p>
+</li>
+<li><p>适配了 Android Runtime (ART)</p>
+</li>
+<li><p>支持 64 位架构</p>
+</li>
+<li><p>对各种定制 ROM 有更好的兼容性</p>
+</li>
+</ul>
+<h1 id="Zygisk"><a href="#Zygisk" class="headerlink" title="Zygisk"></a>Zygisk</h1><h2 id="介绍-1"><a href="#介绍-1" class="headerlink" title="介绍"></a>介绍</h2><ul>
+<li><p>Zygisk 是 Magisk 的一个组件</p>
+</li>
+<li><p>运行在 Zygote 进程中</p>
+</li>
+<li><p>提供了一个在 Zygote 进程中注入代码的框架</p>
+</li>
+<li><p>是 Riru 的继任者</p>
+</li>
+</ul>
+<h2 id="工作原理"><a href="#工作原理" class="headerlink" title="工作原理"></a>工作原理</h2><p>注入原理：Zygisk加载是通过替换app_process，修改LD_PRELOAD，再执行原app_process实现的，用LD_PRELOAD注入的。</p>
+<p>启动流程：</p>
+<ol>
+<li>Magisk 守护进程启动</li>
+<li>Zygisk 模块加载</li>
+<li>注入到 Zygote 进程</li>
+<li>子进程继承注入代码</li>
+<li>模块在应用进程中执行</li>
+</ol>
+<h1 id="Frida"><a href="#Frida" class="headerlink" title="Frida"></a>Frida</h1><h2 id="介绍-2"><a href="#介绍-2" class="headerlink" title="介绍"></a>介绍</h2><p>Frida 是一个动态二进制插桩工具，可以在程序运行时向目标进程注入自定义的代码，修改程序的行为来获取信息。</p>
+<h2 id="frida注入机制"><a href="#frida注入机制" class="headerlink" title="frida注入机制"></a>frida注入机制</h2><ul>
+<li><p>Frida 主要通过 ptrace 系统调用实现注入</p>
+</li>
+<li><p>工作原理</p>
+<ul>
+<li><p>使用 ptrace attach 到目标进程</p>
+</li>
+<li><p>在目标进程中注入一个动态链接库（frida-agent.so）</p>
+</li>
+<li><p>通过修改进程内存和寄存器状态，实现代码执行</p>
+</li>
+<li><p>建立与注入进程的通信通道</p>
+</li>
+</ul>
+</li>
+<li><p>具体步骤</p>
+<ol>
+<li>使用 ptrace 附加到目标进程</li>
+<li>暂停目标进程的执行</li>
+<li>在目标进程中分配内存空间</li>
+<li>写入 loader 代码</li>
+<li>修改寄存器状态，使进程执行注入的代码</li>
+<li>加载 frida-agent</li>
+</ol>
+</li>
+<li><p>特点</p>
+<ul>
+<li><p>支持 Native 层和 Java 层的 hook</p>
+</li>
+<li><p>动态注入，不需要重启设备</p>
+</li>
+<li><p>跨平台支持（iOS、Android、Windows 等）</p>
+</li>
+<li><p>提供了强大的 JavaScript 脚本引擎</p>
+</li>
+<li><p>可以实时调试和修改</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="注入进程的两种方式"><a href="#注入进程的两种方式" class="headerlink" title="注入进程的两种方式"></a>注入进程的两种方式</h2><h3 id="attach"><a href="#attach" class="headerlink" title="attach"></a>attach</h3><p>附加到已有进程</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">步骤1: 进程附加</span><br><span class="line">- 通过进程名或 PID 定位目标进程</span><br><span class="line">- 使用 ptrace(PTRACE_ATTACH) 附加到目标进程</span><br><span class="line">- waitpid() 等待进程暂停</span><br><span class="line"></span><br><span class="line">步骤2: 内存操作</span><br><span class="line">- 打开 /proc/[pid]/mem 获取进程内存访问权限</span><br><span class="line">- 使用 process_vm_writev 写入 frida-agent.so</span><br><span class="line">- 定位 libc.so 中的 dlopen 函数</span><br><span class="line"></span><br><span class="line">步骤3: 注入执行</span><br><span class="line">- 调用目标进程的 dlopen 加载 frida-agent.so</span><br><span class="line">- 初始化 agent 运行环境</span><br><span class="line">- 建立与 frida-server 的通信通道</span><br><span class="line"></span><br><span class="line">步骤4: 恢复执行</span><br><span class="line">- 恢复原始寄存器状态</span><br><span class="line">- ptrace(PTRACE_DETACH) 解除附加</span><br><span class="line">- 进程继续执行</span><br></pre></td></tr></table></figure>
+
+<h3 id="spawn"><a href="#spawn" class="headerlink" title="spawn"></a>spawn</h3><p>创建进程，在进程初始化之前进行注入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">步骤1: 创建进程</span><br><span class="line">- 使用 fork() 创建子进程</span><br><span class="line">- 子进程通过 execve() 加载目标程序</span><br><span class="line">- 进程创建后立即暂停</span><br><span class="line"></span><br><span class="line">步骤2: 早期注入</span><br><span class="line">- 在进程初始化之前注入</span><br><span class="line">- 写入 frida-agent.so</span><br><span class="line">- 设置必要的环境变量和参数</span><br><span class="line"></span><br><span class="line">步骤3: 设置 Hook</span><br><span class="line">- 准备 Hook 点</span><br><span class="line">- 设置断点</span><br><span class="line">- 配置监控函数</span><br><span class="line"></span><br><span class="line">步骤4: 启动执行</span><br><span class="line">- 恢复进程执行</span><br><span class="line">- 监控进程初始化</span><br><span class="line">- 捕获所有函数调用</span><br></pre></td></tr></table></figure>
+
+<h2 id="Frida核心组件"><a href="#Frida核心组件" class="headerlink" title="Frida核心组件"></a>Frida核心组件</h2><h3 id="Frida-core（核心引擎）"><a href="#Frida-core（核心引擎）" class="headerlink" title="Frida-core（核心引擎）"></a>Frida-core（核心引擎）</h3><p><strong>功能职责</strong></p>
+<ul>
+<li><p>提供核心注入引擎</p>
+</li>
+<li><p>管理进程间通信</p>
+</li>
+<li><p>处理跨平台兼容</p>
+</li>
+<li><p>提供底层 API 接口</p>
+</li>
+</ul>
+<p><strong>主要模块</strong></p>
+<ul>
+<li><p>gum：底层指令插桩引擎</p>
+</li>
+<li><p>gumjs：JavaScript 绑定层</p>
+</li>
+<li><p>gumpp：C++ 绑定层</p>
+</li>
+<li><p>内存管理模块</p>
+</li>
+<li><p>进程控制模块</p>
+</li>
+</ul>
+<h3 id="Frida-server（服务端）"><a href="#Frida-server（服务端）" class="headerlink" title="Frida-server（服务端）"></a>Frida-server（服务端）</h3><p><strong>基本功能</strong></p>
+<ul>
+<li><p>运行在目标设备上</p>
+</li>
+<li><p>监听来自客户端的连接</p>
+</li>
+<li><p>执行进程注入操作</p>
+</li>
+<li><p>管理注入的 agents</p>
+</li>
+</ul>
+<p><strong>工作流程</strong></p>
+<pre><code>1. 启动并监听端口（默认 27042）
+2. 接收客户端连接请求
+3. 处理注入命令
+4. 管理目标进程
+5. 转发通信数据
+</code></pre>
+<h3 id="Frida-agent（注入模块）"><a href="#Frida-agent（注入模块）" class="headerlink" title="Frida-agent（注入模块）"></a>Frida-agent（注入模块）</h3><p><strong>核心功能</strong></p>
+<ul>
+<li><p>运行在目标进程内</p>
+</li>
+<li><p>执行 JavaScript 代码</p>
+</li>
+<li><p>提供 API 接口</p>
+</li>
+<li><p>处理 Hook 操作</p>
+</li>
+</ul>
+<p><strong>主要组件</strong></p>
+<ul>
+<li>JavaScript 引擎</li>
+<li>Native Bridge</li>
+<li>Hook 引擎</li>
+<li>内存操作接口</li>
+</ul>
+<p><strong>工作机制</strong></p>
+<pre><code>1. 被注入到目标进程
+2. 初始化 JavaScript 运行环境
+3. 加载用户脚本
+4. 执行 Hook 操作
+5. 与 frida-server 通信
+</code></pre>
+<h3 id="Frida-client（客户端）"><a href="#Frida-client（客户端）" class="headerlink" title="Frida-client（客户端）"></a>Frida-client（客户端）</h3><p><strong>主要功能</strong></p>
+<ul>
+<li><p>连接 frida-server</p>
+</li>
+<li><p>发送控制命令</p>
+</li>
+<li><p>管理脚本执行</p>
+</li>
+<li><p>处理返回数据</p>
+</li>
+</ul>
+<p><strong>工具集</strong></p>
+<ul>
+<li>frida-cli：交互式命令行</li>
+<li>frida-ps：进程管理</li>
+<li>frida-trace：函数追踪</li>
+<li>frida-discover：API 发现</li>
+</ul>
+<h2 id="javahook"><a href="#javahook" class="headerlink" title="javahook"></a>javahook</h2><p>hook java要借助libart.so</p>
+<p>frida hook java的时候会修改ArtMethod::PrettyMethod，在内存中检测该字段是否一致即可判断是否被hook了。</p>
+<h2 id="inlinehook原理"><a href="#inlinehook原理" class="headerlink" title="inlinehook原理"></a>inlinehook原理</h2><p>Inline hook的核心思想是在目标函数的覆盖入口处写入跳转指令，将执行流程重定向到我们的hook处理函数。</p>
+<p><strong>备份原始指令</strong></p>
+<ul>
+<li><p>在修改目标函数前，Frida会先保存目标函数开头的若干字节的原始指令</p>
+</li>
+<li><p>保存的长度必须足够放置一个跳转指令（比如x86上至少5字节，ARM上至少8字节）</p>
+</li>
+</ul>
+<p><strong>覆盖写入跳转指令</strong></p>
+<ul>
+<li>在目标函数开头写入跳转指令(JMP&#x2F;B)，指向我们的hook处理函数</li>
+</ul>
+<p><img src="/2025/03/05/%E5%85%B3%E4%BA%8E%E9%9D%A2%E8%AF%95%E6%9D%82%E8%AE%B0/1.jpg"></p>
+<h3 id="检测"><a href="#检测" class="headerlink" title="检测"></a>检测</h3><p>inline hook实现会修改.text段内容，crc32比较对比。</p>
+<h1 id="Xp与Frida"><a href="#Xp与Frida" class="headerlink" title="Xp与Frida"></a>Xp与Frida</h1><h2 id="主要区别"><a href="#主要区别" class="headerlink" title="主要区别"></a>主要区别</h2><ul>
+<li><p>注入时机：</p>
+<ul>
+<li><p>Xposed：系统启动时，通过修改 Zygote</p>
+</li>
+<li><p>Frida：运行时，通过 ptrace 动态注入</p>
+</li>
+</ul>
+</li>
+<li><p>作用范围：</p>
+<ul>
+<li><p>Xposed：全局性，影响所有应用</p>
+</li>
+<li><p>Frida：可以针对特定进程进行注入</p>
+</li>
+</ul>
+</li>
+<li><p>功能范围：</p>
+<ul>
+<li><p>Xposed：主要针对 Java 层</p>
+</li>
+<li><p>Frida：同时支持 Native 层和 Java 层</p>
+</li>
+</ul>
+</li>
+<li><p>使用场景：</p>
+<ul>
+<li><p>Xposed：适合需要持久化修改的场景</p>
+</li>
+<li><p>Frida：适合动态调试和分析的场景</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="安全性考虑"><a href="#安全性考虑" class="headerlink" title="安全性考虑"></a>安全性考虑</h2><ul>
+<li><p>Xposed 需要修改系统文件，风险较大</p>
+</li>
+<li><p>Frida 的 ptrace 注入可能被一些应用的反调试机制检测到</p>
+</li>
+<li><p>两种方式都可能被应用的完整性校验机制发现</p>
+</li>
+</ul>
+<p>这两种注入技术各有优势，在实际应用中可以根据具体需求选择：</p>
+<ul>
+<li><p>如果需要持久化的系统级修改，选择 Xposed</p>
+</li>
+<li><p>如果需要灵活的动态分析和调试，选择 Frida</p>
+</li>
+</ul>
+<h1 id="Android系统启动流程"><a href="#Android系统启动流程" class="headerlink" title="Android系统启动流程"></a>Android系统启动流程</h1><h1 id="App启动流程"><a href="#App启动流程" class="headerlink" title="App启动流程"></a>App启动流程</h1><h1 id="加解密"><a href="#加解密" class="headerlink" title="加解密"></a>加解密</h1><h1 id="抓包"><a href="#抓包" class="headerlink" title="抓包"></a>抓包</h1><h1 id="混淆"><a href="#混淆" class="headerlink" title="混淆"></a>混淆</h1><h1 id="改机"><a href="#改机" class="headerlink" title="改机"></a>改机</h1><h2 id="改机ROM"><a href="#改机ROM" class="headerlink" title="改机ROM"></a>改机ROM</h2><p>一般都是定制ROM实现改机效果，但是改机操作一般需要借助manager app，一般检测这个为主，其次会配合大数据筛选系统中特定的文件，诸如framework、libc.so等md5值。</p>
+<p>收集设备型号、品牌、android版本、内核版本、内核libc文件md5值，收集后交由后端做数据模型分析。</p>
+<h2 id="软改机"><a href="#软改机" class="headerlink" title="软改机"></a>软改机</h2><p>一般是xposed插件Hook实现改机效果，所以检测xposed相关信息，以及相应的模块名，并且需要结合Java API返回值与native 获取相应值进行比对。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -1406,307 +1969,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/02/18/DYM%E7%99%BB%E5%BD%95%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/android.svg">
-      <meta itemprop="name" content="Bileton">
-      <meta itemprop="description" content="路漫漫其修远夕！">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="白乐天">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2025/02/18/DYM%E7%99%BB%E5%BD%95%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/" class="post-title-link" itemprop="url">DYM登录参数逆向</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2025-02-18 21:41:48 / 修改时间：21:59:56" itemprop="dateCreated datePublished" datetime="2025-02-18T21:41:48+08:00">2025-02-18</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E9%80%86%E5%90%91%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/" itemprop="url" rel="index"><span itemprop="name">逆向实战案例</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>12k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>11 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="App信息"><a href="#App信息" class="headerlink" title="App信息"></a>App信息</h1><p>包名：com.yoloho.dayima</p>
-<p><img src="/2025/02/18/DYM%E7%99%BB%E5%BD%95%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/1.jpg"></p>
-<h1 id="root检测"><a href="#root检测" class="headerlink" title="root检测"></a>root检测</h1><p><img src="/2025/02/18/DYM%E7%99%BB%E5%BD%95%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/3.jpg"></p>
-<h2 id="狐妖面具"><a href="#狐妖面具" class="headerlink" title="狐妖面具"></a>狐妖面具</h2><p>使用狐妖面具配置排除列表</p>
-<h2 id="脚本绕过"><a href="#脚本绕过" class="headerlink" title="脚本绕过"></a>脚本绕过</h2><p>开源项目脚本：<a target="_blank" rel="noopener" href="https://github.com/AshenOneYe/FridaAntiRootDetection">https://github.com/AshenOneYe/FridaAntiRootDetection</a></p>
-<p><img src="/2025/02/18/DYM%E7%99%BB%E5%BD%95%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/2.jpg"></p>
-<h3 id="反编译Apk找root检测逻辑"><a href="#反编译Apk找root检测逻辑" class="headerlink" title="反编译Apk找root检测逻辑"></a>反编译Apk找root检测逻辑</h3><p>Jadx搜索<code>Root设备</code></p>
-<p><img src="/2025/02/18/DYM%E7%99%BB%E5%BD%95%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/4.jpg"></p>
-<p>双击跳转</p>
-<p><img src="/2025/02/18/DYM%E7%99%BB%E5%BD%95%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/5.jpg"></p>
-<h3 id="isRooted"><a href="#isRooted" class="headerlink" title="isRooted()"></a>isRooted()</h3><p><img src="/2025/02/18/DYM%E7%99%BB%E5%BD%95%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/6.jpg"></p>
-<p>这里直接返回<code>false</code>就可以了</p>
-<h3 id="isSimulater"><a href="#isSimulater" class="headerlink" title="isSimulater()"></a>isSimulater()</h3><p>获取<code>build.prop</code>文件中的属性进行检测，返回<code>false</code>即可。</p>
-<h3 id="hook-root"><a href="#hook-root" class="headerlink" title="hook_root"></a>hook_root</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">hook_root</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="title class_">Java</span>.<span class="title function_">perform</span>(<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="keyword">let</span> <span class="title class_">MiscUtil</span> = <span class="title class_">Java</span>.<span class="title function_">use</span>(<span class="string">&quot;com.yoloho.libcore.util.MiscUtil&quot;</span>);</span><br><span class="line">        <span class="title class_">MiscUtil</span>[<span class="string">&quot;isRooted&quot;</span>].<span class="property">implementation</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`MiscUtil.isRooted is called`</span>);</span><br><span class="line">            <span class="keyword">let</span> result = <span class="variable language_">this</span>[<span class="string">&quot;isRooted&quot;</span>]();</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`MiscUtil.isRooted result=<span class="subst">$&#123;result&#125;</span>`</span>);</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>就可以进入app了</p>
-<h1 id="登录抓包分析"><a href="#登录抓包分析" class="headerlink" title="登录抓包分析"></a>登录抓包分析</h1><p>输入账号密码：18888888888 12345678</p>
-<p><img src="/2025/02/18/DYM%E7%99%BB%E5%BD%95%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/7.jpg"></p>
-<h2 id="抓包数据"><a href="#抓包数据" class="headerlink" title="抓包数据"></a>抓包数据</h2><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">url<span class="punctuation">:</span> https<span class="punctuation">:</span><span class="comment">//uicapi.yoloho.com/user/login</span></span><br><span class="line">params<span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;device&quot;</span><span class="punctuation">:</span> <span class="string">&quot;63122cb8da575c7e71ace0dccb1e35b0f2a43758&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;ver&quot;</span><span class="punctuation">:</span> <span class="string">&quot;900&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;screen_width&quot;</span><span class="punctuation">:</span> <span class="string">&quot;1080&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;screen_height&quot;</span><span class="punctuation">:</span> <span class="string">&quot;2028&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;model&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Pixel 3&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;sdkver&quot;</span><span class="punctuation">:</span> <span class="string">&quot;29&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;platform&quot;</span><span class="punctuation">:</span> <span class="string">&quot;android&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;releasever&quot;</span><span class="punctuation">:</span> <span class="string">&quot;10&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;channel&quot;</span><span class="punctuation">:</span> <span class="string">&quot;vivobbg&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;latt&quot;</span><span class="punctuation">:</span> <span class="string">&quot;0&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;lngt&quot;</span><span class="punctuation">:</span> <span class="string">&quot;0&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;networkType&quot;</span><span class="punctuation">:</span> <span class="string">&quot;0&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;token&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;userStatus&quot;</span><span class="punctuation">:</span> <span class="string">&quot;0&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;oaid&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;installDate&quot;</span><span class="punctuation">:</span> <span class="string">&quot;0&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br><span class="line"></span><br><span class="line">headers<span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;Accept-Encoding&quot;</span><span class="punctuation">:</span> <span class="string">&quot;gzip&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;User-Agent&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Mozilla/5.0 (Linux; Android 10; Pixel 3 Build/QQ3A.200705.002; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/74.0.3729.186 Mobile Safari/537.36&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;Content-Length&quot;</span><span class="punctuation">:</span> <span class="string">&quot;211&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;Content-Type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;application/x-www-form-urlencoded&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;Host&quot;</span><span class="punctuation">:</span> <span class="string">&quot;uicapi.yoloho.com&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;Connection&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Keep-Alive&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br><span class="line"></span><br><span class="line">body<span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;username&quot;</span><span class="punctuation">:</span> <span class="string">&quot;18888888888&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;password&quot;</span><span class="punctuation">:</span> <span class="string">&quot;ET4Sdfjs+/VkbhxXerUBFg==&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;sign&quot;</span><span class="punctuation">:</span> <span class="string">&quot;c6337760363ed264b287178c340f9cb8&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;androidid&quot;</span><span class="punctuation">:</span> <span class="string">&quot;9000290bea7be29b&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;mac&quot;</span><span class="punctuation">:</span> <span class="string">&quot;EE:9E:96:57:AB:FD&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;imei&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;density&quot;</span><span class="punctuation">:</span> <span class="string">&quot;2.75&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;brand&quot;</span><span class="punctuation">:</span> <span class="string">&quot;google&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;oaid&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;installDate&quot;</span><span class="punctuation">:</span> <span class="string">&quot;0&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
-
-<p>这里面需要解的参数有<code>device</code>、<code>password</code>、<code>sign</code></p>
-<h1 id="逆向"><a href="#逆向" class="headerlink" title="逆向"></a>逆向</h1><h2 id="device参数"><a href="#device参数" class="headerlink" title="device参数"></a>device参数</h2><p>jadx搜索<code>device</code>，出现很多结果，可以双击每个结果查看他们的上下文中的其他参数与接口中的参数进行比较，定位到<code>device</code>参数的位置。也可以搜索接口中其他参数，在其他参数的上下文中可以找到<code>device</code>。</p>
-<p>定位到如下位置。</p>
-<p><img src="/2025/02/18/DYM%E7%99%BB%E5%BD%95%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/8.jpg"></p>
-<p><code>device</code>的值是经过URL编码后的<code>getDeviceCode()</code>的值</p>
-<h3 id="getDeviceCode"><a href="#getDeviceCode" class="headerlink" title="getDeviceCode()"></a>getDeviceCode()</h3><p><img src="/2025/02/18/DYM%E7%99%BB%E5%BD%95%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/9.jpg"></p>
-<p>这里面通过<code>setDeviceCode</code>方法来设置device的值</p>
-<h3 id="setDeviceCode"><a href="#setDeviceCode" class="headerlink" title="setDeviceCode()"></a>setDeviceCode()</h3><p>如下是源码</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setDeviceCode</span><span class="params">()</span> &#123;</span><br><span class="line">    String str;</span><br><span class="line">    String str2;</span><br><span class="line">    String str3;</span><br><span class="line">    <span class="keyword">if</span> (NetUtil.getSharedPreferences(SettingsConfig.KEY_USER_PERMISSION, <span class="literal">false</span>) &amp;&amp; deviceCode == <span class="literal">null</span>) &#123;</span><br><span class="line">        deviceCode = <span class="string">&quot;NotFound&quot;</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                str = Build.BOARD + Build.BRAND + Build.CPU_ABI + Build.DEVICE + Build.DISPLAY + Build.HOST + Build.ID + Build.MANUFACTURER + Build.MODEL + Build.PRODUCT + Build.TAGS + Build.TYPE + Build.USER;</span><br><span class="line">            &#125; <span class="keyword">catch</span> (Exception e2) &#123;</span><br><span class="line">                e2.printStackTrace();</span><br><span class="line">                str = <span class="literal">null</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                str2 = AppInfo.getAndroidId();</span><br><span class="line">            &#125; <span class="keyword">catch</span> (Exception e3) &#123;</span><br><span class="line">                e3.printStackTrace();</span><br><span class="line">                str2 = <span class="literal">null</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                str3 = DayimaUtil.getPhoneMac();</span><br><span class="line">            &#125; <span class="keyword">catch</span> (Exception e4) &#123;</span><br><span class="line">                e4.printStackTrace();</span><br><span class="line">                str3 = <span class="literal">null</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="type">String</span> <span class="variable">str4</span> <span class="operator">=</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line">            <span class="keyword">if</span> (!Build.MODEL.equals(<span class="string">&quot;vivo X1w&quot;</span>) || !Build.VERSION.RELEASE.equals(FaceEnvironment.SDK_VERSION)) &#123;</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    <span class="type">BluetoothAdapter</span> <span class="variable">defaultAdapter</span> <span class="operator">=</span> BluetoothAdapter.getDefaultAdapter();</span><br><span class="line">                    <span class="keyword">if</span> (defaultAdapter != <span class="literal">null</span>) &#123;</span><br><span class="line">                        str4 = defaultAdapter.getAddress();</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="type">String</span> <span class="variable">str5</span> <span class="operator">=</span> ((String) <span class="literal">null</span>) + str2 + str + str3 + str4;</span><br><span class="line">            <span class="type">MessageDigest</span> <span class="variable">messageDigest</span> <span class="operator">=</span> MessageDigest.getInstance(<span class="string">&quot;sha-1&quot;</span>);</span><br><span class="line">            messageDigest.update(str5.getBytes());</span><br><span class="line">            <span class="type">byte</span>[] digest = messageDigest.digest();</span><br><span class="line">            <span class="type">StringBuffer</span> <span class="variable">stringBuffer</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StringBuffer</span>();</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">byte</span> b : digest) &#123;</span><br><span class="line">                <span class="type">String</span> <span class="variable">lowerCase</span> <span class="operator">=</span> Integer.toHexString(b &amp; <span class="number">255</span>).toLowerCase(Locale.getDefault());</span><br><span class="line">                <span class="keyword">if</span> (lowerCase.length() &lt; <span class="number">2</span>) &#123;</span><br><span class="line">                    lowerCase = <span class="string">&quot;0&quot;</span> + lowerCase;</span><br><span class="line">                &#125;</span><br><span class="line">                stringBuffer.append(lowerCase);</span><br><span class="line">            &#125;</span><br><span class="line">            deviceCode = stringBuffer.toString();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>分析</strong></p>
-<p>这里面先是拼接了一个字符串<code>String str5 = ((String) null) + str2 + str + str3 + str4;</code>然后对这个字符串进行了<code>sha1</code>签名</p>
-<p><strong>str2</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">str2 = AppInfo.getAndroidId(); </span><br></pre></td></tr></table></figure>
-
-<p>获取AndroidId</p>
-<p><strong>str</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">str = Build.BOARD + Build.BRAND + Build.CPU_ABI + Build.DEVICE + Build.DISPLAY + Build.HOST + Build.ID + Build.MANUFACTURER + Build.MODEL + Build.PRODUCT + Build.TAGS + Build.TYPE + Build.USER;</span><br></pre></td></tr></table></figure>
-
-<p>设备指纹信息</p>
-<p><strong>str3</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">str3 = DayimaUtil.getPhoneMac();</span><br></pre></td></tr></table></figure>
-
-<p>获取设备Mac地址</p>
-<p><strong>str4</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">str4 = defaultAdapter.getAddress();</span><br></pre></td></tr></table></figure>
-
-<p>获取的是蓝牙地址</p>
-<p>把这些内容拼接起来进行SHA1签名，然后全小写就是deviceid值</p>
-<h3 id="hook-setDeviceCode"><a href="#hook-setDeviceCode" class="headerlink" title="hook setDeviceCode"></a>hook setDeviceCode</h3><p>通过hook查看传入的参数</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">hook_device</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> flag = <span class="literal">false</span>;</span><br><span class="line">    <span class="title class_">Java</span>.<span class="title function_">perform</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">        <span class="keyword">let</span> <span class="title class_">PeriodAPIV2</span> = <span class="title class_">Java</span>.<span class="title function_">use</span>(<span class="string">&quot;com.yoloho.controller.api.PeriodAPIV2&quot;</span>);</span><br><span class="line">        <span class="title class_">PeriodAPIV2</span>[<span class="string">&quot;setDeviceCode&quot;</span>].<span class="property">implementation</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">            flag = <span class="literal">true</span>;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`========== PeriodAPIV2.setDeviceCode is called ==========`</span>);</span><br><span class="line">            <span class="variable language_">this</span>[<span class="string">&quot;setDeviceCode&quot;</span>]();</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">var</span> messageDigest = <span class="title class_">Java</span>.<span class="title function_">use</span>(<span class="string">&quot;java.security.MessageDigest&quot;</span>);</span><br><span class="line">        <span class="keyword">var</span> <span class="title class_">ByteString</span> = <span class="title class_">Java</span>.<span class="title function_">use</span>(<span class="string">&quot;com.android.okhttp.okio.ByteString&quot;</span>);</span><br><span class="line">        messageDigest.<span class="property">update</span>.<span class="title function_">overload</span>(<span class="string">&#x27;[B&#x27;</span>).<span class="property">implementation</span> = <span class="keyword">function</span> (<span class="params">data</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (flag) &#123;</span><br><span class="line">                <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;MessageDigest.update(&#x27;[B&#x27;) is called!&quot;</span>);</span><br><span class="line">                <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">ByteString</span>.<span class="title function_">of</span>(data).<span class="title function_">utf8</span>());</span><br><span class="line">                <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;-------------------------------------------------------&quot;</span>);</span><br><span class="line">                flag = <span class="literal">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="title function_">update</span>(data);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">hook_device</span>();</span><br></pre></td></tr></table></figure>
-
-<p>hook 结果</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">========== PeriodAPIV2.setDeviceCode is called ==========</span><br><span class="line">MessageDigest.update(&#x27;[B&#x27;) is called! </span><br><span class="line">null9000290bea7be29bbluelinegooglearm64-v8abluelineQQ3A.200705.002abfarm836QQ3A.200705.002GooglePixel 3bluelinerelease-keysuserandroid-buildEE:9E:96:57:AB:FD02:00:00:00:00:00</span><br><span class="line">-------------------------------------------------------</span><br></pre></td></tr></table></figure>
-
-<h2 id="password参数"><a href="#password参数" class="headerlink" title="password参数"></a>password参数</h2><p>搜索<code>password</code></p>
-<p><img src="/2025/02/18/DYM%E7%99%BB%E5%BD%95%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/10.jpg"></p>
-<p><code>privateStrHandle</code>的值是通过<code>privateStrHandle()</code>方法返回的，它传入的参数是密码和用户名</p>
-<h3 id="privateStrHandle"><a href="#privateStrHandle" class="headerlink" title="privateStrHandle()"></a>privateStrHandle()</h3><p><img src="/2025/02/18/DYM%E7%99%BB%E5%BD%95%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/11.jpg"></p>
-<p>通过AES加密返回一个<code>encrypt</code></p>
-<p>这里的三个参数，第一个参数明文是密码，第二个参数密钥是用户名进行MD5后取前16字节然后转小写，第三个参数iv向量是<code>yoloho_dayima!%_</code></p>
-<h3 id="hook-privateStrHandle"><a href="#hook-privateStrHandle" class="headerlink" title="hook privateStrHandle()"></a>hook privateStrHandle()</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">hook_aes</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="title class_">Java</span>.<span class="title function_">perform</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;<span class="keyword">let</span> <span class="title class_">DayimaPrivateUtil</span> = <span class="title class_">Java</span>.<span class="title function_">use</span>(<span class="string">&quot;com.yoloho.libcore.util.DayimaPrivateUtil&quot;</span>);</span><br><span class="line">        <span class="title class_">DayimaPrivateUtil</span>[<span class="string">&quot;privateStrHandle&quot;</span>].<span class="property">implementation</span> = <span class="keyword">function</span> (<span class="params">str, str2</span>) &#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`DayimaPrivateUtil.privateStrHandle is called: str=<span class="subst">$&#123;str&#125;</span>, str2=<span class="subst">$&#123;str2&#125;</span>`</span>);</span><br><span class="line">            <span class="keyword">let</span> result = <span class="variable language_">this</span>[<span class="string">&quot;privateStrHandle&quot;</span>](str, str2);</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`DayimaPrivateUtil.privateStrHandle result=<span class="subst">$&#123;result&#125;</span>`</span>);</span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">hook_aes</span>();</span><br></pre></td></tr></table></figure>
-
-<p>hook 结果</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">DayimaPrivateUtil.privateStrHandle is called: str=12345678, str2=18888888888</span><br><span class="line">DayimaPrivateUtil.privateStrHandle result=ET4Sdfjs+/VkbhxXerUBFg==</span><br></pre></td></tr></table></figure>
-
-<h3 id="测试验证"><a href="#测试验证" class="headerlink" title="测试验证"></a>测试验证</h3><p><img src="/2025/02/18/DYM%E7%99%BB%E5%BD%95%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/12.jpg"></p>
-<p><img src="/2025/02/18/DYM%E7%99%BB%E5%BD%95%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/13.jpg"></p>
-<p>没问题</p>
-<h2 id="sign参数还原"><a href="#sign参数还原" class="headerlink" title="sign参数还原"></a>sign参数还原</h2><p>找到<code>sign</code>的生成位置</p>
-<p><img src="/2025/02/18/DYM%E7%99%BB%E5%BD%95%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/14.jpg"></p>
-<p>它是通过<code>Crypt.encrypt_data()</code>方法生成的，它里面的参数是由<code>DeviceCode</code>、<code>&quot;user/login&quot;</code>、<code>str</code>、<code>str2</code>拼接而成的</p>
-<h3 id="encrypt-data"><a href="#encrypt-data" class="headerlink" title="encrypt_data()"></a>encrypt_data()</h3><p><img src="/2025/02/18/DYM%E7%99%BB%E5%BD%95%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/15.jpg"></p>
-<p>这是一个native方法</p>
-<h3 id="IDA分析"><a href="#IDA分析" class="headerlink" title="IDA分析"></a>IDA分析</h3><p>找到静态函数</p>
-<p><img src="/2025/02/18/DYM%E7%99%BB%E5%BD%95%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/16.jpg"></p>
-<p>双击跳转</p>
-<p><img src="/2025/02/18/DYM%E7%99%BB%E5%BD%95%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/17.jpg"></p>
-<h4 id="sub-1DA0"><a href="#sub-1DA0" class="headerlink" title="sub_1DA0()"></a>sub_1DA0()</h4><p><img src="/2025/02/18/DYM%E7%99%BB%E5%BD%95%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/18.jpg"></p>
-<p>接下来使用rpc调用</p>
-<h3 id="hook-encrypt-data"><a href="#hook-encrypt-data" class="headerlink" title="hook encrypt_data()"></a>hook encrypt_data()</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">hook_encrypt_data</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="title class_">Java</span>.<span class="title function_">perform</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">        <span class="keyword">let</span> <span class="title class_">Crypt</span> = <span class="title class_">Java</span>.<span class="title function_">use</span>(<span class="string">&quot;com.yoloho.libcore.util.Crypt&quot;</span>);</span><br><span class="line">        <span class="title class_">Crypt</span>[<span class="string">&quot;encrypt_data&quot;</span>].<span class="property">implementation</span> = <span class="keyword">function</span> (<span class="params">j2, str, j3</span>) &#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`Crypt.encrypt_data is called: j2=<span class="subst">$&#123;j2&#125;</span>, str=<span class="subst">$&#123;str&#125;</span>, j3=<span class="subst">$&#123;j3&#125;</span>`</span>);</span><br><span class="line">            <span class="keyword">let</span> result = <span class="variable language_">this</span>[<span class="string">&quot;encrypt_data&quot;</span>](j2, str, j3);</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`Crypt.encrypt_data result=<span class="subst">$&#123;result&#125;</span>`</span>);</span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">hook_encrypt_data</span>();</span><br></pre></td></tr></table></figure>
-
-<p>hook 结果</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Crypt.encrypt_data is called: j2=0, str=63122cb8da575c7e71ace0dccb1e35b0f2a43758user/login18888888888ET4Sdfjs+/VkbhxXerUBFg==, j3=85</span><br><span class="line">Crypt.encrypt_data result=c6337760363ed264b287178c340f9cb8</span><br></pre></td></tr></table></figure>
-
-<h3 id="rpc"><a href="#rpc" class="headerlink" title="rpc"></a>rpc</h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> frida</span><br><span class="line"></span><br><span class="line">device = frida.get_remote_device()</span><br><span class="line">process = device.attach(<span class="string">&quot;大姨妈&quot;</span>)</span><br><span class="line"></span><br><span class="line">js_code = <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">rpc.exports = &#123;</span></span><br><span class="line"><span class="string">    endata: function (j2,str,j3) &#123;</span></span><br><span class="line"><span class="string">        var res;</span></span><br><span class="line"><span class="string">        Java.perform(function () &#123;</span></span><br><span class="line"><span class="string">            let Crypt = Java.use(&quot;com.yoloho.libcore.util.Crypt&quot;);</span></span><br><span class="line"><span class="string">            let encrypted_data = Crypt.encrypt_data(j2,str,j3);</span></span><br><span class="line"><span class="string">            res = encrypted_data;</span></span><br><span class="line"><span class="string">        &#125;);</span></span><br><span class="line"><span class="string">        return res;</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">script = process.create_script(js_code)</span><br><span class="line">script.load()</span><br><span class="line">en_data = script.exports_sync.endata(<span class="number">0</span>, <span class="string">&quot;63122cb8da575c7e71ace0dccb1e35b0f2a43758user/login18888888888ET4Sdfjs+/VkbhxXerUBFg==&quot;</span>, <span class="number">85</span>)</span><br><span class="line"><span class="built_in">print</span>(en_data) <span class="comment"># c6337760363ed264b287178c340f9cb8</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="Python实现登录"><a href="#Python实现登录" class="headerlink" title="Python实现登录"></a>Python实现登录</h1><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">url = <span class="string">&quot;https://uicapi.yoloho.com/user/login&quot;</span></span><br><span class="line"></span><br><span class="line">params = &#123;</span><br><span class="line">  <span class="string">&quot;device&quot;</span>: <span class="string">&quot;63122cb8da575c7e71ace0dccb1e35b0f2a43758&quot;</span>,</span><br><span class="line">  <span class="string">&quot;ver&quot;</span>: <span class="string">&quot;900&quot;</span>,</span><br><span class="line">  <span class="string">&quot;screen_width&quot;</span>: <span class="string">&quot;1080&quot;</span>,</span><br><span class="line">  <span class="string">&quot;screen_height&quot;</span>: <span class="string">&quot;2028&quot;</span>,</span><br><span class="line">  <span class="string">&quot;model&quot;</span>: <span class="string">&quot;Pixel 3&quot;</span>,</span><br><span class="line">  <span class="string">&quot;sdkver&quot;</span>: <span class="string">&quot;29&quot;</span>,</span><br><span class="line">  <span class="string">&quot;platform&quot;</span>: <span class="string">&quot;android&quot;</span>,</span><br><span class="line">  <span class="string">&quot;releasever&quot;</span>: <span class="string">&quot;10&quot;</span>,</span><br><span class="line">  <span class="string">&quot;channel&quot;</span>: <span class="string">&quot;vivobbg&quot;</span>,</span><br><span class="line">  <span class="string">&quot;latt&quot;</span>: <span class="string">&quot;0&quot;</span>,</span><br><span class="line">  <span class="string">&quot;lngt&quot;</span>: <span class="string">&quot;0&quot;</span>,</span><br><span class="line">  <span class="string">&quot;networkType&quot;</span>: <span class="string">&quot;0&quot;</span>,</span><br><span class="line">  <span class="string">&quot;token&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">  <span class="string">&quot;userStatus&quot;</span>: <span class="string">&quot;0&quot;</span>,</span><br><span class="line">  <span class="string">&quot;oaid&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">  <span class="string">&quot;installDate&quot;</span>: <span class="string">&quot;0&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">headers = &#123;</span><br><span class="line">  <span class="string">&quot;Accept-Encoding&quot;</span>: <span class="string">&quot;gzip&quot;</span>,</span><br><span class="line">  <span class="string">&quot;User-Agent&quot;</span>: <span class="string">&quot;Mozilla/5.0 (Linux; Android 10; Pixel 3 Build/QQ3A.200705.002; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/74.0.3729.186 Mobile Safari/537.36&quot;</span>,</span><br><span class="line">  <span class="string">&quot;Content-Length&quot;</span>: <span class="string">&quot;211&quot;</span>,</span><br><span class="line">  <span class="string">&quot;Content-Type&quot;</span>: <span class="string">&quot;application/x-www-form-urlencoded&quot;</span>,</span><br><span class="line">  <span class="string">&quot;Host&quot;</span>: <span class="string">&quot;uicapi.yoloho.com&quot;</span>,</span><br><span class="line">  <span class="string">&quot;Connection&quot;</span>: <span class="string">&quot;Keep-Alive&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">body = &#123;</span><br><span class="line">  <span class="string">&quot;username&quot;</span>: <span class="string">&quot;18888888888&quot;</span>,</span><br><span class="line">  <span class="string">&quot;password&quot;</span>: <span class="string">&quot;ET4Sdfjs+/VkbhxXerUBFg==&quot;</span>,</span><br><span class="line">  <span class="string">&quot;sign&quot;</span>: <span class="string">&quot;c6337760363ed264b287178c340f9cb8&quot;</span>,</span><br><span class="line">  <span class="string">&quot;androidid&quot;</span>: <span class="string">&quot;9000290bea7be29b&quot;</span>,</span><br><span class="line">  <span class="string">&quot;mac&quot;</span>: <span class="string">&quot;EE:9E:96:57:AB:FD&quot;</span>,</span><br><span class="line">  <span class="string">&quot;imei&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">  <span class="string">&quot;density&quot;</span>: <span class="string">&quot;2.75&quot;</span>,</span><br><span class="line">  <span class="string">&quot;brand&quot;</span>: <span class="string">&quot;google&quot;</span>,</span><br><span class="line">  <span class="string">&quot;oaid&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">  <span class="string">&quot;installDate&quot;</span>: <span class="string">&quot;0&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">response = requests.post(url, params=params, headers=headers, data=body)</span><br><span class="line"><span class="built_in">print</span>(response.status_code)</span><br><span class="line"><span class="built_in">print</span>(response.text)</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="Unidbg调用encrypt-data"><a href="#Unidbg调用encrypt-data" class="headerlink" title="Unidbg调用encrypt_data()"></a>Unidbg调用encrypt_data()</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MainActivity</span> <span class="keyword">extends</span> <span class="title class_">AbstractJni</span> &#123;</span><br><span class="line">    <span class="comment">// 声明模拟器、内存和虚拟机（VM）实例</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> AndroidEmulator emulator;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Memory memory;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> VM vm;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// MainActivity 的构造函数</span></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">MainActivity</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="comment">// 初始化 64 位架构的 Android 模拟器</span></span><br><span class="line">        emulator = AndroidEmulatorBuilder</span><br><span class="line">                .for64Bit()</span><br><span class="line">                .build();</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 从模拟器获取内存实例</span></span><br><span class="line">        memory = emulator.getMemory();</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 设置模拟器的库解析器，API 级别为 23</span></span><br><span class="line">        memory.setLibraryResolver(<span class="keyword">new</span> <span class="title class_">AndroidResolver</span>(<span class="number">23</span>));</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 使用指定的 APK 文件创建 Dalvik VM 实例</span></span><br><span class="line">        vm = emulator.createDalvikVM(<span class="keyword">new</span> <span class="title class_">File</span>(<span class="string">&quot;unidbg-android/src/test/java/com/dym/encryptdata/DYM_8.9.0.apk&quot;</span>));</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 为 VM 设置 JNI（Java Native Interface）</span></span><br><span class="line">        vm.setJni(<span class="built_in">this</span>);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 启用 VM 的详细日志记录</span></span><br><span class="line">        vm.setVerbose(<span class="literal">true</span>);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 将本地库 &quot;Crypt&quot; 加载到 VM 中</span></span><br><span class="line">        vm.loadLibrary(<span class="string">&quot;Crypt&quot;</span>, <span class="literal">true</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 使用 Crypt 类加密数据的方法</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">encrypt_data</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="comment">// 从 VM 中解析 Crypt 类</span></span><br><span class="line">        <span class="type">DvmClass</span> <span class="variable">Crypt</span> <span class="operator">=</span> vm.resolveClass(<span class="string">&quot;com.yoloho.libcore.util.Crypt&quot;</span>);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 调用 Crypt 类中的静态 JNI 方法 &quot;encrypt_data&quot;</span></span><br><span class="line">        <span class="type">StringObject</span> <span class="variable">stringObject</span> <span class="operator">=</span> Crypt.callStaticJniMethodObject(emulator, </span><br><span class="line">            <span class="string">&quot;encrypt_data(JLjava/lang/String;J)Ljava/lang/String;&quot;</span>, </span><br><span class="line">            <span class="number">0</span>, </span><br><span class="line">            <span class="string">&quot;63122cb8da575c7e71ace0dccb1e35b0f2a43758user/login18888888888ET4Sdfjs+/VkbhxXerUBFg==&quot;</span>, </span><br><span class="line">            <span class="number">85</span>);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 从 StringObject 中获取结果</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">result</span> <span class="operator">=</span> stringObject.getValue();</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 将结果打印到控制台</span></span><br><span class="line">        System.out.println(<span class="string">&quot;result=&quot;</span> + result); <span class="comment">// c6337760363ed264b287178c340f9cb8</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 运行应用程序的主方法</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="comment">// 创建 MainActivity 的实例并调用 encrypt_data 方法</span></span><br><span class="line">        <span class="keyword">new</span> <span class="title class_">MainActivity</span>().encrypt_data(); </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
-
-
-<h1 id="在安卓项目中调用别人的so中的函数"><a href="#在安卓项目中调用别人的so中的函数" class="headerlink" title="在安卓项目中调用别人的so中的函数"></a>在安卓项目中调用别人的so中的函数</h1><h2 id="新建安卓项目"><a href="#新建安卓项目" class="headerlink" title="新建安卓项目"></a>新建安卓项目</h2><p>在app目录下新建一个<code>libs</code>目录，把<code>libCrypt.so</code>放到<code>libs</code>目录下</p>
-<p><img src="/2025/02/18/DYM%E7%99%BB%E5%BD%95%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/19.jpg"></p>
-<p>在<code>build.gradle.kts</code>中的<code>android</code>里添加如下内容</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sourceSets &#123;</span><br><span class="line">    getByName(&quot;main&quot;) &#123;</span><br><span class="line">        jniLibs.srcDirs(&quot;libs&quot;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<p>新建一个包，包名必须要与方法所在的包一致，<code>com.yoloho.libcore.util</code></p>
-<p>新建一个类，类名也要与方法所在的类一致，<code>DayimaPrivateUtil</code></p>
-<p>添加代码</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.yoloho.libcore.util;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Crypt</span> &#123;</span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        System.loadLibrary(<span class="string">&quot;Crypt&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">native</span> String <span class="title function_">encrypt_data</span><span class="params">(<span class="type">long</span> j2, String str, <span class="type">long</span> j3)</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>调用</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">String</span> <span class="variable">sign</span> <span class="operator">=</span> Crypt.encrypt_data(<span class="number">0</span>,<span class="string">&quot;63122cb8da575c7e71ace0dccb1e35b0f2a43758user/login18888888888ET4Sdfjs+/VkbhxXerUBFg==&quot;</span>,<span class="number">85</span>);</span><br><span class="line"><span class="type">TextView</span> <span class="variable">tv</span> <span class="operator">=</span> findViewById(R.id.textview);</span><br><span class="line">tv.setText(sign);</span><br></pre></td></tr></table></figure>
-
-<p>效果</p>
-<p><img src="/2025/02/18/DYM%E7%99%BB%E5%BD%95%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/20.jpg"></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/02/18/ssh%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%8E%B0%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/android.svg">
-      <meta itemprop="name" content="Bileton">
-      <meta itemprop="description" content="路漫漫其修远夕！">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="白乐天">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2025/02/18/ssh%E6%9C%8D%E5%8A%A1%E5%AE%9E%E7%8E%B0%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93/" class="post-title-link" itemprop="url">ssh服务实现文件传输</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2025-02-18 16:15:49 / 修改时间：16:21:45" itemprop="dateCreated datePublished" datetime="2025-02-18T16:15:49+08:00">2025-02-18</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E9%AB%98%E6%95%88%E7%8E%87%E5%B7%A5%E5%85%B7%E5%90%88%E9%9B%86/" itemprop="url" rel="index"><span itemprop="name">高效率工具合集</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>545</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>ssh 是一种网络协议，用于加密方式远程登录到其他计算机。它提供了一种安全的方式来访问远程服务器，传输数据，以及运行远程命令。</p>
-<h1 id="配置ssh服务"><a href="#配置ssh服务" class="headerlink" title="配置ssh服务"></a>配置ssh服务</h1><p>虚拟机安装openssh-server</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install openssh-server</span><br></pre></td></tr></table></figure>
-
-<p>启动ssh服务</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">systemctl enable ssh.service</span><br><span class="line"></span><br><span class="line">sudo systemctl start ssh // 手动启动ssh服务</span><br><span class="line">sudo systemctl enable ssh // 配置服务在系统引导时启动</span><br></pre></td></tr></table></figure>
-
-<p>查看ssh服务状态</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl status ssh</span><br></pre></td></tr></table></figure>
-
-<p>停止ssh服务</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl stop ssh // 手动停止</span><br><span class="line">sudo systemctl disable ssh // 防止服务在系统启动时自动运行</span><br></pre></td></tr></table></figure>
-
-<p>验证连接</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh username@192.168.1.100</span><br></pre></td></tr></table></figure>
-
-<h1 id="传输文件"><a href="#传输文件" class="headerlink" title="传输文件"></a>传输文件</h1><p>将文件从主机传输到虚拟机：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp /path/to/local/file** username@192.168.1.100:/path/to/remote/directory</span><br></pre></td></tr></table></figure>
-
-<p>将文件从虚拟机传输到主机：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp username@192.168.1.100:/path/to/remote/file /path/to/local/directory</span><br></pre></td></tr></table></figure>
-
-<p>如果要传输文件夹，加上<code>-r</code>选项</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1778,7 +2040,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">96</span>
+          <span class="site-state-item-count">98</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1791,7 +2053,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">88</span>
+        <span class="site-state-item-count">90</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -1832,13 +2094,13 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">828k</span>
+    <span title="站点总字数">833k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">12:32</span>
+    <span title="站点阅读时长">12:37</span>
 </div>
 
 

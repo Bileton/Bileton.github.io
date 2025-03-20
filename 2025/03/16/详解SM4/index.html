@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/wxlog.jpg">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/wxlog.jpg">
+  <link rel="mask-icon" href="/images/wxlog.jpg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="SM4简介SM4是中国国家密码管理局（GM&#x2F;T 0002-2012）发布的商用分组密码算法，属于对称加密算法。 类型：对称分组加密 分组长度：128位（16字节） 密钥长度：128位（16字节） 迭代轮数：32轮 设计结构：基于Feistel网络结构，但实际采用更高效的非线性迭代结构。 加密流程明文处理将128位明文分为4个32位字（大端序存储）：X0，X1，X2，X3 32轮迭代加密轮">
+<meta property="og:type" content="article">
+<meta property="og:title" content="详解SM4">
+<meta property="og:url" content="http://example.com/2025/03/16/%E8%AF%A6%E8%A7%A3SM4/index.html">
+<meta property="og:site_name" content="白乐天">
+<meta property="og:description" content="SM4简介SM4是中国国家密码管理局（GM&#x2F;T 0002-2012）发布的商用分组密码算法，属于对称加密算法。 类型：对称分组加密 分组长度：128位（16字节） 密钥长度：128位（16字节） 迭代轮数：32轮 设计结构：基于Feistel网络结构，但实际采用更高效的非线性迭代结构。 加密流程明文处理将128位明文分为4个32位字（大端序存储）：X0，X1，X2，X3 32轮迭代加密轮">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2025/03/16/%E8%AF%A6%E8%A7%A3SM4/1.jpg">
+<meta property="article:published_time" content="2025-03-16T03:23:57.000Z">
+<meta property="article:modified_time" content="2025-03-16T05:08:07.002Z">
+<meta property="article:author" content="Bileton">
+<meta property="article:tag" content="SM4">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2025/03/16/%E8%AF%A6%E8%A7%A3SM4/1.jpg">
+
+<link rel="canonical" href="http://example.com/2025/03/16/%E8%AF%A6%E8%A7%A3SM4/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>详解SM4 | 白乐天</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">白乐天</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">道阻且长，行则将至。</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">90</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">35</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">98</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/love.js"></script>
+</div>
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/03/16/%E8%AF%A6%E8%A7%A3SM4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/android.svg">
+      <meta itemprop="name" content="Bileton">
+      <meta itemprop="description" content="路漫漫其修远夕！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="白乐天">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          详解SM4
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2025-03-16 11:23:57 / 修改时间：13:08:07" itemprop="dateCreated datePublished" datetime="2025-03-16T11:23:57+08:00">2025-03-16</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%BC%96%E7%A0%81%E4%B8%8E%E5%8A%A0%E8%A7%A3%E5%AF%86/" itemprop="url" rel="index"><span itemprop="name">编码与加解密</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.7k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="SM4简介"><a href="#SM4简介" class="headerlink" title="SM4简介"></a>SM4简介</h1><p>SM4是中国国家密码管理局（GM&#x2F;T 0002-2012）发布的商用分组密码算法，属于对称加密算法。</p>
+<p>类型：对称分组加密</p>
+<p><strong>分组长度</strong>：128位（16字节）</p>
+<p><strong>密钥长度</strong>：128位（16字节）</p>
+<p><strong>迭代轮数</strong>：32轮</p>
+<p><strong>设计结构</strong>：基于Feistel网络结构，但实际采用更高效的<strong>非线性迭代结构</strong>。</p>
+<h1 id="加密流程"><a href="#加密流程" class="headerlink" title="加密流程"></a>加密流程</h1><h2 id="明文处理"><a href="#明文处理" class="headerlink" title="明文处理"></a>明文处理</h2><p>将128位明文分为4个32位字（大端序存储）：X0，X1，X2，X3</p>
+<h2 id="32轮迭代加密"><a href="#32轮迭代加密" class="headerlink" title="32轮迭代加密"></a>32轮迭代加密</h2><h3 id="轮函数"><a href="#轮函数" class="headerlink" title="轮函数"></a>轮函数</h3><p>每轮的操作公式如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">X&#123;i+4&#125;=Xi⊕T(X&#123;i+1&#125;⊕X&#123;i+2&#125;⊕X&#123;i+3&#125;⊕rki)</span><br><span class="line"></span><br><span class="line">// rki会在后面密钥调度中提到，这里理解为轮秘钥</span><br></pre></td></tr></table></figure>
+
+<p>也可以把这个公式理解为轮函数F</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">X&#123;i+4&#125; = F(Xi,X&#123;i+1&#125;,X&#123;i+2&#125;,X&#123;i+3&#125;) = Xi⊕T(X&#123;i+1&#125;⊕X&#123;i+2&#125;⊕X&#123;i+3&#125;⊕rki)</span><br></pre></td></tr></table></figure>
+
+<h3 id="核心函数T"><a href="#核心函数T" class="headerlink" title="核心函数T"></a>核心函数T</h3><h4 id="S盒置换（非线性层）"><a href="#S盒置换（非线性层）" class="headerlink" title="S盒置换（非线性层）"></a>S盒置换（非线性层）</h4><p>将T函数的输入<code>X&#123;i+1&#125;⊕X&#123;i+2&#125;⊕X&#123;i+3&#125;⊕rki</code>32位拆分为4个8位字节，每个字节通过固定S盒替换（查表），得到32位的结果B.</p>
+<h4 id="线性变换L（扩散层）"><a href="#线性变换L（扩散层）" class="headerlink" title="线性变换L（扩散层）"></a>线性变换L（扩散层）</h4><p>对S盒的32位输出B进行循环左移和异或</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">L(B)=B⊕(B⋘2)⊕(B⋘10)⊕(B⋘18)⊕(B⋘24)</span><br></pre></td></tr></table></figure>
+
+<h3 id="更新寄存器"><a href="#更新寄存器" class="headerlink" title="更新寄存器"></a>更新寄存器</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">X&#123;i+4&#125;=Xi⊕L(B)</span><br></pre></td></tr></table></figure>
+
+<h2 id="反序合并"><a href="#反序合并" class="headerlink" title="反序合并"></a>反序合并</h2><p>最终输出密文时，将<em>X</em>32,<em>X</em>33,<em>X</em>34,<em>X</em>35反序排列并合并为128位。</p>
+<p>示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">X32=0x12345678(字A)</span><br><span class="line">X33=0x9ABCDEF0(字B)</span><br><span class="line">X34=0x11223344(字C)</span><br><span class="line">X35=0x55667788(字D)</span><br></pre></td></tr></table></figure>
+
+<p>取逆序字：<code>D=0x55667788</code>, <code>C=0x11223344</code>, <code>B=0x9ABCDEF0</code>, <code>A=0x12345678</code>。</p>
+<p>按大端序合并</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cipher = 0x55667788112233449ABCDEF012345678</span><br></pre></td></tr></table></figure>
+
+<h1 id="密钥调度"><a href="#密钥调度" class="headerlink" title="密钥调度"></a>密钥调度</h1><p>通过密钥调度生成32个轮秘钥（每轮一个，32位）。</p>
+<h2 id="主密钥拆分"><a href="#主密钥拆分" class="headerlink" title="主密钥拆分"></a>主密钥拆分</h2><p>首先将128位主密钥分为4个32位字：MK0，MK1，MK2，MK3</p>
+<h2 id="固定常数FK"><a href="#固定常数FK" class="headerlink" title="固定常数FK"></a>固定常数FK</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">FK0=0xA3B1BAC6,</span><br><span class="line">FK1=0x56AA3350,</span><br><span class="line">FK2=0x677D9197,</span><br><span class="line">FK3=0xB27022DC.</span><br></pre></td></tr></table></figure>
+
+<h2 id="固定参数CK"><a href="#固定参数CK" class="headerlink" title="固定参数CK"></a>固定参数CK</h2><p><img src="/2025/03/16/%E8%AF%A6%E8%A7%A3SM4/1.jpg"></p>
+<h2 id="生成中间密钥"><a href="#生成中间密钥" class="headerlink" title="生成中间密钥"></a>生成中间密钥</h2><p>每个<code>MKi</code>与<code>FKi</code>异或，得到初始密钥<code>K0</code>到<code>K3</code></p>
+<h2 id="迭代生成轮秘钥"><a href="#迭代生成轮秘钥" class="headerlink" title="迭代生成轮秘钥"></a>迭代生成轮秘钥</h2><p>通过32轮迭代生成后续的<code>K4</code>到<code>K35</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">├─迭代32轮：</span><br><span class="line">│   for i = 0 to 31:</span><br><span class="line">│     计算中间值 = K_&#123;i+1&#125; ⊕ K_&#123;i+2&#125; ⊕ K_&#123;i+3&#125; ⊕ CK_i</span><br><span class="line">│     │</span><br><span class="line">│     ├─S盒置换（4字节查表）</span><br><span class="line">│     │</span><br><span class="line">│     └─线性变换L&#x27;（循环左移13、23位后异或）</span><br><span class="line">│     生成 K_&#123;i+4&#125; = K_i ⊕ T&#x27;(中间值)</span><br><span class="line">│     保存 rk_i = K_&#123;i+4&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="T’函数"><a href="#T’函数" class="headerlink" title="T’函数"></a>T’函数</h3><p>与加密过程中的T函数类似，S盒置换与加密算法中的S盒算法相同，有区别的是线性替换L’</p>
+<h3 id="线性变换L′"><a href="#线性变换L′" class="headerlink" title="线性变换L′"></a>线性变换L′</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">L′(B)=B⊕(B⋘13)⊕(B⋘23)</span><br></pre></td></tr></table></figure>
+
+<h2 id="流程总结"><a href="#流程总结" class="headerlink" title="流程总结"></a>流程总结</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">主密钥 (128位)</span><br><span class="line">│</span><br><span class="line">├─拆分为 MK₀, MK₁, MK₂, MK₃</span><br><span class="line">│</span><br><span class="line">├─异或 FK₀-FK₃ → 生成 K₀-K₃</span><br><span class="line">│</span><br><span class="line">├─迭代32轮：</span><br><span class="line">│   for i = 0 to 31:</span><br><span class="line">│     计算中间值 = K_&#123;i+1&#125; ⊕ K_&#123;i+2&#125; ⊕ K_&#123;i+3&#125; ⊕ CK_i</span><br><span class="line">│     │</span><br><span class="line">│     ├─S盒置换（4字节查表）</span><br><span class="line">│     │</span><br><span class="line">│     └─线性变换L&#x27;（循环左移13、23位后异或）</span><br><span class="line">│     生成 K_&#123;i+4&#125; = K_i ⊕ T&#x27;(中间值)</span><br><span class="line">│     保存 rk_i = K_&#123;i+4&#125;</span><br><span class="line">│</span><br><span class="line">└─输出轮密钥 rk_0, rk_1, ..., rk_31</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/SM4/" rel="tag"><svg t="1732789072752" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4858" width="15" height="15"><path d="M229.443715 343.118259l565.172804 0 0 410.010794c0 37.525595-30.237317 67.762912-67.040108 67.762912l-46.319715 0 0 139.742183c0 35.116247-28.249605 63.365852-63.305618 63.365852-35.116247 0-63.546553-28.309839-63.546553-63.365852l0-139.742183-84.809049 0 0 139.742183c0 35.056013-28.430306 63.365852-63.546553 63.365852-34.393443 0-62.763515-28.309839-62.763515-63.365852l-0.542103-139.742183-45.596911 0c-37.465361 0-67.702678-30.177084-67.702678-67.762912l0-410.010794zM141.984383 331.432921c-35.056013 0-63.426086 28.370073-63.426086 62.763515l0 264.787344c0 35.116247 28.370073 63.365852 63.426086 63.365852s62.763515-28.309839 62.763515-63.365852l0-264.787344c0-34.393443-28.189371-62.763515-62.763515-62.763515zM796.42353 320.952257l-569.449397 0c0-97.879762 58.547156-182.869512 145.343917-227.141282l-43.7899-80.59269c-2.469582-4.336826-1.264908-9.878327 3.071919-12.347908 4.276593-1.867245 9.878327-0.662571 12.347908 3.734489l44.271769 81.255261c37.646062-16.684735 79.508484-25.900491 123.780253-25.900491s86.134191 9.215756 123.780253 25.840257l44.271769-81.255261c2.469582-4.336826 8.071316-5.5415 12.347908-3.734489 4.336826 2.469582 5.5415 8.011082 3.071919 12.347908l-43.7899 80.59269c86.254658 44.332003 144.74158 129.321753 144.74158 227.201515zM406.048922 194.160319c0-12.950245-10.42043-24.033246-23.912779-24.033246-13.010479 0-23.430909 11.083001-23.430909 24.033246 0 12.890012 10.42043 23.973012 23.430909 23.973012 13.492349 0.060234 23.912779-11.022767 23.912779-23.973012zM665.294766 194.160319c0-12.950245-10.42043-24.033246-23.430909-24.033246-13.552582 0-23.912779 11.083001-23.912779 24.033246 0 12.890012 10.42043 23.973012 23.912779 23.973012 13.010479 0.060234 23.430909-11.022767 23.430909-23.973012zM882.015617 331.432921c-34.51391 0-62.763515 27.707502-62.763515 62.763515l0 264.787344c0 35.116247 28.249605 63.365852 62.763515 63.365852 35.056013 0 63.426086-28.309839 63.426086-63.365852l0-264.787344c-0.060234-35.056013-28.370073-62.763515-63.426086-62.763515z" fill="#000000" p-id="4859"></path></svg> SM4</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2025/03/15/%E6%9F%90%E5%B9%B8%E7%99%BD%E7%9B%92AES/" rel="prev" title="某幸白盒AES">
+      <i class="fa fa-chevron-left"></i> 某幸白盒AES
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2025/03/20/Python%E8%84%9A%E6%9C%AC/" rel="next" title="Python脚本">
+      Python脚本 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#SM4%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">SM4简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8A%A0%E5%AF%86%E6%B5%81%E7%A8%8B"><span class="nav-number">2.</span> <span class="nav-text">加密流程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%98%8E%E6%96%87%E5%A4%84%E7%90%86"><span class="nav-number">2.1.</span> <span class="nav-text">明文处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#32%E8%BD%AE%E8%BF%AD%E4%BB%A3%E5%8A%A0%E5%AF%86"><span class="nav-number">2.2.</span> <span class="nav-text">32轮迭代加密</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AE%E5%87%BD%E6%95%B0"><span class="nav-number">2.2.1.</span> <span class="nav-text">轮函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%B8%E5%BF%83%E5%87%BD%E6%95%B0T"><span class="nav-number">2.2.2.</span> <span class="nav-text">核心函数T</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#S%E7%9B%92%E7%BD%AE%E6%8D%A2%EF%BC%88%E9%9D%9E%E7%BA%BF%E6%80%A7%E5%B1%82%EF%BC%89"><span class="nav-number">2.2.2.1.</span> <span class="nav-text">S盒置换（非线性层）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E5%8F%98%E6%8D%A2L%EF%BC%88%E6%89%A9%E6%95%A3%E5%B1%82%EF%BC%89"><span class="nav-number">2.2.2.2.</span> <span class="nav-text">线性变换L（扩散层）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9B%B4%E6%96%B0%E5%AF%84%E5%AD%98%E5%99%A8"><span class="nav-number">2.2.3.</span> <span class="nav-text">更新寄存器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%8D%E5%BA%8F%E5%90%88%E5%B9%B6"><span class="nav-number">2.3.</span> <span class="nav-text">反序合并</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AF%86%E9%92%A5%E8%B0%83%E5%BA%A6"><span class="nav-number">3.</span> <span class="nav-text">密钥调度</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BB%E5%AF%86%E9%92%A5%E6%8B%86%E5%88%86"><span class="nav-number">3.1.</span> <span class="nav-text">主密钥拆分</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%BA%E5%AE%9A%E5%B8%B8%E6%95%B0FK"><span class="nav-number">3.2.</span> <span class="nav-text">固定常数FK</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%BA%E5%AE%9A%E5%8F%82%E6%95%B0CK"><span class="nav-number">3.3.</span> <span class="nav-text">固定参数CK</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%9F%E6%88%90%E4%B8%AD%E9%97%B4%E5%AF%86%E9%92%A5"><span class="nav-number">3.4.</span> <span class="nav-text">生成中间密钥</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%AD%E4%BB%A3%E7%94%9F%E6%88%90%E8%BD%AE%E7%A7%98%E9%92%A5"><span class="nav-number">3.5.</span> <span class="nav-text">迭代生成轮秘钥</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#T%E2%80%99%E5%87%BD%E6%95%B0"><span class="nav-number">3.5.1.</span> <span class="nav-text">T’函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E5%8F%98%E6%8D%A2L%E2%80%B2"><span class="nav-number">3.5.2.</span> <span class="nav-text">线性变换L′</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B5%81%E7%A8%8B%E6%80%BB%E7%BB%93"><span class="nav-number">3.6.</span> <span class="nav-text">流程总结</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Bileton"
+      src="/images/android.svg">
+  <p class="site-author-name" itemprop="name">Bileton</p>
+  <div class="site-description" itemprop="description">路漫漫其修远夕！</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">98</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">35</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">90</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Bileton</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">833k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">12:37</span>
+</div>
+
+
+<span id="timeDate">载入天数...</span>
+<span id="times">载入时分秒...</span>
+<script>
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("01/01/2024 00:00:00"); //修改为你的网站开始运行的时间
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+        document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 ";
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒.";
+    }
+setInterval("createtime()",250);
+</script>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
