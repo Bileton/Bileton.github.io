@@ -119,7 +119,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">90</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">92</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -129,7 +129,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">98</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">100</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -180,6 +180,370 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/01/15/AndroidDemo-Hook%E6%A1%88%E4%BE%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/android.svg">
+      <meta itemprop="name" content="Bileton">
+      <meta itemprop="description" content="路漫漫其修远夕！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="白乐天">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2025/01/15/AndroidDemo-Hook%E6%A1%88%E4%BE%8B/" class="post-title-link" itemprop="url">AndroidDemo Hook案例</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2025-01-15 17:49:11" itemprop="dateCreated datePublished" datetime="2025-01-15T17:49:11+08:00">2025-01-15</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2025-01-22 20:58:03" itemprop="dateModified" datetime="2025-01-22T20:58:03+08:00">2025-01-22</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%80%86%E5%90%91%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/" itemprop="url" rel="index"><span itemprop="name">逆向实战案例</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>13k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>12 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="App信息"><a href="#App信息" class="headerlink" title="App信息"></a>App信息</h1><p>包名：com.example.androiddemo</p>
+<h1 id="第一关"><a href="#第一关" class="headerlink" title="第一关"></a>第一关</h1><p>一个登录界面</p>
+<p><img src="/2025/01/15/AndroidDemo-Hook%E6%A1%88%E4%BE%8B/1.jpg"></p>
+<p>把apk丢进jadx进行分析</p>
+<p>查看<code>AndroidManifest.xml</code>文件</p>
+<p>程序启动的第一个<code>Activity</code>是<code>com.example.androiddemo.Activity.LoginActivity</code></p>
+<p><img src="/2025/01/15/AndroidDemo-Hook%E6%A1%88%E4%BE%8B/2.jpg"></p>
+<h2 id="LoginActivity"><a href="#LoginActivity" class="headerlink" title="LoginActivity"></a>LoginActivity</h2><p>如下，调用了一个<code>a</code>方法来对用户名和密码进行校验</p>
+<p><img src="/2025/01/15/AndroidDemo-Hook%E6%A1%88%E4%BE%8B/3.jpg"></p>
+<h3 id="a"><a href="#a" class="headerlink" title="a"></a>a</h3><p>如下，对<code>Username</code>进行了一次<code>HmacSHA256</code>签名</p>
+<p><img src="/2025/01/15/AndroidDemo-Hook%E6%A1%88%E4%BE%8B/4.jpg"></p>
+<p>当<code>Username</code>的<code>HmacSHA256</code>签名与<code>Password</code>相同时，可以登录成功。</p>
+<h3 id="hook-a"><a href="#hook-a" class="headerlink" title="hook a"></a>hook a</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">hook_a</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="title class_">Java</span>.<span class="title function_">perform</span>(<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="keyword">var</span> <span class="title class_">LoginActivity</span> = <span class="title class_">Java</span>.<span class="title function_">use</span>(<span class="string">&quot;com.example.androiddemo.Activity.LoginActivity&quot;</span>)</span><br><span class="line">        <span class="title class_">LoginActivity</span>.<span class="property">a</span>.<span class="title function_">overload</span>(<span class="string">&#x27;java.lang.String&#x27;</span>, <span class="string">&#x27;java.lang.String&#x27;</span>).<span class="property">implementation</span> = <span class="keyword">function</span>(<span class="params">str1,str2</span>)&#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;str1:&quot;</span>,str1);</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;str2:&quot;</span>,str2);</span><br><span class="line">            <span class="keyword">var</span> result = <span class="variable language_">this</span>.<span class="title function_">a</span>(str1,str2);</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;result:&quot;</span>,result);</span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">hook_a</span>()</span><br></pre></td></tr></table></figure>
+
+<p><strong>hook 结果</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">bileton</span><br><span class="line">77cd249b2fa536da37dcd3fc6993fe94aefb61a70328aa4cd12984a053f6a7c3</span><br></pre></td></tr></table></figure>
+
+<p>输入用户名和密码</p>
+<p>登录成功</p>
+<p><img src="/2025/01/15/AndroidDemo-Hook%E6%A1%88%E4%BE%8B/5.jpg"></p>
+<h2 id="进入下一关"><a href="#进入下一关" class="headerlink" title="进入下一关"></a>进入下一关</h2><p>点击进入下一关，会出现<code>Check Failed</code></p>
+<p><img src="/2025/01/15/AndroidDemo-Hook%E6%A1%88%E4%BE%8B/6.jpg"></p>
+<h2 id="FridaActivity1"><a href="#FridaActivity1" class="headerlink" title="FridaActivity1"></a>FridaActivity1</h2><p>查看源码，得知点击登录之后，会进入<code>FridaActivity1</code></p>
+<p><img src="/2025/01/15/AndroidDemo-Hook%E6%A1%88%E4%BE%8B/7.jpg"></p>
+<p>如下是<code>FridaActivity1</code>的内容</p>
+<p><img src="/2025/01/15/AndroidDemo-Hook%E6%A1%88%E4%BE%8B/9.jpg"></p>
+<p>绕过方式很简单，可以直接修改<code>a</code>方法的返回值</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">hook_a</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="title class_">Java</span>.<span class="title function_">perform</span>(<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="keyword">var</span> <span class="title class_">FridaActivity1</span> = <span class="title class_">Java</span>.<span class="title function_">use</span>(<span class="string">&quot;com.example.androiddemo.Activity.FridaActivity1&quot;</span>);</span><br><span class="line">        <span class="title class_">FridaActivity1</span>.<span class="property">a</span>.<span class="property">implementation</span> = <span class="keyword">function</span>(<span class="params">data</span>)&#123;</span><br><span class="line">            <span class="keyword">var</span> result = <span class="variable language_">this</span>.<span class="title function_">a</span>(data);</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;result:&quot;</span>,result)</span><br><span class="line">            result =  <span class="string">&quot;R4jSLLLLLLLLLLOrLE7/5B+Z6fsl65yj6BgC6YWz66gO6g2t65Pk6a+P65NK44NNROl0wNOLLLL=&quot;</span>;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;replaced result:&quot;</span>,result)</span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">hook_a</span>()</span><br></pre></td></tr></table></figure>
+
+<p><strong>hook 结果</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">result: R4jSLLLLLLLLLRknplkBpZDpis69kh7i+YAPTmMn2ABsOLLLLL==</span><br><span class="line">replaced result: R4jSLLLLLLLLLLOrLE7/5B+Z6fsl65yj6BgC6YWz66gO6g2t65Pk6a+P65NK44NNROl0wNOLLLL=</span><br></pre></td></tr></table></figure>
+
+<p>还有另一种绕过方式</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">hook_a</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="title class_">Java</span>.<span class="title function_">perform</span>(<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="keyword">var</span> <span class="title class_">FridaActivity1</span> = <span class="title class_">Java</span>.<span class="title function_">use</span>(<span class="string">&quot;com.example.androiddemo.Activity.FridaActivity1&quot;</span>);</span><br><span class="line">        <span class="title class_">FridaActivity1</span>.<span class="property">a</span>.<span class="property">implementation</span> = <span class="keyword">function</span>(<span class="params">original_data</span>)&#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;original_data:&quot;</span>,original_data);</span><br><span class="line">            <span class="keyword">var</span> my_data = <span class="title class_">FridaActivity1</span>.<span class="title function_">b</span>(<span class="string">&quot;bileton&quot;</span>);</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;data:&quot;</span>,my_data);</span><br><span class="line">            <span class="keyword">var</span> result = <span class="variable language_">this</span>.<span class="title function_">a</span>(my_data);</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;result:&quot;</span>,result);</span><br><span class="line">            result =  <span class="string">&quot;R4jSLLLLLLLLLLOrLE7/5B+Z6fsl65yj6BgC6YWz66gO6g2t65Pk6a+P65NK44NNROl0wNOLLLL=&quot;</span>;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;replaced result:&quot;</span>,result)</span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">hook_a</span>()</span><br></pre></td></tr></table></figure>
+
+<p><strong>hook 结果</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">original_data: 31,-117,8,0,0,0,0,0,0,0,123,-79,126,-5,-117,125,-109,-97,-74,46,125,-70,-66,-19,-7,-126,70,43,0,-15,-40,-110,-30,16,0,0,0</span><br><span class="line">data: 31,-117,8,0,0,0,0,0,0,0,75,-54,-52,73,45,-55,-49,3,0,-26,-70,19,-27,7,0,0,0</span><br><span class="line">result: R4jSLLLLLLLLLOlTzOuiyc8MLDa5O+URLLLL</span><br><span class="line">replaced result: R4jSLLLLLLLLLLOrLE7/5B+Z6fsl65yj6BgC6YWz66gO6g2t65Pk6a+P65NK44NNROl0wNOLLLL=</span><br></pre></td></tr></table></figure>
+
+<p>进入到了第二关</p>
+<p><img src="/2025/01/15/AndroidDemo-Hook%E6%A1%88%E4%BE%8B/8.jpg"></p>
+<h1 id="第二关"><a href="#第二关" class="headerlink" title="第二关"></a>第二关</h1><p>第一关结束跳转到了<code>FridaActivity2</code></p>
+<p><img src="/2025/01/15/AndroidDemo-Hook%E6%A1%88%E4%BE%8B/10.jpg"></p>
+<p>需要把<code>static_bool_var</code>和<code>bool_var</code>的值都修改为<code>true</code>才能进入<code>FridaActivity3</code></p>
+<p>这里可以主动调用<code>setStatic_bool_var</code>方法和<code>setBool_var</code>方法</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">hook_activity2</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="title class_">Java</span>.<span class="title function_">perform</span>(<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="keyword">var</span> <span class="title class_">FridaActivity2</span> = <span class="title class_">Java</span>.<span class="title function_">use</span>(<span class="string">&quot;com.example.androiddemo.Activity.FridaActivity2&quot;</span>);</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;static_bool_var:&quot;</span>,<span class="title class_">FridaActivity2</span>.<span class="property">static_bool_var</span>.<span class="property">value</span>);</span><br><span class="line">        <span class="title class_">FridaActivity2</span>.<span class="title function_">setStatic_bool_var</span>();</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;replaced_static_bool_var:&quot;</span>,<span class="title class_">FridaActivity2</span>.<span class="property">static_bool_var</span>.<span class="property">value</span>);</span><br><span class="line">        <span class="title class_">Java</span>.<span class="title function_">choose</span>(<span class="string">&quot;com.example.androiddemo.Activity.FridaActivity2&quot;</span>,&#123;</span><br><span class="line">            <span class="attr">onMatch</span>:<span class="keyword">function</span>(<span class="params">obj</span>)&#123;</span><br><span class="line">                <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;obj.bool_var:&quot;</span>,obj.<span class="property">bool_var</span>.<span class="property">value</span>);</span><br><span class="line">                obj.<span class="title function_">setBool_var</span>();</span><br><span class="line">                <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;replaced_obj.bool_var:&quot;</span>,obj.<span class="property">bool_var</span>.<span class="property">value</span>);</span><br><span class="line">            &#125;,</span><br><span class="line">            <span class="attr">onComplete</span>:<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>hook 结果</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">static_bool_var: false</span><br><span class="line">replaced_static_bool_var: true</span><br><span class="line">obj.bool_var: false</span><br><span class="line">replaced_obj.bool_var: true</span><br></pre></td></tr></table></figure>
+
+<p>点击进入第三关</p>
+<h1 id="第三关"><a href="#第三关" class="headerlink" title="第三关"></a>第三关</h1><p>第二关结束跳转到了<code>FridaActivity3</code></p>
+<p><img src="/2025/01/15/AndroidDemo-Hook%E6%A1%88%E4%BE%8B/11.jpg"></p>
+<p>需要把<code>static_bool_var</code>、<code>bool_var</code>、<code>same_name_bool_var</code>三个值都设置为<code>true</code>才能进入<code>FridaActivity4</code></p>
+<p>这里存在一个坑点是存在一个与字段名<code>same_name_bool_var</code>相同的方法名<code>same_name_bool_var</code>，操作字段名的话需要在其名字前面加上一个<code>_</code>，即<code>_same_name_bool_var</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">hook_activity3</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="keyword">var</span> <span class="title class_">FridaActivity3</span> = <span class="title class_">Java</span>.<span class="title function_">use</span>(<span class="string">&quot;com.example.androiddemo.Activity.FridaActivity3&quot;</span>);</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;static_bool_var:&quot;</span>,<span class="title class_">FridaActivity3</span>.<span class="property">static_bool_var</span>.<span class="property">value</span>);</span><br><span class="line">    <span class="title class_">FridaActivity3</span>.<span class="property">static_bool_var</span>.<span class="property">value</span> = <span class="literal">true</span>;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;replaced_static_bool_var:&quot;</span>,<span class="title class_">FridaActivity3</span>.<span class="property">static_bool_var</span>.<span class="property">value</span>);</span><br><span class="line">    <span class="title class_">Java</span>.<span class="title function_">choose</span>(<span class="string">&quot;com.example.androiddemo.Activity.FridaActivity3&quot;</span>,&#123;</span><br><span class="line">        <span class="attr">onMatch</span>:<span class="keyword">function</span>(<span class="params">obj</span>)&#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;obj.bool_var:&quot;</span>,obj.<span class="property">bool_var</span>.<span class="property">value</span>);</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;obj._same_name_bool_var:&quot;</span>,obj.<span class="property">_same_name_bool_var</span>.<span class="property">value</span>);</span><br><span class="line">            obj.<span class="property">bool_var</span>.<span class="property">value</span> = <span class="literal">true</span>;</span><br><span class="line">            obj.<span class="property">_same_name_bool_var</span>.<span class="property">value</span> = <span class="literal">true</span>;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;replaced_obj.bool_var:&quot;</span>,obj.<span class="property">bool_var</span>.<span class="property">value</span>);</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;replaced_obj._same_name_bool_var:&quot;</span>,obj.<span class="property">_same_name_bool_var</span>.<span class="property">value</span>);</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">onComplete</span>:<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>hook 结果</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">static_bool_var: false</span><br><span class="line">replaced_static_bool_var: true</span><br><span class="line">obj.bool_var: false</span><br><span class="line">obj._same_name_bool_var: false</span><br><span class="line">replaced_obj.bool_var: true</span><br><span class="line">replaced_obj._same_name_bool_var: true</span><br></pre></td></tr></table></figure>
+
+<p>点击进入第四关</p>
+<h1 id="第四关"><a href="#第四关" class="headerlink" title="第四关"></a>第四关</h1><p>第三关结束跳转到了<code>FridaActivity4</code></p>
+<p>如下是第四关的源代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">FridaActivity4</span> <span class="keyword">extends</span> <span class="title class_">BaseFridaActivity</span> &#123;</span><br><span class="line">    <span class="meta">@Override</span> <span class="comment">// com.example.androiddemo.Activity.BaseFridaActivity</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getNextCheckTitle</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;当前第4关&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">class</span> <span class="title class_">InnerClasses</span> &#123;</span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">boolean</span> <span class="title function_">check1</span><span class="params">()</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">boolean</span> <span class="title function_">check2</span><span class="params">()</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">boolean</span> <span class="title function_">check3</span><span class="params">()</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">boolean</span> <span class="title function_">check4</span><span class="params">()</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">boolean</span> <span class="title function_">check5</span><span class="params">()</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">boolean</span> <span class="title function_">check6</span><span class="params">()</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">private</span> <span class="title function_">InnerClasses</span><span class="params">()</span> &#123;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span> <span class="comment">// com.example.androiddemo.Activity.BaseFridaActivity</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onCheck</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (InnerClasses.check1() &amp;&amp; InnerClasses.check2() &amp;&amp; InnerClasses.check3() &amp;&amp; InnerClasses.check4() &amp;&amp; InnerClasses.check5() &amp;&amp; InnerClasses.check6()) &#123;</span><br><span class="line">            CheckSuccess();</span><br><span class="line">            startActivity(<span class="keyword">new</span> <span class="title class_">Intent</span>(<span class="built_in">this</span>, (Class&lt;?&gt;) FridaActivity5.class));</span><br><span class="line">            finishActivity(<span class="number">0</span>);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">super</span>.CheckFailed();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里出现了内部类，需要把内部类中的方法返回值都设置为<code>true</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">hook_activity4</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="keyword">var</span> <span class="title class_">InnerClasses</span> = <span class="title class_">Java</span>.<span class="title function_">use</span>(<span class="string">&quot;com.example.androiddemo.Activity.FridaActivity4$InnerClasses&quot;</span>);</span><br><span class="line">    <span class="title class_">InnerClasses</span>.<span class="property">check1</span>.<span class="property">implementation</span> = <span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="title class_">InnerClasses</span>.<span class="property">check2</span>.<span class="property">implementation</span> = <span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="title class_">InnerClasses</span>.<span class="property">check3</span>.<span class="property">implementation</span> = <span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="title class_">InnerClasses</span>.<span class="property">check4</span>.<span class="property">implementation</span> = <span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="title class_">InnerClasses</span>.<span class="property">check5</span>.<span class="property">implementation</span> = <span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="title class_">InnerClasses</span>.<span class="property">check6</span>.<span class="property">implementation</span> = <span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>点击进入第五关</p>
+<h1 id="第五关"><a href="#第五关" class="headerlink" title="第五关"></a>第五关</h1><p>第四关结束跳转到了<code>FridaActivity5</code></p>
+<p><strong>查看<code>check</code>逻辑</strong></p>
+<p><img src="/2025/01/15/AndroidDemo-Hook%E6%A1%88%E4%BE%8B/12.jpg"></p>
+<p><strong>尝试hook <code>check</code>方法</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">hook_activity5</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="title class_">Java</span>.<span class="title function_">perform</span>(<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="keyword">let</span> <span class="title class_">CheckInterface</span> = <span class="title class_">Java</span>.<span class="title function_">use</span>(<span class="string">&quot;com.example.androiddemo.Dynamic.CheckInterface&quot;</span>);</span><br><span class="line">        <span class="title class_">CheckInterface</span>[<span class="string">&quot;check&quot;</span>].<span class="property">implementation</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`CheckInterface.check is called`</span>);</span><br><span class="line">            <span class="keyword">let</span> result = <span class="variable language_">this</span>[<span class="string">&quot;check&quot;</span>]();</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`CheckInterface.check result=<span class="subst">$&#123;result&#125;</span>`</span>);</span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>没有输出</p>
+<p>查看<code>getDynamicDexCheck</code>方法</p>
+<p><img src="/2025/01/15/AndroidDemo-Hook%E6%A1%88%E4%BE%8B/13.jpg"></p>
+<p><strong>hook getDynamicDexCheck</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">hook_activity5</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="title class_">Java</span>.<span class="title function_">perform</span>(<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="keyword">let</span> <span class="title class_">FridaActivity5</span> = <span class="title class_">Java</span>.<span class="title function_">use</span>(<span class="string">&quot;com.example.androiddemo.Activity.FridaActivity5&quot;</span>);</span><br><span class="line">        <span class="title class_">FridaActivity5</span>[<span class="string">&quot;getDynamicDexCheck&quot;</span>].<span class="property">implementation</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`FridaActivity5.getDynamicDexCheck is called`</span>);</span><br><span class="line">            <span class="keyword">let</span> result = <span class="variable language_">this</span>[<span class="string">&quot;getDynamicDexCheck&quot;</span>]();</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`FridaActivity5.getDynamicDexCheck result=<span class="subst">$&#123;<span class="built_in">JSON</span>.stringify(result)&#125;</span>`</span>);</span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>hook 结果</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">FridaActivity5.getDynamicDexCheck is called</span><br><span class="line">FridaActivity5.getDynamicDexCheck result=&quot;&lt;instance: com.example.androiddemo.Dynamic.CheckInterface, $className: com.example.androiddemo.Dynamic.DynamicCheck&gt;&quot;</span><br></pre></td></tr></table></figure>
+
+<p><strong>查看loaddex()方法</strong></p>
+<p>源码如下</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">loaddex</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">File</span> <span class="variable">cacheDir</span> <span class="operator">=</span> getCacheDir();</span><br><span class="line">    <span class="keyword">if</span> (!cacheDir.exists()) &#123;</span><br><span class="line">        cacheDir.mkdir();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">String</span> <span class="variable">str</span> <span class="operator">=</span> cacheDir.getAbsolutePath() + File.separator + <span class="string">&quot;DynamicPlugin.dex&quot;</span>;</span><br><span class="line">    <span class="type">File</span> <span class="variable">file</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">File</span>(str);</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (!file.exists()) &#123;</span><br><span class="line">            file.createNewFile();</span><br><span class="line">            copyFiles(<span class="built_in">this</span>, <span class="string">&quot;DynamicPlugin.dex&quot;</span>, file);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.DynamicDexCheck = (CheckInterface) <span class="keyword">new</span> <span class="title class_">DexClassLoader</span>(str, cacheDir.getAbsolutePath(), <span class="literal">null</span>, getClassLoader()).loadClass(<span class="string">&quot;com.example.androiddemo.Dynamic.DynamicCheck&quot;</span>).newInstance();</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">this</span>.DynamicDexCheck == <span class="literal">null</span>) &#123;</span><br><span class="line">            Toast.makeText(<span class="built_in">this</span>, <span class="string">&quot;loaddex Failed!&quot;</span>, <span class="number">1</span>).show();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">catch</span> (Exception e2) &#123;</span><br><span class="line">        e2.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> CheckInterface <span class="title function_">getDynamicDexCheck</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">this</span>.DynamicDexCheck == <span class="literal">null</span>) &#123;</span><br><span class="line">        loaddex();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.DynamicDexCheck;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>通过 <code>DexClassLoader</code>动态加载一个 <code>.dex</code> 文件（<code>DynamicPlugin.dex</code>），然后通过反射创建并实例化其中的一个类 <code>com.example.androiddemo.Dynamic.DynamicCheck</code>，并将其转换为 <code>CheckInterface</code> 接口的实例。</p>
+<p><strong>enumerateClassLoader()</strong></p>
+<p>枚举类加载器</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">enumclassLoader</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="title class_">Java</span>.<span class="title function_">perform</span>(<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="title class_">Java</span>.<span class="title function_">perform</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">            <span class="title class_">Java</span>.<span class="title function_">enumerateClassLoaders</span>(&#123;</span><br><span class="line">                <span class="attr">onMatch</span>: <span class="keyword">function</span> (<span class="params">loader</span>) &#123;</span><br><span class="line">                    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Found ClassLoader: &quot;</span> + loader);</span><br><span class="line">                &#125;,</span><br><span class="line">                <span class="attr">onComplete</span>: <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">                    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;ClassLoader enumeration complete&quot;</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>hook 结果</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Found</span> <span class="title class_">ClassLoader</span>: dalvik.<span class="property">system</span>.<span class="property">PathClassLoader</span>[<span class="title class_">DexPathList</span>[[directory <span class="string">&quot;.&quot;</span>],nativeLibraryDirectories=[<span class="regexp">/system/</span>lib64, <span class="regexp">/system/</span>lib64]]]</span><br><span class="line"><span class="title class_">Found</span> <span class="title class_">ClassLoader</span>: java.<span class="property">lang</span>.<span class="property">BootClassLoader</span>@1a74373</span><br><span class="line"><span class="title class_">Found</span> <span class="title class_">ClassLoader</span>: dalvik.<span class="property">system</span>.<span class="property">PathClassLoader</span>[<span class="title class_">DexPathList</span>[[zip file <span class="string">&quot;/data/app/com.example.androiddemo-gOT-dni2KR2j2MT4Q9cP5g==/base.apk&quot;</span>],nativeLibraryDirectories=[<span class="regexp">/data/</span>app/com.<span class="property">example</span>.<span class="property">androiddemo</span>-gOT-dni2KR2j2MT4Q9cP5g==<span class="regexp">/lib/</span>arm64, <span class="regexp">/data/</span>app/com.<span class="property">example</span>.<span class="property">androiddemo</span>-gOT-dni2KR2j2MT4Q9cP5g==<span class="regexp">/base.apk!/</span>lib/arm64-v8a, <span class="regexp">/system/</span>lib64]]]</span><br><span class="line"><span class="title class_">Found</span> <span class="title class_">ClassLoader</span>: dalvik.<span class="property">system</span>.<span class="property">DexClassLoader</span>[<span class="title class_">DexPathList</span>[[dex file <span class="string">&quot;/data/user/0/com.example.androiddemo/cache/DynamicPlugin.dex&quot;</span>],nativeLibraryDirectories=[<span class="regexp">/system/</span>lib64]]]</span><br><span class="line"><span class="title class_">ClassLoader</span> enumeration complete</span><br></pre></td></tr></table></figure>
+
+<p><code>dalvik.system.DexClassLoader</code>就是要找的类加载器</p>
+<p>修改<code>DexClassLoader</code>对<code>check</code>进行hook</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">enumclassLoader</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="title class_">Java</span>.<span class="title function_">perform</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">        <span class="title class_">Java</span>.<span class="title function_">enumerateClassLoaders</span>(&#123;</span><br><span class="line">            <span class="attr">onMatch</span>: <span class="keyword">function</span> (<span class="params">loader</span>) &#123;</span><br><span class="line">                <span class="keyword">try</span>&#123;</span><br><span class="line">                    <span class="keyword">if</span>(loader.<span class="title function_">findClass</span>(<span class="string">&quot;com.example.androiddemo.Dynamic.DynamicCheck&quot;</span>))&#123;</span><br><span class="line">                        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;loader:&quot;</span>,loader)</span><br><span class="line">                        <span class="title class_">Java</span>.<span class="property">classFactory</span>.<span class="property">loader</span> = loader;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;<span class="keyword">catch</span>(e)&#123;</span><br><span class="line"></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;,</span><br><span class="line">            <span class="attr">onComplete</span>: <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">                <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;ClassLoader enumeration complete&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">let</span> <span class="title class_">DynamicCheck</span> = <span class="title class_">Java</span>.<span class="title function_">use</span>(<span class="string">&quot;com.example.androiddemo.Dynamic.DynamicCheck&quot;</span>);</span><br><span class="line">        <span class="title class_">DynamicCheck</span>[<span class="string">&quot;check&quot;</span>].<span class="property">implementation</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`DynamicCheck.check is called`</span>);</span><br><span class="line">            <span class="keyword">let</span> result = <span class="variable language_">this</span>[<span class="string">&quot;check&quot;</span>]();</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`DynamicCheck.check result=<span class="subst">$&#123;result&#125;</span>`</span>);</span><br><span class="line">            result = <span class="literal">true</span>;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`DynamicCheck.check replaced result=<span class="subst">$&#123;result&#125;</span>`</span>)</span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>hook结果</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">enumclassLoader()</span><br><span class="line">loader: dalvik.system.DexClassLoader[DexPathList[[dex file &quot;/data/user/0/com.example.androiddemo/cache/DynamicPlugin.dex&quot;],nativeLibraryDirectories=[/system/lib64]]]</span><br><span class="line">ClassLoader enumeration complete</span><br><span class="line">DynamicCheck.check is called</span><br><span class="line">DynamicCheck.check result=false</span><br><span class="line">DynamicCheck.check replaced result=true</span><br></pre></td></tr></table></figure>
+
+<p>点击进入第六关</p>
+<h1 id="第六关"><a href="#第六关" class="headerlink" title="第六关"></a>第六关</h1><p>第五关结束跳转到了<code>FridaActivity6</code></p>
+<p><img src="/2025/01/15/AndroidDemo-Hook%E6%A1%88%E4%BE%8B/14.jpg"></p>
+<p>这里有三个check函数，他们的逻辑都是一样的，如下</p>
+<p><img src="/2025/01/15/AndroidDemo-Hook%E6%A1%88%E4%BE%8B/15.jpg"></p>
+<p><strong>hook check</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">hook_activity6</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="title class_">Java</span>.<span class="title function_">perform</span>(<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="keyword">let</span> <span class="title class_">Frida6Class0</span> = <span class="title class_">Java</span>.<span class="title function_">use</span>(<span class="string">&quot;com.example.androiddemo.Activity.Frida6.Frida6Class0&quot;</span>);</span><br><span class="line">        <span class="title class_">Frida6Class0</span>[<span class="string">&quot;check&quot;</span>].<span class="property">implementation</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`Frida6Class0.check is called`</span>);</span><br><span class="line">            <span class="keyword">let</span> result = <span class="variable language_">this</span>[<span class="string">&quot;check&quot;</span>]();</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`Frida6Class0.check result=<span class="subst">$&#123;result&#125;</span>`</span>);</span><br><span class="line">            result = <span class="literal">true</span>;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`Frida6Class0.check replaced result=<span class="subst">$&#123;result&#125;</span>`</span>);</span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">let</span> <span class="title class_">Frida6Class1</span> = <span class="title class_">Java</span>.<span class="title function_">use</span>(<span class="string">&quot;com.example.androiddemo.Activity.Frida6.Frida6Class1&quot;</span>);</span><br><span class="line">        <span class="title class_">Frida6Class1</span>[<span class="string">&quot;check&quot;</span>].<span class="property">implementation</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`Frida6Class1.check is called`</span>);</span><br><span class="line">            <span class="keyword">let</span> result = <span class="variable language_">this</span>[<span class="string">&quot;check&quot;</span>]();</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`Frida6Class1.check result=<span class="subst">$&#123;result&#125;</span>`</span>);</span><br><span class="line">            result = <span class="literal">true</span>;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`Frida6Class1.check replaced result=<span class="subst">$&#123;result&#125;</span>`</span>);</span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">let</span> <span class="title class_">Frida6Class2</span> = <span class="title class_">Java</span>.<span class="title function_">use</span>(<span class="string">&quot;com.example.androiddemo.Activity.Frida6.Frida6Class2&quot;</span>);</span><br><span class="line">        <span class="title class_">Frida6Class2</span>[<span class="string">&quot;check&quot;</span>].<span class="property">implementation</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`Frida6Class2.check is called`</span>);</span><br><span class="line">            <span class="keyword">let</span> result = <span class="variable language_">this</span>[<span class="string">&quot;check&quot;</span>]();</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`Frida6Class2.check result=<span class="subst">$&#123;result&#125;</span>`</span>);</span><br><span class="line">            result = <span class="literal">true</span>;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`Frida6Class2.check replaced result=<span class="subst">$&#123;result&#125;</span>`</span>);</span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>hook 结果</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Frida6Class0.check is called</span><br><span class="line">Frida6Class0.check result=false</span><br><span class="line">Frida6Class0.check replaced result=true</span><br><span class="line">Frida6Class1.check is called</span><br><span class="line">Frida6Class1.check result=false</span><br><span class="line">Frida6Class1.check replaced result=true</span><br><span class="line">Frida6Class2.check is called</span><br><span class="line">Frida6Class2.check result=false</span><br><span class="line">Frida6Class2.check replaced result=true</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/01/14/English-Words-Study/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/android.svg">
+      <meta itemprop="name" content="Bileton">
+      <meta itemprop="description" content="路漫漫其修远夕！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="白乐天">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2025/01/14/English-Words-Study/" class="post-title-link" itemprop="url">English Words Study</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2025-01-14 22:56:18" itemprop="dateCreated datePublished" datetime="2025-01-14T22:56:18+08:00">2025-01-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2025-03-08 23:57:45" itemprop="dateModified" datetime="2025-03-08T23:57:45+08:00">2025-03-08</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%8B%B1%E8%AF%AD%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">英语学习</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="A"><a href="#A" class="headerlink" title="A"></a>A</h1><h2 id="b"><a href="#b" class="headerlink" title="b"></a>b</h2><h3 id="abandon"><a href="#abandon" class="headerlink" title="abandon"></a>abandon</h3><p>v.放弃，抛弃</p>
+<h2 id="l"><a href="#l" class="headerlink" title="l"></a>l</h2><h3 id="align"><a href="#align" class="headerlink" title="align"></a>align</h3><p>v.对齐</p>
+<h2 id="t"><a href="#t" class="headerlink" title="t"></a>t</h2><h3 id="attach"><a href="#attach" class="headerlink" title="attach"></a>attach</h3><p>附加；贴上</p>
+<h3 id="attribute"><a href="#attribute" class="headerlink" title="attribute"></a>attribute</h3><p>n.特征，</p>
+<h1 id="B"><a href="#B" class="headerlink" title="B"></a>B</h1><h2 id="a"><a href="#a" class="headerlink" title="a"></a>a</h2><h3 id="band"><a href="#band" class="headerlink" title="band"></a>band</h3><p>n.乐队；帮伙</p>
+<p>v.用带捆扎；联合；划分范围；</p>
+<h2 id="o"><a href="#o" class="headerlink" title="o"></a>o</h2><h3 id="bottom"><a href="#bottom" class="headerlink" title="bottom"></a>bottom</h3><p>n.底部；尽头；末端；</p>
+<p>adj.底部的</p>
+<h1 id="C"><a href="#C" class="headerlink" title="C"></a>C</h1><h2 id="a-1"><a href="#a-1" class="headerlink" title="a"></a>a</h2><h3 id="category"><a href="#category" class="headerlink" title="category"></a>category</h3><p>n.类别；种类；范畴；</p>
+<h2 id="o-1"><a href="#o-1" class="headerlink" title="o"></a>o</h2><h3 id="collection"><a href="#collection" class="headerlink" title="collection"></a>collection</h3><p>n.收藏，收藏品；集合</p>
+<h3 id="contain"><a href="#contain" class="headerlink" title="contain"></a>contain</h3><p>v.包含；容纳</p>
+<h3 id="content"><a href="#content" class="headerlink" title="content"></a>content</h3><p>n.目录；内容</p>
+<p>adj.满足的</p>
+<p>v.使满意</p>
+<h2 id="u"><a href="#u" class="headerlink" title="u"></a>u</h2><h3 id="custom"><a href="#custom" class="headerlink" title="custom"></a>custom</h3><p>n.风俗；习惯；传统</p>
+<p>adj.定制的</p>
+<h1 id="D"><a href="#D" class="headerlink" title="D"></a>D</h1><h2 id="e"><a href="#e" class="headerlink" title="e"></a>e</h2><h3 id="debug"><a href="#debug" class="headerlink" title="debug"></a>debug</h3><p>v.调试</p>
+<h3 id="decorate"><a href="#decorate" class="headerlink" title="decorate"></a>decorate</h3><p>v.装饰</p>
+<h3 id="decoration"><a href="#decoration" class="headerlink" title="decoration"></a>decoration</h3><p>n.装饰</p>
+<h3 id="decrypt"><a href="#decrypt" class="headerlink" title="decrypt"></a>decrypt</h3><p>v.破译，解密；解释；</p>
+<h2 id="i"><a href="#i" class="headerlink" title="i"></a>i</h2><h3 id="dialog"><a href="#dialog" class="headerlink" title="dialog"></a>dialog</h3><p>v.对话</p>
+<h3 id="dialogue"><a href="#dialogue" class="headerlink" title="dialogue"></a>dialogue</h3><p>n.对话，对白；</p>
+<h3 id="dispose"><a href="#dispose" class="headerlink" title="dispose"></a>dispose</h3><p>v.处理，处置；</p>
+<h1 id="E"><a href="#E" class="headerlink" title="E"></a>E</h1><h2 id="n"><a href="#n" class="headerlink" title="n"></a>n</h2><h3 id="encrypt"><a href="#encrypt" class="headerlink" title="encrypt"></a>encrypt</h3><p>v.加密；编码；</p>
+<h3 id="entry"><a href="#entry" class="headerlink" title="entry"></a>entry</h3><p>n.入口</p>
+<h1 id="F"><a href="#F" class="headerlink" title="F"></a>F</h1><h2 id="i-1"><a href="#i-1" class="headerlink" title="i"></a>i</h2><h3 id="filter"><a href="#filter" class="headerlink" title="filter"></a>filter</h3><p>v.过滤，渗透；</p>
+<p>n.过滤器</p>
+<h2 id="o-2"><a href="#o-2" class="headerlink" title="o"></a>o</h2><h3 id="font"><a href="#font" class="headerlink" title="font"></a>font</h3><p>n.字体；</p>
+<h2 id="r"><a href="#r" class="headerlink" title="r"></a>r</h2><h3 id="front"><a href="#front" class="headerlink" title="front"></a>front</h3><p>adj.前面的，正面的</p>
+<p>n.前面，正面；</p>
+<p>adv.在前面</p>
+<p>v.面对</p>
+<h2 id="u-1"><a href="#u-1" class="headerlink" title="u"></a>u</h2><h3 id="fuzz"><a href="#fuzz" class="headerlink" title="fuzz"></a>fuzz</h3><p>n.绒毛，细毛；</p>
+<p>v.使模糊，起毛；</p>
+<h1 id="G"><a href="#G" class="headerlink" title="G"></a>G</h1><h2 id="e-1"><a href="#e-1" class="headerlink" title="e"></a>e</h2><h3 id="generate"><a href="#generate" class="headerlink" title="generate"></a>generate</h3><p>v.产生；引起；生成</p>
+<h2 id="r-1"><a href="#r-1" class="headerlink" title="r"></a>r</h2><h3 id="grant"><a href="#grant" class="headerlink" title="grant"></a>grant</h3><p>v.允许，同意，承认；</p>
+<p>n.拨款；补助金；</p>
+<h1 id="I"><a href="#I" class="headerlink" title="I"></a>I</h1><h2 id="n-1"><a href="#n-1" class="headerlink" title="n"></a>n</h2><h3 id="indent"><a href="#indent" class="headerlink" title="indent"></a>indent</h3><p>n.缩进；</p>
+<h3 id="instrumentation"><a href="#instrumentation" class="headerlink" title="instrumentation"></a>instrumentation</h3><p>n.仪器；器乐谱写；测试设备</p>
+<h3 id="intent"><a href="#intent" class="headerlink" title="intent"></a>intent</h3><p>adj.全神贯注的；专心致志的</p>
+<p>n.意图；意向；目的</p>
+<h3 id="interceptor"><a href="#interceptor" class="headerlink" title="interceptor"></a>interceptor</h3><p>n.拦截器</p>
+<h1 id="L"><a href="#L" class="headerlink" title="L"></a>L</h1><h2 id="e-2"><a href="#e-2" class="headerlink" title="e"></a>e</h2><h3 id="leak"><a href="#leak" class="headerlink" title="leak"></a>leak</h3><p>v.泄露</p>
+<h1 id="P"><a href="#P" class="headerlink" title="P"></a>P</h1><h2 id="a-2"><a href="#a-2" class="headerlink" title="a"></a>a</h2><h3 id="paragrah"><a href="#paragrah" class="headerlink" title="paragrah"></a>paragrah</h3><p>n.段，节。</p>
+<h2 id="e-3"><a href="#e-3" class="headerlink" title="e"></a>e</h2><h3 id="peek"><a href="#peek" class="headerlink" title="peek"></a>peek</h3><p>v.窥视，偷看</p>
+<h2 id="l-1"><a href="#l-1" class="headerlink" title="l"></a>l</h2><h3 id="plug"><a href="#plug" class="headerlink" title="plug"></a>plug</h3><p>v.插入，接通</p>
+<p>n.插头</p>
+<h2 id="r-2"><a href="#r-2" class="headerlink" title="r"></a>r</h2><h3 id="preference"><a href="#preference" class="headerlink" title="preference"></a>preference</h3><p>n.偏好；喜好；优先（权）；</p>
+<h1 id="R"><a href="#R" class="headerlink" title="R"></a>R</h1><h2 id="e-4"><a href="#e-4" class="headerlink" title="e"></a>e</h2><h3 id="rear"><a href="#rear" class="headerlink" title="rear"></a>rear</h3><p>adj.背面的，后面的</p>
+<p>n.后部</p>
+<p>v.抚养；举起</p>
+<h3 id="receive"><a href="#receive" class="headerlink" title="receive"></a>receive</h3><p>v.收到，得到；接收</p>
+<h3 id="receiver"><a href="#receiver" class="headerlink" title="receiver"></a>receiver</h3><p>n.接收器</p>
+<h1 id="S"><a href="#S" class="headerlink" title="S"></a>S</h1><h2 id="e-5"><a href="#e-5" class="headerlink" title="e"></a>e</h2><h3 id="sensor"><a href="#sensor" class="headerlink" title="sensor"></a>sensor</h3><p>n.传感器</p>
+<h2 id="h"><a href="#h" class="headerlink" title="h"></a>h</h2><h3 id="share"><a href="#share" class="headerlink" title="share"></a>share</h3><p>v.分享；分配；均分；</p>
+<p>n.股票；股份；份额；</p>
+<h2 id="i-2"><a href="#i-2" class="headerlink" title="i"></a>i</h2><h3 id="sign"><a href="#sign" class="headerlink" title="sign"></a>sign</h3><p>v.签名；做手势</p>
+<p>n.记号；符合；标志；手势；</p>
+<h3 id="signal"><a href="#signal" class="headerlink" title="signal"></a>signal</h3><p>v.发信号；标志；</p>
+<p>n.信号；标志；</p>
+<h3 id="simulator"><a href="#simulator" class="headerlink" title="simulator"></a>simulator</h3><p>n.模拟器</p>
+<h2 id="p"><a href="#p" class="headerlink" title="p"></a>p</h2><h3 id="spawn"><a href="#spawn" class="headerlink" title="spawn"></a>spawn</h3><p>n.卵；菌丝；产物</p>
+<p>v.产卵；启动；</p>
+<h2 id="t-1"><a href="#t-1" class="headerlink" title="t"></a>t</h2><h3 id="stalker"><a href="#stalker" class="headerlink" title="stalker"></a>stalker</h3><p>n.跟踪者；潜行者；</p>
+<h3 id="standard"><a href="#standard" class="headerlink" title="standard"></a>standard</h3><p>n.标准；规格，规范；</p>
+<p>adj.标准的</p>
+<h3 id="state"><a href="#state" class="headerlink" title="state"></a>state</h3><p>v.说明，陈述；</p>
+<p>n.州，邦；国家；状态；</p>
+<p>adj.国家的</p>
+<h2 id="y"><a href="#y" class="headerlink" title="y"></a>y</h2><h3 id="sync"><a href="#sync" class="headerlink" title="sync"></a>sync</h3><p>v.同步；</p>
+<h1 id="T"><a href="#T" class="headerlink" title="T"></a>T</h1><h2 id="r-3"><a href="#r-3" class="headerlink" title="r"></a>r</h2><h3 id="transform"><a href="#transform" class="headerlink" title="transform"></a>transform</h3><p>v.改变，转换；</p>
+<h3 id="transformation"><a href="#transformation" class="headerlink" title="transformation"></a>transformation</h3><p>n.变化，转变；</p>
+<h3 id="transformer"><a href="#transformer" class="headerlink" title="transformer"></a>transformer</h3><p>n.变压器，变换器</p>
+<h1 id="U"><a href="#U" class="headerlink" title="U"></a>U</h1><h2 id="n-2"><a href="#n-2" class="headerlink" title="n"></a>n</h2><h3 id="uniform"><a href="#uniform" class="headerlink" title="uniform"></a>uniform</h3><p>v.穿制服，使…统一</p>
+<p>n.制服；校服</p>
+<p>adj.相同的，统一的；一致的；</p>
+<h1 id="V"><a href="#V" class="headerlink" title="V"></a>V</h1><h2 id="i-3"><a href="#i-3" class="headerlink" title="i"></a>i</h2><h3 id="virtual"><a href="#virtual" class="headerlink" title="virtual"></a>virtual</h3><p>adj.虚拟的</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -1627,316 +1991,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/01/06/%E7%BC%96%E7%A0%81%E4%B8%8E%E5%8A%A0%E8%A7%A3%E5%AF%86/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/android.svg">
-      <meta itemprop="name" content="Bileton">
-      <meta itemprop="description" content="路漫漫其修远夕！">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="白乐天">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2025/01/06/%E7%BC%96%E7%A0%81%E4%B8%8E%E5%8A%A0%E8%A7%A3%E5%AF%86/" class="post-title-link" itemprop="url">编码与加解密</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2025-01-06 00:20:54" itemprop="dateCreated datePublished" datetime="2025-01-06T00:20:54+08:00">2025-01-06</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2025-03-16 17:17:08" itemprop="dateModified" datetime="2025-03-16T17:17:08+08:00">2025-03-16</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%BC%96%E7%A0%81%E4%B8%8E%E5%8A%A0%E8%A7%A3%E5%AF%86/" itemprop="url" rel="index"><span itemprop="name">编码与加解密</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>13k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>11 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="编码"><a href="#编码" class="headerlink" title="编码"></a>编码</h1><h2 id="ASCII"><a href="#ASCII" class="headerlink" title="ASCII"></a>ASCII</h2><h2 id="Hex"><a href="#Hex" class="headerlink" title="Hex"></a>Hex</h2><h3 id="JS实现toHex"><a href="#JS实现toHex" class="headerlink" title="JS实现toHex"></a>JS实现toHex</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">toHex</span>(<span class="params">data</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> hexdata = <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; data.<span class="property">length</span>; i++) &#123;</span><br><span class="line">        hexdata += data.<span class="title function_">charCodeAt</span>(i).<span class="title function_">toString</span>(<span class="number">16</span>).<span class="title function_">padStart</span>(<span class="number">2</span>, <span class="string">&#x27;0&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> hexdata;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">toHex</span>(<span class="string">&quot;Bileton&quot;</span>)) <span class="comment">// 42696c65746f6e</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p><code>charCodeAt(i)</code> 获取字符串中每个字符的 Unicode 编码。</p>
-</li>
-<li><p><code>toString(16)</code> 将数字转换为 16 进制字符串。</p>
-</li>
-<li><p><code>padStart(2, &#39;0&#39;)</code> 确保每个字符的 Hex 码都是两位数（即不足两位时会在前面补充 0）。</p>
-</li>
-</ul>
-<p><strong>frida常用</strong></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> <span class="title class_">ByteString</span> = <span class="title class_">Java</span>.<span class="title function_">use</span>(<span class="string">&quot;com.android.okhttp.okio.ByteString&quot;</span>);</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">toHex</span>(<span class="params">tag, data</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(tag + <span class="string">&quot; Hex: &quot;</span> + <span class="title class_">ByteString</span>.<span class="title function_">of</span>(data).<span class="title function_">hex</span>());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="Python实现toHex与fromHex"><a href="#Python实现toHex与fromHex" class="headerlink" title="Python实现toHex与fromHex"></a>Python实现toHex与fromHex</h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">data = <span class="string">&quot;Bileton&quot;</span></span><br><span class="line">data_toHex = data.encode(<span class="string">&quot;utf-8&quot;</span>).<span class="built_in">hex</span>()</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;toHex: &quot;</span>,data_toHex)</span><br><span class="line">data_toHex_fromHex = <span class="built_in">bytes</span>.fromhex(data_toHex).decode(<span class="string">&quot;utf-8&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;fromHex: &quot;</span>,data_toHex_fromHex)</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line">toHex:  42696c65746f6e</span><br><span class="line">fromHex:  Bileton</span><br></pre></td></tr></table></figure>
-
-
-
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> binascii</span><br><span class="line"></span><br><span class="line">data = <span class="string">&quot;Bileton&quot;</span></span><br><span class="line">data_toHex = binascii.hexlify(data.encode(<span class="string">&quot;utf-8&quot;</span>)).decode(<span class="string">&quot;utf-8&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;toHex: &quot;</span>, data_toHex)</span><br><span class="line">data_toHex_fromHex = binascii.unhexlify(data_toHex.encode(<span class="string">&quot;utf-8&quot;</span>)).decode(<span class="string">&quot;utf-8&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;fromHex: &quot;</span>, data_toHex_fromHex)</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line">toHex:  42696c65746f6e</span><br><span class="line">fromHex:  Bileton</span><br></pre></td></tr></table></figure>
-
-<h2 id="Base64"><a href="#Base64" class="headerlink" title="Base64"></a>Base64</h2><h3 id="Python实现Base64的编码与解码"><a href="#Python实现Base64的编码与解码" class="headerlink" title="Python实现Base64的编码与解码"></a>Python实现Base64的编码与解码</h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> base64</span><br><span class="line">data = <span class="string">&quot;Bielton&quot;</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;data:&quot;</span>,data)</span><br><span class="line">data_b64encode = base64.b64encode(data.encode())</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;b64编码：&quot;</span>,data_b64encode.decode(<span class="string">&quot;utf-8&quot;</span>))</span><br><span class="line">data_b64decode = base64.b64decode(data_b64encode)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;b64解码&quot;</span>,data_b64decode.decode(<span class="string">&quot;utf-8&quot;</span>))</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line">data: Bielton</span><br><span class="line">b64编码： QmllbHRvbg==</span><br><span class="line">b64解码 Bielton</span><br></pre></td></tr></table></figure>
-
-<h3 id="Java实现Base64的编码与解码"><a href="#Java实现Base64的编码与解码" class="headerlink" title="Java实现Base64的编码与解码"></a>Java实现Base64的编码与解码</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">      <span class="type">String</span> <span class="variable">data</span> <span class="operator">=</span> <span class="string">&quot;Bielton&quot;</span>;</span><br><span class="line">      Base64.Encoder  encoder=  Base64.getEncoder();</span><br><span class="line">      <span class="type">byte</span>[] encoded = encoder.encode(data.getBytes());</span><br><span class="line">      <span class="type">String</span> <span class="variable">encodedToString</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">String</span>(encoded);</span><br><span class="line">      System.out.println(encodedToString); <span class="comment">// QmllbHRvbg==</span></span><br><span class="line"></span><br><span class="line"><span class="type">byte</span>[] decoded = Base64.getDecoder().decode(encodedToString);</span><br><span class="line">      <span class="type">String</span> <span class="variable">decodedToString</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">String</span>(decoded);</span><br><span class="line">      System.out.println(decodedToString);  <span class="comment">// Bielton</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="Android-Studio"><a href="#Android-Studio" class="headerlink" title="Android Studio"></a>Android Studio</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Button</span> <span class="variable">B64_en</span> <span class="operator">=</span> findViewById(R.id.b64encode);</span><br><span class="line">B64_en.setOnClickListener(<span class="keyword">new</span> <span class="title class_">View</span>.OnClickListener() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onClick</span><span class="params">(View v)</span> &#123;</span><br><span class="line">        <span class="type">String</span> <span class="variable">data</span> <span class="operator">=</span> <span class="string">&quot;Bileton&quot;</span>;</span><br><span class="line">        <span class="type">String</span> <span class="variable">data_encode</span> <span class="operator">=</span> Base64.encodeToString(data.getBytes(), Base64.DEFAULT);</span><br><span class="line">        Toast.makeText(MainActivity.<span class="built_in">this</span>,data_encode,Toast.LENGTH_SHORT).show();  <span class="comment">// QmllbHRvbg==</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="type">Button</span> <span class="variable">B64_de</span> <span class="operator">=</span> findViewById(R.id.b64decode);</span><br><span class="line">B64_de.setOnClickListener(<span class="keyword">new</span> <span class="title class_">View</span>.OnClickListener() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onClick</span><span class="params">(View v)</span> &#123;</span><br><span class="line">        <span class="type">String</span> <span class="variable">data</span> <span class="operator">=</span> <span class="string">&quot;Bileton&quot;</span>;</span><br><span class="line">        <span class="type">String</span> <span class="variable">data_encode</span> <span class="operator">=</span> Base64.encodeToString(data.getBytes(), Base64.DEFAULT);</span><br><span class="line">        <span class="type">byte</span>[] data_decode = Base64.decode(data_encode,Base64.DEFAULT);</span><br><span class="line">        <span class="type">String</span> <span class="variable">decodeString</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">String</span>(data_decode);</span><br><span class="line">        Toast.makeText(MainActivity.<span class="built_in">this</span>,decodeString,Toast.LENGTH_SHORT).show();  <span class="comment">// Bielton</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="哈希算法"><a href="#哈希算法" class="headerlink" title="哈希算法"></a>哈希算法</h1><h2 id="CRC32"><a href="#CRC32" class="headerlink" title="CRC32"></a>CRC32</h2><p>最终生成32位（4字节）的哈希值。</p>
-<h2 id="MD5"><a href="#MD5" class="headerlink" title="MD5"></a>MD5</h2><p>最终生成128位（16字节）长度的哈希值。</p>
-<h3 id="Python实现MD5"><a href="#Python实现MD5" class="headerlink" title="Python实现MD5"></a>Python实现MD5</h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> hashlib</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">md5_call</span>(<span class="params">encoded_data</span>):</span><br><span class="line">    md5 = hashlib.md5()</span><br><span class="line">    md5.update(encoded_data)</span><br><span class="line">    <span class="keyword">return</span> md5.digest()</span><br><span class="line"></span><br><span class="line">md5_str = <span class="string">b&quot;Bileton&quot;</span></span><br><span class="line"><span class="built_in">print</span>(md5_str,<span class="string">&quot;的哈希值为：&quot;</span>,md5_call(md5_str).<span class="built_in">hex</span>()) </span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line">Bileton 的哈希值为： 1483ab1f77ea828faa5f78514d2765c1</span><br></pre></td></tr></table></figure>
-
-<h2 id="SHA1"><a href="#SHA1" class="headerlink" title="SHA1"></a>SHA1</h2><p><strong>消息处理</strong></p>
-<p>SHA1的消息处理方式与MD5基本相同，区别是最后的消息长度使用的是大端字节序。</p>
-<p><strong>初始化常量</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">H0 = 0x67452301</span><br><span class="line">H1 = 0xEFCDAB89</span><br><span class="line">H2 = 0x98BADCFE</span><br><span class="line">H3 = 0x10325476</span><br><span class="line">H4 = 0xC3D2E1F0</span><br></pre></td></tr></table></figure>
-
-<p><strong>生成结果</strong></p>
-<p>最终生成160位（20字节）长度的哈希值。(这里的结果使用的是大端字节序。)</p>
-<h3 id="Python实现SHA1"><a href="#Python实现SHA1" class="headerlink" title="Python实现SHA1"></a>Python实现SHA1</h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">sha1_call</span>(<span class="params">encoded_data</span>):</span><br><span class="line">    sha1 = hashlib.sha1()</span><br><span class="line">    sha1.update(encoded_data)</span><br><span class="line">    <span class="keyword">return</span> sha1.digest()</span><br><span class="line"></span><br><span class="line">sha1_str = <span class="string">b&quot;Bileton&quot;</span></span><br><span class="line"><span class="built_in">print</span>(sha1_str.decode(),<span class="string">&quot;的哈希值为：&quot;</span>,sha1_call(sha1_str).<span class="built_in">hex</span>())</span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line">Bileton 的哈希值为： ab345d2ef3e3a48433207b746c9cb3a49b473e3a</span><br></pre></td></tr></table></figure>
-
-<h2 id="SHA256"><a href="#SHA256" class="headerlink" title="SHA256"></a>SHA256</h2><p><strong>消息处理</strong></p>
-<p>与SHA1相同。</p>
-<p><strong>初始化常量</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">H0 = 0x6a09e667</span><br><span class="line">H1 = 0xbb67ae85</span><br><span class="line">H2 = 0x3c6ef372</span><br><span class="line">H3 = 0xa54ff53a</span><br><span class="line">H4 = 0x510e527f</span><br><span class="line">H5 = 0x9b05688c</span><br><span class="line">H6 = 0x1f83d9ab</span><br><span class="line">H7 = 0x5be0cd19</span><br></pre></td></tr></table></figure>
-
-<p><strong>生成结果</strong></p>
-<p>最终生成256位（32字节）长度的哈希值。(这里的结果使用的是大端字节序。)</p>
-<h3 id="Python实现SHA256"><a href="#Python实现SHA256" class="headerlink" title="Python实现SHA256"></a>Python实现SHA256</h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">sha256_call</span>(<span class="params">encoded_data</span>):</span><br><span class="line">    sha256 = hashlib.sha256()</span><br><span class="line">    sha256.update(encoded_data)</span><br><span class="line">    <span class="keyword">return</span> sha256.digest()</span><br><span class="line"></span><br><span class="line">sha256_str = <span class="string">b&quot;Bileton&quot;</span></span><br><span class="line"><span class="built_in">print</span>(sha256_str.decode(),<span class="string">&quot;的哈希值为：&quot;</span>,sha256_call(sha256_str).<span class="built_in">hex</span>())</span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line">Bileton 的哈希值为： b54bc358a78fb7bbfcb6bdcd79ba65436534c222ce67ebbc838e8a29df5b2b28</span><br></pre></td></tr></table></figure>
-
-<h2 id="SHA512"><a href="#SHA512" class="headerlink" title="SHA512"></a>SHA512</h2><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">sha512_call</span>(<span class="params">encoded_data</span>):</span><br><span class="line">    sha512 = hashlib.sha512()</span><br><span class="line">    sha512.update(encoded_data)</span><br><span class="line">    <span class="keyword">return</span> sha512.digest()</span><br><span class="line"></span><br><span class="line">sha512_str = <span class="string">b&quot;Bileton&quot;</span></span><br><span class="line"><span class="built_in">print</span>(sha512_str.decode(),<span class="string">&quot;的哈希值为：&quot;</span>,sha512_call(sha512_str).<span class="built_in">hex</span>())</span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line">Bileton 的哈希值为： 46c158d8ba16ccbecc15a6555ed65b3d83af4977f152496962cae3264605c9a6f0e8a9382d8ace14d83b95a9f5a6e65dd8581b191096bdf5a2883c8d83485464</span><br></pre></td></tr></table></figure>
-
-<h2 id="SHA3-256"><a href="#SHA3-256" class="headerlink" title="SHA3_256"></a>SHA3_256</h2><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">sha3_256_call</span>(<span class="params">encoded_data</span>):</span><br><span class="line">    sha3_256 = hashlib.sha3_256()</span><br><span class="line">    sha3_256.update(encoded_data)</span><br><span class="line">    <span class="keyword">return</span> sha3_256.digest()</span><br><span class="line"></span><br><span class="line">sha3_256_str = <span class="string">b&quot;Bileton&quot;</span></span><br><span class="line"><span class="built_in">print</span>(sha3_256_str.decode(),<span class="string">&quot;的哈希值为：&quot;</span>,sha3_256_call(sha3_256_str).<span class="built_in">hex</span>())</span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line">Bileton 的哈希值为： 1e45a220d0d8ae2c46d727da1e21d639d9414bdb5eaeeaa3a7188bbefb359204</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="MAC算法"><a href="#MAC算法" class="headerlink" title="MAC算法"></a>MAC算法</h2><p><strong>MAC公式</strong></p>
-<p><img src="/2025/01/06/%E7%BC%96%E7%A0%81%E4%B8%8E%E5%8A%A0%E8%A7%A3%E5%AF%86/1.jpg"></p>
-<p><code>message</code>是消息m<br><code>key</code>是密钥<br><code>||</code>是级联，其实就是拼接操作<br><code>ipad</code>值为0x36<br><code>opad</code>值为0x5c<br><code>⊕</code>代表异或</p>
-<p><strong>密钥扩展</strong></p>
-<ul>
-<li>若密钥长度小于Hash的分组长度<br>在密钥末尾填充0，直到长度达到Hash的分组长度</li>
-<li>若密钥长度大于Hash的分组长度<br>将密钥进行哈希运算，然后补充0，直到长度达到Hash的分组长度</li>
-</ul>
-<h3 id="HmacMD5"><a href="#HmacMD5" class="headerlink" title="HmacMD5"></a>HmacMD5</h3><p>与MD5不同的是，HmacMD5结合了密钥。</p>
-<p>生成128位（16字节）长度的哈希值。</p>
-<h3 id="HmacSHA1"><a href="#HmacSHA1" class="headerlink" title="HmacSHA1"></a>HmacSHA1</h3><p>与HmacSHA1不同的是，HmacSHA1结合了密钥。</p>
-<p>生成256位（32字节）长度的哈希值。</p>
-<h3 id="HmacSHA256"><a href="#HmacSHA256" class="headerlink" title="HmacSHA256"></a>HmacSHA256</h3><p>与HmacSHA256不同的是，HmacSHA256结合了密钥。</p>
-<h1 id="对称加密算法"><a href="#对称加密算法" class="headerlink" title="对称加密算法"></a>对称加密算法</h1><h2 id="RC4"><a href="#RC4" class="headerlink" title="RC4"></a>RC4</h2><h2 id="DES"><a href="#DES" class="headerlink" title="DES"></a>DES</h2><h3 id="Python实现DES"><a href="#Python实现DES" class="headerlink" title="Python实现DES"></a>Python实现DES</h3><h4 id="加密ECB"><a href="#加密ECB" class="headerlink" title="加密ECB"></a>加密ECB</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> Crypto.Cipher <span class="keyword">import</span> DES</span><br><span class="line"><span class="keyword">from</span> Crypto.Util.Padding <span class="keyword">import</span> pad,unpad</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">des_encrypt_ecb</span>(<span class="params">plaintext,key</span>):</span><br><span class="line">    cipher = DES.new(key,DES.MODE_ECB)</span><br><span class="line">    padded_text = pad(plaintext,DES.block_size)</span><br><span class="line">    <span class="comment"># print(padded_text)</span></span><br><span class="line">    encrypted_data = cipher.encrypt(padded_text)</span><br><span class="line">    <span class="keyword">return</span> encrypted_data</span><br><span class="line"></span><br><span class="line">data = <span class="string">b&quot;Bileton&quot;</span></span><br><span class="line">key = <span class="string">b&quot;12345678&quot;</span></span><br><span class="line"><span class="built_in">print</span>(des_encrypt_ecb(data,key).<span class="built_in">hex</span>()) <span class="comment"># 66b99748acc81443</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="解密ECB"><a href="#解密ECB" class="headerlink" title="解密ECB"></a>解密ECB</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> Crypto.Cipher <span class="keyword">import</span> DES</span><br><span class="line"><span class="keyword">from</span> Crypto.Util.Padding <span class="keyword">import</span> pad,unpad</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">desdecrypt_ecb</span>(<span class="params">encrypted_data,key</span>):</span><br><span class="line">    cipher = DES.new(key,DES.MODE_ECB)</span><br><span class="line">    decrypted_data = cipher.decrypt(encrypted_data)</span><br><span class="line">    unpadded_text = unpad(decrypted_data,DES.block_size)</span><br><span class="line">    <span class="keyword">return</span> unpadded_text</span><br><span class="line"></span><br><span class="line">encrypted_data = <span class="string">&quot;66b99748acc81443&quot;</span></span><br><span class="line">key = <span class="string">b&quot;12345678&quot;</span></span><br><span class="line">decrypted_data = desdecrypt_ecb(<span class="built_in">bytes</span>.fromhex(encrypted_data),key).decode(<span class="string">&quot;utf-8&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(decrypted_data) <span class="comment"># &quot;Bileton&quot;</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="加密CBC"><a href="#加密CBC" class="headerlink" title="加密CBC"></a>加密CBC</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> Crypto.Cipher <span class="keyword">import</span> DES</span><br><span class="line"><span class="keyword">from</span> Crypto.Util.Padding <span class="keyword">import</span> pad,unpad</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">des_encrypt_cbc</span>(<span class="params">plaintext,key,iv</span>):</span><br><span class="line">    cipher = DES.new(key,DES.MODE_CBC,iv)</span><br><span class="line">    padded_text = pad(plaintext,DES.block_size)</span><br><span class="line">    encrypted_data = cipher.encrypt(padded_text)</span><br><span class="line">    <span class="keyword">return</span> encrypted_data</span><br><span class="line"></span><br><span class="line">data = <span class="string">b&quot;Bileton&quot;</span></span><br><span class="line">key = <span class="string">b&quot;12345678&quot;</span></span><br><span class="line">iv = <span class="string">b&quot;12345678&quot;</span></span><br><span class="line">encrypted_data = des_encrypt_cbc(data,key,iv).<span class="built_in">hex</span>()</span><br><span class="line"><span class="built_in">print</span>(encrypted_data) <span class="comment"># fa8669e459a42d7f</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="解密CBC"><a href="#解密CBC" class="headerlink" title="解密CBC"></a>解密CBC</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> Crypto.Cipher <span class="keyword">import</span> DES</span><br><span class="line"><span class="keyword">from</span> Crypto.Util.Padding <span class="keyword">import</span> pad,unpad</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">des_decrypted_cbc</span>(<span class="params">encrypted_data,key,iv</span>):</span><br><span class="line">    cipher = DES.new(key,DES.MODE_CBC,iv)</span><br><span class="line">    decrtpted_data = cipher.decrypt(encrypted_data)</span><br><span class="line">    unpaded_data = unpad(decrtpted_data,DES.block_size)</span><br><span class="line">    <span class="keyword">return</span> unpaded_data</span><br><span class="line">    </span><br><span class="line">encrypted_data = <span class="string">&quot;fa8669e459a42d7f&quot;</span></span><br><span class="line">key = <span class="string">b&quot;12345678&quot;</span></span><br><span class="line">iv = <span class="string">b&quot;12345678&quot;</span></span><br><span class="line"></span><br><span class="line">decrypted_data = des_decrypted_cbc(<span class="built_in">bytes</span>.fromhex(encrypted_data),key,iv).decode(<span class="string">&quot;utf-8&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(decrypted_data) <span class="comment"># &quot;Bileton&quot;</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="3DES"><a href="#3DES" class="headerlink" title="3DES"></a>3DES</h2><h3 id="Python实现3DES"><a href="#Python实现3DES" class="headerlink" title="Python实现3DES"></a>Python实现3DES</h3><h4 id="加密ECB-1"><a href="#加密ECB-1" class="headerlink" title="加密ECB"></a>加密ECB</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> Crypto.Cipher <span class="keyword">import</span> DES3</span><br><span class="line"><span class="keyword">from</span> Crypto.Util.Padding <span class="keyword">import</span> pad,unpad</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">des_encrypt_ecb</span>(<span class="params">plaintext,key</span>):</span><br><span class="line">    cipher = DES3.new(key,DES3.MODE_ECB)</span><br><span class="line">    padded_text = pad(plaintext,DES3.block_size)</span><br><span class="line">    <span class="comment"># print(padded_text)</span></span><br><span class="line">    encrypted_data = cipher.encrypt(padded_text)</span><br><span class="line">    <span class="keyword">return</span> encrypted_data</span><br><span class="line"></span><br><span class="line">data = <span class="string">b&quot;Bileton&quot;</span></span><br><span class="line">key = <span class="string">b&quot;123456788765432112345678&quot;</span></span><br><span class="line"><span class="built_in">print</span>(des_encrypt_ecb(data,key).<span class="built_in">hex</span>()) <span class="comment"># 4b7b3adfc5743685</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="解密ECB-1"><a href="#解密ECB-1" class="headerlink" title="解密ECB"></a>解密ECB</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> Crypto.Cipher <span class="keyword">import</span> DES3</span><br><span class="line"><span class="keyword">from</span> Crypto.Util.Padding <span class="keyword">import</span> pad,unpad</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">desdecrypt_ecb</span>(<span class="params">encrypted_data,key</span>):</span><br><span class="line">    cipher = DES3.new(key,DES3.MODE_ECB)</span><br><span class="line">    decrypted_data = cipher.decrypt(encrypted_data)</span><br><span class="line">    unpadded_text = unpad(decrypted_data,DES3.block_size)</span><br><span class="line">    <span class="keyword">return</span> unpadded_text</span><br><span class="line"></span><br><span class="line">encrypted_data = <span class="string">&quot;4b7b3adfc5743685&quot;</span></span><br><span class="line">key = <span class="string">b&quot;123456788765432112345678&quot;</span></span><br><span class="line">decrypted_data = desdecrypt_ecb(<span class="built_in">bytes</span>.fromhex(encrypted_data),key).decode(<span class="string">&quot;utf-8&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(decrypted_data) <span class="comment"># &quot;Bileton&quot;</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="加密CBC-1"><a href="#加密CBC-1" class="headerlink" title="加密CBC"></a>加密CBC</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> Crypto.Cipher <span class="keyword">import</span> DES3</span><br><span class="line"><span class="keyword">from</span> Crypto.Util.Padding <span class="keyword">import</span> pad,unpad</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">des_encrypt_cbc</span>(<span class="params">plaintext,key,iv</span>):</span><br><span class="line">    cipher = DES3.new(key,DES3.MODE_CBC,iv)</span><br><span class="line">    padded_text = pad(plaintext,DES3.block_size)</span><br><span class="line">    encrypted_data = cipher.encrypt(padded_text)</span><br><span class="line">    <span class="keyword">return</span> encrypted_data</span><br><span class="line"></span><br><span class="line">data = <span class="string">b&quot;Bileton&quot;</span></span><br><span class="line">key = <span class="string">b&quot;123456788765432112345678&quot;</span></span><br><span class="line">iv = <span class="string">b&quot;12345678&quot;</span></span><br><span class="line">encrypted_data = des_encrypt_cbc(data,key,iv).<span class="built_in">hex</span>()</span><br><span class="line"><span class="built_in">print</span>(encrypted_data) <span class="comment"># 883036a2094c6fab</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="解密CBC-1"><a href="#解密CBC-1" class="headerlink" title="解密CBC"></a>解密CBC</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> Crypto.Cipher <span class="keyword">import</span> DES3</span><br><span class="line"><span class="keyword">from</span> Crypto.Util.Padding <span class="keyword">import</span> pad,unpad</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">des_decrypted_cbc</span>(<span class="params">encrypted_data,key,iv</span>):</span><br><span class="line">    cipher = DES3.new(key,DES3.MODE_CBC,iv)</span><br><span class="line">    decrtpted_data = cipher.decrypt(encrypted_data)</span><br><span class="line">    unpaded_data = unpad(decrtpted_data,DES3.block_size)</span><br><span class="line">    <span class="keyword">return</span> unpaded_data</span><br><span class="line">    </span><br><span class="line">encrypted_data = <span class="string">&quot;883036a2094c6fab&quot;</span></span><br><span class="line">key = <span class="string">b&quot;123456788765432112345678&quot;</span></span><br><span class="line">iv = <span class="string">b&quot;12345678&quot;</span></span><br><span class="line"></span><br><span class="line">decrypted_data = des_decrypted_cbc(<span class="built_in">bytes</span>.fromhex(encrypted_data),key,iv).decode(<span class="string">&quot;utf-8&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(decrypted_data) <span class="comment"># &quot;Bileton&quot;</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="AES"><a href="#AES" class="headerlink" title="AES"></a>AES</h2><h3 id="Python实现AES"><a href="#Python实现AES" class="headerlink" title="Python实现AES"></a>Python实现AES</h3><h4 id="加密ECB-2"><a href="#加密ECB-2" class="headerlink" title="加密ECB"></a>加密ECB</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> Crypto.Cipher <span class="keyword">import</span> AES</span><br><span class="line"><span class="keyword">from</span> Crypto.Util.Padding <span class="keyword">import</span> pad, unpad</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">aes_encrypt_ecb</span>(<span class="params">plaintext,key</span>):</span><br><span class="line">    cipher = AES.new(key,AES.MODE_ECB)</span><br><span class="line">    padded_data = pad(plaintext,AES.block_size)</span><br><span class="line">    encrypted_data = cipher.encrypt(padded_data)</span><br><span class="line">    <span class="keyword">return</span> encrypted_data</span><br><span class="line"></span><br><span class="line">data = <span class="string">b&quot;Bileton&quot;</span></span><br><span class="line">key = <span class="string">b&quot;0123456789abcdef&quot;</span></span><br><span class="line"></span><br><span class="line">encrypted_data = aes_encrypt_ecb(data,key).<span class="built_in">hex</span>()</span><br><span class="line"><span class="built_in">print</span>(encrypted_data) <span class="comment"># cef043b604dfa84449dd3a1e5bf117e6</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="解密ECB-2"><a href="#解密ECB-2" class="headerlink" title="解密ECB"></a>解密ECB</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> Crypto.Cipher <span class="keyword">import</span> AES</span><br><span class="line"><span class="keyword">from</span> Crypto.Util.Padding <span class="keyword">import</span> pad, unpad</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">aes_decrypted_ecb</span>(<span class="params">encrypted_data,key</span>):</span><br><span class="line">    cipher = AES.new(key,AES.MODE_ECB)</span><br><span class="line">    decrypted_data = cipher.decrypt(encrypted_data)</span><br><span class="line">    unpadded_data = unpad(decrypted_data,AES.block_size)</span><br><span class="line">    <span class="keyword">return</span> unpadded_data</span><br><span class="line"></span><br><span class="line">data = <span class="string">&quot;cef043b604dfa84449dd3a1e5bf117e6&quot;</span></span><br><span class="line">key = <span class="string">b&quot;0123456789abcdef&quot;</span></span><br><span class="line">decrypted_data = aes_decrypted_ecb(<span class="built_in">bytes</span>.fromhex(data),key).decode(<span class="string">&quot;utf-8&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(decrypted_data) <span class="comment"># Bileton</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="加密CBC-2"><a href="#加密CBC-2" class="headerlink" title="加密CBC"></a>加密CBC</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> Crypto.Cipher <span class="keyword">import</span> AES</span><br><span class="line"><span class="keyword">from</span> Crypto.Util.Padding <span class="keyword">import</span> pad, unpad</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">aes_encrypt_ecb</span>(<span class="params">plaintext,key,iv</span>):</span><br><span class="line">    cipher = AES.new(key,AES.MODE_CBC,iv)</span><br><span class="line">    padded_data = pad(plaintext,AES.block_size)</span><br><span class="line">    encrypted_data = cipher.encrypt(padded_data)</span><br><span class="line">    <span class="keyword">return</span> encrypted_data</span><br><span class="line"></span><br><span class="line">data = <span class="string">b&quot;Bileton&quot;</span></span><br><span class="line">key = <span class="string">b&quot;0123456789abcdef&quot;</span></span><br><span class="line">iv = <span class="string">b&quot;0123456789abcdef&quot;</span></span><br><span class="line"></span><br><span class="line">encrypted_data = aes_encrypt_ecb(data,key,iv).<span class="built_in">hex</span>()</span><br><span class="line"><span class="built_in">print</span>(encrypted_data) <span class="comment"># 95e9660e32eaf61a1873afdd9dac4757</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="解密CBC-2"><a href="#解密CBC-2" class="headerlink" title="解密CBC"></a>解密CBC</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> Crypto.Cipher <span class="keyword">import</span> AES</span><br><span class="line"><span class="keyword">from</span> Crypto.Util.Padding <span class="keyword">import</span> pad, unpad</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">aes_decrypted_ecb</span>(<span class="params">encrypted_data,key,iv</span>):</span><br><span class="line">    cipher = AES.new(key,AES.MODE_CBC,iv)</span><br><span class="line">    decrypted_data = cipher.decrypt(encrypted_data)</span><br><span class="line">    unpadded_data = unpad(decrypted_data,AES.block_size)</span><br><span class="line">    <span class="keyword">return</span> unpadded_data</span><br><span class="line"></span><br><span class="line">data = <span class="string">&quot;95e9660e32eaf61a1873afdd9dac4757&quot;</span></span><br><span class="line">key = <span class="string">b&quot;0123456789abcdef&quot;</span></span><br><span class="line">iv = <span class="string">b&quot;0123456789abcdef&quot;</span></span><br><span class="line">decrypted_data = aes_decrypted_ecb(<span class="built_in">bytes</span>.fromhex(data),key,iv).decode(<span class="string">&quot;utf-8&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(decrypted_data) <span class="comment"># Bileton</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="SM4"><a href="#SM4" class="headerlink" title="SM4"></a>SM4</h2><h3 id="Python实现SM4"><a href="#Python实现SM4" class="headerlink" title="Python实现SM4"></a>Python实现SM4</h3><h4 id="加密ECB-3"><a href="#加密ECB-3" class="headerlink" title="加密ECB"></a>加密ECB</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> gmssl</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> gmssl.sm4 <span class="keyword">import</span> CryptSM4,SM4_ENCRYPT,SM4_DECRYPT</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">sm4_encrypt_ecb</span>(<span class="params">plaintext,key</span>):</span><br><span class="line">    crypt_sm4 = CryptSM4()</span><br><span class="line">    crypt_sm4.set_key(key,SM4_ENCRYPT)</span><br><span class="line">    ciphertext = crypt_sm4.crypt_ecb(plaintext)</span><br><span class="line">    <span class="keyword">return</span> ciphertext</span><br><span class="line"></span><br><span class="line">plaintext_bytes = <span class="string">b&quot;bileton&quot;</span></span><br><span class="line">key_bytes = <span class="string">b&quot;0123456789abcdef&quot;</span> </span><br><span class="line">ciphertext = sm4_encrypt_ecb(plaintext=plaintext_bytes,key=key_bytes).<span class="built_in">hex</span>()</span><br><span class="line"><span class="built_in">print</span>(ciphertext)</span><br><span class="line"></span><br><span class="line"><span class="comment"># a9194834e2f0a78db402e22a3b409bc8</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="解密ECB-3"><a href="#解密ECB-3" class="headerlink" title="解密ECB"></a>解密ECB</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> gmssl</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> gmssl.sm4 <span class="keyword">import</span> CryptSM4,SM4_ENCRYPT,SM4_DECRYPT</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">sm4_decrypt_ecb</span>(<span class="params">ciphertext,key</span>):</span><br><span class="line">    crypt_sm4 = CryptSM4()</span><br><span class="line">    crypt_sm4.set_key(key,SM4_DECRYPT)</span><br><span class="line">    plaintext = crypt_sm4.crypt_ecb(ciphertext)</span><br><span class="line">    <span class="keyword">return</span> plaintext</span><br><span class="line"></span><br><span class="line">ciphertext_bytes = <span class="built_in">bytes</span>.fromhex(<span class="string">&quot;a9194834e2f0a78db402e22a3b409bc8&quot;</span>)</span><br><span class="line">key_bytes = <span class="string">b&quot;0123456789abcdef&quot;</span> </span><br><span class="line">plaintext = sm4_decrypt_ecb(ciphertext_bytes,key_bytes).decode(<span class="string">&quot;utf-8&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(plaintext)</span><br><span class="line"></span><br><span class="line"><span class="comment"># bileton</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="加密CBC-3"><a href="#加密CBC-3" class="headerlink" title="加密CBC"></a>加密CBC</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> gmssl</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> gmssl.sm4 <span class="keyword">import</span> CryptSM4,SM4_ENCRYPT,SM4_DECRYPT</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">sm4_encrypt_cbc</span>(<span class="params">plaintext,key,iv</span>):</span><br><span class="line">    crypt_sm4 = CryptSM4()</span><br><span class="line">    crypt_sm4.set_key(key,SM4_ENCRYPT)</span><br><span class="line">    ciphertext = crypt_sm4.crypt_cbc(iv,plaintext)</span><br><span class="line">    <span class="keyword">return</span> ciphertext</span><br><span class="line"></span><br><span class="line">plaintext_bytes = <span class="string">b&quot;bileton&quot;</span></span><br><span class="line">key_bytes = <span class="string">b&quot;0123456789abcdef&quot;</span> </span><br><span class="line">iv = <span class="string">b&quot;0123456789abcdef&quot;</span></span><br><span class="line">ciphertext = sm4_encrypt_cbc(plaintext=plaintext_bytes,key=key_bytes,iv=iv).<span class="built_in">hex</span>()</span><br><span class="line"><span class="built_in">print</span>(ciphertext)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 4ca44c34423c7a670136671806a228ab</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="解密CBC-3"><a href="#解密CBC-3" class="headerlink" title="解密CBC"></a>解密CBC</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> gmssl</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> gmssl.sm4 <span class="keyword">import</span> CryptSM4,SM4_ENCRYPT,SM4_DECRYPT</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">sm4_decrypt_cbc</span>(<span class="params">ciphertext,key,iv</span>):</span><br><span class="line">    crypt_sm4 = CryptSM4()</span><br><span class="line">    crypt_sm4.set_key(key,SM4_DECRYPT)</span><br><span class="line">    plaintext = crypt_sm4.crypt_cbc(iv,ciphertext)</span><br><span class="line">    <span class="keyword">return</span> plaintext</span><br><span class="line"></span><br><span class="line">ciphertext_bytes = <span class="built_in">bytes</span>.fromhex(<span class="string">&quot;4ca44c34423c7a670136671806a228ab&quot;</span>)</span><br><span class="line">key_bytes = <span class="string">b&quot;0123456789abcdef&quot;</span> </span><br><span class="line">iv = <span class="string">b&quot;0123456789abcdef&quot;</span></span><br><span class="line">plaintext = sm4_decrypt_cbc(ciphertext_bytes,key_bytes,iv=iv).decode(<span class="string">&quot;utf-8&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(plaintext)</span><br><span class="line"></span><br><span class="line"><span class="comment"># bileton</span></span><br></pre></td></tr></table></figure>
-
-<h1 id="非对称加密算法"><a href="#非对称加密算法" class="headerlink" title="非对称加密算法"></a>非对称加密算法</h1><h2 id="RSA"><a href="#RSA" class="headerlink" title="RSA"></a>RSA</h2><h2 id="ECC"><a href="#ECC" class="headerlink" title="ECC"></a>ECC</h2><h1 id="压缩算法"><a href="#压缩算法" class="headerlink" title="压缩算法"></a>压缩算法</h1><h2 id="gzip"><a href="#gzip" class="headerlink" title="gzip"></a>gzip</h2><h2 id="zlib"><a href="#zlib" class="headerlink" title="zlib"></a>zlib</h2><h2 id="zip"><a href="#zip" class="headerlink" title="zip"></a>zip</h2><h2 id="tar"><a href="#tar" class="headerlink" title="tar"></a>tar</h2><h2 id="7z"><a href="#7z" class="headerlink" title="7z"></a>7z</h2>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/01/05/Android%E9%87%8C%E7%9A%84Java%E7%B1%BB/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/android.svg">
-      <meta itemprop="name" content="Bileton">
-      <meta itemprop="description" content="路漫漫其修远夕！">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="白乐天">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2025/01/05/Android%E9%87%8C%E7%9A%84Java%E7%B1%BB/" class="post-title-link" itemprop="url">Android里的Java类</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2025-01-05 00:27:18" itemprop="dateCreated datePublished" datetime="2025-01-05T00:27:18+08:00">2025-01-05</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2025-02-02 20:01:35" itemprop="dateModified" datetime="2025-02-02T20:01:35+08:00">2025-02-02</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>1.9k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>2 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="DexClassLoader"><a href="#DexClassLoader" class="headerlink" title="DexClassLoader"></a>DexClassLoader</h1><p>Android 提供的用于动态加载 <code>.dex</code> 文件、<code>.apk</code> 文件或 <code>.jar</code> 文件的核心工具。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="title function_">DexClassLoader</span><span class="params">(</span></span><br><span class="line"><span class="params">    String dexPath,      // .dex/.apk/.jar 文件的路径</span></span><br><span class="line"><span class="params">    String optimizedDirectory, // 解压和优化后的 .odex 文件存放路径</span></span><br><span class="line"><span class="params">    String librarySearchPath,  // 关联的本地库(.so)</span>文件的路径，可为 <span class="literal">null</span></span><br><span class="line">    ClassLoader parent         <span class="comment">// 父类加载器（委托机制使用）</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment">// dexPath：必填，一个完整的文件路径</span></span><br><span class="line"><span class="comment">// optimizedDirectory：必填，存放优化后的文件，，一个可写的目录路径。</span></span><br><span class="line"><span class="comment">// librarySearchPath：可选</span></span><br><span class="line"><span class="comment">// parent：必填：父类加载器（ClassLoader），用于实现 Java 的类加载委托机制。</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="findClass"><a href="#findClass" class="headerlink" title="findClass"></a>findClass</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">protected</span> Class&lt;?&gt; findClass(String name) <span class="keyword">throws</span> ClassNotFoundException</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="Log"><a href="#Log" class="headerlink" title="Log"></a>Log</h1><p><code>android.util.Log</code>是Android中的日志工具类，这个类中提供了5个方法。</p>
-<ul>
-<li><code>Log.v()</code>：用于打印那些最为繁琐、意义最小的日志信息。对应级别verbose。</li>
-<li><code>Log.d()</code>：用于打印一些调试信息，这些信息对调试程序和分析问题应该是有帮助的。对应级别是debug。</li>
-<li><code>Log.i()</code>：用于打印一些比较重要的数据，这些数据应该是可以帮助分析用户行为的数据。对应级别info。</li>
-<li><code>Log.w()</code>：用于打印一些警告信息，提示程序在这个地方可能会有潜在风险，最好去修复一下出现警告的地方。对应级别warn。</li>
-<li><code>Log.e()</code>：用于打印程序中的错误信息当有错误信息打印出来的时候，一般都代表程序出现问题了，要尽快修复。对用级别error。</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Log.v(String tag, String msg);</span><br></pre></td></tr></table></figure>
-
-<h1 id="Toast"><a href="#Toast" class="headerlink" title="Toast"></a>Toast</h1><p><code>Toast</code> 是一种非常简单的界面元素，用于在屏幕上显示短暂的消息，通常用于向用户显示提示信息。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Toast.makeText(Context context, CharSequence text, <span class="type">int</span> duration).show();</span><br><span class="line"></span><br><span class="line"><span class="comment">// context：一个 Context 对象，通常传入当前的 Activity 或 Application。</span></span><br><span class="line"><span class="comment">// text：要显示的文本内容，可以是字符串或者字符串资源。</span></span><br><span class="line"><span class="comment">// duration：显示的时间，可以选择两种常用的持续时间：</span></span><br><span class="line">	<span class="comment">// Toast.LENGTH_SHORT：短暂显示，通常显示 2 秒钟左右。</span></span><br><span class="line">	<span class="comment">// Toast.LENGTH_LONG：长时间显示，通常显示 3.5 秒钟左右。</span></span><br></pre></td></tr></table></figure>
-
-<p>使用示例</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Toast.makeText(<span class="built_in">this</span>, <span class="string">&quot;Hello, World!&quot;</span>, Toast.LENGTH_SHORT).show();</span><br></pre></td></tr></table></figure>
-
-<h1 id="Pair"><a href="#Pair" class="headerlink" title="Pair"></a>Pair</h1><p><code>android.util.Pair</code> 是 Android 提供的一个简单的数据结构类，用于存储两个相关联的对象。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Pair</span>&lt;F, S&gt; &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">final</span> F first;  <span class="comment">// 第一个对象</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">final</span> S second; <span class="comment">// 第二个对象</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Pair</span><span class="params">(F first, S second)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.first = first;</span><br><span class="line">        <span class="built_in">this</span>.second = second;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><strong><code>first</code></strong>: 存储第一个对象。</li>
-<li><strong><code>second</code></strong>: 存储第二个对象。</li>
-</ul>
-<p>这两个字段都是 <code>final</code>，一旦赋值后就无法修改。</p>
-<h1 id="SharedPreferences"><a href="#SharedPreferences" class="headerlink" title="SharedPreferences"></a>SharedPreferences</h1><p><code>android.content.SharedPreferences</code>是 Android 中用于存储应用程序的偏好设置和简单数据（如配置选项、用户设置、应用状态等）的一个接口。它提供了一种轻量级的键值对存储方式，适用于存储简单的原始数据类型（如 <code>int</code>、<code>boolean</code>、<code>String</code> 等）。</p>
-<h2 id="getString"><a href="#getString" class="headerlink" title="getString()"></a>getString()</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">String <span class="title function_">getString</span><span class="params">(String key, String defValue)</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// key：想要获取的值的键（String 类型）。这个 key 用于标识存储的 String 数据。</span></span><br><span class="line"><span class="comment">// defValue：当 key 对应的值不存在时，返回的默认值（String 类型）。这是一个可以自定义的备用值。</span></span><br><span class="line"><span class="comment">// return：如果 key 存在于 SharedPreferences 中，返回与该 key 相关联的 String 值；如果不存在，返回提供的 defValue。</span></span><br></pre></td></tr></table></figure>
-
-
-
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -2008,7 +2062,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">98</span>
+          <span class="site-state-item-count">100</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -2021,7 +2075,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">90</span>
+        <span class="site-state-item-count">92</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -2062,13 +2116,13 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">833k</span>
+    <span title="站点总字数">839k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">12:37</span>
+    <span title="站点阅读时长">12:43</span>
 </div>
 
 

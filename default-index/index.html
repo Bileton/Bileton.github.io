@@ -119,7 +119,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">90</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">92</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -129,7 +129,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">98</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">100</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -184,6 +184,311 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/03/23/%E8%AF%A6%E8%A7%A3TEA/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/android.svg">
+      <meta itemprop="name" content="Bileton">
+      <meta itemprop="description" content="路漫漫其修远夕！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="白乐天">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2025/03/23/%E8%AF%A6%E8%A7%A3TEA/" class="post-title-link" itemprop="url">详解TEA</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2025-03-23 21:15:30 / 修改时间：23:52:34" itemprop="dateCreated datePublished" datetime="2025-03-23T21:15:30+08:00">2025-03-23</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%BC%96%E7%A0%81%E4%B8%8E%E5%8A%A0%E8%A7%A3%E5%AF%86/" itemprop="url" rel="index"><span itemprop="name">编码与加解密</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.8k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="TEA简介"><a href="#TEA简介" class="headerlink" title="TEA简介"></a>TEA简介</h1><p>TEA（Tiny Encryption Algorithm）是一种对称密钥分组密码算法。</p>
+<p>分组长度：64位（8字节）（明文分为两个32位块，密文分为两个32位块）。</p>
+<p>密钥长度：128位（16字节）（分为四个32位子密钥）。</p>
+<h1 id="加密流程"><a href="#加密流程" class="headerlink" title="加密流程"></a>加密流程</h1><h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><ul>
+<li><p>将64位明文分为两部分：<code>L0</code>（左32位）和 <code>R0</code>（右32位）。</p>
+</li>
+<li><p>初始化轮常量：<em>δ</em>&#x3D;0x9E3779B9（黄金比例相关常数，用于增强非线性）。</p>
+</li>
+<li><p>初始化累加变量：sum&#x3D;0。</p>
+</li>
+</ul>
+<h2 id="轮迭代（64轮）"><a href="#轮迭代（64轮）" class="headerlink" title="轮迭代（64轮）"></a>轮迭代（64轮）</h2><p>对于每一轮i（从0到63）</p>
+<p>1.更新累加变量</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sum=sum+δ</span><br></pre></td></tr></table></figure>
+
+<p>2.更新左半部分</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">L(i+1)=Ri</span><br></pre></td></tr></table></figure>
+
+<p>3.更新右半部分</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Ri+1=Li+F(Ri,sum,K)</span><br></pre></td></tr></table></figure>
+
+<h3 id="轮函数F"><a href="#轮函数F" class="headerlink" title="轮函数F"></a>轮函数F</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">F(Ri,sum,K)=((Ri&lt;&lt;4)+Kleft)⊕(Ri+sum)⊕((Ri&gt;&gt;5)+Kright)</span><br></pre></td></tr></table></figure>
+
+<h3 id="Kleft和Kright"><a href="#Kleft和Kright" class="headerlink" title="Kleft和Kright"></a>Kleft和Kright</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">偶数轮（i为偶数）：Kleft=K[0], Kright=K[1]</span><br><span class="line">奇数轮（i为奇数）：Kleft=K[2], Kright=K[3]</span><br></pre></td></tr></table></figure>
+
+<h2 id="合并"><a href="#合并" class="headerlink" title="合并"></a>合并</h2><p>经过64轮后，密文为左右部分合并</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Ciphertext=(L64∣∣R64)</span><br></pre></td></tr></table></figure>
+
+<h1 id="XTEA简介"><a href="#XTEA简介" class="headerlink" title="XTEA简介"></a>XTEA简介</h1><p>XTEA（Extended TEA）是TEA（Tiny Encryption Algorithm）的改进版本。</p>
+<ol>
+<li><strong>密钥调度</strong>：引入更复杂的子密钥生成逻辑，避免密钥相关攻击。</li>
+<li><strong>轮函数</strong>：调整位移和混合操作的顺序，增强非线性性和扩散性。</li>
+<li><strong>轮常量计算</strong>：优化轮常量的使用方式，减少数学规律性。</li>
+</ol>
+<h2 id="算法参数"><a href="#算法参数" class="headerlink" title="算法参数"></a>算法参数</h2><ul>
+<li><strong>分组长度</strong>：64位（分为两个32位块 <em>L</em> 和 <em>R</em>）。</li>
+<li><strong>密钥长度</strong>：128位（16字节）（分为四个32位子密钥 <em>K</em>[0],<em>K</em>[1],<em>K</em>[2],<em>K</em>[3]）。</li>
+<li><strong>加密轮数</strong>：通常为 <strong>64轮</strong>（Feistel结构）。</li>
+<li><strong>安全性</strong>：抗相关密钥攻击和已知明文攻击，理论安全性优于TEA。</li>
+</ul>
+<h1 id="加密流程-1"><a href="#加密流程-1" class="headerlink" title="加密流程"></a>加密流程</h1><p>XTEA采用 <strong>Feistel结构</strong>，每轮操作更新左右两部分数据。</p>
+<h2 id="初始化-1"><a href="#初始化-1" class="headerlink" title="初始化"></a>初始化</h2><ul>
+<li>明文分为两个32位块：<em>L</em>0（左）和 <em>R</em>0（右）。</li>
+<li>轮常量：<em>δ</em>&#x3D;0x9E3779B9（黄金比例相关常数）。</li>
+<li>累加变量：<em>sum</em>&#x3D;0。</li>
+</ul>
+<h2 id="64轮迭代"><a href="#64轮迭代" class="headerlink" title="64轮迭代"></a>64轮迭代</h2><p>对于每轮 <em>i</em>（从0到63）：</p>
+<p><strong>更新左半部分</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Li+1=Li+(((Ri≪4)⊕(Ri≫5))+Ri)⊕(sum+K[(sum≫11)&amp;3])</span><br></pre></td></tr></table></figure>
+
+<p><strong>更新累加变量</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sum=sum+δ</span><br></pre></td></tr></table></figure>
+
+<p><strong>更新右半部分</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Ri+1=Ri+(((Li+1≪4)⊕(Li+1≫5))+Li+1)⊕(sum+K[sum&amp;3])</span><br></pre></td></tr></table></figure>
+
+<h2 id="合并-1"><a href="#合并-1" class="headerlink" title="合并"></a>合并</h2><p>经过64轮后，密文为左右部分合并：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Ciphertext=(L64∣∣R64)</span><br></pre></td></tr></table></figure>
+
+<h1 id="XXTEA简介"><a href="#XXTEA简介" class="headerlink" title="XXTEA简介"></a>XXTEA简介</h1><p>XXTEA（Corrected Block TEA）是TEA算法的最终改进版本,旨在解决TEA和XTEA在处理 <strong>可变长度数据块</strong> 时的局限性。它支持任意长度的数据块（最小64位），并在混合操作中引入更复杂的非线性逻辑，显著提升了安全性。</p>
+<h2 id="核心改进"><a href="#核心改进" class="headerlink" title="核心改进"></a>核心改进</h2><ol>
+<li><strong>支持可变长度数据块</strong>：可加密任意长度（≥64位）的数据，无需固定分组。</li>
+<li><strong>增强的混合操作</strong>：通过多次位移和异或操作，强化非线性扩散。</li>
+<li><strong>优化的密钥调度</strong>：密钥参与更分散，避免局部性弱点。</li>
+</ol>
+<h2 id="算法参数-1"><a href="#算法参数-1" class="headerlink" title="算法参数"></a>算法参数</h2><ul>
+<li><strong>数据块长度</strong>：任意长度（最小64位，即8字节）。</li>
+<li><strong>密钥长度</strong>：128位（16字节）（分为四个32位子密钥 <em>K</em>[0],<em>K</em>[1],<em>K</em>[2],<em>K</em>[3]）。</li>
+<li><strong>推荐轮数</strong>：通常为 <strong>52轮</strong>（根据数据块长度动态调整）。</li>
+<li><strong>安全性</strong>：抗已知明文攻击和选择密文攻击，安全性优于XTEA。</li>
+</ul>
+<h1 id="加密流程-2"><a href="#加密流程-2" class="headerlink" title="加密流程"></a>加密流程</h1><p>XXTEA采用 <strong>整块混合迭代</strong> 而非Feistel结构，所有数据字参与每轮计算。</p>
+<h2 id="初始化-2"><a href="#初始化-2" class="headerlink" title="初始化"></a>初始化</h2><ul>
+<li>将明文分为 <em>n</em> 个32位字（<em>v</em>0,<em>v</em>1,…,<em>v**n</em>−1），<em>n</em>≥2。</li>
+<li>定义轮常量：<em>δ</em>&#x3D;0x9E3779B9</li>
+<li>累加变量 <em>s<strong>u</strong>m</em>&#x3D;0。</li>
+</ul>
+<h2 id="预处理轮次"><a href="#预处理轮次" class="headerlink" title="预处理轮次"></a>预处理轮次</h2><p><strong>计算初始轮次：</strong></p>
+<p><img src="/2025/03/23/%E8%AF%A6%E8%A7%A3TEA/1.jpg"></p>
+<p>例如：<em>n</em>&#x3D;4（128位数据块）→ Rounds &#x3D; 6 + 13 &#x3D; 19轮。</p>
+<h2 id="轮迭代（每轮更新所有字）"><a href="#轮迭代（每轮更新所有字）" class="headerlink" title="轮迭代（每轮更新所有字）"></a>轮迭代（每轮更新所有字）</h2><p>对于每轮 <em>i</em>（从0到Rounds-1）：</p>
+<p><strong>更新累加变量</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sum=sum+δ</span><br></pre></td></tr></table></figure>
+
+<p><strong>计算密钥混合索引</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">e=(sum≫2)&amp;3</span><br></pre></td></tr></table></figure>
+
+<p><strong>逐字更新数据块</strong></p>
+<p>对于每个字 vj（<em>j</em> 从0到 <em>n</em>−1）：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vj=vj+(((vj−1≪4)⊕(vj+1≫5))+vj+1)⊕(sum+K[(j&amp;3)⊕e])</span><br></pre></td></tr></table></figure>
+
+<p><strong>边界处理</strong>：</p>
+<ul>
+<li><em>v</em>−1&#x3D;<em>vn</em>−1（当 <em>j</em>&#x3D;0 时）。</li>
+<li><em>vn</em>&#x3D;<em>v</em>0（当 <em>j</em>&#x3D;<em>n</em>−1 时）。</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/03/23/%E8%AF%A6%E8%A7%A3SM3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/android.svg">
+      <meta itemprop="name" content="Bileton">
+      <meta itemprop="description" content="路漫漫其修远夕！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="白乐天">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2025/03/23/%E8%AF%A6%E8%A7%A3SM3/" class="post-title-link" itemprop="url">详解SM3</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2025-03-23 18:14:29 / 修改时间：19:57:59" itemprop="dateCreated datePublished" datetime="2025-03-23T18:14:29+08:00">2025-03-23</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%BC%96%E7%A0%81%E4%B8%8E%E5%8A%A0%E8%A7%A3%E5%AF%86/" itemprop="url" rel="index"><span itemprop="name">编码与加解密</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.5k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="SM3介绍"><a href="#SM3介绍" class="headerlink" title="SM3介绍"></a>SM3介绍</h1><p><strong>SM3</strong> 是中国国家密码管理局发布的密码杂凑算法（Hash Algorithm），SM3 是一种密码学安全哈希函数，用于生成固定长度的消息摘要（通常为 256 比特），广泛应用于数字签名、消息认证码、数据完整性校验等领域。</p>
+<h1 id="初始向量"><a href="#初始向量" class="headerlink" title="初始向量"></a>初始向量</h1><p>8个32位寄存器IV</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">H0=A=0x7380166F,</span><br><span class="line">H1=B=0x4914B2B9,</span><br><span class="line">H2=C=0x172442D7,</span><br><span class="line">H3=D=0xDA8A0600,</span><br><span class="line">H4=E=0xA96F30BC,</span><br><span class="line">H5=F=0x163138AA,</span><br><span class="line">H6=G=0xE38DEE4D,</span><br><span class="line">H7=H=0xB0FB0E4E</span><br></pre></td></tr></table></figure>
+
+<h1 id="消息预处理"><a href="#消息预处理" class="headerlink" title="消息预处理"></a>消息预处理</h1><h2 id="消息填充"><a href="#消息填充" class="headerlink" title="消息填充"></a>消息填充</h2><p>把输入数据填充到64字节（512位）的倍数（最少填充9个字节，最多填充64+8个字节）。</p>
+<p><strong>填充方式：</strong></p>
+<ul>
+<li>在原始数据的后面填充0x80</li>
+<li>填充N个0</li>
+<li>使用大端序在最后8个字节填充输入数据的bit长度</li>
+</ul>
+<h2 id="分组处理"><a href="#分组处理" class="headerlink" title="分组处理"></a>分组处理</h2><p>将填充后的消息划分为 512 比特的分组<code>Bi</code>，每个分组划分为16个32比特字W0，W1，W2，W3 … … W15（大端序）</p>
+<h2 id="消息扩展"><a href="#消息扩展" class="headerlink" title="消息扩展"></a>消息扩展</h2><p>把16个32比特字扩展为132个32比特字（前68个字，后64个字）</p>
+<h3 id="前68个字"><a href="#前68个字" class="headerlink" title="前68个字"></a>前68个字</h3><p>初始16个字来自分组</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Wj=Wj(i)0≤j≤15</span><br></pre></td></tr></table></figure>
+
+<p>后续的52个字</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Wj=P1(W(j−16)⊕W(j−9)⊕(W(j−3)&lt;&lt;&lt;15))⊕(W(j−13)&lt;&lt;&lt;7)⊕W(j−6),16≤j≤67</span><br></pre></td></tr></table></figure>
+
+<h4 id="置换函数P1-X"><a href="#置换函数P1-X" class="headerlink" title="置换函数P1(X)"></a>置换函数P1(X)</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">P1(X)=X⊕(X&lt;&lt;&lt;15)⊕(X&lt;&lt;&lt;23)</span><br></pre></td></tr></table></figure>
+
+<p>通过循环移位和异或操作，破坏输入数据的线性结构，增强扩散性。</p>
+<h3 id="后64个字"><a href="#后64个字" class="headerlink" title="后64个字"></a>后64个字</h3><p>直接由前68个字生成</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Wj′=Wj⊕W(j+4),0≤j≤63</span><br></pre></td></tr></table></figure>
+
+<p>这样就得到了132个32比热的字</p>
+<h1 id="迭代压缩"><a href="#迭代压缩" class="headerlink" title="迭代压缩"></a>迭代压缩</h1><p>将消息扩展后的132个字（<code>Wj </code>和 <code>Wj′</code>）与初始向量（<code>IV</code>）结合，通过多轮非线性操作生成最终的256位哈希值。</p>
+<h2 id="加载初始值"><a href="#加载初始值" class="headerlink" title="加载初始值"></a>加载初始值</h2><p>初始寄存器值 <em>V</em>(<em>i</em>)&#x3D;(<em>A</em>,<em>B</em>,<em>C</em>,<em>D</em>,<em>E</em>,<em>F</em>,<em>G</em>,<em>H</em>)。</p>
+<p>如果是第一个分组，<em>V</em>(0) 为IV；后续分组使用前一分组的输出。</p>
+<h2 id="64轮迭代更新"><a href="#64轮迭代更新" class="headerlink" title="64轮迭代更新"></a>64轮迭代更新</h2><h3 id="轮常量Tj"><a href="#轮常量Tj" class="headerlink" title="轮常量Tj"></a>轮常量Tj</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Tj=</span><br><span class="line">&#123; </span><br><span class="line">	0x79CC4519, 0≤j≤15(前16轮)</span><br><span class="line">	0x7A879D8A, 16≤j≤63(后48轮)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="逻辑函数FFj和GGj"><a href="#逻辑函数FFj和GGj" class="headerlink" title="逻辑函数FFj和GGj"></a>逻辑函数FFj和GGj</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">FFj(X,Y,Z) = X⊕Y⊕Z		GGj(X,Y,Z)=X⊕Y⊕Z	,0≤j≤15(前16轮)</span><br><span class="line">FFj(X,Y,Z) = (X&amp;Y)|(X&amp;Z)|(Y&amp;Z)			,16≤j≤63(后48轮)</span><br><span class="line">GGj(X,Y,Z) = (X&amp;Y)|(~X&amp;Z)				,16≤j≤63(后48轮)</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="以第j轮迭代流程为例"><a href="#以第j轮迭代流程为例" class="headerlink" title="以第j轮迭代流程为例"></a>以第j轮迭代流程为例</h3><h4 id="计算中间变量SS1-和-SS2"><a href="#计算中间变量SS1-和-SS2" class="headerlink" title="计算中间变量SS1 和 SS2"></a>计算中间变量SS1 和 SS2</h4><p>结合寄存器和轮常量</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SS1=((A&lt;&lt;&lt;12)+E+(Tj&lt;&lt;&lt;j))&lt;&lt;&lt;7</span><br><span class="line">SS2=(SS1⊕A&lt;&lt;&lt;12)</span><br></pre></td></tr></table></figure>
+
+<h4 id="计算临时变量TT1和TT2"><a href="#计算临时变量TT1和TT2" class="headerlink" title="计算临时变量TT1和TT2"></a>计算临时变量TT1和TT2</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">TT1 = FFj(A,B,C) + D + SS2 + Wj&#x27;</span><br><span class="line">TT2 = GGj(E,F,G) + H + SS1 + Wj</span><br></pre></td></tr></table></figure>
+
+<h4 id="更新寄存器"><a href="#更新寄存器" class="headerlink" title="更新寄存器"></a>更新寄存器</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">D=C</span><br><span class="line">C=B&lt;&lt;&lt;9</span><br><span class="line">B=A</span><br><span class="line">A=TT1</span><br><span class="line">H=G</span><br><span class="line">G=F&lt;&lt;&lt;9</span><br><span class="line">F=E</span><br><span class="line">E=P0(TT2)</span><br></pre></td></tr></table></figure>
+
+<h5 id="置换函数P0"><a href="#置换函数P0" class="headerlink" title="置换函数P0"></a>置换函数P0</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">P0(X)=X⊕(X&lt;&lt;&lt;9)⊕(X&lt;&lt;&lt;17)</span><br></pre></td></tr></table></figure>
+
+<h1 id="结果输出"><a href="#结果输出" class="headerlink" title="结果输出"></a>结果输出</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">H0=H0⊕A，H1=H1⊕B，H2=H2⊕C，H3=H3⊕D，H4=H4⊕E，H5=H5⊕F，H6=H6⊕G，H7=H7⊕H</span><br></pre></td></tr></table></figure>
+
+<p>按照大端序排列输出</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2025/03/20/Python%E8%84%9A%E6%9C%AC/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -207,10 +512,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2025-03-20 23:38:59 / 修改时间：23:42:39" itemprop="dateCreated datePublished" datetime="2025-03-20T23:38:59+08:00">2025-03-20</time>
+              <time title="创建时间：2025-03-20 23:38:59" itemprop="dateCreated datePublished" datetime="2025-03-20T23:38:59+08:00">2025-03-20</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2025-03-22 17:55:13" itemprop="dateModified" datetime="2025-03-22T17:55:13+08:00">2025-03-22</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -227,14 +538,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>255</span>
+              <span>1.9k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
+              <span>2 分钟</span>
             </span>
 
         </div>
@@ -246,7 +557,37 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="ROR"><a href="#ROR" class="headerlink" title="ROR"></a>ROR</h1><p><strong>固定位宽循环右移</strong></p>
+          <h1 id="数据类型转换"><a href="#数据类型转换" class="headerlink" title="数据类型转换"></a>数据类型转换</h1><p><strong>转为int类型</strong></p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 字符串转整数</span></span><br><span class="line">num = <span class="built_in">int</span>(<span class="string">&quot;123&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(num)  <span class="comment"># 输出: 123</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 浮点数转整数（截断小数部分）</span></span><br><span class="line">num = <span class="built_in">int</span>(<span class="number">3.14</span>)</span><br><span class="line"><span class="built_in">print</span>(num)  <span class="comment"># 输出: 3</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>转为float类型</strong></p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 字符串转浮点数</span></span><br><span class="line">num = <span class="built_in">float</span>(<span class="string">&quot;3.14&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(num)  <span class="comment"># 输出: 3.14</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 整数转浮点数</span></span><br><span class="line">num = <span class="built_in">float</span>(<span class="number">123</span>)</span><br><span class="line"><span class="built_in">print</span>(num)  <span class="comment"># 输出: 123.0</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>转为str类型</strong></p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 整数转字符串</span></span><br><span class="line">text = <span class="built_in">str</span>(<span class="number">123</span>)</span><br><span class="line"><span class="built_in">print</span>(text)  <span class="comment"># 输出: &quot;123&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 浮点数转字符串</span></span><br><span class="line">text = <span class="built_in">str</span>(<span class="number">3.14</span>)</span><br><span class="line"><span class="built_in">print</span>(text)  <span class="comment"># 输出: &quot;3.14&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>转为bin二进制类型</strong></p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 整数转二进制字符串</span></span><br><span class="line">bin_str = <span class="built_in">bin</span>(<span class="number">10</span>)</span><br><span class="line"><span class="built_in">print</span>(bin_str)  <span class="comment"># 输出: &#x27;0b1010&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 二进制字符串转整数</span></span><br><span class="line">num = <span class="built_in">int</span>(<span class="string">&quot;0b1010&quot;</span>, <span class="number">2</span>)</span><br><span class="line"><span class="built_in">print</span>(num)  <span class="comment"># 输出: 10</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>转为hex十六进制</strong></p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 整数转十六进制字符串</span></span><br><span class="line">hex_str = <span class="built_in">hex</span>(<span class="number">255</span>)</span><br><span class="line"><span class="built_in">print</span>(hex_str)  <span class="comment"># 输出: &#x27;0xff&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>字符串与字节序列</strong></p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">str</span> = <span class="string">&quot;hello world&quot;</span></span><br><span class="line">str2bytes = <span class="built_in">str</span>.encode(<span class="string">&quot;utf-8&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(str2bytes)</span><br><span class="line">// <span class="string">b&#x27;hello world&#x27;</span></span><br><span class="line"></span><br><span class="line">bytes2str = str2bytes.decode(<span class="string">&quot;utf-8&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(bytes2str)</span><br><span class="line">// hello world</span><br></pre></td></tr></table></figure>
+
+<p><strong>字节序列与列表</strong></p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">str</span> = <span class="string">&quot;hello world&quot;</span></span><br><span class="line">str2bytes = <span class="built_in">str</span>.encode(<span class="string">&quot;utf-8&quot;</span>)</span><br><span class="line">bytes2list = <span class="built_in">list</span>(str2bytes)</span><br><span class="line"><span class="built_in">print</span>(bytes2list)</span><br><span class="line">// [<span class="number">104</span>, <span class="number">101</span>, <span class="number">108</span>, <span class="number">108</span>, <span class="number">111</span>, <span class="number">32</span>, <span class="number">119</span>, <span class="number">111</span>, <span class="number">114</span>, <span class="number">108</span>, <span class="number">100</span>]</span><br><span class="line"></span><br><span class="line">list2bytes = <span class="built_in">bytes</span>(bytes2list)</span><br><span class="line"><span class="built_in">print</span>(list2bytes)</span><br><span class="line">// <span class="string">b&#x27;hello world&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>int类型转字节序列，可指定字节长度和字节顺序</strong></p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">int</span>.to_bytes(length, byteorder, *, signed=<span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line">// length:指定字节序列的长度</span><br><span class="line">// byteorder:指定字节顺序 <span class="string">&#x27;big&#x27;</span>：大端序（高位字节在前） <span class="string">&#x27;little&#x27;</span>：小端序（低位字节在前）</span><br><span class="line">// signed:指定整数是否为有符号整数，默认为 <span class="literal">False</span>（无符号整数）。如果为 <span class="literal">True</span>，则支持负数的转换。</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">tt = <span class="number">0x123456789abcdef</span></span><br><span class="line">bytes_big = tt.to_bytes(<span class="number">8</span>,<span class="string">&quot;big&quot;</span>)</span><br><span class="line">bytes_little = tt.to_bytes(<span class="number">8</span>,<span class="string">&quot;little&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;bytes_big:&quot;</span>,bytes_big)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;list_bytes_big:&quot;</span>,<span class="built_in">list</span>(bytes_big))</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;bytes_little:&quot;</span>,bytes_little)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;list_bytes_little:&quot;</span>,<span class="built_in">list</span>(bytes_little))</span><br><span class="line"></span><br><span class="line">bytes_big: <span class="string">b&#x27;\x01#Eg\x89\xab\xcd\xef&#x27;</span></span><br><span class="line">list_bytes_big [<span class="number">1</span>, <span class="number">35</span>, <span class="number">69</span>, <span class="number">103</span>, <span class="number">137</span>, <span class="number">171</span>, <span class="number">205</span>, <span class="number">239</span>]</span><br><span class="line">bytes_little: <span class="string">b&#x27;\xef\xcd\xab\x89gE#\x01&#x27;</span></span><br><span class="line">list_bytes_little [<span class="number">239</span>, <span class="number">205</span>, <span class="number">171</span>, <span class="number">137</span>, <span class="number">103</span>, <span class="number">69</span>, <span class="number">35</span>, <span class="number">1</span>]</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h1 id="ROR"><a href="#ROR" class="headerlink" title="ROR"></a>ROR</h1><p><strong>固定位宽循环右移</strong></p>
 <p>操作数<code>num</code>为 <code>n</code> 位的整数，循环右移 <code>k</code> 位：</p>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">ror</span>(<span class="params">num: <span class="built_in">int</span>, k: <span class="built_in">int</span>, bits: <span class="built_in">int</span> = <span class="number">32</span></span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">    k = k % bits  <span class="comment"># 处理 k ≥ bits 的情况</span></span><br><span class="line">    mask = (<span class="number">1</span> &lt;&lt; bits) - <span class="number">1</span>  <span class="comment"># 生成指定位数的掩码（如 32 位掩码 0xFFFFFFFF）</span></span><br><span class="line">    num &amp;= mask  <span class="comment"># 确保数值在指定位宽范围内</span></span><br><span class="line">    right = num &gt;&gt; k  <span class="comment"># 右移 k 位</span></span><br><span class="line">    left = num &lt;&lt; (bits - k)  <span class="comment"># 左移补位</span></span><br><span class="line">    <span class="keyword">return</span> (left | right) &amp; mask</span><br></pre></td></tr></table></figure>
 
@@ -1466,246 +1807,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/03/09/%E8%AF%A6%E8%A7%A3SHA1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/android.svg">
-      <meta itemprop="name" content="Bileton">
-      <meta itemprop="description" content="路漫漫其修远夕！">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="白乐天">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2025/03/09/%E8%AF%A6%E8%A7%A3SHA1/" class="post-title-link" itemprop="url">详解SHA1</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2025-03-09 11:10:41 / 修改时间：11:45:04" itemprop="dateCreated datePublished" datetime="2025-03-09T11:10:41+08:00">2025-03-09</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%BC%96%E7%A0%81%E4%B8%8E%E5%8A%A0%E8%A7%A3%E5%AF%86/" itemprop="url" rel="index"><span itemprop="name">编码与加解密</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>846</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="SHA1简介"><a href="#SHA1简介" class="headerlink" title="SHA1简介"></a>SHA1简介</h1><p>SHA-1（Secure Hash Algorithm 1）是一种广泛使用的密码散列函数，它属于SHA家族算法的一员，主要用于生成数据的固定长度（160位即20字节）哈希值，用于验证数据完整性、数字签名等场景。</p>
-<h1 id="数据填充"><a href="#数据填充" class="headerlink" title="数据填充"></a>数据填充</h1><p>把输入数据填充到64字节（512位）的倍数（最少填充9个字节，最多填充64+8个字节）。</p>
-<p>填充方式：</p>
-<ul>
-<li>在原始数据的后面填充0x80</li>
-<li>填充N个0</li>
-<li>使用大端序在最后8个字节填充输入数据的bit长度</li>
-</ul>
-<h1 id="分块处理"><a href="#分块处理" class="headerlink" title="分块处理"></a>分块处理</h1><p>将填充后的数据分割为多个512位（64字节）的块，每个块包含16个32位字子块。</p>
-<h1 id="初始化哈希值"><a href="#初始化哈希值" class="headerlink" title="初始化哈希值"></a>初始化哈希值</h1><p>初始哈希值由5个32位常数组成</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">H0 = 0x67452301</span><br><span class="line">H1 = 0xEFCDAB89</span><br><span class="line">H2 = 0x98BADCFE</span><br><span class="line">H3 = 0x10325476</span><br><span class="line">H4 = 0xC3D2E1F0</span><br></pre></td></tr></table></figure>
-
-<h1 id="对每个512位块处理"><a href="#对每个512位块处理" class="headerlink" title="对每个512位块处理"></a>对每个512位块处理</h1><p>每个块要经过80轮循环操作来更新哈希值：</p>
-<h2 id="消息扩展"><a href="#消息扩展" class="headerlink" title="消息扩展"></a>消息扩展</h2><p>将16个初始字扩展到80个字（W[0]到W[79]）：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">W[t] = (W[t-3] XOR W[t-8] XOR W[t-14] XOR W[t-16]) &lt;&lt;&lt; 1</span><br></pre></td></tr></table></figure>
-
-<h2 id="初始化变量"><a href="#初始化变量" class="headerlink" title="初始化变量"></a>初始化变量</h2><p>将<code>A, B, C, D, E</code>分别设置为当前的<code>H0, H1, H2, H3, H4</code></p>
-<h2 id="循环运算"><a href="#循环运算" class="headerlink" title="循环运算"></a>循环运算</h2><p>不同的轮次使用不同的逻辑函数和常数：</p>
-<ul>
-<li><strong>阶段0-19</strong>：<code>f = (B AND C) OR (NOT B AND D)</code>，常数<code>K=0x5A827999</code></li>
-<li><strong>阶段20-39</strong>：<code>f = B XOR C XOR D</code>，常数<code>K=0x6ED9EBA1</code></li>
-<li><strong>阶段40-59</strong>：<code>f = (B AND C) OR (B AND D) OR (C AND D)</code>，常数<code>K=0x8F1BBCDC</code></li>
-<li><strong>阶段60-79</strong>：<code>f = B XOR C XOR D</code>，常数<code>K=0xCA62C1D6</code></li>
-</ul>
-<h2 id="更新哈希值"><a href="#更新哈希值" class="headerlink" title="更新哈希值"></a>更新哈希值</h2><p>每轮通过以下公式更新临时变量：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">temp = (A &lt;&lt;&lt; 5) + f + E + K + W[t]</span><br><span class="line">E = D</span><br><span class="line">D = C</span><br><span class="line">C = B &lt;&lt;&lt; 30</span><br><span class="line">B = A</span><br><span class="line">A = temp</span><br></pre></td></tr></table></figure>
-
-<p><img src="/2025/03/09/%E8%AF%A6%E8%A7%A3SHA1/2.jpg"></p>
-<h1 id="生成最终哈希值"><a href="#生成最终哈希值" class="headerlink" title="生成最终哈希值"></a>生成最终哈希值</h1><p>最终将5个哈希变量（A, B, C, D, E）拼接成160位（20字节）的结果，通常表示为40个十六进制字符。</p>
-<p>SHA-1最后的输出是通过大端序来拼接的。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/03/06/%E8%AF%A6%E8%A7%A3MD5/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/android.svg">
-      <meta itemprop="name" content="Bileton">
-      <meta itemprop="description" content="路漫漫其修远夕！">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="白乐天">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2025/03/06/%E8%AF%A6%E8%A7%A3MD5/" class="post-title-link" itemprop="url">详解MD5</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2025-03-06 14:40:12" itemprop="dateCreated datePublished" datetime="2025-03-06T14:40:12+08:00">2025-03-06</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2025-03-09 11:41:53" itemprop="dateModified" datetime="2025-03-09T11:41:53+08:00">2025-03-09</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%BC%96%E7%A0%81%E4%B8%8E%E5%8A%A0%E8%A7%A3%E5%AF%86/" itemprop="url" rel="index"><span itemprop="name">编码与加解密</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>1k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="MD5简介"><a href="#MD5简介" class="headerlink" title="MD5简介"></a>MD5简介</h1><p>MD5（Message-Digest Algorithm 5） 是一种广泛使用的哈希函数，其核心功能是将任意长度的输入数据转换为固定长度的128位（16字节）哈希值，通常以32位十六进制字符串表示。  </p>
-<h1 id="数据填充"><a href="#数据填充" class="headerlink" title="数据填充"></a>数据填充</h1><p>把输入数据填充到64字节（512位）的倍数（最少填充9个字节，最多填充64+8个字节）。</p>
-<p>填充方式：</p>
-<ul>
-<li>在原始数据的后面填充0x80</li>
-<li>填充N个0</li>
-<li>使用小端序在最后8个字节填充输入数据的bit长度</li>
-</ul>
-<h1 id="分块处理"><a href="#分块处理" class="headerlink" title="分块处理"></a>分块处理</h1><p>将填充后的数据分割为多个512位（64字节）的块，每个块进一步分为16个32位子块（记为<code>M[0]</code>到<code>M[15]</code>）。</p>
-<h1 id="初始化寄存器"><a href="#初始化寄存器" class="headerlink" title="初始化寄存器"></a>初始化寄存器</h1><p>初始化4个32位寄存器（A、B、C、D），初始值为：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">A = 0x67452301  </span><br><span class="line">B = 0xEFCDAB89  </span><br><span class="line">C = 0x98BADCFE  </span><br><span class="line">D = 0x10325476</span><br></pre></td></tr></table></figure>
-
-<h1 id="四轮非线性变换"><a href="#四轮非线性变换" class="headerlink" title="四轮非线性变换"></a>四轮非线性变换</h1><p>每个512位块会经过四轮处理（每轮16步，共64步），每轮使用不同的逻辑函数和参数</p>
-<h2 id="四轮逻辑函数"><a href="#四轮逻辑函数" class="headerlink" title="四轮逻辑函数"></a>四轮逻辑函数</h2><p>每轮使用不同的非线性函数（共4个）：</p>
-<ul>
-<li><strong>Round 1</strong>：<code>F(B, C, D) = (B ∧ C) ∨ (¬B ∧ D)</code></li>
-<li><strong>Round 2</strong>：<code>G(B, C, D) = (B ∧ D) ∨ (C ∧ ¬D)</code></li>
-<li><strong>Round 3</strong>：<code>H(B, C, D) = B ⊕ C ⊕ D</code></li>
-<li><strong>Round 4</strong>：<code>I(B, C, D) = C ⊕ (B ∨ ¬D)</code></li>
-</ul>
-<h2 id="消息子块的使用顺序"><a href="#消息子块的使用顺序" class="headerlink" title="消息子块的使用顺序"></a>消息子块的使用顺序</h2><p>每轮以不同顺序使用16个消息子块 <code>M[k]</code>：</p>
-<ul>
-<li><strong>Round 1</strong>：<code>k = 0, 1, 2, ..., 15</code>（顺序使用）</li>
-<li><strong>Round 2</strong>：<code>k = (1 + 5i) mod 16</code>（i从0到15）</li>
-<li><strong>Round 3</strong>：<code>k = (5 + 3i) mod 16</code>（i从0到15）</li>
-<li><strong>Round 4</strong>：<code>k = 7i mod 16</code>（i从0到15）</li>
-</ul>
-<h2 id="常量表与循环左移"><a href="#常量表与循环左移" class="headerlink" title="常量表与循环左移"></a>常量表与循环左移</h2><p>每步操作使用一个预定义的32位常量 <code>T[1..64]</code>，其值为 <code>⌊2^32 × |sin(i)|⌋</code>（i为步数）。循环左移位数 <code>s</code> 按如下规则变化：</p>
-<ul>
-<li>Round 1: <code>s = [7, 12, 17, 22]</code> 循环使用</li>
-<li>Round 2: <code>s = [5, 9, 14, 20]</code></li>
-<li>Round 3: <code>s = [4, 11, 16, 23]</code></li>
-<li>Round 4: <code>s = [6, 10, 15, 21]</code></li>
-</ul>
-<h2 id="单步操作详解（以第i步为例）"><a href="#单步操作详解（以第i步为例）" class="headerlink" title="单步操作详解（以第i步为例）"></a>单步操作详解（以第i步为例）</h2><p>每步操作对寄存器 <code>A, B, C, D</code> 进行更新，公式如下：</p>
-<p><strong>计算中间值</strong></p>
-<p>temp&#x3D;(<em>A</em>+<em>F</em>(<em>B</em>,<em>C</em>,<em>D</em>)+<em>M</em>[<em>k</em>]+<em>T</em>[<em>i</em>])⋘<em>s</em></p>
-<p>（其中 <code>+</code> 是模 2^32 加法，<code>&lt;&lt;&lt; s</code> 表示循环左移s位）</p>
-<p><strong>更新寄存器</strong></p>
-<p><em>A</em>&#x3D;<em>D</em>,<em>D</em>&#x3D;<em>C</em>,<em>C</em>&#x3D;<em>B</em>,<em>B</em>&#x3D;<em>B</em>+temp</p>
-<p><img src="/2025/03/06/%E8%AF%A6%E8%A7%A3MD5/1.jpg"></p>
-<h1 id="生成最终哈希值"><a href="#生成最终哈希值" class="headerlink" title="生成最终哈希值"></a>生成最终哈希值</h1><p>将所有块处理完成后，将寄存器A、B、C、D的值按小端序拼接，转换为十六进制字符串，即为MD5哈希值。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1777,7 +1878,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">98</span>
+          <span class="site-state-item-count">100</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1790,7 +1891,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">90</span>
+        <span class="site-state-item-count">92</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -1831,13 +1932,13 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">833k</span>
+    <span title="站点总字数">839k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">12:37</span>
+    <span title="站点阅读时长">12:43</span>
 </div>
 
 
