@@ -28,7 +28,7 @@
 <meta property="og:description" content="AIGC人工智能生成内容（Artificial Intelligence Generated Content），是指由人工智能（AI）技术创建、生成的各种内容，涵盖了文本、图像、视频、音频、代码等多种形式。 LLM大预言模型（Large Language Model），是指一种基于深度学习技术，尤其是通过神经网络训练而成的自然语言处理模型。 HCI人机交互（Human-Computer Inter">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-12-26T13:19:27.000Z">
-<meta property="article:modified_time" content="2025-03-18T17:50:25.189Z">
+<meta property="article:modified_time" content="2025-03-31T08:52:45.774Z">
 <meta property="article:author" content="Bileton">
 <meta property="article:tag" content="见多识广">
 <meta name="twitter:card" content="summary">
@@ -218,7 +218,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2025-03-19 01:50:25" itemprop="dateModified" datetime="2025-03-19T01:50:25+08:00">2025-03-19</time>
+                <time title="修改时间：2025-03-31 16:52:45" itemprop="dateModified" datetime="2025-03-31T16:52:45+08:00">2025-03-31</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -236,14 +236,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>759</span>
+              <span>1.7k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
+              <span>2 分钟</span>
             </span>
 
         </div>
@@ -276,6 +276,59 @@
 </li>
 </ul>
 <h1 id="Protobuf"><a href="#Protobuf" class="headerlink" title="Protobuf"></a>Protobuf</h1><p>Protocol Buffers（简称 <strong>protobuf</strong>）是 Google 开发的一种<strong>跨语言、跨平台、高效的结构化数据序列化机制</strong>，用于将结构化数据转换为紧凑的二进制格式，支持数据存储、网络通信等场景。</p>
+<h1 id="原码反码补码"><a href="#原码反码补码" class="headerlink" title="原码反码补码"></a>原码反码补码</h1><h2 id="原码"><a href="#原码" class="headerlink" title="原码"></a>原码</h2><p>原码是最直观的数值表示法，它直接反映了数字的绝对值和符号。</p>
+<ul>
+<li><p>最高位（最左位）表示符号位：0表示正数，1表示负数</p>
+</li>
+<li><p>其余位表示数值的绝对值</p>
+</li>
+</ul>
+<p><strong>示例：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">+43 的原码：0 0101011（0 + 43的二进制）</span><br><span class="line">-43 的原码：1 0101011（1 + 43的二进制）</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意：</strong></p>
+<ul>
+<li><p>加法规则：不能直接相加，需要根据符号位判断是做加法还是减法</p>
+</li>
+<li><p>0的表示：+0 (00000000) 和 -0 (10000000) 是不同的表示</p>
+</li>
+</ul>
+<h2 id="反码"><a href="#反码" class="headerlink" title="反码"></a>反码</h2><p>反码是对原码的一种改进，使运算更加便捷。</p>
+<p><strong>反码表示规则：</strong></p>
+<ul>
+<li><p>正数的反码等于其原码</p>
+</li>
+<li><p>负数的反码是其原码除符号位外，按位取反（0变1，1变0）</p>
+</li>
+</ul>
+<p><strong>示例</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">+43 的反码：0 0101011（与原码相同）</span><br><span class="line">-43 的反码：1 1010100（符号位不变，其余位取反）</span><br></pre></td></tr></table></figure>
+
+<p><strong>反码的优点</strong></p>
+<p>简化了减法操作：A - B 可以通过 A + (-B) 的反码实现</p>
+<p>部分改善加法运算：符号不同的加法变得更容易</p>
+<p><strong>反码的问题</strong></p>
+<p>零仍有两种表示：+0 (00000000) 和 -0 (11111111)</p>
+<p>加法需要”端进位回卷”：即末位进位需要加到最低位</p>
+<h2 id="补码"><a href="#补码" class="headerlink" title="补码"></a>补码</h2><p>补码是现代计算机普遍采用的表示方式，解决了反码的问题。</p>
+<p><strong>补码表示规则</strong></p>
+<ul>
+<li><p>正数的补码等于其原码</p>
+</li>
+<li><p>负数的补码等于其反码加1，或者等于”模-绝对值”（模是2的n次方，n是位数）</p>
+</li>
+</ul>
+<p><strong>示例</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">+43 的补码：0 0101011（与原码相同）</span><br><span class="line">-43 的补码：1 1010101（反码加1）</span><br></pre></td></tr></table></figure>
+
+
+
+<p>示例</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">-1</span><br><span class="line">原码：10000001 （81）</span><br><span class="line">反码：11111110</span><br><span class="line">补码：11111111 （FF）</span><br><span class="line"></span><br><span class="line">-5</span><br><span class="line">原码：10000101 （85）</span><br><span class="line">反码：11111010</span><br><span class="line">补码：11111011 （FB）</span><br><span class="line"></span><br><span class="line">-64</span><br><span class="line">原码：11000000 （B0）</span><br><span class="line">反码：10111111</span><br><span class="line">补码：11000000 （B0）</span><br><span class="line"></span><br><span class="line">-127</span><br><span class="line">原码：11111111 （FF）</span><br><span class="line">反码：10000000</span><br><span class="line">补码：10000001 （81）</span><br><span class="line"></span><br><span class="line">-128</span><br><span class="line">原码：无</span><br><span class="line">反码：无</span><br><span class="line">补码：10000000 （80）</span><br></pre></td></tr></table></figure>
+
+<h1 id="XAPK"><a href="#XAPK" class="headerlink" title="XAPK"></a>XAPK</h1><p>XAPK是一种专为Android操作系统设计的应用程序包文件格式,全称是”Extended Android Package”。它与常见的APK(Android Package)文件类似,但功能更强大,旨在解决大型应用程序或游戏的安装需求，通常以”.xapk”为文件扩展名。</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>使用np管理器安装</p>
+<p>使用adb install-multiple命令安装</p>
 
     </div>
 
@@ -359,7 +412,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#AIGC"><span class="nav-number">1.</span> <span class="nav-text">AIGC</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#LLM"><span class="nav-number">2.</span> <span class="nav-text">LLM</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HCI"><span class="nav-number">3.</span> <span class="nav-text">HCI</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#RPC"><span class="nav-number">4.</span> <span class="nav-text">RPC</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#AWD"><span class="nav-number">5.</span> <span class="nav-text">AWD</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#PWN"><span class="nav-number">6.</span> <span class="nav-text">PWN</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ABI"><span class="nav-number">7.</span> <span class="nav-text">ABI</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Protobuf"><span class="nav-number">8.</span> <span class="nav-text">Protobuf</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#AIGC"><span class="nav-number">1.</span> <span class="nav-text">AIGC</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#LLM"><span class="nav-number">2.</span> <span class="nav-text">LLM</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HCI"><span class="nav-number">3.</span> <span class="nav-text">HCI</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#RPC"><span class="nav-number">4.</span> <span class="nav-text">RPC</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#AWD"><span class="nav-number">5.</span> <span class="nav-text">AWD</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#PWN"><span class="nav-number">6.</span> <span class="nav-text">PWN</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ABI"><span class="nav-number">7.</span> <span class="nav-text">ABI</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Protobuf"><span class="nav-number">8.</span> <span class="nav-text">Protobuf</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8E%9F%E7%A0%81%E5%8F%8D%E7%A0%81%E8%A1%A5%E7%A0%81"><span class="nav-number">9.</span> <span class="nav-text">原码反码补码</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8E%9F%E7%A0%81"><span class="nav-number">9.1.</span> <span class="nav-text">原码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%8D%E7%A0%81"><span class="nav-number">9.2.</span> <span class="nav-text">反码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A1%A5%E7%A0%81"><span class="nav-number">9.3.</span> <span class="nav-text">补码</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#XAPK"><span class="nav-number">10.</span> <span class="nav-text">XAPK</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-number">10.1.</span> <span class="nav-text">安装</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -429,13 +482,13 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">842k</span>
+    <span title="站点总字数">856k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">12:46</span>
+    <span title="站点阅读时长">12:58</span>
 </div>
 
 

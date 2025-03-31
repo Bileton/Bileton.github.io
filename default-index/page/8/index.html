@@ -215,7 +215,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2025-03-19 01:50:25" itemprop="dateModified" datetime="2025-03-19T01:50:25+08:00">2025-03-19</time>
+                <time title="修改时间：2025-03-31 16:52:45" itemprop="dateModified" datetime="2025-03-31T16:52:45+08:00">2025-03-31</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -233,14 +233,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>759</span>
+              <span>1.7k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
+              <span>2 分钟</span>
             </span>
 
         </div>
@@ -273,6 +273,59 @@
 </li>
 </ul>
 <h1 id="Protobuf"><a href="#Protobuf" class="headerlink" title="Protobuf"></a>Protobuf</h1><p>Protocol Buffers（简称 <strong>protobuf</strong>）是 Google 开发的一种<strong>跨语言、跨平台、高效的结构化数据序列化机制</strong>，用于将结构化数据转换为紧凑的二进制格式，支持数据存储、网络通信等场景。</p>
+<h1 id="原码反码补码"><a href="#原码反码补码" class="headerlink" title="原码反码补码"></a>原码反码补码</h1><h2 id="原码"><a href="#原码" class="headerlink" title="原码"></a>原码</h2><p>原码是最直观的数值表示法，它直接反映了数字的绝对值和符号。</p>
+<ul>
+<li><p>最高位（最左位）表示符号位：0表示正数，1表示负数</p>
+</li>
+<li><p>其余位表示数值的绝对值</p>
+</li>
+</ul>
+<p><strong>示例：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">+43 的原码：0 0101011（0 + 43的二进制）</span><br><span class="line">-43 的原码：1 0101011（1 + 43的二进制）</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意：</strong></p>
+<ul>
+<li><p>加法规则：不能直接相加，需要根据符号位判断是做加法还是减法</p>
+</li>
+<li><p>0的表示：+0 (00000000) 和 -0 (10000000) 是不同的表示</p>
+</li>
+</ul>
+<h2 id="反码"><a href="#反码" class="headerlink" title="反码"></a>反码</h2><p>反码是对原码的一种改进，使运算更加便捷。</p>
+<p><strong>反码表示规则：</strong></p>
+<ul>
+<li><p>正数的反码等于其原码</p>
+</li>
+<li><p>负数的反码是其原码除符号位外，按位取反（0变1，1变0）</p>
+</li>
+</ul>
+<p><strong>示例</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">+43 的反码：0 0101011（与原码相同）</span><br><span class="line">-43 的反码：1 1010100（符号位不变，其余位取反）</span><br></pre></td></tr></table></figure>
+
+<p><strong>反码的优点</strong></p>
+<p>简化了减法操作：A - B 可以通过 A + (-B) 的反码实现</p>
+<p>部分改善加法运算：符号不同的加法变得更容易</p>
+<p><strong>反码的问题</strong></p>
+<p>零仍有两种表示：+0 (00000000) 和 -0 (11111111)</p>
+<p>加法需要”端进位回卷”：即末位进位需要加到最低位</p>
+<h2 id="补码"><a href="#补码" class="headerlink" title="补码"></a>补码</h2><p>补码是现代计算机普遍采用的表示方式，解决了反码的问题。</p>
+<p><strong>补码表示规则</strong></p>
+<ul>
+<li><p>正数的补码等于其原码</p>
+</li>
+<li><p>负数的补码等于其反码加1，或者等于”模-绝对值”（模是2的n次方，n是位数）</p>
+</li>
+</ul>
+<p><strong>示例</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">+43 的补码：0 0101011（与原码相同）</span><br><span class="line">-43 的补码：1 1010101（反码加1）</span><br></pre></td></tr></table></figure>
+
+
+
+<p>示例</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">-1</span><br><span class="line">原码：10000001 （81）</span><br><span class="line">反码：11111110</span><br><span class="line">补码：11111111 （FF）</span><br><span class="line"></span><br><span class="line">-5</span><br><span class="line">原码：10000101 （85）</span><br><span class="line">反码：11111010</span><br><span class="line">补码：11111011 （FB）</span><br><span class="line"></span><br><span class="line">-64</span><br><span class="line">原码：11000000 （B0）</span><br><span class="line">反码：10111111</span><br><span class="line">补码：11000000 （B0）</span><br><span class="line"></span><br><span class="line">-127</span><br><span class="line">原码：11111111 （FF）</span><br><span class="line">反码：10000000</span><br><span class="line">补码：10000001 （81）</span><br><span class="line"></span><br><span class="line">-128</span><br><span class="line">原码：无</span><br><span class="line">反码：无</span><br><span class="line">补码：10000000 （80）</span><br></pre></td></tr></table></figure>
+
+<h1 id="XAPK"><a href="#XAPK" class="headerlink" title="XAPK"></a>XAPK</h1><p>XAPK是一种专为Android操作系统设计的应用程序包文件格式,全称是”Extended Android Package”。它与常见的APK(Android Package)文件类似,但功能更强大,旨在解决大型应用程序或游戏的安装需求，通常以”.xapk”为文件扩展名。</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>使用np管理器安装</p>
+<p>使用adb install-multiple命令安装</p>
 
       
     </div>
@@ -1843,7 +1896,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2025-03-09 15:50:13" itemprop="dateModified" datetime="2025-03-09T15:50:13+08:00">2025-03-09</time>
+                <time title="修改时间：2025-03-31 10:38:39" itemprop="dateModified" datetime="2025-03-31T10:38:39+08:00">2025-03-31</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1861,7 +1914,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>1.2k</span>
+              <span>1.3k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -1881,6 +1934,9 @@
 
       
           <p>本篇以从按下开机键开始至设备桌面图标出现进行分析。</p>
+<h1 id="Boot-ROM"><a href="#Boot-ROM" class="headerlink" title="Boot ROM"></a>Boot ROM</h1><p>设备通电后，硬件自检，确保各个硬件组件（CPU、内存、存储设备等）处于正常工作状态。</p>
+<p>这个阶段过程通常是由硬件自身的引导程序完成的。</p>
+<p>这个引导程序通常是写死在芯片里（ROM），不依赖操作系统。</p>
 <h1 id="Bootloader"><a href="#Bootloader" class="headerlink" title="Bootloader"></a>Bootloader</h1><p>&emsp;​&emsp;长按开机键，设备通电，从Boot ROM开始，Boot ROM是芯片上的一段只读存储器，存储设备的启动代码，一般是固定的，用于检测基本硬件的存在，验证 Bootloader 的完整性和安全性，并加载BootLoader到RAM，将控制权移交给BootLoader。</p>
 <p>&emsp;​&emsp;​BootLoader对硬件进行基本初始化，从存储设备中读取Android系统Linux内核镜像，通常是boot.img文件，将内核加载到内存中，并将控制权移交给内核。</p>
 <h1 id="Linux内核启动"><a href="#Linux内核启动" class="headerlink" title="Linux内核启动"></a>Linux内核启动</h1><p>&emsp;​&emsp;内核启动后会完成复杂的硬件初始化并挂载根文件系统，然后执行第一个用户空间进程<code>init</code>，将控制权移交给<code>init</code>。</p>
@@ -2038,13 +2094,13 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">842k</span>
+    <span title="站点总字数">856k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">12:46</span>
+    <span title="站点阅读时长">12:58</span>
 </div>
 
 
