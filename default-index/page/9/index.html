@@ -373,7 +373,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2025-03-28 09:59:34" itemprop="dateModified" datetime="2025-03-28T09:59:34+08:00">2025-03-28</time>
+                <time title="修改时间：2025-04-03 14:01:36" itemprop="dateModified" datetime="2025-04-03T14:01:36+08:00">2025-04-03</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -417,7 +417,7 @@
 <p>支持<strong>ARM指令集</strong>（固定32位指令长度）和<strong>Thumb指令集</strong>（16位和32位混合指令长度），称为<strong>A32</strong>和<strong>T32</strong>指令集	。</p>
 <p>ARMv8-A的双模式设计实现了从32位到64位的过渡。</p>
 <h2 id="AArch64执行状态"><a href="#AArch64执行状态" class="headerlink" title="AArch64执行状态"></a>AArch64执行状态</h2><h3 id="寄存器"><a href="#寄存器" class="headerlink" title="寄存器"></a>寄存器</h3><ul>
-<li><p>A64共有32个64位寄存器（X0到X30）。</p>
+<li><p>A64共有31个64位寄存器（X0到X30）。</p>
 </li>
 <li><p>每个寄存器均支持 64 位和 32 位访问（例如 <code>X0</code> 和 <code>W0</code> 分别表示寄存器的高 64 位和低 32 位部分）。</p>
 </li>
@@ -432,7 +432,7 @@
 <li>X29用作栈帧寄存器（FP），跟踪栈帧。</li>
 <li>X30用作链接寄存器（LR），保存函数返回地址。</li>
 </ul>
-<h2 id><a href="#" class="headerlink" title></a></h2><table>
+<table>
 <thead>
 <tr>
 <th>寄存器</th>
@@ -512,6 +512,9 @@
 <li><p>PC（程序计数器）占用 <code>R15</code>，<code>R14</code> 通常作为链接寄存器（LR），<code>R13</code> 通常作为栈指针（SP）。</p>
 </li>
 </ul>
+<h1 id="寄存器-2"><a href="#寄存器-2" class="headerlink" title="寄存器"></a>寄存器</h1><p><strong>ARM64</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">参数寄存器：X0~X7</span><br><span class="line">间接结果寄存器：X8</span><br><span class="line">临时寄存器：X9-X15</span><br><span class="line">内部过程调用临时寄存器：X16-X17</span><br><span class="line">平台保留寄存器：X18</span><br><span class="line">被调用者保存的寄存器：X19-X28</span><br><span class="line">栈帧指针寄存器：X29</span><br><span class="line">链接寄存器：X30</span><br></pre></td></tr></table></figure>
+
 <h1 id="数据处理指令"><a href="#数据处理指令" class="headerlink" title="数据处理指令"></a>数据处理指令</h1><p><strong>指令的基本语法</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;操作码&gt; &lt;目标寄存器&gt;, &lt;操作数1&gt;, &lt;操作数2&gt;</span><br><span class="line"></span><br><span class="line">&lt;操作码&gt;：指令的操作代码，决定了具体的功能（如加法、减法、逻辑操作等）。</span><br><span class="line">&lt;目标寄存器&gt;：结果存储的目标寄存器。</span><br><span class="line">&lt;操作数1&gt; 和 &lt;操作数2&gt;：参与运算的两个操作数，可以是寄存器或立即数。</span><br></pre></td></tr></table></figure>
 
@@ -729,6 +732,10 @@
 <li><strong>移位操作</strong>：可对扩展后的值进行左移（如 <code>SXTW #2</code> 表示左移 2 位）。</li>
 <li><strong>典型用途</strong>：在地址计算或算术运算中，将 32 位有符号索引或偏移量扩展为 64 位。</li>
 </ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SXTW X0, W0       ; X0 = 符号扩展(W0)</span><br></pre></td></tr></table></figure>
+
+
+
 <h2 id="BFXIL（Bit-Field-Extract-and-Insert-Low）"><a href="#BFXIL（Bit-Field-Extract-and-Insert-Low）" class="headerlink" title="BFXIL（Bit Field Extract and Insert Low）"></a>BFXIL（Bit Field Extract and Insert Low）</h2><p>是一条 位域操作指令，用于从源寄存器中提取一个位域，并将其插入到目标寄存器的 低有效位部分。</p>
 <ol>
 <li>从源寄存器 <code>&lt;Xn&gt;</code> 的 <code>[lsb, lsb + width - 1]</code> 位提取一个位域。</li>
@@ -2760,13 +2767,13 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">856k</span>
+    <span title="站点总字数">872k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">12:58</span>
+    <span title="站点阅读时长">13:13</span>
 </div>
 
 
