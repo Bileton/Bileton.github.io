@@ -119,17 +119,17 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">93</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">96</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">35</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">36</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">101</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">104</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -180,6 +180,405 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/03/02/8086%E6%B1%87%E7%BC%96/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/android.svg">
+      <meta itemprop="name" content="Bileton">
+      <meta itemprop="description" content="路漫漫其修远夕！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="白乐天">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2025/03/02/8086%E6%B1%87%E7%BC%96/" class="post-title-link" itemprop="url">8086汇编</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2025-03-02 23:26:24" itemprop="dateCreated datePublished" datetime="2025-03-02T23:26:24+08:00">2025-03-02</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2025-03-03 10:33:14" itemprop="dateModified" datetime="2025-03-03T10:33:14+08:00">2025-03-03</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%B1%87%E7%BC%96/" itemprop="url" rel="index"><span itemprop="name">汇编</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.4k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="寄存器"><a href="#寄存器" class="headerlink" title="寄存器"></a>寄存器</h1><p>8086CPU中有14个寄存器，分别是AX、BX、CX、DX、SI、DI、BP、SP、IP、CS、SS、DS、ES、PSW。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">通用寄存器：AX、BX、CX、DX</span><br><span class="line">变址寄存器：SI、DI</span><br><span class="line">指针寄存器：BP、SP</span><br><span class="line">指令指针寄存器：IP</span><br><span class="line">段寄存器：CS、SS、DS、ES    //ES：附加段寄存器</span><br><span class="line">标志寄存器：PSW</span><br><span class="line">8086CPU所有的寄存器都是16位的，可以存放2个字节</span><br></pre></td></tr></table></figure>
+
+<h2 id="通用寄存器"><a href="#通用寄存器" class="headerlink" title="通用寄存器"></a>通用寄存器</h2><p>以AX为例</p>
+<p><img src="/2025/03/02/8086%E6%B1%87%E7%BC%96/1.jpg"></p>
+<p>一个16位寄存器可以存储一个16位的数据，它可以存储的最大值为2的16次方减1（65535）。</p>
+<p>为保证兼容这四个通用寄存器都可分为两个独立使用的8位寄存器来使用：</p>
+<table>
+<thead>
+<tr>
+<th>16位</th>
+<th>高8位</th>
+<th>低8位</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>AX</td>
+<td>AH</td>
+<td>AL</td>
+</tr>
+<tr>
+<td>BX</td>
+<td>BH</td>
+<td>BL</td>
+</tr>
+<tr>
+<td>CX</td>
+<td>CH</td>
+<td>CL</td>
+</tr>
+<tr>
+<td>DX</td>
+<td>DH</td>
+<td>DL</td>
+</tr>
+</tbody></table>
+<h2 id="段寄存器"><a href="#段寄存器" class="headerlink" title="段寄存器"></a>段寄存器</h2><p>段寄存器用来存放段地址。</p>
+<p>8086CPU有4个段寄存器：CS、DS、SS、ES。这四个段寄存器提供内存单元的段地址。</p>
+<h3 id="CS和IP"><a href="#CS和IP" class="headerlink" title="CS和IP"></a>CS和IP</h3><p>CS和IP是8086CPU中两个最关键的寄存器，它们指示 了CPU当前要读取指令的地址。</p>
+<p>CS为代码段寄存器，IP为指令指针寄存器，任意时刻，设CS中的内容为M，IP中的内容为N，8086CPU将从内存M*16+N单元开始，读取一条指令并执行。</p>
+<h3 id="DS和-address"><a href="#DS和-address" class="headerlink" title="DS和[address]"></a>DS和[address]</h3><p>在8086CPU中，内存地址由段地址和偏移地址组成，读写一个内存单元的时候，必须先给出这个内存单元的地址。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">用DS寄存器存放要访问的数据的段地址</span><br><span class="line">偏移地址用[...]形式直接给出</span><br></pre></td></tr></table></figure>
+
+<h3 id="SS和SP"><a href="#SS和SP" class="headerlink" title="SS和SP"></a>SS和SP</h3><p>栈顶的段地址存放在存放在SS中，偏移地址存放在SP中。任意时刻，SS:SP指向栈顶元素。</p>
+<p><img src="/2025/03/02/8086%E6%B1%87%E7%BC%96/2.jpg"></p>
+<p>栈操作机制：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">push 指令执行步骤</span><br><span class="line">SP=SP-2；</span><br><span class="line">向SS:SP指向的字单元中送入数据。</span><br><span class="line"></span><br><span class="line">pop指令的执行步骤</span><br><span class="line">从SS:SP指向的字单元中读取数据</span><br><span class="line">SP=SP+2</span><br></pre></td></tr></table></figure>
+
+<h2 id="索引寄存器"><a href="#索引寄存器" class="headerlink" title="索引寄存器"></a>索引寄存器</h2><h3 id="si和di"><a href="#si和di" class="headerlink" title="si和di"></a>si和di</h3><p>SI（Source Index） 和 DI（Destination Index） 是两个16位的索引寄存器，主要用于字符串&#x2F;数组操作和内存块数据传输。</p>
+<p><strong>代码示例</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">; 将字符串从源复制到目标</span><br><span class="line">DATA SEGMENT</span><br><span class="line">    source DB &#x27;Hello, 8086!&#x27;, &#x27;$&#x27;</span><br><span class="line">DATA ENDS</span><br><span class="line"></span><br><span class="line">EXTRA SEGMENT</span><br><span class="line">    dest DB 13 DUP(?)</span><br><span class="line">EXTRA ENDS</span><br><span class="line"></span><br><span class="line">CODE SEGMENT</span><br><span class="line">    ASSUME DS:DATA, ES:EXTRA, CS:CODE</span><br><span class="line">START:</span><br><span class="line">    MOV AX, DATA</span><br><span class="line">    MOV DS, AX       ; DS指向源数据段</span><br><span class="line">    MOV AX, EXTRA</span><br><span class="line">    MOV ES, AX       ; ES指向目标数据段</span><br><span class="line"></span><br><span class="line">    LEA SI, source   ; SI = 源地址</span><br><span class="line">    LEA DI, dest     ; DI = 目标地址</span><br><span class="line">    MOV CX, 12       ; 复制12个字符</span><br><span class="line">    CLD              ; DF=0，地址递增</span><br><span class="line">    REP MOVSB        ; 逐个字节复制</span><br><span class="line"></span><br><span class="line">    ; 结束程序</span><br><span class="line">    MOV AH, 4CH</span><br><span class="line">    INT 21H</span><br><span class="line">CODE ENDS</span><br><span class="line">END START</span><br></pre></td></tr></table></figure>
+
+<h1 id="内存与数据"><a href="#内存与数据" class="headerlink" title="内存与数据"></a>内存与数据</h1><h2 id="内存单元的描述"><a href="#内存单元的描述" class="headerlink" title="内存单元的描述"></a>内存单元的描述</h2><p>要完整的描述一个内存单元，需要两种信息：</p>
+<ul>
+<li>内存单元的地址</li>
+<li>内存单元的长度（类型）</li>
+</ul>
+<h2 id="不同的寻址方式"><a href="#不同的寻址方式" class="headerlink" title="不同的寻址方式"></a>不同的寻址方式</h2><p><img src="/2025/03/02/8086%E6%B1%87%E7%BC%96/3.jpg"></p>
+<h2 id="数据的处理"><a href="#数据的处理" class="headerlink" title="数据的处理"></a>数据的处理</h2><p>处理数据要清楚数据在内存中的位置和要处理的数据的长度</p>
+<h1 id="指令"><a href="#指令" class="headerlink" title="指令"></a>指令</h1><p>ADD</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ADD 目标操作数, 源操作数	;目标操作数 = 目标操作数 + 源操作数</span><br></pre></td></tr></table></figure>
+
+<p>SUB</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SUB 目标操作数, 源操作数	;目标操作数 = 目标操作数 - 源操作数</span><br></pre></td></tr></table></figure>
+
+
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/03/01/LeetCode%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/android.svg">
+      <meta itemprop="name" content="Bileton">
+      <meta itemprop="description" content="路漫漫其修远夕！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="白乐天">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2025/03/01/LeetCode%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/" class="post-title-link" itemprop="url">LeetCode刷题记录</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2025-03-01 12:16:18 / 修改时间：15:02:23" itemprop="dateCreated datePublished" datetime="2025-03-01T12:16:18+08:00">2025-03-01</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">算法</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>2.4k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="两数之和"><a href="#两数之和" class="headerlink" title="两数之和"></a>两数之和</h1><p>给定一个整数数组 <code>nums</code> 和一个整数目标值 <code>target</code>，请你在该数组中找出 <strong>和为目标值</strong> <em><code>target</code></em> 的那 <strong>两个</strong> 整数，并返回它们的数组下标。</p>
+<p>你可以假设每种输入只会对应一个答案，并且你不能使用两次相同的元素。</p>
+<p>你可以按任意顺序返回答案。</p>
+<p><strong>示例 1：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：nums = [2,7,11,15], target = 9</span><br><span class="line">输出：[0,1]</span><br><span class="line">解释：因为 nums[0] + nums[1] == 9 ，返回 [0, 1] 。</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 2：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：nums = [3,2,4], target = 6</span><br><span class="line">输出：[1,2]</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 3：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：nums = [3,3], target = 6</span><br><span class="line">输出：[0,1]</span><br></pre></td></tr></table></figure>
+
+<h2 id="提交"><a href="#提交" class="headerlink" title="提交"></a>提交</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">        <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">twoSum</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums, <span class="type">int</span> target)</span> </span>&#123;</span><br><span class="line">            <span class="type">int</span> front = <span class="number">0</span>;</span><br><span class="line">            <span class="type">int</span> back = nums.<span class="built_in">size</span>()<span class="number">-1</span>;</span><br><span class="line">            vector&lt;<span class="type">int</span>&gt; v;</span><br><span class="line"></span><br><span class="line">            <span class="type">int</span> count = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">while</span> (count&lt;=nums.<span class="built_in">size</span>()<span class="number">-1</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="type">size_t</span> i = <span class="number">0</span>; i &lt; nums.<span class="built_in">size</span>()<span class="number">-1</span>; i++)</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">if</span>(front==i)&#123;</span><br><span class="line">                        <span class="keyword">continue</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">if</span> (nums[front]+nums[i]==target)</span><br><span class="line">                    &#123;</span><br><span class="line">                        v.<span class="built_in">push_back</span>(front);</span><br><span class="line">                        v.<span class="built_in">push_back</span>(i);</span><br><span class="line">    </span><br><span class="line">                        <span class="keyword">return</span> v;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">for</span> (<span class="type">size_t</span> i = <span class="number">0</span>; i &lt; nums.<span class="built_in">size</span>()<span class="number">-1</span>; i++)</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">if</span>(back==i)&#123;</span><br><span class="line">                        <span class="keyword">continue</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">if</span> (nums[i]+nums[back]==target)</span><br><span class="line">                    &#123;</span><br><span class="line">                        v.<span class="built_in">push_back</span>(i);</span><br><span class="line">                        v.<span class="built_in">push_back</span>(back);</span><br><span class="line">    </span><br><span class="line">                        <span class="keyword">return</span> v;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                count++;</span><br><span class="line">                <span class="keyword">if</span> (count%<span class="number">2</span>==<span class="number">0</span>)</span><br><span class="line">                &#123;</span><br><span class="line">                    front++;</span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                    back--;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span> (front==back)</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> v;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br></pre></td></tr></table></figure>
+
+<h1 id="两数相加"><a href="#两数相加" class="headerlink" title="两数相加"></a>两数相加</h1><p>给你两个 <strong>非空</strong> 的链表，表示两个非负的整数。它们每位数字都是按照 <strong>逆序</strong> 的方式存储的，并且每个节点只能存储 <strong>一位</strong> 数字。</p>
+<p>请你将两个数相加，并以相同形式返回一个表示和的链表。</p>
+<p>你可以假设除了数字 0 之外，这两个数都不会以 0 开头。</p>
+<p><strong>示例 1：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：l1 = [2,4,3], l2 = [5,6,4]</span><br><span class="line">输出：[7,0,8]</span><br><span class="line">解释：342 + 465 = 807.</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 2：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：l1 = [0], l2 = [0]</span><br><span class="line">输出：[0]</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 3：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：l1 = [9,9,9,9,9,9,9], l2 = [9,9,9,9]</span><br><span class="line">输出：[8,9,9,9,0,0,0,1]</span><br></pre></td></tr></table></figure>
+
+<h2 id="提交-1"><a href="#提交-1" class="headerlink" title="提交"></a>提交</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">addTwoNumbers</span><span class="params">(ListNode* l1, ListNode* l2)</span> </span>&#123;</span><br><span class="line">            ListNode* ret = <span class="keyword">new</span> <span class="built_in">ListNode</span>();</span><br><span class="line">            ListNode* tempret=ret;</span><br><span class="line">            <span class="type">int</span> temp;</span><br><span class="line">            <span class="keyword">while</span> (l1!=<span class="literal">nullptr</span> || l2!=<span class="literal">nullptr</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span>(l1 == <span class="literal">nullptr</span>)&#123;</span><br><span class="line">                    temp = l2-&gt;val+tempret-&gt;val;</span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (l2== <span class="literal">nullptr</span>)&#123;</span><br><span class="line">                    temp = l1-&gt;val+tempret-&gt;val;</span><br><span class="line">                &#125; <span class="keyword">else</span>&#123;</span><br><span class="line">                    temp = l1-&gt;val + l2-&gt;val+tempret-&gt;val;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span>(temp&gt;=<span class="number">10</span>)&#123;</span><br><span class="line">                    <span class="type">int</span> ge = temp%<span class="number">10</span>;</span><br><span class="line">                    tempret-&gt;val = ge;</span><br><span class="line">                    tempret-&gt;next = <span class="keyword">new</span> <span class="built_in">ListNode</span>(<span class="number">1</span>);</span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                    tempret-&gt;val = temp;</span><br><span class="line">                    <span class="keyword">if</span>(l1== <span class="literal">nullptr</span>)&#123;</span><br><span class="line">                        <span class="keyword">if</span>(l2-&gt;next!= <span class="literal">nullptr</span>)&#123;</span><br><span class="line">                            tempret-&gt;next = <span class="keyword">new</span> <span class="built_in">ListNode</span>();</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (l2== <span class="literal">nullptr</span>)&#123;</span><br><span class="line">                        <span class="keyword">if</span>(l1-&gt;next!= <span class="literal">nullptr</span>)&#123;</span><br><span class="line">                            tempret-&gt;next = <span class="keyword">new</span> <span class="built_in">ListNode</span>();</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">else</span> <span class="keyword">if</span>(l1-&gt;next!=<span class="literal">nullptr</span> || l2-&gt;next!=<span class="literal">nullptr</span>)&#123;</span><br><span class="line">                        tempret-&gt;next = <span class="keyword">new</span> <span class="built_in">ListNode</span>();</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span>(l1 == <span class="literal">nullptr</span>)&#123;</span><br><span class="line">                    l2 = l2-&gt;next;</span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (l2== <span class="literal">nullptr</span>)&#123;</span><br><span class="line">                    l1 = l1-&gt;next;</span><br><span class="line">                &#125; <span class="keyword">else</span>&#123;</span><br><span class="line">                    l1 = l1-&gt;next;</span><br><span class="line">                    l2 = l2-&gt;next;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">while</span> (tempret-&gt;next!=<span class="literal">nullptr</span>)&#123;</span><br><span class="line">                    tempret = tempret-&gt;next;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> ret;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/02/27/Git%E6%8C%87%E5%8D%97/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/android.svg">
+      <meta itemprop="name" content="Bileton">
+      <meta itemprop="description" content="路漫漫其修远夕！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="白乐天">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2025/02/27/Git%E6%8C%87%E5%8D%97/" class="post-title-link" itemprop="url">Git指南</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2025-02-27 11:09:19" itemprop="dateCreated datePublished" datetime="2025-02-27T11:09:19+08:00">2025-02-27</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2025-03-26 16:17:17" itemprop="dateModified" datetime="2025-03-26T16:17:17+08:00">2025-03-26</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Git/" itemprop="url" rel="index"><span itemprop="name">Git</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>973</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="安装配置"><a href="#安装配置" class="headerlink" title="安装配置"></a>安装配置</h1><h2 id="Win"><a href="#Win" class="headerlink" title="Win"></a>Win</h2><p>官网下载安装</p>
+<p><a target="_blank" rel="noopener" href="https://git-scm.com/downloads/win">Git - Downloading Package</a></p>
+<h2 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h2><p>命令安装</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt install git</span><br></pre></td></tr></table></figure>
+
+<p>验证安装</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git --version</span><br></pre></td></tr></table></figure>
+
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><p><strong>关于配置文件</strong></p>
+<ul>
+<li><p>系统配置文件<code>/etc/gitconfig</code></p>
+<p>  在使用<code>git config</code>时使用<code>--system</code>选项</p>
+</li>
+<li><p>用户配置文件<code>~/.gitconfig</code></p>
+<p>  在使用<code>git config</code>时使用<code>--global</code>选项</p>
+</li>
+<li><p>当前目录配置文件<code>.git/congfig</code></p>
+</li>
+</ul>
+<h3 id="配置用户信息"><a href="#配置用户信息" class="headerlink" title="配置用户信息"></a>配置用户信息</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &quot;bileton&quot;</span><br><span class="line">git config --global user.email xxx@xxx.com</span><br></pre></td></tr></table></figure>
+
+<p>查看配置信息</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --list</span><br></pre></td></tr></table></figure>
+
+<h3 id="生成SSH密钥"><a href="#生成SSH密钥" class="headerlink" title="生成SSH密钥"></a>生成SSH密钥</h3><p>如果需要通过 SSH 进行 Git 操作，可以生成 SSH 密钥并添加到 Git 托管服务（如 GitHub、GitLab 等）上。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;email&quot;</span><br></pre></td></tr></table></figure>
+
+<h3 id="配置代理"><a href="#配置代理" class="headerlink" title="配置代理"></a>配置代理</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global http.proxy 127.0.0.1:xxxx</span><br><span class="line">git config --global https.proxy 127.0.0.1:xxxx</span><br></pre></td></tr></table></figure>
+
+<h3 id="取消代理"><a href="#取消代理" class="headerlink" title="取消代理"></a>取消代理</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global --unset http.proxy</span><br><span class="line">git config --global --unset https.proxy</span><br></pre></td></tr></table></figure>
+
+<h1 id="创建仓库"><a href="#创建仓库" class="headerlink" title="创建仓库"></a>创建仓库</h1><p>创建一个目录，用来作为仓库</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir my-project</span><br><span class="line">cd my-project</span><br></pre></td></tr></table></figure>
+
+<p><strong>git init</strong></p>
+<p>使用当前目录作为 Git 仓库，只需使它初始化。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure>
+
+<p>该命令执行完后会在当前目录生成一个 .git 目录。</p>
+<p>如果想指定目录作为git仓库，使用如下命令</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init newrepo</span><br></pre></td></tr></table></figure>
+
+<p>初始化后，会在 newrepo 目录下会出现一个名为 .git 的目录，所有 Git 需要的数据和资源都存放在这个目录中。</p>
+<h1 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h1><h2 id="克隆项目（下载项目）"><a href="#克隆项目（下载项目）" class="headerlink" title="克隆项目（下载项目）"></a>克隆项目（下载项目）</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone xxx</span><br></pre></td></tr></table></figure>
+
+<h2 id="切换分支"><a href="#切换分支" class="headerlink" title="切换分支"></a>切换分支</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout xxx</span><br></pre></td></tr></table></figure>
+
+<h2 id="管理包含其他-Git-仓库的项目"><a href="#管理包含其他-Git-仓库的项目" class="headerlink" title="管理包含其他 Git 仓库的项目"></a>管理包含其他 Git 仓库的项目</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">列出子模块</span><br><span class="line">git submodule</span><br><span class="line"></span><br><span class="line">初始化子模块</span><br><span class="line">git submodule init</span><br><span class="line"></span><br><span class="line">更新子模块</span><br><span class="line">git submodule update</span><br><span class="line"></span><br><span class="line">更新所有子模块</span><br><span class="line">git submodule update --recursive --remote</span><br><span class="line"></span><br><span class="line">查看子模块状态</span><br><span class="line">git submodule status</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -1308,520 +1707,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/02/16/%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8Bunidbg/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/android.svg">
-      <meta itemprop="name" content="Bileton">
-      <meta itemprop="description" content="路漫漫其修远夕！">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="白乐天">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2025/02/16/%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8Bunidbg/" class="post-title-link" itemprop="url">快速上手unidbg</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2025-02-16 16:27:04" itemprop="dateCreated datePublished" datetime="2025-02-16T16:27:04+08:00">2025-02-16</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2025-03-18 12:03:08" itemprop="dateModified" datetime="2025-03-18T12:03:08+08:00">2025-03-18</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Unidbg/" itemprop="url" rel="index"><span itemprop="name">Unidbg</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>9.1k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>8 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>Unidbg是一个轻量级模拟器，支持对Android Native函数的模拟执行。</p>
-<p>Unidbg是一个基于Maven构建的 JAVA 项目，可在 Github 下载源代码，然后在 IDEA&#x2F;VScode 等 IDE 里打开，其依赖下载完成后，测试运行。</p>
-<h1 id="初始化环境"><a href="#初始化环境" class="headerlink" title="初始化环境"></a>初始化环境</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> com.github.unidbg.AndroidEmulator;</span><br><span class="line"><span class="keyword">import</span> com.github.unidbg.Emulator;</span><br><span class="line"><span class="keyword">import</span> com.github.unidbg.Module;</span><br><span class="line"><span class="keyword">import</span> com.github.unidbg.arm.backend.Unicorn2Factory;</span><br><span class="line"><span class="keyword">import</span> com.github.unidbg.file.FileResult;</span><br><span class="line"><span class="keyword">import</span> com.github.unidbg.file.IOResolver;</span><br><span class="line"><span class="keyword">import</span> com.github.unidbg.linux.android.AndroidEmulatorBuilder;</span><br><span class="line"><span class="keyword">import</span> com.github.unidbg.linux.android.AndroidResolver;</span><br><span class="line"><span class="keyword">import</span> com.github.unidbg.linux.android.dvm.AbstractJni;</span><br><span class="line"><span class="keyword">import</span> com.github.unidbg.linux.android.dvm.DalvikModule;</span><br><span class="line"><span class="keyword">import</span> com.github.unidbg.linux.android.dvm.VM;</span><br><span class="line"><span class="keyword">import</span> com.github.unidbg.memory.Memory;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.File;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MainActivity</span> <span class="keyword">extends</span> <span class="title class_">AbstractJni</span> <span class="keyword">implements</span> <span class="title class_">IOResolver</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> AndroidEmulator emulator;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">String</span> <span class="variable">process</span> <span class="operator">=</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Memory memory;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> VM vm;</span><br><span class="line">    <span class="keyword">private</span> DalvikModule dm;</span><br><span class="line">    <span class="keyword">private</span> Module <span class="keyword">module</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">MainActivity</span><span class="params">()</span> &#123;</span><br><span class="line">        emulator = AndroidEmulatorBuilder</span><br><span class="line">                .for64Bit() <span class="comment">// for32Bit()</span></span><br><span class="line">                .setProcessName(process)</span><br><span class="line">                .setRootDir(<span class="keyword">new</span> <span class="title class_">File</span>(<span class="string">&quot;target/rootfs&quot;</span>))</span><br><span class="line">                .addBackendFactory(<span class="keyword">new</span> <span class="title class_">Unicorn2Factory</span>(<span class="literal">false</span>))</span><br><span class="line">                .build();</span><br><span class="line">        <span class="comment">// 设置执行多少条指令切换一次线程</span></span><br><span class="line"><span class="comment">//        emulator.getBackend().registerEmuCountHook(10000);</span></span><br><span class="line">        <span class="comment">// 启用系统调用的详细日志输出。</span></span><br><span class="line"><span class="comment">//        emulator.getSyscallHandler().setVerbose(true);</span></span><br><span class="line">        <span class="comment">// 开启线程调度器</span></span><br><span class="line"><span class="comment">//        emulator.getSyscallHandler().setEnableThreadDispatcher(true);</span></span><br><span class="line">        memory = emulator.getMemory();</span><br><span class="line">        memory.setLibraryResolver(<span class="keyword">new</span> <span class="title class_">AndroidResolver</span>(<span class="number">23</span>));</span><br><span class="line">        vm = emulator.createDalvikVM(<span class="keyword">new</span> <span class="title class_">File</span>(<span class="string">&quot;&quot;</span>));</span><br><span class="line">        vm.setJni(<span class="built_in">this</span>);</span><br><span class="line">        vm.setVerbose(<span class="literal">true</span>);</span><br><span class="line">        dm = vm.loadLibrary(<span class="string">&quot;&quot;</span>,<span class="literal">true</span>);</span><br><span class="line">        dm.callJNI_OnLoad(emulator);</span><br><span class="line">        <span class="keyword">module</span> = dm.getModule();</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// </span></span><br><span class="line">        emulator.getSyscallHandler().addIOResolver(<span class="built_in">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> FileResult <span class="title function_">resolve</span><span class="params">(Emulator emulator, String pathname, <span class="type">int</span> oflags)</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;pathname:&quot;</span> + pathname);</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h1 id="加载动态链接库"><a href="#加载动态链接库" class="headerlink" title="加载动态链接库"></a>加载动态链接库</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">DalvikModule <span class="title function_">loadLibrary</span><span class="params">(String libname, <span class="type">boolean</span> forceCallInit)</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// libname:共享库的名字，不包含路径和扩展名</span></span><br><span class="line"><span class="comment">// forceCallInit:是否强制调用库的初始化函数</span></span><br><span class="line"><span class="comment">// 返回 DalvikModule 对象，它表示已加载的库，并且可以通过该对象调用库中的函数。</span></span><br></pre></td></tr></table></figure>
-
-
-
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">DalvikModule <span class="title function_">loadLibrary</span><span class="params">(File elfFile, <span class="type">boolean</span> forceCallInit)</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// elfFile:File 类型的对象，指向共享库的路径</span></span><br><span class="line"><span class="comment">// forceCallInit:是否强制调用库的初始化函数</span></span><br><span class="line"><span class="comment">// 返回 DalvikModule 对象，它表示已加载的库，并且可以通过该对象调用库中的函数。</span></span><br></pre></td></tr></table></figure>
-
-<h1 id="获取类和对象"><a href="#获取类和对象" class="headerlink" title="获取类和对象"></a>获取类和对象</h1><h2 id="类"><a href="#类" class="headerlink" title="类"></a>类</h2><h3 id="resolveClass"><a href="#resolveClass" class="headerlink" title="resolveClass()"></a>resolveClass()</h3><p>方法签名</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DvmClass <span class="title function_">resolveClass</span><span class="params">(String className, DvmClass... interfaceClasses)</span>;</span><br></pre></td></tr></table></figure>
-
-<p>示例</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">DvmClass</span> <span class="variable">myClass</span> <span class="operator">=</span> vm.resolveClass(<span class="string">&quot;com/example/MyClass&quot;</span>);</span><br></pre></td></tr></table></figure>
-
-<h2 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h2><h3 id="DvmClass-newObject"><a href="#DvmClass-newObject" class="headerlink" title="DvmClass.newObject()"></a>DvmClass.newObject()</h3><p>通过类获取对象</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">DvmObject</span> <span class="variable">myobject</span> <span class="operator">=</span> myClass.newObject(<span class="literal">null</span>);</span><br></pre></td></tr></table></figure>
-
-<h3 id="ProxyDvmObject-createObject"><a href="#ProxyDvmObject-createObject" class="headerlink" title="ProxyDvmObject.createObject()"></a>ProxyDvmObject.createObject()</h3><p>方法签名</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DvmObject&lt;?&gt; createObject(VM vm, Object value)</span><br></pre></td></tr></table></figure>
-
-<p>示例</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">DvmObject</span> <span class="variable">myobject</span> <span class="operator">=</span> ProxyDvmObject.createObject(vm,value)</span><br></pre></td></tr></table></figure>
-
-<h1 id="调用方法"><a href="#调用方法" class="headerlink" title="调用方法"></a>调用方法</h1><h2 id="调用静态方法与实例方法的区别"><a href="#调用静态方法与实例方法的区别" class="headerlink" title="调用静态方法与实例方法的区别"></a>调用静态方法与实例方法的区别</h2><ul>
-<li><p><strong>静态方法</strong></p>
-<p>  通过类直接调用，不需要实例对象。</p>
-</li>
-<li><p><strong>实例方法</strong></p>
-<p>  需要通过类的实例对象调用。</p>
-</li>
-</ul>
-<h2 id="调用静态方法"><a href="#调用静态方法" class="headerlink" title="调用静态方法"></a>调用静态方法</h2><p>根据返回值使用合适的调用方法。</p>
-<p><img src="/2025/02/16/%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8Bunidbg/1.jpg"></p>
-<h2 id="调用实例方法"><a href="#调用实例方法" class="headerlink" title="调用实例方法"></a>调用实例方法</h2><p>根据返回值使用合适的调用方法。</p>
-<p><img src="/2025/02/16/%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8Bunidbg/2.jpg"></p>
-<h2 id="通过module调用so中方法"><a href="#通过module调用so中方法" class="headerlink" title="通过module调用so中方法"></a>通过module调用so中方法</h2><h3 id="通过符号名调用"><a href="#通过符号名调用" class="headerlink" title="通过符号名调用"></a>通过符号名调用</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Number <span class="title function_">callFunction</span><span class="params">(Emulator&lt;?&gt; emulator, String symbolName, Object... args)</span>; </span><br></pre></td></tr></table></figure>
-
-<h3 id="通过地址调用"><a href="#通过地址调用" class="headerlink" title="通过地址调用"></a>通过地址调用</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Number <span class="title function_">callFunction</span><span class="params">(Emulator&lt;?&gt; emulator, <span class="type">long</span> offset, Object... args)</span>;</span><br></pre></td></tr></table></figure>
-
-<h1 id="参数传递"><a href="#参数传递" class="headerlink" title="参数传递"></a>参数传递</h1><h2 id="基本类型的参数传递"><a href="#基本类型的参数传递" class="headerlink" title="基本类型的参数传递"></a>基本类型的参数传递</h2><p>Java 中的基本类型（如<code>byte</code>、<code>char</code>、<code>short</code>、 <code>int</code>、<code>long</code>、<code>float</code>、<code>double</code>、<code>boolean</code> 等）可以直接作为参数传递。</p>
-<p>String类型也可以直接作为参数传递（不建议，有时候可能导致错误）。</p>
-<h2 id="基本对象的参数传递"><a href="#基本对象的参数传递" class="headerlink" title="基本对象的参数传递"></a>基本对象的参数传递</h2><p>这里的基本对象指的是基本类型的包装类、字符串、基本类型数组，对象类型数组等</p>
-<h3 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h3><p>可以用如下方式处理<code>StringObject</code></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">StringObject</span> <span class="variable">stringObj</span> <span class="operator">=</span> vm.resolveClass(<span class="string">&quot;java/lang/String&quot;</span>).newObject(<span class="string">&quot;Hello World&quot;</span>); 	<span class="comment">// 这样写太冗长了，不建议</span></span><br><span class="line"><span class="type">StringObject</span> <span class="variable">stringObj</span> <span class="operator">=</span> (StringObject) ProxyDvmObject.createObject(vm, <span class="string">&quot;Hello World&quot;</span>);</span><br><span class="line"><span class="type">StringObject</span> <span class="variable">stringObj</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StringObject</span>(vm,<span class="string">&quot;Hello World&quot;</span>); 	<span class="comment">// 建议这样写，简单又直观</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="字节数组"><a href="#字节数组" class="headerlink" title="字节数组"></a>字节数组</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">ByteArray</span> <span class="variable">byteArray</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ByteArray</span>(vm, <span class="keyword">new</span> <span class="title class_">byte</span>[]&#123;<span class="number">0x64</span>, (<span class="type">byte</span>) <span class="number">0xBC</span>, <span class="number">0x0C</span>, <span class="number">0x65</span>, (<span class="type">byte</span>) <span class="number">0xAA</span>, <span class="number">0x1E</span>&#125;);</span><br><span class="line"><span class="type">ByteArray</span> <span class="variable">byteArray</span> <span class="operator">=</span> (ByteArray) ProxyDvmObject.createObject(vm, <span class="keyword">new</span> <span class="title class_">byte</span>[]&#123;<span class="number">0x64</span>, (<span class="type">byte</span>) <span class="number">0xBC</span>, <span class="number">0x0C</span>, <span class="number">0x65</span>, (<span class="type">byte</span>) <span class="number">0xAA</span>, <span class="number">0x1E</span>&#125;);</span><br></pre></td></tr></table></figure>
-
-<h3 id="字符串数组"><a href="#字符串数组" class="headerlink" title="字符串数组"></a>字符串数组</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">ArrayObject</span> <span class="variable">arrayObject</span> <span class="operator">=</span> ArrayObject.newStringArray(vm, <span class="string">&quot;Hello&quot;</span>, <span class="string">&quot;World&quot;</span>);</span><br><span class="line"><span class="type">ArrayObject</span> <span class="variable">arrayObject</span> <span class="operator">=</span> (ArrayObject) ProxyDvmObject.createObject(vm,<span class="keyword">new</span> <span class="title class_">String</span>[]&#123;<span class="string">&quot;Hello&quot;</span>, <span class="string">&quot;World&quot;</span>&#125;);</span><br></pre></td></tr></table></figure>
-
-<h3 id="List"><a href="#List" class="headerlink" title="List"></a>List</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="variable">length</span> <span class="operator">=</span> <span class="number">10</span>;</span><br><span class="line">List&lt;DvmObject&lt;?&gt;&gt; myList = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; length; i++) &#123;</span><br><span class="line">        myList.add(i);</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">ArrayListObject</span>(vm, myList);  </span><br></pre></td></tr></table></figure>
-
-<h3 id="对象参数"><a href="#对象参数" class="headerlink" title="对象参数"></a>对象参数</h3><p>对象类型的参数都可以用<code>ProxyDvmObject.createObject()</code>来处理</p>
-<p>HashMap 对象</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ProxyDvmObject.createObject(vm, new HashMap&lt;&gt;());</span><br></pre></td></tr></table></figure>
-
-<h3 id="Android里的类和对象"><a href="#Android里的类和对象" class="headerlink" title="Android里的类和对象"></a>Android里的类和对象</h3><p>对于Android里的类和对象，用<code>vm.resolveClass()</code>来处理比较好。</p>
-<h1 id="获取模块的基地址"><a href="#获取模块的基地址" class="headerlink" title="获取模块的基地址"></a>获取模块的基地址</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Module</span> <span class="variable">module</span> <span class="operator">=</span> emulator.getMemory().getModule(<span class="string">&quot;target.so&quot;</span>);</span><br><span class="line">System.out.println(<span class="string">&quot;Base address: 0x&quot;</span> + Long.toHexString(<span class="keyword">module</span>.base));</span><br></pre></td></tr></table></figure>
-
-<h1 id="补环境"><a href="#补环境" class="headerlink" title="补环境"></a>补环境</h1><h2 id="系统调用"><a href="#系统调用" class="headerlink" title="系统调用"></a>系统调用</h2><p>系统调用是由<code>svc</code>软中断发起的，依赖与<code>svc</code>后面的数字</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">svc imm</span><br><span class="line">bx lr</span><br></pre></td></tr></table></figure>
-
-<p>在系统调用的调用约定里，<code>imm</code>无实际意义，而且默认使用<code>0</code>，<code>svc 0</code>，Unidbg可以根据<code>imm</code>是否为0来确认模拟的是JNI函数调用还是系统调用。</p>
-<h2 id="JNI调用"><a href="#JNI调用" class="headerlink" title="JNI调用"></a>JNI调用</h2><p>Unidbg构造了<code>JNIEnv</code>和<code>JavaVM</code>这两个JNI中的关键结构，凭借系统调用的处理模块来实现对JNI的代理，在<code>svc imm</code>及<code>bx lr</code>这部分，有意义的是<code>lr</code>，它是<code>svc</code>的返回地址，对应样本发起JNI调用的位置。</p>
-<h2 id="补环境的原因"><a href="#补环境的原因" class="headerlink" title="补环境的原因"></a>补环境的原因</h2><p>对于对样本的Java层数据做访问的一系列JNI函数，由于Unidbg未运行Dex以及Apk，就需要自己去填充外部信息。</p>
-<p>为了减少补环境的负担，Unidbg预处理了常见的JNI函数调用和字段访问，逻辑位于<code>src/main/java/com/github/unidbg/linux/android/dvm/AbstractJni.java</code>类里。</p>
-<h1 id="日志打印"><a href="#日志打印" class="headerlink" title="日志打印"></a>日志打印</h1><p>Unidbg 中使用 Apache 的开源项目 <a target="_blank" rel="noopener" href="https://mvnrepository.com/artifact/log4j/log4j/1.2.17">log4j</a> 和 <a target="_blank" rel="noopener" href="https://mvnrepository.com/artifact/commons-logging/commons-logging/1.2">commons-logging</a> 处理日志。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.apache.log4j.Level;</span><br><span class="line"><span class="keyword">import</span> org.apache.log4j.Logger;</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">    Logger.getLogger(ARM32SyscallHandler.class).setLevel(Level.DEBUG);</span><br><span class="line">    Logger.getLogger(AndroidSyscallHandler.class).setLevel(Level.DEBUG);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// ARM64 JNI 详细日志</span></span><br><span class="line">    Logger.getLogger(DalvikVM64.class).setLevel(Level.DEBUG);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// ARM32 JNI 详细日志</span></span><br><span class="line">    Logger.getLogger(DalvikVM.class).setLevel(Level.DEBUG);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>如果希望输出所有模块的日志，可以修改<code>unidbg-android/src/test/resources/log4j.properties</code>文件，将 unidbg 的日志等级从 INFO 改为 DEBUG。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 修改前</span><br><span class="line">log4j.logger.com.github.unidbg=INFO</span><br><span class="line"># 修改后</span><br><span class="line">log4j.logger.com.github.unidbg=DEBUG</span><br></pre></td></tr></table></figure>
-
-<h2 id="虚拟机日志"><a href="#虚拟机日志" class="headerlink" title="虚拟机日志"></a>虚拟机日志</h2><p>除了常规日志，Unidbg 还有另一套日志输出，主要打印 JNI 、Syscall 调用相关的内容。它和常规日志的输出有重叠，但内容更详细一些。</p>
-<p>通过 vm.setVerbose 开启或关闭它。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 设置是否打印以 JNI 为主的虚拟机调用细节</span></span><br><span class="line">vm.setVerbose(<span class="literal">false</span>);</span><br></pre></td></tr></table></figure>
-
-<h1 id="断点调试"><a href="#断点调试" class="headerlink" title="断点调试"></a>断点调试</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">BreakPoint <span class="title function_">addBreakPoint</span><span class="params">(<span class="type">long</span> address)</span>;</span><br><span class="line"><span class="comment">// 在指定的内存地址处添加一个断点。当程序执行到这个地址时，断点会被触发。</span></span><br><span class="line"><span class="comment">// 返回一个 BreakPoint 对象，用于后续管理（例如：禁用或移除断点）。</span></span><br><span class="line"><span class="comment">// Unidbg 内部会监控执行流程，当指令指针（PC）到达该地址时，自动触发断点。</span></span><br><span class="line">BreakPoint <span class="title function_">addBreakPoint</span><span class="params">(<span class="type">long</span> address, BreakPointCallback callback)</span>;</span><br><span class="line"><span class="comment">// 在指定地址处添加一个断点，并绑定一个自定义回调。每当执行到该地址时，不仅触发断点，还会调用你提供的回调函数。</span></span><br><span class="line"><span class="comment">// 同样返回一个 BreakPoint 对象，用于管理该断点。</span></span><br><span class="line"><span class="comment">// 当程序执行到设定的地址时，除了触发断点外，Unidbg 会调用实现了 BreakPointCallback 接口的回调方法。</span></span><br></pre></td></tr></table></figure>
-
-<p>示例</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在地址 0x1000 处设置断点，并绑定一个自定义回调</span></span><br><span class="line"><span class="type">BreakPoint</span> <span class="variable">bp</span> <span class="operator">=</span> emulator.addBreakPoint(<span class="number">0x1000</span>, <span class="keyword">new</span> <span class="title class_">BreakPointCallback</span>() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onHit</span><span class="params">(Emulator&lt;?&gt; emulator, <span class="type">long</span> address)</span> &#123;</span><br><span class="line">        <span class="comment">// 当断点命中时，打印相关信息</span></span><br><span class="line">        System.out.println(<span class="string">&quot;断点命中，地址：&quot;</span> + Long.toHexString(address));</span><br><span class="line">        <span class="comment">// 此处可以添加更多调试操作，比如查看寄存器或内存状态</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<h2 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">c: continue</span><br><span class="line">// 可以让程序继续运行，直到遇到下一个断点或程序执行结束。</span><br><span class="line">n: step over</span><br><span class="line">// 单步执行当前指令，但不会进入函数内部。</span><br><span class="line">bt: back trace</span><br><span class="line">// 打印当前的调用栈信息，也就是从当前执行点一直追溯到程序入口的函数调用链。</span><br><span class="line">nb: break at next block</span><br><span class="line">// 在下一个基本块（Basic Block） 开始执行时自动暂停。</span><br><span class="line">s|si: step into</span><br><span class="line">// 单步执行，如果下一条指令是函数调用，它会进入该函数内部执行。</span><br><span class="line">s[decimal]: execute specified amount instruction</span><br><span class="line">// 允许一次性执行多条指令，然后暂停，而不是一条一条手动执行。</span><br><span class="line">s(bl): execute util BL mnemonic, low performance</span><br><span class="line">// 执行直到遇到 BL 指令</span><br><span class="line">m(op) [size]: show memory, default size is 0x70, size may hex or decimal</span><br><span class="line">// 显示从某个起始地址开始的内存内容。</span><br><span class="line">// 默认显示的内存大小为 0x70 字节（约112字节）。</span><br><span class="line">// [size] 参数可选，可以以十六进制（例如 0x50）或十进制（例如 80）的形式提供</span><br><span class="line">mx0-mx28, mfp, mip, msp [size]: show memory of specified register</span><br><span class="line">// 显示某个寄存器所存储地址处的内存数据。</span><br><span class="line">m(address) [size]: show memory of specified address, address must start with 0x</span><br><span class="line">// 查看该地址处的数据</span><br><span class="line">b(address): add temporarily breakpoint, address must start with 0x, can be module offset</span><br><span class="line">// 在指定地址处添加一个临时断点</span><br><span class="line">b: add breakpoint of register PC</span><br><span class="line">// 在当前程序计数器（PC）指向的地址设置断点。</span><br><span class="line">r: remove breakpoint of register PC</span><br><span class="line">// 命令 r 用于移除之前通过 b 命令设置的 PC 断点。</span><br><span class="line">blr: add temporarily breakpoint of register LR</span><br><span class="line">// 在链接寄存器（LR）所指向的地址上添加一个临时断点。</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="Trace"><a href="#Trace" class="headerlink" title="Trace"></a>Trace</h1><h2 id="traceCode"><a href="#traceCode" class="headerlink" title="traceCode()"></a>traceCode()</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">TraceHook <span class="title function_">traceCode</span><span class="params">()</span>;</span><br><span class="line"><span class="comment">// 无参的 traceCode() 方法返回一个 TraceHook 对象，该对象默认对整个代码模块的执行进行追踪，不对地址范围作任何限制。</span></span><br><span class="line"></span><br><span class="line">TraceHook <span class="title function_">traceCode</span><span class="params">(<span class="type">long</span> begin, <span class="type">long</span> end)</span>;</span><br><span class="line"><span class="comment">// 这个重载版本接收两个 long 类型的参数，分别代表代码追踪的起始地址和结束地址。返回的 TraceHook 对象只会对指定地址区间内的指令进行追踪。</span></span><br><span class="line"></span><br><span class="line">TraceHook <span class="title function_">traceCode</span><span class="params">(<span class="type">long</span> begin, <span class="type">long</span> end, TraceCodeListener listener)</span>;</span><br><span class="line"><span class="comment">// 除了指定起始与结束地址外，此方法还允许传入一个自定义的 TraceCodeListener。该监听器在每次执行到追踪范围内的指令时都会被调用，从而让你能够在运行时动态处理或记录这些指令信息。</span></span><br></pre></td></tr></table></figure>
-
-<p>用法示例</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">emulator.traceCode(module.base, module.base + module.size);</span><br></pre></td></tr></table></figure>
-
-<h2 id="trace的时机"><a href="#trace的时机" class="headerlink" title="trace的时机"></a>trace的时机</h2><ul>
-<li><p>如果想 trace 从某个函数开始的执行流，那就让 traceCode 早于它执行即可。</p>
-</li>
-<li><p>想trace 从 JNI_OnLoad 开始的目标 SO 执行流，在<code>dm.callJNI_OnLoad(emulator);</code>前添加 trace。</p>
-<p>  如下</p>
-  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">emulator.traceCode(<span class="keyword">module</span>.base, <span class="keyword">module</span>.base + <span class="keyword">module</span>.size);</span><br><span class="line">dm.callJNI_OnLoad(emulator);</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>如果想到更早的时机开启追踪，即追踪 init_proc、init_array 这些初始化函数的执行情况，那就需要将 traceCode 放到 loadLibrary 之前调用，代码直接提前到前面是不行的，因为此时还没有取到<code>module</code>对象，自然也没有什么<code>module.base</code>和<code>module.size</code>，这时候最正确的处理办法是使用模块监听器，在模块加载的第一时间开始 trace 。</p>
-<p>  如下</p>
-  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">memory.addModuleListener(<span class="keyword">new</span> <span class="title class_">ModuleListener</span>() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onLoaded</span><span class="params">(Emulator&lt;?&gt; emulator, Module <span class="keyword">module</span>)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="keyword">module</span>.name.equals(<span class="string">&quot;lib.so&quot;</span>))&#123;</span><br><span class="line">            emulator.traceCode(<span class="keyword">module</span>.base, <span class="keyword">module</span>.base+<span class="keyword">module</span>.size);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="type">DalvikModule</span> <span class="variable">dm</span> <span class="operator">=</span> vm.loadLibrary(<span class="string">&quot;xxx&quot;</span>, <span class="literal">true</span>);</span><br><span class="line">dm.callJNI_OnLoad(emulator);</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h1 id="AndroidEmulator"><a href="#AndroidEmulator" class="headerlink" title="AndroidEmulator"></a>AndroidEmulator</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">AndroidEmulator emulator;</span><br><span class="line"></span><br><span class="line">emulator.getSyscallHandler().addIOResolver(<span class="built_in">this</span>);</span><br><span class="line"><span class="comment">// 注册一个自定义的IO解析器，用于处理模拟执行期间的文件系统操作。</span></span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-
-<h1 id="打包及Python调用"><a href="#打包及Python调用" class="headerlink" title="打包及Python调用"></a>打包及Python调用</h1><h2 id="路径问题"><a href="#路径问题" class="headerlink" title="路径问题"></a>路径问题</h2><p>这里我在<code>unidbg</code>的根目录下创建了一个文件夹<code>apks</code>，在这里面放apk文件，在java文件里写apk路径的时候可以直接<code>apks/.../example.apk</code>，就可以了。</p>
-<p><img src="/2025/02/16/%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8Bunidbg/3.jpg"></p>
-<h2 id="打包"><a href="#打包" class="headerlink" title="打包"></a>打包</h2><p>点击菜单中的<code>File</code>-&gt;<code>Project Structure</code>，然后在<code>Project Settings</code>里点击<code>Artifacts</code>，依次点击如下内容</p>
-<p><img src="/2025/02/16/%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8Bunidbg/4.jpg"></p>
-<p>然后会弹出如下的窗口，在Main Class里选择要打包的类，勾选下图中的选项，并指定META-INF&#x2F;MANIFEST.MF目录</p>
-<p><img src="/2025/02/16/%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8Bunidbg/5.jpg"></p>
-<p>然后点击OK-&gt;Apply-&gt;OK </p>
-<h2 id="Build"><a href="#Build" class="headerlink" title="Build"></a>Build</h2><p>菜单栏点击Build-&gt;<code>Build Artifacts</code>-&gt;<code>unidbg:jar</code>-&gt;<code>Build</code></p>
-<p>完成之后会在<code>unidbg</code>根目录下生成一个<code>out</code>文件夹，打包的文件就在<code>unidbg_jar</code>里，如下。</p>
-<p><img src="/2025/02/16/%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8Bunidbg/6.jpg"></p>
-<p>但是这个文件夹里没有apk文件，还需要手动把apk文件及其目录一起移动到这里面</p>
-<p>直接把apks目录赋值到<code>unidbg_jar</code>里，如下</p>
-<p><img src="/2025/02/16/%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8Bunidbg/7.jpg"></p>
-<h2 id="终端运行"><a href="#终端运行" class="headerlink" title="终端运行"></a>终端运行</h2><p>进入到<code>unidbg_jar</code>目录下，打开终端，执行命令，就可以了</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -jar unidbg.jar</span><br></pre></td></tr></table></figure>
-
-<h2 id="Python调用"><a href="#Python调用" class="headerlink" title="Python调用"></a>Python调用</h2><p>使用<code>subprocess</code>调用</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import subprocess</span><br><span class="line"></span><br><span class="line">cmd = &quot;java -jar unidbg.jar&quot;</span><br><span class="line">signature = subprocess.check_output(cmd, shell=True,cwd=&quot;unidbg_jar&quot;).decode(&quot;utf-8&quot;)</span><br><span class="line">print(signature)</span><br></pre></td></tr></table></figure>
-
-<p><img src="/2025/02/16/%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8Bunidbg/8.jpg"></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/02/16/%E8%BD%A6%E6%99%BA%E8%B5%A2app%E7%99%BB%E5%BD%95%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/android.svg">
-      <meta itemprop="name" content="Bileton">
-      <meta itemprop="description" content="路漫漫其修远夕！">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="白乐天">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2025/02/16/%E8%BD%A6%E6%99%BA%E8%B5%A2app%E7%99%BB%E5%BD%95%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/" class="post-title-link" itemprop="url">车智赢app登录参数逆向</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2025-02-16 00:23:19" itemprop="dateCreated datePublished" datetime="2025-02-16T00:23:19+08:00">2025-02-16</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2025-02-26 18:51:26" itemprop="dateModified" datetime="2025-02-26T18:51:26+08:00">2025-02-26</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E9%80%86%E5%90%91%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/" itemprop="url" rel="index"><span itemprop="name">逆向实战案例</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>13k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>12 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="App信息"><a href="#App信息" class="headerlink" title="App信息"></a>App信息</h1><p>包名：com.che168.autotradercloud</p>
-<p><img src="/2025/02/16/%E8%BD%A6%E6%99%BA%E8%B5%A2app%E7%99%BB%E5%BD%95%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/1.jpg"></p>
-<h1 id="抓包分析"><a href="#抓包分析" class="headerlink" title="抓包分析"></a>抓包分析</h1><p>输入手机号和密码进行登录（1888888888,12345678），出现账号和密码错误</p>
-<p>分析数据包</p>
-<p><img src="/2025/02/16/%E8%BD%A6%E6%99%BA%E8%B5%A2app%E7%99%BB%E5%BD%95%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/2.jpg"></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">url: https://dealercloudapi.che168.com/tradercloud/sealed/login/login.ashx</span><br><span class="line">method: POST</span><br><span class="line">headers: &#123;</span><br><span class="line">  &quot;:authority&quot;: &quot;dealercloudapi.che168.com&quot;,</span><br><span class="line">  &quot;:method&quot;: &quot;POST&quot;,</span><br><span class="line">  &quot;:path&quot;: &quot;/tradercloud/sealed/login/login.ashx&quot;,</span><br><span class="line">  &quot;:scheme&quot;: &quot;https&quot;,</span><br><span class="line">  &quot;cache-control&quot;: &quot;public, max-age=0&quot;,</span><br><span class="line">  &quot;traceid&quot;: &quot;atc.android_75ca194d-982a-4c62-9c0a-eb647fcfff77&quot;,</span><br><span class="line">  &quot;content-type&quot;: &quot;application/x-www-form-urlencoded&quot;,</span><br><span class="line">  &quot;content-length&quot;: &quot;275&quot;,</span><br><span class="line">  &quot;accept-encoding&quot;: &quot;gzip&quot;,</span><br><span class="line">  &quot;user-agent&quot;: &quot;okhttp/3.14.9&quot;</span><br><span class="line">&#125;</span><br><span class="line">body: &#123;</span><br><span class="line">  &quot;_appid&quot;: &quot;atc.android&quot;,</span><br><span class="line">  &quot;_sign&quot;: &quot;821E3885B2FC914FBFAD687399B650E7&quot;,</span><br><span class="line">  &quot;appversion&quot;: &quot;3.71.0&quot;,</span><br><span class="line">  &quot;channelid&quot;: &quot;csy&quot;,</span><br><span class="line">  &quot;pwd&quot;: &quot;25d55ad283aa400af464c76d713c07ad&quot;,</span><br><span class="line">  &quot;signkey&quot;: &quot;&quot;,</span><br><span class="line">  &quot;type&quot;: &quot;&quot;,</span><br><span class="line">  &quot;udid&quot;: &quot;aYU5PJ/U/aR1iOFu+Rd2HB7mst8DN5YX+4ft9CvXkL/YCpKYH4gg9+MiTNly tCkk7g9hVsWqMGbruaIqoS6K5A==&quot;,</span><br><span class="line">  &quot;username&quot;: &quot;18888888888&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这里面需要逆向的参数有<code>_sign</code>、<code>pwd</code>、<code>udid</code></p>
-<h1 id="jadx反编译分析"><a href="#jadx反编译分析" class="headerlink" title="jadx反编译分析"></a>jadx反编译分析</h1><h2 id="pwd参数还原"><a href="#pwd参数还原" class="headerlink" title="pwd参数还原"></a>pwd参数还原</h2><p>搜索接口</p>
-<p><img src="/2025/02/16/%E8%BD%A6%E6%99%BA%E8%B5%A2app%E7%99%BB%E5%BD%95%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/3.jpg"></p>
-<p>双击跳转</p>
-<p><img src="/2025/02/16/%E8%BD%A6%E6%99%BA%E8%B5%A2app%E7%99%BB%E5%BD%95%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/4.jpg"></p>
-<p>它是一个字段，右键字段名查找用例，然后跳转至调用的地方，如下，它是url方法的参数</p>
-<h3 id="loginByPassword"><a href="#loginByPassword" class="headerlink" title="loginByPassword()"></a>loginByPassword()</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">loginByPassword</span><span class="params">(String str, String str2, String str3, String str4, String str5, ResponseCallback&lt;UserBean&gt; responseCallback)</span> &#123;</span><br><span class="line">    HttpUtil.<span class="type">Builder</span> <span class="variable">builder</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">HttpUtil</span>.Builder();</span><br><span class="line">    builder.tag(str).method(HttpUtil.Method.POST).signType(<span class="number">1</span>).url(LOGIN_URL).param(<span class="string">&quot;username&quot;</span>, str2).param(<span class="string">&quot;type&quot;</span>, str4).param(<span class="string">&quot;signkey&quot;</span>, str5).param(<span class="string">&quot;pwd&quot;</span>, SecurityUtil.encodeMD5(str3));</span><br><span class="line">    doRequest(builder, responseCallback, <span class="keyword">new</span> <span class="title class_">TypeToken</span>&lt;BaseResult&lt;UserBean&gt;&gt;() &#123; <span class="comment">// from class: com.che168.autotradercloud.user.model.UserModel.5</span></span><br><span class="line">    &#125;.getType());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>在这里就可以看到传递的参数了</p>
-<p>这里出现了一个参数<code>pwd</code>，并进行了MD5哈希算法签名</p>
-<p>可以把输入的密码进行MD5签名，与抓包的数据进行对比，如下，是一样的</p>
-<p><img src="/2025/02/16/%E8%BD%A6%E6%99%BA%E8%B5%A2app%E7%99%BB%E5%BD%95%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/5.jpg"></p>
-<h2 id="sign参数还原"><a href="#sign参数还原" class="headerlink" title="_sign参数还原"></a>_sign参数还原</h2><p>搜索<code>&quot;_sign&quot;</code></p>
-<p><img src="/2025/02/16/%E8%BD%A6%E6%99%BA%E8%B5%A2app%E7%99%BB%E5%BD%95%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/6.jpg"></p>
-<p>当不确定是哪一个的时候，可以点进去看看上下文有没有其他相关的参数，或者可疑性比较大的方法进行hook，打印参数和返回值。</p>
-<p><img src="/2025/02/16/%E8%BD%A6%E6%99%BA%E8%B5%A2app%E7%99%BB%E5%BD%95%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/7.jpg"></p>
-<p>发现这几个sign的值都是通过<code>toSign()</code>方法得到的</p>
-<h3 id="toSign"><a href="#toSign" class="headerlink" title="toSign()"></a>toSign()</h3><p><img src="/2025/02/16/%E8%BD%A6%E6%99%BA%E8%B5%A2app%E7%99%BB%E5%BD%95%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/8.jpg"></p>
-<p>这里面对map中的内容通过字符串进行拼接，然后进行MD5签名，然后转为大写</p>
-<p>可以通过hook toSign()方法查看参数和返回值</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">hook_toSign</span>(<span class="params"></span>)&#123;</span><br><span class="line">	<span class="title class_">Java</span>.<span class="title function_">perform</span>(<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">		<span class="keyword">let</span> <span class="title class_">AHAPIHelper</span> = <span class="title class_">Java</span>.<span class="title function_">use</span>(<span class="string">&quot;com.autohome.ahkit.AHAPIHelper&quot;</span>);</span><br><span class="line">        <span class="title class_">AHAPIHelper</span>[<span class="string">&quot;toSign&quot;</span>].<span class="property">implementation</span> = <span class="keyword">function</span> (<span class="params">context, map</span>) &#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`AHAPIHelper.toSign is called: context=<span class="subst">$&#123;context&#125;</span>, map=<span class="subst">$&#123;map&#125;</span>`</span>);</span><br><span class="line">            <span class="keyword">let</span> result = <span class="variable language_">this</span>[<span class="string">&quot;toSign&quot;</span>](context, map);</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`AHAPIHelper.toSign result=<span class="subst">$&#123;result&#125;</span>`</span>);</span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;;</span><br><span class="line">	&#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>hook 之后点击登录没反应，可能是找错函数了，加密并没有走toSign()函数</p>
-<p>接着找，看这几个函数</p>
-<p><img src="/2025/02/16/%E8%BD%A6%E6%99%BA%E8%B5%A2app%E7%99%BB%E5%BD%95%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/9.jpg"></p>
-<p>如下，这里的参数跟请求体中的参数也对得上</p>
-<p><img src="/2025/02/16/%E8%BD%A6%E6%99%BA%E8%B5%A2app%E7%99%BB%E5%BD%95%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/10.jpg"></p>
-<p><code>_sign</code>的值是<code>signByType</code>，它的值是<code>signByType()</code>方法返回的</p>
-<h3 id="signByType"><a href="#signByType" class="headerlink" title="signByType()"></a>signByType()</h3><p><img src="/2025/02/16/%E8%BD%A6%E6%99%BA%E8%B5%A2app%E7%99%BB%E5%BD%95%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/11.jpg"></p>
-<p>这个方法根据<code>signType</code>的值来设置str的值，然后拼接paraMap的键和值，最后在拼接一个str，然后把字符串进行MD5签名</p>
-<h3 id="hook-signByType"><a href="#hook-signByType" class="headerlink" title="hook signByType()"></a>hook signByType()</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">hook_sign</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="title class_">Java</span>.<span class="title function_">perform</span>(<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="keyword">let</span> <span class="title class_">SignManager</span> = <span class="title class_">Java</span>.<span class="title function_">use</span>(<span class="string">&quot;com.che168.atclibrary.base.SignManager&quot;</span>);</span><br><span class="line">        <span class="title class_">SignManager</span>[<span class="string">&quot;signByType&quot;</span>].<span class="property">implementation</span> = <span class="keyword">function</span> (<span class="params">signType, paramMap</span>) &#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`SignManager.signByType is called: signType=<span class="subst">$&#123;signType&#125;</span>, paramMap=<span class="subst">$&#123;paramMap&#125;</span>`</span>);</span><br><span class="line">            <span class="keyword">let</span> result = <span class="variable language_">this</span>[<span class="string">&quot;signByType&quot;</span>](signType, paramMap);</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`SignManager.signByType result=<span class="subst">$&#123;result&#125;</span>`</span>);</span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>hook结果</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SignManager.signByType is called: signType=1, paramMap=&#123;_appid=atc.android, appversion=3.71.0, channelid=csy, pwd=25d55ad283aa400af464c76d713c07ad, signkey=, type=, udid=aYU5PJ/U/aR1iOFu+Rd2HB7mst8DN5YX+4ft9CvXkL/YCpKYH4gg968SLlht BKxj7FEpfjd4+7OOqUly74+vGQ==, username=18888888888&#125;</span><br><span class="line">SignManager.signByType result=21DD339870BDF9DAE15131F6D01B9BB2</span><br></pre></td></tr></table></figure>
-
-<p><code>signTpe</code>的值是1，在源码中找到对应的<code>str</code>是<code>&quot;W@oC!AH_6Ew1f6%8&quot;</code></p>
-<h3 id="hook-encodeMD5"><a href="#hook-encodeMD5" class="headerlink" title="hook encodeMD5()"></a>hook encodeMD5()</h3><p>可以hook encodeMD5查看MD5签名的参数</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">hook_encodeMD5</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="title class_">Java</span>.<span class="title function_">perform</span>(<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="keyword">let</span> <span class="title class_">SecurityUtil</span> = <span class="title class_">Java</span>.<span class="title function_">use</span>(<span class="string">&quot;com.autohome.ahkit.utils.SecurityUtil&quot;</span>);</span><br><span class="line">        <span class="title class_">SecurityUtil</span>[<span class="string">&quot;encodeMD5&quot;</span>].<span class="property">implementation</span> = <span class="keyword">function</span> (<span class="params">str</span>) &#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`SecurityUtil.encodeMD5 is called: str=<span class="subst">$&#123;str&#125;</span>`</span>);</span><br><span class="line">            <span class="keyword">let</span> result = <span class="variable language_">this</span>[<span class="string">&quot;encodeMD5&quot;</span>](str);</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`SecurityUtil.encodeMD5 result=<span class="subst">$&#123;result&#125;</span>`</span>);</span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>hook 结果</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SecurityUtil.encodeMD5 is called: str=W@oC!AH_6Ew1f6%8_appidatc.androidappversion3.71.0channelidcsypwd25d55ad283aa400af464c76d713c07adsignkeytypeudidaYU5PJ/U/aR1iOFu+Rd2HB7mst8DN5YX+4ft9CvXkL/YCpKYH4gg9/rOGiHZ fplHNBBIgv34WQSSYDABqqyELA==username18888888888W@oC!AH_6Ew1f6%8</span><br><span class="line">SecurityUtil.encodeMD5 result=d0bf664cc12b402592b7bbf926087bcc</span><br></pre></td></tr></table></figure>
-
-<h2 id="udid参数还原"><a href="#udid参数还原" class="headerlink" title="udid参数还原"></a>udid参数还原</h2><p><img src="/2025/02/16/%E8%BD%A6%E6%99%BA%E8%B5%A2app%E7%99%BB%E5%BD%95%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/12.jpg"></p>
-<p><code>udid</code>是通过<code>getUDID()</code>方法获取的</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title function_">getUDID</span><span class="params">(Context context)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> SecurityUtil.encode3Des(context, getIMEI(context) + HiAnalyticsConstant.REPORT_VAL_SEPARATOR + (System.currentTimeMillis() / <span class="number">1000</span>) + <span class="string">&quot;.000000|&quot;</span> + SPUtils.getDeviceId());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>可以看出<code>udid</code>是通过<code>3Des</code>加密得到的</p>
-<p>分析<code>3Des</code>加密的明文，它是由<code>getIMEI(context) + HiAnalyticsConstant.REPORT_VAL_SEPARATOR + (System.currentTimeMillis() / 1000) + &quot;.000000|&quot; + SPUtils.getDeviceId()</code>拼接而成的</p>
-<h3 id="getIMEI"><a href="#getIMEI" class="headerlink" title="getIMEI()"></a>getIMEI()</h3><p>首先分析<code>getIMEI()</code>，我在jadx里反编译不了这个函数，换用Jeb进行反编译</p>
-<p><img src="/2025/02/16/%E8%BD%A6%E6%99%BA%E8%B5%A2app%E7%99%BB%E5%BD%95%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/13.jpg"></p>
-<p>分析代码，生成IMEI有不同的方式</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">1.((TelephonyManager)context0.getSystemService(&quot;phone&quot;)).getDeviceId();</span><br><span class="line">返回DeviceId</span><br><span class="line">2.AppUtils.getIMEIbyAndroidIDandUUID(context0);</span><br><span class="line">返回uuid</span><br><span class="line">3.((WifiManager)context0.getSystemService(&quot;wifi&quot;)).getConnectionInfo().getMacAddress();</span><br><span class="line">UUID.nameUUIDFromBytes(s1.getBytes(&quot;utf8&quot;)).toString();</span><br><span class="line">先获取wifi mac地址，然后根据这个mac地址生成一个uuid，然后返回</span><br></pre></td></tr></table></figure>
-
-<p>这里面最简单的方式就是直接生成uuid的方式了。</p>
-<h3 id="getIMEIbyAndroidIDandUUID"><a href="#getIMEIbyAndroidIDandUUID" class="headerlink" title="getIMEIbyAndroidIDandUUID()"></a>getIMEIbyAndroidIDandUUID()</h3><p><img src="/2025/02/16/%E8%BD%A6%E6%99%BA%E8%B5%A2app%E7%99%BB%E5%BD%95%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/14.jpg"></p>
-<p>直接随机生成一个uuid就可以了。</p>
-<h3 id="REPORT-VAL-SEPARATOR"><a href="#REPORT-VAL-SEPARATOR" class="headerlink" title="REPORT_VAL_SEPARATOR"></a>REPORT_VAL_SEPARATOR</h3><p><img src="/2025/02/16/%E8%BD%A6%E6%99%BA%E8%B5%A2app%E7%99%BB%E5%BD%95%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/15.jpg"></p>
-<p><code>REPORT_VAL_SEPARATOR = &quot;|&quot;</code></p>
-<h3 id="getDeviceId"><a href="#getDeviceId" class="headerlink" title="getDeviceId()"></a>getDeviceId()</h3><p><img src="/2025/02/16/%E8%BD%A6%E6%99%BA%E8%B5%A2app%E7%99%BB%E5%BD%95%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/16.jpg"></p>
-<p>它是从内存中获取的，需要找到这个值是什么时候如何存进去的</p>
-<h3 id="saveDeviceId"><a href="#saveDeviceId" class="headerlink" title="saveDeviceId()"></a>saveDeviceId()</h3><p><img src="/2025/02/16/%E8%BD%A6%E6%99%BA%E8%B5%A2app%E7%99%BB%E5%BD%95%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/17.jpg"></p>
-<p>这个方法里面传入了一个字符串，通过查找用例来找传入的字符串是什么</p>
-<h3 id="regDevice"><a href="#regDevice" class="headerlink" title="regDevice()"></a>regDevice()</h3><p><img src="/2025/02/16/%E8%BD%A6%E6%99%BA%E8%B5%A2app%E7%99%BB%E5%BD%95%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/18.jpg"></p>
-<p>向服务器发送请求返回一个<code>RegDeviceResult</code>对象，然后<code>RegDeviceResult.deviceid</code>字段作为<code>saveDeviceId()</code>的参数</p>
-<p><code>deviceid</code>是从服务器返回的，而且是程序第一次启动的时候设置的。</p>
-<p><img src="/2025/02/16/%E8%BD%A6%E6%99%BA%E8%B5%A2app%E7%99%BB%E5%BD%95%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/19.jpg"></p>
-<p>请求的url是<code>/tradercloud/v100/push/regdevice.ashx</code></p>
-<p>可以通过抓包获取<code>deviceid</code>的值。</p>
-<p><img src="/2025/02/16/%E8%BD%A6%E6%99%BA%E8%B5%A2app%E7%99%BB%E5%BD%95%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/20.jpg"></p>
-<p>返回的<code>deviceid</code>值是<code>436586</code>。</p>
-<h3 id="Python生成加密参数"><a href="#Python生成加密参数" class="headerlink" title="Python生成加密参数"></a>Python生成加密参数</h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> uuid</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">g_imei</span>():</span><br><span class="line">    u4 = uuid.uuid4()</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">str</span>(u4)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">g_data</span>():</span><br><span class="line">    REPORT_VAL_SEPARATOR = <span class="string">&quot;|&quot;</span></span><br><span class="line">    deviceid = <span class="string">&quot;436586&quot;</span></span><br><span class="line">    <span class="keyword">return</span> g_imei()+REPORT_VAL_SEPARATOR+<span class="built_in">str</span>(<span class="built_in">int</span>(time.time()))+<span class="string">&quot;.000000|&quot;</span>+deviceid</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(g_data())</span><br></pre></td></tr></table></figure>
-
-<h3 id="encode3Des"><a href="#encode3Des" class="headerlink" title="encode3Des()"></a>encode3Des()</h3><p><img src="/2025/02/16/%E8%BD%A6%E6%99%BA%E8%B5%A2app%E7%99%BB%E5%BD%95%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/21.jpg"></p>
-<p><strong>获取key</strong></p>
-<h4 id="getDesKey"><a href="#getDesKey" class="headerlink" title="getDesKey()"></a>getDesKey()</h4><p><img src="/2025/02/16/%E8%BD%A6%E6%99%BA%E8%B5%A2app%E7%99%BB%E5%BD%95%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/22.jpg"></p>
-<h4 id="getSignKey"><a href="#getSignKey" class="headerlink" title="getSignKey"></a>getSignKey</h4><p><img src="/2025/02/16/%E8%BD%A6%E6%99%BA%E8%B5%A2app%E7%99%BB%E5%BD%95%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/23.jpg"></p>
-<h4 id="getSignDesKey"><a href="#getSignDesKey" class="headerlink" title="getSignDesKey()"></a>getSignDesKey()</h4><p><img src="/2025/02/16/%E8%BD%A6%E6%99%BA%E8%B5%A2app%E7%99%BB%E5%BD%95%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/24.jpg"></p>
-<h4 id="get3desKey"><a href="#get3desKey" class="headerlink" title="get3desKey()"></a>get3desKey()</h4><p><img src="/2025/02/16/%E8%BD%A6%E6%99%BA%E8%B5%A2app%E7%99%BB%E5%BD%95%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/25.jpg"></p>
-<p><code>get3desKey()</code>是一个native函数，需要到so中分析，它在<code>native-lib.so</code>里</p>
-<p>IDA打开<code>native-lib.so</code>反编译，现在静态函数里找</p>
-<p><img src="/2025/02/16/%E8%BD%A6%E6%99%BA%E8%B5%A2app%E7%99%BB%E5%BD%95%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/26.jpg"></p>
-<p>直接就找到了，跳转过去</p>
-<p><img src="/2025/02/16/%E8%BD%A6%E6%99%BA%E8%B5%A2app%E7%99%BB%E5%BD%95%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/27.jpg"></p>
-<p>分析代码，查看<code>DES3_KEY</code>的值</p>
-<p><img src="/2025/02/16/%E8%BD%A6%E6%99%BA%E8%B5%A2app%E7%99%BB%E5%BD%95%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/28.jpg"></p>
-<p>kei的值是<code>appapiche168comappapiche168comap</code></p>
-<h4 id="hook-getDesKey"><a href="#hook-getDesKey" class="headerlink" title="hook getDesKey()"></a>hook getDesKey()</h4><p>也可以通过hook 获取</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">hook_getDesKey</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="title class_">Java</span>.<span class="title function_">perform</span>(<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="keyword">let</span> <span class="title class_">AHAPIHelper</span> = <span class="title class_">Java</span>.<span class="title function_">use</span>(<span class="string">&quot;com.autohome.ahkit.AHAPIHelper&quot;</span>);</span><br><span class="line">        <span class="title class_">AHAPIHelper</span>[<span class="string">&quot;getDesKey&quot;</span>].<span class="property">implementation</span> = <span class="keyword">function</span> (<span class="params">context</span>) &#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`AHAPIHelper.getDesKey is called: context=<span class="subst">$&#123;context&#125;</span>`</span>);</span><br><span class="line">            <span class="keyword">let</span> result = <span class="variable language_">this</span>[<span class="string">&quot;getDesKey&quot;</span>](context);</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`AHAPIHelper.getDesKey result=<span class="subst">$&#123;result&#125;</span>`</span>);</span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">hook_getDesKey</span>()</span><br></pre></td></tr></table></figure>
-
-<p><strong>hook 结果</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">AHAPIHelper.getDesKey is called: context=com.che168.autotradercloud.ATCApplication@ddbd62d</span><br><span class="line">AHAPIHelper.getDesKey result=appapiche168comappapiche168comap</span><br></pre></td></tr></table></figure>
-
-<h4 id="iv向量"><a href="#iv向量" class="headerlink" title="iv向量"></a>iv向量</h4><p><img src="/2025/02/16/%E8%BD%A6%E6%99%BA%E8%B5%A2app%E7%99%BB%E5%BD%95%E5%8F%82%E6%95%B0%E9%80%86%E5%90%91/29.jpg"></p>
-<p><code>iv</code>的值为<code>appapich</code></p>
-<h4 id="hook-encode3Des"><a href="#hook-encode3Des" class="headerlink" title="hook encode3Des"></a>hook encode3Des</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">hook_encode3Des</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="title class_">Java</span>.<span class="title function_">perform</span>(<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="keyword">let</span> <span class="title class_">SecurityUtil</span> = <span class="title class_">Java</span>.<span class="title function_">use</span>(<span class="string">&quot;com.autohome.ahkit.utils.SecurityUtil&quot;</span>);</span><br><span class="line">        <span class="title class_">SecurityUtil</span>[<span class="string">&quot;encode3Des&quot;</span>].<span class="property">implementation</span> = <span class="keyword">function</span> (<span class="params">context, str</span>) &#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`SecurityUtil.encode3Des is called: context=<span class="subst">$&#123;context&#125;</span>, str=<span class="subst">$&#123;str&#125;</span>`</span>);</span><br><span class="line">            <span class="keyword">let</span> result = <span class="variable language_">this</span>[<span class="string">&quot;encode3Des&quot;</span>](context, str);</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`SecurityUtil.encode3Des result=<span class="subst">$&#123;result&#125;</span>`</span>);</span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">hook_encode3Des</span>()</span><br></pre></td></tr></table></figure>
-
-<p>hook 结果</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SecurityUtil.encode3Des is called: context=com.che168.autotradercloud.ATCApplication@77f5244, str=01f27aed_7242_412e_80fe_d77895dd8c6c|1739375229.000000|436588</span><br><span class="line">SecurityUtil.encode3Des result=dtRLGew6PDK+XUyKHax77H3+dDRC6VqmOHCbYsmzYEtRxFWu5cuowjF1r6Jy DRO/48UWBBgl5RF4+L8WGxjENg==</span><br></pre></td></tr></table></figure>
-
-<h3 id="Python生成uuid"><a href="#Python生成uuid" class="headerlink" title="Python生成uuid"></a>Python生成uuid</h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> uuid</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">from</span> Crypto.Cipher <span class="keyword">import</span> DES3</span><br><span class="line"><span class="keyword">from</span> Crypto.Util.Padding <span class="keyword">import</span> pad,unpad</span><br><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">g_imei</span>():</span><br><span class="line">    u4 = uuid.uuid4()</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">str</span>(u4)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">g_data</span>():</span><br><span class="line">    REPORT_VAL_SEPARATOR = <span class="string">&quot;|&quot;</span></span><br><span class="line">    deviceid = <span class="string">&quot;436586&quot;</span></span><br><span class="line">    <span class="keyword">return</span> g_imei()+REPORT_VAL_SEPARATOR+<span class="built_in">str</span>(<span class="built_in">int</span>(time.time()))+<span class="string">&quot;.000000|&quot;</span>+deviceid</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">des_encrypt_cbc</span>(<span class="params">plaintext,key,iv</span>):</span><br><span class="line">    cipher = DES3.new(key,DES3.MODE_CBC,iv)</span><br><span class="line">    padded_text = pad(plaintext,DES3.block_size)</span><br><span class="line">    encrypted_data = cipher.encrypt(padded_text)</span><br><span class="line">    <span class="keyword">return</span> encrypted_data</span><br><span class="line"></span><br><span class="line">data =  g_data().encode(<span class="string">&quot;utf-8&quot;</span>)</span><br><span class="line">key = <span class="string">b&quot;appapiche168comappapiche&quot;</span></span><br><span class="line">iv = <span class="string">b&quot;appapich&quot;</span></span><br><span class="line"></span><br><span class="line">udid = base64.b64encode(des_encrypt_cbc(data,key,iv))</span><br><span class="line"><span class="built_in">print</span>(udid)</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="登陆"><a href="#登陆" class="headerlink" title="登陆"></a>登陆</h1><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> hashlib</span><br><span class="line"><span class="keyword">import</span> uuid</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">from</span> Crypto.Cipher <span class="keyword">import</span> DES3</span><br><span class="line"><span class="keyword">from</span> Crypto.Util.Padding <span class="keyword">import</span> pad,unpad</span><br><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">md5_call</span>(<span class="params">data</span>):</span><br><span class="line">    <span class="comment"># 创建md5对象</span></span><br><span class="line">    md5 = hashlib.md5()</span><br><span class="line">    <span class="comment"># 更新要加密的数据，参数要是字节类型</span></span><br><span class="line">    md5.update(data.encode(<span class="string">&quot;utf-8&quot;</span>))</span><br><span class="line">    <span class="comment"># 获取加密后的数据，以16进制表示</span></span><br><span class="line">    md5_hex = md5.hexdigest()</span><br><span class="line">    <span class="keyword">return</span> md5_hex</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">g_pwd</span>(<span class="params">pwd</span>):</span><br><span class="line">    <span class="keyword">return</span> md5_call(pwd)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">g_imei</span>():</span><br><span class="line">    u4 = uuid.uuid4()</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">str</span>(u4)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">g_data</span>():</span><br><span class="line">    REPORT_VAL_SEPARATOR = <span class="string">&quot;|&quot;</span></span><br><span class="line">    deviceid = <span class="string">&quot;436586&quot;</span></span><br><span class="line">    <span class="keyword">return</span> g_imei()+REPORT_VAL_SEPARATOR+<span class="built_in">str</span>(<span class="built_in">int</span>(time.time()))+<span class="string">&quot;.000000|&quot;</span>+deviceid</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">des_encrypt_cbc</span>(<span class="params">plaintext,key,iv</span>):</span><br><span class="line">    cipher = DES3.new(key,DES3.MODE_CBC,iv)</span><br><span class="line">    padded_text = pad(plaintext,DES3.block_size)</span><br><span class="line">    encrypted_data = cipher.encrypt(padded_text)</span><br><span class="line">    <span class="keyword">return</span> encrypted_data</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">g_udid</span>():</span><br><span class="line">    data =  g_data().encode(<span class="string">&quot;utf-8&quot;</span>)</span><br><span class="line">    key = <span class="string">b&quot;appapiche168comappapiche&quot;</span></span><br><span class="line">    iv = <span class="string">b&quot;appapich&quot;</span></span><br><span class="line">    <span class="keyword">return</span> base64.b64encode(des_encrypt_cbc(data,key,iv)).decode(<span class="string">&quot;utf-8&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">g_sign</span>(<span class="params">body</span>):</span><br><span class="line">    <span class="comment"># print(body)</span></span><br><span class="line">    <span class="built_in">str</span> = <span class="string">&quot;W@oC!AH_6Ew1f6%8&quot;</span></span><br><span class="line">    sign_str =<span class="string">&quot;&quot;</span></span><br><span class="line">    sign_str+=<span class="built_in">str</span></span><br><span class="line">    sign_str+=<span class="string">&quot;_appid&quot;</span></span><br><span class="line">    sign_str+=body[<span class="string">&quot;_appid&quot;</span>]</span><br><span class="line">    sign_str+=<span class="string">&quot;appversion&quot;</span></span><br><span class="line">    sign_str+=body[<span class="string">&quot;appversion&quot;</span>]</span><br><span class="line">    sign_str+=<span class="string">&quot;channelid&quot;</span></span><br><span class="line">    sign_str+=body[<span class="string">&quot;channelid&quot;</span>]</span><br><span class="line">    sign_str+=<span class="string">&quot;pwd&quot;</span></span><br><span class="line">    sign_str+=body[<span class="string">&quot;pwd&quot;</span>]</span><br><span class="line">    sign_str+=<span class="string">&quot;signkey&quot;</span></span><br><span class="line">    sign_str+=<span class="string">&quot;type&quot;</span></span><br><span class="line">    sign_str+=<span class="string">&quot;udid&quot;</span></span><br><span class="line">    sign_str+=body[<span class="string">&quot;udid&quot;</span>]</span><br><span class="line">    sign_str+=<span class="string">&quot;username&quot;</span></span><br><span class="line">    sign_str+=body[<span class="string">&quot;username&quot;</span>]</span><br><span class="line">    sign_str+=<span class="built_in">str</span></span><br><span class="line">    <span class="comment"># print(sign_str)</span></span><br><span class="line">    sign = md5_call(sign_str)</span><br><span class="line">    <span class="keyword">return</span> sign.upper()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">url = <span class="string">&quot;https://dealercloudapi.che168.com/tradercloud/sealed/login/login.ashx&quot;</span></span><br><span class="line"></span><br><span class="line">headers = &#123;</span><br><span class="line">  <span class="string">&quot;cache-control&quot;</span>: <span class="string">&quot;public, max-age=0&quot;</span>,</span><br><span class="line">  <span class="string">&quot;traceid&quot;</span>: <span class="string">&quot;atc.android_75ca194d-982a-4c62-9c0a-eb647fcfff77&quot;</span>,</span><br><span class="line">  <span class="string">&quot;content-type&quot;</span>: <span class="string">&quot;application/x-www-form-urlencoded&quot;</span>,</span><br><span class="line">  <span class="string">&quot;content-length&quot;</span>: <span class="string">&quot;275&quot;</span>,</span><br><span class="line">  <span class="string">&quot;accept-encoding&quot;</span>: <span class="string">&quot;gzip&quot;</span>,</span><br><span class="line">  <span class="string">&quot;user-agent&quot;</span>: <span class="string">&quot;okhttp/3.14.9&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">body = &#123;</span><br><span class="line">  <span class="string">&quot;_appid&quot;</span>: <span class="string">&quot;atc.android&quot;</span>,</span><br><span class="line"><span class="comment">#   &quot;_sign&quot;: &quot;821E3885B2FC914FBFAD687399B650E7&quot;,</span></span><br><span class="line">  <span class="string">&quot;appversion&quot;</span>: <span class="string">&quot;3.71.0&quot;</span>,</span><br><span class="line">  <span class="string">&quot;channelid&quot;</span>: <span class="string">&quot;csy&quot;</span>,</span><br><span class="line"><span class="comment">#   &quot;pwd&quot;: &quot;25d55ad283aa400af464c76d713c07ad&quot;,</span></span><br><span class="line">  <span class="string">&quot;signkey&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">  <span class="string">&quot;type&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line"><span class="comment">#   &quot;udid&quot;: &quot;aYU5PJ/U/aR1iOFu+Rd2HB7mst8DN5YX+4ft9CvXkL/YCpKYH4gg9+MiTNly tCkk7g9hVsWqMGbruaIqoS6K5A==&quot;,</span></span><br><span class="line"><span class="comment">#   &quot;username&quot;: &quot;18888888888&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">username = <span class="built_in">input</span>(<span class="string">&quot;Please input username:&quot;</span>)</span><br><span class="line">pwd = <span class="built_in">input</span>(<span class="string">&quot;Please input pwd:&quot;</span>)</span><br><span class="line">body[<span class="string">&quot;username&quot;</span>] = username</span><br><span class="line">body[<span class="string">&quot;pwd&quot;</span>] = g_pwd(pwd)</span><br><span class="line">body[<span class="string">&quot;udid&quot;</span>] = g_udid()</span><br><span class="line">sign = g_sign(body)</span><br><span class="line">body[<span class="string">&quot;_sign&quot;</span>] = sign</span><br><span class="line"></span><br><span class="line">response = requests.post(url=url,headers=headers,data=body)</span><br><span class="line"><span class="built_in">print</span>(response.status_code)</span><br><span class="line"><span class="built_in">print</span>(response.text)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h1 id="Unidbg"><a href="#Unidbg" class="headerlink" title="Unidbg"></a>Unidbg</h1><h2 id="调用get3desKey-方法"><a href="#调用get3desKey-方法" class="headerlink" title="调用get3desKey()方法"></a>调用get3desKey()方法</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// MainActivity 继承 AbstractJni，通过 JNI (Java Native Interface) 与本地代码交互。</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MainActivity</span> <span class="keyword">extends</span> <span class="title class_">AbstractJni</span> &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 声明用于安卓模拟器、内存和虚拟机（VM）设置的对象。</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> AndroidEmulator emulator;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Memory memory;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> VM vm;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">String</span> <span class="variable">process</span> <span class="operator">=</span> <span class="string">&quot;&quot;</span>; <span class="comment">// 进程名称（可以后续设置）。</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 构造函数，用于初始化模拟器、内存和虚拟机（VM）。</span></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">MainActivity</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="comment">// 创建一个 64 位的安卓模拟器实例。</span></span><br><span class="line">        emulator = AndroidEmulatorBuilder</span><br><span class="line">                .for64Bit() <span class="comment">// 如果需要可以使用 for32Bit()。</span></span><br><span class="line">                .setProcessName(process) <span class="comment">// 设置模拟器的进程名称。</span></span><br><span class="line">                .addBackendFactory(<span class="keyword">new</span> <span class="title class_">Unicorn2Factory</span>(<span class="literal">true</span>)) <span class="comment">// 添加后端工厂（Unicorn 引擎）。</span></span><br><span class="line">                .build(); <span class="comment">// 构建模拟器。</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 获取模拟器的内存。</span></span><br><span class="line">        memory = emulator.getMemory();</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 设置库解析器，指定安卓版本为 23（安卓 6.0 Marshmallow）。</span></span><br><span class="line">        memory.setLibraryResolver(<span class="keyword">new</span> <span class="title class_">AndroidResolver</span>(<span class="number">23</span>));</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 使用指定的 APK 文件创建虚拟机（Dalvik VM）。</span></span><br><span class="line">        vm = emulator.createDalvikVM(<span class="keyword">new</span> <span class="title class_">File</span>(<span class="string">&quot;unidbg-android/src/test/java/com/chezhiying/getkey/chezhiying_3.71.0.apk&quot;</span>));</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 设置 JNI，以便与本地方法交互。</span></span><br><span class="line">        vm.setJni(<span class="built_in">this</span>);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 加载模拟器所需的本地库（native-lib）。</span></span><br><span class="line">        vm.loadLibrary(<span class="string">&quot;native-lib&quot;</span>, <span class="literal">true</span>); <span class="comment">// 第二个参数指定是否动态加载该库。</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 通过 JNI 和模拟器获取 3DES 密钥的方法。</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">getkey</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="comment">// 解析 APK 中的 CheckSignUtil 类，用于调用其方法。</span></span><br><span class="line">        <span class="type">DvmClass</span> <span class="variable">CheckSignUtilClass</span> <span class="operator">=</span> vm.resolveClass(<span class="string">&quot;com.autohome.ahkit.jni.CheckSignUtil&quot;</span>);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 指定 get3desKey 方法的签名。</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">method</span> <span class="operator">=</span> <span class="string">&quot;get3desKey(Landroid/content/Context;)Ljava/lang/String;&quot;</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 调用 CheckSignUtil 类中的静态方法 get3desKey，传递一个空的 Context 对象。</span></span><br><span class="line">        <span class="type">StringObject</span> <span class="variable">stringObject</span> <span class="operator">=</span> CheckSignUtilClass.callStaticJniMethodObject(emulator, method, vm.resolveClass(<span class="string">&quot;android/content/Context&quot;</span>).newObject(<span class="literal">null</span>));</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 从返回的 StringObject 中获取字符串结果。</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">resultstring</span> <span class="operator">=</span> stringObject.getValue();</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 输出结果（即 3DES 密钥）。</span></span><br><span class="line">        System.out.println(resultstring);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// main 方法，用于启动模拟器、运行进程并调用 getkey 方法。</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="comment">// 创建 MainActivity 实例，初始化模拟器和虚拟机。</span></span><br><span class="line">        <span class="type">MainActivity</span> <span class="variable">main</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">MainActivity</span>();</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 调用 getkey 方法，获取 3DES 密钥。</span></span><br><span class="line">        main.getkey();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>输出</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">appapiche168comappapiche168comap</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/02/14/%E8%AF%A6%E8%A7%A3%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95%E7%9A%84%E5%A1%AB%E5%85%85%E6%96%B9%E5%BC%8F%E5%8F%8A%E5%8A%A0%E5%AF%86%E6%A8%A1%E5%BC%8F/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/android.svg">
-      <meta itemprop="name" content="Bileton">
-      <meta itemprop="description" content="路漫漫其修远夕！">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="白乐天">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2025/02/14/%E8%AF%A6%E8%A7%A3%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95%E7%9A%84%E5%A1%AB%E5%85%85%E6%96%B9%E5%BC%8F%E5%8F%8A%E5%8A%A0%E5%AF%86%E6%A8%A1%E5%BC%8F/" class="post-title-link" itemprop="url">详解对称加密算法的填充方式及加密模式</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2025-02-14 15:51:33 / 修改时间：17:19:57" itemprop="dateCreated datePublished" datetime="2025-02-14T15:51:33+08:00">2025-02-14</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%BC%96%E7%A0%81%E4%B8%8E%E5%8A%A0%E8%A7%A3%E5%AF%86/" itemprop="url" rel="index"><span itemprop="name">编码与加解密</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>613</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="填充方式"><a href="#填充方式" class="headerlink" title="填充方式"></a>填充方式</h1><p>填充方式（Padding）是指在加密过程中，为了使得数据块的长度符合加密算法的要求（通常是固定长度），而对数据进行补充的操作。</p>
-<h2 id="PKCS-5"><a href="#PKCS-5" class="headerlink" title="PKCS#5"></a>PKCS#5</h2><p>用于对8字节块大小的加密算法（如DES）进行填充。</p>
-<p>如果数据的长度不是8字节的倍数，则使用填充字节数的值来填充。例如，如果需要填充3个字节，则填充3个字节，其值为 <code>0x03</code>。</p>
-<h2 id="PKCS-7"><a href="#PKCS-7" class="headerlink" title="PKCS#7"></a>PKCS#7</h2><p>是对 PKCS#5 的扩展，适用于块大小为任意字节的加密算法（如AES的16字节块），它的填充方式与PKCS#5相同，但支持更多的块大小。填充字节的值是填充字节的数量。例如，如果需要填充3个字节，则填充3个字节，其值为 <code>0x03</code>。</p>
-<h2 id="Zero填充"><a href="#Zero填充" class="headerlink" title="Zero填充"></a>Zero填充</h2><p>使用字节值为零（<code>0x00</code>）的填充方式，将数据填充至指定块大小。这种方法在一些情况下容易出错，特别是如果明文本身包含零字节时。</p>
-<h1 id="加密模式"><a href="#加密模式" class="headerlink" title="加密模式"></a>加密模式</h1><p>对称加密算法通常基于分组密码来加密数据。分组密码的基本思想是将数据划分为若干个固定大小的块（如64位、128位等），然后对每个块进行加密。</p>
-<h2 id="ECB模式"><a href="#ECB模式" class="headerlink" title="ECB模式"></a>ECB模式</h2><p>ECB（Electronic Codebook），也就是电子密码本模式。</p>
-<p>原理：将明文分为固定大小的块，对每个块单独加密，生成对应的密文块。</p>
-<p><img src="/2025/02/14/%E8%AF%A6%E8%A7%A3%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95%E7%9A%84%E5%A1%AB%E5%85%85%E6%96%B9%E5%BC%8F%E5%8F%8A%E5%8A%A0%E5%AF%86%E6%A8%A1%E5%BC%8F/1.jpg"></p>
-<h2 id="CBC模式"><a href="#CBC模式" class="headerlink" title="CBC模式"></a>CBC模式</h2><p>CBC（CBC - Cipher Block Chaining），也就是密码分组链接模式。</p>
-<p>每个数据块在加密前都会与前一个密文块进行异或运算，首块数据与初始化向量（IV）进行异或，然后进行加密，使得相同的明文块即使在不同的位置也会生成不同的密文。</p>
-<p><img src="/2025/02/14/%E8%AF%A6%E8%A7%A3%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95%E7%9A%84%E5%A1%AB%E5%85%85%E6%96%B9%E5%BC%8F%E5%8F%8A%E5%8A%A0%E5%AF%86%E6%A8%A1%E5%BC%8F/2.jpg"></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1893,20 +1778,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">101</span>
+          <span class="site-state-item-count">104</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">35</span>
+        <span class="site-state-item-count">36</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">93</span>
+        <span class="site-state-item-count">96</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -1947,13 +1832,13 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">872k</span>
+    <span title="站点总字数">877k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">13:13</span>
+    <span title="站点阅读时长">13:17</span>
 </div>
 
 
