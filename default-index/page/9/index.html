@@ -119,7 +119,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">96</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">97</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -129,7 +129,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">104</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">105</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -180,6 +180,142 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/12/22/%E8%87%AA%E6%AF%81%E7%A8%8B%E5%BA%8F%E5%AF%86%E7%A0%81%E2%80%94%E9%98%BF%E9%87%8C%E8%81%9A%E5%AE%89%E5%85%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/android.svg">
+      <meta itemprop="name" content="Bileton">
+      <meta itemprop="description" content="路漫漫其修远夕！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="白乐天">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2024/12/22/%E8%87%AA%E6%AF%81%E7%A8%8B%E5%BA%8F%E5%AF%86%E7%A0%81%E2%80%94%E9%98%BF%E9%87%8C%E8%81%9A%E5%AE%89%E5%85%A8/" class="post-title-link" itemprop="url">自毁程序密码—阿里聚安全</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2024-12-22 00:40:22" itemprop="dateCreated datePublished" datetime="2024-12-22T00:40:22+08:00">2024-12-22</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2025-01-11 20:06:16" itemprop="dateModified" datetime="2025-01-11T20:06:16+08:00">2025-01-11</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%80%86%E5%90%91%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/" itemprop="url" rel="index"><span itemprop="name">逆向实战案例</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>3.3k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>3 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="App信息"><a href="#App信息" class="headerlink" title="App信息"></a>App信息</h1><p>包名：com.yaotong.crackme</p>
+<p><img src="/2024/12/22/%E8%87%AA%E6%AF%81%E7%A8%8B%E5%BA%8F%E5%AF%86%E7%A0%81%E2%80%94%E9%98%BF%E9%87%8C%E8%81%9A%E5%AE%89%E5%85%A8/1.jpg"></p>
+<h2 id="Java层分析"><a href="#Java层分析" class="headerlink" title="Java层分析"></a>Java层分析</h2><h3 id="MainActivity"><a href="#MainActivity" class="headerlink" title="MainActivity"></a>MainActivity</h3><p><img src="/2024/12/22/%E8%87%AA%E6%AF%81%E7%A8%8B%E5%BA%8F%E5%AF%86%E7%A0%81%E2%80%94%E9%98%BF%E9%87%8C%E8%81%9A%E5%AE%89%E5%85%A8/2.jpg"></p>
+<p>很容易就能看出来是在securityCheck函数里进行安全校验。securityCheck是一个native函数，到so中进行分析。</p>
+<h1 id="SO层分析"><a href="#SO层分析" class="headerlink" title="SO层分析"></a>SO层分析</h1><h2 id="定位函数位置"><a href="#定位函数位置" class="headerlink" title="定位函数位置"></a>定位函数位置</h2><p>在导出函数里搜索</p>
+<p><img src="/2024/12/22/%E8%87%AA%E6%AF%81%E7%A8%8B%E5%BA%8F%E5%AF%86%E7%A0%81%E2%80%94%E9%98%BF%E9%87%8C%E8%81%9A%E5%AE%89%E5%85%A8/3.jpg"></p>
+<h2 id="securityCheck"><a href="#securityCheck" class="headerlink" title="securityCheck"></a>securityCheck</h2><p>数据类型修复和重命名后的securityCheck</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> __fastcall <span class="title function_">Java_com_yaotong_crackme_MainActivity_securityCheck</span><span class="params">(JNIEnv *a1, jobject a2, <span class="type">char</span> *str)</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">const</span> <span class="type">char</span> *inputStr; <span class="comment">// r0</span></span><br><span class="line">  <span class="type">char</span> *wojiushidaan; <span class="comment">// r2</span></span><br><span class="line">  <span class="type">int</span> tempResult; <span class="comment">// r3</span></span><br><span class="line">  <span class="type">int</span> v8; <span class="comment">// r1</span></span><br><span class="line">​</span><br><span class="line">  <span class="keyword">if</span> ( !byte_6359 )</span><br><span class="line">  &#123;</span><br><span class="line">    sub_2494(byte_6304, <span class="number">8</span>, &amp;unk_446B, &amp;unk_4468, <span class="number">2</span>, <span class="number">7</span>);</span><br><span class="line">    byte_6359 = <span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> ( !byte_635A )</span><br><span class="line">  &#123;</span><br><span class="line">    sub_24F4(byte_636C, <span class="number">25</span>, &amp;unk_4530, &amp;unk_4474, <span class="number">3</span>, <span class="number">117</span>);</span><br><span class="line">    byte_635A = <span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  _android_log_print(<span class="number">4</span>, byte_6304, byte_636C);</span><br><span class="line">  inputStr = (*a1)-&gt;GetStringUTFChars(a1, str, <span class="number">0</span>);</span><br><span class="line">  wojiushidaan = off_628C;</span><br><span class="line">  <span class="keyword">while</span> ( <span class="number">1</span> )</span><br><span class="line">  &#123;</span><br><span class="line">    tempResult = *wojiushidaan;</span><br><span class="line">    <span class="keyword">if</span> ( tempResult != *inputStr )</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    ++wojiushidaan;</span><br><span class="line">    ++inputStr;</span><br><span class="line">    v8 = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span> ( !tempResult )</span><br><span class="line">      <span class="keyword">return</span> v8;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="off-628C"><a href="#off-628C" class="headerlink" title="off_628C"></a>off_628C</h3><p>进入off_628C偏移查看，它的内容是”wojiushidaan”</p>
+<p><img src="/2024/12/22/%E8%87%AA%E6%AF%81%E7%A8%8B%E5%BA%8F%E5%AF%86%E7%A0%81%E2%80%94%E9%98%BF%E9%87%8C%E8%81%9A%E5%AE%89%E5%85%A8/4.jpg"></p>
+<p>数据查看</p>
+<p><img src="/2024/12/22/%E8%87%AA%E6%AF%81%E7%A8%8B%E5%BA%8F%E5%AF%86%E7%A0%81%E2%80%94%E9%98%BF%E9%87%8C%E8%81%9A%E5%AE%89%E5%85%A8/5.jpg"></p>
+<p>结合securityCheck函数分析，我觉得这就是正确答案了。</p>
+<p>可是输入之后，还是校验失败。</p>
+<p><img src="/2024/12/22/%E8%87%AA%E6%AF%81%E7%A8%8B%E5%BA%8F%E5%AF%86%E7%A0%81%E2%80%94%E9%98%BF%E9%87%8C%E8%81%9A%E5%AE%89%E5%85%A8/6.jpg"></p>
+<p>无奈只能动态调试</p>
+<h1 id="动态调试"><a href="#动态调试" class="headerlink" title="动态调试"></a>动态调试</h1><p>IDA动态调试环境配置这里不再介绍。</p>
+<h2 id="附加进程"><a href="#附加进程" class="headerlink" title="附加进程"></a>附加进程</h2><p>重新启动程序</p>
+<p>在IDA里选择附加到进程</p>
+<p><img src="/2024/12/22/%E8%87%AA%E6%AF%81%E7%A8%8B%E5%BA%8F%E5%AF%86%E7%A0%81%E2%80%94%E9%98%BF%E9%87%8C%E8%81%9A%E5%AE%89%E5%85%A8/7.jpg"></p>
+<p>附加进程之后，我们运行一下，会发现，程序崩了，IDA也崩了，说明这个so是有反调试的。</p>
+<h2 id="反调试绕过"><a href="#反调试绕过" class="headerlink" title="反调试绕过"></a>反调试绕过</h2><p>猜测反调试是通过线程进行循环检测的。</p>
+<p>打开线程窗口</p>
+<p><img src="/2024/12/22/%E8%87%AA%E6%AF%81%E7%A8%8B%E5%BA%8F%E5%AF%86%E7%A0%81%E2%80%94%E9%98%BF%E9%87%8C%E8%81%9A%E5%AE%89%E5%85%A8/8.jpg"></p>
+<p>发现一个线程<code>yaotong.crackme</code>，有点可疑，右键这个线程，将状态改为suspend，暂停这个线程。</p>
+<p><img src="/2024/12/22/%E8%87%AA%E6%AF%81%E7%A8%8B%E5%BA%8F%E5%AF%86%E7%A0%81%E2%80%94%E9%98%BF%E9%87%8C%E8%81%9A%E5%AE%89%E5%85%A8/9.jpg"></p>
+<p>然后运行，程序没有挂掉，可以进行调试。</p>
+<h2 id="断点调试"><a href="#断点调试" class="headerlink" title="断点调试"></a>断点调试</h2><p>打开Modules窗口，找到libcrackme.so，双击进去，找到securityCheck函数，双击该函数跳转到函数的位置。</p>
+<p><img src="/2024/12/22/%E8%87%AA%E6%AF%81%E7%A8%8B%E5%BA%8F%E5%AF%86%E7%A0%81%E2%80%94%E9%98%BF%E9%87%8C%E8%81%9A%E5%AE%89%E5%85%A8/10.jpg"></p>
+<p>在这个函数起始的位置下一个断点，将光标移动到断点位置，按下快捷键F，然后在输入框输入任意数据，点击输入密码，程序就会运行到断点位置。</p>
+<p>F5查看反汇编，找到原来的变量偏移地址处，发现数据变了，变成了<code>aiyou,bucuoo</code></p>
+<p><img src="/2024/12/22/%E8%87%AA%E6%AF%81%E7%A8%8B%E5%BA%8F%E5%AF%86%E7%A0%81%E2%80%94%E9%98%BF%E9%87%8C%E8%81%9A%E5%AE%89%E5%85%A8/11.jpg"></p>
+<p><img src="/2024/12/22/%E8%87%AA%E6%AF%81%E7%A8%8B%E5%BA%8F%E5%AF%86%E7%A0%81%E2%80%94%E9%98%BF%E9%87%8C%E8%81%9A%E5%AE%89%E5%85%A8/12.jpg"></p>
+<h2 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h2><p>将<code>aiyou,bucuoo</code>放进输入框，点击输入密码，跳转到成功界面。</p>
+<p><img src="/2024/12/22/%E8%87%AA%E6%AF%81%E7%A8%8B%E5%BA%8F%E5%AF%86%E7%A0%81%E2%80%94%E9%98%BF%E9%87%8C%E8%81%9A%E5%AE%89%E5%85%A8/13.jpg"></p>
+<h1 id="使用frida-hook内存"><a href="#使用frida-hook内存" class="headerlink" title="使用frida hook内存"></a>使用frida hook内存</h1><p>找到存储答案的变量的内存地址</p>
+<p><img src="/2024/12/22/%E8%87%AA%E6%AF%81%E7%A8%8B%E5%BA%8F%E5%AF%86%E7%A0%81%E2%80%94%E9%98%BF%E9%87%8C%E8%81%9A%E5%AE%89%E5%85%A8/14.jpg"></p>
+<p>在程序启动之后，使用frida直接对内存进行hook</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">hook_yaotong</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="keyword">var</span> soAddr = <span class="title class_">Module</span>.<span class="title function_">findBaseAddress</span>(<span class="string">&quot;libcrackme.so&quot;</span>);</span><br><span class="line">    <span class="keyword">var</span> hookAddr = soAddr.<span class="title function_">add</span>(<span class="number">0x4450</span>)</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(hookAddr.<span class="title function_">readCString</span>())</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2024/12/22/%E8%87%AA%E6%AF%81%E7%A8%8B%E5%BA%8F%E5%AF%86%E7%A0%81%E2%80%94%E9%98%BF%E9%87%8C%E8%81%9A%E5%AE%89%E5%85%A8/15.jpg"></p>
+<h1 id="使用unidbg模拟执行"><a href="#使用unidbg模拟执行" class="headerlink" title="使用unidbg模拟执行"></a>使用unidbg模拟执行</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.yaotong.crackme;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.github.unidbg.AndroidEmulator;</span><br><span class="line"><span class="keyword">import</span> com.github.unidbg.Module;</span><br><span class="line"><span class="keyword">import</span> com.github.unidbg.arm.backend.DynarmicFactory;</span><br><span class="line"><span class="keyword">import</span> com.github.unidbg.linux.android.AndroidEmulatorBuilder;</span><br><span class="line"><span class="keyword">import</span> com.github.unidbg.linux.android.AndroidResolver;</span><br><span class="line"><span class="keyword">import</span> com.github.unidbg.linux.android.dvm.*;</span><br><span class="line"><span class="keyword">import</span> com.github.unidbg.memory.Memory;</span><br><span class="line"><span class="keyword">import</span> java.io.File;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MainActivity</span> <span class="keyword">extends</span> <span class="title class_">AbstractJni</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> AndroidEmulator emulator;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Memory memory;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> VM vm;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> DalvikModule dalvikModule;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Module <span class="keyword">module</span>;</span><br><span class="line"></span><br><span class="line">    MainActivity() &#123;</span><br><span class="line">        emulator = AndroidEmulatorBuilder.for32Bit().setProcessName(<span class="string">&quot;com.yaotong.crackme&quot;</span>).addBackendFactory(<span class="keyword">new</span> <span class="title class_">DynarmicFactory</span>(<span class="literal">true</span>)).build();</span><br><span class="line">        memory = emulator.getMemory();</span><br><span class="line">        memory.setLibraryResolver(<span class="keyword">new</span> <span class="title class_">AndroidResolver</span>(<span class="number">23</span>));</span><br><span class="line">        vm = emulator.createDalvikVM(<span class="keyword">new</span> <span class="title class_">File</span>(<span class="string">&quot;unidbg-android/src/test/java/com/yaotong/crackme/alijuanquan.apk&quot;</span>));</span><br><span class="line">        vm.setJni(<span class="built_in">this</span>);</span><br><span class="line">        vm.setVerbose(<span class="literal">true</span>);</span><br><span class="line">        dalvikModule = vm.loadLibrary(<span class="string">&quot;crackme&quot;</span>,<span class="literal">true</span>);</span><br><span class="line">        <span class="keyword">module</span> = dalvikModule.getModule();</span><br><span class="line">        vm.callJNI_OnLoad(emulator,<span class="keyword">module</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">MainActivity</span> <span class="variable">test</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">MainActivity</span>();</span><br><span class="line">        System.out.println(test.Check());</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> Boolean <span class="title function_">Check</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="type">DvmClass</span> <span class="variable">dvmClass</span> <span class="operator">=</span> vm.resolveClass(<span class="string">&quot;com.yaotong.crackme.MainActivity&quot;</span>);</span><br><span class="line">        <span class="type">DvmObject</span> <span class="variable">dvmObject</span> <span class="operator">=</span> dvmClass.newObject(<span class="literal">null</span>);</span><br><span class="line">        <span class="type">String</span> <span class="variable">input</span> <span class="operator">=</span> <span class="string">&quot;aiyou,bucuoo&quot;</span>;</span><br><span class="line">        <span class="type">boolean</span> <span class="variable">result</span> <span class="operator">=</span> dvmObject.callJniMethodBoolean(emulator,<span class="string">&quot;securityCheck(Ljava.lang.sring;)Z&quot;</span>,input);</span><br><span class="line">        System.out.println(<span class="string">&quot;result=&quot;</span> + result);</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="/2024/12/22/%E8%87%AA%E6%AF%81%E7%A8%8B%E5%BA%8F%E5%AF%86%E7%A0%81%E2%80%94%E9%98%BF%E9%87%8C%E8%81%9A%E5%AE%89%E5%85%A8/16.jpg"></p>
+<p>待完善…</p>
+<p>参考文章：<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/r-XXZQImgRc-Lce5B7x60w">https://mp.weixin.qq.com/s/r-XXZQImgRc-Lce5B7x60w</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -2346,169 +2482,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/12/04/JavaScript/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/android.svg">
-      <meta itemprop="name" content="Bileton">
-      <meta itemprop="description" content="路漫漫其修远夕！">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="白乐天">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2024/12/04/JavaScript/" class="post-title-link" itemprop="url">JavaScript</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2024-12-04 00:00:00" itemprop="dateCreated datePublished" datetime="2024-12-04T00:00:00+08:00">2024-12-04</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2025-02-09 20:57:51" itemprop="dateModified" datetime="2025-02-09T20:57:51+08:00">2025-02-09</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>2k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>2 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h1><h2 id="声明变量"><a href="#声明变量" class="headerlink" title="声明变量"></a>声明变量</h2><p>在JavaScript中，使用<code>var</code>关键字来声明变量，声明块级作用域变量使用<code>let</code>。</p>
-<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><ul>
-<li><p><strong>null</strong></p>
-<p>空值。</p>
-</li>
-<li><p><strong>undefined</strong></p>
-<p>未定义，即变量在声明时没有被初始化。</p>
-</li>
-<li><p><strong>boolean</strong></p>
-<p><code>true</code>表示真，<code>false</code>表示假。</p>
-</li>
-<li><p><strong>number</strong></p>
-<p>整数和浮点数。</p>
-</li>
-<li><p><strong>string</strong></p>
-<p>字符串。</p>
-</li>
-<li><p><strong>object</strong></p>
-<p>在JavaScript中，object是一种用于存储键值对（属性和方法）的集合。</p>
-</li>
-<li><p><strong>function</strong></p>
-<p>函数。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">fun</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;this is a function!&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h2><h3 id="比较运算符"><a href="#比较运算符" class="headerlink" title="比较运算符"></a>比较运算符</h3><ul>
-<li><p><strong>&#x3D;&#x3D;</strong></p>
-<p>相等运算符</p>
-<p>如果两个值不是同一类型，相等运算符（<code>==</code>）会将它们转换成同一个类型，再用严格相等运算符进行比较。</p>
-</li>
-<li><p><strong>&#x3D;&#x3D;&#x3D;</strong></p>
-<p>严格相等运算符</p>
-<p>比较两个值是否为“同一个值”。如果两个值不是同一类型，严格相等运算符（<code>===</code>）直接返回<code>false</code>。</p>
-</li>
-</ul>
-<h2 id="流程控制"><a href="#流程控制" class="headerlink" title="流程控制"></a>流程控制</h2><h3 id="if"><a href="#if" class="headerlink" title="if"></a>if</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (expression)&#123;</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (expression)&#123;</span><br><span class="line">	...</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (expression)&#123;</span><br><span class="line">	...</span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (expression) &#123;</span><br><span class="line">	...</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="for"><a href="#for" class="headerlink" title="for"></a>for</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> i;</span><br><span class="line"><span class="keyword">for</span> (i=<span class="number">0</span>;i&lt;<span class="number">100</span>;i++)&#123;</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="for-…-in"><a href="#for-…-in" class="headerlink" title="for … in"></a>for … in</h3><p><code>for</code>循环的一个变体是<code>for ... in</code>循环，它可以把一个对象的所有属性依次循环出来。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> stu = &#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;Jack&#x27;</span>,</span><br><span class="line">    <span class="attr">age</span>: <span class="number">20</span>,</span><br><span class="line">    <span class="attr">city</span>: <span class="string">&#x27;Beijing&#x27;</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> s <span class="keyword">in</span> stu) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(s); <span class="comment">// &#x27;name&#x27;, &#x27;age&#x27;, &#x27;city&#x27;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="while"><a href="#while" class="headerlink" title="while"></a>while</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> (expression) &#123;</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="do-…-while"><a href="#do-…-while" class="headerlink" title="do … while"></a>do … while</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line">	...</span><br><span class="line">&#125; <span class="keyword">while</span>(expression)</span><br></pre></td></tr></table></figure>
-
-<h2 id="typeof"><a href="#typeof" class="headerlink" title="typeof"></a>typeof</h2><p><code>typeof</code> 是一个操作符，用于检测变量的数据类型，返回一个表示类型的字符串。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typeof</span> variable;       <span class="comment">// 写法1</span></span><br><span class="line"><span class="title function_">typeof</span>(variable);      <span class="comment">// 写法2（括号可省略，但在复杂表达式时可能需要）</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">FuncName</span>(<span class="params"></span>)&#123;</span><br><span class="line">	<span class="comment">//函数体</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h2><p>JavaScript的对象是一种无序的集合数据类型，它由若干键值对组成。</p>
-<h1 id="标准对象"><a href="#标准对象" class="headerlink" title="标准对象"></a>标准对象</h1><h2 id="String"><a href="#String" class="headerlink" title="String"></a>String</h2><h3 id="new"><a href="#new" class="headerlink" title="new"></a>new</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> aaa = <span class="keyword">new</span> <span class="title class_">String</span>(<span class="string">&quot;123&quot;</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(aaa)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(aaa.<span class="title function_">valueOf</span>())</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line">[<span class="title class_">String</span>: <span class="string">&#x27;123&#x27;</span>]</span><br><span class="line"><span class="number">123</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="length"><a href="#length" class="headerlink" title="length"></a>length</h3><p>字符串的长度。</p>
-<h3 id="concat"><a href="#concat" class="headerlink" title="concat()"></a>concat()</h3><p>连接两个字符串，返回一个新字符串，不改变原字符串。</p>
-<h3 id="indexOf"><a href="#indexOf" class="headerlink" title="indexOf()"></a>indexOf()</h3><p>用于确定一个字符串在另一个字符串中第一次出现的位置，返回结果是匹配开始的位置。如果返回<code>-1</code>，就表示不匹配。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#x27;hello world&#x27;</span>.<span class="title function_">indexOf</span>(<span class="string">&#x27;o&#x27;</span>) <span class="comment">// 4</span></span><br><span class="line"><span class="string">&#x27;JavaScript&#x27;</span>.<span class="title function_">indexOf</span>(<span class="string">&#x27;script&#x27;</span>) <span class="comment">// -1</span></span><br><span class="line"></span><br><span class="line"><span class="string">&#x27;hello world&#x27;</span>.<span class="title function_">indexOf</span>(<span class="string">&#x27;o&#x27;</span>, <span class="number">6</span>) <span class="comment">// 7，可以接受第二个参数，表示从该位置开始向后匹配。</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="split"><a href="#split" class="headerlink" title="split()"></a>split()</h3><p>按照给定规则分割字符串，返回一个由分割出来的子字符串组成的数组。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#x27;a|b|c&#x27;</span>.<span class="title function_">split</span>(<span class="string">&#x27;|&#x27;</span>) <span class="comment">// [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;]</span></span><br><span class="line"></span><br><span class="line"><span class="string">&#x27;a|b|c&#x27;</span>.<span class="title function_">split</span>(<span class="string">&#x27;&#x27;</span>) <span class="comment">// [&quot;a&quot;, &quot;|&quot;, &quot;b&quot;, &quot;|&quot;, &quot;c&quot;]，如果分割规则为空字符串，则返回数组的成员是原字符串的每一个字符。</span></span><br><span class="line"></span><br><span class="line"><span class="string">&#x27;a|b|c&#x27;</span>.<span class="title function_">split</span>() <span class="comment">// [&quot;a|b|c&quot;]，如果省略参数，则返回数组的唯一成员就是原字符串。</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="valueOf-NaN"><a href="#valueOf-NaN" class="headerlink" title="valueOf()"></a>valueOf()</h3><p>返回对象的原始值。</p>
-<h3 id="obj-toString"><a href="#obj-toString" class="headerlink" title="obj.toString()"></a>obj.toString()</h3><p>用于将对象转换为字符串。</p>
-<p>不同对象类型通过重写该方法提供特定的字符串输出。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -2580,7 +2553,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">104</span>
+          <span class="site-state-item-count">105</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -2593,7 +2566,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">96</span>
+        <span class="site-state-item-count">97</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -2640,7 +2613,7 @@
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">13:27</span>
+    <span title="站点阅读时长">13:28</span>
 </div>
 
 
